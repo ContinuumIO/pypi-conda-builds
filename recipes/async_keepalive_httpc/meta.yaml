@@ -1,0 +1,75 @@
+package:
+  name: async_keepalive_httpc
+  version: "0.15"
+
+source:
+  fn: async_keepalive_httpc-0.15.tar.gz
+  url: https://pypi.python.org/packages/source/a/async_keepalive_httpc/async_keepalive_httpc-0.15.tar.gz
+  md5: b924b8d89f0a6fbbc5b7e0d54bb7beb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - async_keepalive_httpc = async_keepalive_httpc:main
+    #
+    # Would create an entry point called async_keepalive_httpc that calls async_keepalive_httpc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3.0
+    - botocore >=0.20.0
+    - xmltodict >=0.8.0
+    - pyyaml >=3.0
+    - python-dateutil >=2.2
+    - requests >=2.0.0
+    - shortuuid
+
+  run:
+    - python
+    - tornado >=3.0
+    - botocore >=0.20.0
+    - xmltodict >=0.8.0
+    - pyyaml >=3.0
+    - python-dateutil >=2.2
+    - requests >=2.0.0
+    - shortuuid
+
+test:
+  # Python imports
+  imports:
+    - async_keepalive_httpc
+    - async_keepalive_httpc.aws
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tly1980/async_keepalive_httpc
+  license: BSD License
+  summary: 'An async http client with keep-alive capabilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

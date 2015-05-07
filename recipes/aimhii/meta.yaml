@@ -1,0 +1,74 @@
+package:
+  name: aimhii
+  version: "0.5.2"
+
+source:
+  fn: aimhii-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/aimhii/aimhii-0.5.2.tar.gz
+  md5: 83c84726f0d51d6a10f9e4e96ab2a703
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aimhii = aimhii:main
+    #
+    # Would create an entry point called aimhii that calls aimhii.main()
+
+    - aimhii=aimhii:main
+    - extract_chimeras=aimhii.extract_chimeras:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.8.1
+    - biopython >=1.64
+    - matplotlib >=1.3.1
+    - pysam >=0.7.7
+    - htseq >=0.6.1
+
+  run:
+    - python
+    - numpy >=1.8.1
+    - biopython >=1.64
+    - matplotlib >=1.3.1
+    - pysam >=0.7.7
+    - htseq >=0.6.1
+
+test:
+  # Python imports
+  imports:
+    - aimhii
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aimhii --help
+    - extract_chimeras --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://granek.bitbucket.org/projects/aimhii
+  license: MIT License
+  summary: 'A pipeline for mapping insertion mutants from whole genome shotgun data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

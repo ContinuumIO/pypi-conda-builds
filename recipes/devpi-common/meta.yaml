@@ -1,0 +1,65 @@
+package:
+  name: devpi-common
+  version: "2.0.5"
+
+source:
+  fn: devpi-common-2.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/devpi-common/devpi-common-2.0.5.tar.gz
+  md5: 22bf5c0742cab219d475f27d1bbdcde7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - devpi-common = devpi-common:main
+    #
+    # Would create an entry point called devpi-common that calls devpi-common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.3.0
+    - py >=1.4.20
+
+  run:
+    - python
+    - requests >=2.3.0
+    - py >=1.4.20
+
+test:
+  # Python imports
+  imports:
+    - devpi_common
+    - devpi_common.vendor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/hpk42/devpi
+  license: MIT License
+  summary: 'utilities jointly used by devpi-server and devpi-client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: cjklib
+  version: "0.3.2"
+
+source:
+  fn: cjklib-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cjklib/cjklib-0.3.2.tar.gz
+  md5: 32780bc5cc0b132204d1c9b8a1642157
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cjklib = cjklib:main
+    #
+    # Would create an entry point called cjklib that calls cjklib.main()
+
+    - buildcjkdb = cjklib.build.cli:main
+    - installcjkdict = cjklib.dictionary.install:main
+    - cjknife = cjklib.cjknife:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.6,<0.7
+
+  run:
+    - python
+    - sqlalchemy >=0.6,<0.7
+
+test:
+  # Python imports
+  imports:
+    - cjklib
+    - cjklib.build
+    - cjklib.dictionary
+    - cjklib.reading
+    - cjklib.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - buildcjkdb --help
+    - installcjkdict --help
+    - cjknife --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cjklib.org
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Han character library for CJKV languages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

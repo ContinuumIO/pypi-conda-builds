@@ -1,0 +1,64 @@
+package:
+  name: aiogevent
+  version: "0.2"
+
+source:
+  fn: aiogevent-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/aiogevent/aiogevent-0.2.tar.gz
+  md5: a2b9c1b4c0ee367e978f7ca54687e825
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aiogevent = aiogevent:main
+    #
+    # Would create an entry point called aiogevent that calls aiogevent.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - trollius >=0.3
+
+  run:
+    - python
+    - gevent
+    - trollius >=0.3
+
+test:
+  # Python imports
+  imports:
+    - aiogevent
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/aiogevent
+  license: Apache Software License
+  summary: 'asyncio API (PEP 3156) implemented on top of gevent'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: cykooz.sequence
+  version: "1.0.2"
+
+source:
+  fn: cykooz.sequence-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cykooz.sequence/cykooz.sequence-1.0.2.tar.gz
+  md5: 7780df5826965852fb8d90fc1c395b92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cykooz.sequence = cykooz.sequence:main
+    #
+    # Would create an entry point called cykooz.sequence that calls cykooz.sequence.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - zodb3
+    - zope.component
+    - zope.interface
+    - zope.annotation
+
+  run:
+    - python
+    - setuptools
+    - distribute
+    - zodb3
+    - zope.component
+    - zope.interface
+    - zope.annotation
+
+test:
+  # Python imports
+  imports:
+    - cykooz
+    - cykooz.sequence
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/cykooz/cykooz.sequence
+  license: Zope Public License
+  summary: 'Generates a persistent sequence'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

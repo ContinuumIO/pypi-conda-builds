@@ -1,0 +1,61 @@
+package:
+  name: boto_rsync
+  version: "0.8.1"
+
+source:
+  fn: boto_rsync-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/boto_rsync/boto_rsync-0.8.1.tar.gz
+  md5: 741fff2d894e7c74cdc7cb1f4a0abc2d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boto_rsync = boto_rsync:main
+    #
+    # Would create an entry point called boto_rsync that calls boto_rsync.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - boto >=2.2.1
+
+  run:
+    - python
+    - boto >=2.2.1
+
+test:
+  # Python imports
+  imports:
+    - boto_rsync
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/seedifferently/boto_rsync
+  license: MIT License
+  summary: "An rsync-like wrapper for boto's S3 and Google Storage interfaces."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

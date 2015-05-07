@@ -1,0 +1,94 @@
+package:
+  name: chembl_beaker
+  version: "1.1.2"
+
+source:
+  fn: chembl_beaker-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/chembl_beaker/chembl_beaker-1.1.2.tar.gz
+  md5: 778f59ee1134723e4ec9004ab790cfe9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chembl_beaker = chembl_beaker:main
+    #
+    # Would create an entry point called chembl_beaker that calls chembl_beaker.main()
+
+    - run_beaker=chembl_beaker.run_beaker:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle >=0.11.6
+    - tornado >=2.4
+    - pytz
+    - netaddr >=0.7.12
+
+  run:
+    - python
+    - bottle >=0.11.6
+    - tornado >=2.4
+    - pytz
+    - netaddr >=0.7.12
+
+test:
+  # Python imports
+  imports:
+    - chembl_beaker
+    - chembl_beaker.beaker
+    - chembl_beaker.beaker.cache
+    - chembl_beaker.beaker.cache.backends
+    - chembl_beaker.beaker.core_apps
+    - chembl_beaker.beaker.core_apps.D3Coords
+    - chembl_beaker.beaker.core_apps.autoDocs
+    - chembl_beaker.beaker.core_apps.calculations
+    - chembl_beaker.beaker.core_apps.conversions
+    - chembl_beaker.beaker.core_apps.descriptors
+    - chembl_beaker.beaker.core_apps.fingerprints
+    - chembl_beaker.beaker.core_apps.jsonImages
+    - chembl_beaker.beaker.core_apps.marvin
+    - chembl_beaker.beaker.core_apps.mcs
+    - chembl_beaker.beaker.core_apps.osra
+    - chembl_beaker.beaker.core_apps.rasterImages
+    - chembl_beaker.beaker.core_apps.ringInfo
+    - chembl_beaker.beaker.core_apps.similarityMaps
+    - chembl_beaker.beaker.core_apps.standarisation
+    - chembl_beaker.beaker.core_apps.svgImages
+    - chembl_beaker.beaker.draw
+    - chembl_beaker.beaker.plugins
+    - chembl_beaker.beaker.throttle
+    - chembl_beaker.beaker.throttle.backends
+    - chembl_beaker.beaker.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - run_beaker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.ebi.ac.uk/chembl/
+  license: Apache Software License
+  summary: 'RDKit in the Bottle on Tornado'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

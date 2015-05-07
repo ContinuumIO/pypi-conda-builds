@@ -1,0 +1,73 @@
+package:
+  name: collective.futures
+  version: "0.9.0"
+
+source:
+  fn: collective.futures-0.9.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.futures/collective.futures-0.9.0.zip
+  md5: 9e776de309a6fa92f062cd7148047a8f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.futures = collective.futures:main
+    #
+    # Would create an entry point called collective.futures that calls collective.futures.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - futures
+    - products.cmfplone
+    - zope.globalrequest
+    - plone.transformchain
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - futures
+    - products.cmfplone
+    - zope.globalrequest
+    - plone.transformchain
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.futures
+    - collective.futures.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPL
+  summary: 'Experimental non-blocking async futures for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

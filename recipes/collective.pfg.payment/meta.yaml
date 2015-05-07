@@ -1,0 +1,74 @@
+package:
+  name: collective.pfg.payment
+  version: "0.6"
+
+source:
+  fn: collective.pfg.payment-0.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.pfg.payment/collective.pfg.payment-0.6.zip
+  md5: e357e6c14784659c3d8b8be6c6a5cfb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.pfg.payment = collective.pfg.payment:main
+    #
+    # Would create an entry point called collective.pfg.payment that calls collective.pfg.payment.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.ploneformgen
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - products.ploneformgen
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.pfg
+    - collective.pfg.payment
+    - collective.pfg.payment.Extensions
+    - collective.pfg.payment.adapter
+    - collective.pfg.payment.browser
+    - collective.pfg.payment.content
+    - collective.pfg.payment.interfaces
+    - collective.pfg.payment.tests
+    - collective.pfg.payment.utility
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/taito/collective.pfg.payment
+  license: BSD License
+  summary: 'Extends PloneFormGen to payment form.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

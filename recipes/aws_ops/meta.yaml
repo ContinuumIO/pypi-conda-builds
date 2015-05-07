@@ -1,0 +1,85 @@
+package:
+  name: aws_ops
+  version: "0.0.2"
+
+source:
+  fn: aws_ops-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/aws_ops/aws_ops-0.0.2.tar.gz
+  md5: 17daff295f8e7422f42d00da5ecbc1b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aws_ops = aws_ops:main
+    #
+    # Would create an entry point called aws_ops that calls aws_ops.main()
+
+    - cloudcaster = cloudcaster.cloudcaster:main
+    - ec2cleanlc = ec2cleanlc.ec2cleanlc:main
+    - ec2cleanami = ec2cleanami.ec2cleanami:main
+    - ec2autoimage = ec2autoimage.ec2autoimage:main
+    - ec2createapp = ec2createapp.ec2createapp:main
+    - ec2nodefind = ec2nodefind.ec2nodefind:main
+    - ec2rotatehosts = ec2rotatehosts.ec2rotatehosts:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.34.0
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - boto >=2.34.0
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - aws_ops
+    - cloudcaster
+    - ec2autoimage
+    - ec2cleanami
+    - ec2cleanlc
+    - ec2createapp
+    - ec2nodefind
+    - ec2rotatehosts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cloudcaster --help
+    - ec2cleanlc --help
+    - ec2cleanami --help
+    - ec2autoimage --help
+    - ec2createapp --help
+    - ec2nodefind --help
+    - ec2rotatehosts --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WrathOfChris/ops
+  license: BSD 2-Clause
+  summary: 'Building special snowflakes consistently'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

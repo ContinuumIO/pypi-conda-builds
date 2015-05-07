@@ -1,0 +1,104 @@
+package:
+  name: claun
+  version: "2.0.0.8"
+
+source:
+  fn: claun-2.0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/claun/claun-2.0.0.8.tar.gz
+  md5: 2aee932dfa7412b7c7f80946a8882588
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - claun = claun:main
+    #
+    # Would create an entry point called claun that calls claun.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mimeparse ==0.1.3
+    - docutils
+    - pyyaml ==3.10
+    - httplib2 >=0.7.0,<=0.7.4
+    - couchdb ==0.8
+
+  run:
+    - python
+    - mimeparse ==0.1.3
+    - docutils
+    - pyyaml ==3.10
+    - httplib2 >=0.7.0,<=0.7.4
+    - couchdb ==0.8
+
+test:
+  # Python imports
+  imports:
+    - claun
+    - claun.core
+    - claun.core.communication
+    - claun.core.communication.client
+    - claun.core.communication.io
+    - claun.core.communication.server
+    - claun.core.communication.server.authenticators
+    - claun.modules
+    - claun.modules.applications
+    - claun.modules.applications.admin
+    - claun.modules.applications.admin.help
+    - claun.modules.apprunner
+    - claun.modules.apprunner.frameworks
+    - claun.modules.cluster
+    - claun.modules.controller
+    - claun.modules.controller.controllers
+    - claun.modules.couchdb
+    - claun.modules.distribappcontrol
+    - claun.modules.distribappcontrol.admin
+    - claun.modules.distribappcontrol.admin.help
+    - claun.modules.environment
+    - claun.modules.environment.admin
+    - claun.modules.environment.admin.help
+    - claun.modules.filestorage
+    - claun.modules.gui
+    - claun.modules.hwcontrol
+    - claun.modules.monitoring
+    - claun.modules.users
+    - claun.modules.users.admin
+    - claun.modules.users.admin.help
+    - claun.modules.users.auth
+    - claun.vendor
+    - claun.vendor.web
+    - claun.vendor.web.contrib
+    - claun.vendor.web.wsgiserver
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: example.com
+  license: Other
+  summary: 'Claun system for distributed environments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

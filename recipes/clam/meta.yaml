@@ -1,0 +1,85 @@
+package:
+  name: clam
+  version: "0.9.13.2"
+
+source:
+  fn: CLAM-0.9.13.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/CLAM/CLAM-0.9.13.2.tar.gz
+  md5: f003928c8eda0ae8cacefdedd7d52ebb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clam = clam:main
+    #
+    # Would create an entry point called clam that calls clam.main()
+
+    - clamservice = clam.startclamservice:main
+    - startclamservice = clam.startclamservice:main
+    - clamnewproject = clam.clamnewproject:main
+    - clamdispatcher = clam.clamdispatcher:main
+    - clamclient = clam.clamclient:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - web.py >=0.33
+    - lxml >=2.2
+    - pycurl
+    - requests_oauthlib
+    - pycrypto
+
+  run:
+    - python
+    - web.py >=0.33
+    - lxml >=2.2
+    - pycurl
+    - requests_oauthlib
+    - pycrypto
+
+test:
+  # Python imports
+  imports:
+    - clam
+    - clam.common
+    - clam.config
+    - clam.external
+    - clam.external.poster
+    - clam.wrappers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clamservice --help
+    - startclamservice --help
+    - clamnewproject --help
+    - clamdispatcher --help
+    - clamclient --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://proycon.github.com/clam
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Computational Linguistics Application Mediator. Turn command-line NLP tools into fully-fledged RESTful webservices.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

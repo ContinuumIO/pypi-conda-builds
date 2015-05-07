@@ -1,0 +1,64 @@
+package:
+  name: cdl_convert
+  version: "0.8"
+
+source:
+  fn: cdl_convert-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/cdl_convert/cdl_convert-0.8.tar.gz
+  md5: 9155107df8219454203ace8f08f23710
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cdl_convert = cdl_convert:main
+    #
+    # Would create an entry point called cdl_convert that calls cdl_convert.main()
+
+    - cdl_convert=cdl_convert.cdl_convert:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - cdl_convert
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cdl_convert --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shidarin/cdl_convert
+  license: MIT License
+  summary: 'Converts between common ASC Color Decision List (CDL) formats'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: abl.cssprocessor
+  version: "0.2"
+
+source:
+  fn: abl.cssprocessor-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/abl.cssprocessor/abl.cssprocessor-0.2.tar.gz
+  md5: b35fbccf34d65f457881b5e0da36f5c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - abl.cssprocessor = abl.cssprocessor:main
+    #
+    # Would create an entry point called abl.cssprocessor that calls abl.cssprocessor.main()
+
+    - css_validator = abl.cssprocessor.validator:validator
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyparsing
+    - abl.vpath >=0.4
+    - argparse
+
+  run:
+    - python
+    - pyparsing
+    - abl.vpath >=0.4
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - abl
+    - abl.cssprocessor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - css_validator --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT
+  summary: 'A processor to aggregate CSS-files and their referenced media'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: akaudit
+  version: "0.2.0"
+
+source:
+  fn: akaudit-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/akaudit/akaudit-0.2.0.tar.gz
+  md5: ab05725fe8bec95e9c902239324c73b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - akaudit = akaudit:main
+    #
+    # Would create an entry point called akaudit that calls akaudit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paramiko
+    - colorama
+    - six
+
+  run:
+    - python
+    - paramiko
+    - colorama
+    - six
+
+test:
+  # Python imports
+  imports:
+    - akaudit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/flaccid/akaudit
+  license: Apache 2.0
+  summary: 'Audit who has SSH access to your user homes via authorized_keys.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

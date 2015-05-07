@@ -1,0 +1,68 @@
+package:
+  name: colonyzer2
+  version: "1.0.86"
+
+source:
+  fn: Colonyzer2-1.0.86.zip
+  url: https://pypi.python.org/packages/source/C/Colonyzer2/Colonyzer2-1.0.86.zip
+  md5: b1ad72d259085524b47126a36de8c078
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - colonyzer2 = colonyzer2:main
+    #
+    # Would create an entry point called colonyzer2 that calls colonyzer2.main()
+
+    - independent = colonyzer2.independent:main
+    - timecourse = colonyzer2.timecourse:main
+    - fixedpos = colonyzer2.timecourse_fixedpos:main
+    - parametryzer = colonyzer2.parameteryzer_script:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - colonyzer2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - independent --help
+    - timecourse --help
+    - fixedpos --help
+    - parametryzer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://research.ncl.ac.uk/colonyzer/
+  license: UNKNOWN
+  summary: 'Image analysis for microbial cultures growing on solid agar surfaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

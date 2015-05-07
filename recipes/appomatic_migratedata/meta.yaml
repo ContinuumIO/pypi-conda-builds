@@ -1,0 +1,64 @@
+package:
+  name: appomatic_migratedata
+  version: "0.0.1"
+
+source:
+  fn: appomatic_migratedata-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/appomatic_migratedata/appomatic_migratedata-0.0.1.tar.gz
+  md5: a6bda1b21adfe7dc74655c6cf96bdff1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appomatic_migratedata = appomatic_migratedata:main
+    #
+    # Would create an entry point called appomatic_migratedata that calls appomatic_migratedata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appomaticcore
+
+  run:
+    - python
+    - appomaticcore
+
+test:
+  # Python imports
+  imports:
+    - appomatic_migratedata
+    - appomatic_migratedata.management
+    - appomatic_migratedata.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/redhog/appomatic_migratedata
+  license: BSD
+  summary: 'Shortcut for dumpdata + loaddata to migrate larger datasets between two live databases.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,149 @@
+package:
+  name: askbot-tuan
+  version: "1.5"
+
+source:
+  fn: askbot-tuan-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/askbot-tuan/askbot-tuan-1.5.tar.gz
+  md5: 469f99fb5db8216c7fc66bd002be16f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - askbot-tuan = askbot-tuan:main
+    #
+    # Would create an entry point called askbot-tuan that calls askbot-tuan.main()
+
+    - askbot-setup = askbot.deployment:askbot_setup
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - pystache ==0.3.1
+    - sanction
+    - longerusername
+    - django-recaptcha-works
+    - html5lib ==0.90
+    - django-followit
+    - django-tinymce
+    - django-kombu ==0.9.2
+    - django-countries ==1.0.5
+    - akismet
+    - python-openid
+    - django-robots
+    - pytz
+    - jinja2
+    - django-threaded-multihost
+    - markdown2
+    - unidecode
+    - oauth2
+    - django-celery ==2.2.7
+    - django-keyedcache
+    - django ==1.4
+    - lamson
+    - coffin >=0.3
+    - south >=0.7.1
+
+  run:
+    - python
+    - beautifulsoup4
+    - pystache ==0.3.1
+    - sanction
+    - longerusername
+    - django-recaptcha-works
+    - html5lib ==0.90
+    - django-followit
+    - django-tinymce
+    - django-kombu ==0.9.2
+    - django-countries ==1.0.5
+    - akismet
+    - python-openid
+    - django-robots
+    - pytz
+    - jinja2
+    - django-threaded-multihost
+    - markdown2
+    - unidecode
+    - oauth2
+    - django-celery ==2.2.7
+    - django-keyedcache
+    - django ==1.4
+    - lamson
+    - coffin >=0.3
+    - south >=0.7.1
+
+test:
+  # Python imports
+  imports:
+    - askbot
+    - askbot.bin
+    - askbot.conf
+    - askbot.const
+    - askbot.deployment
+    - askbot.deps
+    - askbot.deps.django_authopenid
+    - askbot.deps.django_authopenid.migrations
+    - askbot.deps.group_messaging
+    - askbot.deps.group_messaging.migrations
+    - askbot.deps.livesettings
+    - askbot.deps.livesettings.templatetags
+    - askbot.importers
+    - askbot.importers.stackexchange
+    - askbot.importers.stackexchange.management
+    - askbot.importers.stackexchange.management.commands
+    - askbot.importers.zendesk
+    - askbot.importers.zendesk.management
+    - askbot.importers.zendesk.management.commands
+    - askbot.mail
+    - askbot.management
+    - askbot.management.commands
+    - askbot.middleware
+    - askbot.migrations
+    - askbot.migrations_api
+    - askbot.models
+    - askbot.patches
+    - askbot.search
+    - askbot.search.haystack
+    - askbot.search.postgresql
+    - askbot.setup_templates
+    - askbot.shims
+    - askbot.skins
+    - askbot.templatetags
+    - askbot.tests
+    - askbot.user_messages
+    - askbot.utils
+    - askbot.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - askbot-setup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.python.org/sigs/distutils-sig/
+  license: GNU General Public License (GPL)
+  summary: 'Question and Answer forum, like StackOverflow, written in python and Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

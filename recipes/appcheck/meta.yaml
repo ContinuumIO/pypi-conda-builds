@@ -1,0 +1,69 @@
+package:
+  name: appcheck
+  version: "0.1.5"
+
+source:
+  fn: appcheck-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/appcheck/appcheck-0.1.5.tar.gz
+  md5: 0da3d202564e18b173c7e7547bf321dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appcheck = appcheck:main
+    #
+    # Would create an entry point called appcheck that calls appcheck.main()
+
+    - appcheck=appcheck.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - requests
+    - keyring
+
+  run:
+    - python
+    - setuptools
+    - click
+    - requests
+    - keyring
+
+test:
+  # Python imports
+  imports:
+    - appcheck
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - appcheck --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/codenomicon/appcheck-cli
+  license: MIT License
+  summary: 'Codenomicon Appcheck command line tools and API client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

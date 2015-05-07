@@ -1,0 +1,124 @@
+package:
+  name: cno
+  version: "0.0.5"
+
+source:
+  fn: cno-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/cno/cno-0.0.5.tar.gz
+  md5: 1454100ec111db2d1869830b836c2e0a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cno = cno:main
+    #
+    # Would create an entry point called cno that calls cno.main()
+
+    - cno_plotmodel=cno.apps.plotmodel:plotmodel
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - matplotlib
+    - scipy
+    - networkx
+    - pandas
+    - bioservices
+    - colormap >=0.9.3
+    - pyper
+    - pygraphviz
+    - pulp
+    - numexpr
+
+  run:
+    - python
+    - numpy
+    - matplotlib
+    - scipy
+    - networkx
+    - pandas
+    - bioservices
+    - colormap >=0.9.3
+    - pyper
+    - pygraphviz
+    - pulp
+    - numexpr
+
+test:
+  # Python imports
+  imports:
+    - cno
+    - cno.admin
+    - cno.apps
+    - cno.boolean
+    - cno.core
+    - cno.datasets
+    - cno.datasets.EGFR-ErbB_PCB2009
+    - cno.datasets.EGFR-ErbB_PCB2009.data
+    - cno.datasets.ExtLiverBMC2012
+    - cno.datasets.ExtLiverPCB
+    - cno.datasets.ExtLiverPriHuMCP2010
+    - cno.datasets.LiverDREAM
+    - cno.datasets.LiverMSB2009
+    - cno.datasets.TCellPCB2007
+    - cno.datasets.ToyMMB
+    - cno.datasets.ToyMMB_Feedback
+    - cno.datasets.ToyMMB_FeedbackAnd
+    - cno.datasets.ToyMMB_T2
+    - cno.datasets.ToyMMB_added_link
+    - cno.datasets.ToyMSB2009
+    - cno.datasets.ToyPB
+    - cno.datasets.ToyPB_SBML
+    - cno.datasets.ToyPB_True
+    - cno.datasets.ToyPCB
+    - cno.feeder
+    - cno.fuzzy
+    - cno.io
+    - cno.milp
+    - cno.misc
+    - cno.ode
+    - cno.testing
+    - test
+    - test.admin
+    - test.boolean
+    - test.datasets
+    - test.feeder
+    - test.io
+    - test.milp
+    - test.milp2
+    - test.misc
+    - test.testing
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cno_plotmodel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: ['http://pypi.python.org/pypi/cno']
+  license: BSD License
+  summary: 'CNO (Cell Net Optimiser): Manipulate, Visualise and Optimise Biological Networks to Perturbation Data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

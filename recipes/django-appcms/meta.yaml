@@ -1,0 +1,63 @@
+package:
+  name: django-appcms
+  version: "0.0.9"
+
+source:
+  fn: django-appcms-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-appcms/django-appcms-0.0.9.tar.gz
+  md5: 7b2665c8ad963f9c3f0114571be9da26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-appcms = django-appcms:main
+    #
+    # Would create an entry point called django-appcms that calls django-appcms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms >=2.4
+
+  run:
+    - python
+    - django-cms >=2.4
+
+test:
+  # Python imports
+  imports:
+    - appcms
+    - appcms.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/codemill/django-appcms
+  license: UNKNOWN
+  summary: 'Templatetags for inserting django-cms placeholders in app templates.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

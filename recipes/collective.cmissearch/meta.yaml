@@ -1,0 +1,64 @@
+package:
+  name: collective.cmissearch
+  version: "1.0"
+
+source:
+  fn: collective.cmissearch-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.cmissearch/collective.cmissearch-1.0.tar.gz
+  md5: dd8bf730be6eed92e8b2e1241adf3604
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.cmissearch = collective.cmissearch:main
+    #
+    # Would create an entry point called collective.cmissearch that calls collective.cmissearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.cmisbrowser
+
+  run:
+    - python
+    - setuptools
+    - collective.cmisbrowser
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.cmissearch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.cmissearch
+  license: GPL
+  summary: 'CMIS search for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

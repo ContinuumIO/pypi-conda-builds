@@ -1,0 +1,70 @@
+package:
+  name: cleaver
+  version: "0.1.0"
+
+source:
+  fn: cleaver-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cleaver/cleaver-0.1.0.tar.gz
+  md5: 39346e7aae40a3708b0a2679b619fb7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cleaver = cleaver:main
+    #
+    # Would create an entry point called cleaver that calls cleaver.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cleaver
+    - cleaver.backend
+    - cleaver.backend.db
+    - cleaver.compat
+    - cleaver.identity
+    - cleaver.reports
+    - cleaver.reports.web
+    - cleaver.tests
+    - cleaver.tests.backend
+    - cleaver.tests.identity
+    - cleaver.tests.reports
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ryanpetrello/cleaver
+  license: MIT License
+  summary: 'Bloody simple A/B testing for Python WSGI applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

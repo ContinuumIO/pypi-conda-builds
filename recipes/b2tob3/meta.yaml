@@ -1,0 +1,63 @@
+package:
+  name: b2tob3
+  version: "0.4"
+
+source:
+  fn: b2tob3-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/b2tob3/b2tob3-0.4.tar.gz
+  md5: 5806983f48ba49515b7c079e3c29d0bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - b2tob3 = b2tob3:main
+    #
+    # Would create an entry point called b2tob3 that calls b2tob3.main()
+
+    - b2tob3=b2tob3.b2tob3:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - b2tob3
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - b2tob3 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Help migrate HTML files and templates form bootstrap 2 to 3.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: collective.js.chosen
+  version: "1.4"
+
+source:
+  fn: collective.js.chosen-1.4.zip
+  url: https://pypi.python.org/packages/source/c/collective.js.chosen/collective.js.chosen-1.4.zip
+  md5: 4b7721b93ebaa7e0fae474cf211e5986
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.js.chosen = collective.js.chosen:main
+    #
+    # Would create an entry point called collective.js.chosen that calls collective.js.chosen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - plone
+    - plone.app.upgrade
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - plone
+    - plone.app.upgrade
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.js
+    - collective.js.chosen
+    - collective.js.chosen.Extensions
+    - collective.js.chosen.browser
+    - collective.js.chosen.migrations
+    - collective.js.chosen.migrations.v11
+    - collective.js.chosen.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.js.chosen
+  license: GPL
+  summary: 'Integrate chosen and ajaxchosen in plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: cli2msml
+  version: "0.2"
+
+source:
+  fn: cli2msml-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cli2msml/cli2msml-0.2.tar.gz
+  md5: a16e3d00f1bbbef9089d8c71ecdaf271
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cli2msml = cli2msml:main
+    #
+    # Would create an entry point called cli2msml that calls cli2msml.main()
+
+    - cli2msml=cli2msml:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - path.py
+    - colorama
+    - pyyaml
+    - jinja2
+
+  run:
+    - python
+    - path.py
+    - colorama
+    - pyyaml
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - cli2msml
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cli2msml --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CognitionGuidedSurgery/cli2msml
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Converter for CLI apps into MSML Operators'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

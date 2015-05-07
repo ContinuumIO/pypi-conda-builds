@@ -1,0 +1,94 @@
+package:
+  name: b3
+  version: "1.9.2"
+
+source:
+  fn: b3-1.9.2.zip
+  url: https://pypi.python.org/packages/source/b/b3/b3-1.9.2.zip
+  md5: 617ae68ef3ebcb23e98f5b8ef6f9f3d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - b3 = b3:main
+    #
+    # Would create an entry point called b3 that calls b3.main()
+
+    - b3_run = b3.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - b3
+    - b3.extplugins
+    - b3.lib
+    - b3.lib.beaker
+    - b3.lib.beaker.crypto
+    - b3.lib.beaker.ext
+    - b3.lib.elementtree
+    - b3.lib.runsnakerun
+    - b3.lib.sourcelib
+    - b3.lib.statlib
+    - b3.lib.yaml
+    - b3.parsers
+    - b3.parsers.battleye
+    - b3.parsers.frontline
+    - b3.parsers.frostbite
+    - b3.parsers.frostbite2
+    - b3.parsers.homefront
+    - b3.parsers.q3a
+    - b3.parsers.ravaged
+    - b3.parsers.source
+    - b3.plugins
+    - b3.storage
+    - b3.tools
+    - tests
+    - tests.clients
+    - tests.parsers
+    - tests.parsers.frostbite
+    - tests.parsers.frostbite2
+    - tests.parsers.homefront
+    - tests.parsers.q3a
+    - tests.plugins
+    - tests.setup_
+    - tests.storage
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - b3_run --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.bigbrotherbot.net
+  license: GNU General Public License (GPL)
+  summary: "BigBrotherBot (B3) is a cross-platform, cross-game game administration bot. Features in-game administration of game servers, multiple user access levels, and database storage. Currently include parsers for Call of Duty 1 to 8, Urban Terror (ioUrT 4.1 and 4.2), BF3, Arma II, CS:GO, Red Orchestra 2, BFBC2, MOH 2010, World of Padman, ETpro, Smokin' Guns, HomeFront, Open Arena, Altitude."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

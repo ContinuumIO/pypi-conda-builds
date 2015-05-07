@@ -1,0 +1,64 @@
+package:
+  name: django-emoticons
+  version: "1.1.2"
+
+source:
+  fn: django-emoticons-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-emoticons/django-emoticons-1.1.2.tar.gz
+  md5: 639daa49d2242a8a2b75a74054974a28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-emoticons = django-emoticons:main
+    #
+    # Would create an entry point called django-emoticons that calls django-emoticons.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+
+  run:
+    - python
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - emoticons
+    - emoticons.templatetags
+    - emoticons.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Fantomas42/django-emoticons
+  license: BSD License
+  summary: 'A usefull and incredible Django application that allow you to use emoticons in your templates :)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

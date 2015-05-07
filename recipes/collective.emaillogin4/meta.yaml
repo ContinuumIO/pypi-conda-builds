@@ -1,0 +1,74 @@
+package:
+  name: collective.emaillogin4
+  version: "1.3"
+
+source:
+  fn: collective.emaillogin4-1.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.emaillogin4/collective.emaillogin4-1.3.zip
+  md5: b296e58d1e6b20b395e71ce221ac76f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.emaillogin4 = collective.emaillogin4:main
+    #
+    # Would create an entry point called collective.emaillogin4 that calls collective.emaillogin4.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.pluggableauthservice >=1.10.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.pluggableauthservice >=1.10.0
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.emaillogin4
+    - collective.emaillogin4.patches
+    - collective.emaillogin4.patches.cmfplone
+    - collective.emaillogin4.patches.pa_controlpanel
+    - collective.emaillogin4.patches.pa_controlpanel.tests
+    - collective.emaillogin4.patches.pa_upgrade
+    - collective.emaillogin4.patches.pa_users
+    - collective.emaillogin4.patches.pa_users.tests
+    - collective.emaillogin4.patches.plonepas
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.emaillogin4
+  license: GPL
+  summary: 'Emaillogin fixes for Plone 4'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

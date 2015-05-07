@@ -1,0 +1,76 @@
+package:
+  name: collective.miscbehaviors
+  version: "0.2.2"
+
+source:
+  fn: collective.miscbehaviors-0.2.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.miscbehaviors/collective.miscbehaviors-0.2.2.zip
+  md5: 7d8e2873b4f521f612387ec66850c9e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.miscbehaviors = collective.miscbehaviors:main
+    #
+    # Would create an entry point called collective.miscbehaviors that calls collective.miscbehaviors.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.dexterity
+    - collective.autopermission
+    - plone.namedfile[blobs]
+    - collective.dexteritytextindexer
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.dexterity
+    - collective.autopermission
+    - plone.namedfile[blobs]
+    - collective.dexteritytextindexer
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.miscbehaviors
+    - collective.miscbehaviors.behavior
+    - collective.miscbehaviors.browser
+    - collective.miscbehaviors.content
+    - collective.miscbehaviors.portlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.miscbehaviors
+  license: GPL
+  summary: 'Miscellaneous behaviors for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

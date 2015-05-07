@@ -1,0 +1,67 @@
+package:
+  name: canalplus
+  version: "1.0.1"
+
+source:
+  fn: canalplus-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/canalplus/canalplus-1.0.1.tar.gz
+  md5: 52736c2c95bb2f8c20833d48962ebd1a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - canalplus = canalplus:main
+    #
+    # Would create an entry point called canalplus that calls canalplus.main()
+
+    - canalplus = canalplus:cl_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - enum34
+    - requests >=2.6.0
+
+  run:
+    - python
+    - enum34
+    - requests >=2.6.0
+
+test:
+  # Python imports
+  imports:
+    - canalplus
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - canalplus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/desbma/canalplus
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Parcourir/visionner/t\xc3\xa9l\xc3\xa9charger les vid\xc3\xa9os mises en ligne par la chaine Canal+'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

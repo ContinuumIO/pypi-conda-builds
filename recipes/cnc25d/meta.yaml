@@ -1,0 +1,69 @@
+package:
+  name: cnc25d
+  version: "0.1.10"
+
+source:
+  fn: Cnc25D-0.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cnc25D/Cnc25D-0.1.10.tar.gz
+  md5: 20eea7ee9083abe8124e8bc33b795931
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cnc25d = cnc25d:main
+    #
+    # Would create an entry point called cnc25d that calls cnc25d.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - numpy >=1.7.1
+    - svgwrite >=1.1.2
+    - dxfwrite >=1.2.0
+
+  run:
+    - python
+    - argparse >=1.2.1
+    - numpy >=1.7.1
+    - svgwrite >=1.1.2
+    - dxfwrite >=1.2.0
+
+test:
+  # Python imports
+  imports:
+    - cnc25d
+    - cnc25d.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Cnc25D/
+  license: LICENSE.txt
+  summary: 'CAD library for 2.5D parts (including gears) using svgwrite, dxfwrite or FreeCAD as backend'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

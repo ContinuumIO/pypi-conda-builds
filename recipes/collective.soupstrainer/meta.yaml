@@ -1,0 +1,66 @@
+package:
+  name: collective.soupstrainer
+  version: "1.0"
+
+source:
+  fn: collective.soupstrainer-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.soupstrainer/collective.soupstrainer-1.0.zip
+  md5: f8ac48e7ba6976a3dc61c74f9c37c3f9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.soupstrainer = collective.soupstrainer:main
+    #
+    # Would create an entry point called collective.soupstrainer that calls collective.soupstrainer.main()
+
+    - soupstrainer = collective.soupstrainer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.soupstrainer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - soupstrainer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.soupstrainer
+  license: GPL
+  summary: 'Clean up HTML using BeautifulSoup and filter rules.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

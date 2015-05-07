@@ -1,0 +1,66 @@
+package:
+  name: collective.icalfeed
+  version: "1.0b2"
+
+source:
+  fn: collective.icalfeed-1.0b2.zip
+  url: https://pypi.python.org/packages/source/c/collective.icalfeed/collective.icalfeed-1.0b2.zip
+  md5: dc86661265d5bbada9562f44d1c4fda1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.icalfeed = collective.icalfeed:main
+    #
+    # Would create an entry point called collective.icalfeed that calls collective.icalfeed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.memoize
+
+  run:
+    - python
+    - setuptools
+    - plone.memoize
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.icalfeed
+    - collective.icalfeed.browser
+    - collective.icalfeed.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.icalfeed
+  license: GNU General Public License (GPL)
+  summary: 'View for rendering event content as an iCalendar feed.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

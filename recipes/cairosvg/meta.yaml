@@ -1,0 +1,62 @@
+package:
+  name: cairosvg
+  version: "1.0.13"
+
+source:
+  fn: CairoSVG-1.0.13.tar.gz
+  url: https://pypi.python.org/packages/source/C/CairoSVG/CairoSVG-1.0.13.tar.gz
+  md5: d8bcbaa71962f0595546274c3f15eb09
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cairosvg = cairosvg:main
+    #
+    # Would create an entry point called cairosvg that calls cairosvg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - cairocffi
+
+  run:
+    - python
+    - cairocffi
+
+test:
+  # Python imports
+  imports:
+    - cairosvg
+    - cairosvg.surface
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cairosvg.org/
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'A Simple SVG Converter for Cairo'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

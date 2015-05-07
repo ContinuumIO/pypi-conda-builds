@@ -1,0 +1,70 @@
+package:
+  name: dblayer
+  version: "0.6.0"
+
+source:
+  fn: dblayer-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dblayer/dblayer-0.6.0.tar.gz
+  md5: abb309172f3e456c260eff1f05f76512
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dblayer = dblayer:main
+    #
+    # Would create an entry point called dblayer that calls dblayer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle
+    - psycopg2
+
+  run:
+    - python
+    - bottle
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - dblayer
+    - dblayer.backend.base
+    - dblayer.backend.postgresql
+    - dblayer.generator
+    - dblayer.graph
+    - dblayer.model
+    - dblayer.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/dblayer
+  license: MIT License
+  summary: 'Database Abstraction Layer Generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

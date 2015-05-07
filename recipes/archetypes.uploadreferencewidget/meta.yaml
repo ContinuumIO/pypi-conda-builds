@@ -1,0 +1,65 @@
+package:
+  name: archetypes.uploadreferencewidget
+  version: "0.2.1"
+
+source:
+  fn: archetypes.uploadreferencewidget-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/archetypes.uploadreferencewidget/archetypes.uploadreferencewidget-0.2.1.tar.gz
+  md5: 902d491dff689b3cc71a65fbf12c996f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archetypes.uploadreferencewidget = archetypes.uploadreferencewidget:main
+    #
+    # Would create an entry point called archetypes.uploadreferencewidget that calls archetypes.uploadreferencewidget.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - archetypes.referencebrowserwidget
+
+  run:
+    - python
+    - setuptools
+    - archetypes.referencebrowserwidget
+
+test:
+  # Python imports
+  imports:
+    - archetypes
+    - archetypes.uploadreferencewidget
+    - archetypes.uploadreferencewidget.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/archetypes.uploadreferencewidget
+  license: LGPL
+  summary: 'A widget for Archetypes with support for both uploading and referencing content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

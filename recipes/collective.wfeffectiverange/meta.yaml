@@ -1,0 +1,77 @@
+package:
+  name: collective.wfeffectiverange
+  version: "1.6"
+
+source:
+  fn: collective.wfeffectiverange-1.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.wfeffectiverange/collective.wfeffectiverange-1.6.zip
+  md5: e24196cfc44f8baf1216bfb9fc04e247
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.wfeffectiverange = collective.wfeffectiverange:main
+    #
+    # Would create an entry point called collective.wfeffectiverange that calls collective.wfeffectiverange.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - products.cron4plone
+    - plone.api
+    - plone.app.vocabularies
+    - plone.autoform >1.6.0
+    - setuptools
+    - z3c.form >=3.2.1
+
+  run:
+    - python
+    - setuptools
+    - plone
+    - products.cron4plone
+    - plone.api
+    - plone.app.vocabularies
+    - plone.autoform >1.6.0
+    - setuptools
+    - z3c.form >=3.2.1
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.wfeffectiverange
+    - collective.wfeffectiverange.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/collective.wfeffectiverange
+  license: GNU General Public License (GPL)
+  summary: 'Workflowed effective range (Plone/Dexterity)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

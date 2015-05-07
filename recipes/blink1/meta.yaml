@@ -1,0 +1,71 @@
+package:
+  name: blink1
+  version: "0.0.12"
+
+source:
+  fn: blink1-0.0.12.tar.gz
+  url: https://pypi.python.org/packages/source/b/blink1/blink1-0.0.12.tar.gz
+  md5: f44ba7a89e8abf64315a45b380a36493
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blink1 = blink1:main
+    #
+    # Would create an entry point called blink1 that calls blink1.main()
+
+    - flash = blink1.flash:flash
+    - shine = blink1.shine:shine
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyusb >=1.0.0b1
+    - click
+    - webcolors
+
+  run:
+    - python
+    - pyusb >=1.0.0b1
+    - click
+    - webcolors
+
+test:
+  # Python imports
+  imports:
+    - blink1
+    - blink1_tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flash --help
+    - shine --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/salimfadhley/blink1
+  license: MIT License
+  summary: 'PyUSB-based Blink(1) control library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

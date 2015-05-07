@@ -1,0 +1,72 @@
+package:
+  name: django-epic
+  version: "0.2.3"
+
+source:
+  fn: django-epic-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-epic/django-epic-0.2.3.tar.gz
+  md5: 831246bb46d947b3f54235989c4b6ec4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-epic = django-epic:main
+    #
+    # Would create an entry point called django-epic that calls django-epic.main()
+
+    - kicad-to-epic-bom = epic.scripts.kicad_to_epic_bom
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7.0
+    - django-crispy-forms
+    - django-bootstrap3-datetimepicker
+    - django-autocomplete-light >=2.0.0a1
+    - openpyxl
+
+  run:
+    - python
+    - django >=1.7.0
+    - django-crispy-forms
+    - django-bootstrap3-datetimepicker
+    - django-autocomplete-light >=2.0.0a1
+    - openpyxl
+
+test:
+  # Python imports
+  imports:
+    - epic
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kicad-to-epic-bom --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/egauge/epic/
+  license: MIT License
+  summary: 'A Django app to manage electronic parts inventories for PCB manufacturing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

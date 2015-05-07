@@ -1,0 +1,65 @@
+package:
+  name: celery-pylons
+  version: "2.1.4dev"
+
+source:
+  fn: celery-pylons-2.1.4dev.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery-pylons/celery-pylons-2.1.4dev.tar.gz
+  md5: deaeee6369e572c68966ffdf009edfcd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery-pylons = celery-pylons:main
+    #
+    # Would create an entry point called celery-pylons that calls celery-pylons.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons >=1.0
+    - celery ==2.1.4
+
+  run:
+    - python
+    - setuptools
+    - pylons >=1.0
+    - celery ==2.1.4
+
+test:
+  # Python imports
+  imports:
+    - celerypylons
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/celery-pylons
+  license: BSD License
+  summary: 'Celery integration with Pylons.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

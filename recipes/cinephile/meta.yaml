@@ -1,0 +1,64 @@
+package:
+  name: cinephile
+  version: "1.0.2"
+
+source:
+  fn: cinephile-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cinephile/cinephile-1.0.2.tar.gz
+  md5: 6b0994a680006e1554190a15f828a66c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cinephile = cinephile:main
+    #
+    # Would create an entry point called cinephile that calls cinephile.main()
+
+    - cinephile = cinephile:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - cinephile
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cinephile --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/navinsylvester/cinephile
+  license: MIT License
+  summary: 'Python CLI tool to scan movie directory         recursively, normalize the filename and retrieve useful         information from imdb.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

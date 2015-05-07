@@ -1,0 +1,102 @@
+package:
+  name: cgptoolbox
+  version: "0.1.2"
+
+source:
+  fn: cgptoolbox-0.1.2.zip
+  url: https://pypi.python.org/packages/source/c/cgptoolbox/cgptoolbox-0.1.2.zip
+  md5: 5d4255a88099d61b49ec3d65dd08793f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cgptoolbox = cgptoolbox:main
+    #
+    # Would create an entry point called cgptoolbox that calls cgptoolbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - matplotlib >=1.1.1
+    - lxml
+    - rpy2
+    - ipython[parallel]
+    - cython
+    - pyzmq
+    - networkx
+    - tables
+    - joblib
+    - nose >=1.2
+    - nose-exclude
+    - bottle
+    - pysundials
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - matplotlib >=1.1.1
+    - lxml
+    - rpy2
+    - ipython[parallel]
+    - cython
+    - pyzmq
+    - networkx
+    - tables
+    - joblib
+    - nose >=1.2
+    - nose-exclude
+    - bottle
+    - pysundials
+
+test:
+  # Python imports
+  imports:
+    - cgp
+    - cgp.cvodeint
+    - cgp.examples
+    - cgp.examples.sensitivity_service
+    - cgp.gt
+    - cgp.phenotyping
+    - cgp.physmod
+    - cgp.sigmoidmodels
+    - cgp.test
+    - cgp.utils
+    - cgp.virtexp
+    - cgp.virtexp.elphys
+    - cgptoolbox
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://arken.umb.no/~jonvi/cgptoolbox/
+  license: UNKNOWN
+  summary: 'A toolbox for causally cohesive genotype-phenotype modeling'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

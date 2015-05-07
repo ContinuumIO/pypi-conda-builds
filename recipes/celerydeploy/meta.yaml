@@ -1,0 +1,64 @@
+package:
+  name: celerydeploy
+  version: "0.2.0"
+
+source:
+  fn: celerydeploy-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/celerydeploy/celerydeploy-0.2.0.tar.gz
+  md5: 3c60366567eb312950fed8fb79df9a92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celerydeploy = celerydeploy:main
+    #
+    # Would create an entry point called celerydeploy that calls celerydeploy.main()
+
+    - celerydeploy = celerydeploy.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+
+  run:
+    - python
+    - fabric
+
+test:
+  # Python imports
+  imports:
+    - celerydeploy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - celerydeploy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mher/celery-deploy
+  license: UNKNOWN
+  summary: 'Celery deployment tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

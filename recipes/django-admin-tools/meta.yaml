@@ -1,0 +1,74 @@
+package:
+  name: django-admin-tools
+  version: "0.5.2"
+
+source:
+  fn: django-admin-tools-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-tools/django-admin-tools-0.5.2.tar.gz
+  md5: a9737ab4830dc9aff6abb936123bd2f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-tools = django-admin-tools:main
+    #
+    # Would create an entry point called django-admin-tools that calls django-admin-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - admin_tools
+    - admin_tools.dashboard
+    - admin_tools.dashboard.management
+    - admin_tools.dashboard.management.commands
+    - admin_tools.dashboard.migrations
+    - admin_tools.dashboard.templatetags
+    - admin_tools.menu
+    - admin_tools.menu.management
+    - admin_tools.menu.management.commands
+    - admin_tools.menu.migrations
+    - admin_tools.menu.templatetags
+    - admin_tools.theming
+    - admin_tools.theming.templatetags
+    - test_proj
+    - test_proj.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/izi/django-admin-tools/
+  license: MIT License
+  summary: 'A collection of tools for the django administration interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

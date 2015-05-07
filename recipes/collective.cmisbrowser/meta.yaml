@@ -1,0 +1,97 @@
+package:
+  name: collective.cmisbrowser
+  version: "1.0"
+
+source:
+  fn: collective.cmisbrowser-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.cmisbrowser/collective.cmisbrowser-1.0.tar.gz
+  md5: df9fc446847ba45b0d761dbaf84cec26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.cmisbrowser = collective.cmisbrowser:main
+    #
+    # Would create an entry point called collective.cmisbrowser that calls collective.cmisbrowser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.app.content
+    - plone.app.form
+    - plone.app.layout
+    - plone.memoize
+    - zope.annotation
+    - zope.cachedescriptors
+    - zope.component
+    - zope.datetime
+    - zope.formlib
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.traversing
+    - suds
+    - cmislib
+
+  run:
+    - python
+    - setuptools
+    - plone.app.content
+    - plone.app.form
+    - plone.app.layout
+    - plone.memoize
+    - zope.annotation
+    - zope.cachedescriptors
+    - zope.component
+    - zope.datetime
+    - zope.formlib
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.traversing
+    - suds
+    - cmislib
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.cmisbrowser
+    - collective.cmisbrowser.browser
+    - collective.cmisbrowser.cmis
+    - collective.cmisbrowser.connector
+    - collective.cmisbrowser.content
+    - collective.cmisbrowser.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.cmisbrowser
+  license: GPL
+  summary: 'CMIS repository browser for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

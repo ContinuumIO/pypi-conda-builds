@@ -1,0 +1,71 @@
+package:
+  name: basement
+  version: "0.2.2"
+
+source:
+  fn: basement-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/basement/basement-0.2.2.tar.gz
+  md5: 9d0a35a372e38fa5e372a5676fdc7a57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - basement = basement:main
+    #
+    # Would create an entry point called basement that calls basement.main()
+
+    - basement=basement.__main__:ment
+    - ment=basement.__main__:ment
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click ==3.3
+    - pystache ==0.5.4
+    - toml ==0.8.2
+
+  run:
+    - python
+    - setuptools
+    - click ==3.3
+    - pystache ==0.5.4
+    - toml ==0.8.2
+
+test:
+  # Python imports
+  imports:
+    - basement
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - basement --help
+    - ment --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Raynes/basement
+  license: MIT
+  summary: 'A python project scaffolding generator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

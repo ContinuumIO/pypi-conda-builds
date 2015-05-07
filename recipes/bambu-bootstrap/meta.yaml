@@ -1,0 +1,65 @@
+package:
+  name: bambu-bootstrap
+  version: "2.2"
+
+source:
+  fn: bambu-bootstrap-2.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-bootstrap/bambu-bootstrap-2.2.tar.gz
+  md5: 6d5f358967eba81195b482f2f2230a5d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-bootstrap = bambu-bootstrap:main
+    #
+    # Would create an entry point called bambu-bootstrap that calls bambu-bootstrap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-bower
+
+  run:
+    - python
+    - django >=1.4
+    - django-bower
+
+test:
+  # Python imports
+  imports:
+    - bambu_bootstrap
+    - bambu_bootstrap.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/bambu-bootstrap
+  license: UNKNOWN
+  summary: "Use Twitter's Bootstrap CSS framework to build your app. All the views Bambu uses all extend a base template which you create, that can be based on a skeleton Bootstrap template. Shortcut tags let you easily add breadcrumb trails and icons to your apps."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

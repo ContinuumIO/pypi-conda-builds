@@ -1,0 +1,98 @@
+package:
+  name: collective.civicrm
+  version: "1.0a1"
+
+source:
+  fn: collective.civicrm-1.0a1.zip
+  url: https://pypi.python.org/packages/source/c/collective.civicrm/collective.civicrm-1.0a1.zip
+  md5: 0966cec751da6b1c4167a0a53f86cc2f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.civicrm = collective.civicrm:main
+    #
+    # Would create an entry point called collective.civicrm that calls collective.civicrm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - plone.api
+    - plone.app.registry
+    - plone.app.upgrade
+    - plone.app.users
+    - plone.directives.form
+    - plone.memoize
+    - products.cmfplone >=4.2
+    - products.cmfquickinstallertool
+    - products.genericsetup
+    - requests
+    - setuptools
+    - zexceptions
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - setuptools
+    - gevent
+    - plone.api
+    - plone.app.registry
+    - plone.app.upgrade
+    - plone.app.users
+    - plone.directives.form
+    - plone.memoize
+    - products.cmfplone >=4.2
+    - products.cmfquickinstallertool
+    - products.genericsetup
+    - requests
+    - setuptools
+    - zexceptions
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.civicrm
+    - collective.civicrm.browser
+    - collective.civicrm.tests
+    - collective.civicrm.upgrades
+    - collective.civicrm.upgrades.v1010
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.civicrm
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Plone integration with CiviCRM.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

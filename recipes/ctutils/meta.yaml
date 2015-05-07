@@ -1,0 +1,71 @@
+package:
+  name: ctutils
+  version: "0.2"
+
+source:
+  fn: ctutils-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/ctutils/ctutils-0.2.tar.gz
+  md5: 2a098ace501e587c69f8dbcb6dd99f71
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ctutils = ctutils:main
+    #
+    # Would create an entry point called ctutils that calls ctutils.main()
+
+    - ctagg = ctutils.ctagg:main
+    - ctinfo = ctutils.ctinfo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - compoundfiles
+    - numpy
+    - pillow
+
+  run:
+    - python
+    - compoundfiles
+    - numpy
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - ctutils
+    - ctutils.windows
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ctagg --help
+    - ctinfo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ctutils.readthedocs.org/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: u'Tools for analyzing data in CT scans'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: awsfabrictasks
+  version: "1.2.0"
+
+source:
+  fn: awsfabrictasks-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/awsfabrictasks/awsfabrictasks-1.2.0.tar.gz
+  md5: e164fc3a51c564887fc80303b6967f3d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - awsfabrictasks = awsfabrictasks:main
+    #
+    # Would create an entry point called awsfabrictasks that calls awsfabrictasks.main()
+
+    - awsfab = awsfabrictasks.main:awsfab
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - boto >=2.4.1
+    - fabric >=1.4.1
+
+  run:
+    - python
+    - distribute
+    - boto >=2.4.1
+    - fabric >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - awsfabrictasks
+    - awsfabrictasks.awsenv
+    - awsfabrictasks.ec2
+    - awsfabrictasks.rds
+    - awsfabrictasks.s3
+    - awsfabrictasks.tests
+    - awsfabrictasks.tests.ec2
+    - awsfabrictasks.tests.s3
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - awsfab --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/espenak/awsfabrictasks
+  license: BSD
+  summary: 'Fabric tasks for Amazon Web Services.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

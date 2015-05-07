@@ -1,0 +1,93 @@
+package:
+  name: cyme
+  version: "0.0.5"
+
+source:
+  fn: cyme-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/cyme/cyme-0.0.5.tar.gz
+  md5: 601b3173bf655239477c50434daadcdb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cyme = cyme:main
+    #
+    # Would create an entry point called cyme that calls cyme.main()
+
+    - cyme-branch        = cyme.bin.cyme_branch:cyme_branch
+    - cyme               = cyme.bin.cyme:cyme
+    - cyme-list-branches = cyme.bin.cyme_list_branches:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cl
+    - eventlet
+    - dnspython
+    - django
+    - django-celery >=2.3.1
+    - requests
+    - dictshield
+    - progressbar
+    - unipath
+
+  run:
+    - python
+    - cl
+    - eventlet
+    - dnspython
+    - django
+    - django-celery >=2.3.1
+    - requests
+    - dictshield
+    - progressbar
+    - unipath
+
+test:
+  # Python imports
+  imports:
+    - cyme
+    - cyme.api
+    - cyme.bin
+    - cyme.branch
+    - cyme.client
+    - cyme.management
+    - cyme.management.commands
+    - cyme.models
+    - cyme.tests
+    - cyme.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cyme-branch --help
+    - cyme --help
+    - cyme-list-branches --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://celeryproject.org
+  license: BSD License
+  summary: 'Cyme - Celery instance manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

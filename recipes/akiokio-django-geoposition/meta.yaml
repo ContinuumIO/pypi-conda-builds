@@ -1,0 +1,64 @@
+package:
+  name: akiokio-django-geoposition
+  version: "0.2.0"
+
+source:
+  fn: akiokio-django-geoposition-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/akiokio-django-geoposition/akiokio-django-geoposition-0.2.0.tar.gz
+  md5: 1e9eda9024323882ef4779e7cdcb2295
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - akiokio-django-geoposition = akiokio-django-geoposition:main
+    #
+    # Would create an entry point called akiokio-django-geoposition that calls akiokio-django-geoposition.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-appconf >=0.4
+
+  run:
+    - python
+    - django-appconf >=0.4
+
+test:
+  # Python imports
+  imports:
+    - example
+    - geoposition
+    - geoposition.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/akiokio/django-geoposition
+  license: BSD License
+  summary: 'Django model field that can hold a geoposition, and corresponding admin widget.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: blockstore
+  version: "0.0.3"
+
+source:
+  fn: blockstore-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/blockstore/blockstore-0.0.3.tar.gz
+  md5: 960448f2e0c55b96341fde5d26ce32da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blockstore = blockstore:main
+    #
+    # Would create an entry point called blockstore that calls blockstore.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - coinkit >=0.7.7
+    - kademlia >=0.2
+    - python-bitcoinrpc >=0.1
+    - txjson-rpc >=0.3
+    - utilitybelt >=0.2.2
+
+  run:
+    - python
+    - coinkit >=0.7.7
+    - kademlia >=0.2
+    - python-bitcoinrpc >=0.1
+    - txjson-rpc >=0.3
+    - utilitybelt >=0.2.2
+
+test:
+  # Python imports
+  imports:
+    - blockstore
+    - blockstore.dht
+    - blockstore.lib
+    - blockstore.lib.blockchain
+    - blockstore.lib.nameset
+    - blockstore.lib.operations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/openname/blockstore
+  license: MIT License
+  summary: 'A key-value store for name registration on the Bitcoin blockchain'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

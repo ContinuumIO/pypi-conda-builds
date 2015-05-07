@@ -1,0 +1,71 @@
+package:
+  name: autobahn
+  version: "0.10.3"
+
+source:
+  fn: autobahn-0.10.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/autobahn/autobahn-0.10.3.tar.gz
+  md5: 185c52e8a3afb5350bcd8e152b6229d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autobahn = autobahn:main
+    #
+    # Would create an entry point called autobahn that calls autobahn.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.6.1
+    - txaio >=1.0.0
+
+  run:
+    - python
+    - six >=1.6.1
+    - txaio >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - autobahn
+    - autobahn.asyncio
+    - autobahn.twisted
+    - autobahn.wamp
+    - autobahn.wamp.test
+    - autobahn.websocket
+    - autobahn.websocket.test
+    - twisted.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://autobahn.ws/python
+  license: MIT License
+  summary: 'WebSocket client & server library, WAMP real-time framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: collective.notices
+  version: "1.1"
+
+source:
+  fn: collective.notices-1.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.notices/collective.notices-1.1.zip
+  md5: ec89f3cf0ec9778b5b36d37fa4a6aa04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.notices = collective.notices:main
+    #
+    # Would create an entry point called collective.notices that calls collective.notices.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.catalog
+    - zc.catalog
+    - plone.principalsource
+    - plone.directives.form
+    - plone.app.textfield
+    - plone.formwidget.autocomplete
+    - plone.app.dexterity
+    - python-dateutil
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.catalog
+    - zc.catalog
+    - plone.principalsource
+    - plone.directives.form
+    - plone.app.textfield
+    - plone.formwidget.autocomplete
+    - plone.app.dexterity
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.notices
+    - collective.notices.browser
+    - collective.notices.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/softformance/collective.notices
+  license: gpl
+  summary: 'Adds Site-Wide Notification/Status Messages for Plone CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

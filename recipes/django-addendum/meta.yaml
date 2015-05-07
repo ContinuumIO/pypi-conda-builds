@@ -1,0 +1,66 @@
+package:
+  name: django-addendum
+  version: "0.3.3"
+
+source:
+  fn: django-addendum-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-addendum/django-addendum-0.3.3.tar.gz
+  md5: ad44e3fc408a1641f7e843f3a4b6af13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-addendum = django-addendum:main
+    #
+    # Would create an entry point called django-addendum that calls django-addendum.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - addendum
+    - addendum.management
+    - addendum.management.commands
+    - addendum.migrations
+    - addendum.south_migrations
+    - addendum.templatetags
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bennylope/django-addendum
+  license: BSD License
+  summary: 'Simple template-based content swapping for CMS-less sites'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

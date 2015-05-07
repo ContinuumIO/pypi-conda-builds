@@ -1,0 +1,82 @@
+package:
+  name: collective.singing
+  version: "0.7.2"
+
+source:
+  fn: collective.singing-0.7.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.singing/collective.singing-0.7.2.zip
+  md5: e418419df4028cec59fb032f589ead1a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.singing = collective.singing:main
+    #
+    # Would create an entry point called collective.singing that calls collective.singing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.sendmail
+    - zope.keyreference >=3.6.2
+    - zope.app.keyreference ==3.6.1
+    - zope.app.catalog
+    - zope.app.i18n
+    - zc.queue
+    - zc.lockfile
+    - plone.z3cform >=0.5.1
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.sendmail
+    - zope.keyreference >=3.6.2
+    - zope.app.keyreference ==3.6.1
+    - zope.app.catalog
+    - zope.app.i18n
+    - zc.queue
+    - zc.lockfile
+    - plone.z3cform >=0.5.1
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.singing
+    - collective.singing.browser
+    - collective.singing.patch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.singing
+  license: GPL
+  summary: 'A Zope 3 library for sending notifications and newsletters'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

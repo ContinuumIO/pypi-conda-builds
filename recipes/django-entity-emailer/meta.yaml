@@ -1,0 +1,79 @@
+package:
+  name: django-entity-emailer
+  version: "0.8.4"
+
+source:
+  fn: django-entity-emailer-0.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-entity-emailer/django-entity-emailer-0.8.4.tar.gz
+  md5: 76ffea61d97b494a3ecbbbf50bb68deb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-entity-emailer = django-entity-emailer:main
+    #
+    # Would create an entry point called django-entity-emailer that calls django-entity-emailer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 >=4.3.2
+    - django >=1.6
+    - django-db-mutex >=0.1.8
+    - django-entity >=1.8.2
+    - django-entity-event >=0.3.2
+    - django-uuidfield >=0.5.0
+    - celery >=3.1
+
+  run:
+    - python
+    - beautifulsoup4 >=4.3.2
+    - django >=1.6
+    - django-db-mutex >=0.1.8
+    - django-entity >=1.8.2
+    - django-entity-event >=0.3.2
+    - django-uuidfield >=0.5.0
+    - celery >=3.1
+
+test:
+  # Python imports
+  imports:
+    - entity_emailer
+    - entity_emailer.management
+    - entity_emailer.management.commands
+    - entity_emailer.migrations
+    - entity_emailer.south_migrations
+    - entity_emailer.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ambitioninc/django-entity-emailer
+  license: MIT License
+  summary: 'Make emailing users easy and entity-based.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

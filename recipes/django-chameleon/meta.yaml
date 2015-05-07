@@ -1,0 +1,71 @@
+package:
+  name: django-chameleon
+  version: "0.0.2a2"
+
+source:
+  fn: django-chameleon-0.0.2a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-chameleon/django-chameleon-0.0.2a2.tar.gz
+  md5: 24fc10894ce9a45810ce353b33c66a4e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-chameleon = django-chameleon:main
+    #
+    # Would create an entry point called django-chameleon that calls django-chameleon.main()
+
+    - purifyhtml = chameleon.management.commands.purifyhtml:execute
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-cms >=2.3.5
+    - django-less
+
+  run:
+    - python
+    - django >=1.4
+    - django-cms >=2.3.5
+    - django-less
+
+test:
+  # Python imports
+  imports:
+    - chameleon
+    - chameleon.management
+    - chameleon.management.commands
+    - chameleon.templatetags
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - purifyhtml --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/oddotterco/django-chameleon
+  license: BSD License
+  summary: 'A Django app that will create a pluggable django-cms theme app within your project.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

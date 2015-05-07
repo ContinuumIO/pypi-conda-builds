@@ -1,0 +1,64 @@
+package:
+  name: amfast
+  version: "0.5.3-r541"
+
+source:
+  fn: AmFast-0.5.3-r541.tar.gz
+  url: https://pypi.python.org/packages/source/A/AmFast/AmFast-0.5.3-r541.tar.gz
+  md5: 18a30a4623b9426ef0d3b7ec50e6933f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amfast = amfast:main
+    #
+    # Would create an entry point called amfast that calls amfast.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - uuid
+
+  run:
+    - python
+    - uuid
+
+test:
+  # Python imports
+  imports:
+    - amfast
+    - amfast.class_def
+    - amfast.remoting
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/amfast/
+  license: MIT License
+  summary: 'Flash remoting framework. Includes support for NetConnection, RemoteObject, IExternizeable, Flex Producer/Consumer messaging, custom type serialization, and a C-based AMF encoder/decoder.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

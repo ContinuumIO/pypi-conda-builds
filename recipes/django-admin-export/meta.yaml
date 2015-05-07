@@ -1,0 +1,62 @@
+package:
+  name: django-admin-export
+  version: "2.0"
+
+source:
+  fn: django-admin-export-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-export/django-admin-export-2.0.tar.gz
+  md5: ec29d9003e7a49d76c1d612ffbeabf01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-export = django-admin-export:main
+    #
+    # Would create an entry point called django-admin-export that calls django-admin-export.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-report-utils
+
+  run:
+    - python
+    - django-report-utils
+
+test:
+  # Python imports
+  imports:
+    - admin_export
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/burke-software/django-admin-export
+  license: BSD License
+  summary: 'Generic export to xls action for Django admin interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

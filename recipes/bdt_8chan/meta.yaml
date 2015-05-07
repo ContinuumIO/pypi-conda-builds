@@ -1,0 +1,67 @@
+package:
+  name: bdt_8chan
+  version: "1.0.0"
+
+source:
+  fn: bdt_8chan-1.0.01105.5b1.zip
+  url: https://pypi.python.org/packages/source/b/bdt_8chan/bdt_8chan-1.0.01105.5b1.zip
+  md5: a378a42d067c1a4551db31304e51d66a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bdt_8chan = bdt_8chan:main
+    #
+    # Would create an entry point called bdt_8chan that calls bdt_8chan.main()
+
+    - b8=bdt:b8
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - docopt >=0.6.0
+
+  run:
+    - python
+    - beautifulsoup4
+    - docopt >=0.6.0
+
+test:
+  # Python imports
+  imports:
+    - bdt
+    - bdt_8chan
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - b8 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/xenmen/bdt_8chan
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: '8Chan Thread Archiver - Downloads a thread; images, webms and all.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

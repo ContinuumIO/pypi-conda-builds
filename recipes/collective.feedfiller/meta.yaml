@@ -1,0 +1,72 @@
+package:
+  name: collective.feedfiller
+  version: "0.1dev-r77946"
+
+source:
+  fn: collective.feedfiller-0.1dev-r77946.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.feedfiller/collective.feedfiller-0.1dev-r77946.tar.gz
+  md5: 53d65de9ae16495857540192b29d80bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.feedfiller = collective.feedfiller:main
+    #
+    # Would create an entry point called collective.feedfiller that calls collective.feedfiller.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.feedfeeder
+    - beautifulsoup
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.feedfeeder
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.feedfiller
+    - collective.feedfiller.Extensions
+    - collective.feedfiller.browser
+    - collective.feedfiller.doc
+    - collective.feedfiller.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://topia.com
+  license: GPL
+  summary: 'Expands FeedItems with the body of items referred to'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

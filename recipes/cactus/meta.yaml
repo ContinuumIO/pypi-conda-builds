@@ -1,0 +1,97 @@
+package:
+  name: cactus
+  version: "3.0.2"
+
+source:
+  fn: Cactus-3.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cactus/Cactus-3.0.2.tar.gz
+  md5: aee8f4c61dd194824674aa136fe71100
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cactus = cactus:main
+    #
+    # Would create an entry point called cactus that calls cactus.main()
+
+    - cactus = cactus.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5.5
+    - markdown2
+    - argparse
+    - keyring
+    - boto >=2.4.1
+    - tornado >=3.2
+    - colorlog
+
+  run:
+    - python
+    - django ==1.5.5
+    - markdown2
+    - argparse
+    - keyring
+    - boto >=2.4.1
+    - tornado >=3.2
+    - colorlog
+
+test:
+  # Python imports
+  imports:
+    - cactus
+    - cactus.bootstrap
+    - cactus.compat
+    - cactus.config
+    - cactus.contrib
+    - cactus.contrib.external
+    - cactus.deployment
+    - cactus.deployment.cloudfiles
+    - cactus.deployment.gcs
+    - cactus.deployment.s3
+    - cactus.i18n
+    - cactus.listener
+    - cactus.plugin
+    - cactus.plugin.builtin
+    - cactus.static
+    - cactus.static.external
+    - cactus.tests
+    - cactus.tests.data.skeleton.plugins
+    - cactus.tests.deployment
+    - cactus.tests.integration
+    - cactus.tests.integration.s3
+    - cactus.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cactus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/koenbok/Cactus
+  license: BSD License
+  summary: 'Static site generation and deployment.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

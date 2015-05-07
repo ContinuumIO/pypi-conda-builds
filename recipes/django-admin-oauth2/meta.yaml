@@ -1,0 +1,64 @@
+package:
+  name: django-admin-oauth2
+  version: "0.2.6"
+
+source:
+  fn: django-admin-oauth2-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-oauth2/django-admin-oauth2-0.2.6.tar.gz
+  md5: 06bcbbbb432f64fd62358239d94f26eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-oauth2 = django-admin-oauth2:main
+    #
+    # Would create an entry point called django-admin-oauth2 that calls django-admin-oauth2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oauthlib
+    - requests_oauthlib
+
+  run:
+    - python
+    - oauthlib
+    - requests_oauthlib
+
+test:
+  # Python imports
+  imports:
+    - oauthadmin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/RealGeeks/django-admin-oauth2
+  license: MIT License
+  summary: 'A django app that replaces the django admin authentication mechanism by deferring to an oauth2 provider'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,88 @@
+package:
+  name: bdgt
+  version: "6"
+
+source:
+  fn: bdgt-6.tar.gz
+  url: https://pypi.python.org/packages/source/b/bdgt/bdgt-6.tar.gz
+  md5: e9ae0ca09ae3c62e732d0ae9e0e56475
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bdgt = bdgt:main
+    #
+    # Would create an entry point called bdgt that calls bdgt.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml ==3.11
+    - sqlalchemy ==0.9.7
+    - asciitable ==0.8.0
+    - beautifulsoup4 ==4.3.2
+    - colorama ==0.3.2
+    - enum34 ==1.0
+    - mt940 ==0.1
+    - ofxparse ==0.14
+    - parse-type ==0.3.4
+    - parse ==1.6.4
+    - six ==1.8.0
+    - alembic ==0.6.7
+
+  run:
+    - python
+    - pyyaml ==3.11
+    - sqlalchemy ==0.9.7
+    - asciitable ==0.8.0
+    - beautifulsoup4 ==4.3.2
+    - colorama ==0.3.2
+    - enum34 ==1.0
+    - mt940 ==0.1
+    - ofxparse ==0.14
+    - parse-type ==0.3.4
+    - parse ==1.6.4
+    - six ==1.8.0
+    - alembic ==0.6.7
+
+test:
+  # Python imports
+  imports:
+    - bdgt
+    - bdgt.commands
+    - bdgt.importer
+    - bdgt.storage
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jonblack/bdgt/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A command line budget application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: collective.js.cycle2
+  version: "1.0a1"
+
+source:
+  fn: collective.js.cycle2-1.0a1.zip
+  url: https://pypi.python.org/packages/source/c/collective.js.cycle2/collective.js.cycle2-1.0a1.zip
+  md5: 288403ffda317dbb8af761c941915c1f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.js.cycle2 = collective.js.cycle2:main
+    #
+    # Would create an entry point called collective.js.cycle2 that calls collective.js.cycle2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.cmfplone >=4.2
+    - products.genericsetup
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - products.cmfplone >=4.2
+    - products.genericsetup
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.js
+    - collective.js.cycle2
+    - collective.js.cycle2.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.js.cycle2
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Integration of Cycle2 jQuery plugin in Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

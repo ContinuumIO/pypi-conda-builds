@@ -1,0 +1,143 @@
+package:
+  name: bewype
+  version: "0.1"
+
+source:
+  fn: bewype-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bewype/bewype-0.1.tar.gz
+  md5: 671bb0c32b166ccd3e93d42d760b58b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bewype = bewype:main
+    #
+    # Would create an entry point called bewype that calls bewype.main()
+
+    - bewype_core_doctest=bewype.core.tests.main:run_doctest
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babel >=0.9.5
+    - genshi >=0.5.1
+    - importing >=1.9.2
+    - zope.interface >=3.6.1
+    - twisted >=9.0.0
+    - nevow >=0.9.33
+    - pyopenssl >=0.10
+    - pyyaml >=3.09
+    - recaptcha-client >=1.0.5
+    - simplejson >=2.0.9
+    - sqlalchemy-migrate >=0.5.4
+    - turbomail >=3.0.3
+
+  run:
+    - python
+    - babel >=0.9.5
+    - genshi >=0.5.1
+    - importing >=1.9.2
+    - zope.interface >=3.6.1
+    - twisted >=9.0.0
+    - nevow >=0.9.33
+    - pyopenssl >=0.10
+    - pyyaml >=3.09
+    - recaptcha-client >=1.0.5
+    - simplejson >=2.0.9
+    - sqlalchemy-migrate >=0.5.4
+    - turbomail >=3.0.3
+
+test:
+  # Python imports
+  imports:
+    - bewype
+    - bewype.core
+    - bewype.core.cache
+    - bewype.core.component
+    - bewype.core.component.button_box
+    - bewype.core.component.button_box.tmpl
+    - bewype.core.component.color_picker
+    - bewype.core.component.color_picker.tmpl
+    - bewype.core.component.date_picker
+    - bewype.core.component.date_picker.tmpl
+    - bewype.core.component.entry
+    - bewype.core.component.entry.tmpl
+    - bewype.core.component.file_editor
+    - bewype.core.component.file_editor.tmpl
+    - bewype.core.component.file_picker
+    - bewype.core.component.file_picker.tmpl
+    - bewype.core.component.file_viewer
+    - bewype.core.component.file_viewer.tmpl
+    - bewype.core.component.form_children
+    - bewype.core.component.form_children.tmpl
+    - bewype.core.component.image
+    - bewype.core.component.image.tmpl
+    - bewype.core.component.list
+    - bewype.core.component.list.tmpl
+    - bewype.core.component.menu
+    - bewype.core.component.menu.horizontal
+    - bewype.core.component.menu.horizontal.tmpl
+    - bewype.core.component.menu.linear
+    - bewype.core.component.menu.linear.tmpl
+    - bewype.core.component.menu.vertical
+    - bewype.core.component.menu.vertical.tmpl
+    - bewype.core.component.re_captcha
+    - bewype.core.component.re_captcha.tmpl
+    - bewype.core.component.text_editor
+    - bewype.core.component.text_editor.tmpl
+    - bewype.core.component.text_view
+    - bewype.core.component.text_view.tmpl
+    - bewype.core.component.text_viewer
+    - bewype.core.component.text_viewer.tmpl
+    - bewype.core.config
+    - bewype.core.data
+    - bewype.core.db
+    - bewype.core.email
+    - bewype.core.message
+    - bewype.core.resource
+    - bewype.core.template
+    - bewype.core.tests
+    - bewype.core.ui
+    - bewype.core.utils
+    - bewype.core.web
+    - bewype.db
+    - bewype.db.repository
+    - bewype.db.repository.versions
+    - bewype.js
+    - bewype.js.resource
+    - bewype.js.resource.css
+    - bewype.js.resource.img
+    - bewype.js.resource.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bewype_core_doctest --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.bewype.org
+  license: MIT
+  summary: 'Bewype widget based web application framework core.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

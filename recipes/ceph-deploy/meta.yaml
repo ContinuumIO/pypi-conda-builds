@@ -1,0 +1,87 @@
+package:
+  name: ceph-deploy
+  version: "1.5.23"
+
+source:
+  fn: ceph-deploy-1.5.23.tar.gz
+  url: https://pypi.python.org/packages/source/c/ceph-deploy/ceph-deploy-1.5.23.tar.gz
+  md5: 5d5e38c5e62b5d44a58b4a807a64a0e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ceph-deploy = ceph-deploy:main
+    #
+    # Would create an entry point called ceph-deploy that calls ceph-deploy.main()
+
+    - ceph-deploy = ceph_deploy.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ceph_deploy
+    - ceph_deploy.conf
+    - ceph_deploy.hosts
+    - ceph_deploy.hosts.centos
+    - ceph_deploy.hosts.centos.mon
+    - ceph_deploy.hosts.debian
+    - ceph_deploy.hosts.debian.mon
+    - ceph_deploy.hosts.fedora
+    - ceph_deploy.hosts.fedora.mon
+    - ceph_deploy.hosts.rhel
+    - ceph_deploy.hosts.rhel.mon
+    - ceph_deploy.hosts.suse
+    - ceph_deploy.hosts.suse.mon
+    - ceph_deploy.lib
+    - ceph_deploy.lib.vendor
+    - ceph_deploy.lib.vendor.remoto
+    - ceph_deploy.lib.vendor.remoto.lib
+    - ceph_deploy.lib.vendor.remoto.lib.vendor
+    - ceph_deploy.lib.vendor.remoto.lib.vendor.execnet
+    - ceph_deploy.lib.vendor.remoto.lib.vendor.execnet.script
+    - ceph_deploy.tests
+    - ceph_deploy.util
+    - ceph_deploy.util.paths
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ceph-deploy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ceph/ceph-deploy
+  license: MIT
+  summary: 'Deploy Ceph with minimal infrastructure'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

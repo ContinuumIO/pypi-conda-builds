@@ -1,0 +1,71 @@
+package:
+  name: b2gpopulate-v2.0
+  version: "0.2"
+
+source:
+  fn: b2gpopulate-v2.0-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/b2gpopulate-v2.0/b2gpopulate-v2.0-0.2.tar.gz
+  md5: 0acca4ea094747d9f4c9819774a3dc5c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - b2gpopulate-v2.0 = b2gpopulate-v2.0:main
+    #
+    # Would create an entry point called b2gpopulate-v2.0 that calls b2gpopulate-v2.0.main()
+
+    - b2gpopulate=b2gpopulate.b2gpopulate:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gaiatest-v2.0
+    - mozdevice >=0.34
+    - mozlog >=1.4
+    - mutagen
+
+  run:
+    - python
+    - setuptools
+    - gaiatest-v2.0
+    - mozdevice >=0.34
+    - mozlog >=1.4
+    - mutagen
+
+test:
+  # Python imports
+  imports:
+    - b2gpopulate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - b2gpopulate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla/b2gpopulate
+  license: MPL
+  summary: 'Content population tool for B2G'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

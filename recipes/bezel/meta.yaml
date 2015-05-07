@@ -1,0 +1,68 @@
+package:
+  name: bezel
+  version: "1.0dev-r162"
+
+source:
+  fn: bezel-1.0dev-r162.tar.gz
+  url: https://pypi.python.org/packages/source/b/bezel/bezel-1.0dev-r162.tar.gz
+  md5: 85ee496c22417c624c5f29f06655ae9b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bezel = bezel:main
+    #
+    # Would create an entry point called bezel that calls bezel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygame >=1.7
+    - simplejson >=1.9.2
+
+  run:
+    - python
+    - pygame >=1.7
+    - simplejson >=1.9.2
+
+test:
+  # Python imports
+  imports:
+    - bezel
+    - bezel.graphics
+    - bezel.graphics.widgets
+    - bezel.graphics.widgets.tiles
+    - bezel.networking
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://flowblok.selfip.net:8001/bezel-games/
+  license: UNKNOWN
+  summary: 'A game development library for Python (graphics with PyGame).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

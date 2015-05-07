@@ -1,0 +1,71 @@
+package:
+  name: ayab
+  version: "0.75"
+
+source:
+  fn: ayab-0.75.tar.gz
+  url: https://pypi.python.org/packages/source/a/ayab/ayab-0.75.tar.gz
+  md5: 3204aa7b4b6e3b9fc7dbf14a2e55b770
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ayab = ayab:main
+    #
+    # Would create an entry point called ayab that calls ayab.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow >=2.5.2
+    - pyserial >=2.7
+    - fysom >=1.1.0
+    - yapsy ==1.10.423
+
+  run:
+    - python
+    - pillow >=2.5.2
+    - pyserial >=2.7
+    - fysom >=1.1.0
+    - yapsy ==1.10.423
+
+test:
+  # Python imports
+  imports:
+    - ayab
+    - ayab.plugins
+    - ayab.plugins.ayab_plugin
+    - ayab.plugins.dummy_knitting_plugin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ayab-knitting.com/
+  license: GNU GPLv3+
+  summary: 'GUI for Machine assisted Knitting. Reference implementation for AYAB.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

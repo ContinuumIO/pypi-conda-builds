@@ -1,0 +1,66 @@
+package:
+  name: attacksurfacemeter
+  version: "0.8.0"
+
+source:
+  fn: attacksurfacemeter-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/attacksurfacemeter/attacksurfacemeter-0.8.0.tar.gz
+  md5: 4bc731f2d95dd152e829f14ac52739c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - attacksurfacemeter = attacksurfacemeter:main
+    #
+    # Would create an entry point called attacksurfacemeter that calls attacksurfacemeter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - networkx ==1.9.1
+    - django ==1.7.4
+
+  run:
+    - python
+    - networkx ==1.9.1
+    - django ==1.7.4
+
+test:
+  # Python imports
+  imports:
+    - attacksurfacemeter
+    - attacksurfacemeter.formatters
+    - attacksurfacemeter.loaders
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/andymeneely/attack-surface-metrics
+  license: MIT License
+  summary: 'Library for collecting metrics of the attack surface.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

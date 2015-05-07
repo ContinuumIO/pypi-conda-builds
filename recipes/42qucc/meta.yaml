@@ -1,0 +1,64 @@
+package:
+  name: 42qucc
+  version: "0.0.4"
+
+source:
+  fn: 42qucc-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/4/42qucc/42qucc-0.0.4.tar.gz
+  md5: bfb2f265a2967c16bf8930619e9dfd96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - 42qucc = 42qucc:main
+    #
+    # Would create an entry point called 42qucc that calls 42qucc.main()
+
+    - 42qucc=cc42.cc42:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=0.13.3
+
+  run:
+    - python
+    - requests >=0.13.3
+
+test:
+  # Python imports
+  imports:
+    - cc42
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - 42qucc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://42qu.cc/:help
+  license: UNKNOWN
+  summary: '\n    A paste tool in CLI\n        '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

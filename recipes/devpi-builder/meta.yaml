@@ -1,0 +1,71 @@
+package:
+  name: devpi-builder
+  version: "0.4.0"
+
+source:
+  fn: devpi-builder-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/devpi-builder/devpi-builder-0.4.0.tar.gz
+  md5: 5f03499bf3a86aaf54097c0db63ab715
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - devpi-builder = devpi-builder:main
+    #
+    # Would create an entry point called devpi-builder that calls devpi-builder.main()
+
+    - devpi-builder = devpi_builder.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - devpi-client
+    - wheel
+    - pip >=1.5.3
+    - junit-xml
+
+  run:
+    - python
+    - setuptools
+    - devpi-client
+    - wheel
+    - pip >=1.5.3
+    - junit-xml
+
+test:
+  # Python imports
+  imports:
+    - devpi_builder
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - devpi-builder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/blue-yonder/devpi-builder
+  license: BSD License
+  summary: 'Devpi-builder takes a requirements.txt and incrementally fills a devpi index with wheels of the listed python packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

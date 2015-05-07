@@ -1,0 +1,64 @@
+package:
+  name: blogodev
+  version: "0.1.3"
+
+source:
+  fn: blogodev-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/blogodev/blogodev-0.1.3.tar.gz
+  md5: 37c35b64c82eddf6a9bf7f079b193dae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blogodev = blogodev:main
+    #
+    # Would create an entry point called blogodev that calls blogodev.main()
+
+    - blogodev = blogodev:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blogofile ==0.7.1
+
+  run:
+    - python
+    - blogofile ==0.7.1
+
+test:
+  # Python imports
+  imports:
+    - blogodev
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - blogodev --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/zzzeek/blogodev
+  license: MIT
+  summary: 'An interim front end for blogofile development'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

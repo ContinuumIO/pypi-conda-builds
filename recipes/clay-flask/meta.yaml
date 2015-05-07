@@ -1,0 +1,66 @@
+package:
+  name: clay-flask
+  version: "2.1.5"
+
+source:
+  fn: clay-flask-2.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/clay-flask/clay-flask-2.1.5.tar.gz
+  md5: d42d549a1f51b0816c279475c0697250
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clay-flask = clay-flask:main
+    #
+    # Would create an entry point called clay-flask that calls clay-flask.main()
+
+    - clay-devserver = clay.server:devserver
+    - clay-celery = clay.celery:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+
+  run:
+    - python
+    - flask
+
+test:
+  # Python imports
+  imports:
+    - clay
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clay-devserver --help
+    - clay-celery --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Clay is a framework for building RESTful backend services using best practices.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

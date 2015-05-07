@@ -1,0 +1,64 @@
+package:
+  name: buildout-versions
+  version: "1.7"
+
+source:
+  fn: buildout-versions-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildout-versions/buildout-versions-1.7.tar.gz
+  md5: 731ecc0c9029f45826fa9f31d44e311d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildout-versions = buildout-versions:main
+    #
+    # Would create an entry point called buildout-versions that calls buildout-versions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout >=1.5.0
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout >=1.5.0
+
+test:
+  # Python imports
+  imports:
+    - buildout_versions
+    - buildout_versions.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/buildout-versions
+  license: MIT License
+  summary: 'zc.buildout extension to display and record versions of packages used.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

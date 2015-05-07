@@ -1,0 +1,65 @@
+package:
+  name: asyncinflux
+  version: "0.0.3"
+
+source:
+  fn: asyncinflux-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/asyncinflux/asyncinflux-0.0.3.tar.gz
+  md5: 44560d23a1b36fcdd3db9584c330c28c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asyncinflux = asyncinflux:main
+    #
+    # Would create an entry point called asyncinflux that calls asyncinflux.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - influxdb
+    - codap
+
+  run:
+    - python
+    - influxdb
+    - codap
+
+test:
+  # Python imports
+  imports:
+    - asyncinflux
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lateefj/asyncinflux
+  license: BSD License
+  summary: 'Uses codap to provide async influxdb'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

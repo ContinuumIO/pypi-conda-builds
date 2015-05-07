@@ -1,0 +1,72 @@
+package:
+  name: aardtools
+  version: "0.8.3"
+
+source:
+  fn: aardtools-0.8.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/aardtools/aardtools-0.8.3.tar.gz
+  md5: 1e90eb7f3c1e8a292179136a4f435938
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aardtools = aardtools:main
+    #
+    # Would create an entry point called aardtools that calls aardtools.main()
+
+    - aardcompile = aardtools.compiler:main
+    - aardc = aardtools.compiler:main
+    - aard-siteinfo = aardtools.fetchsiteinfo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aarddict >=0.9.0
+    - pyicu >=0.8.1
+    - mwlib ==0.12.13
+
+  run:
+    - python
+    - aarddict >=0.9.0
+    - pyicu >=0.8.1
+    - mwlib ==0.12.13
+
+test:
+  # Python imports
+  imports:
+    - aardtools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aardcompile --help
+    - aardc --help
+    - aard-siteinfo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://aarddict.org
+  license: GNU General Public License (GPL)
+  summary: 'Tools to create dictionaries in aarddict format.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

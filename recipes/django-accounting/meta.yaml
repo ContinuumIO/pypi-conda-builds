@@ -1,0 +1,85 @@
+package:
+  name: django-accounting
+  version: "0.2.2"
+
+source:
+  fn: django-accounting-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-accounting/django-accounting-0.2.2.tar.gz
+  md5: 217c8eb56f7b1ac758f043540471732c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-accounting = django-accounting:main
+    #
+    # Would create an entry point called django-accounting that calls django-accounting.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7.0,<1.8
+    - django-bootstrap3 ==4.11.0
+    - django_select2_py3 >=4.2.1
+    - django-datetime-widget >=0.9,<1.0
+    - django-classy-tags ==0.5.1
+    - babel >=1.0,<1.4
+    - python-dateutil >=2.2,<2.3
+
+  run:
+    - python
+    - django >=1.7.0,<1.8
+    - django-bootstrap3 ==4.11.0
+    - django_select2_py3 >=4.2.1
+    - django-datetime-widget >=0.9,<1.0
+    - django-classy-tags ==0.5.1
+    - babel >=1.0,<1.4
+    - python-dateutil >=2.2,<2.3
+
+test:
+  # Python imports
+  imports:
+    - accounting
+    - accounting.apps
+    - accounting.apps.books
+    - accounting.apps.books.migrations
+    - accounting.apps.books.templatetags
+    - accounting.apps.connect
+    - accounting.apps.people
+    - accounting.apps.people.migrations
+    - accounting.apps.reports
+    - accounting.apps.reports.migrations
+    - accounting.libs
+    - accounting.libs.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dulaccc/django-accounting
+  license: MIT License
+  summary: 'Accounting made accessible for small businesses and sole proprietorships through a simple Django project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

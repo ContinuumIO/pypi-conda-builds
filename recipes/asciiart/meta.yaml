@@ -1,0 +1,68 @@
+package:
+  name: asciiart
+  version: "0.2"
+
+source:
+  fn: asciiart-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/asciiart/asciiart-0.2.tar.gz
+  md5: a46b1a6f91d0fb55977d98790e6c6fdc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asciiart = asciiart:main
+    #
+    # Would create an entry point called asciiart that calls asciiart.main()
+
+    - file2ascii = asciiart.commands:file2ascii
+    - url2ascii = asciiart.commands:url2ascii
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - pillow >=1.7.8
+
+  run:
+    - python
+    - requests >=1.1.0
+    - pillow >=1.7.8
+
+test:
+  # Python imports
+  imports:
+    - asciiart
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - file2ascii --help
+    - url2ascii --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://asciiart.readthedocs.org/
+  license: JSON License
+  summary: 'Just some ascii art stuff...'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

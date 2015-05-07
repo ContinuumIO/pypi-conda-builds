@@ -1,0 +1,85 @@
+package:
+  name: bob.example.faceverify
+  version: "2.1.0"
+
+source:
+  fn: bob.example.faceverify-2.1.0.zip
+  url: https://pypi.python.org/packages/source/b/bob.example.faceverify/bob.example.faceverify-2.1.0.zip
+  md5: 8116bd060bbd77a3becc8313fc8adec1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.example.faceverify = bob.example.faceverify:main
+    #
+    # Would create an entry point called bob.example.faceverify that calls bob.example.faceverify.main()
+
+    - eigenface.py = bob.example.faceverify.eigenface:main
+    - gabor_graph.py = bob.example.faceverify.gabor_graph:main
+    - dct_ubm.py = bob.example.faceverify.dct_ubm:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob.io.image
+    - bob.ip.base
+    - bob.ip.color
+    - bob.ip.gabor
+    - bob.learn.linear
+    - bob.learn.em
+    - bob.measure
+    - bob.db.atnt
+
+  run:
+    - python
+    - setuptools
+    - bob.io.image
+    - bob.ip.base
+    - bob.ip.color
+    - bob.ip.gabor
+    - bob.learn.linear
+    - bob.learn.em
+    - bob.measure
+    - bob.db.atnt
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.example
+    - bob.example.faceverify
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eigenface.py --help
+    - gabor_graph.py --help
+    - dct_ubm.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/bob.example.faceverify
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Example for using Bob to create three distinct face verification systems'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

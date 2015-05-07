@@ -1,0 +1,71 @@
+package:
+  name: collective.behavior.stock
+  version: "0.6"
+
+source:
+  fn: collective.behavior.stock-0.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.behavior.stock/collective.behavior.stock-0.6.zip
+  md5: 8320d04b0395ed34952afd448809a0b0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.behavior.stock = collective.behavior.stock:main
+    #
+    # Would create an entry point called collective.behavior.stock that calls collective.behavior.stock.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.cart.stock
+    - plone.behavior
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - collective.cart.stock
+    - plone.behavior
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.behavior
+    - collective.behavior.stock
+    - collective.behavior.stock.tests
+    - collective.behavior.stock.tests.dexterity
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.behavior.stock/
+  license: BSD License
+  summary: 'Provides stock related behavior to dexterity content types.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

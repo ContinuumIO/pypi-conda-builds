@@ -1,0 +1,68 @@
+package:
+  name: bewype.foo.bar
+  version: "0.1"
+
+source:
+  fn: bewype.foo.bar-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bewype.foo.bar/bewype.foo.bar-0.1.tar.gz
+  md5: 5dbcffcda523699e55b4bf28d981e7ab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bewype.foo.bar = bewype.foo.bar:main
+    #
+    # Would create an entry point called bewype.foo.bar that calls bewype.foo.bar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bewype >=0.1alpha
+
+  run:
+    - python
+    - bewype >=0.1alpha
+
+test:
+  # Python imports
+  imports:
+    - bewype
+    - bewype.widget
+    - bewype.widget.hello
+    - bewype.widget.hello.world
+    - bewype.widget.sample
+    - bewype.widget.sample.ajax
+    - bewype.widget.sample.ui
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.bewype.org
+  license: MIT
+  summary: 'Foo bar for Bewype.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

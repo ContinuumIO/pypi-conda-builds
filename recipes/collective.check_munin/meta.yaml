@@ -1,0 +1,66 @@
+package:
+  name: collective.check_munin
+  version: "1.0"
+
+source:
+  fn: collective.check_munin-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.check_munin/collective.check_munin-1.0.zip
+  md5: 9960c421f180f0a873a6ebeb1cd32198
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.check_munin = collective.check_munin:main
+    #
+    # Would create an entry point called collective.check_munin that calls collective.check_munin.main()
+
+    - check_munin = collective.check_munin.check_munin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nagiosplugin
+
+  run:
+    - python
+    - setuptools
+    - nagiosplugin
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.check_munin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - check_munin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/smcmahon/collective.check_munin
+  license: GPL
+  summary: 'Nagios plugin to check munin via rrd'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

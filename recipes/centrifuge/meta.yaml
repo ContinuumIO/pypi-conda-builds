@@ -1,0 +1,79 @@
+package:
+  name: centrifuge
+  version: "0.7.0"
+
+source:
+  fn: centrifuge-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/centrifuge/centrifuge-0.7.0.tar.gz
+  md5: 9848749e1dc58cf17bee7019b49cc648
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - centrifuge = centrifuge:main
+    #
+    # Would create an entry point called centrifuge that calls centrifuge.main()
+
+    - centrifuge = centrifuge.node:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.3.0
+    - tornado ==4.1
+    - sockjs-tornado ==1.0.1
+    - jsonschema ==2.4.0
+    - toro ==0.8
+    - wtforms ==2.0.2
+    - toredis-fork ==0.1.4
+
+  run:
+    - python
+    - six >=1.3.0
+    - tornado ==4.1
+    - sockjs-tornado ==1.0.1
+    - jsonschema ==2.4.0
+    - toro ==0.8
+    - wtforms ==2.0.2
+    - toredis-fork ==0.1.4
+
+test:
+  # Python imports
+  imports:
+    - centrifuge
+    - centrifuge/engine
+    - centrifuge/structure
+    - centrifuge/web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - centrifuge --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://centrifugal.github.io
+  license: MIT License
+  summary: 'Simple real-time messaging in web applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

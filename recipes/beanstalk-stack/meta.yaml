@@ -1,0 +1,75 @@
+package:
+  name: beanstalk-stack
+  version: "0.1.92"
+
+source:
+  fn: beanstalk-stack-0.1.92.tar.gz
+  url: https://pypi.python.org/packages/source/b/beanstalk-stack/beanstalk-stack-0.1.92.tar.gz
+  md5: 25faabdee6c046b4aaff021b97a3c6a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - beanstalk-stack = beanstalk-stack:main
+    #
+    # Would create an entry point called beanstalk-stack that calls beanstalk-stack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric >=1.5
+    - jinja2 >=2.6
+    - six >=1.2
+    - ground-soil >=0.1.12
+    - netaddr >=0.7
+
+  run:
+    - python
+    - fabric >=1.5
+    - jinja2 >=2.6
+    - six >=1.2
+    - ground-soil >=0.1.12
+    - netaddr >=0.7
+
+test:
+  # Python imports
+  imports:
+    - beanstalk
+    - beanstalk.console
+    - beanstalk.default_settings
+    - beanstalk.paths
+    - beanstalk.tasks
+    - beanstalk.tasks.action
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/sodastsai/beanstalk-stack/
+  license: Apache Software License
+  summary: 'Django base for common use'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: alstat
+  version: "0.0.7"
+
+source:
+  fn: alstat-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/alstat/alstat-0.0.7.tar.gz
+  md5: 24e6542764e33470a68dd80a41c7162c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alstat = alstat:main
+    #
+    # Would create an entry point called alstat that calls alstat.main()
+
+    - alstat=alstat.console:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - alstat
+    - alstat.parsers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - alstat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lispython/alstat
+  license: BSD License
+  summary: 'Collection of advanced utils to parse logfiles in different formats and build statistic reports'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

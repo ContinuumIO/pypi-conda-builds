@@ -1,0 +1,67 @@
+package:
+  name: django-admin-keyboard-shortcuts
+  version: "0.1.5"
+
+source:
+  fn: django-admin-keyboard-shortcuts-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-keyboard-shortcuts/django-admin-keyboard-shortcuts-0.1.5.tar.gz
+  md5: d91c89d245847891f6765444ec7def6a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-keyboard-shortcuts = django-admin-keyboard-shortcuts:main
+    #
+    # Would create an entry point called django-admin-keyboard-shortcuts that calls django-admin-keyboard-shortcuts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - admin_keyboard_shortcuts
+    - admin_keyboard_shortcuts.management
+    - admin_keyboard_shortcuts.management.commands
+    - admin_keyboard_shortcuts.templatetags
+    - admin_keyboard_shortcuts.tests
+    - admin_keyboard_shortcuts.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/arteria/django-admin-keyboard-shortcuts
+  license: The MIT License
+  summary: 'Keyboard Shortcuts for your Admin Backend\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

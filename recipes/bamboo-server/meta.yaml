@@ -1,0 +1,91 @@
+package:
+  name: bamboo-server
+  version: "0.6.3"
+
+source:
+  fn: bamboo-server-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/bamboo-server/bamboo-server-0.6.3.tar.gz
+  md5: f0c77c817362412f9876379a6f326f81
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bamboo-server = bamboo-server:main
+    #
+    # Would create an entry point called bamboo-server that calls bamboo-server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil ==1.5
+    - numpy
+    - pandas
+    - scipy
+    - kombu
+    - celery
+    - pymongo
+    - cherrypy
+    - pyparsing
+    - simplejson
+    - routes
+
+  run:
+    - python
+    - python-dateutil ==1.5
+    - numpy
+    - pandas
+    - scipy
+    - kombu
+    - celery
+    - pymongo
+    - cherrypy
+    - pyparsing
+    - simplejson
+    - routes
+
+test:
+  # Python imports
+  imports:
+    - bamboo
+    - bamboo.config
+    - bamboo.controllers
+    - bamboo.core
+    - bamboo.lib
+    - bamboo.models
+    - bamboo.tests.controllers
+    - bamboo.tests.core
+    - bamboo.tests.lib
+    - bamboo.tests.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bamboo.io
+  license: BSD 3-clause
+  summary: 'Dynamic data analysis over the web. The logic to your data dashboards.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

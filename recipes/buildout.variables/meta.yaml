@@ -1,0 +1,64 @@
+package:
+  name: buildout.variables
+  version: "0.3"
+
+source:
+  fn: buildout.variables-0.3.zip
+  url: https://pypi.python.org/packages/source/b/buildout.variables/buildout.variables-0.3.zip
+  md5: a937befa4e160832a1e018b064c0f6c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildout.variables = buildout.variables:main
+    #
+    # Would create an entry point called buildout.variables that calls buildout.variables.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rsfile
+
+  run:
+    - python
+    - setuptools
+    - rsfile
+
+test:
+  # Python imports
+  imports:
+    - buildout
+    - buildout.variables
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fschulze/buildout.variables
+  license: GPL
+  summary: 'Provides dynamic variables in buildouts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

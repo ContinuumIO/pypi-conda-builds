@@ -1,0 +1,65 @@
+package:
+  name: django-admin-enhancer
+  version: "1.0.0"
+
+source:
+  fn: django-admin-enhancer-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-enhancer/django-admin-enhancer-1.0.0.tar.gz
+  md5: f312ccf7ce01252810f1e3bb430a8d37
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-enhancer = django-admin-enhancer:main
+    #
+    # Would create an entry point called django-admin-enhancer that calls django-admin-enhancer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.8
+
+  run:
+    - python
+    - django >=1.4,<1.8
+
+test:
+  # Python imports
+  imports:
+    - admin_enhancer
+    - admin_enhancer.contrib
+    - admin_enhancer.contrib.djangocms
+    - admin_enhancer.contrib.filer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/charettes/django-admin-enhancer
+  license: MIT License
+  summary: u'A simple django app that provides change and deletion links to FK fields in the admin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

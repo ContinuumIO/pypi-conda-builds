@@ -1,0 +1,85 @@
+package:
+  name: collective.contentrules.mailtogroup
+  version: "1.5"
+
+source:
+  fn: collective.contentrules.mailtogroup-1.5.zip
+  url: https://pypi.python.org/packages/source/c/collective.contentrules.mailtogroup/collective.contentrules.mailtogroup-1.5.zip
+  md5: c0a5496d092523541c6ea1e4e6f840fa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.contentrules.mailtogroup = collective.contentrules.mailtogroup:main
+    #
+    # Would create an entry point called collective.contentrules.mailtogroup that calls collective.contentrules.mailtogroup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.app.contentrules
+    - plone.app.form >=1.1.8plone.app.vocabularies
+    - plone.contentrules
+    - products.cmfcore
+    - products.cmfplone
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - setuptools
+    - plone.app.contentrules
+    - plone.app.form >=1.1.8plone.app.vocabularies
+    - plone.contentrules
+    - products.cmfcore
+    - products.cmfplone
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.contentrules
+    - collective.contentrules.mailtogroup
+    - collective.contentrules.mailtogroup.actions
+    - collective.contentrules.mailtogroup.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.gw20e.com/
+  license: GPL
+  summary: 'Send e-mail to groups and members defined in the action.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

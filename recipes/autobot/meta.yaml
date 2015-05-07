@@ -1,0 +1,79 @@
+package:
+  name: autobot
+  version: "0.1.1"
+
+source:
+  fn: autobot-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/autobot/autobot-0.1.1.tar.gz
+  md5: 4fff55c4ef26f9b6e81ab5abb3749acd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autobot = autobot:main
+    #
+    # Would create an entry point called autobot that calls autobot.main()
+
+    - create-autobot=autobot.template:create_autobot
+    - create-autobot-master=autobot.template:create_master
+    - create-autobot-slave=autobot.template:create_slave
+    - create-autobot-project=autobot.template:create_project
+    - parse-autobot-config=autobot.config:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - buildbot >=0.8.5
+    - buildbot-slave >=0.8.5
+    - virtualenv
+    - makeitso
+
+  run:
+    - python
+    - setuptools
+    - buildbot >=0.8.5
+    - buildbot-slave >=0.8.5
+    - virtualenv
+    - makeitso
+
+test:
+  # Python imports
+  imports:
+    - autobot
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - create-autobot --help
+    - create-autobot-master --help
+    - create-autobot-slave --help
+    - create-autobot-project --help
+    - parse-autobot-config --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://k0s.org/hg/autobot
+  license: MPL
+  summary: 'buildbot front-end incarnation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

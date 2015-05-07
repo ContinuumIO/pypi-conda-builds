@@ -1,0 +1,66 @@
+package:
+  name: application_repository
+  version: "0.5"
+
+source:
+  fn: application_repository-0.5.zip
+  url: https://pypi.python.org/packages/source/a/application_repository/application_repository-0.5.zip
+  md5: 64a1a3f98e40f9f9083218cab682fea1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - application_repository = application_repository:main
+    #
+    # Would create an entry point called application_repository that calls application_repository.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - application_repository.jsonrpc
+
+  run:
+    - python
+    - application_repository.jsonrpc
+
+test:
+  # Python imports
+  imports:
+    - application_repository
+    - application_repository.application
+    - application_repository.application.scripts
+    - application_repository.plugins
+    - application_repository.plugins.scripts
+    - application_repository.repository
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cfobel/application_repository.git
+  license: GPL
+  summary: 'A Django site for serving versioned application and plug-in downloads.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

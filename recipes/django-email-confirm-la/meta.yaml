@@ -1,0 +1,72 @@
+package:
+  name: django-email-confirm-la
+  version: "0.2.3"
+
+source:
+  fn: django-email-confirm-la-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-email-confirm-la/django-email-confirm-la-0.2.3.tar.gz
+  md5: dc898e747f737f515e72ac16fea4118f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-email-confirm-la = django-email-confirm-la:main
+    #
+    # Would create an entry point called django-email-confirm-la that calls django-email-confirm-la.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-appconf
+
+  run:
+    - python
+    - django
+    - django-appconf
+
+test:
+  # Python imports
+  imports:
+    - email_confirm_la
+    - email_confirm_la.management
+    - email_confirm_la.management.commands
+    - email_confirm_la.migrations
+    - email_confirm_la.south_migrations
+    - email_confirm_la.tests
+    - test_project
+    - test_project.test_app
+    - test_project.test_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vinta/django-email-confirm-la
+  license: MIT License
+  summary: 'Django email confirmation for any Model and any Field.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: brod
+  version: "0.4.3"
+
+source:
+  fn: brod-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/brod/brod-0.4.3.tar.gz
+  md5: b727320e415ab03c61e0f4d324c923d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brod = brod:main
+    #
+    # Would create an entry point called brod that calls brod.main()
+
+    - broderate = brod.util:broderate
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.zk ==0.5.2
+
+  run:
+    - python
+    - zc.zk ==0.5.2
+
+test:
+  # Python imports
+  imports:
+    - brod
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - broderate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datadog/brod
+  license: MIT
+  summary: "brod lets you produce messages to the Kafka distributed publish/subscribe messaging service. It started as a fork of pykafka (https://github.com/dsully/pykafka), but became a total rewrite as we needed to add many features.\n\nIt's named after Max Brod, Franz Kafka's friend and supporter."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

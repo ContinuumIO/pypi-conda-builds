@@ -1,0 +1,70 @@
+package:
+  name: collective.quickupload
+  version: "1.6.6"
+
+source:
+  fn: collective.quickupload-1.6.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.quickupload/collective.quickupload-1.6.6.zip
+  md5: bcd63f9e7751516f605d200710748916
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.quickupload = collective.quickupload:main
+    #
+    # Would create an entry point called collective.quickupload that calls collective.quickupload.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - ua_parser
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - ua_parser
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.quickupload
+    - collective.quickupload.browser
+    - collective.quickupload.portlet
+    - collective.quickupload.tests
+    - collective.quickupload.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.quickupload
+  license: GNU Affero General Public License v3
+  summary: 'Pure javascript files upload tool for Plone, with drag and drop, multi selection, and progress bar.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

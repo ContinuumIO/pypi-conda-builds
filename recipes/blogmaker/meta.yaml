@@ -1,0 +1,76 @@
+package:
+  name: blogmaker
+  version: "0.6"
+
+source:
+  fn: Blogmaker-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/B/Blogmaker/Blogmaker-0.6.tar.gz
+  md5: 28b6d0669751584092c647030a7b6393
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blogmaker = blogmaker:main
+    #
+    # Would create an entry point called blogmaker that calls blogmaker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=0.96
+    - pil
+    - markdown
+
+  run:
+    - python
+    - django >=0.96
+    - pil
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - blogmaker
+    - blogmaker.blog
+    - blogmaker.blog.migrations
+    - blogmaker.blog.templatetags
+    - blogmaker.blog.views
+    - blogmaker.comments
+    - blogmaker.comments.migrations
+    - blogmaker.comments.templatetags
+    - blogmaker.util
+    - blogmaker.util.templatetags
+    - setup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/blogmaker/
+  license: BSD License
+  summary: 'Blog application for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

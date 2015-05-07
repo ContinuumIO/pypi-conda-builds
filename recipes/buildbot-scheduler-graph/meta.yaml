@@ -1,0 +1,65 @@
+package:
+  name: buildbot-scheduler-graph
+  version: "1.0"
+
+source:
+  fn: buildbot-scheduler-graph-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildbot-scheduler-graph/buildbot-scheduler-graph-1.0.tar.gz
+  md5: 3a7f8204f83a3591ea0db430e6be89e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildbot-scheduler-graph = buildbot-scheduler-graph:main
+    #
+    # Would create an entry point called buildbot-scheduler-graph that calls buildbot-scheduler-graph.main()
+
+    - buildbot-scheduler-graph = buildbot_scheduler_graph:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyparsing ==1.5.6
+    - pydot >=1.0.28
+
+  run:
+    - python
+    - pyparsing ==1.5.6
+    - pydot >=1.0.28
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - buildbot-scheduler-graph --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'A tool for generating digraphs of Buildbot Builders and Schedulers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

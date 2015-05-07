@@ -1,0 +1,72 @@
+package:
+  name: collective.buildout.cluster
+  version: "0.6"
+
+source:
+  fn: collective.buildout.cluster-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.buildout.cluster/collective.buildout.cluster-0.6.tar.gz
+  md5: 0fd4d7e0df84de8ba63a906a5de08004
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.buildout.cluster = collective.buildout.cluster:main
+    #
+    # Would create an entry point called collective.buildout.cluster that calls collective.buildout.cluster.main()
+
+    - cluster-control = collective.buildout.cluster.cluster:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - iniparse
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - iniparse
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.buildout
+    - collective.buildout.cluster
+    - collective.buildout.cluster.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cluster-control --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A package to introspect and manage a buildout-based cluster configuration in an object-oriented way'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: collective.contact.plonegroup
+  version: "0.2"
+
+source:
+  fn: collective.contact.plonegroup-0.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.contact.plonegroup/collective.contact.plonegroup-0.2.zip
+  md5: c82fc0fa5421520472339c1df890f42c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.contact.plonegroup = collective.contact.plonegroup:main
+    #
+    # Would create an entry point called collective.contact.plonegroup that calls collective.contact.plonegroup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - five.grok
+    - plone.api
+    - setuptools
+    - collective.contact.core
+
+  run:
+    - python
+    - setuptools
+    - five.grok
+    - plone.api
+    - setuptools
+    - collective.contact.core
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.contact
+    - collective.contact.plonegroup
+    - collective.contact.plonegroup.browser
+    - collective.contact.plonegroup.content
+    - collective.contact.plonegroup.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.contact.plonegroup
+  license: GPL
+  summary: 'Organizations and functions combinations to create plone groups'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: collective.newsflash
+  version: "1.0"
+
+source:
+  fn: collective.newsflash-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.newsflash/collective.newsflash-1.0.zip
+  md5: 5fc65eafa33c9075e72556ae7ed1b282
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.newsflash = collective.newsflash:main
+    #
+    # Would create an entry point called collective.newsflash that calls collective.newsflash.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - five.grok >=1.2.0
+    - products.cmfplone >=4.1
+    - plone.app.z3cform
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - five.grok >=1.2.0
+    - products.cmfplone >=4.1
+    - plone.app.z3cform
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.newsflash
+    - collective.newsflash.Extensions
+    - collective.newsflash.browser
+    - collective.newsflash.portlet
+    - collective.newsflash.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.newsflash
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'News ticker inspired by the one on the BBC News website.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

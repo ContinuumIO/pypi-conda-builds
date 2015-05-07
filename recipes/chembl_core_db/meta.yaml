@@ -1,0 +1,69 @@
+package:
+  name: chembl_core_db
+  version: "0.6.0"
+
+source:
+  fn: chembl_core_db-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/chembl_core_db/chembl_core_db-0.6.0.tar.gz
+  md5: dd2e62bc14d7ca13a6390b4214c95114
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chembl_core_db = chembl_core_db:main
+    #
+    # Would create an entry point called chembl_core_db that calls chembl_core_db.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5.5
+
+  run:
+    - python
+    - django ==1.5.5
+
+test:
+  # Python imports
+  imports:
+    - chembl_core_db
+    - chembl_core_db.cache
+    - chembl_core_db.cache.backends
+    - chembl_core_db.db
+    - chembl_core_db.db.backends
+    - chembl_core_db.db.backends.oracleChEmbl
+    - chembl_core_db.db.models
+    - chembl_core_db.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.ebi.ac.uk/chembl/
+  license: Apache Software License
+  summary: 'Core ChEMBL python library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

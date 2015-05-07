@@ -1,0 +1,70 @@
+package:
+  name: cybuild
+  version: "0.1.post4"
+
+source:
+  fn: Cybuild-0.1.post4.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cybuild/Cybuild-0.1.post4.tar.gz
+  md5: db6d0d3d436e9672480fae4e6463bc36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cybuild = cybuild:main
+    #
+    # Would create an entry point called cybuild that calls cybuild.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - path_helpers
+    - functools32
+    - cython
+    - numpy
+    - scipy
+
+  run:
+    - python
+    - path_helpers
+    - functools32
+    - cython
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - Cybuild
+    - cybuild
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cfobel/Cybuild
+  license: GPL
+  summary: 'Cybuild\n=======\n\nHigh-level compilation of Cython extension types, based on `scipy.weave.build_tools`.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

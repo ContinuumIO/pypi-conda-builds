@@ -1,0 +1,67 @@
+package:
+  name: c2.patch.corepermission
+  version: "1.0b1"
+
+source:
+  fn: c2.patch.corepermission-1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/c/c2.patch.corepermission/c2.patch.corepermission-1.0b1.tar.gz
+  md5: d7be1d9431f7ea5b605649c0b839eaac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - c2.patch.corepermission = c2.patch.corepermission:main
+    #
+    # Would create an entry point called c2.patch.corepermission that calls c2.patch.corepermission.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - c2
+    - c2.patch
+    - c2.patch.corepermission
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cmscom.jp
+  license: GPL
+  summary: 'This product is monkey patching for core permissions for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,77 @@
+package:
+  name: cabby
+  version: "0.1.3"
+
+source:
+  fn: cabby-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/cabby/cabby-0.1.3.tar.gz
+  md5: 551400942a1ee7f066922e077ac1dca3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cabby = cabby:main
+    #
+    # Would create an entry point called cabby that calls cabby.main()
+
+    - taxii-poll = cabby.cli:poll_content
+    - taxii-push = cabby.cli:push_content
+    - taxii-discovery = cabby.cli:discover_services
+    - taxii-collections = cabby.cli:fetch_collections
+    - taxii-subscription = cabby.cli:manage_subscription
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz ==2014.10
+    - colorlog
+    - libtaxii >=1.1.106
+
+  run:
+    - python
+    - pytz ==2014.10
+    - colorlog
+    - libtaxii >=1.1.106
+
+test:
+  # Python imports
+  imports:
+    - cabby
+    - cabby.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - taxii-poll --help
+    - taxii-push --help
+    - taxii-discovery --help
+    - taxii-collections --help
+    - taxii-subscription --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Intelworks/cabby/
+  license: BSD License
+  summary: 'Python library for interacting with TAXII servers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: cmsplugin-forms-builder
+  version: "1.0.1"
+
+source:
+  fn: cmsplugin-forms-builder-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-forms-builder/cmsplugin-forms-builder-1.0.1.tar.gz
+  md5: eb80197329b72d5ddc4e462208555f67
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-forms-builder = cmsplugin-forms-builder:main
+    #
+    # Would create an entry point called cmsplugin-forms-builder that calls cmsplugin-forms-builder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-cms
+    - django-forms-builder
+
+  run:
+    - python
+    - django
+    - django-cms
+    - django-forms-builder
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_forms_builder
+    - cmsplugin_forms_builder.migrations
+    - cmsplugin_forms_builder.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nimbis/cmsplugin-forms-builder/
+  license: BSD License
+  summary: 'django-cms plugin for cmsplugin-forms-builder'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

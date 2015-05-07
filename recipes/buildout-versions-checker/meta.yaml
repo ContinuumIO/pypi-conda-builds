@@ -1,0 +1,73 @@
+package:
+  name: buildout-versions-checker
+  version: "1.9"
+
+source:
+  fn: buildout-versions-checker-1.9.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildout-versions-checker/buildout-versions-checker-1.9.tar.gz
+  md5: 156449467625e6bfb780839479812566
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildout-versions-checker = buildout-versions-checker:main
+    #
+    # Would create an entry point called buildout-versions-checker that calls buildout-versions-checker.main()
+
+    - indent-buildout=bvc.scripts.indent_buildout:cmdline
+    - find-unused-versions=bvc.scripts.find_unused_versions:cmdline
+    - check-buildout-updates=bvc.scripts.check_buildout_updates:cmdline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - futures
+    - packaging
+
+  run:
+    - python
+    - six
+    - futures
+    - packaging
+
+test:
+  # Python imports
+  imports:
+    - bvc
+    - bvc.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - indent-buildout --help
+    - find-unused-versions --help
+    - check-buildout-updates --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Fantomas42/buildout-versions-checker
+  license: BSD License
+  summary: 'Checks egg updates in your Buildout configurations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

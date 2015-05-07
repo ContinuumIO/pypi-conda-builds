@@ -1,0 +1,84 @@
+package:
+  name: bag
+  version: "0.6.0"
+
+source:
+  fn: bag-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bag/bag-0.6.0.tar.gz
+  md5: 38b40f10d55beae1273c771d2a4e6b82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bag = bag:main
+    #
+    # Would create an entry point called bag that calls bag.main()
+
+    - po2json=bag.web.transecma:po2json_command
+    - reorder_po=bag.reorder_po:command
+    - check_rst=bag.check_rst:command
+    - delete_old_branches=bag.git.delete_old_branches:command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nine >=0.3.4
+    - polib
+    - argh
+    - pathlib
+
+  run:
+    - python
+    - setuptools
+    - nine >=0.3.4
+    - polib
+    - argh
+    - pathlib
+
+test:
+  # Python imports
+  imports:
+    - bag
+    - bag.git
+    - bag.sqlalchemy
+    - bag.tests
+    - bag.web
+    - bag.web.pyramid
+    - bag.web.pyramid.apps
+    - bag.web.pyramid.apps.contact
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - po2json --help
+    - reorder_po --help
+    - check_rst --help
+    - delete_old_branches --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nandoflorestan/bag
+  license: MIT License
+  summary: 'A library for several purposes, including javascript i18n and stuff for the Pyramid web framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

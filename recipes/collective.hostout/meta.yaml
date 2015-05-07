@@ -1,0 +1,74 @@
+package:
+  name: collective.hostout
+  version: "1.0a5"
+
+source:
+  fn: collective.hostout-1.0a5.zip
+  url: https://pypi.python.org/packages/source/c/collective.hostout/collective.hostout-1.0a5.zip
+  md5: ca90aa0e7ab011caf182ceaa9b47b584
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.hostout = collective.hostout:main
+    #
+    # Would create an entry point called collective.hostout that calls collective.hostout.main()
+
+    - hostout = collective.hostout.hostout:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+    - setuptools
+    - fabric
+    - paramiko
+
+  run:
+    - python
+    - setuptools
+    - zc.recipe.egg
+    - setuptools
+    - fabric
+    - paramiko
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.hostout
+    - collective.hostout.datafs
+    - collective.hostout.mrdeveloper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hostout --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/collective.hostout
+  license: GPL
+  summary: 'standardized deployment of zc.buildout based applications with Fabric'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

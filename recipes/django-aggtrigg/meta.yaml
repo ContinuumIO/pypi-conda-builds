@@ -1,0 +1,71 @@
+package:
+  name: django-aggtrigg
+  version: "0.7.1"
+
+source:
+  fn: django-aggtrigg-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-aggtrigg/django-aggtrigg-0.7.1.tar.gz
+  md5: 0821b45921b4e08c9ace8b6d5ef2315a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-aggtrigg = django-aggtrigg:main
+    #
+    # Would create an entry point called django-aggtrigg that calls django-aggtrigg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django <1.7
+    - setuptools
+    - psycopg2
+    - jinja2
+    - six
+    - django-qmixin
+
+  run:
+    - python
+    - django <1.7
+    - setuptools
+    - psycopg2
+    - jinja2
+    - six
+    - django-qmixin
+
+test:
+  # Python imports
+  imports:
+    - django_aggtrigg
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://django-aggtrigg.readthedocs.org/
+  license: BSD License
+  summary: 'Django complementary index definition and management.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

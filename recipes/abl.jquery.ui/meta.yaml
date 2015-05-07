@@ -1,0 +1,77 @@
+package:
+  name: abl.jquery.ui
+  version: "1.8.7-3"
+
+source:
+  fn: abl.jquery.ui-1.8.7-3.tar.gz
+  url: https://pypi.python.org/packages/source/a/abl.jquery.ui/abl.jquery.ui-1.8.7-3.tar.gz
+  md5: 2694d8490fe6fadb38e7754b5d37ea6e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - abl.jquery.ui = abl.jquery.ui:main
+    #
+    # Would create an entry point called abl.jquery.ui that calls abl.jquery.ui.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - abl.util >=0.1
+    - abl.jquery >=1.4
+    - abl.jquery.plugins.form >=2.28
+
+  run:
+    - python
+    - setuptools
+    - abl.util >=0.1
+    - abl.jquery >=1.4
+    - abl.jquery.plugins.form >=2.28
+
+test:
+  # Python imports
+  imports:
+    - abl
+    - abl.jquery
+    - abl.jquery.examples
+    - abl.jquery.examples.autocomplete
+    - abl.jquery.examples.autocomplete.templates
+    - abl.jquery.examples.dialog
+    - abl.jquery.examples.dialog.templates
+    - abl.jquery.examples.tabs
+    - abl.jquery.examples.tabs.templates
+    - abl.jquery.ui
+    - abl.jquery.ui.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/deets/abljqueryui
+  license: MIT
+  summary: 'UI-Extensions for jQuery'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

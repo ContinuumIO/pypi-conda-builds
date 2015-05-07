@@ -1,0 +1,74 @@
+package:
+  name: auslfe.formonline.tokenaccess
+  version: "0.3.1"
+
+source:
+  fn: auslfe.formonline.tokenaccess-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/auslfe.formonline.tokenaccess/auslfe.formonline.tokenaccess-0.3.1.tar.gz
+  md5: 51790ae937b40ae4cebcd67178f88501
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - auslfe.formonline.tokenaccess = auslfe.formonline.tokenaccess:main
+    #
+    # Would create an entry point called auslfe.formonline.tokenaccess that calls auslfe.formonline.tokenaccess.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - auslfe.formonline.pfgadapter >=0.4.1
+    - auslfe.formonline.content >=0.4.0
+    - collective.powertoken.workflow >=0.2.0
+    - collective.powertoken.view
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - auslfe.formonline.pfgadapter >=0.4.1
+    - auslfe.formonline.content >=0.4.0
+    - collective.powertoken.workflow >=0.2.0
+    - collective.powertoken.view
+
+test:
+  # Python imports
+  imports:
+    - auslfe
+    - auslfe.formonline
+    - auslfe.formonline.tokenaccess
+    - auslfe.formonline.tokenaccess.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/auslfe.formonline.pfgadapter
+  license: GPL
+  summary: 'Plone add-on that enable anonymous use (with secret token) of auslfe.formonline features'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

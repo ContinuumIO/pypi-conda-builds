@@ -1,0 +1,69 @@
+package:
+  name: archivedb
+  version: "0.2.3"
+
+source:
+  fn: archivedb-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/archivedb/archivedb-0.2.3.tar.gz
+  md5: 7ff84e94707d5836dccfec34057dd8e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archivedb = archivedb:main
+    #
+    # Would create an entry point called archivedb that calls archivedb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymysql >=0.5
+    - simplejson
+    - pyinotify
+    - progressbar
+
+  run:
+    - python
+    - pymysql >=0.5
+    - simplejson
+    - pyinotify
+    - progressbar
+
+test:
+  # Python imports
+  imports:
+    - archivedb
+    - archivedb.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cjlucas/archivedb
+  license: MIT License
+  summary: 'A utility that maintains a checksum database of your media archive'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

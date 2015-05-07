@@ -1,0 +1,81 @@
+package:
+  name: airtest
+  version: "0.9.18"
+
+source:
+  fn: airtest-0.9.18.tar.gz
+  url: https://pypi.python.org/packages/source/a/airtest/airtest-0.9.18.tar.gz
+  md5: cdf934bf006eace75af124c69d591e33
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - airtest = airtest:main
+    #
+    # Would create an entry point called airtest that calls airtest.main()
+
+    - air.test=airtest.console:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=3.3
+    - fuckit >=4.8.0
+    - humanize >=0.5
+    - pystache >=0.5.4
+    - aircv >=1.02
+    - flask >=0.10.1
+
+  run:
+    - python
+    - setuptools
+    - click >=3.3
+    - fuckit >=4.8.0
+    - humanize >=0.5
+    - pystache >=0.5.4
+    - aircv >=1.02
+    - flask >=0.10.1
+
+test:
+  # Python imports
+  imports:
+    - airtest
+    - airtest.androaxml
+    - airtest.device
+    - airtest.device.adb
+    - airtest.image
+    - airtest.webgui
+    - airtest.webgui.routers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - air.test --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'mobile test(black air) python lib'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

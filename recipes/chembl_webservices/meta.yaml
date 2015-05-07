@@ -1,0 +1,86 @@
+package:
+  name: chembl_webservices
+  version: "2.1.9"
+
+source:
+  fn: chembl_webservices-2.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/c/chembl_webservices/chembl_webservices-2.1.9.tar.gz
+  md5: 6f34ec80df0885db07fe8cb7d1136673
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chembl_webservices = chembl_webservices:main
+    #
+    # Would create an entry point called chembl_webservices that calls chembl_webservices.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - pyyaml >=3.10
+    - defusedxml >=0.4.1
+    - simplejson ==2.3.2
+    - pillow >=2.1.0
+    - django-tastypie ==0.10
+    - chembl_core_model >=0.6.0
+    - cairocffi >=0.5.1
+    - numpy >=1.7.1
+    - mimeparse
+    - raven >=3.5.0
+    - chembl_beaker >=0.5.34
+
+  run:
+    - python
+    - lxml
+    - pyyaml >=3.10
+    - defusedxml >=0.4.1
+    - simplejson ==2.3.2
+    - pillow >=2.1.0
+    - django-tastypie ==0.10
+    - chembl_core_model >=0.6.0
+    - cairocffi >=0.5.1
+    - numpy >=1.7.1
+    - mimeparse
+    - raven >=3.5.0
+    - chembl_beaker >=0.5.34
+
+test:
+  # Python imports
+  imports:
+    - chembl_webservices
+    - chembl_webservices.core
+    - chembl_webservices.resources
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.ebi.ac.uk/chembldb/index.php/ws
+  license: Apache Software License
+  summary: 'Python package providing chembl webservices API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: c3po
+  version: "0.3.0"
+
+source:
+  fn: C3PO-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/C/C3PO/C3PO-0.3.0.tar.gz
+  md5: c067b546bf65661278b6dfd679fbf3ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - c3po = c3po:main
+    #
+    # Would create an entry point called c3po that calls c3po.main()
+
+    - c3po = c3po.c3po_cmd:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gdata ==2.0.18
+    - polib ==1.0.3
+    - odslib ==1.0.1
+
+  run:
+    - python
+    - gdata ==2.0.18
+    - polib ==1.0.3
+    - odslib ==1.0.1
+
+test:
+  # Python imports
+  imports:
+    - c3po
+    - c3po.conf
+    - c3po.converters
+    - c3po.mod
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - c3po --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/VorskiImagineering/C3PO
+  license: MIT
+  summary: 'C3PO is Python module responsible for converting all .po files from locale directory into one .ods\nfile and sending it to the Google Docs (spreadsheet link provided by user), so users with access to that spreadsheet\ncan translate expression included there.\n\nThis module provides Communicator which deals with uploading, downloading these translations and synchronizing whole\ncontent by merging it. Package contains basic methods for converting po files into csv, ods formats and back. It also\nprovides methods for git push and git checkout po files into repository.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

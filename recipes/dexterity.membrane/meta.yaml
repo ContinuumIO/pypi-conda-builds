@@ -1,0 +1,79 @@
+package:
+  name: dexterity.membrane
+  version: "1.1.0b2"
+
+source:
+  fn: dexterity.membrane-1.1.0b2.zip
+  url: https://pypi.python.org/packages/source/d/dexterity.membrane/dexterity.membrane-1.1.0b2.zip
+  md5: 3c8b9eb6974167290bdc9bba85f7c68e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dexterity.membrane = dexterity.membrane:main
+    #
+    # Would create an entry point called dexterity.membrane that calls dexterity.membrane.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.cmfplone >=4.2
+    - products.membrane >=2.0.2
+    - collective.indexing
+    - plone.app.dexterity
+    - plone.app.referenceablebehavior
+    - setuptools
+    - zope.deprecation
+
+  run:
+    - python
+    - setuptools
+    - products.cmfplone >=4.2
+    - products.membrane >=2.0.2
+    - collective.indexing
+    - plone.app.dexterity
+    - plone.app.referenceablebehavior
+    - setuptools
+    - zope.deprecation
+
+test:
+  # Python imports
+  imports:
+    - dexterity
+    - dexterity.membrane
+    - dexterity.membrane.behavior
+    - dexterity.membrane.content
+    - dexterity.membrane.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/dexterity.membrane
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Dexterity content and behaviors to integrate with membrane.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

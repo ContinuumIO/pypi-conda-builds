@@ -1,0 +1,68 @@
+package:
+  name: bangtext
+  version: "0.2.4"
+
+source:
+  fn: bangtext-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/bangtext/bangtext-0.2.4.tar.gz
+  md5: 87d15a8a8e5bfbbc753e1f6c7c4c3956
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bangtext = bangtext:main
+    #
+    # Would create an entry point called bangtext that calls bangtext.main()
+
+    - bang = bang:console
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - markdown
+
+  run:
+    - python
+    - jinja2
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - bang
+    - bang.plugins
+    - bangtext
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bang --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jaymon/bang
+  license: MIT License
+  summary: 'A static site generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

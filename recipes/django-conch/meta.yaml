@@ -1,0 +1,64 @@
+package:
+  name: django-conch
+  version: "0.0.1"
+
+source:
+  fn: django-conch-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-conch/django-conch-0.0.1.tar.gz
+  md5: b847229d2977264788120934e3f67f5c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-conch = django-conch:main
+    #
+    # Would create an entry point called django-conch that calls django-conch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=12.3.0
+
+  run:
+    - python
+    - twisted >=12.3.0
+
+test:
+  # Python imports
+  imports:
+    - django_conch
+    - django_conch.management
+    - django_conch.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zacharyvoase/django-conch
+  license: UNKNOWN
+  summary: 'Expose the Django shell as an SSH server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: codrspace_cli
+  version: "0.3"
+
+source:
+  fn: codrspace_cli-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/codrspace_cli/codrspace_cli-0.3.tar.gz
+  md5: 274e00233353307acae14cc285ea3820
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codrspace_cli = codrspace_cli:main
+    #
+    # Would create an entry point called codrspace_cli that calls codrspace_cli.main()
+
+    - codrspace_import = create:main
+    - codrspace_export = export:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - requests >=0.14.2
+    - click >=3.1
+
+  run:
+    - python
+    - requests >=0.14.2
+    - click >=3.1
+
+test:
+  # Python imports
+  imports:
+    - codrspace_cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - codrspace_import --help
+    - codrspace_export --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/durden/codrspace_cli
+  license: UNKNOWN
+  summary: 'Create/update/export posts on codrspace.com via command-line'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: archivekit
+  version: "0.5.3"
+
+source:
+  fn: archivekit-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/archivekit/archivekit-0.5.3.tar.gz
+  md5: 94d1f0db02517df88c2afef1cf2f4d22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archivekit = archivekit:main
+    #
+    # Would create an entry point called archivekit that calls archivekit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - werkzeug >=0.9.6
+    - lockfile >=0.9.1
+    - python-slugify >=0.0.6
+    - requests >=2.2.0
+    - boto >=2.33
+    - six
+
+  run:
+    - python
+    - setuptools
+    - werkzeug >=0.9.6
+    - lockfile >=0.9.1
+    - python-slugify >=0.0.6
+    - requests >=2.2.0
+    - boto >=2.33
+    - six
+
+test:
+  # Python imports
+  imports:
+    - archivekit
+    - archivekit.store
+    - archivekit.types
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pudo.org
+  license: MIT
+  summary: 'Store a set of files and metadata in an organized way'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

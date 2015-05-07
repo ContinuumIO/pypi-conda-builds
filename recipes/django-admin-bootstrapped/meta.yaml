@@ -1,0 +1,65 @@
+package:
+  name: django-admin-bootstrapped
+  version: "2.5.0"
+
+source:
+  fn: django-admin-bootstrapped-2.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-bootstrapped/django-admin-bootstrapped-2.5.0.tar.gz
+  md5: 772d94c07e48dfc4e6cdb84905b425ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-bootstrapped = django-admin-bootstrapped:main
+    #
+    # Would create an entry point called django-admin-bootstrapped that calls django-admin-bootstrapped.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.8
+
+  run:
+    - python
+    - setuptools
+    - django >=1.8
+
+test:
+  # Python imports
+  imports:
+    - django_admin_bootstrapped
+    - django_admin_bootstrapped.admin
+    - django_admin_bootstrapped.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/django-admin-bootstrapped/django-admin-bootstrapped
+  license: BSD License
+  summary: 'A Bootstrap theme for Django Admin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

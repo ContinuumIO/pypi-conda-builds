@@ -1,0 +1,72 @@
+package:
+  name: collective.contentrules.subscription
+  version: "0.1.0"
+
+source:
+  fn: collective.contentrules.subscription-0.1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.contentrules.subscription/collective.contentrules.subscription-0.1.0.zip
+  md5: 9bd630374d1e046b805bbfd778492738
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.contentrules.subscription = collective.contentrules.subscription:main
+    #
+    # Would create an entry point called collective.contentrules.subscription that calls collective.contentrules.subscription.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.contentrules
+    - collective.z3cform.norobots
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.contentrules
+    - collective.z3cform.norobots
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.contentrules
+    - collective.contentrules.subscription
+    - collective.contentrules.subscription.actions
+    - collective.contentrules.subscription.browser
+    - collective.contentrules.subscription.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.contentrules.subscription
+  license: GNU General Public License (GPL)
+  summary: 'A Plone content rule for send e-mail to addresses taken from a subscription list'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

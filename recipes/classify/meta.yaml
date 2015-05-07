@@ -1,0 +1,66 @@
+package:
+  name: classify
+  version: "0.5.0"
+
+source:
+  fn: classify-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/classify/classify-0.5.0.tar.gz
+  md5: a098861fa8992a199707bbf254799ee8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - classify = classify:main
+    #
+    # Would create an entry point called classify that calls classify.main()
+
+    - classify=classify.main:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.7
+
+  run:
+    - python
+    - jinja2 >=2.7
+
+test:
+  # Python imports
+  imports:
+    - classify
+    - classify.contrib
+    - classify.contrib.django
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - classify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ghickman/classify
+  license: MIT License
+  summary: 'Generate concrete Class documentation for Python Classes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: ahc
+  version: "1.5.0"
+
+source:
+  fn: ahc-1.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/ahc/ahc-1.5.0.tar.gz
+  md5: db65fb37f47036e7a99d9f1174fda262
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ahc = ahc:main
+    #
+    # Would create an entry point called ahc that calls ahc.main()
+
+    - ahc = ahc.ahc:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-python
+    - django
+    - flup
+    - pycurl
+    - grab
+    - paramiko
+    - xmpppy
+    - virtualenv
+
+  run:
+    - python
+    - setuptools
+    - mysql-python
+    - django
+    - flup
+    - pycurl
+    - grab
+    - paramiko
+    - xmpppy
+    - virtualenv
+
+test:
+  # Python imports
+  imports:
+    - ahc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ahc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/gotlium/ahc
+  license: GNU General Public License (GPL)
+  summary: 'Package with extensions for Developers on Python(+Django), Ruby(+RoR) and PHP.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

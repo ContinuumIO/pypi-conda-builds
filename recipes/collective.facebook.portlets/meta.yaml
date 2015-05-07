@@ -1,0 +1,73 @@
+package:
+  name: collective.facebook.portlets
+  version: "1.0b2"
+
+source:
+  fn: collective.facebook.portlets-1.0b2.zip
+  url: https://pypi.python.org/packages/source/c/collective.facebook.portlets/collective.facebook.portlets-1.0b2.zip
+  md5: 16c5af0d7dfe946b49b88915cedd2ace
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.facebook.portlets = collective.facebook.portlets:main
+    #
+    # Would create an entry point called collective.facebook.portlets that calls collective.facebook.portlets.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.facebook.accounts
+    - collective.prettydate >=1.1
+    - five.grok >=1.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.facebook.accounts
+    - collective.prettydate >=1.1
+    - five.grok >=1.2
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.facebook
+    - collective.facebook.portlets
+    - collective.facebook.portlets.Extensions
+    - collective.facebook.portlets.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.facebook.portlets
+  license: GNU General Public License (GPL)
+  summary: 'This package implements some Facebook Social Plugins as portlets for your Plone site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: contextminer
+  version: "0.1.2"
+
+source:
+  fn: contextminer-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/contextminer/contextminer-0.1.2.tar.gz
+  md5: 248d755b1ef5131abf938db40b801059
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - contextminer = contextminer:main
+    #
+    # Would create an entry point called contextminer that calls contextminer.main()
+
+    - cminit = contextminer.control:init
+    - cmstart = contextminer.control:start
+    - cmstop = contextminer.control:stop
+    - cmweb = contextminer.app:main
+    - cmminer = contextminer.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - pymongo
+    - beautifulsoup4
+    - gevent
+    - supervisor
+
+  run:
+    - python
+    - flask
+    - pymongo
+    - beautifulsoup4
+    - gevent
+    - supervisor
+
+test:
+  # Python imports
+  imports:
+    - contextminer
+    - contextminer.sources
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cminit --help
+    - cmstart --help
+    - cmstop --help
+    - cmweb --help
+    - cmminer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: 'A framework for collecting and analyzing data from social media sources'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

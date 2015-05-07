@@ -1,0 +1,81 @@
+package:
+  name: ax_metrics
+  version: "0.9.2"
+
+source:
+  fn: Ax_Metrics-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/A/Ax_Metrics/Ax_Metrics-0.9.2.tar.gz
+  md5: 65d57302070f71d1f0e31fecd23479b8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ax_metrics = ax_metrics:main
+    #
+    # Would create an entry point called ax_metrics that calls ax_metrics.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.11
+    - requests >=2.4.3
+
+  run:
+    - python
+    - pyyaml >=3.11
+    - requests >=2.4.3
+
+test:
+  # Python imports
+  imports:
+    - ax_metrics
+    - axonchisel
+    - axonchisel.metrics
+    - axonchisel.metrics.foundation
+    - axonchisel.metrics.foundation.ax
+    - axonchisel.metrics.foundation.chrono
+    - axonchisel.metrics.foundation.data
+    - axonchisel.metrics.foundation.metricdef
+    - axonchisel.metrics.foundation.query
+    - axonchisel.metrics.io
+    - axonchisel.metrics.io.emfetch
+    - axonchisel.metrics.io.emfetch.plugins
+    - axonchisel.metrics.io.erout
+    - axonchisel.metrics.io.erout.plugins
+    - axonchisel.metrics.io.erout.plugins.ero_geckoboard
+    - axonchisel.metrics.run
+    - axonchisel.metrics.run.mqengine
+    - axonchisel.metrics.run.servant
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/axonchisel/ax_metrics
+  license: MIT License
+  summary: '"BI Glue" Business Intelligence middleware library for aggregation of metrics/KPI from any source and custom reporting for humans or other APIs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

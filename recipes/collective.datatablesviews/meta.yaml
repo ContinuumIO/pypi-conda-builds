@@ -1,0 +1,78 @@
+package:
+  name: collective.datatablesviews
+  version: "1.1"
+
+source:
+  fn: collective.datatablesviews-1.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.datatablesviews/collective.datatablesviews-1.1.zip
+  md5: 5d2a11615f86d0eb3715971f6ad5861c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.datatablesviews = collective.datatablesviews:main
+    #
+    # Would create an entry point called collective.datatablesviews that calls collective.datatablesviews.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - plone
+    - plone.app.upgrade
+    - collective.js.jqueryui
+    - collective.js.datatables
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - plone
+    - plone.app.upgrade
+    - collective.js.jqueryui
+    - collective.js.datatables
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.datatablesviews
+    - collective.datatablesviews.Extensions
+    - collective.datatablesviews.browser
+    - collective.datatablesviews.tests
+    - collective.datatablesviews.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.datatablesviews
+  license: GPL
+  summary: 'various datatables views for plone content types (collections atm)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

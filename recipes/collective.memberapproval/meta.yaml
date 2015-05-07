@@ -1,0 +1,70 @@
+package:
+  name: collective.memberapproval
+  version: "1.0"
+
+source:
+  fn: collective.memberapproval-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.memberapproval/collective.memberapproval-1.0.zip
+  md5: 1f6943ad628f5746612d951194526061
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.memberapproval = collective.memberapproval:main
+    #
+    # Would create an entry point called collective.memberapproval that calls collective.memberapproval.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfcore
+    - pas.plugins.memberapproval
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfcore
+    - pas.plugins.memberapproval
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.memberapproval
+    - collective.memberapproval.browser
+    - collective.memberapproval.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: GPL
+  summary: 'Member approval for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: collective.pdfpeek
+  version: "2.0.0"
+
+source:
+  fn: collective.pdfpeek-2.0.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.pdfpeek/collective.pdfpeek-2.0.0.zip
+  md5: f57ad997f8a5d655e7f771edd173db26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.pdfpeek = collective.pdfpeek:main
+    #
+    # Would create an entry point called collective.pdfpeek that calls collective.pdfpeek.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pypdf2
+    - plone.app.registry
+    - plone.browserlayer
+    - plone.rfc822
+    - pillow
+    - plone.api
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pypdf2
+    - plone.app.registry
+    - plone.browserlayer
+    - plone.rfc822
+    - pillow
+    - plone.api
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.pdfpeek
+    - collective.pdfpeek.at
+    - collective.pdfpeek.browser
+    - collective.pdfpeek.dx
+    - collective.pdfpeek.tests
+    - collective.pdfpeek.zamqp
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.pdfpeek
+  license: GPL
+  summary: 'A Plone 4 product that generates image thumbnail previews of PDF files stored on ATFile based objects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

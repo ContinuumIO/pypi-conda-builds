@@ -1,0 +1,74 @@
+package:
+  name: comboloader
+  version: "0.1.1"
+
+source:
+  fn: comboloader-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/comboloader/comboloader-0.1.1.tar.gz
+  md5: 7b2799814d78e22b02e3b65a7b936bac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - comboloader = comboloader:main
+    #
+    # Would create an entry point called comboloader that calls comboloader.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob >=0.9.8
+    - nose >=0.11
+    - httplib2 >=0.5.0
+    - pastescript >=1.7
+    - beaker >=1.5.4
+    - routes >=1.12.3
+
+  run:
+    - python
+    - setuptools
+    - webob >=0.9.8
+    - nose >=0.11
+    - httplib2 >=0.5.0
+    - pastescript >=1.7
+    - beaker >=1.5.4
+    - routes >=1.12.3
+
+test:
+  # Python imports
+  imports:
+    - comboloader
+    - comboloader.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.surveymonkey.com
+  license: GPL
+  summary: 'WSGI App for combining JS and CSS files and returning a single request.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

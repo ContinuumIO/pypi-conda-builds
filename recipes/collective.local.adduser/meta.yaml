@@ -1,0 +1,70 @@
+package:
+  name: collective.local.adduser
+  version: "1.5"
+
+source:
+  fn: collective.local.adduser-1.5.zip
+  url: https://pypi.python.org/packages/source/c/collective.local.adduser/collective.local.adduser-1.5.zip
+  md5: 0bf02d24328a57f9654471a24c5a20a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.local.adduser = collective.local.adduser:main
+    #
+    # Would create an entry point called collective.local.adduser that calls collective.local.adduser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.users >1.0.6
+    - plone.app.workflow >=2.0.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.users >1.0.6
+    - plone.app.workflow >=2.0.2
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.local
+    - collective.local.adduser
+    - collective.local.adduser.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.local.adduser
+  license: GPL
+  summary: 'Allows to create a user and assign roles directly from the sharing tab. By Ecreall'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

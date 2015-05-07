@@ -1,0 +1,73 @@
+package:
+  name: django_couchdb_utils
+  version: "0.5"
+
+source:
+  fn: django_couchdb_utils-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_couchdb_utils/django_couchdb_utils-0.5.tar.gz
+  md5: 360325ba1c249dcafafbc72460f66374
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_couchdb_utils = django_couchdb_utils:main
+    #
+    # Would create an entry point called django_couchdb_utils that calls django_couchdb_utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_couchdb_utils
+    - django_couchdb_utils.auth
+    - django_couchdb_utils.cache
+    - django_couchdb_utils.email
+    - django_couchdb_utils.openid_consumer
+    - django_couchdb_utils.registration
+    - django_couchdb_utils.registration.backends
+    - django_couchdb_utils.registration.backends.default
+    - django_couchdb_utils.registration.backends.simple
+    - django_couchdb_utils.registration.management
+    - django_couchdb_utils.registration.management.commands
+    - django_couchdb_utils.sessions
+    - django_couchdb_utils.sessions.management
+    - django_couchdb_utils.sessions.management.commands
+    - django_couchdb_utils.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stefankoegl/django-couchdb-utils
+  license: Modified BSD License
+  summary: " django-couchdb-utils provide implementations for various Django backend\n(auth, sessions, cache, etc) that use CouchDB (through couchdbkit) instead of\nthe relational databases supported by Django's ORM. "
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

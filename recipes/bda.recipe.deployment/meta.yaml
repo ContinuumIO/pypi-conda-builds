@@ -1,0 +1,75 @@
+package:
+  name: bda.recipe.deployment
+  version: "2.0b8"
+
+source:
+  fn: bda.recipe.deployment-2.0b8.tar.gz
+  url: https://pypi.python.org/packages/source/b/bda.recipe.deployment/bda.recipe.deployment-2.0b8.tar.gz
+  md5: 7ee399aa26fbfbef0f597413013355fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bda.recipe.deployment = bda.recipe.deployment:main
+    #
+    # Would create an entry point called bda.recipe.deployment that calls bda.recipe.deployment.main()
+
+    - deploy=bda.recipe.deployment.main:deploy
+    - bda_deployment_helper=bda.recipe.deployment.main:deploy_single
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.component
+    - zope.configuration
+    - mr.developer >=1.28
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.component
+    - zope.configuration
+    - mr.developer >=1.28
+
+test:
+  # Python imports
+  imports:
+    - bda
+    - bda.recipe
+    - bda.recipe.deployment
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - deploy --help
+    - bda_deployment_helper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/bda.recipe.deployment
+  license: GNU General Public License (GPL)
+  summary: 'python deployment process based on buildout and mr.developer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

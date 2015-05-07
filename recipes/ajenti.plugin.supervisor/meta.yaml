@@ -1,0 +1,72 @@
+package:
+  name: ajenti.plugin.supervisor
+  version: "0.8"
+
+source:
+  fn: ajenti.plugin.supervisor-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/a/ajenti.plugin.supervisor/ajenti.plugin.supervisor-0.8.tar.gz
+  md5: cd786d73aff2e6e09cb2b7ec0c0b4454
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ajenti.plugin.supervisor = ajenti.plugin.supervisor:main
+    #
+    # Would create an entry point called ajenti.plugin.supervisor that calls ajenti.plugin.supervisor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aj
+    - ajenti.plugin.core
+    - ajenti.plugin.augeas
+    - ajenti.plugin.services
+    - ajenti.plugin.passwd
+    - pytz
+
+  run:
+    - python
+    - aj
+    - ajenti.plugin.core
+    - ajenti.plugin.augeas
+    - ajenti.plugin.services
+    - ajenti.plugin.passwd
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - ajenti_plugin_supervisor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ajenti.org
+  license: UNKNOWN
+  summary: 'Supervisor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

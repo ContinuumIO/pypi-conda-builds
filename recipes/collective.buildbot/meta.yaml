@@ -1,0 +1,80 @@
+package:
+  name: collective.buildbot
+  version: "0.4.1"
+
+source:
+  fn: collective.buildbot-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.buildbot/collective.buildbot-0.4.1.tar.gz
+  md5: f495c143b035e4c0ced40d6d2214a9ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.buildbot = collective.buildbot:main
+    #
+    # Would create an entry point called collective.buildbot that calls collective.buildbot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - virtualenv
+    - zope.interface
+    - twisted
+    - buildbot
+    - pastescript
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - virtualenv
+    - zope.interface
+    - twisted
+    - buildbot
+    - pastescript
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.buildbot
+    - collective.buildbot.templates
+    - collective.buildbot.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.buildbot
+  license: Zope Public License
+  summary: 'A set of zc.buildout recipes and support for declarative configuration for Buildbot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

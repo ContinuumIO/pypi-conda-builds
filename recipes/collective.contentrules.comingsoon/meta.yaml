@@ -1,0 +1,80 @@
+package:
+  name: collective.contentrules.comingsoon
+  version: "1.2"
+
+source:
+  fn: collective.contentrules.comingsoon-1.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.contentrules.comingsoon/collective.contentrules.comingsoon-1.2.zip
+  md5: 7ab38e946eb53707cc5507091d3603d2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.contentrules.comingsoon = collective.contentrules.comingsoon:main
+    #
+    # Would create an entry point called collective.contentrules.comingsoon that calls collective.contentrules.comingsoon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.z3cform.datagridfield
+    - ecreall.helpers.upgrade
+    - five.grok
+    - plone.api
+    - plone.app.contentrules
+    - plone.app.registry
+    - plone.app.vocabularies
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.z3cform.datagridfield
+    - ecreall.helpers.upgrade
+    - five.grok
+    - plone.api
+    - plone.app.contentrules
+    - plone.app.registry
+    - plone.app.vocabularies
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.contentrules
+    - collective.contentrules.comingsoon
+    - collective.contentrules.comingsoon.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.contentrules.comingsoon
+  license: GPL
+  summary: 'A rule type which is handled when an event, or any content having a start date, will begin tomorrow, or within any delay.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

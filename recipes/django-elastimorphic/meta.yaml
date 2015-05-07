@@ -1,0 +1,74 @@
+package:
+  name: django-elastimorphic
+  version: "0.2.0"
+
+source:
+  fn: django-elastimorphic-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-elastimorphic/django-elastimorphic-0.2.0.tar.gz
+  md5: 2d1d9cc8e5a01cfc3c5214b4a15d8457
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-elastimorphic = django-elastimorphic:main
+    #
+    # Would create an entry point called django-elastimorphic that calls django-elastimorphic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - django_polymorphic ==0.6
+    - elasticutils ==0.9.1
+
+  run:
+    - python
+    - django >=1.5
+    - django_polymorphic ==0.6
+    - elasticutils ==0.9.1
+
+test:
+  # Python imports
+  imports:
+    - elastimorphic
+    - elastimorphic/conf
+    - elastimorphic/management
+    - elastimorphic/management/commands
+    - elastimorphic/mappings
+    - elastimorphic/tests
+    - elastimorphic/tests/drf
+    - elastimorphic/tests/testapp
+    - elastimorphic/tests/testdeclarative
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/theonion/django-elastimorphic
+  license: MIT
+  summary: 'A marriage of django-polymorphic and elasticutils.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

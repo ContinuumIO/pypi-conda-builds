@@ -1,0 +1,63 @@
+package:
+  name: celery-with-beanstalk
+  version: "3.0"
+
+source:
+  fn: celery-with-beanstalk-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery-with-beanstalk/celery-with-beanstalk-3.0.tar.gz
+  md5: 378c239520f0fea6c10dc644cecd8ff6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery-with-beanstalk = celery-with-beanstalk:main
+    #
+    # Would create an entry point called celery-with-beanstalk that calls celery-with-beanstalk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.0,<4.0
+    - beanstalkc
+
+  run:
+    - python
+    - celery >=3.0,<4.0
+    - beanstalkc
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://celeryproject.org
+  license: BSD
+  summary: 'Bundle installing the dependencies for Celery and Beanstalk'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

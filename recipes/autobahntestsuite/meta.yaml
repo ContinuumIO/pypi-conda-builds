@@ -1,0 +1,79 @@
+package:
+  name: autobahntestsuite
+  version: "0.7.1"
+
+source:
+  fn: autobahntestsuite-0.7.1.zip
+  url: https://pypi.python.org/packages/source/a/autobahntestsuite/autobahntestsuite-0.7.1.zip
+  md5: 2cbce3577a0bb2216ba3e966d9aa8c7b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autobahntestsuite = autobahntestsuite:main
+    #
+    # Would create an entry point called autobahntestsuite that calls autobahntestsuite.main()
+
+    - wstest = autobahntestsuite.wstest:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - autobahn[twisted,accelerate] >=0.9.2
+    - jinja2 >=2.6
+    - markupsafe >=0.19
+    - werkzeug >=0.9.4
+    - klein >=0.2.1
+    - pyopenssl >=0.14
+    - service_identity >=14.0.0
+
+  run:
+    - python
+    - setuptools
+    - autobahn[twisted,accelerate] >=0.9.2
+    - jinja2 >=2.6
+    - markupsafe >=0.19
+    - werkzeug >=0.9.4
+    - klein >=0.2.1
+    - pyopenssl >=0.14
+    - service_identity >=14.0.0
+
+test:
+  # Python imports
+  imports:
+    - autobahntestsuite
+    - autobahntestsuite.case
+    - autobahntestsuite.wampcase
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - wstest --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://autobahn.ws/testsuite
+  license: Apache Software License
+  summary: 'AutobahnTestSuite - WebSocket/WAMP protocol implementation test suite.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: django-config-gen
+  version: "1.0.8"
+
+source:
+  fn: django-config-gen-1.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-config-gen/django-config-gen-1.0.8.tar.gz
+  md5: 5e5630c2b4cb9288627969a1aeba7fe6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-config-gen = django-config-gen:main
+    #
+    # Would create an entry point called django-config-gen that calls django-config-gen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+
+  run:
+    - python
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - django_config_gen
+    - django_config_gen_test_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://seanhayes.name/
+  license: BSD License
+  summary: 'Generates configuration files for Apache, Nginx, etc. using values in settings.py and the Django template system. You can write your own templates for whatever text based config file you need.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

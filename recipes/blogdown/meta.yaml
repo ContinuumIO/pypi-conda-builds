@@ -1,0 +1,77 @@
+package:
+  name: blogdown
+  version: "1.1.4"
+
+source:
+  fn: blogdown-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/blogdown/blogdown-1.1.4.tar.gz
+  md5: 2afee533a17148a46cccb5a713a3b0b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blogdown = blogdown:main
+    #
+    # Would create an entry point called blogdown that calls blogdown.main()
+
+    - run-blogdown = blogdown.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - babel
+    - blinker
+    - markdown
+    - jinja2 >=2.4
+    - werkzeug
+    - docutils
+
+  run:
+    - python
+    - pyyaml
+    - babel
+    - blinker
+    - markdown
+    - jinja2 >=2.4
+    - werkzeug
+    - docutils
+
+test:
+  # Python imports
+  imports:
+    - blogdown
+    - blogdown.modules
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - run-blogdown --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brantyoung/blogdown/
+  license: BSD License
+  summary: 'a simple static blog generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

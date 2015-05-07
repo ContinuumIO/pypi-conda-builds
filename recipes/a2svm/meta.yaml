@@ -1,0 +1,66 @@
+package:
+  name: a2svm
+  version: "0.0.4"
+
+source:
+  fn: a2svm-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/a2svm/a2svm-0.0.4.tar.gz
+  md5: 186790f0fc475cec28b72c48729b7a6c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - a2svm = a2svm:main
+    #
+    # Would create an entry point called a2svm that calls a2svm.main()
+
+    - a2svm = a2svm.a2svm:launcher
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs
+    - argparse
+
+  run:
+    - python
+    - appdirs
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - a2svm
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - a2svm --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cypx/a2svm
+  license: GPL
+  summary: 'Simple CLI tool to create and delete easily virtual hosts in Apache.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

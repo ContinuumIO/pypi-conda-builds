@@ -1,0 +1,64 @@
+package:
+  name: autoant
+  version: "0.4.0"
+
+source:
+  fn: autoant-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/autoant/autoant-0.4.0.tar.gz
+  md5: e20587a8e12c67bb389f8a5dd993221c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autoant = autoant:main
+    #
+    # Would create an entry point called autoant that calls autoant.main()
+
+    - autoant_console = autoant.console:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - itsdangerous >=0.20
+
+  run:
+    - python
+    - itsdangerous >=0.20
+
+test:
+  # Python imports
+  imports:
+    - autoant
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - autoant_console --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dpgaspar/autoant/
+  license: BSD License
+  summary: 'File processing automation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

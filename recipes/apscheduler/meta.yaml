@@ -1,0 +1,76 @@
+package:
+  name: apscheduler
+  version: "3.0.3"
+
+source:
+  fn: APScheduler-3.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/A/APScheduler/APScheduler-3.0.3.tar.gz
+  md5: 0f2fcffdf7504a29664f114ea09c33ac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apscheduler = apscheduler:main
+    #
+    # Would create an entry point called apscheduler that calls apscheduler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.7
+    - six >=1.4.0
+    - pytz
+    - tzlocal
+    - futures
+
+  run:
+    - python
+    - setuptools
+    - setuptools >=0.7
+    - six >=1.4.0
+    - pytz
+    - tzlocal
+    - futures
+
+test:
+  # Python imports
+  imports:
+    - apscheduler
+    - apscheduler.executors
+    - apscheduler.jobstores
+    - apscheduler.schedulers
+    - apscheduler.triggers
+    - apscheduler.triggers.cron
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/APScheduler/
+  license: MIT License
+  summary: 'In-process task scheduler with Cron-like capabilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

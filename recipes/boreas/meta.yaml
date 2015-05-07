@@ -1,0 +1,72 @@
+package:
+  name: boreas
+  version: "0.1"
+
+source:
+  fn: boreas-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/boreas/boreas-0.1.tar.gz
+  md5: 5eab03e3eb48dc80de5c2c0f43bb3144
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boreas = boreas:main
+    #
+    # Would create an entry point called boreas that calls boreas.main()
+
+    - boreas = boreas.commands:boreas
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - simplejson >=3.0.7
+    - tornado >=2.4.1
+
+  run:
+    - python
+    - requests >=1.1.0
+    - simplejson >=3.0.7
+    - tornado >=2.4.1
+
+test:
+  # Python imports
+  imports:
+    - boreas
+    - boreas.api
+    - boreas.client
+    - boreas.utils
+    - boreas.ws
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boreas --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://boreas.readthedocs.org/
+  license: JSON License
+  summary: 'Websocket pub/sub server for python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

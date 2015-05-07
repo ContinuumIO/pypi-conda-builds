@@ -1,0 +1,87 @@
+package:
+  name: cyw-bogus
+  version: "0.2.53"
+
+source:
+  fn: cyw-bogus-0.2.53.zip
+  url: https://pypi.python.org/packages/source/c/cyw-bogus/cyw-bogus-0.2.53.zip
+  md5: 719e91dcc14b7a7af89ae2697bbd8d18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cyw-bogus = cyw-bogus:main
+    #
+    # Would create an entry point called cyw-bogus that calls cyw-bogus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.13.3
+    - django-crispy-forms ==1.4.0
+    - django ==1.6.1
+    - django-data-exports ==0.6
+    - django-vanilla-views ==1.0.2
+    - babel ==1.3
+    - raven ==3.5.2
+    - django-extra-views
+
+  run:
+    - python
+    - boto ==2.13.3
+    - django-crispy-forms ==1.4.0
+    - django ==1.6.1
+    - django-data-exports ==0.6
+    - django-vanilla-views ==1.0.2
+    - babel ==1.3
+    - raven ==3.5.2
+    - django-extra-views
+
+test:
+  # Python imports
+  imports:
+    - django_ptree
+    - ptree
+    - ptree.db
+    - ptree.management
+    - ptree.management.commands
+    - ptree.models
+    - ptree.questionnaires
+    - ptree.questionnaires.life_orientation_test
+    - ptree.questionnaires.new_general_self_efficacy_scale
+    - ptree.session
+    - ptree.templatetags
+    - ptree.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ptree.org/
+  license: MIT License
+  summary: 'pTree is a Django toolset that makes it easy to create and administer social science experiments to online participants.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

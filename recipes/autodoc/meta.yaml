@@ -1,0 +1,65 @@
+package:
+  name: autodoc
+  version: "0.3"
+
+source:
+  fn: autodoc-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/autodoc/autodoc-0.3.tar.gz
+  md5: 88cd080a2feb58af7d53666122dc490b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autodoc = autodoc:main
+    #
+    # Would create an entry point called autodoc that calls autodoc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webtest
+    - decorator
+
+  run:
+    - python
+    - webtest
+    - decorator
+
+test:
+  # Python imports
+  imports:
+    - autodoc
+    - examples
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/heavenshell/py-autodoc
+  license: BSD License
+  summary: 'Autodoc Python implementation.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

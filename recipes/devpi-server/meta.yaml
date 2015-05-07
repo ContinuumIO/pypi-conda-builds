@@ -1,0 +1,79 @@
+package:
+  name: devpi-server
+  version: "2.1.5"
+
+source:
+  fn: devpi-server-2.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/devpi-server/devpi-server-2.1.5.tar.gz
+  md5: af407b1822320b0242654805943f15d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - devpi-server = devpi-server:main
+    #
+    # Would create an entry point called devpi-server that calls devpi-server.main()
+
+    - devpi-server = devpi_server.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py >=1.4.23
+    - devpi_common >=2.0.5.dev0,<2.1
+    - itsdangerous >=0.24
+    - execnet >=1.2
+    - pyramid >=1.5.1
+    - waitress >=0.8.9
+    - repoze.lru >=0.6
+
+  run:
+    - python
+    - py >=1.4.23
+    - devpi_common >=2.0.5.dev0,<2.1
+    - itsdangerous >=0.24
+    - execnet >=1.2
+    - pyramid >=1.5.1
+    - waitress >=0.8.9
+    - repoze.lru >=0.6
+
+test:
+  # Python imports
+  imports:
+    - devpi_server
+    - devpi_server.cfg
+    - devpi_server.vendor
+    - test_devpi_server
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - devpi-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://doc.devpi.net
+  license: MIT License
+  summary: 'devpi-server: reliable fast pypi.python.org caching server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

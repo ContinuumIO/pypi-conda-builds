@@ -1,0 +1,80 @@
+package:
+  name: collective.xmpp.core
+  version: "0.3"
+
+source:
+  fn: collective.xmpp.core-0.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.xmpp.core/collective.xmpp.core-0.3.zip
+  md5: 9242dd6eec2d8a1cbae9bb63b341817d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.xmpp.core = collective.xmpp.core:main
+    #
+    # Would create an entry point called collective.xmpp.core that calls collective.xmpp.core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup
+    - twisted
+    - wokkel >0.6.3
+    - products.userandgroupselectionwidget
+    - jarn.jsi18n
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup
+    - twisted
+    - wokkel >0.6.3
+    - products.userandgroupselectionwidget
+    - jarn.jsi18n
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.xmpp
+    - collective.xmpp.core
+    - collective.xmpp.core.browser
+    - collective.xmpp.core.subscribers
+    - collective.xmpp.core.tests
+    - collective.xmpp.core.upgrades
+    - collective.xmpp.core.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.xmpp.core
+  license: GPL
+  summary: 'Enables core functionality for XMPP-enabled Plone add-ons.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

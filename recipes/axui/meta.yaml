@@ -1,0 +1,79 @@
+package:
+  name: axui
+  version: "0.2.2"
+
+source:
+  fn: AXUI-0.2.2.zip
+  url: https://pypi.python.org/packages/source/A/AXUI/AXUI-0.2.2.zip
+  md5: 7776a523ffe60fca98a5e01804737bf9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - axui = axui:main
+    #
+    # Would create an entry point called axui that calls axui.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply >=3.4
+    - pyxb >=1.2.4
+    - pillow >=2.8.1
+
+  run:
+    - python
+    - ply >=3.4
+    - pyxb >=1.2.4
+    - pillow >=2.8.1
+
+test:
+  # Python imports
+  imports:
+    - AXUI
+    - AXUI.XML
+    - AXUI.driver
+    - AXUI.driver.appium_driver
+    - AXUI.driver.fake_driver
+    - AXUI.driver.selenium_driver
+    - AXUI.driver.template_driver
+    - AXUI.driver.windows_driver
+    - AXUI.driver.windows_driver.screenshot
+    - AXUI.driver.windows_driver.win32
+    - AXUI.image
+    - AXUI.logger
+    - AXUI.parsing
+    - axui
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xcgspring/AXUI
+  license: Apache Software License
+  summary: 'A cross platform UI auto framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

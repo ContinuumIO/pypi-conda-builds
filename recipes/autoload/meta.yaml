@@ -1,0 +1,66 @@
+package:
+  name: autoload
+  version: "0.0.1"
+
+source:
+  fn: autoload-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/autoload/autoload-0.0.1.tar.gz
+  md5: e09b0192deda8be17f767368d0054441
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autoload = autoload:main
+    #
+    # Would create an entry point called autoload that calls autoload.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pgmagick <0.4.0
+    - gruffy
+    - reportlab
+
+  run:
+    - python
+    - pgmagick <0.4.0
+    - gruffy
+    - reportlab
+
+test:
+  # Python imports
+  imports:
+    - autoload
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/autoload
+  license: BSD License
+  summary: 'Simple HTTPerf loadtest runner with pretty output.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

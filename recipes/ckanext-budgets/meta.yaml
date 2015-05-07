@@ -1,0 +1,73 @@
+package:
+  name: ckanext-budgets
+  version: "0.3.2"
+
+source:
+  fn: ckanext-budgets-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/ckanext-budgets/ckanext-budgets-0.3.2.tar.gz
+  md5: 3867efe6bfcc55d0c325dfcd27eada5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ckanext-budgets = ckanext-budgets:main
+    #
+    # Would create an entry point called ckanext-budgets that calls ckanext-budgets.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unicodecsv
+    - requests
+    - six
+    - py-dateutil
+    - budgetdatapackage
+
+  run:
+    - python
+    - setuptools
+    - unicodecsv
+    - requests
+    - six
+    - py-dateutil
+    - budgetdatapackage
+
+test:
+  # Python imports
+  imports:
+    - ckanext
+    - ckanext.budgets
+    - ckanext.budgets.lib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tryggvib/ckanext-budgets
+  license: GNU Affero General Public License v3
+  summary: 'CKAN extension for creating/distributing budget data packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

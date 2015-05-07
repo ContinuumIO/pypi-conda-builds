@@ -1,0 +1,68 @@
+package:
+  name: cleverbox
+  version: "0.4.4"
+
+source:
+  fn: Cleverbox-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cleverbox/Cleverbox-0.4.4.tar.gz
+  md5: 26cbabcba40b968ae9f9cd48534c020b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cleverbox = cleverbox:main
+    #
+    # Would create an entry point called cleverbox that calls cleverbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6b1
+    - trac >=0.10.4
+    - trac <=0.10.999
+
+  run:
+    - python
+    - setuptools >=0.6b1
+    - trac >=0.10.4
+    - trac <=0.10.999
+
+test:
+  # Python imports
+  imports:
+    - cleverbox
+    - cleverbox.scripts
+    - cleverbox.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.clever-age.org/trac/wiki/cleverbox
+  license: GPLv3
+  summary: 'Script for automating multiple trac instances deployment and maintenance.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

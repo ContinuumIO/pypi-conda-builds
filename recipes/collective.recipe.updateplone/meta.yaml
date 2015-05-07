@@ -1,0 +1,68 @@
+package:
+  name: collective.recipe.updateplone
+  version: "0.3"
+
+source:
+  fn: collective.recipe.updateplone-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.updateplone/collective.recipe.updateplone-0.3.tar.gz
+  md5: c203e7a616a411010c99272ae5d95061
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.updateplone = collective.recipe.updateplone:main
+    #
+    # Would create an entry point called collective.recipe.updateplone that calls collective.recipe.updateplone.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.updateplone
+    - collective.recipe.updateplone.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dev.plone.org/collective/browser/buildout/collective.recipe.updateplone
+  license: Zope Public License
+  summary: 'A buildout recipe to update plone sites'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

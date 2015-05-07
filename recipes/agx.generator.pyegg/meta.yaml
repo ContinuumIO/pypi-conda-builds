@@ -1,0 +1,74 @@
+package:
+  name: agx.generator.pyegg
+  version: "1.0a1"
+
+source:
+  fn: agx.generator.pyegg-1.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/a/agx.generator.pyegg/agx.generator.pyegg-1.0a1.tar.gz
+  md5: 50ee07f193523a7ccb6692db99c67a70
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - agx.generator.pyegg = agx.generator.pyegg:main
+    #
+    # Would create an entry point called agx.generator.pyegg that calls agx.generator.pyegg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - node.ext.template
+    - node.ext.python
+    - node.ext.uml
+    - agx.transform.uml2fs
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - node.ext.template
+    - node.ext.python
+    - node.ext.uml
+    - agx.transform.uml2fs
+
+test:
+  # Python imports
+  imports:
+    - agx
+    - agx.generator
+    - agx.generator.pyegg
+    - agx.generator.pyegg.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bluedynamics/agx.generator.pyegg
+  license: GNU General Public License (GPL)
+  summary: 'AGX generator for python and python eggs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,77 @@
+package:
+  name: django_emma
+  version: "1.03"
+
+source:
+  fn: django_emma-1.03.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_emma/django_emma-1.03.tar.gz
+  md5: 9e31d72d20cd63b5a25c32e4908fcdfa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_emma = django_emma:main
+    #
+    # Would create an entry point called django_emma that calls django_emma.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_emma
+    - emma
+    - emma.cart
+    - emma.columnview
+    - emma.controller
+    - emma.controller.management
+    - emma.controller.management.commands
+    - emma.core
+    - emma.feedback
+    - emma.gui
+    - emma.gui.templatetags
+    - emma.interface
+    - emma.interface.management
+    - emma.interface.management.commands
+    - emma.interface.migrations
+    - emma.interface.templatetags
+    - emma.metadata
+    - emma.search
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/djangowebstudio/emma
+  license: BSD License
+  summary: 'Image Databank for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,83 @@
+package:
+  name: collective.lastmodifier
+  version: "1.1.2"
+
+source:
+  fn: collective.lastmodifier-1.1.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.lastmodifier/collective.lastmodifier-1.1.2.zip
+  md5: 11d17b224de2d3e7f6d8fc67db2b84ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.lastmodifier = collective.lastmodifier:main
+    #
+    # Would create an entry point called collective.lastmodifier that calls collective.lastmodifier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.archetypes
+    - products.cmfcore
+    - products.cmfplone
+    - products.genericsetup
+    - archetypes.schemaextender
+    - collective.monkeypatcher
+    - ftw.profilehook
+    - plone.indexer
+    - setuptools
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - products.archetypes
+    - products.cmfcore
+    - products.cmfplone
+    - products.genericsetup
+    - archetypes.schemaextender
+    - collective.monkeypatcher
+    - ftw.profilehook
+    - plone.indexer
+    - setuptools
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.lastmodifier
+    - collective.lastmodifier.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/collective.lastmodifier
+  license: GPL2
+  summary: 'Extends Plone content with metadata about the last modifier'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

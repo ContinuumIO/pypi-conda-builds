@@ -1,0 +1,116 @@
+package:
+  name: bedframe
+  version: "0.13.5"
+
+source:
+  fn: Bedframe-0.13.5.tar.gz
+  url: https://pypi.python.org/packages/source/B/Bedframe/Bedframe-0.13.5.tar.gz
+  md5: b8e3cd3e005b7608afa4ac8675140e34
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bedframe = bedframe:main
+    #
+    # Would create an entry point called bedframe that calls bedframe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psutil
+    - raven
+    - pytz
+    - requests >1
+    - spruce-collections
+    - spruce-datetime
+    - spruce-lang
+    - spruce-logging
+    - spruce-pprint
+    - spruce-http-common
+    - spruce-settings
+    - spruce-validation
+    - ujson-bedframe
+
+  run:
+    - python
+    - psutil
+    - raven
+    - pytz
+    - requests >1
+    - spruce-collections
+    - spruce-datetime
+    - spruce-lang
+    - spruce-logging
+    - spruce-pprint
+    - spruce-http-common
+    - spruce-settings
+    - spruce-validation
+    - ujson-bedframe
+
+test:
+  # Python imports
+  imports:
+    - bedframe
+    - bedframe._resources
+    - bedframe._responses
+    - bedframe.auth
+    - bedframe.auth._affordances
+    - bedframe.auth.digest
+    - bedframe.auth.http
+    - bedframe.auth.http._basic
+    - bedframe.auth.http._digest
+    - bedframe.auth.http._session
+    - bedframe.auth.http._std
+    - bedframe.auth.inmem
+    - bedframe.auth.ldap
+    - bedframe.auth.ldap_memcache
+    - bedframe.auth.memcache
+    - bedframe.auth.plain
+    - bedframe.auth.session
+    - bedframe.auth.tornado
+    - bedframe.auth.tornado._basic
+    - bedframe.auth.tornado._digest
+    - bedframe.auth.tornado._session
+    - bedframe.auth.tornado._std_http
+    - bedframe.http
+    - bedframe.testing
+    - bedframe.testing._auth
+    - bedframe.tests
+    - bedframe.tornado
+    - bedframe.webtypes
+    - bedframe.webtypes._bedframe
+    - bedframe.webtypes._python
+    - napper
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A resource-oriented web services framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

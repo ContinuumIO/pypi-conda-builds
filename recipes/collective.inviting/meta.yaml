@@ -1,0 +1,72 @@
+package:
+  name: collective.inviting
+  version: "0.2"
+
+source:
+  fn: collective.inviting-0.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.inviting/collective.inviting-0.2.zip
+  md5: 777e14081b20151b3ac40181b8bfc8ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.inviting = collective.inviting:main
+    #
+    # Would create an entry point called collective.inviting that calls collective.inviting.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.subscribe
+    - products.cmfplone
+    - icalendar
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.subscribe
+    - products.cmfplone
+    - icalendar
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.inviting
+    - collective.inviting.browser
+    - collective.inviting.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.inviting
+  license: GPL
+  summary: 'Plone add-on for event invitations, confirmation.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

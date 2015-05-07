@@ -1,0 +1,66 @@
+package:
+  name: balanced
+  version: "1.2"
+
+source:
+  fn: balanced-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/balanced/balanced-1.2.tar.gz
+  md5: 39edb0163df12a5e1e95e199bf95a051
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - balanced = balanced:main
+    #
+    # Would create an entry point called balanced that calls balanced.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wac ==0.23
+    - iso8601 ==0.1.4
+    - uritemplate ==0.6
+
+  run:
+    - python
+    - wac ==0.23
+    - iso8601 ==0.1.4
+    - uritemplate ==0.6
+
+test:
+  # Python imports
+  imports:
+    - balanced
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://balancedpayments.com/
+  license: MIT License
+  summary: 'Payments platform for marketplaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

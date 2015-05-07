@@ -1,0 +1,66 @@
+package:
+  name: bambu-signup
+  version: "2.0"
+
+source:
+  fn: bambu-signup-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-signup/bambu-signup-2.0.tar.gz
+  md5: b983f106e9fd20eaef07ddafb3a94944
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-signup = bambu-signup:main
+    #
+    # Would create an entry point called bambu-signup that calls bambu-signup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - bambu-mail
+
+  run:
+    - python
+    - django >=1.4
+    - bambu-mail
+
+test:
+  # Python imports
+  imports:
+    - bambu_signup
+    - bambu_signup.migrations
+    - bambu_signup.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/bambu-formatrules
+  license: UNKNOWN
+  summary: 'A fluid signup method for free web apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

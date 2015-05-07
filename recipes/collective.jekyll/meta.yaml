@@ -1,0 +1,70 @@
+package:
+  name: collective.jekyll
+  version: "0.3"
+
+source:
+  fn: collective.jekyll-0.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.jekyll/collective.jekyll-0.3.zip
+  md5: 74dc3f64b08f2a6b0ef8bc2c6887bb8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.jekyll = collective.jekyll:main
+    #
+    # Would create an entry point called collective.jekyll that calls collective.jekyll.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - plone.app.registry
+    - beautifulsoup4
+
+  run:
+    - python
+    - setuptools
+    - plone
+    - plone.app.registry
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.jekyll
+    - collective.jekyll.browser
+    - collective.jekyll.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: gpl
+  summary: 'Diagnostic for your Plone content'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: collective.sendaspdf
+  version: "2.10"
+
+source:
+  fn: collective.sendaspdf-2.10.zip
+  url: https://pypi.python.org/packages/source/c/collective.sendaspdf/collective.sendaspdf-2.10.zip
+  md5: 41c92945f7905a1525a506a103368b05
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.sendaspdf = collective.sendaspdf:main
+    #
+    # Would create an entry point called collective.sendaspdf that calls collective.sendaspdf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - jquery.pyproxy >=0.3
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - jquery.pyproxy >=0.3
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.sendaspdf
+    - collective.sendaspdf.browser
+    - collective.sendaspdf.exportimport
+    - collective.sendaspdf.tests
+    - collective.sendaspdf.transforms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/zestsoftware/collective.sendaspdf
+  license: GPL
+  summary: 'An open source product for Plone to download or email a page seen by the user as a PDF file.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

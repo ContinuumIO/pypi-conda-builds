@@ -1,0 +1,73 @@
+package:
+  name: chromogenic
+  version: "0.1.5"
+
+source:
+  fn: chromogenic-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/chromogenic/chromogenic-0.1.5.tar.gz
+  md5: 5017aa9270950b5bd8c979e5ef2efff2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chromogenic = chromogenic:main
+    #
+    # Would create an entry point called chromogenic that calls chromogenic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - threepio ==0.2.0
+    - rtwo ==0.2.0
+    - python-glanceclient ==0.13.1
+    - python-keystoneclient ==0.9.0
+    - python-novaclient ==2.18.1
+    - boto
+
+  run:
+    - python
+    - threepio ==0.2.0
+    - rtwo ==0.2.0
+    - python-glanceclient ==0.13.1
+    - python-keystoneclient ==0.9.0
+    - python-novaclient ==2.18.1
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - chromogenic
+    - chromogenic.drivers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iPlantCollaborativeOpenSource/chromogenic
+  license: Apache Software License
+  summary: 'A unified imaging interface supporting multiple cloud providers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

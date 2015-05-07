@@ -1,0 +1,77 @@
+package:
+  name: collective.blog.star
+  version: "1.2.1"
+
+source:
+  fn: collective.blog.star-1.2.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.blog.star/collective.blog.star-1.2.1.zip
+  md5: 74c0e8aeb5d508c7f57065c6be89df07
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.blog.star = collective.blog.star:main
+    #
+    # Would create an entry point called collective.blog.star that calls collective.blog.star.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.blog.feeds >=2.1
+    - collective.blog.portlets >=1.5
+    - collective.blog.view >=1.5.2
+    - collective.twitterportlet
+    - collective.flowplayer
+    - qi.portlet.tagclouds
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.blog.feeds >=2.1
+    - collective.blog.portlets >=1.5
+    - collective.blog.view >=1.5.2
+    - collective.twitterportlet
+    - collective.flowplayer
+    - qi.portlet.tagclouds
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.blog
+    - collective.blog.star
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.blog.star
+  license: GPL
+  summary: 'Blog suite for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

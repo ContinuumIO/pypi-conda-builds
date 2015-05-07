@@ -1,0 +1,72 @@
+package:
+  name: django-couch-utils
+  version: "1.5.5"
+
+source:
+  fn: django-couch-utils-1.5.5.tar.bz2
+  url: https://pypi.python.org/packages/source/d/django-couch-utils/django-couch-utils-1.5.5.tar.bz2
+  md5: 3b8f3dddbdcb974410f9d60f5e09f115
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-couch-utils = django-couch-utils:main
+    #
+    # Would create an entry point called django-couch-utils that calls django-couch-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - couchdb-python-curl
+
+  run:
+    - python
+    - couchdb-python-curl
+
+test:
+  # Python imports
+  imports:
+    - django_couch
+    - django_couch.admin
+    - django_couch.auth
+    - django_couch.auth.management
+    - django_couch.auth.management.commands
+    - django_couch.cluster
+    - django_couch.cluster.templatetags
+    - django_couch.flatpages
+    - django_couch.management
+    - django_couch.management.commands
+    - django_couch.sitemaps
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/angry_elf/django-couch-utils/
+  license: GNU General Public License (GPL)
+  summary: 'Handy tools and helpers for django projects, powered by CouchDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: avocado-framework
+  version: "0.21.0"
+
+source:
+  fn: avocado-framework-0.21.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/avocado-framework/avocado-framework-0.21.0.tar.gz
+  md5: cce1939a5e665a53c70fdc9eadf73728
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - avocado-framework = avocado-framework:main
+    #
+    # Would create an entry point called avocado-framework that calls avocado-framework.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - avocado
+    - avocado.cli
+    - avocado.core
+    - avocado.external
+    - avocado.linux
+    - avocado.plugins
+    - avocado.remote
+    - avocado.restclient
+    - avocado.restclient.cli
+    - avocado.restclient.cli.actions
+    - avocado.restclient.cli.args
+    - avocado.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://avocado-framework.github.io/
+  license: UNKNOWN
+  summary: 'Avocado Test Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

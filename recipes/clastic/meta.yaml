@@ -1,0 +1,68 @@
+package:
+  name: clastic
+  version: "0.4.3"
+
+source:
+  fn: clastic-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/clastic/clastic-0.4.3.tar.gz
+  md5: bef23cb368fdfe050039b8a1cb592370
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clastic = clastic:main
+    #
+    # Would create an entry point called clastic that calls clastic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - werkzeug ==0.9.4
+    - argparse >=1.2.1
+
+  run:
+    - python
+    - werkzeug ==0.9.4
+    - argparse >=1.2.1
+
+test:
+  # Python imports
+  imports:
+    - clastic
+    - clastic.contrib
+    - clastic.middleware
+    - clastic.render
+    - clastic.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mahmoud/clastic
+  license: BSD
+  summary: 'A functional Python web framework that streamlines explicit development practices while eliminating global state.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

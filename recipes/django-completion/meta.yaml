@@ -1,0 +1,65 @@
+package:
+  name: django-completion
+  version: "0.2.1"
+
+source:
+  fn: django-completion-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-completion/django-completion-0.2.1.tar.gz
+  md5: 9049b5417555b287859deec9bbf6557f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-completion = django-completion:main
+    #
+    # Would create an entry point called django-completion that calls django-completion.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - completion
+    - completion.backends
+    - completion.completion_tests
+    - completion.management
+    - completion.management.commands
+    - completion.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/coleifer/django-completion
+  license: MIT License
+  summary: 'autocompletion for django apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

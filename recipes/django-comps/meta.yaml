@@ -1,0 +1,64 @@
+package:
+  name: django-comps
+  version: "0.3.0"
+
+source:
+  fn: django-comps-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-comps/django-comps-0.3.0.tar.gz
+  md5: 8173713966de7e2e1cedb5c8823b1407
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-comps = django-comps:main
+    #
+    # Would create an entry point called django-comps that calls django-comps.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - comps
+    - comps.management
+    - comps.management.commands
+    - comps.tests
+    - example
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/caktus/django-comps
+  license: BSD License
+  summary: u'A simple application that provides an entry point for integrating front end designers into a django project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

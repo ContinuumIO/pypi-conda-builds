@@ -1,0 +1,67 @@
+package:
+  name: cldoc
+  version: "1.7"
+
+source:
+  fn: cldoc-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cldoc/cldoc-1.7.tar.gz
+  md5: bbaed5c7a2323d86fad9d7761e0b9854
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cldoc = cldoc:main
+    #
+    # Would create an entry point called cldoc that calls cldoc.main()
+
+    - cldoc = cldoc:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyparsing ==1.5.7
+
+  run:
+    - python
+    - pyparsing ==1.5.7
+
+test:
+  # Python imports
+  imports:
+    - cldoc
+    - cldoc.clang
+    - cldoc.generators
+    - cldoc.nodes
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cldoc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://jessevdk.github.com/cldoc
+  license: GPLv2
+  summary: 'clang based documentation generator for C/C++'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

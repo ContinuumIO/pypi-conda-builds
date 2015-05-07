@@ -1,0 +1,66 @@
+package:
+  name: comictagger
+  version: "1.1.15-beta"
+
+source:
+  fn: comictagger-1.1.15-beta.zip
+  url: https://pypi.python.org/packages/source/c/comictagger/comictagger-1.1.15-beta.zip
+  md5: 6432bb6c4cf7f4573fd6aa57e4b9b9ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - comictagger = comictagger:main
+    #
+    # Would create an entry point called comictagger that calls comictagger.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configparser
+    - beautifulsoup4 >=4.1
+
+  run:
+    - python
+    - configparser
+    - beautifulsoup4 >=4.1
+
+test:
+  # Python imports
+  imports:
+    - comictagger
+    - comictaggerlib
+    - comictaggerlib/UnRAR2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/comictagger/
+  license: Apache Software License
+  summary: 'A cross-platform GUI/CLI app for writing metadata to comic archives'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: archetypes.markerfield
+  version: "1.1"
+
+source:
+  fn: archetypes.markerfield-1.1.zip
+  url: https://pypi.python.org/packages/source/a/archetypes.markerfield/archetypes.markerfield-1.1.zip
+  md5: 0b9ee24ebbb43b65b42a4b586224c752
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archetypes.markerfield = archetypes.markerfield:main
+    #
+    # Would create an entry point called archetypes.markerfield that calls archetypes.markerfield.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - archetypes.schemaextender
+    - products.archetypes
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - archetypes.schemaextender
+    - products.archetypes
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - archetypes
+    - archetypes.markerfield
+    - archetypes.markerfield.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: Zope Public License
+  summary: 'Interface marker field for Archetypes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: cmsplugin-googleplus
+  version: "0.5.2"
+
+source:
+  fn: cmsplugin-googleplus-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-googleplus/cmsplugin-googleplus-0.5.2.tar.gz
+  md5: 613d28410288932112c5a35b3aa9e39d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-googleplus = cmsplugin-googleplus:main
+    #
+    # Would create an entry point called cmsplugin-googleplus that calls cmsplugin-googleplus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - google-api-python-client >=1.4.0
+    - python-dateutil >=2.4.1
+
+  run:
+    - python
+    - google-api-python-client >=1.4.0
+    - python-dateutil >=2.4.1
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_googleplus
+    - cmsplugin_googleplus.migrations
+    - cmsplugin_googleplus.south_migrations
+    - cmsplugin_googleplus.tests
+    - cmsplugin_googleplus.tests.example_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/itbabu/cmsplugin-googleplus
+  license: MIT License
+  summary: 'Django-CMS plugin for Google Plus Activities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: collective.externaleditor
+  version: "1.0.1"
+
+source:
+  fn: collective.externaleditor-1.0.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.externaleditor/collective.externaleditor-1.0.1.zip
+  md5: fb3513048807cb2cd961eaafc08004c7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.externaleditor = collective.externaleditor:main
+    #
+    # Would create an entry point called collective.externaleditor that calls collective.externaleditor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.externaleditor >=1.1.0dev
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.externaleditor >=1.1.0dev
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.externaleditor
+    - collective.externaleditor.browser
+    - collective.externaleditor.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.plone.org/svn/collective/collective.externaleditor
+  license: GPL
+  summary: 'Specific Plone layer for Products.ExternalEditor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

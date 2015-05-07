@@ -1,0 +1,77 @@
+package:
+  name: appscale-tools
+  version: "2.3.1"
+
+source:
+  fn: appscale-tools-2.3.1.post1.tar.gz
+  url: https://pypi.python.org/packages/source/a/appscale-tools/appscale-tools-2.3.1.post1.tar.gz
+  md5: 65320461a22e5a038767b6a84046a086
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appscale-tools = appscale-tools:main
+    #
+    # Would create an entry point called appscale-tools that calls appscale-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - termcolor
+    - soappy
+    - pyyaml
+    - boto
+    - google-api-python-client
+    - argparse
+    - python-gflags
+
+  run:
+    - python
+    - httplib2
+    - termcolor
+    - soappy
+    - pyyaml
+    - boto
+    - google-api-python-client
+    - argparse
+    - python-gflags
+
+test:
+  # Python imports
+  imports:
+    - appscale
+    - appscale.agents
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/AppScale/appscale-tools
+  license: Apache Software License
+  summary: 'A set of command-line tools for interacting with AppScale'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

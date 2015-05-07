@@ -1,0 +1,81 @@
+package:
+  name: collective.local.sentmail
+  version: "1.2"
+
+source:
+  fn: collective.local.sentmail-1.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.local.sentmail/collective.local.sentmail-1.2.zip
+  md5: f0eee5f236fe89fd3109cd56a7f8f388
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.local.sentmail = collective.local.sentmail:main
+    #
+    # Would create an entry point called collective.local.sentmail that calls collective.local.sentmail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.local.sendto
+    - five.grok
+    - plone.api
+    - plone.app.dexterity
+    - plone.app.textfield
+    - plone.principalsource
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - collective.local.sendto
+    - five.grok
+    - plone.api
+    - plone.app.dexterity
+    - plone.app.textfield
+    - plone.principalsource
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.local
+    - collective.local.sentmail
+    - collective.local.sentmail.browser
+    - collective.local.sentmail.content
+    - collective.local.sentmail.schema
+    - collective.local.sentmail.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.local.sentmail
+  license: GPL
+  summary: 'Keep history of emails sent by collective.local.sendto'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

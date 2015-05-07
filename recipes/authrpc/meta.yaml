@@ -1,0 +1,64 @@
+package:
+  name: authrpc
+  version: "0.3.2a"
+
+source:
+  fn: AuthRPC-0.3.2a.tar.gz
+  url: https://pypi.python.org/packages/source/A/AuthRPC/AuthRPC-0.3.2a.tar.gz
+  md5: d9b309963f1706fdbafca032b9235e26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - authrpc = authrpc:main
+    #
+    # Would create an entry point called authrpc that calls authrpc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - webob >=1.2.3
+
+  run:
+    - python
+    - webob >=1.2.3
+
+test:
+  # Python imports
+  imports:
+    - AuthRPC
+    - AuthRPC.client
+    - AuthRPC.server
+    - authrpc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.wyre-it.co.uk/authrpc/
+  license: MIT License
+  summary: 'A JSONRPC-like client and server with additions to enable authenticated requests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

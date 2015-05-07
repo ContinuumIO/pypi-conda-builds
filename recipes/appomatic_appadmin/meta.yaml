@@ -1,0 +1,71 @@
+package:
+  name: appomatic_appadmin
+  version: "0.0.30"
+
+source:
+  fn: appomatic_appadmin-0.0.30.tar.gz
+  url: https://pypi.python.org/packages/source/a/appomatic_appadmin/appomatic_appadmin-0.0.30.tar.gz
+  md5: 2d6a3904b03195be4ac568828d807fde
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appomatic_appadmin = appomatic_appadmin:main
+    #
+    # Would create an entry point called appomatic_appadmin that calls appomatic_appadmin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appomatic_admin ==0.0.30
+    - appomaticcore ==0.0.30
+
+  run:
+    - python
+    - appomatic_admin ==0.0.30
+    - appomaticcore ==0.0.30
+
+test:
+  # Python imports
+  imports:
+    - appomatic_appadmin
+    - appomatic_appadmin.static
+    - appomatic_appadmin.static.appomatic_appadmin
+    - appomatic_appadmin.static.appomatic_appadmin.css
+    - appomatic_appadmin.static.appomatic_appadmin.js
+    - appomatic_appadmin.templates
+    - appomatic_appadmin.templates.appomatic_appadmin
+    - appomatic_appadmin.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/redhog/appomatic
+  license: GPL
+  summary: 'Django admin page to administer appomatic apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

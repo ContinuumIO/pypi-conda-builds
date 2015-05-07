@@ -1,0 +1,81 @@
+package:
+  name: collective.ckeditor
+  version: "4.3.0b2"
+
+source:
+  fn: collective.ckeditor-4.3.0b2.zip
+  url: https://pypi.python.org/packages/source/c/collective.ckeditor/collective.ckeditor-4.3.0b2.zip
+  md5: da5f8f61a02f2016e8a8878d7b85e5a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.ckeditor = collective.ckeditor:main
+    #
+    # Would create an entry point called collective.ckeditor that calls collective.ckeditor.main()
+
+    - copy_ckeditor_code = collective.ckeditor.utils.base2zope:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.i18nmessageid
+    - collective.quickupload
+    - collective.plonefinder
+    - plone.app.uuid
+    - demjson
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.i18nmessageid
+    - collective.quickupload
+    - collective.plonefinder
+    - plone.app.uuid
+    - demjson
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.ckeditor
+    - collective.ckeditor.Extensions
+    - collective.ckeditor.browser
+    - collective.ckeditor.tests
+    - collective.ckeditor.transforms
+    - collective.ckeditor.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - copy_ckeditor_code --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.ckeditor
+  license: GNU General Public License (GPL)
+  summary: 'CKEditor for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

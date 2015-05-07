@@ -1,0 +1,78 @@
+package:
+  name: collective.salesforce.content
+  version: "1.1"
+
+source:
+  fn: collective.salesforce.content-1.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.salesforce.content/collective.salesforce.content-1.1.zip
+  md5: 20c4e3c2f98fa4cc62bd3c40c77545c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.salesforce.content = collective.salesforce.content:main
+    #
+    # Would create an entry point called collective.salesforce.content that calls collective.salesforce.content.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.autopermission
+    - plone.app.dexterity
+    - plone.app.registry
+    - plone.indexer
+    - plone.supermodel
+    - products.salesforcebaseconnector
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.autopermission
+    - plone.app.dexterity
+    - plone.app.registry
+    - plone.indexer
+    - plone.supermodel
+    - products.salesforcebaseconnector
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.salesforce
+    - collective.salesforce.content
+    - collective.salesforce.content.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/groundwire/collective.salesforce.content
+  license: GPL
+  summary: 'Behaviors for creating Dexterity content types that integrate with Salesforce.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

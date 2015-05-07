@@ -1,0 +1,80 @@
+package:
+  name: collective.indexing
+  version: "2.0b1"
+
+source:
+  fn: collective.indexing-2.0b1.zip
+  url: https://pypi.python.org/packages/source/c/collective.indexing/collective.indexing-2.0b1.zip
+  md5: 4f2a3aa458614d36b46990d29b0f8e45
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.indexing = collective.indexing:main
+    #
+    # Would create an entry point called collective.indexing that calls collective.indexing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.testing
+    - unittest2
+    - zope.container
+    - zope.event
+    - zope.lifecycleevent
+    - zope.publisher
+    - zope2 >=2.13
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.testing
+    - unittest2
+    - zope.container
+    - zope.event
+    - zope.lifecycleevent
+    - zope.publisher
+    - zope2 >=2.13
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.indexing
+    - collective.indexing.Extensions
+    - collective.indexing.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Jarn/collective.indexing
+  license: GNU General Public License (GPL)
+  summary: 'Abstract framework for queueing, optimizing and dispatching index operations for Plone content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

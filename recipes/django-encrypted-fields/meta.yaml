@@ -1,0 +1,64 @@
+package:
+  name: django-encrypted-fields
+  version: "1.1.1"
+
+source:
+  fn: django-encrypted-fields-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-encrypted-fields/django-encrypted-fields-1.1.1.tar.gz
+  md5: 91603b91bde7f59a86ec53aff63837b8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-encrypted-fields = django-encrypted-fields:main
+    #
+    # Would create an entry point called django-encrypted-fields that calls django-encrypted-fields.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - python-keyczar >=0.71c
+
+  run:
+    - python
+    - django >=1.4
+    - python-keyczar >=0.71c
+
+test:
+  # Python imports
+  imports:
+    - encrypted_fields
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/defrex/django-encrypted-fields/
+  license: BSD
+  summary: 'This is a collection of Django Model Field classes that are encrypted using Keyczar.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

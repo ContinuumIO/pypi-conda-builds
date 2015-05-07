@@ -1,0 +1,68 @@
+package:
+  name: collective.pageheader
+  version: "1.0.1"
+
+source:
+  fn: collective.pageheader-1.0.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.pageheader/collective.pageheader-1.0.1.zip
+  md5: 2f7f13592b02178e4e3fda7c081fd743
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.pageheader = collective.pageheader:main
+    #
+    # Would create an entry point called collective.pageheader that calls collective.pageheader.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.blob >=1.5.6
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.blob >=1.5.6
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.pageheader
+    - collective.pageheader.browser
+    - collective.pageheader.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/simahawk/collective.pageheader
+  license: gpl
+  summary: 'A Plone package for adding an image header to your contents.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

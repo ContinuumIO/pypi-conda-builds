@@ -1,0 +1,90 @@
+package:
+  name: betty-cropper
+  version: "0.3.2"
+
+source:
+  fn: betty-cropper-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/betty-cropper/betty-cropper-0.3.2.tar.gz
+  md5: cc2db2d2f2979646f3e8843a2efbb178
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - betty-cropper = betty-cropper:main
+    #
+    # Would create an entry point called betty-cropper that calls betty-cropper.main()
+
+    - betty-cropper = betty.cropper.utils.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - six ==1.6.1
+    - slimit ==0.8.1
+    - jsonfield ==0.9.20
+    - pillow ==2.5.3
+    - south ==0.8.4
+    - logan ==0.6.0
+    - celery ==3.1.11
+
+  run:
+    - python
+    - django >=1.7
+    - six ==1.6.1
+    - slimit ==0.8.1
+    - jsonfield ==0.9.20
+    - pillow ==2.5.3
+    - south ==0.8.4
+    - logan ==0.6.0
+    - celery ==3.1.11
+
+test:
+  # Python imports
+  imports:
+    - betty
+    - betty/authtoken
+    - betty/authtoken/management
+    - betty/authtoken/management/commands
+    - betty/authtoken/migrations
+    - betty/conf
+    - betty/cropper
+    - betty/cropper/api
+    - betty/cropper/management
+    - betty/cropper/management/commands
+    - betty/cropper/migrations
+    - betty/cropper/utils
+    - betty/image_browser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - betty-cropper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/theonion/betty-cropper
+  license: MIT
+  summary: 'A django-powered image server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

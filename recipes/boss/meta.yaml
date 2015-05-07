@@ -1,0 +1,71 @@
+package:
+  name: boss
+  version: "0.9.18"
+
+source:
+  fn: boss-0.9.18.tar.gz
+  url: https://pypi.python.org/packages/source/b/boss/boss-0.9.18.tar.gz
+  md5: 29372399ca410a94440d01eac81e32e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boss = boss:main
+    #
+    # Would create an entry point called boss that calls boss.main()
+
+    - boss=boss.cli.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cement
+
+  run:
+    - python
+    - setuptools
+    - cement
+
+test:
+  # Python imports
+  imports:
+    - boss
+    - boss.cli
+    - boss.cli.controllers
+    - boss.core
+    - boss.utils
+    - tests.cli
+    - tests.core
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boss --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://boss.rtfd.org
+  license: BSD License
+  summary: 'Baseline Open Source Software Templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

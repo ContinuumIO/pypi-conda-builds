@@ -1,0 +1,64 @@
+package:
+  name: django-contacts
+  version: "0.5"
+
+source:
+  fn: django-contacts-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-contacts/django-contacts-0.5.tar.gz
+  md5: 145b59c4912140b597ded712e652a800
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-contacts = django-contacts:main
+    #
+    # Would create an entry point called django-contacts that calls django-contacts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - contacts
+    - contacts.migrations
+    - contacts.templatetags
+    - contacts.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/asgardproject/django-contacts
+  license: BSD License
+  summary: 'A Django address book application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

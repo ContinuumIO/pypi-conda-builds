@@ -1,0 +1,70 @@
+package:
+  name: collective.recipe.mockedeggs
+  version: "1.0rc1"
+
+source:
+  fn: collective.recipe.mockedeggs-1.0rc1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.mockedeggs/collective.recipe.mockedeggs-1.0rc1.tar.gz
+  md5: 3aa5b5d4b4d258e80ba78934f15e877b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.mockedeggs = collective.recipe.mockedeggs:main
+    #
+    # Would create an entry point called collective.recipe.mockedeggs that calls collective.recipe.mockedeggs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.mockedeggs
+    - collective.recipe.mockedeggs.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.recipe.mockedeggs
+  license: Zope Public License
+  summary: 'A recipe to simulate eggs for non eggs modules installed at python level'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

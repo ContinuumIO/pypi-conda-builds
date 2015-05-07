@@ -1,0 +1,137 @@
+package:
+  name: ansible
+  version: "1.9.1"
+
+source:
+  fn: ansible-1.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/ansible/ansible-1.9.1.tar.gz
+  md5: 3c0f0ecc8b5d60831b10045dba64bbbb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ansible = ansible:main
+    #
+    # Would create an entry point called ansible that calls ansible.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - paramiko
+    - jinja2
+    - pyyaml
+    - setuptools
+    - pycrypto >=2.6
+
+  run:
+    - python
+    - paramiko
+    - jinja2
+    - pyyaml
+    - setuptools
+    - pycrypto >=2.6
+
+test:
+  # Python imports
+  imports:
+    - ansible
+    - ansible.cache
+    - ansible.callback_plugins
+    - ansible.inventory
+    - ansible.inventory.vars_plugins
+    - ansible.module_utils
+    - ansible.modules
+    - ansible.modules.core
+    - ansible.modules.core.cloud
+    - ansible.modules.core.cloud.amazon
+    - ansible.modules.core.cloud.azure
+    - ansible.modules.core.cloud.digital_ocean
+    - ansible.modules.core.cloud.docker
+    - ansible.modules.core.cloud.google
+    - ansible.modules.core.cloud.linode
+    - ansible.modules.core.cloud.openstack
+    - ansible.modules.core.cloud.rackspace
+    - ansible.modules.core.cloud.vmware
+    - ansible.modules.core.commands
+    - ansible.modules.core.database
+    - ansible.modules.core.database.mysql
+    - ansible.modules.core.database.postgresql
+    - ansible.modules.core.files
+    - ansible.modules.core.inventory
+    - ansible.modules.core.network
+    - ansible.modules.core.network.basics
+    - ansible.modules.core.packaging
+    - ansible.modules.core.packaging.language
+    - ansible.modules.core.packaging.os
+    - ansible.modules.core.source_control
+    - ansible.modules.core.system
+    - ansible.modules.core.utilities
+    - ansible.modules.core.utilities.helper
+    - ansible.modules.core.utilities.logic
+    - ansible.modules.core.web_infrastructure
+    - ansible.modules.core.windows
+    - ansible.modules.extras
+    - ansible.modules.extras.cloud
+    - ansible.modules.extras.cloud.google
+    - ansible.modules.extras.cloud.lxc
+    - ansible.modules.extras.cloud.misc
+    - ansible.modules.extras.database
+    - ansible.modules.extras.database.misc
+    - ansible.modules.extras.database.mysql
+    - ansible.modules.extras.database.postgresql
+    - ansible.modules.extras.files
+    - ansible.modules.extras.messaging
+    - ansible.modules.extras.monitoring
+    - ansible.modules.extras.network
+    - ansible.modules.extras.network.a10
+    - ansible.modules.extras.network.citrix
+    - ansible.modules.extras.network.f5
+    - ansible.modules.extras.notification
+    - ansible.modules.extras.packaging
+    - ansible.modules.extras.packaging.language
+    - ansible.modules.extras.packaging.os
+    - ansible.modules.extras.source_control
+    - ansible.modules.extras.system
+    - ansible.modules.extras.web_infrastructure
+    - ansible.modules.extras.windows
+    - ansible.playbook
+    - ansible.runner
+    - ansible.runner.action_plugins
+    - ansible.runner.connection_plugins
+    - ansible.runner.filter_plugins
+    - ansible.runner.lookup_plugins
+    - ansible.runner.shell_plugins
+    - ansible.utils
+    - ansible.utils.module_docs_fragments
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ansible.com/
+  license: GPLv3
+  summary: 'Radically simple IT automation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-alipay
+  version: "0.1"
+
+source:
+  fn: django-alipay-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-alipay/django-alipay-0.1.tar.gz
+  md5: 799434bebe4b0d48a59ecd79d74aaada
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-alipay = django-alipay:main
+    #
+    # Would create an entry point called django-alipay that calls django-alipay.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - alipay
+    - alipay.create_direct_pay_by_user
+    - alipay.create_direct_pay_by_user.dpn
+    - alipay.create_partner_trade_by_buyer
+    - alipay.create_partner_trade_by_buyer.ptn
+    - alipay.send_goods_confirm_by_platform
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/liuyug/django-alipay
+  license: GPLv3 License
+  summary: 'alipay api for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

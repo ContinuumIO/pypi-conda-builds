@@ -1,0 +1,78 @@
+package:
+  name: collective.geo.mapcontent
+  version: "0.1"
+
+source:
+  fn: collective.geo.mapcontent-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.geo.mapcontent/collective.geo.mapcontent-0.1.tar.gz
+  md5: 041cce77fa7a5c6e31dc47710e59ed00
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.geo.mapcontent = collective.geo.mapcontent:main
+    #
+    # Would create an entry point called collective.geo.mapcontent that calls collective.geo.mapcontent.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.z3cform
+    - collective.geo.openlayers
+    - collective.geo.settings
+    - collective.geo.mapwidget
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.z3cform
+    - collective.geo.openlayers
+    - collective.geo.settings
+    - collective.geo.mapwidget
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.geo
+    - collective.geo.mapcontent
+    - collective.geo.mapcontent.browser
+    - collective.geo.mapcontent.content
+    - collective.geo.mapcontent.interfaces
+    - collective.geo.mapcontent.portlets
+    - collective.geo.mapcontent.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.geo.mapcontent
+  license: GPL
+  summary: 'Map content type for collective.geo (use c.g/MapWidget and c.g.openlayers)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

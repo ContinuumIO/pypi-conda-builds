@@ -1,0 +1,66 @@
+package:
+  name: beaker-mongo
+  version: "0.2.2"
+
+source:
+  fn: beaker-mongo-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/beaker-mongo/beaker-mongo-0.2.2.tar.gz
+  md5: 54b634b43e32295d08350068577c93fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - beaker-mongo = beaker-mongo:main
+    #
+    # Would create an entry point called beaker-mongo that calls beaker-mongo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=2.5
+    - beaker >=1.5
+
+  run:
+    - python
+    - setuptools
+    - pymongo >=2.5
+    - beaker >=1.5
+
+test:
+  # Python imports
+  imports:
+    - beaker
+    - beaker.ext
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/cent/beaker-mongo/
+  license: BSD License
+  summary: 'Beaker backend MongoDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

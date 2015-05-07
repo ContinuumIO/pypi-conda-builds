@@ -1,0 +1,70 @@
+package:
+  name: aws-keyring
+  version: "0.1.1"
+
+source:
+  fn: aws-keyring-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/aws-keyring/aws-keyring-0.1.1.tar.gz
+  md5: 0154c88943ce9a0a601aac28cf6dde04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aws-keyring = aws-keyring:main
+    #
+    # Would create an entry point called aws-keyring that calls aws-keyring.main()
+
+    - aws-keys=aws_keys.__init__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - keyring ==4.0
+    - boto >=2.30
+    - docopt ==0.6.2
+    - python-dateutil
+
+  run:
+    - python
+    - keyring ==4.0
+    - boto >=2.30
+    - docopt ==0.6.2
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - aws_keys
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aws-keys --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/philipn/aws-keyring/
+  license: BSD License
+  summary: 'Manage AWS credentials in your OS keyring.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

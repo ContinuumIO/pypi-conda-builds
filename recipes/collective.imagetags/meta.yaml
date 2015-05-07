@@ -1,0 +1,71 @@
+package:
+  name: collective.imagetags
+  version: "1.5"
+
+source:
+  fn: collective.imagetags-1.5.zip
+  url: https://pypi.python.org/packages/source/c/collective.imagetags/collective.imagetags-1.5.zip
+  md5: 5214bff82cdbb603d387ae73bfc790d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.imagetags = collective.imagetags:main
+    #
+    # Would create an entry point called collective.imagetags that calls collective.imagetags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.js.jqueryui
+    - plone.app.registry
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.js.jqueryui
+    - plone.app.registry
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.imagetags
+    - collective.imagetags.adapters
+    - collective.imagetags.browser
+    - collective.imagetags.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.imagetags
+  license: GPL
+  summary: 'Adds Facebook-like tags (or Flickr-like notes) to images'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

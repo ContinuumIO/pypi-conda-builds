@@ -1,0 +1,67 @@
+package:
+  name: collective.googlesharing
+  version: "1.0.0"
+
+source:
+  fn: collective.googlesharing-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.googlesharing/collective.googlesharing-1.0.0.tar.gz
+  md5: db1d4d601700036399293e0f5d449ad4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.googlesharing = collective.googlesharing:main
+    #
+    # Would create an entry point called collective.googlesharing that calls collective.googlesharing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.googleauthentication
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.googleauthentication
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.googlesharing
+    - collective.googlesharing.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.googlesharing/
+  license: GPL
+  summary: 'GS manages the sharing of documents stored in the Google servers and their synchronization from the Plone application to Google Docs service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

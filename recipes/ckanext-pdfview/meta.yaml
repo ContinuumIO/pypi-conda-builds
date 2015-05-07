@@ -1,0 +1,63 @@
+package:
+  name: ckanext-pdfview
+  version: "0.0.3"
+
+source:
+  fn: ckanext-pdfview-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/ckanext-pdfview/ckanext-pdfview-0.0.3.tar.gz
+  md5: c45a51fe13da271c3c2c3c5ed5609168
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ckanext-pdfview = ckanext-pdfview:main
+    #
+    # Would create an entry point called ckanext-pdfview that calls ckanext-pdfview.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ckanext
+    - ckanext.pdfview
+    - ckanext.pdfview.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ckan/ckanext-pdfview
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'View plugin for rendering PDFs on the browser'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

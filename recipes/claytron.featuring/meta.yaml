@@ -1,0 +1,68 @@
+package:
+  name: claytron.featuring
+  version: "1.0.1"
+
+source:
+  fn: claytron.featuring-1.0.1.zip
+  url: https://pypi.python.org/packages/source/c/claytron.featuring/claytron.featuring-1.0.1.zip
+  md5: 3dfb14e785efbfbba1cac0efd3c4a4d7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - claytron.featuring = claytron.featuring:main
+    #
+    # Would create an entry point called claytron.featuring that calls claytron.featuring.main()
+
+    - featuring_fix=claytron.featuring.script:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - appscript
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - appscript
+
+test:
+  # Python imports
+  imports:
+    - claytron
+    - claytron.featuring
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - featuring_fix --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://claytron.com
+  license: GPL
+  summary: 'A console script to clean an iTunes library of featuring strings'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: collective.rooter
+  version: "1.0b1"
+
+source:
+  fn: collective.rooter-1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.rooter/collective.rooter-1.0b1.tar.gz
+  md5: ff6b9fdcb5044882d489af09958f0309
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.rooter = collective.rooter:main
+    #
+    # Would create an entry point called collective.rooter that calls collective.rooter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.rooter
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.rooter
+  license: GPL
+  summary: 'Tools to force catalog queries to obey the current navigation root'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

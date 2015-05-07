@@ -1,0 +1,82 @@
+package:
+  name: ctree
+  version: "0.1.9"
+
+source:
+  fn: ctree-0.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/c/ctree/ctree-0.1.9.tar.gz
+  md5: c1b75760a95b80962062ae32976c09f6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ctree = ctree:main
+    #
+    # Would create an entry point called ctree that calls ctree.main()
+
+    - ctree = ctree.tools.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pyserial
+
+  run:
+    - python
+    - numpy
+    - pyserial
+
+test:
+  # Python imports
+  imports:
+    - ctree
+    - ctree.c
+    - ctree.cilk
+    - ctree.cpp
+    - ctree.metrics
+    - ctree.np
+    - ctree.ocl
+    - ctree.omp
+    - ctree.opentuner
+    - ctree.py
+    - ctree.simd
+    - ctree.templates
+    - ctree.tools
+    - ctree.tools.generators
+    - ctree.tools.generators.templates
+    - ctree.transforms
+    - ctree.visual
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ctree --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'A C-family AST implementation designed to be an IR for DSL compilers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: biblio.webquery
+  version: "0.4.3b"
+
+source:
+  fn: biblio.webquery-0.4.3b.tar.gz
+  url: https://pypi.python.org/packages/source/b/biblio.webquery/biblio.webquery-0.4.3b.tar.gz
+  md5: 4a48b59089007c365d4c114d4424e298
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - biblio.webquery = biblio.webquery:main
+    #
+    # Would create an entry point called biblio.webquery that calls biblio.webquery.main()
+
+    - queryisbn = biblio.webquery.scripts.queryisbn:main
+    - renamebyisbn = biblio.webquery.scripts.renamebyisbn:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - biblio
+    - biblio.webquery
+    - biblio.webquery.scripts
+    - test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - queryisbn --help
+    - renamebyisbn --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.agapow.net/software/biblio.webquery
+  license: BSD
+  summary: 'Extracting bibliographic information from web services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

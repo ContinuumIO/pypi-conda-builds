@@ -1,0 +1,66 @@
+package:
+  name: celery-redis-unixsocket
+  version: "0.3"
+
+source:
+  fn: celery-redis-unixsocket-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery-redis-unixsocket/celery-redis-unixsocket-0.3.tar.gz
+  md5: b68783686f90a76ed1e7762dd8acfbfc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery-redis-unixsocket = celery-redis-unixsocket:main
+    #
+    # Would create an entry point called celery-redis-unixsocket that calls celery-redis-unixsocket.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+    - kombu
+    - celery
+
+  run:
+    - python
+    - redis
+    - kombu
+    - celery
+
+test:
+  # Python imports
+  imports:
+    - celery_redis_unixsocket
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/piquadrat/celery-redis-unixsocket
+  license: BSD License
+  summary: 'celery store backend and kombu transport for redis that supports connections via unix sockets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

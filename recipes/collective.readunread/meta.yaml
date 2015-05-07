@@ -1,0 +1,70 @@
+package:
+  name: collective.readunread
+  version: "1.0b6"
+
+source:
+  fn: collective.readunread-1.0b6.zip
+  url: https://pypi.python.org/packages/source/c/collective.readunread/collective.readunread-1.0b6.zip
+  md5: 46a45775f0449e2a7bfa3cb78a268f47
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.readunread = collective.readunread:main
+    #
+    # Would create an entry point called collective.readunread that calls collective.readunread.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.validatehook
+    - archetypes.schemaextender
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.validatehook
+    - archetypes.schemaextender
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.readunread
+    - collective.readunread.browser
+    - collective.readunread.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.readunread
+  license: GPL
+  summary: 'read/unread status for Plone contents'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

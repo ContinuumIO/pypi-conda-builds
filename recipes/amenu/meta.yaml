@@ -1,0 +1,67 @@
+package:
+  name: amenu
+  version: "1.0.3"
+
+source:
+  fn: amenu-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/amenu/amenu-1.0.3.tar.gz
+  md5: 664b34c56d7b0c392073eeefef3e37ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amenu = amenu:main
+    #
+    # Would create an entry point called amenu that calls amenu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - south ==1.0.1
+    - django-cms >=3.0.7
+    - django-classy-tags ==0.5.2
+
+  run:
+    - python
+    - south ==1.0.1
+    - django-cms >=3.0.7
+    - django-classy-tags ==0.5.2
+
+test:
+  # Python imports
+  imports:
+    - amenu
+    - amenu.migrations
+    - amenu.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ludbek/amenu
+  license: LICENSE.txt
+  summary: 'A menu plugin for DjangoCMS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

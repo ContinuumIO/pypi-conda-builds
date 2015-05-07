@@ -1,0 +1,74 @@
+package:
+  name: asymmetricbase.views
+  version: "0.1.0-201404231345"
+
+source:
+  fn: asymmetricbase.views-0.1.0-201404231345.zip
+  url: https://pypi.python.org/packages/source/a/asymmetricbase.views/asymmetricbase.views-0.1.0-201404231345.zip
+  md5: c2e38ceda84795c80cb6dc1d4c491fcb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asymmetricbase.views = asymmetricbase.views:main
+    #
+    # Would create an entry point called asymmetricbase.views that calls asymmetricbase.views.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.5
+    - jinja2 >=2.7
+    - pytz
+    - asymmetricbase.utils
+    - asymmetricbase.jinja
+
+  run:
+    - python
+    - django >=1.4.5
+    - jinja2 >=2.7
+    - pytz
+    - asymmetricbase.utils
+    - asymmetricbase.jinja
+
+test:
+  # Python imports
+  imports:
+    - asymmetricbase
+    - asymmetricbase.management
+    - asymmetricbase.management.commands
+    - asymmetricbase.views
+    - asymmetricbase.views.mixins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/AsymmetricVentures/asym-views
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Base views for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

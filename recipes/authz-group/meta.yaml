@@ -1,0 +1,65 @@
+package:
+  name: authz-group
+  version: "1.1.4"
+
+source:
+  fn: AuthZ-Group-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/A/AuthZ-Group/AuthZ-Group-1.1.4.tar.gz
+  md5: 756d50ab9c778935c6993a8a0c4fed98
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - authz-group = authz-group:main
+    #
+    # Would create an entry point called authz-group that calls authz-group.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - authz_group
+    - authz_group.authz_implementation
+    - authz_group.templatetags
+    - travis-ci
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vegitron/authz_group/
+  license: Apache 2.0
+  summary: 'Group interface and implementations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

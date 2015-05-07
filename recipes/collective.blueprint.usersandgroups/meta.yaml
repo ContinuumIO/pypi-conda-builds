@@ -1,0 +1,65 @@
+package:
+  name: collective.blueprint.usersandgroups
+  version: "0.1.3"
+
+source:
+  fn: collective.blueprint.usersandgroups-0.1.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.blueprint.usersandgroups/collective.blueprint.usersandgroups-0.1.3.zip
+  md5: 478aa66ba343460a38dab640afa05dfa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.blueprint.usersandgroups = collective.blueprint.usersandgroups:main
+    #
+    # Would create an entry point called collective.blueprint.usersandgroups that calls collective.blueprint.usersandgroups.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.transmogrifier
+
+  run:
+    - python
+    - setuptools
+    - collective.transmogrifier
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.blueprint
+    - collective.blueprint.usersandgroups
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: GPL
+  summary: 'transmogrifier blueprints for importing users and groups into plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

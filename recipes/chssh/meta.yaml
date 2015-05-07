@@ -1,0 +1,68 @@
+package:
+  name: chssh
+  version: "0.4.2"
+
+source:
+  fn: chssh-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/chssh/chssh-0.4.2.tar.gz
+  md5: 08173931b3cd4eb86666c56ac97969d2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chssh = chssh:main
+    #
+    # Would create an entry point called chssh that calls chssh.main()
+
+    - chssh   = chssh.cmd:ssh
+    - chscp   = chssh.cmd:scp
+    - chrsync = chssh.cmd:rsync
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pychef >=0.2
+
+  run:
+    - python
+    - pychef >=0.2
+
+test:
+  # Python imports
+  imports:
+    - chssh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chssh --help
+    - chscp --help
+    - chrsync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/kriswehner/chssh
+  license: BSD License
+  summary: 'ssh wrappers to transparently use chef node names instead of hostnames'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

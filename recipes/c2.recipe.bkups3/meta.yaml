@@ -1,0 +1,72 @@
+package:
+  name: c2.recipe.bkups3
+  version: "1.1b1"
+
+source:
+  fn: c2.recipe.bkups3-1.1b1.tar.gz
+  url: https://pypi.python.org/packages/source/c/c2.recipe.bkups3/c2.recipe.bkups3-1.1b1.tar.gz
+  md5: 778a02fa295c1c7954a8b1295f7a4815
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - c2.recipe.bkups3 = c2.recipe.bkups3:main
+    #
+    # Would create an entry point called c2.recipe.bkups3 that calls c2.recipe.bkups3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - boto
+    - datetime
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - boto
+    - datetime
+
+test:
+  # Python imports
+  imports:
+    - c2
+    - c2.recipe
+    - c2.recipe.bkups3
+    - c2.recipe.bkups3.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cmscom.jp
+  license: GNU General Public License (GPL)
+  summary: 'This recipe is backup for Plone data and send to Amazon S3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

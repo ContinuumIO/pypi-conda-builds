@@ -1,0 +1,63 @@
+package:
+  name: django-adminhelp
+  version: "0.1.2"
+
+source:
+  fn: django-adminhelp-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-adminhelp/django-adminhelp-0.1.2.tar.gz
+  md5: 4eb206c033f3cb410fd02053c2f34c03
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-adminhelp = django-adminhelp:main
+    #
+    # Would create an entry point called django-adminhelp that calls django-adminhelp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-positions
+
+  run:
+    - python
+    - django-positions
+
+test:
+  # Python imports
+  imports:
+    - adminhelp
+    - adminhelp.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/semente/django-adminhelp
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A help application for Django admin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

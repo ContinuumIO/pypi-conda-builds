@@ -1,0 +1,71 @@
+package:
+  name: django-compress
+  version: "1.0.1"
+
+source:
+  fn: django-compress-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-compress/django-compress-1.0.1.tar.gz
+  md5: ddd83d36b6085f0aa00e2a3e9e7df75c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-compress = django-compress:main
+    #
+    # Would create an entry point called django-compress that calls django-compress.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - compress
+    - compress.conf
+    - compress.filters
+    - compress.filters.csstidy
+    - compress.filters.csstidy_python
+    - compress.filters.jsmin
+    - compress.filters.yui
+    - compress.management
+    - compress.management.commands
+    - compress.templatetags
+    - compress.versioning
+    - compress.versioning.hash
+    - compress.versioning.mtime
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/django-compress/
+  license: MIT License
+  summary: 'django-compress provides an automated system for compressing CSS and JavaScript files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

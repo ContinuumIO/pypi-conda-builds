@@ -1,0 +1,71 @@
+package:
+  name: attest-latest
+  version: "0.6.1dev-20130603"
+
+source:
+  fn: Attest-latest-0.6.1dev-20130603.tar.gz
+  url: https://pypi.python.org/packages/source/A/Attest-latest/Attest-latest-0.6.1dev-20130603.tar.gz
+  md5: 607f4a204799befbc48ee12246a21e1e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - attest-latest = attest-latest:main
+    #
+    # Would create an entry point called attest-latest that calls attest-latest.main()
+
+    - attest = attest.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - progressbar-latest >=2.4
+    - pygments
+    - six
+
+  run:
+    - python
+    - setuptools
+    - progressbar-latest >=2.4
+    - pygments
+    - six
+
+test:
+  # Python imports
+  imports:
+    - attest
+    - attest.tests
+    - attest.tests.dummy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - attest --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dag/attest
+  license: BSD License
+  summary: 'Modern, Pythonic unit testing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

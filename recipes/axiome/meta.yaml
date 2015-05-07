@@ -1,0 +1,64 @@
+package:
+  name: axiome
+  version: "2.0.4"
+
+source:
+  fn: axiome-2.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/axiome/axiome-2.0.4.tar.gz
+  md5: 428dc40ca56b71c3bbf0310df939ce7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - axiome = axiome:main
+    #
+    # Would create an entry point called axiome that calls axiome.main()
+
+    - axiome=axiome.axiome:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - npyscreen
+
+  run:
+    - python
+    - npyscreen
+
+test:
+  # Python imports
+  imports:
+    - axiome
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - axiome --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/neufeld/AXIOME2
+  license: MIT License
+  summary: 'AXIOME2: Automation Extension and Integration of Microbial Ecology'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

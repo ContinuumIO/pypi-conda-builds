@@ -1,0 +1,74 @@
+package:
+  name: ansible-tower-cli
+  version: "2.1.0"
+
+source:
+  fn: ansible-tower-cli-2.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/ansible-tower-cli/ansible-tower-cli-2.1.0.tar.gz
+  md5: c882d323b1a72f93eddd1435a908ea7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ansible-tower-cli = ansible-tower-cli:main
+    #
+    # Would create an entry point called ansible-tower-cli that calls ansible-tower-cli.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=2.1
+    - colorama >=0.3.1
+    - dict.sorted ==1.0.0
+    - requests >=2.3.0
+    - six >=1.7.2
+
+  run:
+    - python
+    - click >=2.1
+    - colorama >=0.3.1
+    - dict.sorted ==1.0.0
+    - requests >=2.3.0
+    - six >=1.7.2
+
+test:
+  # Python imports
+  imports:
+    - tower_cli
+    - tower_cli.commands
+    - tower_cli.models
+    - tower_cli.resources
+    - tower_cli.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ansible/tower-cli
+  license: Apache Software License
+  summary: 'A CLI tool for Ansible Tower.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

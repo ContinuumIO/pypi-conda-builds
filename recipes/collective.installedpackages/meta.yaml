@@ -1,0 +1,74 @@
+package:
+  name: collective.installedpackages
+  version: "0.1b2"
+
+source:
+  fn: collective.installedpackages-0.1b2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.installedpackages/collective.installedpackages-0.1b2.tar.gz
+  md5: e53c158cdea3c827c3ea1f17ff96a9d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.installedpackages = collective.installedpackages:main
+    #
+    # Would create an entry point called collective.installedpackages that calls collective.installedpackages.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - products.cmfplone
+    - yolk
+    - five.grok
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - products.cmfplone
+    - yolk
+    - five.grok
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.installedpackages
+    - collective.installedpackages.browser
+    - collective.installedpackages.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.installedpackages
+  license: GPL
+  summary: 'Add-on for Plone to list all Python packages available to the running Python process, its versionsand other information about them.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

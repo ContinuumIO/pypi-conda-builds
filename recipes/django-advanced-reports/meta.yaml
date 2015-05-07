@@ -1,0 +1,78 @@
+package:
+  name: django-advanced-reports
+  version: "0.9.8"
+
+source:
+  fn: django-advanced-reports-0.9.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-advanced-reports/django-advanced-reports-0.9.8.tar.gz
+  md5: 00c40aa110cfb7ae7e120c91e7b7f529
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-advanced-reports = django-advanced-reports:main
+    #
+    # Would create an entry point called django-advanced-reports that calls django-advanced-reports.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - six
+    - django-widget-tweaks
+    - pygments
+
+  run:
+    - python
+    - django
+    - six
+    - django-widget-tweaks
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - advanced_reports
+    - advanced_reports.backoffice
+    - advanced_reports.backoffice.contrib
+    - advanced_reports.backoffice.examples
+    - advanced_reports.backoffice.management
+    - advanced_reports.backoffice.management.commands
+    - advanced_reports.backoffice.migrations
+    - advanced_reports.backoffice.templatetags
+    - advanced_reports.realtime
+    - advanced_reports.templatetags
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vikingco/django-advanced-reports
+  license: BSD
+  summary: 'Advanced reports for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

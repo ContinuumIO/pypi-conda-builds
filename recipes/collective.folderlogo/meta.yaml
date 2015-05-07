@@ -1,0 +1,70 @@
+package:
+  name: collective.folderlogo
+  version: "1.2"
+
+source:
+  fn: collective.folderlogo-1.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.folderlogo/collective.folderlogo-1.2.zip
+  md5: 64c55a684798b8675662743286d47d5a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.folderlogo = collective.folderlogo:main
+    #
+    # Would create an entry point called collective.folderlogo that calls collective.folderlogo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.cmfplone
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - products.cmfplone
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.folderlogo
+    - collective.folderlogo.Extensions
+    - collective.folderlogo.browser
+    - collective.folderlogo.interfaces
+    - collective.folderlogo.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.folderlogo
+  license: BSD License
+  summary: 'Easily add and change logos in different folders for Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

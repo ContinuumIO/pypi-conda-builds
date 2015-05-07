@@ -1,0 +1,69 @@
+package:
+  name: collective.saconnect
+  version: "1.4"
+
+source:
+  fn: collective.saconnect-1.4.zip
+  url: https://pypi.python.org/packages/source/c/collective.saconnect/collective.saconnect-1.4.zip
+  md5: 2895c35547903ebc2ed83c5b4033a787
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.saconnect = collective.saconnect:main
+    #
+    # Would create an entry point called collective.saconnect that calls collective.saconnect.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.app.z3cform
+    - rwproperty
+    - zope.lifecycleevent
+
+  run:
+    - python
+    - setuptools
+    - plone.app.z3cform
+    - rwproperty
+    - zope.lifecycleevent
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.saconnect
+    - collective.saconnect.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.saconnect
+  license: GPL
+  summary: 'A Plone control panel for SQL Alchemy connection strings'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

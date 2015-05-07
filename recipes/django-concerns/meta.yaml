@@ -1,0 +1,65 @@
+package:
+  name: django-concerns
+  version: "0.1.0"
+
+source:
+  fn: django-concerns-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-concerns/django-concerns-0.1.0.tar.gz
+  md5: 373af652c546d864a755a8b2b253bb04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-concerns = django-concerns:main
+    #
+    # Would create an entry point called django-concerns that calls django-concerns.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.6
+    - south ==0.8.2
+
+  run:
+    - python
+    - django >=1.4,<1.6
+    - south ==0.8.2
+
+test:
+  # Python imports
+  imports:
+    - concerns
+    - concerns.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cbmi/django-concerns/
+  license: BSD License
+  summary: 'Django app for reporting privacy concerns'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

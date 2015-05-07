@@ -1,0 +1,64 @@
+package:
+  name: c2c.cssmin
+  version: "0.7dev6"
+
+source:
+  fn: c2c.cssmin-0.7dev6.tar.gz
+  url: https://pypi.python.org/packages/source/c/c2c.cssmin/c2c.cssmin-0.7dev6.tar.gz
+  md5: 1ccf32cc0202c9ef1472d193ed781d19
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - c2c.cssmin = c2c.cssmin:main
+    #
+    # Would create an entry point called c2c.cssmin that calls c2c.cssmin.main()
+
+    - c2c-cssmin=c2c.cssmin_:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cssmin
+
+  run:
+    - python
+    - cssmin
+
+test:
+  # Python imports
+  imports:
+    - c2c
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - c2c-cssmin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/camptocamp/c2c.cssmin
+  license: MIT License
+  summary: 'A command to merge and compress css files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

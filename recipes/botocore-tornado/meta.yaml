@@ -1,0 +1,64 @@
+package:
+  name: botocore-tornado
+  version: "0.93.0"
+
+source:
+  fn: botocore-tornado-0.93.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/botocore-tornado/botocore-tornado-0.93.0.tar.gz
+  md5: 19455b8091450505788b63ea8c3d383e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - botocore-tornado = botocore-tornado:main
+    #
+    # Would create an entry point called botocore-tornado that calls botocore-tornado.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - botocore >=0.93.0
+    - tornado >=4.0.0
+
+  run:
+    - python
+    - botocore >=0.93.0
+    - tornado >=4.0.0
+
+test:
+  # Python imports
+  imports:
+    - botocore_tornado
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/qudos-com/botocore-tornado
+  license: MIT License
+  summary: 'botocore subclasses that uses AsyncHTTPClient'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: certchecker
+  version: "0.2.4"
+
+source:
+  fn: certchecker-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/certchecker/certchecker-0.2.4.tar.gz
+  md5: cdcc8417117cc19346ceef5e05aa129c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - certchecker = certchecker:main
+    #
+    # Would create an entry point called certchecker that calls certchecker.main()
+
+    - certchecker=certchecker.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.37.0
+    - click >=4.0
+
+  run:
+    - python
+    - setuptools
+    - boto >=2.37.0
+    - click >=4.0
+
+test:
+  # Python imports
+  imports:
+    - certchecker
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - certchecker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tsiang/certchecker
+  license: certdata
+  summary: 'A tool to check SSL Certificates in AWS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

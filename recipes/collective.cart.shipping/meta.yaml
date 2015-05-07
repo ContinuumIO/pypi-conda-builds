@@ -1,0 +1,77 @@
+package:
+  name: collective.cart.shipping
+  version: "0.7"
+
+source:
+  fn: collective.cart.shipping-0.7.zip
+  url: https://pypi.python.org/packages/source/c/collective.cart.shipping/collective.cart.shipping-0.7.zip
+  md5: 46af625576119338327a551b5705eae9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.cart.shipping = collective.cart.shipping:main
+    #
+    # Would create an entry point called collective.cart.shipping that calls collective.cart.shipping.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.atcountrywidget
+    - products.pythonfield
+    - collective.behavior.vat
+    - plone.app.dexterity
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - products.atcountrywidget
+    - products.pythonfield
+    - collective.behavior.vat
+    - plone.app.dexterity
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.cart
+    - collective.cart.shipping
+    - collective.cart.shipping.Extensions
+    - collective.cart.shipping.browser
+    - collective.cart.shipping.content
+    - collective.cart.shipping.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.cart.shipping
+  license: BSD License
+  summary: 'Adds shipping methods to Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

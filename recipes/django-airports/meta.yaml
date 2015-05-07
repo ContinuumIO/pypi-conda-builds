@@ -1,0 +1,67 @@
+package:
+  name: django-airports
+  version: "0.1.2"
+
+source:
+  fn: django-airports-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-airports/django-airports-0.1.2.tar.gz
+  md5: 5b3b2d56ad63684cb4324d92dfdb417e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-airports = django-airports:main
+    #
+    # Would create an entry point called django-airports that calls django-airports.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - django-cities
+
+  run:
+    - python
+    - requests
+    - django-cities
+
+test:
+  # Python imports
+  imports:
+    - airports
+    - airports.management
+    - airports.management.commands
+    - airports.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bashu/django-airports
+  license: BSD License
+  summary: 'Airport model and worldwide airport data for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

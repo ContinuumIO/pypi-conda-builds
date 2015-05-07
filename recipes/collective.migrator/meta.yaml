@@ -1,0 +1,70 @@
+package:
+  name: collective.migrator
+  version: "1.8"
+
+source:
+  fn: collective.migrator-1.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.migrator/collective.migrator-1.8.tar.gz
+  md5: f9ecbb3cc7f784488581073d491d80df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.migrator = collective.migrator:main
+    #
+    # Would create an entry point called collective.migrator that calls collective.migrator.main()
+
+    - migrator=collective.migrator.migrator:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.migrator
+    - collective.migrator.recipes
+    - collective.migrator.scripts
+    - collective.migrator.templates
+    - collective.migrator.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - migrator --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.migrator
+  license: GPL
+  summary: 'Tool and buildout recipes for zope/plone content migration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

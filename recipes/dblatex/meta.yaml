@@ -1,0 +1,66 @@
+package:
+  name: dblatex
+  version: "0.3.5"
+
+source:
+  fn: dblatex-0.3.5.tar.bz2
+  url: https://pypi.python.org/packages/source/d/dblatex/dblatex-0.3.5.tar.bz2
+  md5: 048a3fdbdb154f1509fbb0a1ee6a6cfb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dblatex = dblatex:main
+    #
+    # Would create an entry point called dblatex that calls dblatex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dblatex
+    - dbtexmf
+    - dbtexmf.core
+    - dbtexmf.dblatex
+    - dbtexmf.dblatex.grubber
+    - dbtexmf.dblatex.xetex
+    - dbtexmf.xslt
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dblatex.sf.net
+  license: GNU General Public License (GPL)
+  summary: 'DocBook to LaTeX/ConTeXt Publishing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

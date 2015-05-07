@@ -1,0 +1,69 @@
+package:
+  name: appbase
+  version: "0.2.2"
+
+source:
+  fn: appbase-0.2.2.zip
+  url: https://pypi.python.org/packages/source/a/appbase/appbase-0.2.2.zip
+  md5: 7c4241a1bed71aab2faedee87377a652
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appbase = appbase:main
+    #
+    # Would create an entry point called appbase that calls appbase.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ordereddict >=1.1
+    - numpy >=1.7.1
+    - fancytools >=0.2
+    - fancywidgets >=0.1
+
+  run:
+    - python
+    - ordereddict >=1.1
+    - numpy >=1.7.1
+    - fancytools >=0.2
+    - fancywidgets >=0.1
+
+test:
+  # Python imports
+  imports:
+    - appbase
+    - appbase.mainWindowRessources
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/AppBase/
+  license: GNU General Public License (GPL)
+  summary: '\nAppbase is the foundation for a pyQt based application including:\n\n* save, load, autosave\n* fullscreen with F11\n* close-dialog\n* system tray control\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

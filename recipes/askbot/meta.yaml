@@ -1,0 +1,161 @@
+package:
+  name: askbot
+  version: "0.7.53"
+
+source:
+  fn: askbot-0.7.53.tar.gz
+  url: https://pypi.python.org/packages/source/a/askbot/askbot-0.7.53.tar.gz
+  md5: 82ca68e1106d50b66712aa85c32adff4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - askbot = askbot:main
+    #
+    # Would create an entry point called askbot that calls askbot.main()
+
+    - askbot-setup = askbot.deployment:askbot_setup
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - django-celery >=3.0.11
+    - sanction ==0.3.1
+    - longerusername
+    - django-recaptcha-works
+    - html5lib ==0.90
+    - django-followit ==0.0.7
+    - django-tinymce ==1.5.1b2
+    - django-kombu ==0.9.4
+    - django-countries ==3.3
+    - django-transaction-signals
+    - akismet
+    - pystache ==0.3.1
+    - python-openid
+    - django-picklefield ==0.3.0
+    - django-robots
+    - django-compressor ==1.2
+    - pytz ==2013b
+    - jinja2
+    - django-threaded-multihost
+    - markdown2
+    - unidecode
+    - oauth2
+    - pyjwt
+    - django-keyedcache
+    - django >=1.3.1,<1.6
+    - django-avatar >=2.0
+    - lamson
+    - coffin >=0.3,<=0.3.8
+    - south >=0.7.1
+
+  run:
+    - python
+    - beautifulsoup4
+    - django-celery >=3.0.11
+    - sanction ==0.3.1
+    - longerusername
+    - django-recaptcha-works
+    - html5lib ==0.90
+    - django-followit ==0.0.7
+    - django-tinymce ==1.5.1b2
+    - django-kombu ==0.9.4
+    - django-countries ==3.3
+    - django-transaction-signals
+    - akismet
+    - pystache ==0.3.1
+    - python-openid
+    - django-picklefield ==0.3.0
+    - django-robots
+    - django-compressor ==1.2
+    - pytz ==2013b
+    - jinja2
+    - django-threaded-multihost
+    - markdown2
+    - unidecode
+    - oauth2
+    - pyjwt
+    - django-keyedcache
+    - django >=1.3.1,<1.6
+    - django-avatar >=2.0
+    - lamson
+    - coffin >=0.3,<=0.3.8
+    - south >=0.7.1
+
+test:
+  # Python imports
+  imports:
+    - askbot
+    - askbot.bin
+    - askbot.conf
+    - askbot.const
+    - askbot.deployment
+    - askbot.deps
+    - askbot.deps.django_authopenid
+    - askbot.deps.django_authopenid.migrations
+    - askbot.deps.group_messaging
+    - askbot.deps.group_messaging.management
+    - askbot.deps.group_messaging.management.commands
+    - askbot.deps.group_messaging.migrations
+    - askbot.deps.livesettings
+    - askbot.deps.livesettings.templatetags
+    - askbot.importers
+    - askbot.importers.stackexchange
+    - askbot.importers.stackexchange.management
+    - askbot.importers.stackexchange.management.commands
+    - askbot.importers.zendesk
+    - askbot.importers.zendesk.management
+    - askbot.importers.zendesk.management.commands
+    - askbot.mail
+    - askbot.management
+    - askbot.management.commands
+    - askbot.middleware
+    - askbot.migrations
+    - askbot.migrations_api
+    - askbot.models
+    - askbot.patches
+    - askbot.search
+    - askbot.search.haystack
+    - askbot.search.postgresql
+    - askbot.setup_templates
+    - askbot.shims
+    - askbot.skins
+    - askbot.templatetags
+    - askbot.tests
+    - askbot.user_messages
+    - askbot.utils
+    - askbot.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - askbot-setup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://askbot.org
+  license: GNU General Public License (GPL)
+  summary: 'Question and Answer forum, like StackOverflow, written in python and Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

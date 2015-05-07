@@ -1,0 +1,83 @@
+package:
+  name: barkingowl
+  version: "0.7.1"
+
+source:
+  fn: BarkingOwl-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/B/BarkingOwl/BarkingOwl-0.7.1.tar.gz
+  md5: 9f4dbb1cd7f5c2803d76bf4c970cc6a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - barkingowl = barkingowl:main
+    #
+    # Would create an entry point called barkingowl that calls barkingowl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.2
+    - libmagic ==1.0
+    - pika ==0.9.14
+    - python-magic ==0.4.6
+    - six ==1.5.2
+    - wsgiref ==0.1.2
+    - tldextract ==1.5.1
+    - requests ==2.5.1
+    - pymongo ==2.8
+    - daemon ==1.1
+
+  run:
+    - python
+    - beautifulsoup4 ==4.3.2
+    - libmagic ==1.0
+    - pika ==0.9.14
+    - python-magic ==0.4.6
+    - six ==1.5.2
+    - wsgiref ==0.1.2
+    - tldextract ==1.5.1
+    - requests ==2.5.1
+    - pymongo ==2.8
+    - daemon ==1.1
+
+test:
+  # Python imports
+  imports:
+    - barking_owl
+    - barking_owl.dispatcher
+    - barking_owl.scraper
+    - barkingowl
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thequbit/BarkingOwl
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Scalable web crawler.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

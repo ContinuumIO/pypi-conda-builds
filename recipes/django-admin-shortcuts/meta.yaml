@@ -1,0 +1,63 @@
+package:
+  name: django-admin-shortcuts
+  version: "1.2.6"
+
+source:
+  fn: django-admin-shortcuts-1.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-shortcuts/django-admin-shortcuts-1.2.6.tar.gz
+  md5: f211f335b4ab700847fcef55f2896618
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-shortcuts = django-admin-shortcuts:main
+    #
+    # Would create an entry point called django-admin-shortcuts that calls django-admin-shortcuts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+
+  run:
+    - python
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - admin_shortcuts
+    - admin_shortcuts.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alesdotio/django-admin-shortcuts
+  license: BSD License
+  summary: 'Add simple and pretty shortcuts to the django admin homepage.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

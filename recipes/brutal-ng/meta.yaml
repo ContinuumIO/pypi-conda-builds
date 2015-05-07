@@ -1,0 +1,72 @@
+package:
+  name: brutal-ng
+  version: "0.3.10"
+
+source:
+  fn: brutal-ng-0.3.10.tar.gz
+  url: https://pypi.python.org/packages/source/b/brutal-ng/brutal-ng-0.3.10.tar.gz
+  md5: 1f6b0179aa7ca8e72995b5c29973ff7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brutal-ng = brutal-ng:main
+    #
+    # Would create an entry point called brutal-ng that calls brutal-ng.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=12.1.0
+    - wokkel ==0.7.1
+    - pyopenssl ==0.13
+    - service-identity ==14.0.0
+
+  run:
+    - python
+    - twisted >=12.1.0
+    - wokkel ==0.7.1
+    - pyopenssl ==0.13
+    - service-identity ==14.0.0
+
+test:
+  # Python imports
+  imports:
+    - brutal
+    - brutal.conf
+    - brutal.core
+    - brutal.plugins
+    - brutal.protocols
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xlcteam/brutal-ng
+  license: Apache Software License
+  summary: 'The new generation of brutal, a multi-network asynchronouschat bot framework using twisted'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

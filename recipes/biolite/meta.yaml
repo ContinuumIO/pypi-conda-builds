@@ -1,0 +1,77 @@
+package:
+  name: biolite
+  version: "0.5.0"
+
+source:
+  fn: biolite-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/biolite/biolite-0.5.0.tar.gz
+  md5: c5f6e5dbbeb608d7f6ac376593c4810b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - biolite = biolite:main
+    #
+    # Would create an entry point called biolite that calls biolite.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - biopython >=1.60
+    - dendropy >=3.12.0
+    - docutils >=0.9.1
+    - lxml >=3.2.1
+    - matplotlib >=1.1.0
+    - networkx >=1.6
+    - numpy >=1.6.1
+    - wget >=2.0
+
+  run:
+    - python
+    - biopython >=1.60
+    - dendropy >=3.12.0
+    - docutils >=0.9.1
+    - lxml >=3.2.1
+    - matplotlib >=1.1.0
+    - networkx >=1.6
+    - numpy >=1.6.1
+    - wget >=2.0
+
+test:
+  # Python imports
+  imports:
+    - biolite
+    - biolite.workflows
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/caseywdunn/biolite
+  license: GNU General Public License v3 (GPLv3)
+  summary: '\n        A lightweight bioinformatics framework with automated tracking of\n        diagnostics and provenance.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,77 @@
+package:
+  name: chembl_business_model
+  version: "0.5.19"
+
+source:
+  fn: chembl_business_model-0.5.19.tar.gz
+  url: https://pypi.python.org/packages/source/c/chembl_business_model/chembl_business_model-0.5.19.tar.gz
+  md5: 9a2e59822e6730317cb5da7b9ace009b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chembl_business_model = chembl_business_model:main
+    #
+    # Would create an entry point called chembl_business_model that calls chembl_business_model.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - chembl_core_model >=0.5.8
+    - django-celery
+    - beautifulsoup ==3.2.1
+    - pillow >=2.2.1
+    - cairocffi >=0.5.1
+    - gdb >=0.2.2
+    - numpy >=1.8.0
+
+  run:
+    - python
+    - requests
+    - chembl_core_model >=0.5.8
+    - django-celery
+    - beautifulsoup ==3.2.1
+    - pillow >=2.2.1
+    - cairocffi >=0.5.1
+    - gdb >=0.2.2
+    - numpy >=1.8.0
+
+test:
+  # Python imports
+  imports:
+    - chembl_business_model
+    - chembl_business_model.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.ebi.ac.uk/chembl/
+  license: Apache Software License
+  summary: 'Python package providing chembl webservices API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

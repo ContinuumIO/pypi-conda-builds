@@ -1,0 +1,87 @@
+package:
+  name: collective.zamqp
+  version: "0.14.3"
+
+source:
+  fn: collective.zamqp-0.14.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.zamqp/collective.zamqp-0.14.3.zip
+  md5: c584988fbeb333fda86c2e089c0bd25f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.zamqp = collective.zamqp:main
+    #
+    # Would create an entry point called collective.zamqp that calls collective.zamqp.main()
+
+    - publishmsg = collective.zamqp.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope2
+    - zodb3
+    - transaction
+    - zope.interface
+    - zope.component
+    - zope.publisher
+    - zope.event
+    - zope.processlifetime
+    - grokcore.component
+    - pika ==0.9.5
+    - zope.deprecation
+
+  run:
+    - python
+    - setuptools
+    - zope2
+    - zodb3
+    - transaction
+    - zope.interface
+    - zope.component
+    - zope.publisher
+    - zope.event
+    - zope.processlifetime
+    - grokcore.component
+    - pika ==0.9.5
+    - zope.deprecation
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.zamqp
+    - collective.zamqp.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - publishmsg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/collective.zamqp
+  license: ZPL
+  summary: 'Asynchronous AMQP-integration for Plone (and Zope2)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

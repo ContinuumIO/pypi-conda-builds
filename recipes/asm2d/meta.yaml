@@ -1,0 +1,66 @@
+package:
+  name: asm2d
+  version: "0.2.3"
+
+source:
+  fn: asm2d-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/asm2d/asm2d-0.2.3.tar.gz
+  md5: fd0d2a7c68acfe2bdfb26d9da8853ca1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asm2d = asm2d:main
+    #
+    # Would create an entry point called asm2d that calls asm2d.main()
+
+    - asm2d=asm2d.assembler:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply
+    - bitstring
+
+  run:
+    - python
+    - ply
+    - bitstring
+
+test:
+  # Python imports
+  imports:
+    - asm2d
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - asm2d --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tapichu.github.com/asm2d/
+  license: BSD License
+  summary: 'An assembler for the 68112D microprocessor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

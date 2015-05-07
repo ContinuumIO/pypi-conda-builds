@@ -1,0 +1,84 @@
+package:
+  name: asynxd
+  version: "0.4dev5"
+
+source:
+  fn: asynxd-0.4dev5.tar.gz
+  url: https://pypi.python.org/packages/source/a/asynxd/asynxd-0.4dev5.tar.gz
+  md5: 246974e102c8b10a84649b35f0f95a7a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asynxd = asynxd:main
+    #
+    # Would create an entry point called asynxd that calls asynxd.main()
+
+    - asynxd = asynxd.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.1
+    - python-dateutil >=2.2
+    - sh >=1.08
+    - daemonize >=2.3
+    - anyjson >=0.3.3
+    - pytz >2014
+    - voluptuous >=0.8.5
+    - flask-and-redis >=0.5
+    - flask-script >=2.0.5
+    - gunicorn >=18.0
+    - asynx-core >=0.4dev
+
+  run:
+    - python
+    - flask >=0.10.1
+    - python-dateutil >=2.2
+    - sh >=1.08
+    - daemonize >=2.3
+    - anyjson >=0.3.3
+    - pytz >2014
+    - voluptuous >=0.8.5
+    - flask-and-redis >=0.5
+    - flask-script >=2.0.5
+    - gunicorn >=18.0
+    - asynx-core >=0.4dev
+
+test:
+  # Python imports
+  imports:
+    - asynxd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - asynxd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/guokr/asynx
+  license: MIT License
+  summary: 'RESTful server side of an open source, distributed, and web / HTTP oriented taskqueue & scheduler service inspired by Google App Engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

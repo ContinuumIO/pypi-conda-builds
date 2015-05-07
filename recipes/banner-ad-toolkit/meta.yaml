@@ -1,0 +1,66 @@
+package:
+  name: banner-ad-toolkit
+  version: "0.1.5"
+
+source:
+  fn: Banner-Ad-Toolkit-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/B/Banner-Ad-Toolkit/Banner-Ad-Toolkit-0.1.5.tar.gz
+  md5: c8dbc7d0186874dda248501ea3b75a56
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - banner-ad-toolkit = banner-ad-toolkit:main
+    #
+    # Would create an entry point called banner-ad-toolkit that calls banner-ad-toolkit.main()
+
+    - adkit-generate = adkit.generate_psds:main
+    - adkit-export = adkit.export_statics:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-bash-utils >=0.1.0
+
+  run:
+    - python
+    - python-bash-utils >=0.1.0
+
+test:
+  # Python imports
+  imports:
+    - adkit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - adkit-generate --help
+    - adkit-export --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/tsantor/banner-ad-toolkit
+  license: MIT License
+  summary: 'A command line tool to aid in the development of banner ad campaigns. Auto generates PSDs at the required sizes with specified filenames to get you started, then when done designing, exports static banners at or under max file sizes specified. All managed via a very simple manifest file.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: collective.collage.windowz
+  version: "1.0"
+
+source:
+  fn: collective.collage.windowz-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.collage.windowz/collective.collage.windowz-1.0.tar.gz
+  md5: 6b3070dd44d56874d43e8d9b274a7797
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.collage.windowz = collective.collage.windowz:main
+    #
+    # Would create an entry point called collective.collage.windowz that calls collective.collage.windowz.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.collage
+    - products.windowz
+
+  run:
+    - python
+    - setuptools
+    - products.collage
+    - products.windowz
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.collage
+    - collective.collage.windowz
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.plone.org/products/collective.collage.windowz
+  license: GNU General Public License (GPL)
+  summary: 'Collage add-on that allows displaying iframe content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

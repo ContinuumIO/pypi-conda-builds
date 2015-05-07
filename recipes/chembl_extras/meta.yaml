@@ -1,0 +1,68 @@
+package:
+  name: chembl_extras
+  version: "0.6.0"
+
+source:
+  fn: chembl_extras-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/chembl_extras/chembl_extras-0.6.0.tar.gz
+  md5: d6ace27afebb30d6526f1123f449942f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chembl_extras = chembl_extras:main
+    #
+    # Would create an entry point called chembl_extras that calls chembl_extras.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chembl_business_model
+    - biopython
+    - clint >=0.3.3
+
+  run:
+    - python
+    - chembl_business_model
+    - biopython
+    - clint >=0.3.3
+
+test:
+  # Python imports
+  imports:
+    - chembl_extras
+    - chembl_extras.management
+    - chembl_extras.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.ebi.ac.uk/chembldb/index.php/ws
+  license: Apache Software License
+  summary: 'Python package providing extra collection of django custom management commands for use with ChEMBL and some classes for use in future'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

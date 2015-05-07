@@ -1,0 +1,69 @@
+package:
+  name: cmsplugin-text-ng
+  version: "0.6"
+
+source:
+  fn: cmsplugin-text-ng-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-text-ng/cmsplugin-text-ng-0.6.tar.gz
+  md5: dbd527f32973a49ff4b47134ae30f8f0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-text-ng = cmsplugin-text-ng:main
+    #
+    # Would create an entry point called cmsplugin-text-ng that calls cmsplugin-text-ng.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-cms >=2.0
+
+  run:
+    - python
+    - django >=1.2
+    - django-cms >=2.0
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_text_ng
+    - cmsplugin_text_ng.contrib
+    - cmsplugin_text_ng.contrib.textng_filer
+    - cmsplugin_text_ng.contrib.textng_filer.migrations
+    - cmsplugin_text_ng.migrations
+    - cmsplugin_text_ng.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/KristianOellegaard/cmsplugin-text-ng
+  license: BSD License
+  summary: 'django-cms improved text plugin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

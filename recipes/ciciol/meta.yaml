@@ -1,0 +1,67 @@
+package:
+  name: ciciol
+  version: "0.1.1"
+
+source:
+  fn: ciciol-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/ciciol/ciciol-0.1.1.tar.gz
+  md5: 7528533482d39c66c1f9ce4e5bf05702
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ciciol = ciciol:main
+    #
+    # Would create an entry point called ciciol that calls ciciol.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tweepy ==1.8
+    - pyyaml
+
+  run:
+    - python
+    - tweepy ==1.8
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - ciciol
+    - ciciol.backends
+    - ciciol.handlers
+    - ciciol.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/volpino/Ciciol
+  license: BSD License
+  summary: 'Lightweight and extremely customizable notifier.  Designed to work with Twitter and much more'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

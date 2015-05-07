@@ -1,0 +1,79 @@
+package:
+  name: collective.realestatebroker
+  version: "2.3"
+
+source:
+  fn: collective.realestatebroker-2.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.realestatebroker/collective.realestatebroker-2.3.zip
+  md5: bdbcd59f007e6ca8d427ae9045511042
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.realestatebroker = collective.realestatebroker:main
+    #
+    # Would create an entry point called collective.realestatebroker that calls collective.realestatebroker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - archetypes.schemaextender >=1.0b1
+    - products.contentmigration ==1.0b4
+    - products.ploneflashupload
+    - products.maps
+    - reportlab
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - archetypes.schemaextender >=1.0b1
+    - products.contentmigration ==1.0b4
+    - products.ploneflashupload
+    - products.maps
+    - reportlab
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.realestatebroker
+    - collective.realestatebroker.adapters
+    - collective.realestatebroker.browser
+    - collective.realestatebroker.content
+    - collective.realestatebroker.pdf
+    - collective.realestatebroker.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/realestatebroker
+  license: GPL
+  summary: 'An easy and professional way to publish real estate objects on your Plone website'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

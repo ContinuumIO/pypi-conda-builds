@@ -1,0 +1,64 @@
+package:
+  name: awsbuilder
+  version: "0.0.6"
+
+source:
+  fn: awsbuilder-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/awsbuilder/awsbuilder-0.0.6.tar.gz
+  md5: 75462abe769b3c6a8653b8d3d7397a5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - awsbuilder = awsbuilder:main
+    #
+    # Would create an entry point called awsbuilder that calls awsbuilder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.34.0
+    - pyyaml ==3.11
+
+  run:
+    - python
+    - boto ==2.34.0
+    - pyyaml ==3.11
+
+test:
+  # Python imports
+  imports:
+    - awsbuilder
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ministryofjustice/awsbuilder
+  license: MIT License
+  summary: 'Command line tools top create AWS objects based on a config file'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

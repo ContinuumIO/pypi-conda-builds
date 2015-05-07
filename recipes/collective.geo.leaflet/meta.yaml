@@ -1,0 +1,83 @@
+package:
+  name: collective.geo.leaflet
+  version: "0.1b7"
+
+source:
+  fn: collective.geo.leaflet-0.1b7.zip
+  url: https://pypi.python.org/packages/source/c/collective.geo.leaflet/collective.geo.leaflet-0.1b7.zip
+  md5: c6b0d991250080bea454dc44801b0a8e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.geo.leaflet = collective.geo.leaflet:main
+    #
+    # Would create an entry point called collective.geo.leaflet that calls collective.geo.leaflet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.api
+    - setuptools
+    - collective.geo.settings
+    - collective.geo.geographer
+    - collective.geo.mapwidget
+    - collective.geo.behaviour
+    - collective.js.leaflet
+    - collective.geo.contentlocations
+    - collective.geo.json
+
+  run:
+    - python
+    - setuptools
+    - plone.api
+    - setuptools
+    - collective.geo.settings
+    - collective.geo.geographer
+    - collective.geo.mapwidget
+    - collective.geo.behaviour
+    - collective.js.leaflet
+    - collective.geo.contentlocations
+    - collective.geo.json
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.geo
+    - collective.geo.leaflet
+    - collective.geo.leaflet.browser
+    - collective.geo.leaflet.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.geo.leaflet
+  license: GPL
+  summary: 'Add geo views for dexterity content with leaflet js library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

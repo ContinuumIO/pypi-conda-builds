@@ -1,0 +1,70 @@
+package:
+  name: collective.lti
+  version: "1.0"
+
+source:
+  fn: collective.lti-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.lti/collective.lti-1.0.tar.gz
+  md5: 9dca5c21f891987f46fe6da207da63db
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.lti = collective.lti:main
+    #
+    # Would create an entry point called collective.lti that calls collective.lti.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - ims_lti_py
+    - beautifulsoup
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - ims_lti_py
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.lti
+    - collective.lti.browser
+    - collective.lti.content
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: GPL
+  summary: 'Implementation of LTI in Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

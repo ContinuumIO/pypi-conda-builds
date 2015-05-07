@@ -1,0 +1,72 @@
+package:
+  name: basebot
+  version: "1.1.0"
+
+source:
+  fn: basebot-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/basebot/basebot-1.1.0.tar.gz
+  md5: 12b21074344f2d64a4574b101f0f0966
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - basebot = basebot:main
+    #
+    # Would create an entry point called basebot that calls basebot.main()
+
+    - basebot=basebot.bot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - irc ==8.9.1
+    - jaraco.timing ==1.0
+    - jaraco.util ==10.2
+    - more-itertools ==2.2
+    - six ==1.7.3
+
+  run:
+    - python
+    - irc ==8.9.1
+    - jaraco.timing ==1.0
+    - jaraco.util ==10.2
+    - more-itertools ==2.2
+    - six ==1.7.3
+
+test:
+  # Python imports
+  imports:
+    - basebot
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - basebot --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/clearskies/basebot
+  license: MIT License
+  summary: 'a base IRC bot extensible with plugins'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

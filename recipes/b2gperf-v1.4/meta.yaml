@@ -1,0 +1,77 @@
+package:
+  name: b2gperf-v1.4
+  version: "0.1"
+
+source:
+  fn: b2gperf-v1.4-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/b2gperf-v1.4/b2gperf-v1.4-0.1.tar.gz
+  md5: f3fc5bdd0ea90f8147f50b60b0b40775
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - b2gperf-v1.4 = b2gperf-v1.4:main
+    #
+    # Would create an entry point called b2gperf-v1.4 that calls b2gperf-v1.4.main()
+
+    - b2gperf=b2gperf.b2gperf:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - b2gpopulate-v1.4
+    - datazilla >=1.2
+    - gaiatest-v1.4
+    - mozdevice >=0.30
+    - mozlog >=1.5
+    - mozversion >=0.6
+    - numpy ==1.7.1
+
+  run:
+    - python
+    - setuptools
+    - b2gpopulate-v1.4
+    - datazilla >=1.2
+    - gaiatest-v1.4
+    - mozdevice >=0.30
+    - mozlog >=1.5
+    - mozversion >=0.6
+    - numpy ==1.7.1
+
+test:
+  # Python imports
+  imports:
+    - b2gperf
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - b2gperf --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/davehunt/b2gperf
+  license: MPL
+  summary: 'App startup tests for B2G'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

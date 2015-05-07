@@ -1,0 +1,66 @@
+package:
+  name: django_compressor_celery
+  version: "0.2"
+
+source:
+  fn: django_compressor_celery-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_compressor_celery/django_compressor_celery-0.2.tar.gz
+  md5: 35975e7a7d5441e4545fe7626a1eb99b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_compressor_celery = django_compressor_celery:main
+    #
+    # Would create an entry point called django_compressor_celery that calls django_compressor_celery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-compressor >=1.2
+    - django-celery >=3.0
+
+  run:
+    - python
+    - django-compressor >=1.2
+    - django-celery >=3.0
+
+test:
+  # Python imports
+  imports:
+    - compressor_celery
+    - compressor_celery.templatetags
+    - django_compressor_celery
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jarus/django_compressor_celery/
+  license: MIT License
+  summary: 'Integrate django_compressor with celery'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

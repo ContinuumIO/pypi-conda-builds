@@ -1,0 +1,77 @@
+package:
+  name: django-entity
+  version: "1.10.1"
+
+source:
+  fn: django-entity-1.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-entity/django-entity-1.10.1.tar.gz
+  md5: d21b4ebb58ed39f9796fe9ea8598fdbd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-entity = django-entity:main
+    #
+    # Would create an entry point called django-entity that calls django-entity.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - django-activatable-model >=0.4.1
+    - django-manager-utils >=0.8.2
+    - celery >=3.1
+    - jsonfield >=0.9.20
+    - python3-utils >=0.3
+
+  run:
+    - python
+    - django >=1.7
+    - django-activatable-model >=0.4.1
+    - django-manager-utils >=0.8.2
+    - celery >=3.1
+    - jsonfield >=0.9.20
+    - python3-utils >=0.3
+
+test:
+  # Python imports
+  imports:
+    - entity
+    - entity.management
+    - entity.management.commands
+    - entity.migrations
+    - entity.tests
+    - entity.tests.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ambitioninc/django-entity/
+  license: MIT License
+  summary: 'Entity relationship management for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

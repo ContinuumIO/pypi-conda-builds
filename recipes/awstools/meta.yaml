@@ -1,0 +1,80 @@
+package:
+  name: awstools
+  version: "0.3.10"
+
+source:
+  fn: awstools-0.3.10.tar.gz
+  url: https://pypi.python.org/packages/source/a/awstools/awstools-0.3.10.tar.gz
+  md5: 67050e0e4a4f494cf2ece73bd86cbd2b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - awstools = awstools:main
+    #
+    # Would create an entry point called awstools that calls awstools.main()
+
+    - cfnas = awstools.commands.cfnautoscale:main
+    - cfn = awstools.commands.cloudformation:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argh ==0.19.0
+    - pyyaml
+    - boto
+    - arrow
+    - prettytable
+
+  run:
+    - python
+    - argh ==0.19.0
+    - pyyaml
+    - boto
+    - arrow
+    - prettytable
+
+test:
+  # Python imports
+  imports:
+    - awstools
+    - awstools.commands
+    - awstools.fabric
+    - awstools.tests
+    - awstools.tests.functional
+    - awstools.tests.unittests
+    - awstools.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cfnas --help
+    - cfn --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/pior/awstools
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'High level tools to manage an AWS infrastructure'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

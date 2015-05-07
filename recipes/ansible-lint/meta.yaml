@@ -1,0 +1,66 @@
+package:
+  name: ansible-lint
+  version: "2.0.3"
+
+source:
+  fn: ansible-lint-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/ansible-lint/ansible-lint-2.0.3.tar.gz
+  md5: 7cf9924229c14f960ea4953d356258e1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ansible-lint = ansible-lint:main
+    #
+    # Would create an entry point called ansible-lint that calls ansible-lint.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ansible
+    - pyyaml
+
+  run:
+    - python
+    - ansible
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - ansiblelint
+    - ansiblelint.formatters
+    - ansiblelint.rules
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/willthames/ansible-lint
+  license: MIT
+  summary: 'checks playbooks for practices and behaviour that could potentially be improved'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

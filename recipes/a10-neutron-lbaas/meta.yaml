@@ -1,0 +1,68 @@
+package:
+  name: a10-neutron-lbaas
+  version: "1.3.1"
+
+source:
+  fn: a10-neutron-lbaas-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/a10-neutron-lbaas/a10-neutron-lbaas-1.3.1.tar.gz
+  md5: d01fd481c30d16cabebdb67cabf9880d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - a10-neutron-lbaas = a10-neutron-lbaas:main
+    #
+    # Would create an entry point called a10-neutron-lbaas that calls a10-neutron-lbaas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - acos-client >=1.2.4
+
+  run:
+    - python
+    - acos-client >=1.2.4
+
+test:
+  # Python imports
+  imports:
+    - a10_neutron_lbaas
+    - a10_neutron_lbaas.v1
+    - a10_neutron_lbaas.v2
+    - tests
+    - tests.unit
+    - tests.unit.v1
+    - tests.unit.v2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/a10networks/a10-neutron-lbaas
+  license: Apache Software License
+  summary: 'A10 Networks Openstack LBaaS Driver Middleware'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

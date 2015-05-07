@@ -1,0 +1,67 @@
+package:
+  name: bambu-saas
+  version: "0.2.1"
+
+source:
+  fn: bambu-saas-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-saas/bambu-saas-0.2.1.tar.gz
+  md5: 3f90493ee1db2008bcda91a241e87b85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-saas = bambu-saas:main
+    #
+    # Would create an entry point called bambu-saas that calls bambu-saas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.4
+    - bambu-payments
+    - bambu-mail
+
+  run:
+    - python
+    - django >=1.4
+    - bambu-payments
+    - bambu-mail
+
+test:
+  # Python imports
+  imports:
+    - bambu.saas
+    - bambu.saas.migrations
+    - bambu.saas.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/bambu-saas
+  license: UNKNOWN
+  summary: 'A set of models, templates, views and helpers to manage the plans-and-pricing side of a paid-for web app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

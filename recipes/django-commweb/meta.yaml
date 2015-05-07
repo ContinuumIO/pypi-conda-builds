@@ -1,0 +1,65 @@
+package:
+  name: django-commweb
+  version: "0.2"
+
+source:
+  fn: django-commweb-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-commweb/django-commweb-0.2.tar.gz
+  md5: 7f633db42575f0d15e32e77d9e0e294d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-commweb = django-commweb:main
+    #
+    # Would create an entry point called django-commweb that calls django-commweb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests
+
+  run:
+    - python
+    - django
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - commweb
+    - commweb.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sjkingo/django-commweb
+  license: BSD License
+  summary: 'Django module for interfacing with the CommWeb merchant gateway.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

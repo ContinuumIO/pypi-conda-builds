@@ -1,0 +1,66 @@
+package:
+  name: azure-batch-apps
+  version: "0.3.0"
+
+source:
+  fn: azure-batch-apps-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/azure-batch-apps/azure-batch-apps-0.3.0.tar.gz
+  md5: 1645fa3fdb8f5ec0fea7cfaea5c01547
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-batch-apps = azure-batch-apps:main
+    #
+    # Would create an entry point called azure-batch-apps that calls azure-batch-apps.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - requests >=2.3.0
+    - keyring >=3.8
+    - requests_oauthlib >=0.4.1
+
+  run:
+    - python
+    - requests >=2.3.0
+    - keyring >=3.8
+    - requests_oauthlib >=0.4.1
+
+test:
+  # Python imports
+  imports:
+    - batchapps
+    - batchapps.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-batch-apps-python
+  license: MIT License
+  summary: 'Batch Apps Python Client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

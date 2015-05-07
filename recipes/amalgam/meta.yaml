@@ -1,0 +1,66 @@
+package:
+  name: amalgam
+  version: "0.4.3"
+
+source:
+  fn: amalgam-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/amalgam/amalgam-0.4.3.tar.gz
+  md5: 32920a161f53c840453c8e2194a3d10d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amalgam = amalgam:main
+    #
+    # Would create an entry point called amalgam that calls amalgam.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ordereddict
+
+  run:
+    - python
+    - ordereddict
+
+test:
+  # Python imports
+  imports:
+    - amalgam
+    - amalgam.backends
+    - amalgam.backends.base
+    - amalgam.backends.sqla
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg.piranha.org.ua/amalgam/
+  license: BSD License
+  summary: 'Minimal wrapper for database access'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: climata
+  version: "0.4.0"
+
+source:
+  fn: climata-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/climata/climata-0.4.0.tar.gz
+  md5: a2406fa65a2710d7f6d952e6e390df9c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - climata = climata:main
+    #
+    # Would create an entry point called climata that calls climata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wq.io >=0.7.0
+    - owslib
+    - suds-jurko
+
+  run:
+    - python
+    - wq.io >=0.7.0
+    - owslib
+    - suds-jurko
+
+test:
+  # Python imports
+  imports:
+    - climata
+    - climata.acis
+    - climata.cocorahs
+    - climata.fips
+    - climata.huc8
+    - climata.hydromet
+    - climata.nws
+    - climata.snotel
+    - climata.usgs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/heigeo/climata
+  license: MIT License
+  summary: 'Loads climate and hydrology data from ACIS (NOAA RCCs), CoCoRaHS, Hydromet (USBR), SNOTEL AWDB (NRCS) and NWIS (USGS).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

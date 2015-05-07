@@ -1,0 +1,68 @@
+package:
+  name: circuits-bricks
+  version: "0.3"
+
+source:
+  fn: circuits-bricks-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/circuits-bricks/circuits-bricks-0.3.tar.gz
+  md5: 49c5afa93b01f9ffa30404c75a382877
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - circuits-bricks = circuits-bricks:main
+    #
+    # Would create an entry point called circuits-bricks that calls circuits-bricks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - circuits_bricks
+    - circuits_bricks.app
+    - circuits_bricks.core
+    - circuits_bricks.misc
+    - circuits_bricks.net
+    - circuits_bricks.net.protocols
+    - circuits_bricks.web
+    - circuits_bricks.web.dispatchers
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/circuits-bricks
+  license: MIT License
+  summary: 'General purpose components extending the circuits framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

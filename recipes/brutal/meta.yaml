@@ -1,0 +1,70 @@
+package:
+  name: brutal
+  version: "0.3.3"
+
+source:
+  fn: brutal-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/brutal/brutal-0.3.3.tar.gz
+  md5: ea73db116e2c3c12a27f1052b2d58af6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brutal = brutal:main
+    #
+    # Would create an entry point called brutal that calls brutal.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=12.1.0
+    - wokkel ==0.7.1
+    - pyopenssl ==0.13
+
+  run:
+    - python
+    - twisted >=12.1.0
+    - wokkel ==0.7.1
+    - pyopenssl ==0.13
+
+test:
+  # Python imports
+  imports:
+    - brutal
+    - brutal.conf
+    - brutal.core
+    - brutal.plugins
+    - brutal.protocols
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Netflix/brutal
+  license: Apache Software License
+  summary: 'a multi-network asynchronous chat bot framework using twisted.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

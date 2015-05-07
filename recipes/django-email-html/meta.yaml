@@ -1,0 +1,63 @@
+package:
+  name: django-email-html
+  version: "0.1.8"
+
+source:
+  fn: django-email-html-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-email-html/django-email-html-0.1.8.tar.gz
+  md5: bedbf553201189d879e3258d1e8730fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-email-html = django-email-html:main
+    #
+    # Would create an entry point called django-email-html that calls django-email-html.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+
+  run:
+    - python
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - email_html
+    - email_html.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-email-html
+  license: BSD License
+  summary: 'Application for switching from Django plain-text emails to html emails with 2 bodies: html and plain-text, generated automatically from html'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

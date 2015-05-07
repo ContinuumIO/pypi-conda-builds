@@ -1,0 +1,63 @@
+package:
+  name: arduino-sketch
+  version: "0.2"
+
+source:
+  fn: arduino-sketch-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/arduino-sketch/arduino-sketch-0.2.tar.gz
+  md5: 506901d9a6ac9e4c1231e0586f0dc0d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arduino-sketch = arduino-sketch:main
+    #
+    # Would create an entry point called arduino-sketch that calls arduino-sketch.main()
+
+    - arduino-sketch=arduino_sketch.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - arduino_sketch
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - arduino-sketch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ktt-ol/arduino-sketch
+  license: MIT License
+  summary: 'Compile and upload Arduino sketches from command line'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

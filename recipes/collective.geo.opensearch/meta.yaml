@@ -1,0 +1,70 @@
+package:
+  name: collective.geo.opensearch
+  version: "0.4"
+
+source:
+  fn: collective.geo.opensearch-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.geo.opensearch/collective.geo.opensearch-0.4.tar.gz
+  md5: 97af743d14b7f0d3a653f9bb712a1337
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.geo.opensearch = collective.geo.opensearch:main
+    #
+    # Would create an entry point called collective.geo.opensearch that calls collective.geo.opensearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.opensearch
+    - collective.geo.kml
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.opensearch
+    - collective.geo.kml
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.geo
+    - collective.geo.opensearch
+    - collective.geo.opensearch.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.geo.opensearch
+  license: GNU General Public License (GPL)
+  summary: 'opensearch for plone maps (collective.geo)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

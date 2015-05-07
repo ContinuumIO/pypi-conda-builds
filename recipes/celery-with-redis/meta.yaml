@@ -1,0 +1,63 @@
+package:
+  name: celery-with-redis
+  version: "3.0"
+
+source:
+  fn: celery-with-redis-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery-with-redis/celery-with-redis-3.0.tar.gz
+  md5: 44d5ab9bff5c6834afb921d69fdc7836
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery-with-redis = celery-with-redis:main
+    #
+    # Would create an entry point called celery-with-redis that calls celery-with-redis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.0,<4.0
+    - redis >=2.4.4
+
+  run:
+    - python
+    - celery >=3.0,<4.0
+    - redis >=2.4.4
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://celeryproject.org
+  license: BSD
+  summary: 'Bundle installing the dependencies for Celery and Redis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

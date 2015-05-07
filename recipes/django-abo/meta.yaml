@@ -1,0 +1,72 @@
+package:
+  name: django-abo
+  version: "0.1.4"
+
+source:
+  fn: django-abo-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-abo/django-abo-0.1.4.tar.gz
+  md5: 0e45683fb663f46cbe24d38cd0389cd6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-abo = django-abo:main
+    #
+    # Would create an entry point called django-abo that calls django-abo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - pymill
+    - requests
+
+  run:
+    - python
+    - django >=1.6
+    - pymill
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - abo
+    - abo.backends
+    - abo.backends.paymill
+    - abo.backends.paymill.tests
+    - abo.management
+    - abo.management.commands
+    - abo.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ubergrape/django-abo
+  license: BSD License
+  summary: 'Recurring payment / subscription handling for Django, supporting different payment gateways'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

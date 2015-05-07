@@ -1,0 +1,74 @@
+package:
+  name: bob.db.verification.utils
+  version: "2.0.1"
+
+source:
+  fn: bob.db.verification.utils-2.0.1.zip
+  url: https://pypi.python.org/packages/source/b/bob.db.verification.utils/bob.db.verification.utils-2.0.1.zip
+  md5: fa9c12c2dc6a4c6310f20c00ad00d663
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.db.verification.utils = bob.db.verification.utils:main
+    #
+    # Would create an entry point called bob.db.verification.utils that calls bob.db.verification.utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - sqlalchemy
+    - bob.core
+    - bob.io.base
+    - bob.db.base
+
+  run:
+    - python
+    - setuptools
+    - six
+    - sqlalchemy
+    - bob.core
+    - bob.io.base
+    - bob.db.base
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.db
+    - bob.db.verification
+    - bob.db.verification.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/bob.db.verification.utils
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Utilities for bob.db verification databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

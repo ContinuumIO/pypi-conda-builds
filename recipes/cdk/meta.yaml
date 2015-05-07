@@ -1,0 +1,68 @@
+package:
+  name: cdk
+  version: "1.0.10"
+
+source:
+  fn: cdk-1.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/c/cdk/cdk-1.0.10.tar.gz
+  md5: 33f823b0be858ed21c815bbafabea00d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cdk = cdk:main
+    #
+    # Would create an entry point called cdk that calls cdk.main()
+
+    - cdk = cdk:main
+    - b64 = cdk.b64:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - pygments
+
+  run:
+    - python
+    - docopt
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - cdk
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cdk --help
+    - b64 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/twitter-university/cdk
+  license: Apache Software License
+  summary: 'Courseware Developement Kit based on asciidoc and deck.js'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

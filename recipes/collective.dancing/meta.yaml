@@ -1,0 +1,85 @@
+package:
+  name: collective.dancing
+  version: "0.9.10"
+
+source:
+  fn: collective.dancing-0.9.10.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.dancing/collective.dancing-0.9.10.tar.gz
+  md5: fdcf18b73afdd00226ce371d8922498b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.dancing = collective.dancing:main
+    #
+    # Would create an entry point called collective.dancing that calls collective.dancing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.singing >=0.7.1
+    - plone.z3cform >=0.5.1
+    - plone.app.z3cform >=0.5
+    - five.intid
+    - zc.lockfile
+    - stoneagehtml
+    - beautifulsoup
+    - collective.monkeypatcher
+    - zope.testbrowser
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.singing >=0.7.1
+    - plone.z3cform >=0.5.1
+    - plone.app.z3cform >=0.5
+    - five.intid
+    - zc.lockfile
+    - stoneagehtml
+    - beautifulsoup
+    - collective.monkeypatcher
+    - zope.testbrowser
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.dancing
+    - collective.dancing.browser
+    - collective.dancing.browser.portlets
+    - collective.dancing.patch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/dancing
+  license: GPL
+  summary: 'The all-singing all-dancing newsletter add-on for Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

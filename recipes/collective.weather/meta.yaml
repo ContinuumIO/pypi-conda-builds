@@ -1,0 +1,97 @@
+package:
+  name: collective.weather
+  version: "1.0a4"
+
+source:
+  fn: collective.weather-1.0a4.zip
+  url: https://pypi.python.org/packages/source/c/collective.weather/collective.weather-1.0a4.zip
+  md5: 71db099b82373f6015c76942d8c8c75b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.weather = collective.weather:main
+    #
+    # Would create an entry point called collective.weather that calls collective.weather.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - plone.api
+    - plone.app.layout
+    - plone.app.portlets
+    - plone.app.registry
+    - plone.directives.form
+    - plone.i18n
+    - plone.portlets
+    - plone.registry
+    - products.cmfcore
+    - products.cmfplone >=4.1
+    - products.genericsetup
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - plone.api
+    - plone.app.layout
+    - plone.app.portlets
+    - plone.app.registry
+    - plone.directives.form
+    - plone.i18n
+    - plone.portlets
+    - plone.registry
+    - products.cmfcore
+    - products.cmfplone >=4.1
+    - products.genericsetup
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.weather
+    - collective.weather.Extensions
+    - collective.weather.browser
+    - collective.weather.portlets
+    - collective.weather.tests
+    - collective.weather.utilities
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.weather
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'A Plone package to display the current weather at selected locations inside a portlet or viewlet.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

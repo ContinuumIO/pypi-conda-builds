@@ -1,0 +1,70 @@
+package:
+  name: collective.recipe.moin
+  version: "0.7"
+
+source:
+  fn: collective.recipe.moin-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.moin/collective.recipe.moin-0.7.tar.gz
+  md5: 7e4569c0d9d8c3c98cb0d058968d3c51
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.moin = collective.recipe.moin:main
+    #
+    # Would create an entry point called collective.recipe.moin that calls collective.recipe.moin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.moin
+    - collective.recipe.moin.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pythonmexico/collective.recipe.moin
+  license: GPL
+  summary: 'A recipe to build a wiki site with MoinMoin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: boto3
+  version: "0.0.16"
+
+source:
+  fn: boto3-0.0.16.tar.gz
+  url: https://pypi.python.org/packages/source/b/boto3/boto3-0.0.16.tar.gz
+  md5: 6adecb273d34cf2ed6bb087882c883ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boto3 = boto3:main
+    #
+    # Would create an entry point called boto3 that calls boto3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - botocore >=0.104.0,<1.0.0
+    - bcdoc ==0.12.2
+    - jmespath ==0.6.2
+    - futures ==2.2.0
+
+  run:
+    - python
+    - botocore >=0.104.0,<1.0.0
+    - bcdoc ==0.12.2
+    - jmespath ==0.6.2
+    - futures ==2.2.0
+
+test:
+  # Python imports
+  imports:
+    - boto3
+    - boto3.resources
+    - boto3.s3
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/boto/boto3
+  license: Apache Software License
+  summary: 'The AWS SDK for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

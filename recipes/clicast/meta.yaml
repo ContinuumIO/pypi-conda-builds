@@ -1,0 +1,66 @@
+package:
+  name: clicast
+  version: "0.4.5"
+
+source:
+  fn: clicast-0.4.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/clicast/clicast-0.4.5.tar.gz
+  md5: 44d294b92bedf557a9e3d1ac8ab5054c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clicast = clicast:main
+    #
+    # Would create an entry point called clicast that calls clicast.main()
+
+    - cast = clicast.editor:cast
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - remoteconfig
+    - requests
+
+  run:
+    - python
+    - remoteconfig
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - clicast
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cast --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'clicast\n=======\n\nBroadcast messages for CLI tools, such as a warning for critical bug or notification about new features.\n\nQuick Start Tutorial\n====================\n\nAs easy as 1-2-3:\n\n1. Install::\n\n    pip install clicast\n\n2. Create your own cast file and make it accessible as an URL.\n   I.e. https://raw.githubusercontent.com/maxzheng/clicast/master/test/example.cast ::\n\n    cast "New Message" -f example.cast\n    # See \'cast -h\' for more options to edit cast file\n\n3. Import and call check_message::\n\n    from clicast import check_message\n\n    def main():\n        check_message(\'https://raw.githubusercontent.com/maxzheng/clicast/master/test/example.cast\',\n                      allow_exit=True,\n                      header=\'=\' * 80,\n                      footer=\'=\' * 80)\n\nCLI Example\n============\n\nDon\'t even want to write the bin script to try? I got you covered! :) ::\n\n    $ wget https://raw.githubusercontent.com/maxzheng/clicast/master/bin/cast-example\n    $ chmod +x cast-example\n\nIf you run cast-example for the first time, you will see::\n\n    $ ./cast-example\n    ================================================================================\n    We found a big bad bug. Please try not to step on it!! Icky...\n    No worries. It will be fixed soon! :)\n\n    Version 0.1 has been released! If you upgrade, you will get:\n    1) Cool feature 1\n    2) Cool feature 2\n    So what are you waiting for? :)\n\n    Version 0.2 has been released! Upgrade today to get cool features.\n\n    There is a small bug over there, so watch out!\n    ================================================================================\n    Hello World! Pass in \'-f\' to see message targeted for that option\n\nAnd run it again::\n\n    $ ./cast-example\n    ================================================================================\n    We found a big bad bug. Please try not to step on it!! Icky...\n    No worries. It will be fixed soon! :)\n    ================================================================================\n    Hello World! Pass in \'-f\' to see message targeted for that option\n\nAnd now with -f option::\n\n    $ ./cast-example -f\n    ================================================================================\n    We found a big bad bug. Please try not to step on it!! Icky...\n    No worries. It will be fixed soon! :)\n\n    A bug that affects the -f option. (applies only if `clicast.filters.match_cli_args` filter is used)\n    ================================================================================\n    Hello World! Pass in \'-f\' to see message targeted for that option\n\nThat\'s it!\n\nMore\n====\n\n| Documentation: http://clicast.readthedocs.org/\n|\n| PyPI: https://pypi.python.org/pypi/clicast\n| GitHub Project: https://github.com/maxzheng/clicast\n| Report Issues/Bugs: https://github.com/maxzheng/clicast/issues\n|\n| Connect: https://www.linkedin.com/in/maxzheng\n| Contact: maxzheng.os @t gmail.com\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

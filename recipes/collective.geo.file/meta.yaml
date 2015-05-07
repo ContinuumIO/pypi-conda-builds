@@ -1,0 +1,68 @@
+package:
+  name: collective.geo.file
+  version: "0.6"
+
+source:
+  fn: collective.geo.file-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.geo.file/collective.geo.file-0.6.tar.gz
+  md5: 7acc1c77b2ea77b0252f7ad0173bb14b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.geo.file = collective.geo.file:main
+    #
+    # Would create an entry point called collective.geo.file that calls collective.geo.file.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.geo.kml
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.geo.kml
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.geo
+    - collective.geo.file
+    - collective.geo.file.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.geo.file/
+  license: GNU General Public License (GPL)
+  summary: 'An openlayers view for KML, KMZ and GPX files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

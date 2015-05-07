@@ -1,0 +1,67 @@
+package:
+  name: django-commontranslations
+  version: "0.1a1"
+
+source:
+  fn: django-commontranslations-0.1a1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-commontranslations/django-commontranslations-0.1a1.tar.gz
+  md5: 03cc8403ff3f4614a07a9420f48242ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-commontranslations = django-commontranslations:main
+    #
+    # Would create an entry point called django-commontranslations that calls django-commontranslations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - polib
+
+  run:
+    - python
+    - django >=1.3
+    - polib
+
+test:
+  # Python imports
+  imports:
+    - django_commontranslations
+    - django_commontranslations.management
+    - django_commontranslations.management.commands
+    - django_commontranslations.translations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/divio/django-commontranslations
+  license: BSD License
+  summary: 'prevents repeating translations across apps and projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

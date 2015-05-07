@@ -1,0 +1,63 @@
+package:
+  name: django-admin-skel
+  version: "1.0.8"
+
+source:
+  fn: django-admin-skel-1.0.8.tar.bz2
+  url: https://pypi.python.org/packages/source/d/django-admin-skel/django-admin-skel-1.0.8.tar.bz2
+  md5: 45186d0ceb7064a00c9521cef4a586f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-skel = django-admin-skel:main
+    #
+    # Would create an entry point called django-admin-skel that calls django-admin-skel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - admin_skel
+    - admin_skel.management
+    - admin_skel.management.commands
+    - admin_skel.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-admin-skel/
+  license: GNU General Public License (GPL)
+  summary: 'Basic admin styles for django (non django.contrib.admin). Maintained by Alexey Loshkarev <alexey@smscoin.com>'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

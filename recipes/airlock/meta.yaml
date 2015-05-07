@@ -1,0 +1,85 @@
+package:
+  name: airlock
+  version: "0.0.13"
+
+source:
+  fn: airlock-0.0.13.tar.gz
+  url: https://pypi.python.org/packages/source/a/airlock/airlock-0.0.13.tar.gz
+  md5: a83b3dc949ffefb8c4871e6618d6ce72
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - airlock = airlock:main
+    #
+    # Would create an entry point called airlock that calls airlock.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nosegae ==0.3.0
+    - gaenv ==0.1.7
+    - protorpc ==0.9.1
+    - rednose ==0.4.1
+    - google-api-python-client ==1.3.1
+    - oauth2client ==1.4.3
+    - six
+    - uritemplate
+
+  run:
+    - python
+    - nosegae ==0.3.0
+    - gaenv ==0.1.7
+    - protorpc ==0.9.1
+    - rednose ==0.4.1
+    - google-api-python-client ==1.3.1
+    - oauth2client ==1.4.3
+    - six
+    - uritemplate
+
+test:
+  # Python imports
+  imports:
+    - airlock
+    - lib
+    - lib.apiclient
+    - lib.gaenv
+    - lib.googleapiclient
+    - lib.oauth2client
+    - lib.protorpc
+    - lib.protorpc.webapp
+    - lib.protorpc.wsgi
+    - lib.uritemplate
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/grow/airlock
+  license: MIT License
+  summary: 'A lightweight wrapper providing Google OAuth2 integration, sessions, XSRF validators, and user management for App Engine apps.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

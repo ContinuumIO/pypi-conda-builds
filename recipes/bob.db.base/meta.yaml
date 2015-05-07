@@ -1,0 +1,70 @@
+package:
+  name: bob.db.base
+  version: "2.0.2"
+
+source:
+  fn: bob.db.base-2.0.2.zip
+  url: https://pypi.python.org/packages/source/b/bob.db.base/bob.db.base-2.0.2.zip
+  md5: bc05de4a4dff6bbac9d849dde7718ad1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.db.base = bob.db.base:main
+    #
+    # Would create an entry point called bob.db.base that calls bob.db.base.main()
+
+    - bob_dbmanage.py = bob.db.base.script.dbmanage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - bob.io.base
+
+  run:
+    - python
+    - setuptools
+    - sqlalchemy
+    - bob.io.base
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.db
+    - bob.db.base
+    - bob.db.base.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bob_dbmanage.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/bob.db.base
+  license: BSD License
+  summary: "Bob's Basic Database API"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

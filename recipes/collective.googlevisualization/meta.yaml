@@ -1,0 +1,67 @@
+package:
+  name: collective.googlevisualization
+  version: "0.1.2"
+
+source:
+  fn: collective.googlevisualization-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.googlevisualization/collective.googlevisualization-0.1.2.tar.gz
+  md5: 37c0d150b88f1f017d4e35f3495df1ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.googlevisualization = collective.googlevisualization:main
+    #
+    # Would create an entry point called collective.googlevisualization that calls collective.googlevisualization.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.atcontenttypes
+    - five.grok
+
+  run:
+    - python
+    - setuptools
+    - products.atcontenttypes
+    - five.grok
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.googlevisualization
+    - collective.googlevisualization.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: GPL
+  summary: 'Plone integration for Google Visualization API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

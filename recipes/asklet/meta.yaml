@@ -1,0 +1,71 @@
+package:
+  name: asklet
+  version: "0.0.2"
+
+source:
+  fn: asklet-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/asklet/asklet-0.0.2.tar.gz
+  md5: d08ec07d3004cc60ee12b4414047cea2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asklet = asklet:main
+    #
+    # Would create an entry point called asklet that calls asklet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.0
+    - six >=1.6.1
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - django >=1.4.0
+    - six >=1.6.1
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - asklet
+    - asklet.backends
+    - asklet.management
+    - asklet.management.commands
+    - asklet.migrations
+    - asklet.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrisspen/asklet
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A learning algorithm for the 20 questions game.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,77 @@
+package:
+  name: awspider
+  version: "0.3.2.12"
+
+source:
+  fn: AWSpider-0.3.2.12.tar.gz
+  url: https://pypi.python.org/packages/source/A/AWSpider/AWSpider-0.3.2.12.tar.gz
+  md5: da8ea2ee55511350e3c4a93d50351142
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - awspider = awspider:main
+    #
+    # Would create an entry point called awspider that calls awspider.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=8.1
+    - genshi >=0.5.1
+    - python-dateutil >=1.4
+    - simplejson >=2.0.9
+    - boto
+
+  run:
+    - python
+    - twisted >=8.1
+    - genshi >=0.5.1
+    - python-dateutil >=1.4
+    - simplejson >=2.0.9
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - awspider
+    - awspider.amqp
+    - awspider.amqp.specs
+    - awspider.aws
+    - awspider.resources
+    - awspider.resources2
+    - awspider.servers
+    - awspider.servers2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/wehriam/awspider/
+  license: MIT License
+  summary: 'Amazon Web Services web crawler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

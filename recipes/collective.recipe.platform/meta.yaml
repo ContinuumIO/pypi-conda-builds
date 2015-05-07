@@ -1,0 +1,68 @@
+package:
+  name: collective.recipe.platform
+  version: "0.1"
+
+source:
+  fn: collective.recipe.platform-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.platform/collective.recipe.platform-0.1.tar.gz
+  md5: 0a4391ff4826c341cca29e79bcf6a612
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.platform = collective.recipe.platform:main
+    #
+    # Would create an entry point called collective.recipe.platform that calls collective.recipe.platform.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.platform
+    - collective.recipe.platform.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.recipe.platform
+  license: BSD License
+  summary: 'Provide buildout variables with platform specific values.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

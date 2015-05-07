@@ -1,0 +1,63 @@
+package:
+  name: django_esv
+  version: "0.8.1"
+
+source:
+  fn: django_esv-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_esv/django_esv-0.8.1.tar.gz
+  md5: d4ba247044f53f75f1241976ecc30d4c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_esv = django_esv:main
+    #
+    # Would create an entry point called django_esv that calls django_esv.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - httplib2
+
+  run:
+    - python
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - django_esv
+    - esv
+    - esv.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mintchaos/django_es
+  license: BSD License
+  summary: 'A django_inlines style inline and a template tag to work with the ESV Bible API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

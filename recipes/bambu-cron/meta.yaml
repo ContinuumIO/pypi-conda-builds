@@ -1,0 +1,65 @@
+package:
+  name: bambu-cron
+  version: "2.0"
+
+source:
+  fn: bambu-cron-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-cron/bambu-cron-2.0.tar.gz
+  md5: b9926f940af644ab9b2a760a60fe8e93
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-cron = bambu-cron:main
+    #
+    # Would create an entry point called bambu-cron that calls bambu-cron.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - bambu_cron
+    - bambu_cron.management
+    - bambu_cron.management.commands
+    - bambu_cron.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iamsteadman/bambu-cron
+  license: UNKNOWN
+  summary: 'A simple scheduling system that lets you define jobs that get performed at various intervals. Use a virtual "poor man\'s cron" or a single Django management command to run the jobs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

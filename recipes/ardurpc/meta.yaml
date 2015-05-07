@@ -1,0 +1,66 @@
+package:
+  name: ardurpc
+  version: "0.3"
+
+source:
+  fn: ardurpc-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/ardurpc/ardurpc-0.3.tar.gz
+  md5: be0c460af4a3b20dfd0b99833d86fd64
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ardurpc = ardurpc:main
+    #
+    # Would create an entry point called ardurpc that calls ardurpc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ardurpc
+    - ardurpc.connector
+    - ardurpc.handler
+    - ardurpc.handler.lcd
+    - ardurpc.handler.matrix
+    - ardurpc.handler.sensor
+    - ardurpc.handler.strip
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/DinoTools/ArduRPC-python
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'An extensible library to control microcontroller boards like Arduino using Python and the ArduRPC protocol'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

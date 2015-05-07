@@ -1,0 +1,67 @@
+package:
+  name: basc-archiver
+  version: "0.8.6"
+
+source:
+  fn: BASC-Archiver-0.8.6.tar.gz
+  url: https://pypi.python.org/packages/source/B/BASC-Archiver/BASC-Archiver-0.8.6.tar.gz
+  md5: a84772e3e777a0ea29c14079e6cb40a1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - basc-archiver = basc-archiver:main
+    #
+    # Would create an entry point called basc-archiver that calls basc-archiver.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - docopt ==0.5.0
+    - basc-py4chan
+
+  run:
+    - python
+    - requests
+    - docopt ==0.5.0
+    - basc-py4chan
+
+test:
+  # Python imports
+  imports:
+    - basc_archiver
+    - basc_archiver.sites
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bibanon/BASC-Archiver
+  license: UNKNOWN
+  summary: 'Makes a complete archive of imageboard threads including images, HTML, and JSON.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

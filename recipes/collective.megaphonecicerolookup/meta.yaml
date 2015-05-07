@@ -1,0 +1,73 @@
+package:
+  name: collective.megaphonecicerolookup
+  version: "1.0.1"
+
+source:
+  fn: collective.megaphonecicerolookup-1.0.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.megaphonecicerolookup/collective.megaphonecicerolookup-1.0.1.zip
+  md5: 85afbf890e11dd0a4cd7e5281bcda259
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.megaphonecicerolookup = collective.megaphonecicerolookup:main
+    #
+    # Would create an entry point called collective.megaphonecicerolookup that calls collective.megaphonecicerolookup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.cicero
+    - collective.megaphone >=2.1b1
+    - plone.app.registry
+    - setuptools
+    - suds
+
+  run:
+    - python
+    - setuptools
+    - collective.cicero
+    - collective.megaphone >=2.1b1
+    - plone.app.registry
+    - setuptools
+    - suds
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.megaphonecicerolookup
+    - collective.megaphonecicerolookup.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.megaphonecicerolookup/trunk
+  license: GPL
+  summary: 'Megaphone plugin to look up elected officials based on address, via the Cicero API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

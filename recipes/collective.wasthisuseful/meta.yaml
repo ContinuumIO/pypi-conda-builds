@@ -1,0 +1,70 @@
+package:
+  name: collective.wasthisuseful
+  version: "1.0"
+
+source:
+  fn: collective.wasthisuseful-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.wasthisuseful/collective.wasthisuseful-1.0.zip
+  md5: a2c1a2a6eda5f802aae574185b1bd64b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.wasthisuseful = collective.wasthisuseful:main
+    #
+    # Would create an entry point called collective.wasthisuseful that calls collective.wasthisuseful.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.browserlayer
+    - plone.app.registry
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.browserlayer
+    - plone.app.registry
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.wasthisuseful
+    - collective.wasthisuseful.browser
+    - collective.wasthisuseful.browser.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.wasthisuseful
+  license: GPL
+  summary: 'Simple yes/no usefulness rating for Plone content, enables e-mail notification'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,158 @@
+package:
+  name: ckan
+  version: "2.3"
+
+source:
+  fn: ckan-2.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/ckan/ckan-2.3.tar.gz
+  md5: 4443dabbf4a4bbd9ef28871f6edaed03
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ckan = ckan:main
+    #
+    # Would create an entry point called ckan that calls ckan.main()
+
+    - ckan-admin = bin.ckan_admin:Command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ckan
+    - ckan.config
+    - ckan.controllers
+    - ckan.i18n
+    - ckan.include
+    - ckan.lib
+    - ckan.lib.dictization
+    - ckan.lib.navl
+    - ckan.lib.search
+    - ckan.logic
+    - ckan.logic.action
+    - ckan.logic.auth
+    - ckan.migration
+    - ckan.migration.versions
+    - ckan.model
+    - ckan.new_tests
+    - ckan.new_tests.config
+    - ckan.new_tests.controllers
+    - ckan.new_tests.lib
+    - ckan.new_tests.lib.dictization
+    - ckan.new_tests.lib.navl
+    - ckan.new_tests.lib.search
+    - ckan.new_tests.logic
+    - ckan.new_tests.logic.action
+    - ckan.new_tests.logic.auth
+    - ckan.new_tests.migration
+    - ckan.new_tests.model
+    - ckan.new_tests.plugins
+    - ckan.pastertemplates
+    - ckan.plugins
+    - ckan.tests
+    - ckan.tests.functional
+    - ckan.tests.functional.api
+    - ckan.tests.functional.api.model
+    - ckan.tests.lib
+    - ckan.tests.logic
+    - ckan.tests.misc
+    - ckan.tests.models
+    - ckan.tests.schema
+    - ckanext
+    - ckanext.datapusher
+    - ckanext.datapusher.logic
+    - ckanext.datapusher.tests
+    - ckanext.datastore
+    - ckanext.datastore.logic
+    - ckanext.datastore.tests
+    - ckanext.example_iauthfunctions
+    - ckanext.example_idatasetform
+    - ckanext.example_idatasetform.tests
+    - ckanext.example_iresourcecontroller
+    - ckanext.example_itemplatehelpers
+    - ckanext.example_ivalidators
+    - ckanext.example_ivalidators.tests
+    - ckanext.example_theme
+    - ckanext.example_theme.custom_config_setting
+    - ckanext.example_theme.v01_empty_extension
+    - ckanext.example_theme.v02_empty_template
+    - ckanext.example_theme.v03_jinja
+    - ckanext.example_theme.v04_ckan_extends
+    - ckanext.example_theme.v05_block
+    - ckanext.example_theme.v06_super
+    - ckanext.example_theme.v07_helper_function
+    - ckanext.example_theme.v08_custom_helper_function
+    - ckanext.example_theme.v09_snippet
+    - ckanext.example_theme.v10_custom_snippet
+    - ckanext.example_theme.v11_HTML_and_CSS
+    - ckanext.example_theme.v12_extra_public_dir
+    - ckanext.example_theme.v13_custom_css
+    - ckanext.example_theme.v14_more_custom_css
+    - ckanext.example_theme.v15_fanstatic
+    - ckanext.example_theme.v16_initialize_a_javascript_module
+    - ckanext.example_theme.v17_popover
+    - ckanext.example_theme.v18_snippet_api
+    - ckanext.example_theme.v19_01_error
+    - ckanext.example_theme.v19_02_error_handling
+    - ckanext.example_theme.v20_pubsub
+    - ckanext.example_theme.v21_custom_jquery_plugin
+    - ckanext.imageview
+    - ckanext.imageview.tests
+    - ckanext.multilingual
+    - ckanext.reclineview
+    - ckanext.reclineview.tests
+    - ckanext.resourceproxy
+    - ckanext.resourceproxy.tests
+    - ckanext.stats
+    - ckanext.stats.public
+    - ckanext.stats.public.ckanext
+    - ckanext.stats.public.ckanext.stats
+    - ckanext.stats.templates_legacy
+    - ckanext.stats.templates_legacy.ckanext
+    - ckanext.stats.templates_legacy.ckanext.stats
+    - ckanext.stats.tests
+    - ckanext.textview
+    - ckanext.textview.tests
+    - ckanext.webpageview
+    - ckanext.webpageview.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ckan-admin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ckan.org/
+  license: AGPL
+  summary: 'CKAN Software'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

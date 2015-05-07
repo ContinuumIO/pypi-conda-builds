@@ -1,0 +1,84 @@
+package:
+  name: celery-tracker
+  version: "0.3.2"
+
+source:
+  fn: celery-tracker-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery-tracker/celery-tracker-0.3.2.tar.gz
+  md5: c4f731d092950ea0e825527cfa0d4844
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery-tracker = celery-tracker:main
+    #
+    # Would create an entry point called celery-tracker that calls celery-tracker.main()
+
+    - tracker = tracker.bin.tracker:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery
+    - celerymon
+    - simplejson
+    - tornado
+    - fluent-logger
+    - zbxsend
+
+  run:
+    - python
+    - setuptools
+    - celery
+    - celerymon
+    - simplejson
+    - tornado
+    - fluent-logger
+    - zbxsend
+
+test:
+  # Python imports
+  imports:
+    - tracker
+    - tracker.bin
+    - tracker.configs
+    - tracker.management
+    - tracker.management.commands
+    - tracker.plugins
+    - tracker.receivers
+    - tracker.senders
+    - tracker.tracking
+    - tracker.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tracker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ikeikeikeike/celery-tracker
+  license: BSD License
+  summary: 'Receive/Sending event tracking data for the Celery'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: collective.easytemplate
+  version: "0.8.0"
+
+source:
+  fn: collective.easytemplate-0.8.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.easytemplate/collective.easytemplate-0.8.0.zip
+  md5: d052b43c160bcdfb295d6e21cffbb0b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.easytemplate = collective.easytemplate:main
+    #
+    # Would create an entry point called collective.easytemplate that calls collective.easytemplate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - jinja2
+    - plone.portlet.static
+    - collective.templateengines
+    - feedparser
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - jinja2
+    - plone.portlet.static
+    - collective.templateengines
+    - feedparser
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.easytemplate
+    - collective.easytemplate.actions
+    - collective.easytemplate.browser
+    - collective.easytemplate.browser.portlets
+    - collective.easytemplate.content
+    - collective.easytemplate.tags
+    - collective.easytemplate.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/easy-template
+  license: GNU General Public License (GPL)
+  summary: 'Dynamic HTML generation and scripting of pages, content rules, portlets and emails'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

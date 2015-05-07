@@ -1,0 +1,79 @@
+package:
+  name: cmsplugin-markup
+  version: "0.2.4"
+
+source:
+  fn: cmsplugin-markup-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-markup/cmsplugin-markup-0.2.4.tar.gz
+  md5: bb7de784e39d115ca07c9941df1cb072
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-markup = cmsplugin-markup:main
+    #
+    # Would create an entry point called cmsplugin-markup that calls cmsplugin-markup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - markdown >=2
+    - textile >=2.1
+    - docutils >=0.7
+    - django-cms >=2.2
+
+  run:
+    - python
+    - django >=1.2
+    - markdown >=2
+    - textile >=2.1
+    - docutils >=0.7
+    - django-cms >=2.2
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_markup
+    - cmsplugin_markup.conf
+    - cmsplugin_markup.migrations
+    - cmsplugin_markup.plugins
+    - cmsplugin_markup.plugins.markdown
+    - cmsplugin_markup.plugins.markdown.conf
+    - cmsplugin_markup.plugins.restructuredtext
+    - cmsplugin_markup.plugins.textile
+    - cmsplugin_markup.templatetags
+    - cmsplugin_markup.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mitar.tnode.com/
+  license: GNU Affero General Public License v3
+  summary: 'Extendable markup content plugin for Django CMS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

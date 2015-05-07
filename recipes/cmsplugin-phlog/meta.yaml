@@ -1,0 +1,67 @@
+package:
+  name: cmsplugin-phlog
+  version: "0.3.1"
+
+source:
+  fn: cmsplugin-phlog-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-phlog/cmsplugin-phlog-0.3.1.tar.gz
+  md5: b8c2d6d3eca42bfb4185555743f935c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-phlog = cmsplugin-phlog:main
+    #
+    # Would create an entry point called cmsplugin-phlog that calls cmsplugin-phlog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-photologue >=2.3
+    - django-cms >=2.1.0
+
+  run:
+    - python
+    - setuptools
+    - django-photologue >=2.3
+    - django-cms >=2.1.0
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_phlog
+    - cmsplugin_phlog.forms
+    - cmsplugin_phlog.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/benliles/cmsplugin-phlog
+  license: Apache Software License
+  summary: 'Django CMS Plugin for Photologue galleries'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

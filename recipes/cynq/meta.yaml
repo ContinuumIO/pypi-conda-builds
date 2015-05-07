@@ -1,0 +1,64 @@
+package:
+  name: cynq
+  version: "2.3.11"
+
+source:
+  fn: cynq-2.3.11.tar.gz
+  url: https://pypi.python.org/packages/source/c/cynq/cynq-2.3.11.tar.gz
+  md5: cec6ab336adbd3a327ff0f677171605f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cynq = cynq:main
+    #
+    # Would create an entry point called cynq that calls cynq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sanetime >=4,<5
+
+  run:
+    - python
+    - sanetime >=4,<5
+
+test:
+  # Python imports
+  imports:
+    - cynq
+    - cynq.store
+    - cynq.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/HubSpot/cynq
+  license: LICENSE.txt
+  summary: 'A data synchronizer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

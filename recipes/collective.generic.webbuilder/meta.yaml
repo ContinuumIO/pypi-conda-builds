@@ -1,0 +1,86 @@
+package:
+  name: collective.generic.webbuilder
+  version: "1.1"
+
+source:
+  fn: collective.generic.webbuilder-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.generic.webbuilder/collective.generic.webbuilder-1.1.tar.gz
+  md5: bfa3b0506e3af818e313940f5bd0396e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.generic.webbuilder = collective.generic.webbuilder:main
+    #
+    # Would create an entry point called collective.generic.webbuilder that calls collective.generic.webbuilder.main()
+
+    - cgwb=collective.generic.webbuilder.webserver:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.generic.skel
+    - minitage.paste
+    - minitage.core
+    - webob
+    - zope.component
+    - z3c.form
+    - pyramid
+    - pyramid_zcml
+    - repoze.vhm
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.generic.skel
+    - minitage.paste
+    - minitage.core
+    - webob
+    - zope.component
+    - z3c.form
+    - pyramid
+    - pyramid_zcml
+    - repoze.vhm
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.generic
+    - collective.generic.webbuilder
+    - collective.generic.webbuilder.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cgwb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.generic.webbuilder
+  license: BSD
+  summary: 'Yet another WSGI Paste factory for paste by Makina Corpus'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

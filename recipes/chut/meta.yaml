@@ -1,0 +1,70 @@
+package:
+  name: chut
+  version: "0.11"
+
+source:
+  fn: chut-0.11.zip
+  url: https://pypi.python.org/packages/source/c/chut/chut-0.11.zip
+  md5: d44a354dde8691317cf5434d2942476a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chut = chut:main
+    #
+    # Would create an entry point called chut that calls chut.main()
+
+    - chutify=chut.scripts:chutify
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - docopt
+    - configobject
+
+  run:
+    - python
+    - setuptools
+    - six
+    - docopt
+    - configobject
+
+test:
+  # Python imports
+  imports:
+    - chut
+    - chut.examples
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chutify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gawel/chut/
+  license: MIT License
+  summary: 'Small tool to interact with shell and pipes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

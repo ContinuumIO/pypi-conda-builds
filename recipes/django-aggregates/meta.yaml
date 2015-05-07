@@ -1,0 +1,64 @@
+package:
+  name: django-aggregates
+  version: "0.1.2"
+
+source:
+  fn: django-aggregates-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-aggregates/django-aggregates-0.1.2.tar.gz
+  md5: 9e7e87a988c3051e433fa00459f818fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-aggregates = django-aggregates:main
+    #
+    # Would create an entry point called django-aggregates that calls django-aggregates.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+
+  run:
+    - python
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - aggregates
+    - aggregates.conditionals
+    - aggregates.strings
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aykut/django-aggregates
+  license: BSD License
+  summary: 'Aggregate, String and Conditional SQL functions for Django ORM.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

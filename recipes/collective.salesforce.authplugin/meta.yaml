@@ -1,0 +1,71 @@
+package:
+  name: collective.salesforce.authplugin
+  version: "1.5.2"
+
+source:
+  fn: collective.salesforce.authplugin-1.5.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.salesforce.authplugin/collective.salesforce.authplugin-1.5.2.zip
+  md5: eb29767f750e2ef6211e8065251cc8dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.salesforce.authplugin = collective.salesforce.authplugin:main
+    #
+    # Would create an entry point called collective.salesforce.authplugin that calls collective.salesforce.authplugin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beatbox >=16.0dev
+    - products.salesforcebaseconnector >=1.2b1
+
+  run:
+    - python
+    - setuptools
+    - beatbox >=16.0dev
+    - products.salesforcebaseconnector >=1.2b1
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.salesforce
+    - collective.salesforce.authplugin
+    - collective.salesforce.authplugin.Extensions
+    - collective.salesforce.authplugin.mixins
+    - collective.salesforce.authplugin.plugins
+    - collective.salesforce.authplugin.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://groups.google.com/group/plonesf
+  license: GPL
+  summary: 'Zope PAS plugin providing authentication against objects in Salesforce'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: appium-python-client
+  version: "0.14"
+
+source:
+  fn: Appium-Python-Client-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/A/Appium-Python-Client/Appium-Python-Client-0.14.tar.gz
+  md5: ef5ddde405c46890c25ef41010dd11b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appium-python-client = appium-python-client:main
+    #
+    # Would create an entry point called appium-python-client that calls appium-python-client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - selenium >=2.41.0
+    - enum34
+
+  run:
+    - python
+    - selenium >=2.41.0
+    - enum34
+
+test:
+  # Python imports
+  imports:
+    - appium
+    - appium.common
+    - appium.webdriver
+    - appium.webdriver.common
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://appium.io/
+  license: Apache Software License
+  summary: 'Python client for Appium 1.3.6'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

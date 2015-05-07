@@ -1,0 +1,72 @@
+package:
+  name: cnfgen
+  version: "0.5.3.3"
+
+source:
+  fn: CNFgen-0.5.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/C/CNFgen/CNFgen-0.5.3.3.tar.gz
+  md5: 72bfc09aba5ffaae2e34f43b917f632e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cnfgen = cnfgen:main
+    #
+    # Would create an entry point called cnfgen that calls cnfgen.main()
+
+    - cnfgen=cnfformula.cnfgen:command_line_utility
+    - cnfshuffle=cnfformula.utils.cnfshuffle:command_line_utility
+    - cnftransform=cnfformula.utils.dimacstransform:command_line_utility
+    - kthgraph2pebformula=cnfformula.utils.kthgraph2dimacs:command_line_utility
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - networkx
+
+  run:
+    - python
+    - networkx
+
+test:
+  # Python imports
+  imports:
+    - cnfformula
+    - cnfformula.utils
+    - cnfgen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cnfgen --help
+    - cnfshuffle --help
+    - cnftransform --help
+    - kthgraph2pebformula --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/MassimoLauria/cnfgen
+  license: GPL-3
+  summary: 'CNF formula generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

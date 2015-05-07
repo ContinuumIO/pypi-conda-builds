@@ -1,0 +1,67 @@
+package:
+  name: bottlechest
+  version: "0.7.1"
+
+source:
+  fn: Bottlechest-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/B/Bottlechest/Bottlechest-0.7.1.tar.gz
+  md5: 272a8d9e65ee6e8b072d5da5656337e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bottlechest = bottlechest:main
+    #
+    # Would create an entry point called bottlechest that calls bottlechest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - bottlechest
+    - bottlechest/benchmark
+    - bottlechest/slow
+    - bottlechest/src
+    - bottlechest/src/func
+    - bottlechest/src/template
+    - bottlechest/src/template/func
+    - bottlechest/tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/biolab/bottlechest
+  license: BSD License
+  summary: 'Fast NumPy array functions written in Cython'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

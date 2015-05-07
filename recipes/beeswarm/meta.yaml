@@ -1,0 +1,127 @@
+package:
+  name: beeswarm
+  version: "0.7.14"
+
+source:
+  fn: Beeswarm-0.7.14.tar.gz
+  url: https://pypi.python.org/packages/source/B/Beeswarm/Beeswarm-0.7.14.tar.gz
+  md5: f8cadb54e8ac65f0bdf363f29fff6781
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - beeswarm = beeswarm:main
+    #
+    # Would create an entry point called beeswarm that calls beeswarm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq >=14.3.0
+    - fs
+    - pycrypto >=2.6.0
+    - ecdsa
+    - cssselect
+    - nose
+    - gevent >=1.0
+    - requests
+    - telnetsrv
+    - paramiko
+    - ntplib
+    - pysendfile
+    - pydes
+    - flask >=0.10.0
+    - flask-login
+    - sqlalchemy >=0.9.1
+    - pyopenssl
+    - lxml
+    - flask-wtf >=0.9.0
+    - mock
+    - enum34
+    - netifaces
+
+  run:
+    - python
+    - pyzmq >=14.3.0
+    - fs
+    - pycrypto >=2.6.0
+    - ecdsa
+    - cssselect
+    - nose
+    - gevent >=1.0
+    - requests
+    - telnetsrv
+    - paramiko
+    - ntplib
+    - pysendfile
+    - pydes
+    - flask >=0.10.0
+    - flask-login
+    - sqlalchemy >=0.9.1
+    - pyopenssl
+    - lxml
+    - flask-wtf >=0.9.0
+    - mock
+    - enum34
+    - netifaces
+
+test:
+  # Python imports
+  imports:
+    - beeswarm
+    - beeswarm.drones
+    - beeswarm.drones.client
+    - beeswarm.drones.client.baits
+    - beeswarm.drones.client.baits.shared
+    - beeswarm.drones.client.models
+    - beeswarm.drones.client.tests
+    - beeswarm.drones.honeypot
+    - beeswarm.drones.honeypot.capabilities
+    - beeswarm.drones.honeypot.capabilities.shared
+    - beeswarm.drones.honeypot.helpers
+    - beeswarm.drones.honeypot.models
+    - beeswarm.drones.honeypot.tests
+    - beeswarm.server
+    - beeswarm.server.db
+    - beeswarm.server.misc
+    - beeswarm.server.reporting
+    - beeswarm.server.tests
+    - beeswarm.server.webapp
+    - beeswarm.shared
+    - beeswarm.shared.misc
+    - beeswarm.shared.models
+    - beeswarm.shared.tests
+    - beeswarm.shared.vnc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/honeynet/beeswarm
+  license: GPL 3
+  summary: 'Honeytoken transmission, reception and analysis.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

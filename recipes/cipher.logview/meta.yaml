@@ -1,0 +1,65 @@
+package:
+  name: cipher.logview
+  version: "1.1.0"
+
+source:
+  fn: cipher.logview-1.1.0.zip
+  url: https://pypi.python.org/packages/source/c/cipher.logview/cipher.logview-1.1.0.zip
+  md5: 288c76f480408c92b311af746b570da3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cipher.logview = cipher.logview:main
+    #
+    # Would create an entry point called cipher.logview that calls cipher.logview.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dozer >=0.4
+
+  run:
+    - python
+    - setuptools
+    - dozer >=0.4
+
+test:
+  # Python imports
+  imports:
+    - cipher
+    - cipher.logview
+    - cipher.logview.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CipherHealth/cipher.logview
+  license: MIT
+  summary: 'WSGI middleware that shows you log messages produced during request handling.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

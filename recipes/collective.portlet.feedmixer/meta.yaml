@@ -1,0 +1,72 @@
+package:
+  name: collective.portlet.feedmixer
+  version: "1.6"
+
+source:
+  fn: collective.portlet.feedmixer-1.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.portlet.feedmixer/collective.portlet.feedmixer-1.6.zip
+  md5: bf53a91b59906058083afb71e3ea466e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.portlet.feedmixer = collective.portlet.feedmixer:main
+    #
+    # Would create an entry point called collective.portlet.feedmixer that calls collective.portlet.feedmixer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser
+    - plone.portlets
+    - plone.app.portlets
+    - plone.memoize
+
+  run:
+    - python
+    - setuptools
+    - feedparser
+    - plone.portlets
+    - plone.app.portlets
+    - plone.memoize
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.portlet
+    - collective.portlet.feedmixer
+    - collective.portlet.feedmixer.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org
+  license: GPL
+  summary: 'Portlet which can show multiple feeds'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

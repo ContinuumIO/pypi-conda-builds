@@ -1,0 +1,73 @@
+package:
+  name: bob.db.mobio
+  version: "2.0.2"
+
+source:
+  fn: bob.db.mobio-2.0.2.zip
+  url: https://pypi.python.org/packages/source/b/bob.db.mobio/bob.db.mobio-2.0.2.zip
+  md5: 5b49688f9bbfd71d90fed4a59d10a7b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.db.mobio = bob.db.mobio:main
+    #
+    # Would create an entry point called bob.db.mobio that calls bob.db.mobio.main()
+
+    - generate_filelist = bob.db.mobio.generate_filelist:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - bob.db.base
+    - bob.db.verification.utils
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - bob.db.base
+    - bob.db.verification.utils
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.db
+    - bob.db.mobio
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - generate_filelist --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/bob.db.mobio
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'MOBIO Database Access API for Bob'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

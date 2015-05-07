@@ -1,0 +1,74 @@
+package:
+  name: blacktie
+  version: "0.2.1.2"
+
+source:
+  fn: blacktie-0.2.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/blacktie/blacktie-0.2.1.2.tar.gz
+  md5: 38c1bda17b366e8298b808802ab069e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blacktie = blacktie:main
+    #
+    # Would create an entry point called blacktie that calls blacktie.main()
+
+    - blacktie=blacktie:main
+    - blacktie-encode=blacktie.scripts.encode_mail_li_file:main
+    - blacktie-cummerbund=blacktie.scripts.cummerbund:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - mako
+    - rpy2
+
+  run:
+    - python
+    - pyyaml
+    - mako
+    - rpy2
+
+test:
+  # Python imports
+  imports:
+    - blacktie
+    - blacktie.scripts
+    - blacktie.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - blacktie --help
+    - blacktie-encode --help
+    - blacktie-cummerbund --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xguse/
+  license: GPL 3
+  summary: 'A python wrapper for analysis of RNA-seq data with the popular tophat/cufflinks pipeline.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

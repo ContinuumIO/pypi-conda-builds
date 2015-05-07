@@ -1,0 +1,70 @@
+package:
+  name: bosh
+  version: "0.1.5.dev"
+
+source:
+  fn: bosh-0.1.5.dev.tar.gz
+  url: https://pypi.python.org/packages/source/b/bosh/bosh-0.1.5.dev.tar.gz
+  md5: 00f8fcb83cec1a215a4ab2bb11f2c730
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bosh = bosh:main
+    #
+    # Would create an entry point called bosh that calls bosh.main()
+
+    - bosh = bosh.bosh:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bosrvclient
+    - texttable
+    - pyparsing
+    - openpyxl
+
+  run:
+    - python
+    - bosrvclient
+    - texttable
+    - pyparsing
+    - openpyxl
+
+test:
+  # Python imports
+  imports:
+    - bosh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bosh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/macrodata/bosh.git
+  license: Apache 2.0
+  summary: 'BigObject service command line tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

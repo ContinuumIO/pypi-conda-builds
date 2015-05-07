@@ -1,0 +1,84 @@
+package:
+  name: cada
+  version: "0.1.0"
+
+source:
+  fn: cada-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cada/cada-0.1.0.tar.gz
+  md5: 654b86b255e28b09e53b3059fd2017a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cada = cada:main
+    #
+    # Would create an entry point called cada that calls cada.main()
+
+    - cada = cada.commands:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - flask-assets ==0.9
+    - flask-mail ==0.9.0
+    - flask-script ==0.6.7
+    - flask-wtf ==0.9.4
+    - jinja2 ==2.7.2
+    - elasticsearch ==1.0.0
+    - flask-mongoengine ==0.7.0
+    - mongoengine ==0.8.7
+    - unicodecsv ==0.9.4
+    - cssmin ==0.2.0
+
+  run:
+    - python
+    - flask ==0.10.1
+    - flask-assets ==0.9
+    - flask-mail ==0.9.0
+    - flask-script ==0.6.7
+    - flask-wtf ==0.9.4
+    - jinja2 ==2.7.2
+    - elasticsearch ==1.0.0
+    - flask-mongoengine ==0.7.0
+    - mongoengine ==0.8.7
+    - unicodecsv ==0.9.4
+    - cssmin ==0.2.0
+
+test:
+  # Python imports
+  imports:
+    - cada
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cada --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/etalab/cada
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'Search and consult CADA advices'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

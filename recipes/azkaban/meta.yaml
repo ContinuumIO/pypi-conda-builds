@@ -1,0 +1,73 @@
+package:
+  name: azkaban
+  version: "0.8.5"
+
+source:
+  fn: azkaban-0.8.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/azkaban/azkaban-0.8.5.tar.gz
+  md5: e90903025cdac476a473fd6037226a46
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azkaban = azkaban:main
+    #
+    # Would create an entry point called azkaban that calls azkaban.main()
+
+    - azkaban = azkaban.__main__:main
+    - azkabanpig = azkaban.ext.pig:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - docopt
+    - requests >=2.0.1
+    - urllib3
+
+  run:
+    - python
+    - six
+    - docopt
+    - requests >=2.0.1
+    - urllib3
+
+test:
+  # Python imports
+  imports:
+    - azkaban
+    - azkaban.ext
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - azkaban --help
+    - azkabanpig --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://azkabancli.readthedocs.org/
+  license: MIT License
+  summary: 'AzkabanCLI: a lightweight command line interface for Azkaban.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

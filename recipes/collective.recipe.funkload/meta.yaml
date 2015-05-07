@@ -1,0 +1,74 @@
+package:
+  name: collective.recipe.funkload
+  version: "0.3.1"
+
+source:
+  fn: collective.recipe.funkload-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.funkload/collective.recipe.funkload-0.3.1.tar.gz
+  md5: 75155a6ffeb758e2fbbdcb90e7c666ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.funkload = collective.recipe.funkload:main
+    #
+    # Would create an entry point called collective.recipe.funkload that calls collective.recipe.funkload.main()
+
+    - funkload = collective.recipe.funkload.dispatcher:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - collective.funkload >0.2
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - collective.funkload >0.2
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.funkload
+    - collective.recipe.funkload.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - funkload --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.recipe.funkload
+  license: Zope Public License
+  summary: "Makes installing funkload, running tests and generating reports a 'no-brainer'"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

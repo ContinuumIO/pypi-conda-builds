@@ -1,0 +1,63 @@
+package:
+  name: celery-with-couchdb
+  version: "3.0"
+
+source:
+  fn: celery-with-couchdb-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery-with-couchdb/celery-with-couchdb-3.0.tar.gz
+  md5: ff48af14f3b3829373dde21c6be8e1dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery-with-couchdb = celery-with-couchdb:main
+    #
+    # Would create an entry point called celery-with-couchdb that calls celery-with-couchdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.0,<4.0
+    - couchdb
+
+  run:
+    - python
+    - celery >=3.0,<4.0
+    - couchdb
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://celeryproject.org
+  license: BSD
+  summary: 'Bundle installing the dependencies for Celery and CouchDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

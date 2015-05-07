@@ -1,0 +1,64 @@
+package:
+  name: baf
+  version: "1.0"
+
+source:
+  fn: baf-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/baf/baf-1.0.tar.gz
+  md5: 6cd8017017086397e27c31a8799cc0ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - baf = baf:main
+    #
+    # Would create an entry point called baf that calls baf.main()
+
+    - baf = baf.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - yolk >=0.4.3
+
+  run:
+    - python
+    - yolk >=0.4.3
+
+test:
+  # Python imports
+  imports:
+    - baf
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - baf --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kvbik/python-baf
+  license: BSD
+  summary: 'example packaging layout'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,128 @@
+package:
+  name: authentic2
+  version: "2.1.19"
+
+source:
+  fn: authentic2-2.1.19.tar.gz
+  url: https://pypi.python.org/packages/source/a/authentic2/authentic2-2.1.19.tar.gz
+  md5: 5671d572e518967229de25224c93ebb8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - authentic2 = authentic2:main
+    #
+    # Would create an entry point called authentic2 that calls authentic2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5,<1.8
+    - south >=1.0.0
+    - requests
+    - django-model-utils
+    - django-admin-tools >=0.5.1
+    - dnspython
+    - django-select2
+    - django-tables2
+    - gadjo
+    - xstatic
+    - xstatic_font_awesome
+    - xstatic_jquery
+    - xstatic_jquery_ui
+    - django-import-export
+    - django-sekizai
+    - six
+
+  run:
+    - python
+    - setuptools
+    - django >=1.5,<1.8
+    - south >=1.0.0
+    - requests
+    - django-model-utils
+    - django-admin-tools >=0.5.1
+    - dnspython
+    - django-select2
+    - django-tables2
+    - gadjo
+    - xstatic
+    - xstatic_font_awesome
+    - xstatic_jquery
+    - xstatic_jquery_ui
+    - django-import-export
+    - django-sekizai
+    - six
+
+test:
+  # Python imports
+  imports:
+    - authentic2
+    - authentic2.attribute_aggregator
+    - authentic2.attribute_aggregator.management
+    - authentic2.attribute_aggregator.management.commands
+    - authentic2.attribute_aggregator.south_migrations
+    - authentic2.attributes_ng
+    - authentic2.attributes_ng.sources
+    - authentic2.auth2_auth
+    - authentic2.auth2_auth.auth2_ssl
+    - authentic2.auth2_auth.auth2_ssl.south_migrations
+    - authentic2.auth2_auth.south_migrations
+    - authentic2.backends
+    - authentic2.disco_service
+    - authentic2.idp
+    - authentic2.idp.management
+    - authentic2.idp.management.commands
+    - authentic2.idp.saml
+    - authentic2.idp.south_migrations
+    - authentic2.idp.templatetags
+    - authentic2.management
+    - authentic2.management.commands
+    - authentic2.manager
+    - authentic2.nonce
+    - authentic2.registration_backend
+    - authentic2.saml
+    - authentic2.saml.management
+    - authentic2.saml.management.commands
+    - authentic2.saml.shibboleth
+    - authentic2.saml.south_migrations
+    - authentic2.south_migrations
+    - authentic2.vendor
+    - authentic2.vendor.dpam
+    - authentic2_idp_cas
+    - authentic2_idp_cas.south_migrations
+    - authentic2_idp_openid
+    - authentic2_idp_openid.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dev.entrouvert.org/projects/authentic/
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'Authentic 2, a versatile identity management server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

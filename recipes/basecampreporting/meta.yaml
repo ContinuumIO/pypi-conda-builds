@@ -1,0 +1,66 @@
+package:
+  name: basecampreporting
+  version: "0.5"
+
+source:
+  fn: basecampreporting-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/basecampreporting/basecampreporting-0.5.tar.gz
+  md5: 87bbd40b20f3f817977fce1583a55157
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - basecampreporting = basecampreporting:main
+    #
+    # Would create an entry point called basecampreporting that calls basecampreporting.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - elementtree
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+    - elementtree
+
+test:
+  # Python imports
+  imports:
+    - basecampreporting
+    - basecampreporting.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cmheisel/basecampreporting
+  license: MIT License
+  summary: 'Read-only interface to Basecamp projects, with support for Scrum concepts like sprints and backlogs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

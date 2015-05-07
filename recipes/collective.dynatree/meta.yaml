@@ -1,0 +1,77 @@
+package:
+  name: collective.dynatree
+  version: "2.0"
+
+source:
+  fn: collective.dynatree-2.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.dynatree/collective.dynatree-2.0.zip
+  md5: 3671c05612a60397e47dcb98597c9051
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.dynatree = collective.dynatree:main
+    #
+    # Would create an entry point called collective.dynatree that calls collective.dynatree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.schema >=4.1dev
+    - plone
+    - plone.behavior
+    - collective.js.jqueryui
+    - collective.js.backbone
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.schema >=4.1dev
+    - plone
+    - plone.behavior
+    - collective.js.jqueryui
+    - collective.js.backbone
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.dynatree
+    - collective.dynatree.example
+    - collective.dynatree.example.at
+    - collective.dynatree.example.dx
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.dynatree
+  license: GNU General Public License (GPL)
+  summary: 'jquery.dynatree.js integration for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

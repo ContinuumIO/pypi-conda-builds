@@ -1,0 +1,70 @@
+package:
+  name: django-activeurl
+  version: "0.1.8"
+
+source:
+  fn: django-activeurl-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-activeurl/django-activeurl-0.1.8.tar.gz
+  md5: e1504097598f7026a637ae83e54a8673
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-activeurl = django-activeurl:main
+    #
+    # Would create an entry point called django-activeurl that calls django-activeurl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - lxml >=2.3.5
+    - django-classy-tags >=0.4
+    - django_appconf >=0.6
+
+  run:
+    - python
+    - django >=1.3
+    - lxml >=2.3.5
+    - django-classy-tags >=0.4
+    - django_appconf >=0.6
+
+test:
+  # Python imports
+  imports:
+    - django_activeurl
+    - django_activeurl.ext
+    - django_activeurl.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hellysmile/django-activeurl/
+  license: Apache Software License
+  summary: 'Easy to use active URL highlighting for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

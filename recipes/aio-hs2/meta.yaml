@@ -1,0 +1,67 @@
+package:
+  name: aio-hs2
+  version: "0.2"
+
+source:
+  fn: aio-hs2-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/aio-hs2/aio-hs2-0.2.tar.gz
+  md5: 58c57f77573722344804fc28644e1b9e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aio-hs2 = aio-hs2:main
+    #
+    # Would create an entry point called aio-hs2 that calls aio-hs2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pure-sasl
+
+  run:
+    - python
+    - pure-sasl
+
+test:
+  # Python imports
+  imports:
+    - aiohs2
+    - aiohs2.lowlevel
+    - aiohs2.lowlevel.TCLIService
+    - thrift
+    - thrift.protocol
+    - thrift.server
+    - thrift.transport
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tailhook/aio-hs2
+  license: UNKNOWN
+  summary: 'Asyncio-based client for hiveserver2 (and sharkserver2)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,98 @@
+package:
+  name: collective.disqus
+  version: "2.0rc1"
+
+source:
+  fn: collective.disqus-2.0rc1.zip
+  url: https://pypi.python.org/packages/source/c/collective.disqus/collective.disqus-2.0rc1.zip
+  md5: 54ee8f8b047d88ec36e1178a7c68cb14
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.disqus = collective.disqus:main
+    #
+    # Would create an entry point called collective.disqus that calls collective.disqus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.prettydate
+    - disqus-python
+    - plone.app.discussion
+    - plone.app.layout
+    - plone.app.registry
+    - plone.memoize
+    - plone.portlets
+    - plone.registry
+    - products.cmfcore
+    - products.cmfplone >=4.1
+    - products.genericsetup
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - setuptools
+    - collective.prettydate
+    - disqus-python
+    - plone.app.discussion
+    - plone.app.layout
+    - plone.app.registry
+    - plone.memoize
+    - plone.portlets
+    - plone.registry
+    - products.cmfcore
+    - products.cmfplone >=4.1
+    - products.genericsetup
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.disqus
+    - collective.disqus.Extensions
+    - collective.disqus.browser
+    - collective.disqus.portlets
+    - collective.disqus.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/collective.disqus
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Integration of Disqus comments platform API into Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

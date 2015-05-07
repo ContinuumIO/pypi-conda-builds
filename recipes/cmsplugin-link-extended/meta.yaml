@@ -1,0 +1,67 @@
+package:
+  name: cmsplugin-link-extended
+  version: "0.2"
+
+source:
+  fn: cmsplugin-link-extended-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-link-extended/cmsplugin-link-extended-0.2.tar.gz
+  md5: e358e496e223960439634537c7915eea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-link-extended = cmsplugin-link-extended:main
+    #
+    # Would create an entry point called cmsplugin-link-extended that calls cmsplugin-link-extended.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-cms
+
+  run:
+    - python
+    - django
+    - django-cms
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_link_extended
+    - cmsplugin_link_extended.migrations
+    - cmsplugin_link_extended.tests
+    - cmsplugin_link_extended.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/cmsplugin-link-extended
+  license: The MIT License
+  summary: 'Extends the link plugin of django-cms.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

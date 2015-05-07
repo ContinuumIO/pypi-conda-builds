@@ -1,0 +1,63 @@
+package:
+  name: clip-the-gym
+  version: "0.0.2"
+
+source:
+  fn: clip-the-gym-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/clip-the-gym/clip-the-gym-0.0.2.tar.gz
+  md5: ac78173d85d9d3c18d4a8638d8de6646
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clip-the-gym = clip-the-gym:main
+    #
+    # Would create an entry point called clip-the-gym that calls clip-the-gym.main()
+
+    - clip-the-gym=clipthegym:cmd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - clipthegym
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clip-the-gym --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ralphbean/clip-the-gym
+  license: GNU General Public License (GPL)
+  summary: 'Helper script to download audio from youtube for the gym'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

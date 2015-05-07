@@ -1,0 +1,104 @@
+package:
+  name: botornado
+  version: "0.0.3"
+
+source:
+  fn: botornado-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/botornado/botornado-0.0.3.tar.gz
+  md5: a14ceb55103a8c755a96f8a4eaf76432
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - botornado = botornado:main
+    #
+    # Would create an entry point called botornado that calls botornado.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=2.1.1
+
+  run:
+    - python
+    - tornado >=2.1.1
+
+test:
+  # Python imports
+  imports:
+    - boto
+    - boto.cacerts
+    - boto.cloudformation
+    - boto.cloudfront
+    - boto.contrib
+    - boto.dynamodb
+    - boto.ec2
+    - boto.ec2.autoscale
+    - boto.ec2.cloudwatch
+    - boto.ec2.elb
+    - boto.ecs
+    - boto.emr
+    - boto.file
+    - boto.fps
+    - boto.fps.test
+    - boto.gs
+    - boto.iam
+    - boto.manage
+    - boto.mashups
+    - boto.mturk
+    - boto.mturk.test
+    - boto.pyami
+    - boto.pyami.installers
+    - boto.pyami.installers.ubuntu
+    - boto.rds
+    - boto.roboto
+    - boto.route53
+    - boto.s3
+    - boto.sdb
+    - boto.sdb.db
+    - boto.sdb.db.manager
+    - boto.services
+    - boto.ses
+    - boto.sns
+    - boto.sqs
+    - boto.sts
+    - boto.vpc
+    - botornado
+    - botornado.s3
+    - botornado.sqs
+    - botornado.test
+    - botornado.test.s3
+    - botornado.test.sqs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yyuu/botornado
+  license: MIT License
+  summary: 'boto on tornado - an asynchronous Amazon Web Service (AWS) client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

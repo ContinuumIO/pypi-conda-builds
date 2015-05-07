@@ -1,0 +1,72 @@
+package:
+  name: collective.portlet.contentsearch
+  version: "0.2"
+
+source:
+  fn: collective.portlet.contentsearch-0.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.portlet.contentsearch/collective.portlet.contentsearch-0.2.zip
+  md5: 67dfa5483db84d30eced0bc6cb4233ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.portlet.contentsearch = collective.portlet.contentsearch:main
+    #
+    # Would create an entry point called collective.portlet.contentsearch that calls collective.portlet.contentsearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone >=4.1
+    - hexagonit.testing
+    - setuptools
+    - zope.i18nmessageid
+
+  run:
+    - python
+    - setuptools
+    - plone >=4.1
+    - hexagonit.testing
+    - setuptools
+    - zope.i18nmessageid
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.portlet
+    - collective.portlet.contentsearch
+    - collective.portlet.contentsearch.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.portlet.contentsearch
+  license: BSD License
+  summary: 'Adds content search portlet for Plone..'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

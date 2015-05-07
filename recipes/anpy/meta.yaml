@@ -1,0 +1,69 @@
+package:
+  name: anpy
+  version: "0.1.4"
+
+source:
+  fn: anpy-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/anpy/anpy-0.1.4.tar.gz
+  md5: cdf67d72f1f659e08394449fb824b175
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anpy = anpy:main
+    #
+    # Would create an entry point called anpy that calls anpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pathlib
+    - click
+    - requests
+    - beautifulsoup4
+
+  run:
+    - python
+    - pathlib
+    - click
+    - requests
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - anpy
+    - anpy.parsing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/regardscitoyens/anpy
+  license: MIT License
+  summary: 'Python client for assemblee-nationale.fr website'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

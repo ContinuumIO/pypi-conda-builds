@@ -1,0 +1,69 @@
+package:
+  name: ansible-tools
+  version: "0.0.4"
+
+source:
+  fn: ansible-tools-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/ansible-tools/ansible-tools-0.0.4.tar.gz
+  md5: 5143800c9ae021bada4f9e16b08fefa0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ansible-tools = ansible-tools:main
+    #
+    # Would create an entry point called ansible-tools that calls ansible-tools.main()
+
+    - ansible-local=ansibletools.cli.ansible_local:main
+    - ansible-vault-helper=ansibletools.cli.ansible_vault_helper:main
+    - vaultify=ansibletools.cli.vaultify:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - keyring
+
+  run:
+    - python
+    - keyring
+
+test:
+  # Python imports
+  imports:
+    - ansibletools
+    - ansibletools.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ansible-local --help
+    - ansible-vault-helper --help
+    - vaultify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lvillani/ansible-tools
+  license: MIT License
+  summary: 'Keyring integration and local execution wrappers for Ansible'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

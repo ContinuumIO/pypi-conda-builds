@@ -1,0 +1,70 @@
+package:
+  name: axiom
+  version: "0.7.3"
+
+source:
+  fn: Axiom-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/A/Axiom/Axiom-0.7.3.tar.gz
+  md5: faa7aac9079ea4e859d542a4d484ef6b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - axiom = axiom:main
+    #
+    # Would create an entry point called axiom that calls axiom.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=13.2.0
+    - epsilon >=0.7.0
+
+  run:
+    - python
+    - twisted >=13.2.0
+    - epsilon >=0.7.0
+
+test:
+  # Python imports
+  imports:
+    - axiom
+    - axiom.plugins
+    - axiom.scripts
+    - axiom.test
+    - axiom.test.historic
+    - axiom.test.upgrade_fixtures
+    - twisted.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/twisted/axiom
+  license: MIT License
+  summary: 'An in-process object-relational database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: cache-tagging
+  version: "0.7.7.7"
+
+source:
+  fn: cache-tagging-0.7.7.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cache-tagging/cache-tagging-0.7.7.7.tar.gz
+  md5: caa303994e52a58299c6a162ef8b3f4c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cache-tagging = cache-tagging:main
+    #
+    # Would create an entry point called cache-tagging that calls cache-tagging.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cache_tagging
+    - cache_tagging.django_cache_tagging
+    - cache_tagging.django_cache_tagging.templatetags
+    - cache_tagging.django_cache_tagging.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/emacsway/cache-tagging-0.7.7.7
+  license: BSD License
+  summary: 'Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). Django support.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

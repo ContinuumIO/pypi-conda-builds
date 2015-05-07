@@ -1,0 +1,100 @@
+package:
+  name: cirruscluster
+  version: "0.0.1-17"
+
+source:
+  fn: cirruscluster-0.0.1-17.tar.gz
+  url: https://pypi.python.org/packages/source/c/cirruscluster/cirruscluster-0.0.1-17.tar.gz
+  md5: ff3cadcec47cc3847f4645b6848d35b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cirruscluster = cirruscluster:main
+    #
+    # Would create an entry point called cirruscluster that calls cirruscluster.main()
+
+    - cirrus_workstation_cli = cirruscluster.workstation_cli:main
+    - cirrus_cluster_cli = cirruscluster.cluster.cluster_cli:main
+    - cirrus_ami_cli = cirruscluster.ami.ami_cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6
+    - passlib >=1.6.1
+    - paramiko >=1.10.1
+    - boto >=2.9.5
+    - pyyaml >=3.10
+    - jinja2 >=2.7
+    - requests >=1.2
+    - python-dateutil
+    - pycrypto
+
+  run:
+    - python
+    - distribute >=0.6
+    - passlib >=1.6.1
+    - paramiko >=1.10.1
+    - boto >=2.9.5
+    - pyyaml >=3.10
+    - jinja2 >=2.7
+    - requests >=1.2
+    - python-dateutil
+    - pycrypto
+
+test:
+  # Python imports
+  imports:
+    - cirruscluster
+    - cirruscluster.ami
+    - cirruscluster.cluster
+    - cirruscluster.ext
+    - cirruscluster.ext.ansible
+    - cirruscluster.ext.ansible.callback_plugins
+    - cirruscluster.ext.ansible.inventory
+    - cirruscluster.ext.ansible.inventory.vars_plugins
+    - cirruscluster.ext.ansible.playbook
+    - cirruscluster.ext.ansible.runner
+    - cirruscluster.ext.ansible.runner.action_plugins
+    - cirruscluster.ext.ansible.runner.connection_plugins
+    - cirruscluster.ext.ansible.runner.filter_plugins
+    - cirruscluster.ext.ansible.runner.lookup_plugins
+    - cirruscluster.ext.ansible.utils
+    - cirruscluster.ext.nx
+    - cirruscluster.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cirrus_workstation_cli --help
+    - cirrus_cluster_cli --help
+    - cirrus_ami_cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/heathkh/cirruscluster
+  license: MIT
+  summary: 'A batteries-included MapReduce cluster-in-a-can for scientists, researchers, and engineers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

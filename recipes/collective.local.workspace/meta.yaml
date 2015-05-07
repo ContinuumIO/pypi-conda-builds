@@ -1,0 +1,78 @@
+package:
+  name: collective.local.workspace
+  version: "1.0rc2"
+
+source:
+  fn: collective.local.workspace-1.0rc2.zip
+  url: https://pypi.python.org/packages/source/c/collective.local.workspace/collective.local.workspace-1.0rc2.zip
+  md5: 9b959e10034f5220368aeb508229fc1d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.local.workspace = collective.local.workspace:main
+    #
+    # Would create an entry point called collective.local.workspace that calls collective.local.workspace.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.local.adduser
+    - collective.local.addgroup
+    - collective.local.sendto
+    - collective.local.userlisting
+    - collective.local.contentrules
+    - plone.app.dexterity
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.local.adduser
+    - collective.local.addgroup
+    - collective.local.sendto
+    - collective.local.userlisting
+    - collective.local.contentrules
+    - plone.app.dexterity
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.local
+    - collective.local.workspace
+    - collective.local.workspace.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tdesvenain/collective.local.workspace
+  license: gpl
+  summary: 'A dexterity container that provides all collective.local features'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

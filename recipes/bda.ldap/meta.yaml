@@ -1,0 +1,71 @@
+package:
+  name: bda.ldap
+  version: "1.5.2"
+
+source:
+  fn: bda.ldap-1.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/bda.ldap/bda.ldap-1.5.2.tar.gz
+  md5: cef1bde33d047c857bde31c21bcfae68
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bda.ldap = bda.ldap:main
+    #
+    # Would create an entry point called bda.ldap that calls bda.ldap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-ldap
+    - zodict
+    - bda.cache
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-ldap
+    - zodict
+    - bda.cache
+
+test:
+  # Python imports
+  imports:
+    - bda
+    - bda.ldap
+    - bda.ldap.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.plone.org/svn/collective/bda.ldap
+  license: GNU General Public License (GPL)
+  summary: 'LDAP convenience library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

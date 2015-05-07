@@ -1,0 +1,77 @@
+package:
+  name: django-admin-tools-stats
+  version: "0.6.1"
+
+source:
+  fn: django-admin-tools-stats-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-tools-stats/django-admin-tools-stats-0.6.1.tar.gz
+  md5: b468d7ddac032a39293a8ae0dc7202d7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-tools-stats = django-admin-tools-stats:main
+    #
+    # Would create an entry point called django-admin-tools-stats that calls django-admin-tools-stats.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil >=2.0
+    - django-jsonfield >=0.9.2
+    - django-qsstats-magic >=0.7.2
+    - python-memcached >=1.47
+    - django-cache-utils >=0.7.2
+    - django-admin-tools >=0.5.1
+    - django-nvd3 >=0.5.0
+
+  run:
+    - python
+    - python-dateutil >=2.0
+    - django-jsonfield >=0.9.2
+    - django-qsstats-magic >=0.7.2
+    - python-memcached >=1.47
+    - django-cache-utils >=0.7.2
+    - django-admin-tools >=0.5.1
+    - django-nvd3 >=0.5.0
+
+test:
+  # Python imports
+  imports:
+    - admin_tools_stats
+    - admin_tools_stats.migrations
+    - demoproject
+    - demoproject.demoproject
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Star2Billing/django-admin-tools-stats
+  license: MIT License
+  summary: 'django-admin-tools-stats - Django-admin module to create charts and stats in your dashboard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

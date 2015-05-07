@@ -1,0 +1,69 @@
+package:
+  name: arcs.gsi
+  version: "1.2dev-20091120"
+
+source:
+  fn: arcs.gsi-1.2dev-20091120.tar.gz
+  url: https://pypi.python.org/packages/source/a/arcs.gsi/arcs.gsi-1.2dev-20091120.tar.gz
+  md5: f2311a748bd31b3b18d91e1645b49d04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arcs.gsi = arcs.gsi:main
+    #
+    # Would create an entry point called arcs.gsi that calls arcs.gsi.main()
+
+    - proxy-init=arcs.gsi.proxyinit:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - m2crypto
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - m2crypto
+
+test:
+  # Python imports
+  imports:
+    - arcs
+    - arcs.gsi
+    - arcs.gsi.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - proxy-init --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.arcs.org.au/gitorious/arcs-gsi/arcs-gsi
+  license: GNU General Public License (GPL)
+  summary: 'Library to assist GSI authentication and certificate handling in python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

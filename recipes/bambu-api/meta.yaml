@@ -1,0 +1,70 @@
+package:
+  name: bambu-api
+  version: "2.0.1"
+
+source:
+  fn: bambu-api-2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-api/bambu-api-2.0.1.tar.gz
+  md5: 1614d9e8b9897b40ace1856de8c8e90e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-api = bambu-api:main
+    #
+    # Would create an entry point called bambu-api that calls bambu-api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - oauth
+    - oauth2
+
+  run:
+    - python
+    - django >=1.4
+    - oauth
+    - oauth2
+
+test:
+  # Python imports
+  imports:
+    - bambu_api
+    - bambu_api.auth
+    - bambu_api.migrations
+    - bambu_api.templatetags
+    - bambu_api.xml
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iamsteadman/bambu-api
+  license: UNKNOWN
+  summary: 'Quickly expose your models to a JSON or XML API, authenticated via HTTP or OAuth.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

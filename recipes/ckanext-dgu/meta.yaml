@@ -1,0 +1,95 @@
+package:
+  name: ckanext-dgu
+  version: "0.4"
+
+source:
+  fn: ckanext-dgu-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/ckanext-dgu/ckanext-dgu-0.4.tar.gz
+  md5: f3b64241b4f84be84bc16139cfd4fb02
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ckanext-dgu = ckanext-dgu:main
+    #
+    # Would create an entry point called ckanext-dgu that calls ckanext-dgu.main()
+
+    - ons_loader=ckanext.dgu.ons:load
+    - cospread_loader=ckanext.dgu.cospread:load
+    - change_licenses=ckanext.dgu.scripts.change_licenses_cmd:command
+    - transfer_url=ckanext.dgu.scripts.transfer_url_cmd:command
+    - ons_analysis=ckanext.dgu.scripts.ons_analysis_cmd:command
+    - ofsted_fix=ckanext.dgu.scripts.ofsted_fix_cmd:command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - swiss
+    - ckanclient >=0.5
+    - xlrd >=0.7.1
+    - xlwt >=0.7.2
+
+  run:
+    - python
+    - setuptools
+    - swiss
+    - ckanclient >=0.5
+    - xlrd >=0.7.1
+    - xlwt >=0.7.2
+
+test:
+  # Python imports
+  imports:
+    - ckanext
+    - ckanext.dgu
+    - ckanext.dgu.bis
+    - ckanext.dgu.bis.tests
+    - ckanext.dgu.cospread
+    - ckanext.dgu.forms
+    - ckanext.dgu.ons
+    - ckanext.dgu.scripts
+    - ckanext.dgu.tests
+    - ckanext.dgu.tests.bis
+    - ckanext.dgu.tests.cospread
+    - ckanext.dgu.tests.forms
+    - ckanext.dgu.tests.functional
+    - ckanext.dgu.tests.ons
+    - ckanext.dgu.tests.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ons_loader --help
+    - cospread_loader --help
+    - change_licenses --help
+    - transfer_url --help
+    - ons_analysis --help
+    - ofsted_fix --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://knowledgeforge.net/ckan/
+  license: AGPL
+  summary: 'CKAN DGU extensions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

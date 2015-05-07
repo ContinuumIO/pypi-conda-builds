@@ -1,0 +1,72 @@
+package:
+  name: classymq
+  version: "0.7.0"
+
+source:
+  fn: classymq-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/classymq/classymq-0.7.0.tar.gz
+  md5: 4b2f072293f44742f7fa7157b7a1e680
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - classymq = classymq:main
+    #
+    # Would create an entry point called classymq that calls classymq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pika >=0.9.5
+    - txamqp
+    - twisted
+
+  run:
+    - python
+    - pika >=0.9.5
+    - txamqp
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - classymq
+    - classymq.api
+    - classymq.event
+    - classymq.lib
+    - classymq.tests
+    - examples
+    - examples.log
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gdoermann/classymq
+  license: BSD License
+  summary: 'RabbitMQ class based library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

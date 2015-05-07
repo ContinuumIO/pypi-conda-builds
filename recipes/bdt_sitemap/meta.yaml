@@ -1,0 +1,65 @@
+package:
+  name: bdt_sitemap
+  version: "0.9"
+
+source:
+  fn: bdt_sitemap-0.9.01105.5b1.zip
+  url: https://pypi.python.org/packages/source/b/bdt_sitemap/bdt_sitemap-0.9.01105.5b1.zip
+  md5: 49a8fa59b10f307d331cc7bca9976ec9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bdt_sitemap = bdt_sitemap:main
+    #
+    # Would create an entry point called bdt_sitemap that calls bdt_sitemap.main()
+
+    - bdt_sitemap=bdt.sitemap:run_shell
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+
+  run:
+    - python
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - bdt
+    - bdt_sitemap
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bdt_sitemap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/xenmen/bdt_sitemap
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'Sitemap Generator - Walks a local directory and its contents, generating sitemaps as it goes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

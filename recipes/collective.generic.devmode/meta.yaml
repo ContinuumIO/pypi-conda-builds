@@ -1,0 +1,66 @@
+package:
+  name: collective.generic.devmode
+  version: "1.0"
+
+source:
+  fn: collective.generic.devmode-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.generic.devmode/collective.generic.devmode-1.0.zip
+  md5: 3a7ecfd97715f61ad07126483b534f1c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.generic.devmode = collective.generic.devmode:main
+    #
+    # Would create an entry point called collective.generic.devmode that calls collective.generic.devmode.main()
+
+    - cg.devmode = collective.generic.devmode.devmode:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.generic
+    - collective.generic.devmode
+    - collective.generic.devmode.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cg.devmode --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.generic.devmode
+  license: GPL
+  summary: 'Sanitize a plone site for development use.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

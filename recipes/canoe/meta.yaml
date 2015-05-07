@@ -1,0 +1,67 @@
+package:
+  name: canoe
+  version: "0.1.1"
+
+source:
+  fn: canoe-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/canoe/canoe-0.1.1.tar.gz
+  md5: 0fbdac440848b8bdea2296344560a4e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - canoe = canoe:main
+    #
+    # Would create an entry point called canoe that calls canoe.main()
+
+    - canoe = canoe.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply
+
+  run:
+    - python
+    - ply
+
+test:
+  # Python imports
+  imports:
+    - canoe
+    - canoe.config
+    - canoe.filters
+    - canoe.routes
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - canoe --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/apgwoz/canoe
+  license: GPL
+  summary: 'Carve out log files and paddle'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

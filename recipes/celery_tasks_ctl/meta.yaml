@@ -1,0 +1,69 @@
+package:
+  name: celery_tasks_ctl
+  version: "0.2.1"
+
+source:
+  fn: celery_tasks_ctl-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery_tasks_ctl/celery_tasks_ctl-0.2.1.tar.gz
+  md5: 5cf9dc0d24dda2320062ed90cfe6bcc0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery_tasks_ctl = celery_tasks_ctl:main
+    #
+    # Would create an entry point called celery_tasks_ctl that calls celery_tasks_ctl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pika ==0.9.13
+    - celery ==3.0.23
+    - docopt ==0.6.1
+    - requests ==1.1.0
+
+  run:
+    - python
+    - pika ==0.9.13
+    - celery ==3.0.23
+    - docopt ==0.6.1
+    - requests ==1.1.0
+
+test:
+  # Python imports
+  imports:
+    - celery_tasks_ctl
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Celery Tasks Controller to list and revoke tasks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: cyanite-utils
+  version: "0.0.11"
+
+source:
+  fn: cyanite-utils-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/c/cyanite-utils/cyanite-utils-0.0.11.tar.gz
+  md5: 2c61b974c7b0de94ba75a1b3f9fefbe0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cyanite-utils = cyanite-utils:main
+    #
+    # Would create an entry point called cyanite-utils that calls cyanite-utils.main()
+
+    - cyanite-list = cyanite_utils.cli:cyanite_list
+    - cyanite-prune = cyanite_utils.cli:cyanite_prune
+    - cyanite-delete = cyanite_utils.cli:cyanite_delete
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - futures
+    - six
+    - blist
+    - lz4
+    - cassandra-driver
+
+  run:
+    - python
+    - pyyaml
+    - futures
+    - six
+    - blist
+    - lz4
+    - cassandra-driver
+
+test:
+  # Python imports
+  imports:
+    - cyanite_utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cyanite-list --help
+    - cyanite-prune --help
+    - cyanite-delete --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WrathOfChris/cyanite-utils
+  license: Apache
+  summary: 'Cyanite Utils'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: c2c.template
+  version: "1.1.0dev4"
+
+source:
+  fn: c2c.template-1.1.0dev4.tar.gz
+  url: https://pypi.python.org/packages/source/c/c2c.template/c2c.template-1.1.0dev4.tar.gz
+  md5: cdaeb58eb56a098ce499275d8524a757
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - c2c.template = c2c.template:main
+    #
+    # Would create an entry point called c2c.template that calls c2c.template.main()
+
+    - c2c-template = c2c.template:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle
+    - jinja2
+    - mako
+    - z3c.recipe.filetemplate
+    - pyyaml
+
+  run:
+    - python
+    - bottle
+    - jinja2
+    - mako
+    - z3c.recipe.filetemplate
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - c2c
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - c2c-template --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.camptocamp.com/geospatial-solutions
+  license: BSD License
+  summary: 'Vars collector and template runner.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: barcode
+  version: "0.5.0"
+
+source:
+  fn: barcode-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/barcode/barcode-0.5.0.tar.gz
+  md5: 4168dd0a98d333a69708f72ae3e85408
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - barcode = barcode:main
+    #
+    # Would create an entry point called barcode that calls barcode.main()
+
+    - barcode = barcode.barcode:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-levenshtein
+
+  run:
+    - python
+    - python-levenshtein
+
+test:
+  # Python imports
+  imports:
+    - barcode
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - barcode --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://git.lumc.nl/j.f.j.laros/barcode
+  license: MIT License
+  summary: 'Design NGS barcodes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

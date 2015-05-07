@@ -1,0 +1,62 @@
+package:
+  name: apply_firewall
+  version: "1.0"
+
+source:
+  fn: apply_firewall-1.0.zip
+  url: https://pypi.python.org/packages/source/a/apply_firewall/apply_firewall-1.0.zip
+  md5: 6c5e0e1d74ce0bd424d931592381a475
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apply_firewall = apply_firewall:main
+    #
+    # Would create an entry point called apply_firewall that calls apply_firewall.main()
+
+    - apply_firewall = apply_firewall:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - apply_firewall
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - apply_firewall --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: "A tool for applying iptables of linux safely, it rollbacks to\n original iptables if you don't type yes in specific time period. This is useful\n to void some situation which like blocked your self from accessing SSH remotely\n    "
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

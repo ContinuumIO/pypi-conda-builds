@@ -1,0 +1,85 @@
+package:
+  name: borg.localrole
+  version: "3.1.1"
+
+source:
+  fn: borg.localrole-3.1.1.zip
+  url: https://pypi.python.org/packages/source/b/borg.localrole/borg.localrole-3.1.1.zip
+  md5: bc04358164f922f255093fc0fe1c57eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - borg.localrole = borg.localrole:main
+    #
+    # Would create an entry point called borg.localrole that calls borg.localrole.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.component
+    - zope.deferredimport
+    - zope.interface
+    - products.cmfcore
+    - products.genericsetup
+    - products.plonepas
+    - products.pluggableauthservice
+    - plone.memoize
+    - acquisition
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.component
+    - zope.deferredimport
+    - zope.interface
+    - products.cmfcore
+    - products.genericsetup
+    - products.plonepas
+    - products.pluggableauthservice
+    - plone.memoize
+    - acquisition
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - borg
+    - borg.localrole
+    - borg.localrole.bbb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/borg.localrole
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A PAS plugin which can manage local roles via an adapter lookup on the current context'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

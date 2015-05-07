@@ -1,0 +1,68 @@
+package:
+  name: agx.generator.uml
+  version: "1.0a1"
+
+source:
+  fn: agx.generator.uml-1.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/a/agx.generator.uml/agx.generator.uml-1.0a1.tar.gz
+  md5: f6d8cc3a4c8ef4ad80602a50f295347a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - agx.generator.uml = agx.generator.uml:main
+    #
+    # Would create an entry point called agx.generator.uml that calls agx.generator.uml.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - agx.transform.xmi2uml
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - agx.transform.xmi2uml
+
+test:
+  # Python imports
+  imports:
+    - agx
+    - agx.generator
+    - agx.generator.uml
+    - agx.generator.uml.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bluedynamics/agx.generator.uml
+  license: GNU General Public License (GPL)
+  summary: 'AGX generator for UML nodes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: devpi-web
+  version: "2.2.3"
+
+source:
+  fn: devpi-web-2.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/devpi-web/devpi-web-2.2.3.tar.gz
+  md5: 323fed68d7d1cef1f78c774d1d59e45f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - devpi-web = devpi-web:main
+    #
+    # Would create an entry point called devpi-web that calls devpi-web.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - whoosh
+    - beautifulsoup4 >=4.3.2
+    - devpi-server >=2.1.4.dev0
+    - devpi-common >=2.0.5.dev0
+    - docutils >=0.11
+    - pygments >=1.6
+    - pyramid
+    - pyramid-chameleon
+
+  run:
+    - python
+    - setuptools
+    - whoosh
+    - beautifulsoup4 >=4.3.2
+    - devpi-server >=2.1.4.dev0
+    - devpi-common >=2.0.5.dev0
+    - docutils >=0.11
+    - pygments >=1.6
+    - pyramid
+    - pyramid-chameleon
+
+test:
+  # Python imports
+  imports:
+    - devpi_web
+    - devpi_web.vendor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://doc.devpi.net
+  license: MIT License
+  summary: 'devpi-web: a web view for devpi-server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

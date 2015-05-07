@@ -1,0 +1,77 @@
+package:
+  name: collective.contact.contactlist
+  version: "1.0"
+
+source:
+  fn: collective.contact.contactlist-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.contact.contactlist/collective.contact.contactlist-1.0.zip
+  md5: 701617c3b4743dd286cb37fc243d8742
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.contact.contactlist = collective.contact.contactlist:main
+    #
+    # Would create an entry point called collective.contact.contactlist that calls collective.contact.contactlist.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.contact.core
+    - plone.api
+    - plone.protect
+    - plone.formwidget.masterselect
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - collective.contact.core
+    - plone.api
+    - plone.protect
+    - plone.formwidget.masterselect
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.contact
+    - collective.contact.contactlist
+    - collective.contact.contactlist.browser
+    - collective.contact.contactlist.browser.eeawidget
+    - collective.contact.contactlist.content
+    - collective.contact.contactlist.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.contact.contactlist
+  license: GPL
+  summary: 'Manage lists of contacts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

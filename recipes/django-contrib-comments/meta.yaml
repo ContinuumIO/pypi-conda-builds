@@ -1,0 +1,69 @@
+package:
+  name: django-contrib-comments
+  version: "1.6.0"
+
+source:
+  fn: django-contrib-comments-1.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-contrib-comments/django-contrib-comments-1.6.0.tar.gz
+  md5: c962a88e054c229dc62b7f96b399b474
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-contrib-comments = django-contrib-comments:main
+    #
+    # Would create an entry point called django-contrib-comments that calls django-contrib-comments.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+
+  run:
+    - python
+    - django >=1.6
+
+test:
+  # Python imports
+  imports:
+    - django_comments
+    - django_comments.migrations
+    - django_comments.south_migrations
+    - django_comments.templatetags
+    - django_comments.views
+    - tests.custom_comments
+    - tests.testapp
+    - tests.testapp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/django/django-contrib-comments
+  license: BSD License
+  summary: 'The code formerly known as django.contrib.comments.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

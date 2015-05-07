@@ -1,0 +1,74 @@
+package:
+  name: caniusepython3
+  version: "3.1.0"
+
+source:
+  fn: caniusepython3-3.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/caniusepython3/caniusepython3-3.1.0.tar.gz
+  md5: ac85fdb30252e0c8128ae49164572b79
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - caniusepython3 = caniusepython3:main
+    #
+    # Would create an entry point called caniusepython3 that calls caniusepython3.main()
+
+    - caniusepython3 = caniusepython3.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distlib
+    - setuptools
+    - pip
+    - argparse
+    - futures
+
+  run:
+    - python
+    - setuptools
+    - distlib
+    - setuptools
+    - pip
+    - argparse
+    - futures
+
+test:
+  # Python imports
+  imports:
+    - caniusepython3
+    - caniusepython3.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - caniusepython3 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brettcannon/caniusepython3
+  license: Apache Software License
+  summary: 'Determine what projects are blocking you from porting to Python 3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

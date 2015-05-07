@@ -1,0 +1,66 @@
+package:
+  name: baserip
+  version: "0.2-beta2"
+
+source:
+  fn: baserip-0.2-beta2.tar.gz
+  url: https://pypi.python.org/packages/source/b/baserip/baserip-0.2-beta2.tar.gz
+  md5: a515a2a518a61e1572b1d8c100d11343
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - baserip = baserip:main
+    #
+    # Would create an entry point called baserip that calls baserip.main()
+
+    - baserip = baserip.baserip:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyudev >=0.16
+
+  run:
+    - python
+    - pyudev >=0.16
+
+test:
+  # Python imports
+  imports:
+    - baserip
+    - baserip.resources
+    - baserip.ui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - baserip --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.electron.me.uk
+  license: GNU General Public License (GPL)
+  summary: 'The alkali version of acidrip.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

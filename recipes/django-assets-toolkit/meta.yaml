@@ -1,0 +1,65 @@
+package:
+  name: django-assets-toolkit
+  version: "0.1.2"
+
+source:
+  fn: django-assets-toolkit-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-assets-toolkit/django-assets-toolkit-0.1.2.tar.gz
+  md5: 0a9179136e0a4012e87675267885ffbd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-assets-toolkit = django-assets-toolkit:main
+    #
+    # Would create an entry point called django-assets-toolkit that calls django-assets-toolkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyscss ==1.1.4
+    - coffeescript ==1.0.5
+
+  run:
+    - python
+    - pyscss ==1.1.4
+    - coffeescript ==1.0.5
+
+test:
+  # Python imports
+  imports:
+    - assetstoolkit
+    - assetstoolkit.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pypug/django-assets-toolkit
+  license: UNKNOWN
+  summary: 'A development toolkit for compiling sass and coffee script files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

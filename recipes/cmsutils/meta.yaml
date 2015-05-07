@@ -1,0 +1,67 @@
+package:
+  name: cmsutils
+  version: "0.6.6"
+
+source:
+  fn: cmsutils-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsutils/cmsutils-0.6.6.tar.gz
+  md5: 5dab8ef0eecda4979cda62f349aa145d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsutils = cmsutils:main
+    #
+    # Would create an entry point called cmsutils that calls cmsutils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cmsutils
+    - cmsutils.auth
+    - cmsutils.db
+    - cmsutils.forms
+    - cmsutils.management
+    - cmsutils.management.commands
+    - cmsutils.templatetags
+    - cmsutils.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tracpub.yaco.es/cmsutils
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Cmsutils for Django is a bundle of models and templates for Django projects in need of some Content Management System features.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: django-analyze
+  version: "0.4.23"
+
+source:
+  fn: django-analyze-0.4.23.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-analyze/django-analyze-0.4.23.tar.gz
+  md5: ddde24f14e59301002dd883ed9c7ec0c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-analyze = django-analyze:main
+    #
+    # Would create an entry point called django-analyze that calls django-analyze.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.0
+    - django-materialized-views >=0.3.1
+    - django-admin-steroids >=0.1.13
+    - psutil >=2.1.1
+    - six >=1.5.2
+    - django-picklefield
+    - joblib >=0.8.1
+
+  run:
+    - python
+    - django >=1.4.0
+    - django-materialized-views >=0.3.1
+    - django-admin-steroids >=0.1.13
+    - psutil >=2.1.1
+    - six >=1.5.2
+    - django-picklefield
+    - joblib >=0.8.1
+
+test:
+  # Python imports
+  imports:
+    - django_analyze
+    - django_analyze.management
+    - django_analyze.management.commands
+    - django_analyze.migrations
+    - django_analyze.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrisspen/django-analyze
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A general purpose framework for training and testing classification algorithms.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

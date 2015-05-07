@@ -1,0 +1,152 @@
+package:
+  name: balloon
+  version: "0.03-alfa"
+
+source:
+  fn: balloon-0.03-alfa.tar.gz
+  url: https://pypi.python.org/packages/source/b/balloon/balloon-0.03-alfa.tar.gz
+  md5: 18e2ecf6080b261f61adc1c625af8f69
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - balloon = balloon:main
+    #
+    # Would create an entry point called balloon that calls balloon.main()
+
+    - amazon_location_list.py = balloon.amazon.apps.location_list:main
+    - amazon_reservation_run.py = balloon.amazon.apps.reservation_run:main
+    - balloon-reservation-run = balloon.amazon.apps.reservation_run:main
+    - amazon_reservation_list.py = balloon.amazon.apps.reservation_list:main
+    - balloon-reservation-ls = balloon.amazon.apps.reservation_list:main
+    - balloon-cluster-ls = balloon.amazon.apps.reservation_list:main
+    - amazon_reservation_pickup.py = balloon.amazon.apps.reservation_pickup:main
+    - amazon_reservation_delete.py = balloon.amazon.apps.reservation_delete:main
+    - balloon-cluster-rm = balloon.amazon.apps.reservation_delete:main
+    - amazon_instance_extract.py = balloon.amazon.apps.instance_extract:main
+    - balloon-instance-extract = balloon.amazon.apps.instance_extract:main
+    - balloon-ssh = balloon.common.ssh.run:main
+    - amazon_openmpi_config.py = balloon.amazon.apps.openmpi_config:main
+    - balloon-openmpi-config = balloon.amazon.apps.openmpi_config:main
+    - balloon-timestamps-upload = balloon.amazon.apps.timestamps_upload:main
+    - balloon-solver-start = balloon.amazon.apps.solver_start:main
+    - balloon-solver-process = balloon.amazon.apps.results_consume:main
+    - amazon_nfs_config.py = balloon.amazon.apps.nfs_config:main
+    - balloon-nfs-config = balloon.amazon.apps.nfs_config:main
+    - amazon_deploy_credentials.py = balloon.amazon.apps.deploy_credentials:main
+    - balloon-credentials-deploy = balloon.amazon.apps.deploy_credentials:main
+    - balloon-deploy = balloon.common.deploy:main
+    - balloon-study-book = balloon.amazon.apps.study_book:main
+    - amazon_upload_start.py = balloon.amazon.apps.upload_start:main
+    - balloon-upload-start = balloon.amazon.apps.upload_start:main
+    - amazon_upload_resume.py = balloon.amazon.apps.upload_resume:main
+    - balloon-upload-resume = balloon.amazon.apps.upload_resume:main
+    - balloon-study-upload = balloon.amazon.apps.data_upload:main
+    - balloon-study-seal = balloon.amazon.apps.study_seal:main
+    - amazon_download.py = balloon.amazon.apps.download:main
+    - balloon-download = balloon.amazon.apps.download:main
+    - amazon_ls.py = balloon.amazon.apps.ls:main
+    - balloon-ls = balloon.amazon.apps.ls:main
+    - amazon_rm_study.py = balloon.amazon.apps.rm_study:main
+    - balloon-study-rm = balloon.amazon.apps.rm_study:main
+    - amazon_rm.py = balloon.amazon.apps.rm:main
+    - balloon-rm = balloon.amazon.apps.rm:main
+    - balloon-servers-clean = balloon.amazon.apps.servers_clean:main
+    - balloon-files-clean = balloon.amazon.apps.files_clean:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto
+    - workerpool
+    - paramiko
+    - pexpect
+
+  run:
+    - python
+    - boto
+    - workerpool
+    - paramiko
+    - pexpect
+
+test:
+  # Python imports
+  imports:
+    - balloon
+    - balloon.amazon
+    - balloon.amazon.apps
+    - balloon.amazon.ec2
+    - balloon.amazon.ec2.ami
+    - balloon.common
+    - balloon.common.ssh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - amazon_location_list.py --help
+    - amazon_reservation_run.py --help
+    - balloon-reservation-run --help
+    - amazon_reservation_list.py --help
+    - balloon-reservation-ls --help
+    - balloon-cluster-ls --help
+    - amazon_reservation_pickup.py --help
+    - amazon_reservation_delete.py --help
+    - balloon-cluster-rm --help
+    - amazon_instance_extract.py --help
+    - balloon-instance-extract --help
+    - balloon-ssh --help
+    - amazon_openmpi_config.py --help
+    - balloon-openmpi-config --help
+    - balloon-timestamps-upload --help
+    - balloon-solver-start --help
+    - balloon-solver-process --help
+    - amazon_nfs_config.py --help
+    - balloon-nfs-config --help
+    - amazon_deploy_credentials.py --help
+    - balloon-credentials-deploy --help
+    - balloon-deploy --help
+    - balloon-study-book --help
+    - amazon_upload_start.py --help
+    - balloon-upload-start --help
+    - amazon_upload_resume.py --help
+    - balloon-upload-resume --help
+    - balloon-study-upload --help
+    - balloon-study-seal --help
+    - amazon_download.py --help
+    - balloon-download --help
+    - amazon_ls.py --help
+    - balloon-ls --help
+    - amazon_rm_study.py --help
+    - balloon-study-rm --help
+    - amazon_rm.py --help
+    - balloon-rm --help
+    - balloon-servers-clean --help
+    - balloon-files-clean --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/balloon-foam
+  license: Apache Software License
+  summary: 'Set of cloud computing automation utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

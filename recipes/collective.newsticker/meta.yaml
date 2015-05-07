@@ -1,0 +1,70 @@
+package:
+  name: collective.newsticker
+  version: "1.0rc1"
+
+source:
+  fn: collective.newsticker-1.0rc1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.newsticker/collective.newsticker-1.0rc1.tar.gz
+  md5: 83aee360672c883427df0189aa054971
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.newsticker = collective.newsticker:main
+    #
+    # Would create an entry point called collective.newsticker that calls collective.newsticker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - five.grok >=1.2.0
+    - zope.schema >=3.8.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - five.grok >=1.2.0
+    - zope.schema >=3.8.0
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.newsticker
+    - collective.newsticker.Extensions
+    - collective.newsticker.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.newsticker
+  license: GNU General Public License (GPL)
+  summary: 'News ticker inspired by the one on the BBC News website.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

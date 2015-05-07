@@ -1,0 +1,89 @@
+package:
+  name: bitnomon
+  version: "0.1.0"
+
+source:
+  fn: bitnomon-0.1.0.tar.bz2
+  url: https://pypi.python.org/packages/source/b/bitnomon/bitnomon-0.1.0.tar.bz2
+  md5: e5b1bb1e79a3be902e242ad705abfe54
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bitnomon = bitnomon:main
+    #
+    # Would create an entry point called bitnomon that calls bitnomon.main()
+
+    - bitnomon=bitnomon.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs >=1.3.0
+    - numpy
+    - py-rrdtool
+
+  run:
+    - python
+    - appdirs >=1.3.0
+    - numpy
+    - py-rrdtool
+
+test:
+  # Python imports
+  imports:
+    - bitnomon
+    - bitnomon.deps.pyqtgraph
+    - bitnomon.deps.pyqtgraph.GraphicsScene
+    - bitnomon.deps.pyqtgraph.canvas
+    - bitnomon.deps.pyqtgraph.console
+    - bitnomon.deps.pyqtgraph.dockarea
+    - bitnomon.deps.pyqtgraph.exporters
+    - bitnomon.deps.pyqtgraph.flowchart
+    - bitnomon.deps.pyqtgraph.flowchart.library
+    - bitnomon.deps.pyqtgraph.graphicsItems
+    - bitnomon.deps.pyqtgraph.graphicsItems.PlotItem
+    - bitnomon.deps.pyqtgraph.graphicsItems.ViewBox
+    - bitnomon.deps.pyqtgraph.imageview
+    - bitnomon.deps.pyqtgraph.metaarray
+    - bitnomon.deps.pyqtgraph.multiprocess
+    - bitnomon.deps.pyqtgraph.opengl
+    - bitnomon.deps.pyqtgraph.opengl.items
+    - bitnomon.deps.pyqtgraph.parametertree
+    - bitnomon.deps.pyqtgraph.pixmaps
+    - bitnomon.deps.pyqtgraph.util
+    - bitnomon.deps.pyqtgraph.util.colorama
+    - bitnomon.deps.pyqtgraph.widgets
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bitnomon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.welshcomputing.com/code/bitnomon.html
+  license: Apache Software License
+  summary: 'Monitoring/visualization GUI for a Bitcoin node'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

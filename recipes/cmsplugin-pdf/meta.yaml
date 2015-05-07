@@ -1,0 +1,77 @@
+package:
+  name: cmsplugin-pdf
+  version: "0.5.1"
+
+source:
+  fn: cmsplugin-pdf-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-pdf/cmsplugin-pdf-0.5.1.tar.gz
+  md5: e330d64f1f1a273d2c5bc60e549dc8bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-pdf = cmsplugin-pdf:main
+    #
+    # Would create an entry point called cmsplugin-pdf that calls cmsplugin-pdf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+    - south
+    - django-cms
+    - django-filer
+    - pillow
+    - wand
+    - pypdf
+
+  run:
+    - python
+    - django >=1.4.2
+    - south
+    - django-cms
+    - django-filer
+    - pillow
+    - wand
+    - pypdf
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_pdf
+    - cmsplugin_pdf.migrations
+    - cmsplugin_pdf.templatetags
+    - cmsplugin_pdf.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/cmsplugin-pdf
+  license: The MIT License
+  summary: 'A reusable Django app to add PDFs to Django-CMS.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

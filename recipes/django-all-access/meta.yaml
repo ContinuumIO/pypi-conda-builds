@@ -1,0 +1,74 @@
+package:
+  name: django-all-access
+  version: "0.7.1"
+
+source:
+  fn: django-all-access-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-all-access/django-all-access-0.7.1.tar.gz
+  md5: 4e82c0805fbd7a270171a986c0ccd52b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-all-access = django-all-access:main
+    #
+    # Would create an entry point called django-all-access that calls django-all-access.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto >=2.4
+    - requests >=1.0
+    - requests_oauthlib >=0.3.0
+    - oauthlib >=0.3.4
+
+  run:
+    - python
+    - pycrypto >=2.4
+    - requests >=1.0
+    - requests_oauthlib >=0.3.0
+    - oauthlib >=0.3.4
+
+test:
+  # Python imports
+  imports:
+    - allaccess
+    - allaccess.management
+    - allaccess.management.commands
+    - allaccess.migrations
+    - allaccess.south_migrations
+    - allaccess.tests
+    - allaccess.tests.custom
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mlavin/django-all-access
+  license: BSD License
+  summary: 'django-all-access is a reusable application for user registration and authentication from OAuth 1.0 and OAuth 2.0 providers such as Twitter and Facebook.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: altf2
+  version: "1.0.3"
+
+source:
+  fn: altf2-1.0.3.tar.bz2
+  url: https://pypi.python.org/packages/source/a/altf2/altf2-1.0.3.tar.bz2
+  md5: 81f68a9ea109788b303c9ca17c424bda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - altf2 = altf2:main
+    #
+    # Would create an entry point called altf2 that calls altf2.main()
+
+    - altf2 = altf2.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - altf2
+    - altf2.ui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - altf2 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/angry_elf/altf2
+  license: GNU General Public License (GPL)
+  summary: 'Simple program runner (Alt-F2 handler). Requires PyQt4'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

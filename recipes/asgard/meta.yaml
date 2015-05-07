@@ -1,0 +1,78 @@
+package:
+  name: asgard
+  version: "0.5.0"
+
+source:
+  fn: asgard-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/asgard/asgard-0.5.0.tar.gz
+  md5: a3bbf4846eb8543822232a641d662167
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asgard = asgard:main
+    #
+    # Would create an entry point called asgard that calls asgard.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - werkzeug >=0.9.6
+    - flask
+    - sqlalchemy
+    - pyparsing
+    - pylru
+    - python-dateutil
+    - sjoh
+    - mailflash ==0.1.0
+
+  run:
+    - python
+    - werkzeug >=0.9.6
+    - flask
+    - sqlalchemy
+    - pyparsing
+    - pylru
+    - python-dateutil
+    - sjoh
+    - mailflash ==0.1.0
+
+test:
+  # Python imports
+  imports:
+    - asgard
+    - asgard.mails
+    - asgard.users
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://nowhere.com
+  license: MIT
+  summary: 'asgard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

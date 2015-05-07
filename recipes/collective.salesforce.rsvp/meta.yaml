@@ -1,0 +1,73 @@
+package:
+  name: collective.salesforce.rsvp
+  version: "1.3"
+
+source:
+  fn: collective.salesforce.rsvp-1.3.zip
+  url: https://pypi.python.org/packages/source/c/collective.salesforce.rsvp/collective.salesforce.rsvp-1.3.zip
+  md5: 386ad7c8e0d6a7590837fd6d6e050f3b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.salesforce.rsvp = collective.salesforce.rsvp:main
+    #
+    # Would create an entry point called collective.salesforce.rsvp that calls collective.salesforce.rsvp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - beatbox >=16.0dev
+    - products.salesforcebaseconnector >=1.2b1
+    - archetypes.schemaextender
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - beatbox >=16.0dev
+    - products.salesforcebaseconnector >=1.2b1
+    - archetypes.schemaextender
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.salesforce
+    - collective.salesforce.rsvp
+    - collective.salesforce.rsvp.browser
+    - collective.salesforce.rsvp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://groups.google.com/group/plonesf
+  license: GPL
+  summary: 'RSVP/Event registration system integrating the Plone content management system with       the Salesforce.com customer relationship management system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

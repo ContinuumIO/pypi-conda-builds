@@ -1,0 +1,88 @@
+package:
+  name: collective.megaphone
+  version: "2.1.5"
+
+source:
+  fn: collective.megaphone-2.1.5.zip
+  url: https://pypi.python.org/packages/source/c/collective.megaphone/collective.megaphone-2.1.5.zip
+  md5: 1db0d77b2d18f2997cfebafa31bbeb82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.megaphone = collective.megaphone:main
+    #
+    # Would create an entry point called collective.megaphone that calls collective.megaphone.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.form >=1.9.0
+    - plone
+    - plone.z3cform >=0.6.0
+    - plone.app.z3cform >=0.5.0
+    - products.ploneformgen >=1.5.0
+    - products.templatefields >=1.2.5
+    - collective.z3cform.wizard >=1.4.6
+    - plone.app.jquerytools >=1.1.1
+    - uuid
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.form >=1.9.0
+    - plone
+    - plone.z3cform >=0.6.0
+    - plone.app.z3cform >=0.5.0
+    - products.ploneformgen >=1.5.0
+    - products.templatefields >=1.2.5
+    - collective.z3cform.wizard >=1.4.6
+    - plone.app.jquerytools >=1.1.1
+    - uuid
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.megaphone
+    - collective.megaphone.browser
+    - collective.megaphone.content
+    - collective.megaphone.portlets
+    - collective.megaphone.recipients
+    - collective.megaphone.tests
+    - collective.megaphone.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.megaphone/trunk
+  license: GPL
+  summary: 'Run an online advocacy campaign from your Plone site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

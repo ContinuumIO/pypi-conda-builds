@@ -1,0 +1,73 @@
+package:
+  name: architect
+  version: "0.4.0"
+
+source:
+  fn: architect-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/architect/architect-0.4.0.tar.gz
+  md5: c21491efb714c919e72de89ace1b6293
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - architect = architect:main
+    #
+    # Would create an entry point called architect that calls architect.main()
+
+    - architect = architect.commands:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - architect
+    - architect.commands
+    - architect.databases
+    - architect.databases.mysql
+    - architect.databases.postgresql
+    - architect.databases.sqlite
+    - architect.orms
+    - architect.orms.django
+    - architect.orms.peewee
+    - architect.orms.pony
+    - architect.orms.sqlalchemy
+    - architect.orms.sqlobject
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - architect --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/maxtepkeev/architect
+  license: Apache Software License
+  summary: 'A set of tools which enhances ORMs written in Python with more features'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

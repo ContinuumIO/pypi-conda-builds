@@ -1,0 +1,77 @@
+package:
+  name: codetools
+  version: "4.2.0"
+
+source:
+  fn: codetools-4.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/codetools/codetools-4.2.0.tar.gz
+  md5: 38e608d49913f32e69fa944b12d62424
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codetools = codetools:main
+    #
+    # Would create an entry point called codetools that calls codetools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - traits
+
+  run:
+    - python
+    - traits
+
+test:
+  # Python imports
+  imports:
+    - codetools
+    - codetools.blocks
+    - codetools.blocks.ast_25
+    - codetools.blocks.compiler_
+    - codetools.blocks.compiler_.ast
+    - codetools.blocks.compiler_.tests
+    - codetools.blocks.tests
+    - codetools.blocks2
+    - codetools.contexts
+    - codetools.contexts.adapter
+    - codetools.contexts.adapter.tests
+    - codetools.contexts.masks
+    - codetools.contexts.tests
+    - codetools.execution
+    - codetools.execution.tests
+    - codetools.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/enthought/codetools
+  license: BSD License
+  summary: 'code analysis and execution tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

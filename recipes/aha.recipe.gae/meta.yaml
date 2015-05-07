@@ -1,0 +1,65 @@
+package:
+  name: aha.recipe.gae
+  version: "0.71bdev"
+
+source:
+  fn: aha.recipe.gae-0.71bdev.tar.gz
+  url: https://pypi.python.org/packages/source/a/aha.recipe.gae/aha.recipe.gae-0.71bdev.tar.gz
+  md5: b29c42674b6cbcfc245752981c1e9581
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aha.recipe.gae = aha.recipe.gae:main
+    #
+    # Would create an entry point called aha.recipe.gae that calls aha.recipe.gae.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appfy.recipe.gae
+
+  run:
+    - python
+    - setuptools
+    - appfy.recipe.gae
+
+test:
+  # Python imports
+  imports:
+    - aha
+    - aha.recipe
+    - aha.recipe.gae
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://coreblog.org/ats
+  license: BSD
+  summary: 'a buildout recipe for web application framework aha'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: ajenti.plugin.packages
+  version: "0.16"
+
+source:
+  fn: ajenti.plugin.packages-0.16.tar.gz
+  url: https://pypi.python.org/packages/source/a/ajenti.plugin.packages/ajenti.plugin.packages-0.16.tar.gz
+  md5: b7f0334ead5f0eca334021915112468e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ajenti.plugin.packages = ajenti.plugin.packages:main
+    #
+    # Would create an entry point called ajenti.plugin.packages that calls ajenti.plugin.packages.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aj
+    - ajenti.plugin.core
+    - ajenti.plugin.terminal
+
+  run:
+    - python
+    - aj
+    - ajenti.plugin.core
+    - ajenti.plugin.terminal
+
+test:
+  # Python imports
+  imports:
+    - ajenti_plugin_packages
+    - ajenti_plugin_packages.managers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ajenti.org
+  license: UNKNOWN
+  summary: 'Packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,85 @@
+package:
+  name: archgenxml
+  version: "2.6"
+
+source:
+  fn: archgenxml-2.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/archgenxml/archgenxml-2.6.tar.gz
+  md5: 2a7aabf8a2e62bd7598c42e16e999f51
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archgenxml = archgenxml:main
+    #
+    # Would create an entry point called archgenxml that calls archgenxml.main()
+
+    - archgenxml = archgenxml.ArchGenXML:main
+    - agx_taggedvalues = archgenxml.TaggedValueSupport:main
+    - agx_stereotypes = archgenxml.UMLProfile:main
+    - agx_argouml_profile = archgenxml.ArgoUMLProfileGenerator:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - xmiparser <1.9999
+    - zope.interface
+    - zope.component
+    - zope.documenttemplate
+    - stripogram
+    - i18ndude
+    - ordereddict
+
+  run:
+    - python
+    - setuptools
+    - xmiparser <1.9999
+    - zope.interface
+    - zope.component
+    - zope.documenttemplate
+    - stripogram
+    - i18ndude
+    - ordereddict
+
+test:
+  # Python imports
+  imports:
+    - archgenxml
+    - archgenxml.plone
+    - archgenxml.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - archgenxml --help
+    - agx_taggedvalues --help
+    - agx_stereotypes --help
+    - agx_argouml_profile --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/archgenxml
+  license: GNU General Public License (GPL)
+  summary: 'UML to code generator for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

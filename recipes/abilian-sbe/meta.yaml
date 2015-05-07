@@ -1,0 +1,66 @@
+package:
+  name: abilian-sbe
+  version: "0.1.0"
+
+source:
+  fn: abilian-sbe-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/abilian-sbe/abilian-sbe-0.1.0.tar.gz
+  md5: 2238561135d52020966a8702ce72c005
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - abilian-sbe = abilian-sbe:main
+    #
+    # Would create an entry point called abilian-sbe that calls abilian-sbe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - abilian-core
+    - guess-language-spirit <0.6,>=0.5.1
+    - chardet
+
+  run:
+    - python
+    - abilian-core
+    - guess-language-spirit <0.6,>=0.5.1
+    - chardet
+
+test:
+  # Python imports
+  imports:
+    - abilian.sbe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.abilian.com/
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'Social Business / Enterprise Social Networking platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: appenlight-client
+  version: "0.6.12"
+
+source:
+  fn: appenlight_client-0.6.12.tar.gz
+  url: https://pypi.python.org/packages/source/a/appenlight-client/appenlight_client-0.6.12.tar.gz
+  md5: aa8a966dbbb9117db833f6fd614eb9fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - appenlight-client = appenlight-client:main
+    #
+    # Would create an entry point called appenlight-client that calls appenlight-client.main()
+
+    - appenlight_client=appenlight_client.cli:cli_start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - webob
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - appenlight_client
+    - appenlight_client.ext
+    - appenlight_client.hooks
+    - appenlight_client.templates
+    - appenlight_client.timing
+    - appenlight_client.transports
+    - experiements
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - appenlight_client --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Client for Appenlight reporting - supporting WSGI and django (http://appenlight.com)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

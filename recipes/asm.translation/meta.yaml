@@ -1,0 +1,73 @@
+package:
+  name: asm.translation
+  version: "0.1.13"
+
+source:
+  fn: asm.translation-0.1.13.tar.gz
+  url: https://pypi.python.org/packages/source/a/asm.translation/asm.translation-0.1.13.tar.gz
+  md5: 0a018ae6fc9eb8196010d8d85075dc0e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asm.translation = asm.translation:main
+    #
+    # Would create an entry point called asm.translation that calls asm.translation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zodb3
+    - asm.cms
+    - setuptools
+    - grok
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - zodb3
+    - asm.cms
+    - setuptools
+    - grok
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - asm
+    - asm.translation
+    - asm.translation.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: proprietary
+  summary: 'Multi-lingual content for Assembly CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

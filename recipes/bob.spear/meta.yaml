@@ -1,0 +1,99 @@
+package:
+  name: bob.spear
+  version: "1.1.8"
+
+source:
+  fn: bob.spear-1.1.8.zip
+  url: https://pypi.python.org/packages/source/b/bob.spear/bob.spear-1.1.8.zip
+  md5: bd3777ef6baf52fa999f5b241c3fa42e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.spear = bob.spear:main
+    #
+    # Would create an entry point called bob.spear that calls bob.spear.main()
+
+    - spkverif_isv.py = spear.script.spkverif_isv:main
+    - spkverif_gmm.py = spear.script.spkverif_isv:main
+    - spkverif_jfa.py = spear.script.spkverif_jfa:main
+    - spkverif_ivector.py = spear.script.spkverif_ivector:main
+    - para_ubm_spkverif_isv.py = spear.script.para_ubm_spkverif_isv:main
+    - para_ubm_spkverif_gmm.py = spear.script.para_ubm_spkverif_isv:main
+    - para_ubm_spkverif_ivector.py = spear.script.para_ubm_spkverif_ivector:main
+    - fusion_llr.py = spear.script.fusion_llr:main
+    - det.py = spear.script.det:main
+    - evaluate.py = facereclib.script.evaluate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gridtk >=1.0.3
+    - bob >=1.2.0
+    - facereclib <2.0.0
+    - xbob.db.verification.filelist
+    - xbob.db.voxforge
+    - xbob.sox
+
+  run:
+    - python
+    - setuptools
+    - gridtk >=1.0.3
+    - bob >=1.2.0
+    - facereclib <2.0.0
+    - xbob.db.verification.filelist
+    - xbob.db.voxforge
+    - xbob.sox
+
+test:
+  # Python imports
+  imports:
+    - spear
+    - spear.feature_extraction
+    - spear.preprocessing
+    - spear.script
+    - spear.toolchain
+    - spear.tools
+    - spear.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - spkverif_isv.py --help
+    - spkverif_gmm.py --help
+    - spkverif_jfa.py --help
+    - spkverif_ivector.py --help
+    - para_ubm_spkverif_isv.py --help
+    - para_ubm_spkverif_gmm.py --help
+    - para_ubm_spkverif_ivector.py --help
+    - fusion_llr.py --help
+    - det.py --help
+    - evaluate.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/bob.spear
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Speaker recognition toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

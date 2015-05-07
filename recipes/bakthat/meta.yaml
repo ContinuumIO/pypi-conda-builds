@@ -1,0 +1,84 @@
+package:
+  name: bakthat
+  version: "0.6.0"
+
+source:
+  fn: bakthat-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bakthat/bakthat-0.6.0.tar.gz
+  md5: 71900475df054bc7e6ca2bb2a5e61801
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bakthat = bakthat:main
+    #
+    # Would create an entry point called bakthat that calls bakthat.main()
+
+    - bakthat = bakthat:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aaargh
+    - boto
+    - pycrypto
+    - beefish
+    - grandfatherson
+    - peewee
+    - byteformat
+    - pyyaml
+    - sh
+    - requests
+    - events
+
+  run:
+    - python
+    - aaargh
+    - boto
+    - pycrypto
+    - beefish
+    - grandfatherson
+    - peewee
+    - byteformat
+    - pyyaml
+    - sh
+    - requests
+    - events
+
+test:
+  # Python imports
+  imports:
+    - bakthat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bakthat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.bakthat.io
+  license: MIT License
+  summary: "Bakthat is a MIT licensed backup framework written in Python, it's both a command line tool and a Python module that helps you manage backups on Amazon S3/Glacier and OpenStack Swift. It automatically compress, encrypt (symmetric encryption) and upload your files."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

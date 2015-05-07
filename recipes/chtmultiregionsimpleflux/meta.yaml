@@ -1,0 +1,68 @@
+package:
+  name: chtmultiregionsimpleflux
+  version: "2.0"
+
+source:
+  fn: chtMultiRegionSimpleFlux-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/chtMultiRegionSimpleFlux/chtMultiRegionSimpleFlux-2.0.tar.gz
+  md5: e2bd99229c23c4f6aae19e928eb476c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chtmultiregionsimpleflux = chtmultiregionsimpleflux:main
+    #
+    # Would create an entry point called chtmultiregionsimpleflux that calls chtmultiregionsimpleflux.main()
+
+    - chtMultiRegionSimpleFlux = chtMultiRegionSimpleFlux:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pythonflu >=9.1-SWIG
+
+  run:
+    - python
+    - pythonflu >=9.1-SWIG
+
+test:
+  # Python imports
+  imports:
+    - chtMultiRegionSimpleFlux
+    - chtMultiRegionSimpleFlux.r2_1_1
+    - chtMultiRegionSimpleFlux.r2_1_1.fluid
+    - chtMultiRegionSimpleFlux.r2_1_1.solid
+    - chtmultiregionsimpleflux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chtMultiRegionSimpleFlux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the chtMultiRegionSimpleFoam'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

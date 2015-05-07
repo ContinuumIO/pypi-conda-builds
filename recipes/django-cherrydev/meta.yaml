@@ -1,0 +1,63 @@
+package:
+  name: django-cherrydev
+  version: "0.1b"
+
+source:
+  fn: django-cherrydev-0.1b.zip
+  url: https://pypi.python.org/packages/source/d/django-cherrydev/django-cherrydev-0.1b.zip
+  md5: d979651e6686ed082728ee8d57d886e7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cherrydev = django-cherrydev:main
+    #
+    # Would create an entry point called django-cherrydev that calls django-cherrydev.main()
+
+    - cherrydev=cherrydev:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - cherrydev
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cherrydev --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.db-init.com/django-cherrydev/
+  license: MIT License
+  summary: 'CherryPy Web server for Django development.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

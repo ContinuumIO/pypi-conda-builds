@@ -1,0 +1,70 @@
+package:
+  name: ahkab
+  version: "0.16"
+
+source:
+  fn: ahkab-0.16.tar.gz
+  url: https://pypi.python.org/packages/source/a/ahkab/ahkab-0.16.tar.gz
+  md5: 679f0758cec08278dfb67e9ae1682f3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ahkab = ahkab:main
+    #
+    # Would create an entry point called ahkab that calls ahkab.main()
+
+    - ahkab = ahkab.__main__:_cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >1.7.0
+    - scipy >=0.14.0
+    - sympy >=0.7.6
+    - tabulate >=0.7.3
+
+  run:
+    - python
+    - numpy >1.7.0
+    - scipy >=0.14.0
+    - sympy >=0.7.6
+    - tabulate >=0.7.3
+
+test:
+  # Python imports
+  imports:
+    - ahkab
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ahkab --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ahkab.github.io/ahkab/
+  license: GNU General Public License (GPL)
+  summary: 'a SPICE-like electronic circuit simulator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: django-admin-steroids
+  version: "0.3.8"
+
+source:
+  fn: django-admin-steroids-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-admin-steroids/django-admin-steroids-0.3.8.tar.gz
+  md5: 32103a2e16e6d914b160d477aacb5434
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-admin-steroids = django-admin-steroids:main
+    #
+    # Would create an entry point called django-admin-steroids that calls django-admin-steroids.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.0
+    - babel >=1.3
+
+  run:
+    - python
+    - django >=1.4.0
+    - babel >=1.3
+
+test:
+  # Python imports
+  imports:
+    - admin_steroids
+    - admin_steroids.management
+    - admin_steroids.management.commands
+    - admin_steroids.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrisspen/django-admin-steroids
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Tweaks and tools to simplify Django admin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

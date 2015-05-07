@@ -1,0 +1,69 @@
+package:
+  name: collective.mediaalbum
+  version: "0.3"
+
+source:
+  fn: collective.mediaAlbum-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.mediaAlbum/collective.mediaAlbum-0.3.tar.gz
+  md5: 317de17e194a84c00e08b4057033d741
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.mediaalbum = collective.mediaalbum:main
+    #
+    # Would create an entry point called collective.mediaalbum that calls collective.mediaalbum.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.mediashow
+    - collective.quickupload
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.mediashow
+    - collective.quickupload
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.mediaAlbum
+    - collective.mediaAlbum.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: GPL
+  summary: 'Turn folders into albums that show your media in a user friendly interface (basically overrides Plone thumbnail view)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

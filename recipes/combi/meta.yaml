@@ -1,0 +1,86 @@
+package:
+  name: combi
+  version: "0.1.1"
+
+source:
+  fn: combi-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/combi/combi-0.1.1.tar.gz
+  md5: 3cc83e798ef6b51ab56b0b88ce2b3b13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - combi = combi:main
+    #
+    # Would create an entry point called combi that calls combi.main()
+
+    - _test_combi = test_combi:invoke_nose
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - combi
+    - combi._python_toolbox
+    - combi._python_toolbox._bootstrap
+    - combi._python_toolbox.binary_search
+    - combi._python_toolbox.caching
+    - combi._python_toolbox.cheat_hashing
+    - combi._python_toolbox.context_management
+    - combi._python_toolbox.context_management.base_classes
+    - combi._python_toolbox.cute_inspect
+    - combi._python_toolbox.math_tools
+    - combi._python_toolbox.misc_tools
+    - combi._python_toolbox.nifty_collections
+    - combi._python_toolbox.sequence_tools
+    - combi._python_toolbox.sleek_reffing
+    - combi._python_toolbox.string_tools
+    - combi._python_toolbox.third_party
+    - combi._python_toolbox.third_party.enum
+    - combi._python_toolbox.third_party.envelopes
+    - combi._python_toolbox.third_party.funcsigs
+    - combi._python_toolbox.third_party.sortedcontainers
+    - combi._python_toolbox.third_party.unittest2
+    - combi.perming
+    - test_combi
+    - test_combi.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - _test_combi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'A Pythonic package for combinatorics'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

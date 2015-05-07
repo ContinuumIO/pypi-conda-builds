@@ -1,0 +1,70 @@
+package:
+  name: attowiki
+  version: "v0.5.1"
+
+source:
+  fn: attowiki-v0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/attowiki/attowiki-v0.5.1.tar.gz
+  md5: 3a13751fba3a412be85c4f416de41128
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - attowiki = attowiki:main
+    #
+    # Would create an entry point called attowiki that calls attowiki.main()
+
+    - attowiki = attowiki.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle
+    - docutils
+    - gitpython
+    - rst2pdf
+
+  run:
+    - python
+    - bottle
+    - docutils
+    - gitpython
+    - rst2pdf
+
+test:
+  # Python imports
+  imports:
+    - attowiki
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - attowiki --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ThomasChiroux/attowiki
+  license: GPLv3
+  summary: 'small wiki engine based on static reST files in a directory and git for versionning'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

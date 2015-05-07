@@ -1,0 +1,74 @@
+package:
+  name: attitude
+  version: "0.1.2"
+
+source:
+  fn: Attitude-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/A/Attitude/Attitude-0.1.2.tar.gz
+  md5: a552958cfffefc9dc3fc131e21a695ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - attitude = attitude:main
+    #
+    # Would create an entry point called attitude that calls attitude.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - matplotlib
+    - mplstereonet
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - matplotlib
+    - mplstereonet
+
+test:
+  # Python imports
+  imports:
+    - attitude
+    - attitude.coordinates
+    - attitude.error
+    - attitude.orientation
+    - attitude.plot
+    - attitude.regression
+    - attitude.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/davenquinn/Attitude
+  license: MIT
+  summary: 'Attitude computes the orientations of planes from point data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

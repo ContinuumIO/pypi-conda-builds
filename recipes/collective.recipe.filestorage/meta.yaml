@@ -1,0 +1,70 @@
+package:
+  name: collective.recipe.filestorage
+  version: "0.6"
+
+source:
+  fn: collective.recipe.filestorage-0.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.recipe.filestorage/collective.recipe.filestorage-0.6.zip
+  md5: c0d85a82a858a860dc665dd38303fedd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.filestorage = collective.recipe.filestorage:main
+    #
+    # Would create an entry point called collective.recipe.filestorage that calls collective.recipe.filestorage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - plone.recipe.zope2instance
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - plone.recipe.zope2instance
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.filestorage
+    - collective.recipe.filestorage.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/buildout/collective.recipe.filestorage/trunk
+  license: Zope Public License
+  summary: 'This recipe aids the creation and management of multiple Zope 2 filestorages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

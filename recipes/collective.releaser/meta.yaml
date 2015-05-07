@@ -1,0 +1,96 @@
+package:
+  name: collective.releaser
+  version: "0.7.1"
+
+source:
+  fn: collective.releaser-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.releaser/collective.releaser-0.7.1.tar.gz
+  md5: de114c4b6805af55cc5d46f8d3bfa613
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.releaser = collective.releaser:main
+    #
+    # Would create an entry point called collective.releaser that calls collective.releaser.main()
+
+    - project_release = collective.releaser.project:make_release
+    - project_deploy = collective.releaser.project:deploy_release
+    - project_diff = collective.releaser.project:diff_releases
+    - project_md5 = collective.releaser.project:console_build_md5
+    - project_eggs = collective.releaser.project:console_project_eggs
+    - release_eggs = collective.releaser.project:release_eggs
+    - package_svn_prepare = collective.releaser.project:console_make_svn_structure_for_package
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - multiprocessing
+    - collective.dist
+    - docutils
+    - zopeskel
+    - pastescript
+    - virtualenv
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - multiprocessing
+    - collective.dist
+    - docutils
+    - zopeskel
+    - pastescript
+    - virtualenv
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.releaser
+    - collective.releaser.commands
+    - collective.releaser.tests
+    - collective.releaser.tests.data
+    - collective.releaser.tests.data.buildout
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - project_release --help
+    - project_deploy --help
+    - project_diff --help
+    - project_md5 --help
+    - project_eggs --help
+    - release_eggs --help
+    - package_svn_prepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.releaser
+  license: GPL
+  summary: 'Setuptools extension to release an egg'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

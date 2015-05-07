@@ -1,0 +1,68 @@
+package:
+  name: dbinfo
+  version: "0.1.beta2"
+
+source:
+  fn: dbinfo-0.1.beta2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dbinfo/dbinfo-0.1.beta2.tar.gz
+  md5: 3f47abc23b93a06a24158e98abeda357
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dbinfo = dbinfo:main
+    #
+    # Would create an entry point called dbinfo that calls dbinfo.main()
+
+    - dbinfo-pg = dbinfo.dbinfo:main_pg
+    - dbinfo-my = dbinfo.dbinfo:main_my
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2
+    - mysql-python
+
+  run:
+    - python
+    - psycopg2
+    - mysql-python
+
+test:
+  # Python imports
+  imports:
+    - dbinfo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dbinfo-pg --help
+    - dbinfo-my --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/dbinfo
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Database Information Tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,88 @@
+package:
+  name: boduch
+  version: "0.2.1"
+
+source:
+  fn: boduch-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/boduch/boduch-0.2.1.tar.gz
+  md5: 16418e38f77b59a3ad3b1a70b3ceadd1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boduch = boduch:main
+    #
+    # Would create an entry point called boduch that calls boduch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+
+  run:
+    - python
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - boduch
+    - boduch.constant
+    - boduch.data
+    - boduch.event
+    - boduch.event.data
+    - boduch.event.predicate
+    - boduch.event.state
+    - boduch.handle
+    - boduch.handle.data
+    - boduch.handle.predicate
+    - boduch.handle.state
+    - boduch.interface
+    - boduch.interface.data
+    - boduch.interface.event
+    - boduch.interface.handle
+    - boduch.interface.predicate
+    - boduch.interface.state
+    - boduch.interface.subscription
+    - boduch.interface.type
+    - boduch.predicate
+    - boduch.state
+    - boduch.subscription
+    - boduch.subscription.data
+    - boduch.subscription.predicate
+    - boduch.subscription.state
+    - boduch.test
+    - boduch.type
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.boduch.ca/
+  license: GNU Affero General Public License v3
+  summary: 'Simple Python tools.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

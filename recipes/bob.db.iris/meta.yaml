@@ -1,0 +1,78 @@
+package:
+  name: bob.db.iris
+  version: "2.0.1"
+
+source:
+  fn: bob.db.iris-2.0.1.zip
+  url: https://pypi.python.org/packages/source/b/bob.db.iris/bob.db.iris-2.0.1.zip
+  md5: d0d82a072ea7d24df4d01416b2376329
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.db.iris = bob.db.iris:main
+    #
+    # Would create an entry point called bob.db.iris that calls bob.db.iris.main()
+
+    - iris_lda.py = bob.db.iris.example.lda:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - bob.io.base
+    - bob.measure
+    - bob.learn.linear
+    - bob.db.base
+    - matplotlib
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - bob.io.base
+    - bob.measure
+    - bob.learn.linear
+    - bob.db.base
+    - matplotlib
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.db
+    - bob.db.iris
+    - bob.db.iris.example
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iris_lda.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/bob.db.iris
+  license: BSD License
+  summary: "Bob access API for Fisher's Iris Flower Dataset"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: aws-ec2-assign-elastic-ip
+  version: "0.5.0"
+
+source:
+  fn: aws-ec2-assign-elastic-ip-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/aws-ec2-assign-elastic-ip/aws-ec2-assign-elastic-ip-0.5.0.tar.gz
+  md5: deb49fbddb0d8a2e821020c384abd8fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aws-ec2-assign-elastic-ip = aws-ec2-assign-elastic-ip:main
+    #
+    # Would create an entry point called aws-ec2-assign-elastic-ip that calls aws-ec2-assign-elastic-ip.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.36.0
+    - netaddr >=0.7.12
+
+  run:
+    - python
+    - boto >=2.36.0
+    - netaddr >=0.7.12
+
+test:
+  # Python imports
+  imports:
+    - aws_ec2_assign_elastic_ip
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/skymill/aws-ec2-assign-elastic-ip
+  license: Apache Software License
+  summary: 'Automatically assign Elastic IPs to AWS EC2 instances'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: basebox
+  version: "0.1.5"
+
+source:
+  fn: basebox-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/basebox/basebox-0.1.5.tar.gz
+  md5: 4ac1faa2092d257b7f07bc2fa4656e78
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - basebox = basebox:main
+    #
+    # Would create an entry point called basebox that calls basebox.main()
+
+    - basebox = basebox.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - cuisine >=0.3.2
+    - proxytypes
+
+  run:
+    - python
+    - fabric
+    - cuisine >=0.3.2
+    - proxytypes
+
+test:
+  # Python imports
+  imports:
+    - basebox
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - basebox --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/davehughes/basebox
+  license: UNKNOWN
+  summary: 'A small library for interacting with Vagrant boxes using Fabric'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

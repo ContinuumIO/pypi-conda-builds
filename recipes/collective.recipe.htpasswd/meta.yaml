@@ -1,0 +1,68 @@
+package:
+  name: collective.recipe.htpasswd
+  version: "0.1a3"
+
+source:
+  fn: collective.recipe.htpasswd-0.1a3.zip
+  url: https://pypi.python.org/packages/source/c/collective.recipe.htpasswd/collective.recipe.htpasswd-0.1a3.zip
+  md5: 6b000159fd3c6a9d2161e786356d113d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.htpasswd = collective.recipe.htpasswd:main
+    #
+    # Would create an entry point called collective.recipe.htpasswd that calls collective.recipe.htpasswd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.htpasswd
+    - collective.recipe.htpasswd.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/collective.recipe.htpasswd
+  license: GNU General Public License (GPL)
+  summary: 'Buildout recipe for create and update the flat-files used to store usernames and password for basic authentication of HTTP users'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

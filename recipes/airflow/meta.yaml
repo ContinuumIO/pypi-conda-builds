@@ -1,0 +1,108 @@
+package:
+  name: airflow
+  version: "0.5.0"
+
+source:
+  fn: airflow-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/airflow/airflow-0.5.0.tar.gz
+  md5: fdb8b8fce6daa9d421d3cede593132f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - airflow = airflow:main
+    #
+    # Would create an entry point called airflow that calls airflow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.1.17
+    - chartkick >=0.4.2
+    - dill >=0.2.2
+    - flask >=0.10.1
+    - flask-admin >=1.0.9
+    - flask-cache >=0.13.1
+    - flask-login >=0.2.11
+    - flower >=0.7.3
+    - jinja2 >=2.7.3
+    - markdown >=2.5.2
+    - pandas >=0.15.2
+    - pygments >=2.0.1
+    - python-dateutil >=2.3
+    - requests >=2.5.1
+    - setproctitle >=1.1.8
+    - snakebite >=2.4.13
+    - sqlalchemy >=0.9.8
+    - statsd >=3.0.1
+    - thrift >=0.9.2
+    - tornado >=4.0.2
+
+  run:
+    - python
+    - celery >=3.1.17
+    - chartkick >=0.4.2
+    - dill >=0.2.2
+    - flask >=0.10.1
+    - flask-admin >=1.0.9
+    - flask-cache >=0.13.1
+    - flask-login >=0.2.11
+    - flower >=0.7.3
+    - jinja2 >=2.7.3
+    - markdown >=2.5.2
+    - pandas >=0.15.2
+    - pygments >=2.0.1
+    - python-dateutil >=2.3
+    - requests >=2.5.1
+    - setproctitle >=1.1.8
+    - snakebite >=2.4.13
+    - sqlalchemy >=0.9.8
+    - statsd >=3.0.1
+    - thrift >=0.9.2
+    - tornado >=4.0.2
+
+test:
+  # Python imports
+  imports:
+    - airflow
+    - airflow.bin
+    - airflow.example_dags
+    - airflow.executors
+    - airflow.hooks
+    - airflow.macros
+    - airflow.operators
+    - airflow.www
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mistercrunch/Airflow
+  license: UNKNOWN
+  summary: 'Programmatically author, schedule and monitor data pipelines'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

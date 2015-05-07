@@ -1,0 +1,65 @@
+package:
+  name: asiconsole
+  version: "1.0.2"
+
+source:
+  fn: asiconsole-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/asiconsole/asiconsole-1.0.2.tar.gz
+  md5: 50b74d0a755b7ffdff9c24196fe333ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asiconsole = asiconsole:main
+    #
+    # Would create an entry point called asiconsole that calls asiconsole.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipython
+    - asilib >=1.0.2
+
+  run:
+    - python
+    - setuptools
+    - ipython
+    - asilib >=1.0.2
+
+test:
+  # Python imports
+  imports:
+    - asiconsole
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://asibsync.sourceforge.net
+  license: BSD
+  summary: 'Python ASI console for interactive testing and debugging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

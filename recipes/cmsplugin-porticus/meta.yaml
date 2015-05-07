@@ -1,0 +1,65 @@
+package:
+  name: cmsplugin-porticus
+  version: "0.2"
+
+source:
+  fn: cmsplugin-porticus-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-porticus/cmsplugin-porticus-0.2.tar.gz
+  md5: b3c174b7856d9ec9a53a08115d5ed041
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-porticus = cmsplugin-porticus:main
+    #
+    # Would create an entry point called cmsplugin-porticus that calls cmsplugin-porticus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms
+    - porticus >=0.9
+
+  run:
+    - python
+    - django-cms
+    - porticus >=0.9
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_porticus
+    - cmsplugin_porticus.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/cmsplugin-porticus
+  license: MIT License
+  summary: '\nPorticus plugins for DjangoCMS\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

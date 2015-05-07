@@ -1,0 +1,67 @@
+package:
+  name: collective.recipe.scriptgen
+  version: "0.2"
+
+source:
+  fn: collective.recipe.scriptgen-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.scriptgen/collective.recipe.scriptgen-0.2.tar.gz
+  md5: 6442d4a7cfe740db955daac0d6902de6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.scriptgen = collective.recipe.scriptgen:main
+    #
+    # Would create an entry point called collective.recipe.scriptgen that calls collective.recipe.scriptgen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.scriptgen
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/buildout/collective.recipe.scriptgen
+  license: Zope Public License
+  summary: 'zc.buildout recipe for generating a script'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

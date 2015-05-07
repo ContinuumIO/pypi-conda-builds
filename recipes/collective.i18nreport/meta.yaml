@@ -1,0 +1,71 @@
+package:
+  name: collective.i18nreport
+  version: "1.2.2"
+
+source:
+  fn: collective.i18nreport-1.2.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.i18nreport/collective.i18nreport-1.2.2.zip
+  md5: ce00ace15aaa05030b9351c9e1c5f1a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.i18nreport = collective.i18nreport:main
+    #
+    # Would create an entry point called collective.i18nreport that calls collective.i18nreport.main()
+
+    - i18nreport = collective.i18nreport:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - i18ndude
+    - plone.i18n
+    - mako
+
+  run:
+    - python
+    - setuptools
+    - i18ndude
+    - plone.i18n
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.i18nreport
+    - collective.i18nreport.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - i18nreport --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.i18nreport
+  license: GPL2
+  summary: 'Internationalization coverage report'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

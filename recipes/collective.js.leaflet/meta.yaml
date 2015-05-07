@@ -1,0 +1,73 @@
+package:
+  name: collective.js.leaflet
+  version: "0.7"
+
+source:
+  fn: collective.js.leaflet-0.7.zip
+  url: https://pypi.python.org/packages/source/c/collective.js.leaflet/collective.js.leaflet-0.7.zip
+  md5: a862451cf8accf7402c9024c72848d9d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.js.leaflet = collective.js.leaflet:main
+    #
+    # Would create an entry point called collective.js.leaflet that calls collective.js.leaflet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - plone
+    - products.resourceregistries >=2.1a1
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.autoinclude
+    - plone
+    - products.resourceregistries >=2.1a1
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.js
+    - collective.js.leaflet
+    - collective.js.leaflet.browser
+    - collective.js.leaflet.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.js.leaflet
+  license: GPL
+  summary: 'Leaflet maps integration for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

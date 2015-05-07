@@ -1,0 +1,65 @@
+package:
+  name: django-addons
+  version: "0.6.6"
+
+source:
+  fn: django-addons-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-addons/django-addons-0.6.6.tar.gz
+  md5: 93fbaf2ac1ca86060d6b86a14343bf62
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-addons = django-addons:main
+    #
+    # Would create an entry point called django-addons that calls django-addons.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2.3
+
+  run:
+    - python
+    - django >=1.2.3
+
+test:
+  # Python imports
+  imports:
+    - django_addons
+    - django_addons.management
+    - django_addons.management.commands
+    - django_addons.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.indifex.com/django-addons/
+  license: BSD License
+  summary: 'Addon framework for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

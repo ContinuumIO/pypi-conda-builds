@@ -1,0 +1,68 @@
+package:
+  name: ajenti.plugin.auth_users
+  version: "0.7"
+
+source:
+  fn: ajenti.plugin.auth_users-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/ajenti.plugin.auth_users/ajenti.plugin.auth_users-0.7.tar.gz
+  md5: 10e08efe717da41ab0d838ff2f833618
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ajenti.plugin.auth_users = ajenti.plugin.auth_users:main
+    #
+    # Would create an entry point called ajenti.plugin.auth_users that calls ajenti.plugin.auth_users.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aj
+    - ajenti.plugin.core
+    - ajenti.plugin.settings
+    - scrypt
+
+  run:
+    - python
+    - aj
+    - ajenti.plugin.core
+    - ajenti.plugin.settings
+    - scrypt
+
+test:
+  # Python imports
+  imports:
+    - ajenti_plugin_auth_users
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ajenti.org
+  license: UNKNOWN
+  summary: 'Custom users authentication'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: asibsync
+  version: "0.9.5"
+
+source:
+  fn: asibsync-0.9.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/asibsync/asibsync-0.9.5.tar.gz
+  md5: eafaaafd7d269dee2a1940930aec9c3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asibsync = asibsync:main
+    #
+    # Would create an entry point called asibsync that calls asibsync.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - asilib >=1.0.2
+    - kpwrapper >=1.0.3
+
+  run:
+    - python
+    - setuptools
+    - asilib >=1.0.2
+    - kpwrapper >=1.0.3
+
+test:
+  # Python imports
+  imports:
+    - asibsync
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://asibsync.sourceforge.net
+  license: BSD
+  summary: 'ASI-SIB synchronization agent'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

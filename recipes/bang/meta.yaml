@@ -1,0 +1,78 @@
+package:
+  name: bang
+  version: "0.18"
+
+source:
+  fn: bang-0.18.tar.gz
+  url: https://pypi.python.org/packages/source/b/bang/bang-0.18.tar.gz
+  md5: bfb156690ff1567cd7a27152a2f9581f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bang = bang:main
+    #
+    # Would create an entry point called bang that calls bang.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - logutils >=0.3.2
+    - pyyaml >=3.10
+    - boto >=2.6.0
+    - ansible >=1.6.3
+    - distribute
+
+  run:
+    - python
+    - argparse >=1.2.1
+    - logutils >=0.3.2
+    - pyyaml >=3.10
+    - boto >=2.6.0
+    - ansible >=1.6.3
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - bang
+    - bang.attributes
+    - bang.deployers
+    - bang.providers
+    - bang.providers.hpcloud
+    - bang.providers.hpcloud.v12
+    - bang.providers.openstack
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fr33jc/bang
+  license: GPLv3
+  summary: 'Server and cloud resource deployment automation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

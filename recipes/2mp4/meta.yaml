@@ -1,0 +1,69 @@
+package:
+  name: 2mp4
+  version: "0.2.1"
+
+source:
+  fn: 2mp4-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/2/2mp4/2mp4-0.2.1.tar.gz
+  md5: 5209658fa7614d929dc7e8babb0ae240
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - 2mp4 = 2mp4:main
+    #
+    # Would create an entry point called 2mp4 that calls 2mp4.main()
+
+    - 2mp4=2mp4.2mp4:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sh
+    - progressbar2
+    - pymediainfo
+
+  run:
+    - python
+    - setuptools
+    - sh
+    - progressbar2
+    - pymediainfo
+
+test:
+  # Python imports
+  imports:
+    - 2mp4
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - 2mp4 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/skonakov/2mp4.git
+  license: MIT License
+  summary: 'Simple utility to convert your video files into mp4s.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

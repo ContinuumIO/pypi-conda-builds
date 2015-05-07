@@ -1,0 +1,78 @@
+package:
+  name: colmet
+  version: "0.5.3"
+
+source:
+  fn: colmet-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/colmet/colmet-0.5.3.tar.gz
+  md5: 130e87ab36e8592e08895bb4cab80f63
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - colmet = colmet:main
+    #
+    # Would create an entry point called colmet that calls colmet.main()
+
+    - colmet-node = colmet.node.main:main
+    - colmet-collector = colmet.collector.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tables
+    - pyinotify
+    - pyzmq
+
+  run:
+    - python
+    - tables
+    - pyinotify
+    - pyzmq
+
+test:
+  # Python imports
+  imports:
+    - colmet
+    - colmet.collector
+    - colmet.common
+    - colmet.common.backends
+    - colmet.common.metrics
+    - colmet.node
+    - colmet.node.backends
+    - colmet.node.backends.genetlink
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - colmet-node --help
+    - colmet-collector --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://oar.imag.fr/
+  license: GNU General Public License (GPL)
+  summary: 'A utility to monitor the jobs ressources in a HPC environment, espacially OAR'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

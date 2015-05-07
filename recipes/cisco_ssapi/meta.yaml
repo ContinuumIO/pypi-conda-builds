@@ -1,0 +1,76 @@
+package:
+  name: cisco_ssapi
+  version: "1.0dev"
+
+source:
+  fn: cisco_ssapi-1.0dev.tar.gz
+  url: https://pypi.python.org/packages/source/c/cisco_ssapi/cisco_ssapi-1.0dev.tar.gz
+  md5: 8fb9579ecd2ced28cc64efb665ec6e97
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cisco_ssapi = cisco_ssapi:main
+    #
+    # Would create an entry point called cisco_ssapi that calls cisco_ssapi.main()
+
+    - get_eox = cisco_ssapi.scripts:getAllEOX
+    - get_eox_products = cisco_ssapi.scripts:getAllProducts
+    - get_eox_by_dates = cisco_ssapi.scripts:getEOXByDates
+    - get_eox_by_oid = cisco_ssapi.scripts:getEOXByOID
+    - get_eox_by_product = cisco_ssapi.scripts:getEOXByProductID
+    - get_eox_by_sw = cisco_ssapi.scripts:getEOXBySWRelease
+    - get_eox_by_serial = cisco_ssapi.scripts:getEOXBySerialNumber
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - suds >=0.3.8
+
+  run:
+    - python
+    - suds >=0.3.8
+
+test:
+  # Python imports
+  imports:
+    - cisco_ssapi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - get_eox --help
+    - get_eox_products --help
+    - get_eox_by_dates --help
+    - get_eox_by_oid --help
+    - get_eox_by_product --help
+    - get_eox_by_sw --help
+    - get_eox_by_serial --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cluther/cisco_ssapi
+  license: GNU General Public License (GPL)
+  summary: "Python API and CLI access to Cisco's SSAPI"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

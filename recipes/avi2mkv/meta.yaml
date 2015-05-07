@@ -1,0 +1,62 @@
+package:
+  name: avi2mkv
+  version: "1.0"
+
+source:
+  fn: avi2mkv-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/avi2mkv/avi2mkv-1.0.tar.gz
+  md5: b5069bec6dcbe107fc23414e2839b74a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - avi2mkv = avi2mkv:main
+    #
+    # Would create an entry point called avi2mkv that calls avi2mkv.main()
+
+    - avi2mkv = avi2mkv:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - avi2mkv
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - avi2mkv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/igalarzab/avi2mkv
+  license: MIT License
+  summary: 'Simple AVI to MKV converter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

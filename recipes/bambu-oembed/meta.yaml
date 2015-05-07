@@ -1,0 +1,66 @@
+package:
+  name: bambu-oembed
+  version: "2.5.1"
+
+source:
+  fn: bambu-oembed-2.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-oembed/bambu-oembed-2.5.1.tar.gz
+  md5: 8742dbbb589f913f5933c5dd1a0e9966
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-oembed = bambu-oembed:main
+    #
+    # Would create an entry point called bambu-oembed that calls bambu-oembed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - requests >=2.0
+
+  run:
+    - python
+    - django >=1.4
+    - requests >=2.0
+
+test:
+  # Python imports
+  imports:
+    - bambu_oembed
+    - bambu_oembed.migrations
+    - bambu_oembed.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iamsteadman/bambu-oembed
+  license: UNKNOWN
+  summary: 'Embed resources like YouTube videos, tweets and Flickr images by entering their URL on a single line of text. Methodology inspired by WordPress'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

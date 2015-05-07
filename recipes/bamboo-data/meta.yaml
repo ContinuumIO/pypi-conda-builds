@@ -1,0 +1,90 @@
+package:
+  name: bamboo-data
+  version: "0.5.5"
+
+source:
+  fn: bamboo-data-0.5.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/bamboo-data/bamboo-data-0.5.5.tar.gz
+  md5: d370b0bec0017252bc38e1a30098ceb1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bamboo-data = bamboo-data:main
+    #
+    # Would create an entry point called bamboo-data that calls bamboo-data.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - python-dateutil ==1.5
+    - numpy
+    - pandas
+    - scipy
+    - kombu
+    - celery
+    - pymongo
+    - cherrypy
+    - pyparsing
+    - simplejson
+    - routes
+
+  run:
+    - python
+    - python-dateutil ==1.5
+    - numpy
+    - pandas
+    - scipy
+    - kombu
+    - celery
+    - pymongo
+    - cherrypy
+    - pyparsing
+    - simplejson
+    - routes
+
+test:
+  # Python imports
+  imports:
+    - bamboo
+    - bamboo.config
+    - bamboo.controllers
+    - bamboo.core
+    - bamboo.lib
+    - bamboo.models
+    - bamboo.tests.controllers
+    - bamboo.tests.core
+    - bamboo.tests.lib
+    - bamboo.tests.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bamboo.io
+  license: UNKNOWN
+  summary: 'Dynamic data analysis over the web. The logic to your data dashboards.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

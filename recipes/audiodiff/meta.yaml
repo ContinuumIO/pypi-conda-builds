@@ -1,0 +1,66 @@
+package:
+  name: audiodiff
+  version: "0.3.0"
+
+source:
+  fn: audiodiff-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/audiodiff/audiodiff-0.3.0.tar.gz
+  md5: 26558e8ad9cba85c88807e17fcaaa077
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - audiodiff = audiodiff:main
+    #
+    # Would create an entry point called audiodiff that calls audiodiff.main()
+
+    - audiodiff = audiodiff.commandlinetool:main_func
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mutagenwrapper ==0.0.5
+    - termcolor ==1.1.0
+
+  run:
+    - python
+    - mutagenwrapper ==0.0.5
+    - termcolor ==1.1.0
+
+test:
+  # Python imports
+  imports:
+    - audiodiff
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - audiodiff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/clee704/audiodiff
+  license: MIT License
+  summary: 'Small library for comparing audio files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

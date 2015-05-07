@@ -1,0 +1,76 @@
+package:
+  name: collective.easyslideshow
+  version: "2.2"
+
+source:
+  fn: collective.easyslideshow-2.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.easyslideshow/collective.easyslideshow-2.2.zip
+  md5: 5cbc4294976cb392b0557e2d57fa9f87
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.easyslideshow = collective.easyslideshow:main
+    #
+    # Would create an entry point called collective.easyslideshow that calls collective.easyslideshow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.autopermission
+    - p4a.common
+    - p4a.z2utils
+    - p4a.subtyper
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.autopermission
+    - p4a.common
+    - p4a.z2utils
+    - p4a.subtyper
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.easyslideshow
+    - collective.easyslideshow.Extensions
+    - collective.easyslideshow.browser
+    - collective.easyslideshow.portlets
+    - collective.easyslideshow.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.easyslideshow
+  license: GPL
+  summary: 'An easy slideshow solution for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

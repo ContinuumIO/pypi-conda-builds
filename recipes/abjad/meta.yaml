@@ -1,0 +1,74 @@
+package:
+  name: abjad
+  version: "2.15"
+
+source:
+  fn: Abjad-2.15.tar.gz
+  url: https://pypi.python.org/packages/source/A/Abjad/Abjad-2.15.tar.gz
+  md5: ec565c47413446abe7ec9b640e6e9e3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - abjad = abjad:main
+    #
+    # Would create an entry point called abjad that calls abjad.main()
+
+    - abjad = abjad.tools.systemtools.run_abjad:run_abjad
+    - ajv = abjad.tools.developerscripttools.run_ajv:run_ajv
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx >=1.0.7
+    - configobj >=4.7.2
+    - ply >=3.4
+    - pytest >=2.1
+    - enum34
+
+  run:
+    - python
+    - sphinx >=1.0.7
+    - configobj >=4.7.2
+    - ply >=3.4
+    - pytest >=2.1
+    - enum34
+
+test:
+  # Python imports
+  imports:
+    - abjad
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - abjad --help
+    - ajv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.projectabjad.org
+  license: GPL
+  summary: 'Abjad is a Python API for Formalized Score Control.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

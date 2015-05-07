@@ -1,0 +1,70 @@
+package:
+  name: collective.recipe.patch
+  version: "0.2.2"
+
+source:
+  fn: collective.recipe.patch-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.recipe.patch/collective.recipe.patch-0.2.2.tar.gz
+  md5: 0cde3c249daa05fc4479e06880f22744
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.recipe.patch = collective.recipe.patch:main
+    #
+    # Would create an entry point called collective.recipe.patch that calls collective.recipe.patch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.recipe
+    - collective.recipe.patch
+    - collective.recipe.patch.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/garbas/collective.recipe.patch
+  license: GNU General Public License (GPL)
+  summary: 'recipe for patching eggs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

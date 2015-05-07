@@ -1,0 +1,78 @@
+package:
+  name: dexterity.localrolesfield
+  version: "0.1"
+
+source:
+  fn: dexterity.localrolesfield-0.1.zip
+  url: https://pypi.python.org/packages/source/d/dexterity.localrolesfield/dexterity.localrolesfield-0.1.zip
+  md5: 6568d74c527044fde8c6610dffd3b105
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dexterity.localrolesfield = dexterity.localrolesfield:main
+    #
+    # Would create an entry point called dexterity.localrolesfield that calls dexterity.localrolesfield.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.cmfcore
+    - collective.z3cform.datagridfield
+    - dexterity.localroles
+    - five.grok
+    - plone.api
+    - plone.app.dexterity
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - products.cmfcore
+    - collective.z3cform.datagridfield
+    - dexterity.localroles
+    - five.grok
+    - plone.api
+    - plone.app.dexterity
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - dexterity
+    - dexterity.localrolesfield
+    - dexterity.localrolesfield.browser
+    - dexterity.localrolesfield.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/
+  license: gpl
+  summary: 'z3c.form local role field for dexterity'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

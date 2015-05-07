@@ -1,0 +1,63 @@
+package:
+  name: bdist_venv
+  version: "0.1.2"
+
+source:
+  fn: bdist_venv-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/bdist_venv/bdist_venv-0.1.2.tar.gz
+  md5: 0715621a91d6f741cd5857528ca343fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bdist_venv = bdist_venv:main
+    #
+    # Would create an entry point called bdist_venv that calls bdist_venv.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenv
+
+  run:
+    - python
+    - setuptools
+    - virtualenv
+
+test:
+  # Python imports
+  imports:
+    - bdist_venv
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mgood/bdist_venv
+  license: BSD License
+  summary: 'Python distutils extension to bundle package as a virtualenv.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

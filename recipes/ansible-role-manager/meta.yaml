@@ -1,0 +1,74 @@
+package:
+  name: ansible-role-manager
+  version: "0.4"
+
+source:
+  fn: ansible-role-manager-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/ansible-role-manager/ansible-role-manager-0.4.tar.gz
+  md5: 09247e03c228dc36c92a78317329bd96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ansible-role-manager = ansible-role-manager:main
+    #
+    # Would create an entry point called ansible-role-manager that calls ansible-role-manager.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ansible
+    - requests
+    - gitpython ==0.3.2.RC1
+    - semantic_version
+    - colorama
+    - hgapi
+
+  run:
+    - python
+    - ansible
+    - requests
+    - gitpython ==0.3.2.RC1
+    - semantic_version
+    - colorama
+    - hgapi
+
+test:
+  # Python imports
+  imports:
+    - arm
+    - arm.commands
+    - arm.routes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mirskytech.github.io/ansible-role-manager/
+  license: UNKNOWN
+  summary: 'A tool for installing and managing Ansible roles, playbooks & modules.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: agent.pgep
+  version: "0.2.1"
+
+source:
+  fn: agent.pgep-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/agent.pgep/agent.pgep-0.2.1.tar.gz
+  md5: 2c6b5cd23aa63117aea1e353bcdd4daa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - agent.pgep = agent.pgep:main
+    #
+    # Would create an entry point called agent.pgep that calls agent.pgep.main()
+
+    - agent.pgep = agent_pgep:spawn
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - psycopg2
+    - configobj
+
+  run:
+    - python
+    - argparse
+    - psycopg2
+    - configobj
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - agent.pgep --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vickleford/agent.pgep
+  license: UNKNOWN
+  summary: 'Rackspace Cloud Monitoring plugin for PostgreSQL       endpoints as an agent.plugin type of check.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: authentic2-idp-oauth2
+  version: "1.0.14"
+
+source:
+  fn: authentic2-idp-oauth2-1.0.14.tar.gz
+  url: https://pypi.python.org/packages/source/a/authentic2-idp-oauth2/authentic2-idp-oauth2-1.0.14.tar.gz
+  md5: 38e6d3fb594203e6625a9e6fd6a99222
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - authentic2-idp-oauth2 = authentic2-idp-oauth2:main
+    #
+    # Would create an entry point called authentic2-idp-oauth2 that calls authentic2-idp-oauth2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-oauth2-provider
+    - djangorestframework
+
+  run:
+    - python
+    - setuptools
+    - django-oauth2-provider
+    - djangorestframework
+
+test:
+  # Python imports
+  imports:
+    - authentic2_idp_oauth2
+    - authentic2_idp_oauth2.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: AGPLv3
+  summary: 'Authentic2 IdP OAuth2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

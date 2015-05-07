@@ -1,0 +1,67 @@
+package:
+  name: aiqterminal
+  version: "0.1.1"
+
+source:
+  fn: aiqterminal-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/aiqterminal/aiqterminal-0.1.1.tar.gz
+  md5: 3f5cf9589b25165fcbdb23eef958bfe2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aiqterminal = aiqterminal:main
+    #
+    # Would create an entry point called aiqterminal that calls aiqterminal.main()
+
+    - aiqterminal=aiqterminal:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aiqpy
+    - click
+
+  run:
+    - python
+    - setuptools
+    - aiqpy
+    - click
+
+test:
+  # Python imports
+  imports:
+    - aiqterminal
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aiqterminal --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Interactive shell for administrating a AIQ8 platform server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

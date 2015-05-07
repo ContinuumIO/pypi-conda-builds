@@ -1,0 +1,64 @@
+package:
+  name: bumblebee
+  version: "1.0a2"
+
+source:
+  fn: Bumblebee-1.0a2.zip
+  url: https://pypi.python.org/packages/source/B/Bumblebee/Bumblebee-1.0a2.zip
+  md5: a3d7de6d1e29f2d18d6bd5d43e3d48fa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bumblebee = bumblebee:main
+    #
+    # Would create an entry point called bumblebee that calls bumblebee.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - repoze.xmliter
+
+  run:
+    - python
+    - setuptools
+    - repoze.xmliter
+
+test:
+  # Python imports
+  imports:
+    - bumblebee
+    - bumblebee.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vangheem/Bumblebee
+  license: UNKNOWN
+  summary: 'deliverance-like implementation that only works on html output(no theme file)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

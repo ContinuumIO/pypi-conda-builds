@@ -1,0 +1,66 @@
+package:
+  name: aiourlstatus
+  version: "0.3.3"
+
+source:
+  fn: aiourlstatus-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/aiourlstatus/aiourlstatus-0.3.3.tar.gz
+  md5: face0f316f4d38a3ae0104f0e92dee8d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aiourlstatus = aiourlstatus:main
+    #
+    # Would create an entry point called aiourlstatus that calls aiourlstatus.main()
+
+    - aiourlstatus = aiourlstatus.app:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aiohttp
+    - click
+
+  run:
+    - python
+    - aiohttp
+    - click
+
+test:
+  # Python imports
+  imports:
+    - aiourlstatus
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aiourlstatus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/riverrun/aiourlstatus
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A tool to check links from a json / text file'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

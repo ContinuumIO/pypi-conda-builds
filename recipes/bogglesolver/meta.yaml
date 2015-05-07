@@ -1,0 +1,63 @@
+package:
+  name: bogglesolver
+  version: "0.0.1"
+
+source:
+  fn: bogglesolver-0.0.1.zip
+  url: https://pypi.python.org/packages/source/b/bogglesolver/bogglesolver-0.0.1.zip
+  md5: 9492f2e1bd02caf0e57d641cb8233465
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bogglesolver = bogglesolver:main
+    #
+    # Would create an entry point called bogglesolver that calls bogglesolver.main()
+
+    - bogglesolver = bogglesolver.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - bogglesolver
+    - bogglesolver.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bogglesolver --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/BoggleSolver
+  license: LGPL
+  summary: 'Boggle Solver is a Python 3 package for solving Boggle boards.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

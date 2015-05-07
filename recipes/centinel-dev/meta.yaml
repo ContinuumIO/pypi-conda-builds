@@ -1,0 +1,75 @@
+package:
+  name: centinel-dev
+  version: "0.1.5.2"
+
+source:
+  fn: centinel-dev-0.1.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/centinel-dev/centinel-dev-0.1.5.2.tar.gz
+  md5: d11442515f7799f09079a7d8442a53f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - centinel-dev = centinel-dev:main
+    #
+    # Would create an entry point called centinel-dev that calls centinel-dev.main()
+
+    - centinel-dev = centinel.cli:run
+    - centinel-vpn-dev = centinel.vpn.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - m2crypto >=0.22.0
+    - dnspython >=1.11.0
+    - requests >=2.5.1
+
+  run:
+    - python
+    - argparse >=1.2.1
+    - m2crypto >=0.22.0
+    - dnspython >=1.11.0
+    - requests >=2.5.1
+
+test:
+  # Python imports
+  imports:
+    - centinel
+    - centinel.experiments
+    - centinel.primitives
+    - centinel.vpn
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - centinel-dev --help
+    - centinel-vpn-dev --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.github.com/iclab/centinel
+  license: MIT
+  summary: 'Centinel is a tool used to detect network interference, online information controls, and Internet censorship.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: collective.xdv
+  version: "1.0rc11"
+
+source:
+  fn: collective.xdv-1.0rc11.zip
+  url: https://pypi.python.org/packages/source/c/collective.xdv/collective.xdv-1.0rc11.zip
+  md5: 5cbd56865ca9335b8d8b4b7fa4c299ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.xdv = collective.xdv:main
+    #
+    # Would create an entry point called collective.xdv that calls collective.xdv.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - xdv >=0.3rc1
+    - lxml >=2.2.4
+    - plone.app.registry >=1.0a2
+    - plone.subrequest
+    - plone.transformchain
+    - repoze.xmliter
+    - five.globalrequest
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - xdv >=0.3rc1
+    - lxml >=2.2.4
+    - plone.app.registry >=1.0a2
+    - plone.subrequest
+    - plone.transformchain
+    - repoze.xmliter
+    - five.globalrequest
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.xdv
+    - collective.xdv.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.xdv
+  license: GPL
+  summary: 'Integrates the xdv Deliverance implementation with Plone using a post-publication hook to transform content'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

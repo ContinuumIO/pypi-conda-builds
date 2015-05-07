@@ -1,0 +1,81 @@
+package:
+  name: collective.geo.mapwidget
+  version: "2.2"
+
+source:
+  fn: collective.geo.mapwidget-2.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.geo.mapwidget/collective.geo.mapwidget-2.2.tar.gz
+  md5: 6747032d06099fc5a0128afac46df391
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.geo.mapwidget = collective.geo.mapwidget:main
+    #
+    # Would create an entry point called collective.geo.mapwidget that calls collective.geo.mapwidget.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup
+    - geopy >=0.98
+    - products.cmfcore
+    - plone.app.z3cform
+    - collective.geo.openlayers >=3.1
+    - collective.geo.settings >=3.1
+    - collective.z3cform.colorpicker >=1.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup
+    - geopy >=0.98
+    - products.cmfcore
+    - plone.app.z3cform
+    - collective.geo.openlayers >=3.1
+    - collective.geo.settings >=3.1
+    - collective.z3cform.colorpicker >=1.2
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.geo
+    - collective.geo.mapwidget
+    - collective.geo.mapwidget.browser
+    - collective.geo.mapwidget.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.geo.mapwidget
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'collective.geo mapwidget'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: chrome-proxy
+  version: "0.2"
+
+source:
+  fn: chrome-proxy-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/chrome-proxy/chrome-proxy-0.2.tar.gz
+  md5: 039ff10dc597823a88cdd638d7b38855
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chrome-proxy = chrome-proxy:main
+    #
+    # Would create an entry point called chrome-proxy that calls chrome-proxy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent-websocket >=0.9.3
+
+  run:
+    - python
+    - gevent-websocket >=0.9.3
+
+test:
+  # Python imports
+  imports:
+    - chromeproxy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dutzi.github.com/chrome-proxy
+  license: MIT License
+  summary: 'Mitmproxy extension, companion for Chrome Proxy. Locally edit files served from the web'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: banana.maya
+  version: "0.0.2"
+
+source:
+  fn: banana.maya-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/banana.maya/banana.maya-0.0.2.tar.gz
+  md5: 0dbd744745fe56e9d28816a1d3a67090
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - banana.maya = banana.maya:main
+    #
+    # Would create an entry point called banana.maya that calls banana.maya.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gorilla
+
+  run:
+    - python
+    - gorilla
+
+test:
+  # Python imports
+  imports:
+    - banana
+    - banana.maya
+    - banana.maya.extensions
+    - banana.maya.extensions.OpenMaya
+    - banana.maya.extensions.OpenMayaAnim
+    - banana.maya.extensions.OpenMayaFX
+    - banana.maya.extensions.OpenMayaRender
+    - banana.maya.extensions.OpenMayaUI
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/christophercrouzet/banana.maya
+  license: MIT License
+  summary: 'Set of extensions for the Python API of Autodesk Maya.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

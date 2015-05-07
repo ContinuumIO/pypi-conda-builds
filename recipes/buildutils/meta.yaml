@@ -1,0 +1,70 @@
+package:
+  name: buildutils
+  version: "0.3"
+
+source:
+  fn: buildutils-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildutils/buildutils-0.3.tar.gz
+  md5: fec620dee05f591edad386366b52e17b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildutils = buildutils:main
+    #
+    # Would create an entry point called buildutils that calls buildutils.main()
+
+    - pbu=buildutils.pysetup:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - buildutils
+    - buildutils.announce_command
+    - buildutils.command
+    - buildutils.compat
+    - buildutils.publish_command
+    - buildutils.pudge_command
+    - buildutils.pytest_command
+    - buildutils.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pbu --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Distutils extensions for developing Python libraries and applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

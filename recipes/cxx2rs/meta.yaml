@@ -1,0 +1,67 @@
+package:
+  name: cxx2rs
+  version: "0.3.4"
+
+source:
+  fn: cxx2rs-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/cxx2rs/cxx2rs-0.3.4.tar.gz
+  md5: 58347435a1be625bfaf70f382bfd4f6a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cxx2rs = cxx2rs:main
+    #
+    # Would create an entry point called cxx2rs that calls cxx2rs.main()
+
+    - cxx2rs=cxx2rs.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - clang
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - clang
+
+test:
+  # Python imports
+  imports:
+    - cxx2rs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cxx2rs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/manuels/cxx2rs
+  license: UNKNOWN
+  summary: 'A rust-binding generator for C/C++ files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

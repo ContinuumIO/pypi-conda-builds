@@ -1,0 +1,64 @@
+package:
+  name: c2c.versions
+  version: "0.5dev2"
+
+source:
+  fn: c2c.versions-0.5dev2.tar.gz
+  url: https://pypi.python.org/packages/source/c/c2c.versions/c2c.versions-0.5dev2.tar.gz
+  md5: 4b4802daceb8047d48bace9c48d493bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - c2c.versions = c2c.versions:main
+    #
+    # Would create an entry point called c2c.versions that calls c2c.versions.main()
+
+    - c2c-versions = c2c.versions:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+
+  run:
+    - python
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - c2c
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - c2c-versions --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/sbrunner/c2c.versions
+  license: BSD License
+  summary: 'Command to tests program version'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

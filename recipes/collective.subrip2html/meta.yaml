@@ -1,0 +1,68 @@
+package:
+  name: collective.subrip2html
+  version: "0.2.0"
+
+source:
+  fn: collective.subrip2html-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.subrip2html/collective.subrip2html-0.2.0.tar.gz
+  md5: ab3fc718f7bfae8edb51c03da465e1a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.subrip2html = collective.subrip2html:main
+    #
+    # Would create an entry point called collective.subrip2html that calls collective.subrip2html.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pysrt >0.2.3
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pysrt >0.2.3
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.subrip2html
+    - collective.subrip2html.browser
+    - collective.subrip2html.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/collective.subrip2html
+  license: GPL
+  summary: 'A Plone module to add conversion from SRT format to HTML in portal_transforms tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

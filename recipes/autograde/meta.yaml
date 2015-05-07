@@ -1,0 +1,67 @@
+package:
+  name: autograde
+  version: "0.1.1"
+
+source:
+  fn: Autograde-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/A/Autograde/Autograde-0.1.1.tar.gz
+  md5: 4151b3965bf7d1e421eb0dcd7017343c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autograde = autograde:main
+    #
+    # Would create an entry point called autograde that calls autograde.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.4.1
+    - django-extensions >=0.9
+    - django-tastypie >=0.9.11
+    - requests >=0.14.0
+
+  run:
+    - python
+    - django >=1.4.1
+    - django-extensions >=0.9
+    - django-tastypie >=0.9.11
+    - requests >=0.14.0
+
+test:
+  # Python imports
+  imports:
+    - autograde
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Autograde/
+  license: LICENSE.txt
+  summary: 'A django autograder.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

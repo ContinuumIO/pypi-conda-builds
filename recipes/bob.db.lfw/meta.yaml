@@ -1,0 +1,71 @@
+package:
+  name: bob.db.lfw
+  version: "2.0.1"
+
+source:
+  fn: bob.db.lfw-2.0.1.zip
+  url: https://pypi.python.org/packages/source/b/bob.db.lfw/bob.db.lfw-2.0.1.zip
+  md5: c08fe2c4dbea88aec27d7e5c8a6d0b28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bob.db.lfw = bob.db.lfw:main
+    #
+    # Would create an entry point called bob.db.lfw that calls bob.db.lfw.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - bob.db.base
+    - bob.db.verification.utils
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - bob.db.base
+    - bob.db.verification.utils
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.db
+    - bob.db.lfw
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/bob.db.lfw
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Labeled Faces in the Wild Database Access API for Bob'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

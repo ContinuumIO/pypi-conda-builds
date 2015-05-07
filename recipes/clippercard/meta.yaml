@@ -1,0 +1,72 @@
+package:
+  name: clippercard
+  version: "0.3.2"
+
+source:
+  fn: clippercard-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/clippercard/clippercard-0.3.2.tar.gz
+  md5: 8f44b07906b8dbf428aa6dd70cc0be9d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clippercard = clippercard:main
+    #
+    # Would create an entry point called clippercard that calls clippercard.main()
+
+    - clippercard = clippercard.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 >=4.3.2
+    - configparser ==3.5.0b2
+    - docopt >=0.6.1
+    - prettytable >=0.7.2
+    - requests >=2.2.1
+
+  run:
+    - python
+    - beautifulsoup4 >=4.3.2
+    - configparser ==3.5.0b2
+    - docopt >=0.6.1
+    - prettytable >=0.7.2
+    - requests >=2.2.1
+
+test:
+  # Python imports
+  imports:
+    - clippercard
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clippercard --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/anthonywu/clippercard
+  license: LICENSE
+  summary: 'Unofficial Python API for Clipper Card (transportation pass used in the San Francisco Bay Area)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

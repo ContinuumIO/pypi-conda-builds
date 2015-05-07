@@ -1,0 +1,70 @@
+package:
+  name: cli2web
+  version: "0.1"
+
+source:
+  fn: cli2web-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cli2web/cli2web-0.1.tar.gz
+  md5: b84650f8c639624911528da5c8d9012e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cli2web = cli2web:main
+    #
+    # Would create an entry point called cli2web that calls cli2web.main()
+
+    - cli2web = cli2web:entrypoint
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - flask_restful
+    - path.py
+    - pyclictk
+
+  run:
+    - python
+    - flask
+    - flask_restful
+    - path.py
+    - pyclictk
+
+test:
+  # Python imports
+  imports:
+    - cli2web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cli2web --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CognitionGuidedSurgery/cli2web
+  license: UNKNOWN
+  summary: 'Wraps cli applications to web services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

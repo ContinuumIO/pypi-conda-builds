@@ -1,0 +1,66 @@
+package:
+  name: cellar
+  version: "0.1.2"
+
+source:
+  fn: cellar-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cellar/cellar-0.1.2.tar.gz
+  md5: ba0b67b3dfbd7c37191a087fd3c0e5a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cellar = cellar:main
+    #
+    # Would create an entry point called cellar that calls cellar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argh >=0.24.1
+    - requests
+    - pyyaml
+
+  run:
+    - python
+    - argh >=0.24.1
+    - requests
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - cellar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Psycojoker/cellar
+  license: MIT
+  summary: 'pkg manager for salt formulas'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

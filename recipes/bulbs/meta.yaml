@@ -1,0 +1,80 @@
+package:
+  name: bulbs
+  version: "0.3.29-20140417"
+
+source:
+  fn: bulbs-0.3.29-20140417.tar.gz
+  url: https://pypi.python.org/packages/source/b/bulbs/bulbs-0.3.29-20140417.tar.gz
+  md5: 75d74e8f1fd51e5399f31f1ac89b095e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bulbs = bulbs:main
+    #
+    # Would create an entry point called bulbs that calls bulbs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - httplib2 >=0.7.2
+    - pyyaml >=3.10
+    - six
+    - omnijson
+    - python-dateutil ==1.5
+
+  run:
+    - python
+    - distribute
+    - httplib2 >=0.7.2
+    - pyyaml >=3.10
+    - six
+    - omnijson
+    - python-dateutil ==1.5
+
+test:
+  # Python imports
+  imports:
+    - bulbs
+    - bulbs.base
+    - bulbs.neo4jserver
+    - bulbs.neo4jserver.tests
+    - bulbs.rexster
+    - bulbs.rexster.tests
+    - bulbs.tests
+    - bulbs.titan
+    - bulbs.titan.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/espeed/bulbs
+  license: BSD License
+  summary: 'A Python persistence framework for graph databases that connects to Neo4j Server, Rexster, OrientDB, Lightsocket.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: collective.jsonmigrator
+  version: "0.2"
+
+source:
+  fn: collective.jsonmigrator-0.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.jsonmigrator/collective.jsonmigrator-0.2.zip
+  md5: 4424db4bff4e91036faa0e4c940613cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.jsonmigrator = collective.jsonmigrator:main
+    #
+    # Would create an entry point called collective.jsonmigrator that calls collective.jsonmigrator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - simplejson
+    - collective.transmogrifier
+    - plone.app.transmogrifier
+    - zope.app.container
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - simplejson
+    - collective.transmogrifier
+    - plone.app.transmogrifier
+    - zope.app.container
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.jsonmigrator
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.jsonmigrator
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Migrations from legacy Plone sites (2.0, 2.1, 2.5) to Plone 4.0'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

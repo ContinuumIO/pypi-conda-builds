@@ -1,0 +1,80 @@
+package:
+  name: clay
+  version: "2.12.5"
+
+source:
+  fn: Clay-2.12.5.tar.gz
+  url: https://pypi.python.org/packages/source/C/Clay/Clay-2.12.5.tar.gz
+  md5: 840c01c5ca070abfb881972a3432d523
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clay = clay:main
+    #
+    # Would create an entry point called clay that calls clay.main()
+
+    - clay = clay.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cherrypy >=3.6.0
+    - baker >=1.3
+    - flask >=0.10.1
+    - moar >=1.2.2
+    - pillow
+    - pygments >=1.6
+    - voodoo >=1.4.0
+    - markdown >=2.3.1
+
+  run:
+    - python
+    - cherrypy >=3.6.0
+    - baker >=1.3
+    - flask >=0.10.1
+    - moar >=1.2.2
+    - pillow
+    - pygments >=1.6
+    - voodoo >=1.4.0
+    - markdown >=2.3.1
+
+test:
+  # Python imports
+  imports:
+    - clay
+    - clay.markdown_ext
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clay --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lucuma/Clay
+  license: MIT License
+  summary: 'An amazing prototyping tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: ballotbox
+  version: "0.1"
+
+source:
+  fn: ballotbox-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/ballotbox/ballotbox-0.1.tar.gz
+  md5: 99fb47891f0e64dd0f5336ef0c742b2b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ballotbox = ballotbox:main
+    #
+    # Would create an entry point called ballotbox that calls ballotbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ballotbox
+    - ballotbox.multiwinner
+    - ballotbox.singlewinner
+    - ballotbox.singlewinner.preferential
+    - ballotbox.testing
+    - ballotbox.tests
+    - ballotbox.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/ballotbox
+  license: LGPLv3
+  summary: 'A Python library for voting algorithms.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

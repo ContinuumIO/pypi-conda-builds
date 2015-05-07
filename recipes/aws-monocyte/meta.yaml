@@ -1,0 +1,67 @@
+package:
+  name: aws-monocyte
+  version: "0.0.3"
+
+source:
+  fn: aws-monocyte-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/aws-monocyte/aws-monocyte-0.0.3.tar.gz
+  md5: 5790f79ab034131c30bd13b28700509c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aws-monocyte = aws-monocyte:main
+    #
+    # Would create an entry point called aws-monocyte that calls aws-monocyte.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto
+    - docopt
+    - python-cloudwatchlogs-logging
+
+  run:
+    - python
+    - boto
+    - docopt
+    - python-cloudwatchlogs-logging
+
+test:
+  # Python imports
+  imports:
+    - monocyte
+    - monocyte.handler
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ImmobilienScout24/aws-monocyte
+  license: Apache License 2.0
+  summary: 'Monocyte - Search and Destroy unwanted AWS Resources relentlessly.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

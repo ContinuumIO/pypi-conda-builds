@@ -1,0 +1,69 @@
+package:
+  name: bambu-gensite
+  version: "1.1"
+
+source:
+  fn: bambu-gensite-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bambu-gensite/bambu-gensite-1.1.tar.gz
+  md5: b3d3a30cf5179e9fc94d8a2099a15aef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bambu-gensite = bambu-gensite:main
+    #
+    # Would create an entry point called bambu-gensite that calls bambu-gensite.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - requests >=2.0
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - django >=1.6
+    - requests >=2.0
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - bambu_gensite
+    - bambu_gensite.generators
+    - bambu_gensite.management
+    - bambu_gensite.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iamsteadman/bambu-gensite
+  license: UNKNOWN
+  summary: 'Fill a website with data generated from a YAML file'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

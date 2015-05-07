@@ -1,0 +1,64 @@
+package:
+  name: autobahn_rce
+  version: "0.6.0.5"
+
+source:
+  fn: autobahn_rce-0.6.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/autobahn_rce/autobahn_rce-0.6.0.5.tar.gz
+  md5: c071c2e302ee7e98a9051d3bafb98953
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autobahn_rce = autobahn_rce:main
+    #
+    # Would create an entry point called autobahn_rce that calls autobahn_rce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=11.1
+
+  run:
+    - python
+    - setuptools
+    - twisted >=11.1
+
+test:
+  # Python imports
+  imports:
+    - autobahn
+    - autobahn_rce
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/IDSCETHZurich/autobahn_rce
+  license: Apache Software License
+  summary: 'AutobahnPython - Optimised and modified for the RoboEarth Cloud Engine.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

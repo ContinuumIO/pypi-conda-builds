@@ -1,0 +1,103 @@
+package:
+  name: apptools
+  version: "4.3.0"
+
+source:
+  fn: apptools-4.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/apptools/apptools-4.3.0.tar.gz
+  md5: bc85e9a3e5dcbbb23472f2b99ef14233
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apptools = apptools:main
+    #
+    # Would create an entry point called apptools that calls apptools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - traitsui
+    - configobj
+
+  run:
+    - python
+    - traitsui
+    - configobj
+
+test:
+  # Python imports
+  imports:
+    - apptools
+    - apptools.appscripting
+    - apptools.appscripting.action
+    - apptools.help
+    - apptools.help.help_plugin
+    - apptools.help.help_plugin.action
+    - apptools.io
+    - apptools.io.h5
+    - apptools.io.h5.tests
+    - apptools.logger
+    - apptools.logger.agent
+    - apptools.logger.plugin
+    - apptools.logger.plugin.view
+    - apptools.lru_cache
+    - apptools.lru_cache.tests
+    - apptools.naming
+    - apptools.naming.adapter
+    - apptools.naming.trait_defs
+    - apptools.naming.ui
+    - apptools.permissions
+    - apptools.permissions.action
+    - apptools.permissions.adapters
+    - apptools.permissions.default
+    - apptools.persistence
+    - apptools.preferences
+    - apptools.preferences.tests
+    - apptools.preferences.ui
+    - apptools.scripting
+    - apptools.selection
+    - apptools.selection.tests
+    - apptools.sweet_pickle
+    - apptools.sweet_pickle.tests
+    - apptools.template
+    - apptools.template.impl
+    - apptools.template.test
+    - apptools.type_manager
+    - apptools.type_registry
+    - apptools.type_registry.tests
+    - apptools.undo
+    - apptools.undo.action
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://docs.enthought.com/apptools
+  license: BSD License
+  summary: 'application tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

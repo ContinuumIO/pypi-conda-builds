@@ -1,0 +1,108 @@
+package:
+  name: bootstrap-vz
+  version: "0.9.0"
+
+source:
+  fn: bootstrap-vz-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bootstrap-vz/bootstrap-vz-0.9.0.tar.gz
+  md5: 257770560eeaf8cdc1a159896d3a4f2e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bootstrap-vz = bootstrap-vz:main
+    #
+    # Would create an entry point called bootstrap-vz that calls bootstrap-vz.main()
+
+    - bootstrap-vz = bootstrapvz.base:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - termcolor >=1.1.0
+    - fysom >=1.0.15
+    - jsonschema >=2.3.0
+    - pyyaml >=3.10
+    - boto >=2.14.0
+    - docopt >=0.6.1
+
+  run:
+    - python
+    - termcolor >=1.1.0
+    - fysom >=1.0.15
+    - jsonschema >=2.3.0
+    - pyyaml >=3.10
+    - boto >=2.14.0
+    - docopt >=0.6.1
+
+test:
+  # Python imports
+  imports:
+    - bootstrapvz
+    - bootstrapvz.base
+    - bootstrapvz.base.fs
+    - bootstrapvz.base.fs.partitionmaps
+    - bootstrapvz.base.fs.partitions
+    - bootstrapvz.base.pkg
+    - bootstrapvz.common
+    - bootstrapvz.common.fs
+    - bootstrapvz.common.tasks
+    - bootstrapvz.plugins
+    - bootstrapvz.plugins.admin_user
+    - bootstrapvz.plugins.apt_proxy
+    - bootstrapvz.plugins.chef
+    - bootstrapvz.plugins.cloud_init
+    - bootstrapvz.plugins.image_commands
+    - bootstrapvz.plugins.minimize_size
+    - bootstrapvz.plugins.ntp
+    - bootstrapvz.plugins.opennebula
+    - bootstrapvz.plugins.prebootstrapped
+    - bootstrapvz.plugins.puppet
+    - bootstrapvz.plugins.root_password
+    - bootstrapvz.plugins.salt
+    - bootstrapvz.plugins.unattended_upgrades
+    - bootstrapvz.plugins.vagrant
+    - bootstrapvz.providers
+    - bootstrapvz.providers.azure
+    - bootstrapvz.providers.azure.tasks
+    - bootstrapvz.providers.ec2
+    - bootstrapvz.providers.ec2.tasks
+    - bootstrapvz.providers.gce
+    - bootstrapvz.providers.gce.tasks
+    - bootstrapvz.providers.kvm
+    - bootstrapvz.providers.kvm.tasks
+    - bootstrapvz.providers.virtualbox
+    - bootstrapvz.providers.virtualbox.tasks
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bootstrap-vz --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.python.org/sigs/distutils-sig/
+  license: Apache Software License
+  summary: 'Bootstrap Debian images for virtualized environments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

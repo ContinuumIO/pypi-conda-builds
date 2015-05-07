@@ -1,0 +1,69 @@
+package:
+  name: cmsplugin-tabs
+  version: "0.1.10"
+
+source:
+  fn: cmsplugin-tabs-0.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-tabs/cmsplugin-tabs-0.1.10.tar.gz
+  md5: cab9a9aed0d001e38e1da4ca9855d5dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-tabs = cmsplugin-tabs:main
+    #
+    # Would create an entry point called cmsplugin-tabs that calls cmsplugin-tabs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-cms
+    - django-sekizai
+
+  run:
+    - python
+    - django
+    - django-cms
+    - django-sekizai
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_tabs
+    - cmsplugin_tabs.migrations
+    - cmsplugin_tabs.south_migrations
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/nimbis/cmsplugin-tabs
+  license: BSD License
+  summary: 'A simple tabs plugin for django-cms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

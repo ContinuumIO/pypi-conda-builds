@@ -1,0 +1,73 @@
+package:
+  name: cfncluster-node
+  version: "0.0.4"
+
+source:
+  fn: cfncluster-node-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/cfncluster-node/cfncluster-node-0.0.4.tar.gz
+  md5: f8315b512d98d542b3408c27f2662289
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cfncluster-node = cfncluster-node:main
+    #
+    # Would create an entry point called cfncluster-node that calls cfncluster-node.main()
+
+    - sqswatcher = sqswatcher.sqswatcher:main
+    - nodewatcher = nodewatcher.nodewatcher:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.34
+    - paramiko
+    - python-dateutil
+
+  run:
+    - python
+    - boto >=2.34
+    - paramiko
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - nodewatcher
+    - nodewatcher.plugins
+    - sqswatcher
+    - sqswatcher.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sqswatcher --help
+    - nodewatcher --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/awslabs/cfncluster
+  license: Amazon Software License
+  summary: 'cfncluster-node provides the scripts for a cfncluster node.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

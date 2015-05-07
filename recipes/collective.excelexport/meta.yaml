@@ -1,0 +1,72 @@
+package:
+  name: collective.excelexport
+  version: "1.2"
+
+source:
+  fn: collective.excelexport-1.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.excelexport/collective.excelexport-1.2.zip
+  md5: 340780e82a111bd2b915a83e426f7359
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.excelexport = collective.excelexport:main
+    #
+    # Would create an entry point called collective.excelexport that calls collective.excelexport.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.api
+    - setuptools
+    - xlwt
+
+  run:
+    - python
+    - setuptools
+    - plone.api
+    - setuptools
+    - xlwt
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.excelexport
+    - collective.excelexport.datasources
+    - collective.excelexport.datasources.eeafaceted
+    - collective.excelexport.exportables
+    - collective.excelexport.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.excelexport
+  license: GPL
+  summary: 'Export dexterity contents in an excel file, one column by field'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

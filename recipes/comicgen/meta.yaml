@@ -1,0 +1,68 @@
+package:
+  name: comicgen
+  version: "0.3"
+
+source:
+  fn: comicgen-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/comicgen/comicgen-0.3.tar.gz
+  md5: b87e92229b582f4c3ce0600c2d62c48a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - comicgen = comicgen:main
+    #
+    # Would create an entry point called comicgen that calls comicgen.main()
+
+    - comicgen = comicgen:comicgen_script
+    - comicgen-volumes = comicgen:comicgen_volumes_script
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - pycli
+
+  run:
+    - python
+    - jinja2
+    - pycli
+
+test:
+  # Python imports
+  imports:
+    - comicgen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - comicgen --help
+    - comicgen-volumes --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wutali/comicgen
+  license: UNKNOWN
+  summary: 'A command-line tool to make ebook of comics.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

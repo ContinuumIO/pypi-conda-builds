@@ -1,0 +1,64 @@
+package:
+  name: agglomcluster
+  version: "1.0.2"
+
+source:
+  fn: AgglomCluster-1.0.2.zip
+  url: https://pypi.python.org/packages/source/A/AgglomCluster/AgglomCluster-1.0.2.zip
+  md5: 73cf9ad55d3358b09ae64f985115ceaf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - agglomcluster = agglomcluster:main
+    #
+    # Would create an entry point called agglomcluster that calls agglomcluster.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - allset <2.0.0
+    - networkx ==1.8.1
+
+  run:
+    - python
+    - allset <2.0.0
+    - networkx ==1.8.1
+
+test:
+  # Python imports
+  imports:
+    - agglomcluster
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/MSeal/agglom_cluster
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'Performs greedy agglomerative clustering on network-x graphs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: better-than-you-found-it
+  version: "0.9.1"
+
+source:
+  fn: Better-Than-You-Found-It-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/B/Better-Than-You-Found-It/Better-Than-You-Found-It-0.9.1.tar.gz
+  md5: 5d798e9284a819165f1ca10d96700174
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - better-than-you-found-it = better-than-you-found-it:main
+    #
+    # Would create an entry point called better-than-you-found-it that calls better-than-you-found-it.main()
+
+    - btyfi = pep8radius.main:_main
+    - pep8radius = pep8radius.main:_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - autopep8 >=1.0.4
+    - colorama
+    - docformatter >=0.7
+
+  run:
+    - python
+    - autopep8 >=1.0.4
+    - colorama
+    - docformatter >=0.7
+
+test:
+  # Python imports
+  imports:
+    - pep8radius
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - btyfi --help
+    - pep8radius --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hayd/pep8radius
+  license: MIT License
+  summary: 'PEP8 clean only the parts of the files which you have touched since the last commit, a previous commit or (the merge-base of) a branch.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

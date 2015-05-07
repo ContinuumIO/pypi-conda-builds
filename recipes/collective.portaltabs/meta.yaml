@@ -1,0 +1,72 @@
+package:
+  name: collective.portaltabs
+  version: "0.4.0"
+
+source:
+  fn: collective.portaltabs-0.4.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.portaltabs/collective.portaltabs-0.4.0.zip
+  md5: ec6fa6cf5812d3b309b3323208f8a210
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.portaltabs = collective.portaltabs:main
+    #
+    # Would create an entry point called collective.portaltabs that calls collective.portaltabs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - elementtree
+    - collective.autopermission
+    - plone.app.registry
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - elementtree
+    - collective.autopermission
+    - plone.app.registry
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.portaltabs
+    - collective.portaltabs.browser
+    - collective.portaltabs.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.portaltabs
+  license: GPL
+  summary: "Manage site's portal tabs from Plone interface in a simple way"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

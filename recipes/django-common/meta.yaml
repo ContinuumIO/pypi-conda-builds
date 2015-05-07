@@ -1,0 +1,63 @@
+package:
+  name: django-common
+  version: "0.1.51"
+
+source:
+  fn: django-common-0.1.51.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-common/django-common-0.1.51.tar.gz
+  md5: 4b68180a42a174a587790d642d539b06
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-common = django-common:main
+    #
+    # Would create an entry point called django-common that calls django-common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - common
+    - common.management
+    - common.management.commands
+    - common.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/lorien/django-common/
+  license: BSD License
+  summary: 'A number of useful django shortcuts and helpers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
