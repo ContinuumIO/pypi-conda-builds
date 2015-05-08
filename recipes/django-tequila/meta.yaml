@@ -1,0 +1,64 @@
+package:
+  name: django-tequila
+  version: "2.0.2"
+
+source:
+  fn: django-tequila-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tequila/django-tequila-2.0.2.tar.gz
+  md5: fe46cab9b0c6dfe20c66d325d020755e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tequila = django-tequila:main
+    #
+    # Would create an entry point called django-tequila that calls django-tequila.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.6
+
+  run:
+    - python
+    - django >=1.6
+
+test:
+  # Python imports
+  imports:
+    - django_tequila
+    - django_tequila.django_backend
+    - django_tequila.tequila_auth_views
+    - django_tequila.tequila_client
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kis-doc.epfl.ch/django-tequila/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A Tequila authentication backend for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

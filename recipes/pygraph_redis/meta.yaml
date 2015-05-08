@@ -1,0 +1,63 @@
+package:
+  name: pygraph_redis
+  version: "0.2.1"
+
+source:
+  fn: pygraph_redis-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pygraph_redis/pygraph_redis-0.2.1.tar.gz
+  md5: f1f45ed32d355d7a5da38a1a76fe5ff6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pygraph_redis = pygraph_redis:main
+    #
+    # Would create an entry point called pygraph_redis that calls pygraph_redis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+
+  run:
+    - python
+    - setuptools
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - pygraph_redis
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kakwa/pygraph_redis
+  license: MIT License
+  summary: 'Python Library to manipulate directed graphs in redis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

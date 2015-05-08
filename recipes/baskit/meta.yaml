@@ -1,0 +1,64 @@
+package:
+  name: baskit
+  version: "0.2.99.42"
+
+source:
+  fn: Baskit-0.2.99.42.tar.gz
+  url: https://pypi.python.org/packages/source/B/Baskit/Baskit-0.2.99.42.tar.gz
+  md5: 93dcd10e3883f6ccffa9ff6b90dc110e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - baskit = baskit:main
+    #
+    # Would create an entry point called baskit that calls baskit.main()
+
+    - baskit = baskit.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pybukget >=2.1
+
+  run:
+    - python
+    - pybukget >=2.1
+
+test:
+  # Python imports
+  imports:
+    - baskit
+    - baskit.mc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - baskit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SteveMcGrath/baskit
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Minecraft Server Manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

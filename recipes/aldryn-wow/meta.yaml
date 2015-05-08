@@ -1,0 +1,64 @@
+package:
+  name: aldryn-wow
+  version: "1.0.0"
+
+source:
+  fn: aldryn-wow-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-wow/aldryn-wow-1.0.0.tar.gz
+  md5: 767851809c60d9aa6491a92359e0a780
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-wow = aldryn-wow:main
+    #
+    # Would create an entry point called aldryn-wow that calls aldryn-wow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms >=3.0
+
+  run:
+    - python
+    - django-cms >=3.0
+
+test:
+  # Python imports
+  imports:
+    - aldryn_wow
+    - aldryn_wow.migrations
+    - aldryn_wow.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/narayanaditya95/aldryn-wow
+  license: BSD License
+  summary: 'Plugin for aldryn to include awesome animations from WOW.js and Animate.css'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

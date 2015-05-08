@@ -1,0 +1,66 @@
+package:
+  name: trytond_nereid_test
+  version: "3.2.1.0"
+
+source:
+  fn: trytond_nereid_test-3.2.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_nereid_test/trytond_nereid_test-3.2.1.0.tar.gz
+  md5: 104e5e33204a2c9fccf8736db5951087
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_nereid_test = trytond_nereid_test:main
+    #
+    # Would create an entry point called trytond_nereid_test that calls trytond_nereid_test.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_nereid >=3.2,<3.3
+    - trytond >=3.2,<3.3
+
+  run:
+    - python
+    - setuptools
+    - trytond_nereid >=3.2,<3.3
+    - trytond >=3.2,<3.3
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.nereid_test
+    - trytond_nereid_test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://nereid.openlabs.co.in/docs/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Tryton - Web Framework Test Supplement'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

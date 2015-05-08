@@ -1,0 +1,79 @@
+package:
+  name: zope.site
+  version: "4.0.0"
+
+source:
+  fn: zope.site-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.site/zope.site-4.0.0.tar.gz
+  md5: a1a95669fcf40cc31d3b035f0f420320
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.site = zope.site:main
+    #
+    # Would create an entry point called zope.site that calls zope.site.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.container
+    - zope.security
+    - zope.component
+    - zope.event
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.location
+
+  run:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.container
+    - zope.security
+    - zope.component
+    - zope.event
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.location
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.site
+    - zope.site.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.site
+  license: Zope Public License
+  summary: 'Local registries for zope component architecture'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

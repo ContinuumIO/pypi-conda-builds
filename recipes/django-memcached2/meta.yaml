@@ -1,0 +1,61 @@
+package:
+  name: django-memcached2
+  version: "0.2"
+
+source:
+  fn: django-memcached2-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-memcached2/django-memcached2-0.2.tar.gz
+  md5: ce0721392d9e0d078b67a75685e5fada
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-memcached2 = django-memcached2:main
+    #
+    # Would create an entry point called django-memcached2 that calls django-memcached2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - django_memcached
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/edavis/django-memcached
+  license: BSD License
+  summary: "\ndjango-memcached2 displays statistics about your currently running\nmemcached instances.  It's a fork of django-memcached that works with\nthe new-style CACHES setting introduced in Django 1.3.\n"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: zk_monitor
+  version: "0.1.2"
+
+source:
+  fn: zk_monitor-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zk_monitor/zk_monitor-0.1.2.tar.gz
+  md5: 2e0ac1a6ee3cd2c751970b2e9701b7c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zk_monitor = zk_monitor:main
+    #
+    # Would create an entry point called zk_monitor that calls zk_monitor.main()
+
+    - zk_monitor = zk_monitor.runserver:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3.1.1
+    - pyyaml
+    - tornadomail
+    - nd_service_registry >=1.0.0
+
+  run:
+    - python
+    - tornado >=3.1.1
+    - pyyaml
+    - tornadomail
+    - nd_service_registry >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - zk_monitor
+    - zk_monitor.alerts
+    - zk_monitor.monitor
+    - zk_monitor.test
+    - zk_monitor.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zk_monitor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Nextdoor/zkmonitor
+  license: Apache Software License
+  summary: 'Zookeeper Monitoring Service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

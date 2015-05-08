@@ -1,0 +1,68 @@
+package:
+  name: secretstorage-setup
+  version: "0.1.1"
+
+source:
+  fn: SecretStorage-Setup-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/S/SecretStorage-Setup/SecretStorage-Setup-0.1.1.tar.gz
+  md5: 7620159b60dd0092c32566bfeffcab5a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - secretstorage-setup = secretstorage-setup:main
+    #
+    # Would create an entry point called secretstorage-setup that calls secretstorage-setup.main()
+
+    - ss-setup=sssetup:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - pathlib
+
+  run:
+    - python
+    - setuptools
+    - click
+    - pathlib
+
+test:
+  # Python imports
+  imports:
+    - sssetup
+    - sssetup.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ss-setup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/level12/secretstorage-setup
+  license: BSD License
+  summary: 'Ease setup of SecretStorage in virtualenvs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

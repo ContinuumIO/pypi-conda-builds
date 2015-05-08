@@ -1,0 +1,82 @@
+package:
+  name: infrae.testing
+  version: "1.3"
+
+source:
+  fn: infrae.testing-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/infrae.testing/infrae.testing-1.3.tar.gz
+  md5: e494906b92f0d71c443f91cde5bd0f3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infrae.testing = infrae.testing:main
+    #
+    # Would create an entry point called infrae.testing that calls infrae.testing.main()
+
+    - xmlindent = infrae.testing.xmlindent:xmlindent
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zope2
+    - beautifulsoup
+    - grokcore.component
+    - setuptools
+    - zope.component
+    - zope.configuration
+    - zope.event
+    - zope.processlifetime
+    - zope.site
+    - zope.testing
+
+  run:
+    - python
+    - zope2
+    - beautifulsoup
+    - grokcore.component
+    - setuptools
+    - zope.component
+    - zope.configuration
+    - zope.event
+    - zope.processlifetime
+    - zope.site
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - infrae
+    - infrae.testing
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - xmlindent --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://infrae.com/products/silva
+  license: BSD License
+  summary: 'Define some sane tests layers in Zope 2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

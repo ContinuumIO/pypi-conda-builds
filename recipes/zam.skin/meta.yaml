@@ -1,0 +1,81 @@
+package:
+  name: zam.skin
+  version: "0.8.0"
+
+source:
+  fn: zam.skin-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zam.skin/zam.skin-0.8.0.tar.gz
+  md5: 095331f8b755f87a7b5e434c11907525
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zam.skin = zam.skin:main
+    #
+    # Would create an entry point called zam.skin that calls zam.skin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - z3c.jsonrpc
+    - z3c.pagelet
+    - zam.api >=0.7
+    - zope.app.component
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope.traversing
+    - zope.viewlet
+
+  run:
+    - python
+    - setuptools
+    - z3c.jsonrpc
+    - z3c.pagelet
+    - zam.api >=0.7
+    - zope.app.component
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope.traversing
+    - zope.viewlet
+
+test:
+  # Python imports
+  imports:
+    - zam
+    - zam.skin
+    - zam.skin.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/zam.skin
+  license: Zope Public License
+  summary: 'Zope 3 Application Management skin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

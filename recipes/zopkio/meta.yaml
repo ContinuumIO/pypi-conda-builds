@@ -1,0 +1,79 @@
+package:
+  name: zopkio
+  version: "0.1.19"
+
+source:
+  fn: zopkio-0.1.19.tar.gz
+  url: https://pypi.python.org/packages/source/z/zopkio/zopkio-0.1.19.tar.gz
+  md5: 334f4d15ba18e6949a7c5dd4f8c9f291
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopkio = zopkio:main
+    #
+    # Would create an entry point called zopkio that calls zopkio.main()
+
+    - zopkio = zopkio.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - numpy >=1.6.2
+    - naarad >=1.0.15
+    - paramiko >=1.10.1
+    - pytz >=2012c
+    - jinja2 >=2.7.3
+    - python-dateutil
+    - kazoo >=1.1
+
+  run:
+    - python
+    - argparse >=1.2.1
+    - numpy >=1.6.2
+    - naarad >=1.0.15
+    - paramiko >=1.10.1
+    - pytz >=2012c
+    - jinja2 >=2.7.3
+    - python-dateutil
+    - kazoo >=1.1
+
+test:
+  # Python imports
+  imports:
+    - zopkio
+    - zopkio.web_resources
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zopkio --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/linkedin/zopkio
+  license: Apache Software License
+  summary: 'Zopkio: A distributed testing framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

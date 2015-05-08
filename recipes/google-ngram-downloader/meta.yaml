@@ -1,0 +1,68 @@
+package:
+  name: google-ngram-downloader
+  version: "4.0.0"
+
+source:
+  fn: google-ngram-downloader-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/google-ngram-downloader/google-ngram-downloader-4.0.0.tar.gz
+  md5: c1c1fa6533b4bfbc9830267dfd6bf615
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google-ngram-downloader = google-ngram-downloader:main
+    #
+    # Would create an entry point called google-ngram-downloader that calls google-ngram-downloader.main()
+
+    - google-ngram-downloader = google_ngram_downloader.__main__:dispatcher.dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - opster
+    - py
+    - requests
+
+  run:
+    - python
+    - opster
+    - py
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - google_ngram_downloader
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - google-ngram-downloader --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dimazest/google-ngram-downloader
+  license: MIT License
+  summary: 'The streaming access to the Google ngram data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: django-nomnom
+  version: "0.1.5"
+
+source:
+  fn: django-nomnom-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nomnom/django-nomnom-0.1.5.tar.gz
+  md5: 89119ad7e6aa78fe585b504a0b53ad30
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nomnom = django-nomnom:main
+    #
+    # Would create an entry point called django-nomnom that calls django-nomnom.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.4.5
+    - webob >=1.2.3
+    - webtest >=2.0.5
+    - beautifulsoup4 >=4.1.3
+    - django-webtest >=1.6.1
+    - six >=1.3.0
+    - waitress >=0.8.2
+
+  run:
+    - python
+    - django ==1.4.5
+    - webob >=1.2.3
+    - webtest >=2.0.5
+    - beautifulsoup4 >=4.1.3
+    - django-webtest >=1.6.1
+    - six >=1.3.0
+    - waitress >=0.8.2
+
+test:
+  # Python imports
+  imports:
+    - nomnom
+    - nomnom.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/storyandstructure/django-nomnom/
+  license: MIT License
+  summary: 'Generic importing tool for the Django admin site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: tangled.mako
+  version: "0.1a3"
+
+source:
+  fn: tangled.mako-0.1a3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tangled.mako/tangled.mako-0.1a3.tar.gz
+  md5: 85bafbada5d10ac4d39095d93c74b41b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tangled.mako = tangled.mako:main
+    #
+    # Would create an entry point called tangled.mako that calls tangled.mako.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tangled.web >=0.1a5
+    - mako >=1.0
+
+  run:
+    - python
+    - tangled.web >=0.1a5
+    - mako >=1.0
+
+test:
+  # Python imports
+  imports:
+    - tangled
+    - tangled.mako
+    - tangled.mako.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tangledframework.org/
+  license: MIT License
+  summary: 'Tangled Mako integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

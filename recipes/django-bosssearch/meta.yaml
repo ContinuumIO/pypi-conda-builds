@@ -1,0 +1,65 @@
+package:
+  name: django-bosssearch
+  version: "1.1"
+
+source:
+  fn: django-bosssearch-1.1.zip
+  url: https://pypi.python.org/packages/source/d/django-bosssearch/django-bosssearch-1.1.zip
+  md5: 9baa0efde6cfb7189cc1a0db0a6c81cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bosssearch = django-bosssearch:main
+    #
+    # Would create an entry point called django-bosssearch that calls django-bosssearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oauth
+    - django-pagination
+
+  run:
+    - python
+    - oauth
+    - django-pagination
+
+test:
+  # Python imports
+  imports:
+    - djangobosssearch
+    - djangobosssearch.providers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/jaap3/django-bosssearch/
+  license: MIT License
+  summary: 'Search with Yahoo BOSS!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

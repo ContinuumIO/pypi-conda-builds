@@ -1,0 +1,70 @@
+package:
+  name: zkaffold
+  version: "0.0.11"
+
+source:
+  fn: zkaffold-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/z/zkaffold/zkaffold-0.0.11.tar.gz
+  md5: 1f6004b8aee60fade340b35b80031085
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zkaffold = zkaffold:main
+    #
+    # Would create an entry point called zkaffold that calls zkaffold.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - z3c.autoinclude
+    - lxml
+    - datetime
+
+  run:
+    - python
+    - setuptools
+    - z3c.autoinclude
+    - lxml
+    - datetime
+
+test:
+  # Python imports
+  imports:
+    - zkaffold
+    - zkaffold.exportimport
+    - zkaffold.exportimport.tests
+    - zkaffold.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zkaffold
+  license: UNKNOWN
+  summary: 'Build out demonstration content for plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

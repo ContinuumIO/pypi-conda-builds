@@ -1,0 +1,66 @@
+package:
+  name: mongodb-beaker2
+  version: "0.5.1"
+
+source:
+  fn: mongodb_beaker_-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongodb-beaker2/mongodb_beaker_-0.5.1.tar.gz
+  md5: 16f2da79de06ad62d76b9f0739a5461c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongodb-beaker2 = mongodb-beaker2:main
+    #
+    # Would create an entry point called mongodb-beaker2 that calls mongodb-beaker2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=1.9
+    - beaker >=1.5
+
+  run:
+    - python
+    - setuptools
+    - pymongo >=1.9
+    - beaker >=1.5
+
+test:
+  # Python imports
+  imports:
+    - mongodb_beaker
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bwmcadams/mongodb_beaker/
+  license: BSD License
+  summary: 'Beaker backend to write sessions and caches to a MongoDB schemaless database. This package adds the README.rst which was missing from the MANIFEST.in file. Please refer to the original author (Brendan W. McAdams - bwmcadams@gmail.com) regarding any question related to this package.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

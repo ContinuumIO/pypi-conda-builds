@@ -1,0 +1,69 @@
+package:
+  name: products.pluginregistry
+  version: "1.3"
+
+source:
+  fn: Products.PluginRegistry-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.PluginRegistry/Products.PluginRegistry-1.3.tar.gz
+  md5: 5b166193ca1eb84dfb402051f779ebab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.pluginregistry = products.pluginregistry:main
+    #
+    # Would create an entry point called products.pluginregistry that calls products.pluginregistry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope2 >=2.12
+    - products.genericsetup
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope2 >=2.12
+    - products.genericsetup
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PluginRegistry
+    - Products.PluginRegistry.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.PluginRegistry
+  license: Zope Public License
+  summary: 'Configure application plugins based on interfaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

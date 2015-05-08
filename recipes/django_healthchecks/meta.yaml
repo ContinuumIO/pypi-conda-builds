@@ -1,0 +1,62 @@
+package:
+  name: django_healthchecks
+  version: "0.1.0"
+
+source:
+  fn: django-healthchecks-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_healthchecks/django-healthchecks-0.1.0.tar.gz
+  md5: 9df1f55782eb5100571fee303d22d0de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_healthchecks = django_healthchecks:main
+    #
+    # Would create an entry point called django_healthchecks that calls django_healthchecks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+
+  run:
+    - python
+    - django >=1.7
+
+test:
+  # Python imports
+  imports:
+    - django_healthchecks
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mvantellingen/django-healthchecks
+  license: MIT License
+  summary: "Simple Django app/framework to publish health check for monitoring purposes\n\n\n\nStatus\n\n======\n\n.. image:: https://travis-ci.org/mvantellingen/django-healthchecks.svg?branch=master\n\n    :target: https://travis-ci.org/mvantellingen/django-healthchecks\n\n\n\n.. image:: https://coveralls.io/repos/mvantellingen/django-healthchecks/badge.svg\n\n    :alt: Coverage\n\n    :target: https://coveralls.io/r/mvantellingen/django-healthchecks\n\n    \n\n.. image:: https://pypip.in/version/django_healthchecks/badge.svg\n\n    :target: https://pypi.python.org/pypi/django_healthchecks/\n\n\n\nUsage\n\n=====\n\n\n\nAdd the following to your urls.py:\n\n\n\n    url(r'^healthchecks/', include('django_healthchecks.urls')),\n\n\n\nAdd a setting with the available healthchecks:\n\n\n\n    HEALTH_CHECKS = {\n\n        'postgresql': 'django_healthchecks.contrib.check_database',\n\n        'solr': 'your_project.lib.healthchecks.check_solr',\n\n    }\n\n\n"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

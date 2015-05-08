@@ -1,0 +1,67 @@
+package:
+  name: django-odnoklassniki-photos
+  version: "0.1.4"
+
+source:
+  fn: django-odnoklassniki-photos-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-odnoklassniki-photos/django-odnoklassniki-photos-0.1.4.tar.gz
+  md5: f4a09d2f928ae9688925879520301f63
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-odnoklassniki-photos = django-odnoklassniki-photos:main
+    #
+    # Would create an entry point called django-odnoklassniki-photos that calls django-odnoklassniki-photos.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-odnoklassniki-api >=0.2.3
+    - django-odnoklassniki-groups >=0.0.6
+    - django-odnoklassniki-users >=0.0.6
+
+  run:
+    - python
+    - django-odnoklassniki-api >=0.2.3
+    - django-odnoklassniki-groups >=0.0.6
+    - django-odnoklassniki-users >=0.0.6
+
+test:
+  # Python imports
+  imports:
+    - odnoklassniki_photos
+    - odnoklassniki_photos.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-odnoklassniki-photos
+  license: BSD License
+  summary: 'Django implementation for odnoklassniki Photo and Album API '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

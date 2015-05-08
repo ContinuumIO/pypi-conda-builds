@@ -1,0 +1,71 @@
+package:
+  name: silva.export.opendocument
+  version: "1.1"
+
+source:
+  fn: silva.export.opendocument-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.export.opendocument/silva.export.opendocument-1.1.tar.gz
+  md5: 3e9aea1687dc792b8427fb6ae190d1a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.export.opendocument = silva.export.opendocument:main
+    #
+    # Would create an entry point called silva.export.opendocument that calls silva.export.opendocument.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - silva.core.interfaces
+    - zope.component
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - lxml
+    - silva.core.interfaces
+    - zope.component
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.export
+    - silva.export.opendocument
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.infrae.com/silva.export.opendocument/trunk
+  license: BSD License
+  summary: 'Export Silva Document and Silva Publication to Open Document'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

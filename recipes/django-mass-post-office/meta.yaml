@@ -1,0 +1,66 @@
+package:
+  name: django-mass-post-office
+  version: "0.0.10"
+
+source:
+  fn: django-mass-post-office-0.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mass-post-office/django-mass-post-office-0.0.10.tar.gz
+  md5: 12773b7b1ea6505c9286153011730f85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mass-post-office = django-mass-post-office:main
+    #
+    # Would create an entry point called django-mass-post-office that calls django-mass-post-office.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-post-office ==0.6.0
+
+  run:
+    - python
+    - django-post-office ==0.6.0
+
+test:
+  # Python imports
+  imports:
+    - mass_post_office
+    - mass_post_office.management
+    - mass_post_office.migrations
+    - mass_post_office.templatetags
+    - mass_post_office.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/42cc/mass_post_office
+  license: UNKNOWN
+  summary: 'Mass Post Office'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

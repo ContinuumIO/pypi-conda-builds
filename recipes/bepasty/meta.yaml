@@ -1,0 +1,88 @@
+package:
+  name: bepasty
+  version: "0.4.0"
+
+source:
+  fn: bepasty-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bepasty/bepasty-0.4.0.tar.gz
+  md5: d30698afbf522dc76c0214806aa3802b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bepasty = bepasty:main
+    #
+    # Would create an entry point called bepasty that calls bepasty.main()
+
+    - bepasty-server = bepasty.cli.server:main
+    - bepasty-object = bepasty.cli.object:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10
+    - pygments
+    - xstatic
+    - xstatic-bootbox
+    - xstatic-bootstrap
+    - xstatic-jquery
+    - xstatic-jquery-ui
+    - xstatic-jquery-file-upload
+    - xstatic-pygments
+
+  run:
+    - python
+    - flask >=0.10
+    - pygments
+    - xstatic
+    - xstatic-bootbox
+    - xstatic-bootstrap
+    - xstatic-jquery
+    - xstatic-jquery-ui
+    - xstatic-jquery-file-upload
+    - xstatic-pygments
+
+test:
+  # Python imports
+  imports:
+    - bepasty
+    - bepasty.apis
+    - bepasty.cli
+    - bepasty.storage
+    - bepasty.storage.filesystem
+    - bepasty.utils
+    - bepasty.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bepasty-server --help
+    - bepasty-object --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bepasty/bepasty-server/
+  license: BSD License
+  summary: u'a binary pastebin / file upload service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

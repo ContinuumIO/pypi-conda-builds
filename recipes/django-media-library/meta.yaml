@@ -1,0 +1,74 @@
+package:
+  name: django-media-library
+  version: "0.3.7"
+
+source:
+  fn: django-media-library-0.3.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-media-library/django-media-library-0.3.7.tar.gz
+  md5: 1df7a5a3ada89be329a96c9a7096aff2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-media-library = django-media-library:main
+    #
+    # Would create an entry point called django-media-library that calls django-media-library.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django <1.7
+    - django-generic-positions
+    - django-user-media
+    - django-hvad <0.5
+    - django-multilingual-tags
+    - south
+
+  run:
+    - python
+    - django <1.7
+    - django-generic-positions
+    - django-user-media
+    - django-hvad <0.5
+    - django-multilingual-tags
+    - south
+
+test:
+  # Python imports
+  imports:
+    - media_library
+    - media_library.migrations
+    - media_library.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-media-library
+  license: The MIT License
+  summary: 'A reusable Django app to let users organize their own media.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

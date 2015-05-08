@@ -1,0 +1,77 @@
+package:
+  name: aldryn-faq
+  version: "0.12.3"
+
+source:
+  fn: aldryn-faq-0.12.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-faq/aldryn-faq-0.12.3.tar.gz
+  md5: e0fd8f1fe9cb4451eae9831b7b80a541
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-faq = aldryn-faq:main
+    #
+    # Would create an entry point called aldryn-faq that calls aldryn-faq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aldryn-apphooks-config
+    - aldryn-reversion
+    - aldryn-search
+    - django-admin-sortable
+    - django-admin-sortable2 >=0.5.0
+    - django-parler
+    - django-sortedm2m
+
+  run:
+    - python
+    - aldryn-apphooks-config
+    - aldryn-reversion
+    - aldryn-search
+    - django-admin-sortable
+    - django-admin-sortable2 >=0.5.0
+    - django-parler
+    - django-sortedm2m
+
+test:
+  # Python imports
+  imports:
+    - aldryn_faq
+    - aldryn_faq.migrations
+    - aldryn_faq.sitemaps
+    - aldryn_faq.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-faq
+  license: BSD License
+  summary: 'FAQ addon for django CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

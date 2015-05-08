@@ -1,0 +1,71 @@
+package:
+  name: plone.event
+  version: "1.1"
+
+source:
+  fn: plone.event-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.event/plone.event-1.1.tar.gz
+  md5: 44adff841a22b34a26b60c8d9451ceab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.event = plone.event:main
+    #
+    # Would create an entry point called plone.event that calls plone.event.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - pytz
+    - zope.component
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - python-dateutil
+    - pytz
+    - zope.component
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.event
+    - plone.event.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/plone.event
+  license: GPL
+  summary: 'Event and calendaring related tools not bound to Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

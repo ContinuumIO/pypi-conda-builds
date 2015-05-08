@@ -1,0 +1,85 @@
+package:
+  name: eea.progressbar
+  version: "3.4"
+
+source:
+  fn: eea.progressbar-3.4.zip
+  url: https://pypi.python.org/packages/source/e/eea.progressbar/eea.progressbar-3.4.zip
+  md5: 6cd73b3278d7eecb4e26ffe6d502ea36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.progressbar = eea.progressbar:main
+    #
+    # Would create an entry point called eea.progressbar that calls eea.progressbar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - eea.icons
+    - eea.jquery >7.6
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - eea.icons
+    - eea.jquery >7.6
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.progressbar
+    - eea.progressbar.api
+    - eea.progressbar.browser
+    - eea.progressbar.browser.app
+    - eea.progressbar.content
+    - eea.progressbar.controlpanel
+    - eea.progressbar.exportimport
+    - eea.progressbar.listing
+    - eea.progressbar.portlets
+    - eea.progressbar.rdf
+    - eea.progressbar.storage
+    - eea.progressbar.subtypes
+    - eea.progressbar.tests
+    - eea.progressbar.upgrades
+    - eea.progressbar.vocabulary
+    - eea.progressbar.widgets
+    - eea.progressbar.widgets.simple
+    - eea.progressbar.zmi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.io/docs/eea.progressbar
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'Progress bar based on current document review_state'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

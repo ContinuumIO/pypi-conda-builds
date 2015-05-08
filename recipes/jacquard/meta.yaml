@@ -1,0 +1,66 @@
+package:
+  name: jacquard
+  version: "0.41"
+
+source:
+  fn: jacquard-0.41.tar.gz
+  url: https://pypi.python.org/packages/source/j/jacquard/jacquard-0.41.tar.gz
+  md5: c647fa76688ece1a9c2e0b9e5b560843
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jacquard = jacquard:main
+    #
+    # Would create an entry point called jacquard that calls jacquard.main()
+
+    - jacquard=jacquard.jacquard:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - natsort
+
+  run:
+    - python
+    - natsort
+
+test:
+  # Python imports
+  imports:
+    - jacquard
+    - jacquard.utils
+    - jacquard.variant_caller_transforms
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jacquard --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/umich-brcf-bioinf/Jacquard
+  license: Apache Software License
+  summary: 'Command-line tools to expedite analysis of Variant Call Format (VCF) files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

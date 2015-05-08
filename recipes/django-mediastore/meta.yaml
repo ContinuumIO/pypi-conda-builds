@@ -1,0 +1,84 @@
+package:
+  name: django-mediastore
+  version: "0.7.0"
+
+source:
+  fn: django-mediastore-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mediastore/django-mediastore-0.7.0.tar.gz
+  md5: de2f68190663d7b69acc7c26e10b887c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mediastore = django-mediastore:main
+    #
+    # Would create an entry point called django-mediastore that calls django-mediastore.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-sortedm2m
+    - django-taggit
+    - django-templatequery
+
+  run:
+    - python
+    - setuptools
+    - django-sortedm2m
+    - django-taggit
+    - django-templatequery
+
+test:
+  # Python imports
+  imports:
+    - mediastore
+    - mediastore.fields
+    - mediastore.mediatypes
+    - mediastore.mediatypes.audio
+    - mediastore.mediatypes.download
+    - mediastore.mediatypes.embeded
+    - mediastore.mediatypes.image
+    - mediastore.mediatypes.pdf
+    - mediastore.mediatypes.set
+    - mediastore.mediatypes.swf
+    - mediastore.mediatypes.video
+    - mediastore.mediatypes.video.convert
+    - mediastore.mediatypes.video.management
+    - mediastore.mediatypes.video.management.commands
+    - mediastore.templatetags
+    - mediastore.urls
+    - mediastore.utils
+    - mediastore.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gregmuellegger/django-mediastore
+  license: BSD License
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

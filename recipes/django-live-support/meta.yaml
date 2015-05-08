@@ -1,0 +1,71 @@
+package:
+  name: django-live-support
+  version: "0.1.9"
+
+source:
+  fn: django-live-support-0.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-live-support/django-live-support-0.1.9.tar.gz
+  md5: e52e0641b63cfdabd3695244a113b312
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-live-support = django-live-support:main
+    #
+    # Would create an entry point called django-live-support that calls django-live-support.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - django
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+    - django
+
+test:
+  # Python imports
+  imports:
+    - demo
+    - demo.live_support
+    - demo.live_support.migrations
+    - demo.live_support.templatetags
+    - live_support
+    - live_support.migrations
+    - live_support.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/megamark16/django-live-support
+  license: BSD License
+  summary: 'A django app that lets you chat with visitors to your site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

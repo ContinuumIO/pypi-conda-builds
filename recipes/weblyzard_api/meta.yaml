@@ -1,0 +1,76 @@
+package:
+  name: weblyzard_api
+  version: "0.4.8.5"
+
+source:
+  fn: weblyzard_api-0.4.8.5.tar.gz
+  url: https://pypi.python.org/packages/source/w/weblyzard_api/weblyzard_api-0.4.8.5.tar.gz
+  md5: 032f6176249fe08a59e98354473eb483
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - weblyzard_api = weblyzard_api:main
+    #
+    # Would create an entry point called weblyzard_api that calls weblyzard_api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ewrt >=0.9.1.3
+    - nose
+    - lxml
+    - requests
+
+  run:
+    - python
+    - ewrt >=0.9.1.3
+    - nose
+    - lxml
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - weblyzard_api
+    - weblyzard_api.client
+    - weblyzard_api.client.crowdflower
+    - weblyzard_api.client.openrdf
+    - weblyzard_api.client.projects
+    - weblyzard_api.client.recognize
+    - weblyzard_api.test
+    - weblyzard_api.xml_content
+    - weblyzard_api.xml_content.parsers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: ' Web services for weblyzard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

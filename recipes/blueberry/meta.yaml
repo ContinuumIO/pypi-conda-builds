@@ -1,0 +1,78 @@
+package:
+  name: blueberry
+  version: "0.2"
+
+source:
+  fn: blueberry-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/blueberry/blueberry-0.2.tar.gz
+  md5: f7b1b40df5dd62417269ad11069c993c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blueberry = blueberry:main
+    #
+    # Would create an entry point called blueberry that calls blueberry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webhelpers >=0.6.4
+    - mako >=0.2.4
+    - webob >=0.9.6.1
+    - nose >=0.10.4
+    - webtest >=1.1
+    - routes >=1.10.3
+
+  run:
+    - python
+    - webhelpers >=0.6.4
+    - mako >=0.2.4
+    - webob >=0.9.6.1
+    - nose >=0.10.4
+    - webtest >=1.1
+    - routes >=1.10.3
+
+test:
+  # Python imports
+  imports:
+    - blueberry
+    - blueberry.controllers
+    - blueberry.decorators
+    - blueberry.tests
+    - blueberry.utils
+    - blueberry.web
+    - blueberry.wsgiserver
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/blueberrypy
+  license: BSD
+  summary: 'Blueberry Web Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

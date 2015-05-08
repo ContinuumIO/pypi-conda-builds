@@ -1,0 +1,71 @@
+package:
+  name: mozdownload
+  version: "1.14"
+
+source:
+  fn: mozdownload-1.14.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozdownload/mozdownload-1.14.tar.gz
+  md5: 459031b6372cb3ebfb6feb7c10d75cf4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozdownload = mozdownload:main
+    #
+    # Would create an entry point called mozdownload that calls mozdownload.main()
+
+    - mozdownload=mozdownload:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mozinfo >=0.7
+    - mozlog >=1.3
+    - progressbar ==2.2
+    - requests ==1.2.2
+
+  run:
+    - python
+    - setuptools
+    - mozinfo >=0.7
+    - mozlog >=1.3
+    - progressbar ==2.2
+    - requests ==1.2.2
+
+test:
+  # Python imports
+  imports:
+    - mozdownload
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozdownload --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla/mozdownload
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Script to download builds for Firefox and Thunderbird from the Mozilla server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

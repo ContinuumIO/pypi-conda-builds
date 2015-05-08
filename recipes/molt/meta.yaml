@@ -1,0 +1,72 @@
+package:
+  name: molt
+  version: "0.1.1"
+
+source:
+  fn: molt-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/molt/molt-0.1.1.tar.gz
+  md5: 87d4d42810a9f3b16ef49d9e4f2b3930
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - molt = molt:main
+    #
+    # Would create an entry point called molt that calls molt.main()
+
+    - molt=molt.commands.molt:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pystache
+    - pyyaml
+
+  run:
+    - python
+    - pystache
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - molt
+    - molt.commands
+    - molt.common
+    - molt.test
+    - molt.test.common
+    - molt.test.extra
+    - molt.test.harness
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - molt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cjerdonek.github.com/molt/
+  license: BSD License
+  summary: 'Mustache project templates using Python and Groome'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

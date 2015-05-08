@@ -1,0 +1,68 @@
+package:
+  name: plone.postpublicationhook
+  version: "1.1"
+
+source:
+  fn: plone.postpublicationhook-1.1.zip
+  url: https://pypi.python.org/packages/source/p/plone.postpublicationhook/plone.postpublicationhook-1.1.zip
+  md5: a6dc8132da3153a2d439abb972db3c9e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.postpublicationhook = plone.postpublicationhook:main
+    #
+    # Would create an entry point called plone.postpublicationhook that calls plone.postpublicationhook.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.event
+    - zope.interface
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - zope.event
+    - zope.interface
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.postpublicationhook
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: Zope Public License
+  summary: 'Zope 2 post-publication hook'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

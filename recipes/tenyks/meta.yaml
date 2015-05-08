@@ -1,0 +1,81 @@
+package:
+  name: tenyks
+  version: "0.2.1"
+
+source:
+  fn: tenyks-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tenyks/tenyks-0.2.1.tar.gz
+  md5: d224c29604c1afe2e2dda0874031b050
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tenyks = tenyks:main
+    #
+    # Would create an entry point called tenyks that calls tenyks.main()
+
+    - tenyks = tenyks.core:main
+    - tenyks-mkconfig = tenyks.config:make_config
+    - tenyks-client-mkconfig = tenyks.client.config:make_config
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - redis
+    - nose
+    - unittest2
+    - clint
+    - peewee
+    - jinja2
+
+  run:
+    - python
+    - gevent
+    - redis
+    - nose
+    - unittest2
+    - clint
+    - peewee
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - tenyks
+    - tenyks.client
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tenyks --help
+    - tenyks-mkconfig --help
+    - tenyks-client-mkconfig --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kyleterry/tenyks
+  license: LICENSE
+  summary: 'Redis powered IRC bot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

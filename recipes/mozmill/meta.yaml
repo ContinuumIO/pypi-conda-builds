@@ -1,0 +1,73 @@
+package:
+  name: mozmill
+  version: "2.0.10"
+
+source:
+  fn: mozmill-2.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozmill/mozmill-2.0.10.tar.gz
+  md5: 23905c8e187e86d7e662783f98779333
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozmill = mozmill:main
+    #
+    # Would create an entry point called mozmill that calls mozmill.main()
+
+    - mozmill=mozmill:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsbridge ==3.0.3
+    - manifestdestiny ==0.5.7
+    - mozinfo ==0.7
+    - mozrunner ==5.35
+    - mozversion ==1.0
+
+  run:
+    - python
+    - setuptools
+    - jsbridge ==3.0.3
+    - manifestdestiny ==0.5.7
+    - mozinfo ==0.7
+    - mozrunner ==5.35
+    - mozversion ==1.0
+
+test:
+  # Python imports
+  imports:
+    - mozmill
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozmill --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla/mozmill
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'UI Automation tool for Mozilla applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

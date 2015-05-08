@@ -1,0 +1,68 @@
+package:
+  name: kajiki
+  version: "0.4.4"
+
+source:
+  fn: Kajiki-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/K/Kajiki/Kajiki-0.4.4.tar.gz
+  md5: d5f9021419285055e63fb941bf11f3f6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kajiki = kajiki:main
+    #
+    # Would create an entry point called kajiki that calls kajiki.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nine
+    - babel
+
+  run:
+    - python
+    - setuptools
+    - nine
+    - babel
+
+test:
+  # Python imports
+  imports:
+    - kajiki
+    - kajiki.integration
+    - kajiki.tests
+    - kajiki.tests.data
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nandoflorestan/kajiki
+  license: MIT License
+  summary: 'Fast XML-based template engine with Genshi syntax and Jinja blocks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

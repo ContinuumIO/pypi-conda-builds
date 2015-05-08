@@ -1,0 +1,97 @@
+package:
+  name: omero_client
+  version: "5.0.3-ice35-SNAPSHOT"
+
+source:
+  fn: omero_client-5.0.3-ice35-SNAPSHOT.tar.gz
+  url: https://pypi.python.org/packages/source/o/omero_client/omero_client-5.0.3-ice35-SNAPSHOT.tar.gz
+  md5: 6d2d2fd3b9711fa05a7fd0e03fb7a64b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - omero_client = omero_client:main
+    #
+    # Would create an entry point called omero_client that calls omero_client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - omero
+    - omero.api
+    - omero.api.delete
+    - omero.cmd
+    - omero.constants
+    - omero.constants.analysis
+    - omero.constants.analysis.flim
+    - omero.constants.annotation
+    - omero.constants.annotation.file
+    - omero.constants.categories
+    - omero.constants.cluster
+    - omero.constants.data
+    - omero.constants.jobs
+    - omero.constants.metadata
+    - omero.constants.namespaces
+    - omero.constants.permissions
+    - omero.constants.projection
+    - omero.constants.topics
+    - omero.fs
+    - omero.gateway
+    - omero.gateway.scripts
+    - omero.grid
+    - omero.grid.monitors
+    - omero.install
+    - omero.metadatastore
+    - omero.model
+    - omero.model.enums
+    - omero.plugins
+    - omero.romio
+    - omero.sys
+    - omero.util
+    - omero_client
+    - omero_ext
+    - omero_ext.tiltpicker
+    - omero_ext.tiltpicker.pyami
+    - omero_ext.xmlrunner
+    - omero_ext.xmlrunner.extra
+    - omero_ext.xmlrunner.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://trac.openmicroscopy.org.uk/ome/wiki/OmeroPy
+  license: UNKNOWN
+  summary: 'Python bindings to the OMERO.blitz server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,202 @@
+package:
+  name: vumi-go
+  version: "0.5.0"
+
+source:
+  fn: vumi-go-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/v/vumi-go/vumi-go-0.5.0.tar.gz
+  md5: d2dce67b536604125010bcaf9b64b34d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vumi-go = vumi-go:main
+    #
+    # Would create an entry point called vumi-go that calls vumi-go.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vumi >=0.5.0
+    - vxpolls
+    - vumi-wikipedia
+    - django ==1.5.8
+    - gunicorn ==0.15.0
+    - south ==0.8.2
+    - psycopg2 ==2.4
+    - celery ==3.0.23
+    - django-celery ==3.0.23
+    - django-celery-email
+    - markdown ==2.1.1
+    - django-registration ==1.0
+    - lesscpy ==0.9h
+    - xlrd ==0.8.0
+    - requests ==0.14.2
+    - mock ==1.0.1
+    - raven >=2.0,<3.0
+    - django-debug-toolbar ==0.9.4
+    - kombu >=2.5,<3.0
+    - librabbitmq ==1.5.1
+    - hiredis ==0.1.4
+    - django-pipeline ==1.3.6
+    - txpostgres ==1.1.0
+    - django-crispy-forms ==1.4.0
+    - django-loginas ==0.1.3
+
+  run:
+    - python
+    - vumi >=0.5.0
+    - vxpolls
+    - vumi-wikipedia
+    - django ==1.5.8
+    - gunicorn ==0.15.0
+    - south ==0.8.2
+    - psycopg2 ==2.4
+    - celery ==3.0.23
+    - django-celery ==3.0.23
+    - django-celery-email
+    - markdown ==2.1.1
+    - django-registration ==1.0
+    - lesscpy ==0.9h
+    - xlrd ==0.8.0
+    - requests ==0.14.2
+    - mock ==1.0.1
+    - raven >=2.0,<3.0
+    - django-debug-toolbar ==0.9.4
+    - kombu >=2.5,<3.0
+    - librabbitmq ==1.5.1
+    - hiredis ==0.1.4
+    - django-pipeline ==1.3.6
+    - txpostgres ==1.1.0
+    - django-crispy-forms ==1.4.0
+    - django-loginas ==0.1.3
+
+test:
+  # Python imports
+  imports:
+    - go
+    - go.account
+    - go.api
+    - go.api.conversation_api
+    - go.api.conversation_api.tests
+    - go.api.go_api
+    - go.api.go_api.tests
+    - go.apps
+    - go.apps.afropinions
+    - go.apps.bulk_message
+    - go.apps.bulk_message.tests
+    - go.apps.dialogue
+    - go.apps.dialogue.tests
+    - go.apps.http_api
+    - go.apps.http_api.tests
+    - go.apps.http_api_nostream
+    - go.apps.http_api_nostream.tests
+    - go.apps.jsbox
+    - go.apps.jsbox.tests
+    - go.apps.multi_surveys
+    - go.apps.multi_surveys.templatetags
+    - go.apps.multi_surveys.tests
+    - go.apps.opt_out
+    - go.apps.opt_out.tests
+    - go.apps.rapidsms
+    - go.apps.rapidsms.tests
+    - go.apps.sequential_send
+    - go.apps.sequential_send.tests
+    - go.apps.sna
+    - go.apps.static_reply
+    - go.apps.static_reply.tests
+    - go.apps.subscription
+    - go.apps.subscription.tests
+    - go.apps.surveys
+    - go.apps.surveys.tests
+    - go.apps.tests
+    - go.apps.wikipedia
+    - go.apps.wikipedia.tests
+    - go.base
+    - go.base.auth_migrations
+    - go.base.management
+    - go.base.management.commands
+    - go.base.migrations
+    - go.base.registration_migrations
+    - go.base.templatetags
+    - go.base.tests
+    - go.billing
+    - go.billing.management
+    - go.billing.management.commands
+    - go.billing.migrations
+    - go.billing.templatetags
+    - go.billing.tests
+    - go.channel
+    - go.channel.templatetags
+    - go.contacts
+    - go.contacts.parsers
+    - go.conversation
+    - go.conversation.templatetags
+    - go.dashboard
+    - go.dashboard.tests
+    - go.router
+    - go.router.templatetags
+    - go.routers
+    - go.routers.app_multiplexer
+    - go.routers.app_multiplexer.tests
+    - go.routers.group
+    - go.routers.group.tests
+    - go.routers.keyword
+    - go.routers.keyword.tests
+    - go.routers.tests
+    - go.routing
+    - go.scripts
+    - go.scripts.tests
+    - go.tests
+    - go.token
+    - go.token.tests
+    - go.vumitools
+    - go.vumitools.account
+    - go.vumitools.account.tests
+    - go.vumitools.channel
+    - go.vumitools.channel.tests
+    - go.vumitools.contact
+    - go.vumitools.contact.tests
+    - go.vumitools.conversation
+    - go.vumitools.conversation.tests
+    - go.vumitools.opt_out
+    - go.vumitools.opt_out.tests
+    - go.vumitools.router
+    - go.vumitools.router.tests
+    - go.vumitools.subscription
+    - go.vumitools.subscription.tests
+    - go.vumitools.tests
+    - go.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/vumi-go
+  license: BSD License
+  summary: 'Vumi Go'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

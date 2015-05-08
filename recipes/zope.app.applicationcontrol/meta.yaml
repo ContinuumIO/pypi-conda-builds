@@ -1,0 +1,82 @@
+package:
+  name: zope.app.applicationcontrol
+  version: "3.5.10"
+
+source:
+  fn: zope.app.applicationcontrol-3.5.10.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.applicationcontrol/zope.app.applicationcontrol-3.5.10.tar.gz
+  md5: f785c13698192c83024fda75f1f3d822
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.applicationcontrol = zope.app.applicationcontrol:main
+    #
+    # Would create an entry point called zope.app.applicationcontrol that calls zope.app.applicationcontrol.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb3
+    - zope.applicationcontrol
+    - zope.component
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.size
+    - zope.traversing >=3.7.0
+
+  run:
+    - python
+    - setuptools
+    - zodb3
+    - zope.applicationcontrol
+    - zope.component
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.size
+    - zope.traversing >=3.7.0
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.applicationcontrol
+    - zope.app.applicationcontrol.browser
+    - zope.app.applicationcontrol.browser.tests
+    - zope.app.applicationcontrol.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/zope.app.applicationcontrol
+  license: Zope Public License
+  summary: 'Zope application control'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

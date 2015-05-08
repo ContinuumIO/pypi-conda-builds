@@ -1,0 +1,116 @@
+package:
+  name: histogram
+  version: "0.2.1"
+
+source:
+  fn: histogram-0.2.1.tar.gz
+  url: http://dev.danse.us/packages/histogram-0.2.1.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - histogram = histogram:main
+    #
+    # Would create an entry point called histogram that calls histogram.main()
+
+    - PlotHist.py = histogram.scripts.PlotHist:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - dsaw
+    - dsaw.components
+    - dsaw.computing_server
+    - dsaw.db
+    - dsaw.dds
+    - dsaw.dds.components
+    - dsaw.model
+    - dsaw.model.visitors
+    - dsaw.utils
+    - histogram
+    - histogram.applications
+    - histogram.applications.gui
+    - histogram.applications.gui.controllers
+    - histogram.applications.gui.models
+    - histogram.applications.gui.tools
+    - histogram.hdf
+    - histogram.pyrecomponents
+    - histogram.scripts
+    - journal
+    - journal.components
+    - journal.devices
+    - journal.diagnostics
+    - journal.services
+    - ndarray
+    - ndarray.converters
+    - pd
+    - pyre
+    - pyre.applications
+    - pyre.components
+    - pyre.db
+    - pyre.filesystem
+    - pyre.idd
+    - pyre.inventory
+    - pyre.inventory.odb
+    - pyre.inventory.pml
+    - pyre.inventory.pml.parser
+    - pyre.inventory.properties
+    - pyre.inventory.validators
+    - pyre.ipa
+    - pyre.ipc
+    - pyre.odb
+    - pyre.odb.common
+    - pyre.odb.dbm
+    - pyre.odb.fs
+    - pyre.parsing
+    - pyre.parsing.locators
+    - pyre.services
+    - pyre.units
+    - pyre.util
+    - pyre.weaver
+    - pyre.weaver.components
+    - pyre.weaver.mills
+    - pyre.xml
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - PlotHist.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.danse.us/histogram/0.2.1
+  license: histogramy
+  summary: 'histogram: fundamental data object for scientific data reduction and analysis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

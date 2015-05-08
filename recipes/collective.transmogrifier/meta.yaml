@@ -1,0 +1,66 @@
+package:
+  name: collective.transmogrifier
+  version: "1.5"
+
+source:
+  fn: collective.transmogrifier-1.5.zip
+  url: https://pypi.python.org/packages/source/c/collective.transmogrifier/collective.transmogrifier-1.5.zip
+  md5: e9149e4d58877317acda6fc67babc63d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.transmogrifier = collective.transmogrifier:main
+    #
+    # Would create an entry point called collective.transmogrifier that calls collective.transmogrifier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.cmfcore
+
+  run:
+    - python
+    - setuptools
+    - products.cmfcore
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.transmogrifier
+    - collective.transmogrifier.sections
+    - collective.transmogrifier.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.transmogrifier
+  license: GPL
+  summary: 'A configurable pipeline, aimed at transforming content for import and export'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

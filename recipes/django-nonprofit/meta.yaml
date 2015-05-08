@@ -1,0 +1,80 @@
+package:
+  name: django-nonprofit
+  version: "0.4"
+
+source:
+  fn: django-nonprofit-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nonprofit/django-nonprofit-0.4.tar.gz
+  md5: 681733ac0df76340ffe1b0b7a9a9863d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nonprofit = django-nonprofit:main
+    #
+    # Would create an entry point called django-nonprofit that calls django-nonprofit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pil
+    - south ==0.7.6
+    - tablib ==0.9.11
+    - django-tablib ==2.4.1
+    - django-tastypie ==0.9.14
+    - django-humanity ==0.2
+
+  run:
+    - python
+    - pil
+    - south ==0.7.6
+    - tablib ==0.9.11
+    - django-tablib ==2.4.1
+    - django-tastypie ==0.9.14
+    - django-humanity ==0.2
+
+test:
+  # Python imports
+  imports:
+    - nonprofit
+    - nonprofit.funding
+    - nonprofit.funding.migrations
+    - nonprofit.helpwanted
+    - nonprofit.helpwanted.migrations
+    - nonprofit.mailroom
+    - nonprofit.mailroom.migrations
+    - nonprofit.staff
+    - nonprofit.staff.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/sunlightlabs/django-nonprofit/
+  license: BSD
+  summary: 'Django app for managing and publishing basic information related to a non-profit organization.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

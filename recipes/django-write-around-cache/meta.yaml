@@ -1,0 +1,63 @@
+package:
+  name: django-write-around-cache
+  version: "0.3.0"
+
+source:
+  fn: django-write-around-cache-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-write-around-cache/django-write-around-cache-0.3.0.tar.gz
+  md5: 9b4d934a3c06c831e731b5c1b0472811
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-write-around-cache = django-write-around-cache:main
+    #
+    # Would create an entry point called django-write-around-cache that calls django-write-around-cache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - django_write_around_cache
+    - django_write_around_cache.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gizmag/django-write-around-cache
+  license: UNKNOWN
+  summary: "Override Django's template cache at will"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

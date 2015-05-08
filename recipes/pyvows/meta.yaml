@@ -1,0 +1,68 @@
+package:
+  name: pyvows
+  version: "2.0.6"
+
+source:
+  fn: pyVows-2.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyVows/pyVows-2.0.6.tar.gz
+  md5: 2e83f2a9d1e29cf67c747bc150d5aa2f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyvows = pyvows:main
+    #
+    # Would create an entry point called pyvows that calls pyvows.main()
+
+    - pyvows = pyvows.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent >=0.13.6
+    - preggy >=0.11.1
+
+  run:
+    - python
+    - gevent >=0.13.6
+    - preggy >=0.11.1
+
+test:
+  # Python imports
+  imports:
+    - pyvows
+    - pyvows.reporting
+    - pyvows.runner
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyvows --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pyvows.org
+  license: MIT License
+  summary: 'pyVows is a BDD test engine based on Vows.js <http://vowsjs.org>.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

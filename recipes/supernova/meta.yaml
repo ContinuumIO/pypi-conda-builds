@@ -1,0 +1,66 @@
+package:
+  name: supernova
+  version: "1.0.7"
+
+source:
+  fn: supernova-1.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/s/supernova/supernova-1.0.7.tar.gz
+  md5: b29fe80b55eb137df3615d7e0b8e6c22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - supernova = supernova:main
+    #
+    # Would create an entry point called supernova that calls supernova.main()
+
+    - supernova = supernova.executable:run_supernova
+    - supernova-keyring = supernova.executable:run_supernova_keyring
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - keyring
+
+  run:
+    - python
+    - keyring
+
+test:
+  # Python imports
+  imports:
+    - supernova
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - supernova --help
+    - supernova-keyring --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rackerhacker/supernova
+  license: UNKNOWN
+  summary: 'novaclient wrapper for multiple nova environments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

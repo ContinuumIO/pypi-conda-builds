@@ -1,0 +1,67 @@
+package:
+  name: zookeeper_monitor
+  version: "0.2.5"
+
+source:
+  fn: zookeeper_monitor-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/z/zookeeper_monitor/zookeeper_monitor-0.2.5.tar.gz
+  md5: 948c113385db6513f292143b7bd7f182
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zookeeper_monitor = zookeeper_monitor:main
+    #
+    # Would create an entry point called zookeeper_monitor that calls zookeeper_monitor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - anyconfig
+    - pyaml
+
+  run:
+    - python
+    - tornado
+    - anyconfig
+    - pyaml
+
+test:
+  # Python imports
+  imports:
+    - zookeeper_monitor
+    - zookeeper_monitor.zk
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kAlmAcetA/zookeeper_monitor
+  license: MIT License
+  summary: "Zookeeper's four letters command wrapper and web monitor."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

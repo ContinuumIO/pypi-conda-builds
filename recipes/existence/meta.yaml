@@ -1,0 +1,66 @@
+package:
+  name: existence
+  version: "0.2.6"
+
+source:
+  fn: existence-0.2.6.zip
+  url: https://pypi.python.org/packages/source/e/existence/existence-0.2.6.zip
+  md5: ccbacc976746b15ea33ef6d5fe1cccd3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - existence = existence:main
+    #
+    # Would create an entry point called existence that calls existence.main()
+
+    - existence = existence:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml >=3.3.4
+    - cssselect >=0.9.1
+
+  run:
+    - python
+    - lxml >=3.3.4
+    - cssselect >=0.9.1
+
+test:
+  # Python imports
+  imports:
+    - existence
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - existence --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ckcollab/existence
+  license: MIT License
+  summary: 'Checks static .html files for bad links'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

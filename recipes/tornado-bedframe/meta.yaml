@@ -1,0 +1,64 @@
+package:
+  name: tornado-bedframe
+  version: "3.2.0"
+
+source:
+  fn: tornado-bedframe-3.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado-bedframe/tornado-bedframe-3.2.0.tar.gz
+  md5: d1eef6e9fde4fcbd8f9bfdf93b9d4a46
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado-bedframe = tornado-bedframe:main
+    #
+    # Would create an entry point called tornado-bedframe that calls tornado-bedframe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - backports.ssl_match_hostname
+
+  run:
+    - python
+    - backports.ssl_match_hostname
+
+test:
+  # Python imports
+  imports:
+    - tornado
+    - tornado.platform
+    - tornado.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tornadoweb.org/
+  license: Apache Software License
+  summary: 'Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: django-tests-assistant
+  version: "0.3.0"
+
+source:
+  fn: django-tests-assistant-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tests-assistant/django-tests-assistant-0.3.0.tar.gz
+  md5: 6594cb902052dd7128331b2f996e07fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tests-assistant = django-tests-assistant:main
+    #
+    # Would create an entry point called django-tests-assistant that calls django-tests-assistant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-taggit
+    - markdown
+    - django-haystack ==2.0.0
+    - whoosh ==2.4
+    - django-nvd3
+    - django-concurrent-server
+    - unicodecsv
+    - django-taggit-machinetags
+
+  run:
+    - python
+    - django
+    - django-taggit
+    - markdown
+    - django-haystack ==2.0.0
+    - whoosh ==2.4
+    - django-nvd3
+    - django-concurrent-server
+    - unicodecsv
+    - django-taggit-machinetags
+
+test:
+  # Python imports
+  imports:
+    - assistant
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tests-assistant/tests-assistant/
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'A tool to help keep track of tests, specially for you - developer.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,115 @@
+package:
+  name: onespacemedia-cms
+  version: "1.6.9"
+
+source:
+  fn: onespacemedia-cms-1.6.9.tar.gz
+  url: https://pypi.python.org/packages/source/o/onespacemedia-cms/onespacemedia-cms-1.6.9.tar.gz
+  md5: 727468362002e53e184463092a01b0b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - onespacemedia-cms = onespacemedia-cms:main
+    #
+    # Would create an entry point called onespacemedia-cms that calls onespacemedia-cms.main()
+
+    - start_cms_project.py = cms.bin.start_cms_project:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - psycopg2
+    - django-suit
+    - pillow
+    - django-reversion
+    - django-watson
+    - django-extensions
+    - werkzeug
+    - raven
+    - bcrypt
+    - django-compressor
+    - sorl-thumbnail
+    - bcrypt
+    - onespacemedia-server-management
+    - requests
+    - python-social-auth
+    - django-cachalot
+    - python-memcached
+
+  run:
+    - python
+    - django
+    - psycopg2
+    - django-suit
+    - pillow
+    - django-reversion
+    - django-watson
+    - django-extensions
+    - werkzeug
+    - raven
+    - bcrypt
+    - django-compressor
+    - sorl-thumbnail
+    - bcrypt
+    - onespacemedia-server-management
+    - requests
+    - python-social-auth
+    - django-cachalot
+    - python-memcached
+
+test:
+  # Python imports
+  imports:
+    - cms
+    - cms.apps
+    - cms.apps.links
+    - cms.apps.links.migrations
+    - cms.apps.media
+    - cms.apps.media.migrations
+    - cms.apps.media.tests
+    - cms.apps.news
+    - cms.apps.news.migrations
+    - cms.apps.news.templatetags
+    - cms.apps.news.tests
+    - cms.apps.pages
+    - cms.apps.pages.migrations
+    - cms.apps.pages.templatetags
+    - cms.apps.pages.tests
+    - cms.models
+    - cms.templatetags
+    - cms.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - start_cms_project.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/onespacemedia/cms
+  license: BSD License
+  summary: 'CMS used by Onespacemedia'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

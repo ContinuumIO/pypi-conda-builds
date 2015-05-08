@@ -1,0 +1,206 @@
+package:
+  name: penelope.core
+  version: "2.1.40"
+
+source:
+  fn: penelope.core-2.1.40.tar.gz
+  url: https://pypi.python.org/packages/source/p/penelope.core/penelope.core-2.1.40.tar.gz
+  md5: d855ed412060359ebb01f223d30a6caf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - penelope.core = penelope.core:main
+    #
+    # Would create an entry point called penelope.core that calls penelope.core.main()
+
+    - populate_penelope=penelope.core.scripts.populate:main
+    - populate_with_dummies=penelope.core.scripts.dummies:main
+    - import_svn=penelope.core.scripts.importsvn:main
+    - quality_export=penelope.core.scripts.quality_export:main
+    - contracts_import=penelope.core.scripts.contracts_import:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babel
+    - beaker
+    - bleach
+    - deform
+    - deform_bootstrap
+    - distribute
+    - fa.bootstrap
+    - feedparser
+    - gdata ==2.0.14
+    - gevent-socketio
+    - gevent-psycopg2
+    - gspread
+    - js.chart
+    - js.jqgrid
+    - js.jquery_datatables ==1.8.2
+    - js.jquery_timepicker_addon
+    - js.lesscss
+    - js.socketio
+    - js.xeditable
+    - jsonrpc
+    - lingua
+    - lorem-ipsum-generator
+    - lxml
+    - paste
+    - pastescript
+    - penelope.trac
+    - plone.i18n
+    - profilehooks
+    - psycopg2
+    - py-pretty
+    - pyramid
+    - pyramid_beaker
+    - pyramid_debugtoolbar
+    - pyramid_exclog
+    - pyramid_fanstatic
+    - pyramid_formalchemy
+    - pyramid_mailer
+    - pyramid_rpc
+    - pyramid_skins
+    - pyramid_zcml
+    - python-cjson
+    - python-dateutil ==1.5
+    - python-openid >=2.0
+    - raven
+    - redis
+    - repoze.tm2 >=1.0b1
+    - repoze.who-friendlyform
+    - repoze.who.plugins.sa
+    - repoze.who <1.9
+    - repoze.workflow
+    - setuptools
+    - sunburnt
+    - sqlalchemy
+    - transaction
+    - trac
+    - unittest2
+    - velruse
+    - weberror
+    - webtest
+    - xlwt
+    - zope.interface
+    - zope.sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - babel
+    - beaker
+    - bleach
+    - deform
+    - deform_bootstrap
+    - distribute
+    - fa.bootstrap
+    - feedparser
+    - gdata ==2.0.14
+    - gevent-socketio
+    - gevent-psycopg2
+    - gspread
+    - js.chart
+    - js.jqgrid
+    - js.jquery_datatables ==1.8.2
+    - js.jquery_timepicker_addon
+    - js.lesscss
+    - js.socketio
+    - js.xeditable
+    - jsonrpc
+    - lingua
+    - lorem-ipsum-generator
+    - lxml
+    - paste
+    - pastescript
+    - penelope.trac
+    - plone.i18n
+    - profilehooks
+    - psycopg2
+    - py-pretty
+    - pyramid
+    - pyramid_beaker
+    - pyramid_debugtoolbar
+    - pyramid_exclog
+    - pyramid_fanstatic
+    - pyramid_formalchemy
+    - pyramid_mailer
+    - pyramid_rpc
+    - pyramid_skins
+    - pyramid_zcml
+    - python-cjson
+    - python-dateutil ==1.5
+    - python-openid >=2.0
+    - raven
+    - redis
+    - repoze.tm2 >=1.0b1
+    - repoze.who-friendlyform
+    - repoze.who.plugins.sa
+    - repoze.who <1.9
+    - repoze.workflow
+    - setuptools
+    - sunburnt
+    - sqlalchemy
+    - transaction
+    - trac
+    - unittest2
+    - velruse
+    - weberror
+    - webtest
+    - xlwt
+    - zope.interface
+    - zope.sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - penelope
+    - penelope.core
+    - penelope.core.forms
+    - penelope.core.gdata
+    - penelope.core.lib
+    - penelope.core.models
+    - penelope.core.notifications
+    - penelope.core.reports
+    - penelope.core.scripts
+    - penelope.core.security
+    - penelope.core.tests
+    - penelope.core.tests.robot
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - populate_penelope --help
+    - populate_with_dummies --help
+    - import_svn --help
+    - quality_export --help
+    - contracts_import --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://getpenelope.github.com
+  license: UNKNOWN
+  summary: 'Penelope main package'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

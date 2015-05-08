@@ -1,0 +1,127 @@
+package:
+  name: tenyks-contrib
+  version: "0.2.1"
+
+source:
+  fn: tenyks-contrib-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tenyks-contrib/tenyks-contrib-0.2.1.tar.gz
+  md5: f8659fe4dd953e61636ec118c7bc9738
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tenyks-contrib = tenyks-contrib:main
+    #
+    # Would create an entry point called tenyks-contrib that calls tenyks-contrib.main()
+
+    - tenyksafk = tenyksafk.main:main
+    - tenyksfeeds = tenyksfeeds.main:main
+    - tenyksleetpoints = tenyksleetpoints.main:main
+    - tenyksmusic = tenyksmusic.main:main
+    - tenykssearch = tenykssearch.core:main
+    - tenykshi = tenykshi.main:main
+    - tenykshahameter = tenykshahameter.main:main
+    - tenyksfun = tenyksfun.main:main
+    - tenyksscripts = tenyksscripts.main:main
+    - tenykslinkscraper = tenykslinkscraper.main:main
+    - tenykslogger = tenykslogger.main:main
+    - tenykswunderground = tenykswunderground.main:main
+    - tenykswebpagemonitor = webpage_monitor.main:main
+    - tenyksweblistener = tenyksweblistener.main:main
+    - tenyksddate = tenyksddate.main:main
+    - gentooservice = gentoo.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tenyks
+    - tenyksservice >=1.5
+    - feedparser
+    - python-dateutil
+    - requests
+    - nose
+    - pytz
+
+  run:
+    - python
+    - tenyks
+    - tenyksservice >=1.5
+    - feedparser
+    - python-dateutil
+    - requests
+    - nose
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - gentoo
+    - tenyksafk
+    - tenyksbrain
+    - tenyksddate
+    - tenyksfeeds
+    - tenyksfun
+    - tenykshahameter
+    - tenykshi
+    - tenyksleetpoints
+    - tenykslinkscraper
+    - tenykslogger
+    - tenyksmusic
+    - tenyksoutofcontext
+    - tenykspoll
+    - tenyksscripts
+    - tenyksscripts.scripts
+    - tenyksscripts.scripts.tests
+    - tenykssearch
+    - tenyksweblistener
+    - tenyksweblistener.handlers
+    - tenykswunderground
+    - webpage_monitor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tenyksafk --help
+    - tenyksfeeds --help
+    - tenyksleetpoints --help
+    - tenyksmusic --help
+    - tenykssearch --help
+    - tenykshi --help
+    - tenykshahameter --help
+    - tenyksfun --help
+    - tenyksscripts --help
+    - tenykslinkscraper --help
+    - tenykslogger --help
+    - tenykswunderground --help
+    - tenykswebpagemonitor --help
+    - tenyksweblistener --help
+    - tenyksddate --help
+    - gentooservice --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kyleterry/tenyks-contrib
+  license: LICENSE
+  summary: 'Contributed services for the tenyks IRC bot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

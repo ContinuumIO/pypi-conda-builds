@@ -1,0 +1,87 @@
+package:
+  name: eea.relations
+  version: "7.4"
+
+source:
+  fn: eea.relations-7.4.zip
+  url: https://pypi.python.org/packages/source/e/eea.relations/eea.relations-7.4.zip
+  md5: c75739f60ea6c8d3270c3df04b2bee05
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.relations = eea.relations:main
+    #
+    # Would create an entry point called eea.relations that calls eea.relations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pydot
+    - eea.jquery >8.0
+    - eea.facetednavigation
+    - products.talesfield
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pydot
+    - eea.jquery >8.0
+    - eea.facetednavigation
+    - products.talesfield
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.relations
+    - eea.relations.browser
+    - eea.relations.browser.app
+    - eea.relations.component
+    - eea.relations.content
+    - eea.relations.default
+    - eea.relations.discover
+    - eea.relations.exportimport
+    - eea.relations.field
+    - eea.relations.graph
+    - eea.relations.subtypes
+    - eea.relations.tests
+    - eea.relations.upgrades
+    - eea.relations.validators
+    - eea.relations.vocabulary
+    - eea.relations.widget
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.com/docs/eea.relations
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'EEA Possible Relations. This package provides a flexible way to manage relations in a Plone site. it provides a new reference browser widget and a central management interface for relations, their labels and requirements.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

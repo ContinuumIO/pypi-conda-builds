@@ -1,0 +1,77 @@
+package:
+  name: grpcio
+  version: "0.5.0a2"
+
+source:
+  fn: grpcio-0.5.0a2.tar.gz
+  url: https://pypi.python.org/packages/source/g/grpcio/grpcio-0.5.0a2.tar.gz
+  md5: 5398bebbc974957a0d31f4df5cca9ca8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - grpcio = grpcio:main
+    #
+    # Would create an entry point called grpcio that calls grpcio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - enum34 ==1.0.4
+    - futures ==2.2.0
+    - protobuf ==3.0.0-alpha-1
+
+  run:
+    - python
+    - enum34 ==1.0.4
+    - futures ==2.2.0
+    - protobuf ==3.0.0-alpha-1
+
+test:
+  # Python imports
+  imports:
+    - grpc
+    - grpc._adapter
+    - grpc._junkdrawer
+    - grpc.early_adopter
+    - grpc.framework
+    - grpc.framework.alpha
+    - grpc.framework.base
+    - grpc.framework.common
+    - grpc.framework.face
+    - grpc.framework.face.testing
+    - grpc.framework.foundation
+    - grpcio
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GRPy
+  summary: None
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

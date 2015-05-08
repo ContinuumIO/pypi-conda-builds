@@ -1,0 +1,76 @@
+package:
+  name: babble.server
+  version: "1.1"
+
+source:
+  fn: babble.server-1.1.zip
+  url: https://pypi.python.org/packages/source/b/babble.server/babble.server-1.1.zip
+  md5: a242e9ec9795a7b0a6554c8164192c8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - babble.server = babble.server:main
+    #
+    # Would create an entry point called babble.server that calls babble.server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - lxml
+    - simplejson
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - lxml
+    - simplejson
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - babble
+    - babble.server
+    - babble.server.Extensions
+    - babble.server.browser
+    - babble.server.stresstests
+    - babble.server.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/plone/plone.example
+  license: GPL
+  summary: 'A backend messaging server for Zope2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,86 @@
+package:
+  name: zope.kgs
+  version: "1.2.0"
+
+source:
+  fn: zope.kgs-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.kgs/zope.kgs-1.2.0.tar.gz
+  md5: 15ed01a270bddcf253b1c08479549692
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.kgs = zope.kgs:main
+    #
+    # Would create an entry point called zope.kgs that calls zope.kgs.main()
+
+    - generate-buildout = zope.kgs.buildout:main
+    - generate-versions = zope.kgs.version:main
+    - generate-index = zope.kgs.ppix:main
+    - generate-links = zope.kgs.link:main
+    - generate-site = zope.kgs.site:main
+    - list-latest = zope.kgs.latest:main
+    - list-changes = zope.kgs.change:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - python-dateutil
+    - docutils
+    - lxml
+    - setuptools
+    - zc.buildout
+    - zope.pagetemplate
+
+  run:
+    - python
+    - python-dateutil
+    - docutils
+    - lxml
+    - setuptools
+    - zc.buildout
+    - zope.pagetemplate
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.kgs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - generate-buildout --help
+    - generate-versions --help
+    - generate-index --help
+    - generate-links --help
+    - generate-site --help
+    - list-latest --help
+    - list-changes --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.kgs
+  license: Zope Public License
+  summary: 'Known-Good-Set (KGS) Support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

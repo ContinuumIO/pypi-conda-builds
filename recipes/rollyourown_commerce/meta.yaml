@@ -1,0 +1,66 @@
+package:
+  name: rollyourown_commerce
+  version: "1.0.1"
+
+source:
+  fn: rollyourown_commerce-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/rollyourown_commerce/rollyourown_commerce-1.0.1.tar.gz
+  md5: 863a6ede69002150c8d040d420f757c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rollyourown_commerce = rollyourown_commerce:main
+    #
+    # Would create an entry point called rollyourown_commerce that calls rollyourown_commerce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.0
+
+  run:
+    - python
+    - django >=1.0
+
+test:
+  # Python imports
+  imports:
+    - rollyourown
+    - rollyourown.commerce
+    - rollyourown.commerce.templatetags
+    - rollyourown.commerce.utils
+    - rollyourown_commerce
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/willhardy/Roll-Your-Own
+  license: Apache Software License or BSD License
+  summary: 'A framework to ease development of hand rolled ecommerce applications with Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

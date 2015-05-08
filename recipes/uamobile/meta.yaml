@@ -1,0 +1,66 @@
+package:
+  name: uamobile
+  version: "0.2.16"
+
+source:
+  fn: uamobile-0.2.16.tar.gz
+  url: https://pypi.python.org/packages/source/u/uamobile/uamobile-0.2.16.tar.gz
+  md5: 9557b91265c73fedd8bc23dfbb64fdc3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - uamobile = uamobile:main
+    #
+    # Would create an entry point called uamobile that calls uamobile.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipy
+
+  run:
+    - python
+    - setuptools
+    - ipy
+
+test:
+  # Python imports
+  imports:
+    - uamobile
+    - uamobile.cidrdata
+    - uamobile.factory
+    - uamobile.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/wsgiuseragentmobile/
+  license: MIT License
+  summary: 'WSGIUserAgentMobile - mobile user agent string parser for WSGI applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

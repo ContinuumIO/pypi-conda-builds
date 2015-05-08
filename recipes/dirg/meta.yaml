@@ -1,0 +1,68 @@
+package:
+  name: dirg
+  version: "1.0.0"
+
+source:
+  fn: dirg-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dirg/dirg-1.0.0.tar.gz
+  md5: f5f25e787777c46313b3f733fe6e6ba9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dirg = dirg:main
+    #
+    # Would create an entry point called dirg that calls dirg.main()
+
+    - dirg = dirg.dirg:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - docker-py >=1.1.0
+    - pyyaml
+
+  run:
+    - python
+    - jinja2
+    - docker-py >=1.1.0
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - dirg
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dirg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/smaato/dirg
+  license: MIT License
+  summary: 'A docker orchestration tool.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

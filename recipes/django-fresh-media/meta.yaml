@@ -1,0 +1,63 @@
+package:
+  name: django-fresh-media
+  version: "0.65"
+
+source:
+  fn: django-fresh-media-0.65.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fresh-media/django-fresh-media-0.65.tar.gz
+  md5: 1d0bf1476f8122e433dcab30097e3c6b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fresh-media = django-fresh-media:main
+    #
+    # Would create an entry point called django-fresh-media that calls django-fresh-media.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - fresh_media
+    - fresh_media/templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/djangostars/django-fresh-media
+  license: BSD License
+  summary: 'Reusable Django application that helps you to deliver\nfresh media files, even if their expiry period is really long. To do this,\nthe application provides a template tag that adds a small hash to the URL\nof each served file. This hash depends on the file metadata or content,\nso if it is changed, the hash will be changed too.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,122 @@
+package:
+  name: plone.app.robotframework
+  version: "0.9.9"
+
+source:
+  fn: plone.app.robotframework-0.9.9.zip
+  url: https://pypi.python.org/packages/source/p/plone.app.robotframework/plone.app.robotframework-0.9.9.zip
+  md5: 54dab9b48127460e430852ef826be855
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.robotframework = plone.app.robotframework:main
+    #
+    # Would create an entry point called plone.app.robotframework that calls plone.app.robotframework.main()
+
+    - robot-server = plone.app.robotframework.server:server
+    - robot = plone.app.robotframework.robotentrypoints:robot
+    - robot-debug = plone.app.robotframework.robotentrypoints:robot_debug
+    - pybot = plone.app.robotframework.robotentrypoints:pybot
+    - ride = plone.app.robotframework.robotentrypoints:ride
+    - libdoc = plone.app.robotframework.robotentrypoints:libdoc
+    - pybabel = plone.app.robotframework.robotentrypoints:pybabel
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - products.cmfcore
+    - products.cmfplone
+    - products.mailhost
+    - products.plonepas
+    - products.pluggableauthservice
+    - argparse
+    - babel
+    - decorator
+    - five.globalrequest
+    - plone.app.testing
+    - plone.testing
+    - plone.uuid
+    - robotframework
+    - robotframework-selenium2library
+    - robotsuite
+    - selenium
+    - setuptools
+    - simplejson
+    - zope.component
+    - zope.configuration
+    - zope.i18n
+    - zope.schema
+    - zope.testing
+
+  run:
+    - python
+    - products.cmfcore
+    - products.cmfplone
+    - products.mailhost
+    - products.plonepas
+    - products.pluggableauthservice
+    - argparse
+    - babel
+    - decorator
+    - five.globalrequest
+    - plone.app.testing
+    - plone.testing
+    - plone.uuid
+    - robotframework
+    - robotframework-selenium2library
+    - robotsuite
+    - selenium
+    - setuptools
+    - simplejson
+    - zope.component
+    - zope.configuration
+    - zope.i18n
+    - zope.schema
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.robotframework
+    - plone.app.robotframework.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - robot-server --help
+    - robot --help
+    - robot-debug --help
+    - pybot --help
+    - ride --help
+    - libdoc --help
+    - pybabel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/plone.app.robotframework/
+  license: gpl
+  summary: 'Robot Framework testing resources for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

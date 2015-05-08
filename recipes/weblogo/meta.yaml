@@ -1,0 +1,67 @@
+package:
+  name: weblogo
+  version: "3.4"
+
+source:
+  fn: weblogo-3.4.tar.gz
+  url: https://pypi.python.org/packages/source/w/weblogo/weblogo-3.4.tar.gz
+  md5: 4f7af0ad2cd1e9649cf9dfca3a8046d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - weblogo = weblogo:main
+    #
+    # Would create an entry point called weblogo that calls weblogo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - corebio
+    - corebio.db
+    - corebio.secstruc
+    - corebio.seq_io
+    - corebio.seq_io._nexus
+    - corebio.ssearch_io
+    - corebio.utils
+    - weblogo
+    - weblogolib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/weblogo/
+  license: BSD License
+  summary: 'WebLogo3 : Sequence Logos Redrawn'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

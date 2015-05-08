@@ -1,0 +1,128 @@
+package:
+  name: django-cms-patched
+  version: "2.3.5"
+
+source:
+  fn: django-cms-patched-2.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cms-patched/django-cms-patched-2.3.5.tar.gz
+  md5: cbaf163477a10291a2d9a251f1370f85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cms-patched = django-cms-patched:main
+    #
+    # Would create an entry point called django-cms-patched that calls django-cms-patched.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3.1,<1.5
+    - django-classy-tags >=0.3.4.1
+    - south >=0.7.2
+    - html5lib
+    - django-mptt >=0.5.1,<0.5.3
+    - django-sekizai >=0.6.1
+
+  run:
+    - python
+    - django >=1.3.1,<1.5
+    - django-classy-tags >=0.3.4.1
+    - south >=0.7.2
+    - html5lib
+    - django-mptt >=0.5.1,<0.5.3
+    - django-sekizai >=0.6.1
+
+test:
+  # Python imports
+  imports:
+    - cms
+    - cms.admin
+    - cms.admin.dialog
+    - cms.cache
+    - cms.conf
+    - cms.forms
+    - cms.management
+    - cms.management.commands
+    - cms.management.commands.subcommands
+    - cms.middleware
+    - cms.migrations
+    - cms.models
+    - cms.plugins
+    - cms.plugins.file
+    - cms.plugins.file.migrations
+    - cms.plugins.flash
+    - cms.plugins.flash.migrations
+    - cms.plugins.googlemap
+    - cms.plugins.googlemap.migrations
+    - cms.plugins.inherit
+    - cms.plugins.inherit.migrations
+    - cms.plugins.link
+    - cms.plugins.link.migrations
+    - cms.plugins.picture
+    - cms.plugins.picture.migrations
+    - cms.plugins.snippet
+    - cms.plugins.snippet.migrations
+    - cms.plugins.teaser
+    - cms.plugins.teaser.migrations
+    - cms.plugins.text
+    - cms.plugins.text.migrations
+    - cms.plugins.text.widgets
+    - cms.plugins.twitter
+    - cms.plugins.twitter.migrations
+    - cms.plugins.video
+    - cms.plugins.video.migrations
+    - cms.publisher
+    - cms.sitemaps
+    - cms.templatetags
+    - cms.test_utils
+    - cms.test_utils.fixtures
+    - cms.test_utils.project
+    - cms.test_utils.project.fakemlng
+    - cms.test_utils.project.fileapp
+    - cms.test_utils.project.placeholderapp
+    - cms.test_utils.project.pluginapp
+    - cms.test_utils.project.pluginapp.plugins
+    - cms.test_utils.project.pluginapp.plugins.extra_context
+    - cms.test_utils.project.pluginapp.plugins.manytomany_rel
+    - cms.test_utils.project.sampleapp
+    - cms.test_utils.util
+    - cms.tests
+    - cms.toolbar
+    - cms.utils
+    - menus
+    - menus.migrations
+    - menus.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.django-cms.org/
+  license: BSD License
+  summary: 'An Advanced Django CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

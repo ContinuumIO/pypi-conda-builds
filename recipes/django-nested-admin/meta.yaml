@@ -1,0 +1,64 @@
+package:
+  name: django-nested-admin
+  version: "2.0.6"
+
+source:
+  fn: django-nested-admin-2.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nested-admin/django-nested-admin-2.0.6.tar.gz
+  md5: 3f58ec6a5ff08021f9bd926c6fe21a77
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nested-admin = django-nested-admin:main
+    #
+    # Would create an entry point called django-nested-admin that calls django-nested-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.7.0
+
+  run:
+    - python
+    - six >=1.7.0
+
+test:
+  # Python imports
+  imports:
+    - nested_admin
+    - nested_admin.templatetags
+    - nested_admin.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/theatlantic/django-nested-admin
+  license: UNKNOWN
+  summary: 'Django admin classes that allow for nested inlines'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

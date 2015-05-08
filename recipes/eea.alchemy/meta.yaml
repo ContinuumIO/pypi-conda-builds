@@ -1,0 +1,81 @@
+package:
+  name: eea.alchemy
+  version: "6.0"
+
+source:
+  fn: eea.alchemy-6.0.zip
+  url: https://pypi.python.org/packages/source/e/eea.alchemy/eea.alchemy-6.0.zip
+  md5: 7f95e91ddd054d6eaed680398b039082
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.alchemy = eea.alchemy:main
+    #
+    # Would create an entry point called eea.alchemy that calls eea.alchemy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup4
+    - eea.faceted.vocabularies
+    - collective.js.jqueryui
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup4
+    - eea.faceted.vocabularies
+    - collective.js.jqueryui
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.alchemy
+    - eea.alchemy.browser
+    - eea.alchemy.browser.app
+    - eea.alchemy.controlpanel
+    - eea.alchemy.discover
+    - eea.alchemy.discover.adapters
+    - eea.alchemy.discover.api
+    - eea.alchemy.discover.utilities
+    - eea.alchemy.relations
+    - eea.alchemy.subtypes
+    - eea.alchemy.tests
+    - eea.alchemy.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.eionet.europa.eu/projects/Zope/browser/trunk/eea.alchemy
+  license: GPL
+  summary: 'EEA Alchemy allows you to bulk auto-discover geographical coverage, temporal coverage, keywords and more'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,90 @@
+package:
+  name: grouper
+  version: "0.0.1"
+
+source:
+  fn: grouper-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/grouper/grouper-0.0.1.tar.gz
+  md5: 5151e854007b541419bdd183418e9666
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - grouper = grouper:main
+    #
+    # Would create an entry point called grouper that calls grouper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.7.2
+    - markupsafe ==0.23
+    - pyyaml ==3.11
+    - sqlalchemy ==0.9.4
+    - wtforms ==2.0
+    - argparse ==1.2.1
+    - backports.ssl-match-hostname ==3.4.0.2
+    - bittle ==0.2.1
+    - expvar ==0.0.2
+    - networkx ==1.8.1
+    - pytz ==2014.4
+    - tornado ==3.2.2
+    - wsgiref ==0.1.2
+    - wtforms-tornado ==0.0.1
+
+  run:
+    - python
+    - jinja2 ==2.7.2
+    - markupsafe ==0.23
+    - pyyaml ==3.11
+    - sqlalchemy ==0.9.4
+    - wtforms ==2.0
+    - argparse ==1.2.1
+    - backports.ssl-match-hostname ==3.4.0.2
+    - bittle ==0.2.1
+    - expvar ==0.0.2
+    - networkx ==1.8.1
+    - pytz ==2014.4
+    - tornado ==3.2.2
+    - wsgiref ==0.1.2
+    - wtforms-tornado ==0.0.1
+
+test:
+  # Python imports
+  imports:
+    - grouper
+    - grouper.api
+    - grouper.fe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dropbox/grouper
+  license: Apache
+  summary: 'Self-service Nested Group Management Server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

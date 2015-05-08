@@ -1,0 +1,66 @@
+package:
+  name: djangocms-stacks
+  version: "0.2.3"
+
+source:
+  fn: djangocms-stacks-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangocms-stacks/djangocms-stacks-0.2.3.tar.gz
+  md5: 4e313483d9b5af7fd35af27f53ec61ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangocms-stacks = djangocms-stacks:main
+    #
+    # Would create an entry point called djangocms-stacks that calls djangocms-stacks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - django-select2
+
+  run:
+    - python
+    - django >=1.3
+    - django-select2
+
+test:
+  # Python imports
+  imports:
+    - stacks
+    - stacks.migrations
+    - stacks.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/divio/djangocms-stacks
+  license: BSD License
+  summary: 'Stacks: Re-usable content blocks in django CMS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

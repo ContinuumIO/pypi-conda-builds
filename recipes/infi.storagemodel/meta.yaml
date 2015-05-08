@@ -1,0 +1,140 @@
+package:
+  name: infi.storagemodel
+  version: "0.4.1"
+
+source:
+  fn: infi.storagemodel-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.storagemodel/infi.storagemodel-0.4.1.tar.gz
+  md5: 92336ef2efd87dec40e0a8fffb27610a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.storagemodel = infi.storagemodel:main
+    #
+    # Would create an entry point called infi.storagemodel that calls infi.storagemodel.main()
+
+    - devlist = infi.storagemodel.examples:devlist
+    - rescan_scsi_bus = infi.storagemodel.linux.rescan_scsi_bus:console_script
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - brownie >=0.5.1
+    - daemon >=1.0
+    - infi.asi >=0.3.27
+    - infi.cwrap >=0.2.9
+    - infi.devicemanager >=0.2.11
+    - infi.diskmanagement >=0.3.5
+    - infi.dtypes.hctl >=0.0.7
+    - infi.dtypes.wwn >=0.1
+    - infi.exceptools >=0.2.7
+    - infi.hbaapi >0.1.21
+    - infi.instruct >=0.6.25
+    - infi.mountoolinux >=0.1.15
+    - infi.mount_utils
+    - infi.multipathtools >=0.1.28
+    - infi.os_info
+    - infi.parted >=0.2.4
+    - infi.pyutils >=1.0.8
+    - infi.sgutils >=0.1.7
+    - infi.traceback >=0.3.10
+    - infi.wioctl >=0.1.8
+    - infi.wmpio >=0.1.22
+    - setuptools >=5.4.1
+
+  run:
+    - python
+    - brownie >=0.5.1
+    - daemon >=1.0
+    - infi.asi >=0.3.27
+    - infi.cwrap >=0.2.9
+    - infi.devicemanager >=0.2.11
+    - infi.diskmanagement >=0.3.5
+    - infi.dtypes.hctl >=0.0.7
+    - infi.dtypes.wwn >=0.1
+    - infi.exceptools >=0.2.7
+    - infi.hbaapi >0.1.21
+    - infi.instruct >=0.6.25
+    - infi.mountoolinux >=0.1.15
+    - infi.mount_utils
+    - infi.multipathtools >=0.1.28
+    - infi.os_info
+    - infi.parted >=0.2.4
+    - infi.pyutils >=1.0.8
+    - infi.sgutils >=0.1.7
+    - infi.traceback >=0.3.10
+    - infi.wioctl >=0.1.8
+    - infi.wmpio >=0.1.22
+    - setuptools >=5.4.1
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.storagemodel
+    - infi.storagemodel.aix
+    - infi.storagemodel.base
+    - infi.storagemodel.connectivity
+    - infi.storagemodel.examples
+    - infi.storagemodel.linux
+    - infi.storagemodel.linux.rescan_scsi_bus
+    - infi.storagemodel.linux.rescan_scsi_bus.tests
+    - infi.storagemodel.osx
+    - infi.storagemodel.predicates
+    - infi.storagemodel.solaris
+    - infi.storagemodel.solaris.devicemanager
+    - infi.storagemodel.unix
+    - infi.storagemodel.vendor
+    - infi.storagemodel.vendor.infinidat
+    - infi.storagemodel.vendor.infinidat.infinibox
+    - infi.storagemodel.vendor.infinidat.infinibox.fc_port
+    - infi.storagemodel.vendor.infinidat.infinibox.json_page
+    - infi.storagemodel.vendor.infinidat.infinibox.mixin
+    - infi.storagemodel.vendor.infinidat.infinibox.mixin.inquiry
+    - infi.storagemodel.vendor.infinidat.infinibox.mixin.sophisticated
+    - infi.storagemodel.vendor.infinidat.infinibox.mixin.tests
+    - infi.storagemodel.vendor.infinidat.infinibox.mixin.volume
+    - infi.storagemodel.vendor.infinidat.infinibox.naa
+    - infi.storagemodel.vendor.infinidat.infinibox.string_page
+    - infi.storagemodel.vendor.infinidat.predicates
+    - infi.storagemodel.vendor.infinidat.shortcuts
+    - infi.storagemodel.vmware
+    - infi.storagemodel.vmware.patches
+    - infi.storagemodel.vmware.patches.hbaapi
+    - infi.storagemodel.vmware.patches.storagemodel
+    - infi.storagemodel.windows
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - devlist --help
+    - rescan_scsi_bus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.storagemodel
+  license: Python Software Foundation License
+  summary: 'A high-level library for traversing the OS storage model.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

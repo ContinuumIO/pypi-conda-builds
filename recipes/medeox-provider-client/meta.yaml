@@ -1,0 +1,65 @@
+package:
+  name: medeox-provider-client
+  version: "0.3"
+
+source:
+  fn: medeox-provider-client-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/medeox-provider-client/medeox-provider-client-0.3.tar.gz
+  md5: 8018ef16f0ecee84163c167f74fec4e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - medeox-provider-client = medeox-provider-client:main
+    #
+    # Would create an entry point called medeox-provider-client that calls medeox-provider-client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - websocket-client
+
+  run:
+    - python
+    - requests
+    - websocket-client
+
+test:
+  # Python imports
+  imports:
+    - medeox_provider_client
+    - medeox_provider_client.socketIO_client
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/medeox/Medeox.Provider.Python
+  license: TODO
+  summary: 'A Medeox provider client library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

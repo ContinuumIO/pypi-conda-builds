@@ -1,0 +1,72 @@
+package:
+  name: redomino.social
+  version: "1.2"
+
+source:
+  fn: redomino.social-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/redomino.social/redomino.social-1.2.tar.gz
+  md5: ae5b504a3e419012630904f611bb71ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redomino.social = redomino.social:main
+    #
+    # Would create an entry point called redomino.social that calls redomino.social.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - sc.social.like
+    - plone.browserlayer
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - sc.social.like
+    - plone.browserlayer
+
+test:
+  # Python imports
+  imports:
+    - redomino
+    - redomino.social
+    - redomino.social.browser
+    - redomino.social.controlpanel
+    - redomino.social.portlets
+    - redomino.social.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/redomino/redomino.social
+  license: GPL
+  summary: 'Enhances sc.social.like with a portlet and others social plugins.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

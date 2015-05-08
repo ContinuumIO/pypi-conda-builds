@@ -1,0 +1,67 @@
+package:
+  name: django-offsite-storage
+  version: "0.0.5"
+
+source:
+  fn: django-offsite-storage-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-offsite-storage/django-offsite-storage-0.0.5.tar.gz
+  md5: af99959c550aa1f8f3399b2f2d327a78
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-offsite-storage = django-offsite-storage:main
+    #
+    # Would create an entry point called django-offsite-storage that calls django-offsite-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.36.0
+    - django >=1.7
+
+  run:
+    - python
+    - boto >=2.36.0
+    - django >=1.7
+
+test:
+  # Python imports
+  imports:
+    - offsite_storage
+    - offsite_storage.management
+    - offsite_storage.management.commands
+    - offsite_storage.storages
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mirumee/django-offsite-storage
+  license: BSD License
+  summary: 'Cloud static and media file storage suitable for app containers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

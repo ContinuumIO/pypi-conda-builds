@@ -1,0 +1,68 @@
+package:
+  name: jw-util
+  version: "1.3.6"
+
+source:
+  fn: jw-util-1.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/j/jw-util/jw-util-1.3.6.tar.gz
+  md5: 23eff38c64d1a80d76f8fb0a6a18f2b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jw-util = jw-util:main
+    #
+    # Would create an entry point called jw-util that calls jw-util.main()
+
+    - version = jw.util.version:_Main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=3.0
+    - pyyaml
+
+  run:
+    - python
+    - setuptools >=3.0
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - jw
+    - jw.util
+    - util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - version --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/jw.util
+  license: Apache Software License
+  summary: 'Utility stuff'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

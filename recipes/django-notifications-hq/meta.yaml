@@ -1,0 +1,70 @@
+package:
+  name: django-notifications-hq
+  version: "0.7.0"
+
+source:
+  fn: django-notifications-hq-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-notifications-hq/django-notifications-hq-0.7.0.tar.gz
+  md5: 3ab6fdfbf6449378ecb17e54014b0df2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-notifications-hq = django-notifications-hq:main
+    #
+    # Would create an entry point called django-notifications-hq that calls django-notifications-hq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.4
+    - django-model-utils >=2.0.3
+    - six >=1.9.0
+    - jsonfield >=1.0.3
+
+  run:
+    - python
+    - django >=1.4
+    - django-model-utils >=2.0.3
+    - six >=1.9.0
+    - jsonfield >=1.0.3
+
+test:
+  # Python imports
+  imports:
+    - notifications
+    - notifications.migrations
+    - notifications.south_migrations
+    - notifications.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/django-notifications/django-notifications
+  license: BSD License
+  summary: 'GitHub notifications alike app for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

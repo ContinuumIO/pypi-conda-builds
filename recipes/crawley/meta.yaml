@@ -1,0 +1,80 @@
+package:
+  name: crawley
+  version: "0.2.4"
+
+source:
+  fn: crawley-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/crawley/crawley-0.2.4.tar.gz
+  md5: dec961c01305f8817a03165df8cc5622
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crawley = crawley:main
+    #
+    # Would create an entry point called crawley that calls crawley.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - eventlet
+    - elixir
+    - pyquery
+
+  run:
+    - python
+    - lxml
+    - eventlet
+    - elixir
+    - pyquery
+
+test:
+  # Python imports
+  imports:
+    - crawley
+    - crawley.crawlers
+    - crawley.http
+    - crawley.manager
+    - crawley.manager.commands
+    - crawley.manager.projects
+    - crawley.persistance
+    - crawley.persistance.documents
+    - crawley.scrapers
+    - crawley.simple_parser
+    - crawley.smtp
+    - crawley.utils
+    - crawley.utils.collections
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://crawley-project.com.ar/
+  license: GPL v3
+  summary: 'Pythonic Scraping / Crawling FrameWork built On Eventlet'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

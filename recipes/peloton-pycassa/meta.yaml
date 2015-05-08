@@ -1,0 +1,65 @@
+package:
+  name: peloton-pycassa
+  version: "0.0.0"
+
+source:
+  fn: peloton-pycassa-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/peloton-pycassa/peloton-pycassa-0.0.0.tar.gz
+  md5: a9622c7a0bf7620d58ae5898d82f9bfc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - peloton-pycassa = peloton-pycassa:main
+    #
+    # Would create an entry point called peloton-pycassa that calls peloton-pycassa.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - thrift
+
+  run:
+    - python
+    - thrift
+
+test:
+  # Python imports
+  imports:
+    - pycassa
+    - pycassa.cassandra
+    - pycassa.contrib
+    - pycassa.logging
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com//pycassa
+  license: UNKNOWN
+  summary: 'Peloton fork of Python client library for Apache Cassandra.  This is not the pycassa you want.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,86 @@
+package:
+  name: products.plonepas
+  version: "5.0.2"
+
+source:
+  fn: Products.PlonePAS-5.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.PlonePAS/Products.PlonePAS-5.0.2.tar.gz
+  md5: 23fce726f7dc847fc1ebafffdb7de0b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.plonepas = products.plonepas:main
+    #
+    # Would create an entry point called products.plonepas that calls products.plonepas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - products.cmfcore
+    - products.genericsetup
+    - products.pluggableauthservice
+    - zope2 >=2.13.22
+    - plone.i18n
+    - plone.memoize
+    - plone.session
+    - setuptools
+    - zope.deprecation
+    - plone.protect
+
+  run:
+    - python
+    - products.cmfcore
+    - products.genericsetup
+    - products.pluggableauthservice
+    - zope2 >=2.13.22
+    - plone.i18n
+    - plone.memoize
+    - plone.session
+    - setuptools
+    - zope.deprecation
+    - plone.protect
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PlonePAS
+    - Products.PlonePAS.Extensions
+    - Products.PlonePAS.browser
+    - Products.PlonePAS.interfaces
+    - Products.PlonePAS.plugins
+    - Products.PlonePAS.tests
+    - Products.PlonePAS.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.PlonePAS
+  license: ZPL
+  summary: 'PlonePAS modifies the PluggableAuthService for use by Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

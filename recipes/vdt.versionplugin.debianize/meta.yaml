@@ -1,0 +1,67 @@
+package:
+  name: vdt.versionplugin.debianize
+  version: "0.0.6"
+
+source:
+  fn: vdt.versionplugin.debianize-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/v/vdt.versionplugin.debianize/vdt.versionplugin.debianize-0.0.6.tar.gz
+  md5: 72b60f4245123e3029a0e5540a095a7a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vdt.versionplugin.debianize = vdt.versionplugin.debianize:main
+    #
+    # Would create an entry point called vdt.versionplugin.debianize that calls vdt.versionplugin.debianize.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vdt.version
+    - vdt.versionplugin.default
+
+  run:
+    - python
+    - setuptools
+    - vdt.version
+    - vdt.versionplugin.default
+
+test:
+  # Python imports
+  imports:
+    - vdt
+    - vdt.versionplugin
+    - vdt.versionplugin.debianize
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Version Increment Plugin that builds with debianize'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

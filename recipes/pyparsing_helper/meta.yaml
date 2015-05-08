@@ -1,0 +1,65 @@
+package:
+  name: pyparsing_helper
+  version: "0.1.2"
+
+source:
+  fn: pyparsing_helper-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyparsing_helper/pyparsing_helper-0.1.2.tar.gz
+  md5: 3b3e54ff131b062ea011e9e244f683ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyparsing_helper = pyparsing_helper:main
+    #
+    # Would create an entry point called pyparsing_helper that calls pyparsing_helper.main()
+
+    - pyparsing_helper=pyparsing_helper:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyparsing
+
+  run:
+    - python
+    - setuptools
+    - pyparsing
+
+test:
+  # Python imports
+  imports:
+    - pyparsing_helper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyparsing_helper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/pyparsing_helper
+  license: MIT License
+  summary: 'GUI assistant for pyparsing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

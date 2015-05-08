@@ -1,0 +1,70 @@
+package:
+  name: django-textplusstuff
+  version: "0.2.1"
+
+source:
+  fn: django-textplusstuff-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-textplusstuff/django-textplusstuff-0.2.1.tar.gz
+  md5: b1e489bd9a627929062967382c951780
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-textplusstuff = django-textplusstuff:main
+    #
+    # Would create an entry point called django-textplusstuff that calls django-textplusstuff.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.1
+    - djangorestframework >=2.3.14
+    - markdown2 >=2.3.0
+
+  run:
+    - python
+    - beautifulsoup4 ==4.3.1
+    - djangorestframework >=2.3.14
+    - markdown2 >=2.3.0
+
+test:
+  # Python imports
+  imports:
+    - textplusstuff
+    - textplusstuff.migrations
+    - textplusstuff.parser
+    - textplusstuff.south_migrations
+    - textplusstuff.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/WGBH/django-textplusstuff/
+  license: MIT License
+  summary: "A django field that makes it easy to intersperse 'stuff' into blocks of text."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

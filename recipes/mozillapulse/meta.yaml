@@ -1,0 +1,65 @@
+package:
+  name: mozillapulse
+  version: "1.0.1"
+
+source:
+  fn: MozillaPulse-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/M/MozillaPulse/MozillaPulse-1.0.1.tar.gz
+  md5: e0ffe0e2515a292233bd0580178654d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozillapulse = mozillapulse:main
+    #
+    # Would create an entry point called mozillapulse that calls mozillapulse.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kombu
+    - pytz
+
+  run:
+    - python
+    - kombu
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - mozillapulse
+    - mozillapulse.messages
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pulse.mozilla.org
+  license: MPL 2.0
+  summary: 'Helper library for interacting with the Mozilla Pulse message system at pulse.mozilla.org'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

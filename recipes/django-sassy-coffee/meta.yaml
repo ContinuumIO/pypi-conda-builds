@@ -1,0 +1,74 @@
+package:
+  name: django-sassy-coffee
+  version: "0.1.4"
+
+source:
+  fn: django-sassy-coffee-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sassy-coffee/django-sassy-coffee-0.1.4.tar.gz
+  md5: 29d7416f4715000767f4dc280c6d63e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sassy-coffee = django-sassy-coffee:main
+    #
+    # Would create an entry point called django-sassy-coffee that calls django-sassy-coffee.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.5
+    - coffeescript >=1.0.9
+    - csscompressor >=0.9.3
+    - pyscss ==1.2.0.post3
+    - sassin >=0.9.2
+    - slimit >=0.8.1
+
+  run:
+    - python
+    - django >=1.6.5
+    - coffeescript >=1.0.9
+    - csscompressor >=0.9.3
+    - pyscss ==1.2.0.post3
+    - sassin >=0.9.2
+    - slimit >=0.8.1
+
+test:
+  # Python imports
+  imports:
+    - sassy_coffee
+    - sassy_coffee.templatetags
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lmanzurv/sassy_coffee
+  license: Academic Free License (AFL)
+  summary: 'This is a django application to compile SASS, SCSS and CoffeeScript files from the static directory into CSS and JavaScript files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,94 @@
+package:
+  name: zope.app.server
+  version: "3.6.0"
+
+source:
+  fn: zope.app.server-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.server/zope.app.server-3.6.0.tar.gz
+  md5: d3a75eaf2a3f4759352dd3243dfb1d50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.server = zope.app.server:main
+    #
+    # Would create an entry point called zope.app.server that calls zope.app.server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.applicationcontrol
+    - zope.app.appsetup >=3.11
+    - zope.app.publication
+    - zope.app.wsgi
+    - zope.configuration
+    - zope.deprecation
+    - zope.event
+    - zope.interface
+    - zope.publisher
+    - zope.server
+    - zope.password >=3.6
+    - zope.processlifetime
+    - zdaemon
+    - zconfig
+    - zodb3
+
+  run:
+    - python
+    - setuptools
+    - zope.app.applicationcontrol
+    - zope.app.appsetup >=3.11
+    - zope.app.publication
+    - zope.app.wsgi
+    - zope.configuration
+    - zope.deprecation
+    - zope.event
+    - zope.interface
+    - zope.publisher
+    - zope.server
+    - zope.password >=3.6
+    - zope.processlifetime
+    - zdaemon
+    - zconfig
+    - zodb3
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.server
+    - zope.app.server.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/zope.app.server
+  license: Zope Public License
+  summary: 'ZServer integration for Zope 3 Applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

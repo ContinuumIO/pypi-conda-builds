@@ -1,0 +1,66 @@
+package:
+  name: aditam.core
+  version: "0.1"
+
+source:
+  fn: aditam.core-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/aditam.core/aditam.core-0.1.tar.gz
+  md5: ed6cdd2c418637c127b4c5325ea948f7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aditam.core = aditam.core:main
+    #
+    # Would create an entry point called aditam.core that calls aditam.core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c7
+    - sqlalchemy >=0.4,<0.5.0beta
+
+  run:
+    - python
+    - setuptools >=0.6c7
+    - sqlalchemy >=0.4,<0.5.0beta
+
+test:
+  # Python imports
+  imports:
+    - aditam
+    - aditam.core
+    - aditam.core.model
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.aditam.org/
+  license: GNU General Public License (GPL)
+  summary: 'Automated and DIstributed TAsk Manager core part.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

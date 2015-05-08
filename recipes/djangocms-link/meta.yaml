@@ -1,0 +1,64 @@
+package:
+  name: djangocms-link
+  version: "1.6"
+
+source:
+  fn: djangocms-link-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangocms-link/djangocms-link-1.6.tar.gz
+  md5: da3a0b1de7a9ca7cd6bbc8cbab21283f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangocms-link = djangocms-link:main
+    #
+    # Would create an entry point called djangocms-link that calls djangocms-link.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-select2 >=4.3
+
+  run:
+    - python
+    - django-select2 >=4.3
+
+test:
+  # Python imports
+  imports:
+    - djangocms_link
+    - djangocms_link.migrations
+    - djangocms_link.migrations_django
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/divio/djangocms-link
+  license: BSD License
+  summary: 'Link Plugin for django CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

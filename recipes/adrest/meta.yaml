@@ -1,0 +1,79 @@
+package:
+  name: adrest
+  version: "3.3.2"
+
+source:
+  fn: adrest-3.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/adrest/adrest-3.3.2.tar.gz
+  md5: 347fcedaa3e0e2a517353640505637dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - adrest = adrest:main
+    #
+    # Would create an entry point called adrest that calls adrest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.3
+    - python-mimeparse ==0.1.4
+
+  run:
+    - python
+    - django >=1.4.3
+    - python-mimeparse ==0.1.4
+
+test:
+  # Python imports
+  imports:
+    - adrest
+    - adrest.mixin
+    - adrest.resources
+    - adrest.tests
+    - adrest.utils
+    - example
+    - example.api
+    - example.main
+    - example.main.tests
+    - example.main.utils
+    - example.settings
+    - tests
+    - tests.core
+    - tests.core.tests
+    - tests.main
+    - tests.rpc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home:  http://github.com/klen/adrest
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Adrest - Another Django REST. Simple application for quick build REST API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

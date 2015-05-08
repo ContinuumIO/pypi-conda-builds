@@ -1,0 +1,75 @@
+package:
+  name: sqlbridge
+  version: "0.1.68"
+
+source:
+  fn: sqlbridge-0.1.68.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlbridge/sqlbridge-0.1.68.tar.gz
+  md5: 7c1e04b44250a3bc64b0aa8df6845f18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlbridge = sqlbridge:main
+    #
+    # Would create an entry point called sqlbridge that calls sqlbridge.main()
+
+    - sqlbridge = sqlbridge.scripts.cli:run
+    - sqlcmd = sqlbridge.scripts.client:run
+    - sqlrouter = sqlbridge.scripts.basicrouter:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - autobahn ==0.9.3
+    - twisted >=14.0.2
+    - taskforce >=0.1.9
+
+  run:
+    - python
+    - autobahn ==0.9.3
+    - twisted >=14.0.2
+    - taskforce >=0.1.9
+
+test:
+  # Python imports
+  imports:
+    - sqlbridge
+    - sqlbridge.scripts
+    - sqlbridge.twisted
+    - sqlbridge.twisted.db
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sqlbridge --help
+    - sqlcmd --help
+    - sqlrouter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lgfausak/sqlbridge
+  license: Apache Software License
+  summary: 'sql bridge for Autobahn|Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

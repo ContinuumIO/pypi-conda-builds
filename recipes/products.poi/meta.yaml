@@ -1,0 +1,76 @@
+package:
+  name: products.poi
+  version: "2.2.7"
+
+source:
+  fn: Products.Poi-2.2.7.zip
+  url: https://pypi.python.org/packages/source/P/Products.Poi/Products.Poi-2.2.7.zip
+  md5: f89f162db5e88a4186717e728ae5cf1d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.poi = products.poi:main
+    #
+    # Would create an entry point called products.poi that calls products.poi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone >=4.0b1
+    - products.addremovewidget >=1.4.2
+    - products.datagridfield >=1.8b1
+    - collective.watcherlist >=0.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone >=4.0b1
+    - products.addremovewidget >=1.4.2
+    - products.datagridfield >=1.8b1
+    - collective.watcherlist >=0.2
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.Poi
+    - Products.Poi.browser
+    - Products.Poi.content
+    - Products.Poi.psc
+    - Products.Poi.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/poi
+  license: GPL
+  summary: 'Poi: A friendly issue tracker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

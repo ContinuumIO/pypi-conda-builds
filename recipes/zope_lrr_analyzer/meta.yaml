@@ -1,0 +1,63 @@
+package:
+  name: zope_lrr_analyzer
+  version: "0.4"
+
+source:
+  fn: zope_lrr_analyzer-0.4.zip
+  url: https://pypi.python.org/packages/source/z/zope_lrr_analyzer/zope_lrr_analyzer-0.4.zip
+  md5: e0f7fe4a66282540201d75b655194c01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope_lrr_analyzer = zope_lrr_analyzer:main
+    #
+    # Would create an entry point called zope_lrr_analyzer that calls zope_lrr_analyzer.main()
+
+    - zope_lrr_analyzer = zope_lrr_analyzer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zope_lrr_analyzer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zope_lrr_analyzer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/RedTurtle/zope_lrr_analyzer
+  license: GNU General Public License (GPL)
+  summary: 'Analyze Zope instance log with haufe.requestmonitoring entries'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

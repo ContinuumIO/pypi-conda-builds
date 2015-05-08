@@ -1,0 +1,74 @@
+package:
+  name: vsm
+  version: "0.2.1"
+
+source:
+  fn: vsm-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/v/vsm/vsm-0.2.1.tar.gz
+  md5: 8ccab8109c084314426d515e2daa8580
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vsm = vsm:main
+    #
+    # Would create an entry point called vsm that calls vsm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.6.1
+    - scipy >=0.13.0
+    - progressbar >=2.3
+
+  run:
+    - python
+    - numpy >=1.6.1
+    - scipy >=0.13.0
+    - progressbar >=2.3
+
+test:
+  # Python imports
+  imports:
+    - vsm
+    - vsm.corpus
+    - vsm.corpus.util
+    - vsm.exceptions
+    - vsm.extensions
+    - vsm.extensions.clustering
+    - vsm.extensions.corpusbuilders
+    - vsm.model
+    - vsm.viewer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://inpho.cogs.indiana.edu/
+  license: MIT License
+  summary: 'Vector Space Semantic Modeling Framework for the Indiana Philosophy Ontology Project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-object-events
+  version: "1.2"
+
+source:
+  fn: django-object-events-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-object-events/django-object-events-1.2.tar.gz
+  md5: bfb49f4aa0823ae97da30ba5391b1304
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-object-events = django-object-events:main
+    #
+    # Would create an entry point called django-object-events that calls django-object-events.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django_libs >=1.42.3
+
+  run:
+    - python
+    - django_libs >=1.42.3
+
+test:
+  # Python imports
+  imports:
+    - object_events
+    - object_events.management
+    - object_events.management.commands
+    - object_events.migrations
+    - object_events.templatetags
+    - object_events.tests
+    - object_events.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-object-events
+  license: The MIT License
+  summary: 'Generic app for creating events that can be shown to the user in a notifications list.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

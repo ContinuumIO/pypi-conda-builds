@@ -1,0 +1,65 @@
+package:
+  name: django-geetar
+  version: "1.0"
+
+source:
+  fn: django-geetar-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-geetar/django-geetar-1.0.tar.gz
+  md5: 842eea0d0d37d6e3c8d37f5b40bc065e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-geetar = django-geetar:main
+    #
+    # Would create an entry point called django-geetar that calls django-geetar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - geetar
+    - geetar.statusable
+    - geetar.templatetags
+    - geetar.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Instrument/django-geetar
+  license: BSD License
+  summary: 'A swiss army knife for your Django project, including a smattering of helpful code'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

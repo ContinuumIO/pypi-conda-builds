@@ -1,0 +1,96 @@
+package:
+  name: plone.app.registry
+  version: "1.2.4"
+
+source:
+  fn: plone.app.registry-1.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.app.registry/plone.app.registry-1.2.4.tar.gz
+  md5: 4820c33235196c7b445e3d9ab28eb05e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.registry = plone.app.registry:main
+    #
+    # Would create an entry point called plone.app.registry that calls plone.app.registry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - setuptools
+    - plone.registry >=1.0b1
+    - plone.supermodel >=1.1dev
+    - plone.app.z3cform
+    - plone.autoform >=1.0b2
+    - products.cmfplone
+    - zope2
+    - products.cmfcore
+    - products.genericsetup
+    - products.statusmessages
+    - zope.component
+    - zope.interface
+    - zope.i18nmessageid
+    - zope.dottedname
+
+  run:
+    - python
+    - setuptools
+    - lxml
+    - setuptools
+    - plone.registry >=1.0b1
+    - plone.supermodel >=1.1dev
+    - plone.app.z3cform
+    - plone.autoform >=1.0b2
+    - products.cmfplone
+    - zope2
+    - products.cmfcore
+    - products.genericsetup
+    - products.statusmessages
+    - zope.component
+    - zope.interface
+    - zope.i18nmessageid
+    - zope.dottedname
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.registry
+    - plone.app.registry.browser
+    - plone.app.registry.exportimport
+    - plone.app.registry.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.app.registry
+  license: GPL
+  summary: 'Zope 2 and Plone  integration for plone.registry'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,94 @@
+package:
+  name: repoze.zope2
+  version: "1.0.3"
+
+source:
+  fn: repoze.zope2-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.zope2/repoze.zope2-1.0.3.tar.gz
+  md5: 9e6dd7f3fa85ccaa50c16c7d41a3831a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - repoze.zope2 = repoze.zope2:main
+    #
+    # Would create an entry point called repoze.zope2 that calls repoze.zope2.main()
+
+    - addzope2user=repoze.zope2.scripts.adduser:main
+    - runzope2script=repoze.zope2.scripts.runscript:main
+    - debugzope2=repoze.zope2.scripts.debug:main
+    - installproduct=repoze.zope2.scripts.installproduct:main
+    - mkzope2instance=repoze.zope2.instance:main
+    - zope2testrunner=repoze.zope2.scripts.testrunner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pastescript
+    - wsgiutils
+    - zopelib
+    - repoze.obob
+    - repoze.tm
+    - repoze.retry
+    - repoze.vhm
+    - repoze.errorlog
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pastescript
+    - wsgiutils
+    - zopelib
+    - repoze.obob
+    - repoze.tm
+    - repoze.retry
+    - repoze.vhm
+    - repoze.errorlog
+
+test:
+  # Python imports
+  imports:
+    - repoze
+    - repoze.zope2
+    - repoze.zope2.scripts
+    - repoze.zope2.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - addzope2user --help
+    - runzope2script --help
+    - debugzope2 --help
+    - installproduct --help
+    - mkzope2instance --help
+    - zope2testrunner --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.repoze.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'Zope2 via WSGI and Paste'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

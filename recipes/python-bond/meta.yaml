@@ -1,0 +1,67 @@
+package:
+  name: python-bond
+  version: "1.3"
+
+source:
+  fn: python-bond-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-bond/python-bond-1.3.tar.gz
+  md5: e11586b4785a3b34a4f51904d8bba237
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-bond = python-bond:main
+    #
+    # Would create an entry point called python-bond that calls python-bond.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pexpect
+    - setuptools
+
+  run:
+    - python
+    - pexpect
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - bond
+    - bond.JavaScript
+    - bond.PHP
+    - bond.Perl
+    - bond.Python
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wavexx/python-bond
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'transparent remote/recursive evaluation between Python and other languages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: clok
+  version: "1.0.3"
+
+source:
+  fn: clok-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/clok/clok-1.0.3.tar.gz
+  md5: 9b480ef434894a7a30e201c2deee2604
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clok = clok:main
+    #
+    # Would create an entry point called clok that calls clok.main()
+
+    - clok = clok.server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - bottle
+    - tinydb
+    - pyradio
+    - requests
+    - waitress
+
+  run:
+    - python
+    - docopt
+    - bottle
+    - tinydb
+    - pyradio
+    - requests
+    - waitress
+
+test:
+  # Python imports
+  imports:
+    - clok
+    - clok.models
+    - clok.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clok --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fspot/clok
+  license: BSD
+  summary: 'Listen to radio and set up alarms from your computer, control it from a web ui.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

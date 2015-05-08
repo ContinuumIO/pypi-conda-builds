@@ -1,0 +1,63 @@
+package:
+  name: openerp-mrp-operations
+  version: "7.0.406"
+
+source:
+  fn: openerp-mrp-operations-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-mrp-operations/openerp-mrp-operations-7.0.406.tar.gz
+  md5: 325e64837767de42ef8e7a766332c6ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-mrp-operations = openerp-mrp-operations:main
+    #
+    # Would create an entry point called openerp-mrp-operations that calls openerp-mrp-operations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-mrp
+
+  run:
+    - python
+    - openerp-mrp
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.mrp_operations
+    - openerp.addons.mrp_operations.report
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Manufacturing Operations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

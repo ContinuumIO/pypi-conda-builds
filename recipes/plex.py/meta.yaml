@@ -1,0 +1,75 @@
+package:
+  name: plex.py
+  version: "0.6.4"
+
+source:
+  fn: plex.py-0.6.4.zip
+  url: https://pypi.python.org/packages/source/p/plex.py/plex.py-0.6.4.zip
+  md5: b10045a357e17af3f756606805b90085
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plex.py = plex.py:main
+    #
+    # Would create an entry point called plex.py that calls plex.py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - plex
+    - plex.core
+    - plex.ext
+    - plex.interfaces
+    - plex.interfaces.core
+    - plex.interfaces.library
+    - plex.lib
+    - plex.objects
+    - plex.objects.core
+    - plex.objects.library
+    - plex.objects.library.extra
+    - plex.objects.library.metadata
+    - plex.objects.mixins
+    - tests.core
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fuzeman/plex.py
+  license: MIT
+  summary: 'Python interface for the Plex Media Server API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

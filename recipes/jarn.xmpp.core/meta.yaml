@@ -1,0 +1,80 @@
+package:
+  name: jarn.xmpp.core
+  version: "0.34"
+
+source:
+  fn: jarn.xmpp.core-0.34.zip
+  url: https://pypi.python.org/packages/source/j/jarn.xmpp.core/jarn.xmpp.core-0.34.zip
+  md5: a402710b88c37ee718e7254a45cd38ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jarn.xmpp.core = jarn.xmpp.core:main
+    #
+    # Would create an entry point called jarn.xmpp.core that calls jarn.xmpp.core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup
+    - plone.app.registry
+    - plone.app.z3cform
+    - jarn.xmpp.twisted
+    - jarn.jsi18n
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - beautifulsoup
+    - plone.app.registry
+    - plone.app.z3cform
+    - jarn.xmpp.twisted
+    - jarn.jsi18n
+
+test:
+  # Python imports
+  imports:
+    - jarn
+    - jarn.xmpp
+    - jarn.xmpp.core
+    - jarn.xmpp.core.browser
+    - jarn.xmpp.core.subscribers
+    - jarn.xmpp.core.tests
+    - jarn.xmpp.core.upgrades
+    - jarn.xmpp.core.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ggozad/jarn.xmpp.core
+  license: GPL
+  summary: 'Core package for jarn.xmpp'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,89 @@
+package:
+  name: kamaki
+  version: "0.13.3"
+
+source:
+  fn: kamaki-0.13.3.tar.gz
+  url: https://pypi.python.org/packages/source/k/kamaki/kamaki-0.13.3.tar.gz
+  md5: 66096f1836d512df5c53b4ec98dcaa52
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kamaki = kamaki:main
+    #
+    # Would create an entry point called kamaki that calls kamaki.main()
+
+    - kamaki = kamaki.cli:run_one_cmd
+    - kamaki-shell = kamaki.cli:run_shell
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - objpool >=0.2
+    - progress >=1.1
+    - astakosclient >=0.14.10
+    - python-dateutil
+
+  run:
+    - python
+    - objpool >=0.2
+    - progress >=1.1
+    - astakosclient >=0.14.10
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - kamaki
+    - kamaki.cli
+    - kamaki.cli.argument
+    - kamaki.cli.cmds
+    - kamaki.cli.cmdtree
+    - kamaki.cli.config
+    - kamaki.cli.contrib
+    - kamaki.cli.utils
+    - kamaki.clients
+    - kamaki.clients.astakos
+    - kamaki.clients.blockstorage
+    - kamaki.clients.compute
+    - kamaki.clients.cyclades
+    - kamaki.clients.image
+    - kamaki.clients.network
+    - kamaki.clients.pithos
+    - kamaki.clients.storage
+    - kamaki.clients.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kamaki --help
+    - kamaki-shell --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.synnefo.org
+  license: BSD License
+  summary: 'A multipurpose, interactive command-line tool, and also a client development library for managing OpenStack clouds.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

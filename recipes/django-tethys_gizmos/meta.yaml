@@ -1,0 +1,69 @@
+package:
+  name: django-tethys_gizmos
+  version: "1.0.5"
+
+source:
+  fn: django-tethys_gizmos-1.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tethys_gizmos/django-tethys_gizmos-1.0.5.tar.gz
+  md5: 27fa9959cd2599b581857cfb7857ef61
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tethys_gizmos = django-tethys_gizmos:main
+    #
+    # Would create an entry point called django-tethys_gizmos that calls django-tethys_gizmos.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests
+
+  run:
+    - python
+    - django
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - tethys_gizmos
+    - tethys_gizmos.lib
+    - tethys_gizmos.lib.fetchclimate
+    - tethys_gizmos.templatetags
+    - tethys_gizmos.views
+    - tethys_gizmos.views.gizmos
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'An app to enable Tethys gizmos in your site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

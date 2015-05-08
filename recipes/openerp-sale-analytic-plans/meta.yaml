@@ -1,0 +1,64 @@
+package:
+  name: openerp-sale-analytic-plans
+  version: "7.0.406"
+
+source:
+  fn: openerp-sale-analytic-plans-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-sale-analytic-plans/openerp-sale-analytic-plans-7.0.406.tar.gz
+  md5: 4d1a79d2f2726eef12daebca5e7440bb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-sale-analytic-plans = openerp-sale-analytic-plans:main
+    #
+    # Would create an entry point called openerp-sale-analytic-plans that calls openerp-sale-analytic-plans.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-sale
+    - openerp-account-analytic-plans
+
+  run:
+    - python
+    - openerp-sale
+    - openerp-account-analytic-plans
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.sale_analytic_plans
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Sales Analytic Distribution'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

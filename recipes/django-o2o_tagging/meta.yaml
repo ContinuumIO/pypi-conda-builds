@@ -1,0 +1,64 @@
+package:
+  name: django-o2o_tagging
+  version: "0.2.3"
+
+source:
+  fn: django-o2o_tagging-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-o2o_tagging/django-o2o_tagging-0.2.3.tar.gz
+  md5: f02aaf4b33b76b5ad0b76a8f97b11394
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-o2o_tagging = django-o2o_tagging:main
+    #
+    # Would create an entry point called django-o2o_tagging that calls django-o2o_tagging.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-model-utils
+
+  run:
+    - python
+    - django-model-utils
+
+test:
+  # Python imports
+  imports:
+    - o2o_tagging
+    - o2o_tagging.templatetags
+    - o2o_tagging.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alej0varas/django-o2o_tagging
+  license: GNU General Public License
+  summary: u'Use this app to tag objects like you tag your friends on facebook, but using any objects as the tagger and the tagged. Think of a `User` tagging a `Friend` in a `Photo` all of them being different models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

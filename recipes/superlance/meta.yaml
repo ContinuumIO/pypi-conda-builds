@@ -1,0 +1,76 @@
+package:
+  name: superlance
+  version: "0.11"
+
+source:
+  fn: superlance-0.11.tar.gz
+  url: https://pypi.python.org/packages/source/s/superlance/superlance-0.11.tar.gz
+  md5: 18f5a8dbbe1938e35ae12d54c34437e7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - superlance = superlance:main
+    #
+    # Would create an entry point called superlance that calls superlance.main()
+
+    - httpok=superlance.httpok:main
+    - crashsms=superlance.crashsms:main
+    - crashmail=superlance.crashmail:main
+    - crashmailbatch=superlance.crashmailbatch:main
+    - fatalmailbatch=superlance.fatalmailbatch:main
+    - memmon=superlance.memmon:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - supervisor
+
+  run:
+    - python
+    - setuptools
+    - supervisor
+
+test:
+  # Python imports
+  imports:
+    - superlance
+    - superlance.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - httpok --help
+    - crashsms --help
+    - crashmail --help
+    - crashmailbatch --help
+    - fatalmailbatch --help
+    - memmon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://supervisord.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'superlance plugins for supervisord'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: google-scholar-scraper
+  version: "0.2"
+
+source:
+  fn: google-scholar-scraper-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/google-scholar-scraper/google-scholar-scraper-0.2.tar.gz
+  md5: a62bba960c4ad30e0fea492fcdbdf757
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google-scholar-scraper = google-scholar-scraper:main
+    #
+    # Would create an entry point called google-scholar-scraper that calls google-scholar-scraper.main()
+
+    - gsscraper=gsscraper:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - bibtexparser
+
+  run:
+    - python
+    - requests
+    - bibtexparser
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gsscraper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/adeel/google-scholar-scraper
+  license: GPL
+  summary: 'Python library for scraping Google Scholar.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

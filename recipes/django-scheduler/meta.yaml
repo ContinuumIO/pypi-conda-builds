@@ -1,0 +1,88 @@
+package:
+  name: django-scheduler
+  version: "0.7.4"
+
+source:
+  fn: django-scheduler-0.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-scheduler/django-scheduler-0.7.4.tar.gz
+  md5: 09b1c80ca83546c0d1ed4b1eff8eb3b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-scheduler = django-scheduler:main
+    #
+    # Would create an entry point called django-scheduler that calls django-scheduler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - argparse ==1.1
+    - python-dateutil >=2.1
+    - pytz >=2013.9
+    - six >=1.3.0
+    - icalendar >=3.8.4
+    - south >=0.8.4
+    - django-annoying >=0.7.9
+    - coverage >=3.6
+    - future >=0.14.2
+
+  run:
+    - python
+    - django >=1.5
+    - argparse ==1.1
+    - python-dateutil >=2.1
+    - pytz >=2013.9
+    - six >=1.3.0
+    - icalendar >=3.8.4
+    - south >=0.8.4
+    - django-annoying >=0.7.9
+    - coverage >=3.6
+    - future >=0.14.2
+
+test:
+  # Python imports
+  imports:
+    - schedule
+    - schedule.conf
+    - schedule.feeds
+    - schedule.management
+    - schedule.management.commands
+    - schedule.migrations
+    - schedule.models
+    - schedule.templatetags
+    - schedule.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/llazzaro/django-scheduler
+  license: BSD License
+  summary: 'A calendaring app for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

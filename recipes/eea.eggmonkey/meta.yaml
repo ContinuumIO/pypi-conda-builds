@@ -1,0 +1,94 @@
+package:
+  name: eea.eggmonkey
+  version: "3.2"
+
+source:
+  fn: eea.eggmonkey-3.2.zip
+  url: https://pypi.python.org/packages/source/e/eea.eggmonkey/eea.eggmonkey-3.2.zip
+  md5: e16bfd650a1eda50b5ece57a23946d68
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.eggmonkey = eea.eggmonkey:main
+    #
+    # Would create an entry point called eea.eggmonkey that calls eea.eggmonkey.main()
+
+    - monkey = eea.eggmonkey.monkey:main
+    - devify = eea.eggmonkey.monkey:devify
+    - check_latest = eea.eggmonkey.buildout:check_latest
+    - check_version_files = eea.eggmonkey.buildout:check_version_files
+    - print_unreleased_packages = eea.eggmonkey.pypi:print_unreleased_packages
+    - print_pypi_plone_unreleased_eggs = eea.eggmonkey.pypi:print_pypi_plone_unreleased_eggs
+    - print_pypi_not_on_plone = eea.eggmonkey.pypi:print_pypi_not_on_plone
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - mr.developer
+    - argparse
+    - colorama
+    - collective.dist
+    - jarn.mkrelease
+    - zest.pocompile
+    - yolk
+    - packaging
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - mr.developer
+    - argparse
+    - colorama
+    - collective.dist
+    - jarn.mkrelease
+    - zest.pocompile
+    - yolk
+    - packaging
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.eggmonkey
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - monkey --help
+    - devify --help
+    - check_latest --help
+    - check_version_files --help
+    - print_unreleased_packages --help
+    - print_pypi_plone_unreleased_eggs --help
+    - print_pypi_not_on_plone --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.eggmonkey
+  license: GPL
+  summary: 'Automate releasing eggs with jarn.mkrelease'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

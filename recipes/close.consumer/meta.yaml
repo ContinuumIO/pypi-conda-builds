@@ -1,0 +1,68 @@
+package:
+  name: close.consumer
+  version: "0.2.2"
+
+source:
+  fn: close.consumer-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/close.consumer/close.consumer-0.2.2.tar.gz
+  md5: bcaea9990f58b00611ac0fbeac7989e7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - close.consumer = close.consumer:main
+    #
+    # Would create an entry point called close.consumer that calls close.consumer.main()
+
+    - close-consume = close.consumer.consumer:main
+    - close-process = close.consumer.process:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - greenlet ==0.2
+    - gevent ==0.12.2
+
+  run:
+    - python
+    - greenlet ==0.2
+    - gevent ==0.12.2
+
+test:
+  # Python imports
+  imports:
+    - close.consumer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - close-consume --help
+    - close-process --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/thruflo/close.consumer
+  license: Creative Commons CC0 1.0 Universal
+  summary: 'gevent based Streaming API consumer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

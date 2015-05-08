@@ -1,0 +1,65 @@
+package:
+  name: tessera-client
+  version: "0.4.3"
+
+source:
+  fn: tessera-client-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tessera-client/tessera-client-0.4.3.tar.gz
+  md5: 0cd386b190d0cd524e23501fcb12502f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tessera-client = tessera-client:main
+    #
+    # Would create an entry point called tessera-client that calls tessera-client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==2.3.0
+    - simplejson ==3.5.2
+
+  run:
+    - python
+    - requests ==2.3.0
+    - simplejson ==3.5.2
+
+test:
+  # Python imports
+  imports:
+    - tessera_client
+    - tessera_client.api
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/urbanairship/tessera-client
+  license: Apache Software License
+  summary: 'Data model and API client for tessera'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

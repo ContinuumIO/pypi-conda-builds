@@ -1,0 +1,76 @@
+package:
+  name: p4a.plonevideo
+  version: "1.3"
+
+source:
+  fn: p4a.plonevideo-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/p4a.plonevideo/p4a.plonevideo-1.3.tar.gz
+  md5: 21ed4d153e0b88bd8bcadce080c6e17c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - p4a.plonevideo = p4a.plonevideo:main
+    #
+    # Would create an entry point called p4a.plonevideo that calls p4a.plonevideo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - p4a.video >=1.1
+    - p4a.videoembed
+    - p4a.plonevideoembed
+    - p4a.subtyper
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - p4a.video >=1.1
+    - p4a.videoembed
+    - p4a.plonevideoembed
+    - p4a.subtyper
+
+test:
+  # Python imports
+  imports:
+    - p4a
+    - p4a.plonevideo
+    - p4a.plonevideo.Extensions
+    - p4a.plonevideo.atvideo
+    - p4a.plonevideo.browser
+    - p4a.plonevideo.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/plone4artistsvideo
+  license: GNU General Public License (GPL)
+  summary: 'Plone4Artists video add-on for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

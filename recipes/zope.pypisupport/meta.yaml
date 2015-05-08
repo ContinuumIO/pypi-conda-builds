@@ -1,0 +1,70 @@
+package:
+  name: zope.pypisupport
+  version: "0.1.1"
+
+source:
+  fn: zope.pypisupport-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.pypisupport/zope.pypisupport-0.1.1.tar.gz
+  md5: a34d159221a74c0d54f0ec5a6457ac27
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.pypisupport = zope.pypisupport:main
+    #
+    # Would create an entry point called zope.pypisupport that calls zope.pypisupport.main()
+
+    - addrole = zope.pypisupport.role:addrole
+    - delrole = zope.pypisupport.role:delrole
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - lxml
+    - setuptools
+    - zope.testbrowser
+
+  run:
+    - python
+    - lxml
+    - setuptools
+    - zope.testbrowser
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.pypisupport
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - addrole --help
+    - delrole --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.pypisupport
+  license: Zope Public License
+  summary: 'Python Package Index (PyPI) role management tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

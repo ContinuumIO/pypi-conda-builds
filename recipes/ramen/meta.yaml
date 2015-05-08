@@ -1,0 +1,74 @@
+package:
+  name: ramen
+  version: "0.0.2"
+
+source:
+  fn: ramen-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/ramen/ramen-0.0.2.tar.gz
+  md5: 18900a2b59de336ee74d6642b80b4d29
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ramen = ramen:main
+    #
+    # Would create an entry point called ramen that calls ramen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - motor
+    - tornado
+
+  run:
+    - python
+    - motor
+    - tornado
+
+test:
+  # Python imports
+  imports:
+    - ramen
+    - ramen.db
+    - ramen.mimemail
+    - ramen.templates
+    - ramen.templates.project
+    - ramen.templates.project.assets
+    - ramen.templates.project.core
+    - ramen.templates.project.custom
+    - ramen.templates.project.handlers
+    - ramen.templates.project.models
+    - ramen.templates.project.routes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gorskiy.kz/ramen
+  license: MIT License
+  summary: 'Tornado based simple web framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

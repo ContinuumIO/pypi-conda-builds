@@ -1,0 +1,74 @@
+package:
+  name: k2catalogue
+  version: "0.5.0"
+
+source:
+  fn: k2catalogue-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/k/k2catalogue/k2catalogue-0.5.0.tar.gz
+  md5: 03d7c43f137873778f29e4e81184b799
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - k2catalogue = k2catalogue:main
+    #
+    # Would create an entry point called k2catalogue that calls k2catalogue.main()
+
+    - k2cat-search = k2catalogue.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - sqlalchemy
+    - ipython
+    - vcrpy
+    - beautifulsoup4
+    - lxml
+
+  run:
+    - python
+    - requests
+    - sqlalchemy
+    - ipython
+    - vcrpy
+    - beautifulsoup4
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - k2catalogue
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - k2cat-search --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mindriot101/k2catalogue
+  license: MIT License
+  summary: 'K2 Catalogue Queryier'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: trytond_product_code
+  version: "3.4.1.1"
+
+source:
+  fn: trytond_product_code-3.4.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_product_code/trytond_product_code-3.4.1.1.tar.gz
+  md5: 728b5411a3068fac0113f41ea952cdc2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_product_code = trytond_product_code:main
+    #
+    # Would create an entry point called trytond_product_code that calls trytond_product_code.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_product >=3.4,<3.5
+    - openlabs_product_notebook >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - trytond_product >=3.4,<3.5
+    - openlabs_product_notebook >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.product_code
+    - trytond.modules.product_code.tests
+    - trytond_product_code
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/openlabs/trytond-product-code
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module for adding multiple product codes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

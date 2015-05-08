@@ -1,0 +1,82 @@
+package:
+  name: bluechips
+  version: "1.0.4"
+
+source:
+  fn: BlueChips-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/B/BlueChips/BlueChips-1.0.4.tar.gz
+  md5: 5d3da1ee38e502ff1aa54ab8e8cbb633
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bluechips = bluechips:main
+    #
+    # Would create an entry point called bluechips that calls bluechips.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons >=0.9.6
+    - webhelpers >=1.0a
+    - sqlalchemy >=0.5
+    - authkit >=0.4.0
+    - formencode >=1.2.1
+    - mailer >=0.5
+
+  run:
+    - python
+    - setuptools
+    - pylons >=0.9.6
+    - webhelpers >=1.0a
+    - sqlalchemy >=0.5
+    - authkit >=0.4.0
+    - formencode >=1.2.1
+    - mailer >=0.5
+
+test:
+  # Python imports
+  imports:
+    - bluechips
+    - bluechips.config
+    - bluechips.controllers
+    - bluechips.lib
+    - bluechips.model
+    - bluechips.tests
+    - bluechips.tests.functional
+    - bluechips.tests.lib
+    - bluechips.tests.model
+    - bluechips.tests.splits
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ebroder/bluechips
+  license: GNU General Public License (GPL)
+  summary: 'BlueChips - finances for people with shared expenses'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: collective.sylvester
+  version: "0.2"
+
+source:
+  fn: collective.sylvester-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.sylvester/collective.sylvester-0.2.tar.gz
+  md5: 69d407679f6b2ec94c39e9994c632b7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.sylvester = collective.sylvester:main
+    #
+    # Would create an entry point called collective.sylvester that calls collective.sylvester.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-twitter
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-twitter
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.sylvester
+    - collective.sylvester.browser
+    - collective.sylvester.browser.plugins
+    - collective.sylvester.browser.plugins.directmessages
+    - collective.sylvester.browser.plugins.following
+    - collective.sylvester.browser.plugins.replies
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPL
+  summary: 'A twitter client for Plone. Tweetie is toast.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-fretboard
+  version: "1.13.0"
+
+source:
+  fn: django-fretboard-1.13.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fretboard/django-fretboard-1.13.0.tar.gz
+  md5: 9da1af125a7897fc6aed9d8e6928ec2b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fretboard = django-fretboard:main
+    #
+    # Would create an entry point called django-fretboard that calls django-fretboard.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tango-shared-core >=0.8
+
+  run:
+    - python
+    - tango-shared-core >=0.8
+
+test:
+  # Python imports
+  imports:
+    - fretboard
+    - fretboard.templatetags
+    - fretboard.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tBaxter/django-fretboard
+  license: MIT
+  summary: 'Responsive, powerful, simple Django forums.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

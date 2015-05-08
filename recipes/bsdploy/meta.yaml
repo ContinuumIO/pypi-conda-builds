@@ -1,0 +1,77 @@
+package:
+  name: bsdploy
+  version: "2.0.0"
+
+source:
+  fn: bsdploy-2.0.0.zip
+  url: https://pypi.python.org/packages/source/b/bsdploy/bsdploy-2.0.0.zip
+  md5: 99d01cd75fa5dddc4aae6ec0406a88a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bsdploy = bsdploy:main
+    #
+    # Would create an entry point called bsdploy that calls bsdploy.main()
+
+    - ploy-download=bsdploy.download:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - jinja2
+    - setuptools
+    - ploy >=1.1.0
+    - ploy_ansible >=1.2.4
+    - ploy_ezjail >=1.1.0
+    - ploy_fabric >=1.1.0
+
+  run:
+    - python
+    - setuptools
+    - pyyaml
+    - jinja2
+    - setuptools
+    - ploy >=1.1.0
+    - ploy_ansible >=1.2.4
+    - ploy_ezjail >=1.1.0
+    - ploy_fabric >=1.1.0
+
+test:
+  # Python imports
+  imports:
+    - bsdploy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ploy-download --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ployground/bsdploy
+  license: Beerware Licence
+  summary: 'A tool to remotely provision, configure and maintain FreeBSD jails'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

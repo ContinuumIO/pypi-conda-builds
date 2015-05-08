@@ -1,0 +1,71 @@
+package:
+  name: django-tenant-schemas
+  version: "1.5.2"
+
+source:
+  fn: django-tenant-schemas-1.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tenant-schemas/django-tenant-schemas-1.5.2.tar.gz
+  md5: 5a0b9f6d6d9b7689476354c8e7607c12
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tenant-schemas = django-tenant-schemas:main
+    #
+    # Would create an entry point called django-tenant-schemas that calls django-tenant-schemas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2.0
+    - psycopg2
+
+  run:
+    - python
+    - django >=1.2.0
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - tenant_schemas
+    - tenant_schemas.management
+    - tenant_schemas.management.commands
+    - tenant_schemas.management.commands.legacy
+    - tenant_schemas.postgresql_backend
+    - tenant_schemas.templatetags
+    - tenant_schemas.test
+    - tenant_schemas.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bcarneiro/django-tenant-schemas
+  license: MIT License
+  summary: 'Tenant support for Django using PostgreSQL schemas.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

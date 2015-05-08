@@ -1,0 +1,67 @@
+package:
+  name: jarn.viewdoc
+  version: "1.7"
+
+source:
+  fn: jarn.viewdoc-1.7.zip
+  url: https://pypi.python.org/packages/source/j/jarn.viewdoc/jarn.viewdoc-1.7.zip
+  md5: 667c2318a9648e7b81408dea6f0743a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jarn.viewdoc = jarn.viewdoc:main
+    #
+    # Would create an entry point called jarn.viewdoc that calls jarn.viewdoc.main()
+
+    - viewdoc=jarn.viewdoc.viewdoc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils
+
+  run:
+    - python
+    - setuptools
+    - docutils
+
+test:
+  # Python imports
+  imports:
+    - jarn
+    - jarn.viewdoc
+    - jarn.viewdoc.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - viewdoc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/jarn.viewdoc
+  license: BSD License
+  summary: 'Python documentation viewer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

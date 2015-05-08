@@ -1,0 +1,72 @@
+package:
+  name: crate
+  version: "0.13.0"
+
+source:
+  fn: crate-0.13.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/crate/crate-0.13.0.tar.gz
+  md5: 16ab0da21bb2a9d0cc2688af89a8dc3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crate = crate:main
+    #
+    # Would create an entry point called crate that calls crate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - urllib3
+    - six
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - urllib3
+    - six
+
+test:
+  # Python imports
+  imports:
+    - crate
+    - crate.client
+    - crate.client.sqlalchemy
+    - crate.client.sqlalchemy.predicates
+    - crate.client.sqlalchemy.tests
+    - crate.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/crate/crate-python
+  license: Apache Software License
+  summary: 'Crate Data Python client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

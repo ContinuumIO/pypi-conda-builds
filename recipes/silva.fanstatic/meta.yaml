@@ -1,0 +1,85 @@
+package:
+  name: silva.fanstatic
+  version: "1.2"
+
+source:
+  fn: silva.fanstatic-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.fanstatic/silva.fanstatic-1.2.tar.gz
+  md5: 0890fad877e1591a55a19068ec8d7272
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.fanstatic = silva.fanstatic:main
+    #
+    # Would create an entry point called silva.fanstatic that calls silva.fanstatic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fanstatic >0.11
+    - five.grok
+    - martian
+    - silva.core.conf
+    - silva.core.views
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope.traversing
+    - zope.testing
+
+  run:
+    - python
+    - setuptools
+    - fanstatic >0.11
+    - five.grok
+    - martian
+    - silva.core.conf
+    - silva.core.views
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope.traversing
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.fanstatic
+    - silva.fanstatic.martiansupport
+    - silva.fanstatic.tests
+    - silva.fanstatic.tests.dependencies
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.fanstatic
+  license: Zope Public License
+  summary: 'Integration of fanstatic in Silva CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

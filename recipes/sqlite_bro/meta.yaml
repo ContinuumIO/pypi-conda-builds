@@ -1,0 +1,63 @@
+package:
+  name: sqlite_bro
+  version: "0.8.8"
+
+source:
+  fn: sqlite_bro-0.8.8.zip
+  url: https://pypi.python.org/packages/source/s/sqlite_bro/sqlite_bro-0.8.8.zip
+  md5: 88d8465245ab5fcf764d5e5dfdd85406
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlite_bro = sqlite_bro:main
+    #
+    # Would create an entry point called sqlite_bro that calls sqlite_bro.main()
+
+    - sqlite_bro = sqlite_bro.sqlite_bro:_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sqlite_bro
+    - sqlite_bro.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sqlite_bro --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stonebig/sqlite_bro
+  license: MIT License
+  summary: 'a graphic SQLite Client in 1 Python file'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

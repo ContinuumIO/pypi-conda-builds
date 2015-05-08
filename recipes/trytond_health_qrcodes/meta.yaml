@@ -1,0 +1,72 @@
+package:
+  name: trytond_health_qrcodes
+  version: "2.8.1"
+
+source:
+  fn: trytond_health_qrcodes-2.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_health_qrcodes/trytond_health_qrcodes-2.8.1.tar.gz
+  md5: 20c7b9d0878778750bb581269f84cac1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_health_qrcodes = trytond_health_qrcodes:main
+    #
+    # Would create an entry point called trytond_health_qrcodes that calls trytond_health_qrcodes.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - qrcode
+    - trytond_health ==2.8.1
+    - trytond_health_pediatrics ==2.8.1
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - qrcode
+    - trytond_health ==2.8.1
+    - trytond_health_pediatrics ==2.8.1
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.health_qrcodes
+    - trytond.modules.health_qrcodes.report
+    - trytond.modules.health_qrcodes.tests
+    - trytond_health_qrcodes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://health.gnu.org/
+  license: GNU General Public License (GPL)
+  summary: 'GNU Health Quick Recognition - QR codes Module'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

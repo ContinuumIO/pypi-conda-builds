@@ -1,0 +1,69 @@
+package:
+  name: django-test-extensions
+  version: "0.14"
+
+source:
+  fn: django-test-extensions-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-test-extensions/django-test-extensions-0.14.tar.gz
+  md5: f6c044d2e2cc53b5069565508e6e143a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-test-extensions = django-test-extensions:main
+    #
+    # Would create an entry point called django-test-extensions that calls django-test-extensions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+    - coverage
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup
+    - coverage
+
+test:
+  # Python imports
+  imports:
+    - test_extensions
+    - test_extensions.management
+    - test_extensions.management.commands
+    - test_extensions.testrunners
+    - test_extensions.testrunners.xmlunit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/garethr/django-test-extensions/
+  license: MIT License
+  summary: 'A few classes to make testing django applications easier'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

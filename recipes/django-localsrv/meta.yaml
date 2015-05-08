@@ -1,0 +1,67 @@
+package:
+  name: django-localsrv
+  version: "0.1.2"
+
+source:
+  fn: django-localsrv-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-localsrv/django-localsrv-0.1.2.tar.gz
+  md5: 11a1a03730ab751838b86591b2ed0b74
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-localsrv = django-localsrv:main
+    #
+    # Would create an entry point called django-localsrv that calls django-localsrv.main()
+
+    - localsrv = localsrv.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.8,<1.9
+    - requests >=2.6,<2.7
+
+  run:
+    - python
+    - django >=1.8,<1.9
+    - requests >=2.6,<2.7
+
+test:
+  # Python imports
+  imports:
+    - localsrv
+    - localsrv.migrations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - localsrv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vladiibine/localsrv
+  license: MIT License
+  summary: "Django app for serving static content from different sources (files, strings, urls, etc.) at custom paths, using custom HTTP headers. Intended as a more flexible option than Python's SimpleHTTPServer"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

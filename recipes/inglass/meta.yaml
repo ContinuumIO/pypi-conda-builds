@@ -1,0 +1,68 @@
+package:
+  name: inglass
+  version: "0.1"
+
+source:
+  fn: inglass-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/inglass/inglass-0.1.tar.gz
+  md5: e14f01b52ec4115fdbc8ae548f95be6c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inglass = inglass:main
+    #
+    # Would create an entry point called inglass that calls inglass.main()
+
+    - in-glass = inglass.inglass:startup
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - temperusb
+    - pyyaml
+
+  run:
+    - python
+    - flask
+    - temperusb
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - inglass
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - in-glass --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrisknepper/in-glass
+  license: LICENSE
+  summary: 'A tool for monitoring and logging the temperature from a TEMPer USB Thermometer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

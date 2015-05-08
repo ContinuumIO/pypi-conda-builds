@@ -1,0 +1,71 @@
+package:
+  name: products.standardcachemanagers
+  version: "2.13.1"
+
+source:
+  fn: Products.StandardCacheManagers-2.13.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.StandardCacheManagers/Products.StandardCacheManagers-2.13.1.tar.gz
+  md5: d0e085781a286101033f72042d40e231
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.standardcachemanagers = products.standardcachemanagers:main
+    #
+    # Would create an entry point called products.standardcachemanagers that calls products.standardcachemanagers.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - accesscontrol
+    - transaction
+    - zope2 >=2.13.0a1
+    - zope.component
+
+  run:
+    - python
+    - setuptools
+    - accesscontrol
+    - transaction
+    - zope2 >=2.13.0a1
+    - zope.component
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.StandardCacheManagers
+    - Products.StandardCacheManagers.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.StandardCacheManagers
+  license: ZPL 2.1
+  summary: 'Cache managers for Zope 2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

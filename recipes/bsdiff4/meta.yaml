@@ -1,0 +1,64 @@
+package:
+  name: bsdiff4
+  version: "1.1.4"
+
+source:
+  fn: bsdiff4-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/bsdiff4/bsdiff4-1.1.4.tar.gz
+  md5: 29f6089290505fc1a852e176bd276c43
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bsdiff4 = bsdiff4:main
+    #
+    # Would create an entry point called bsdiff4 that calls bsdiff4.main()
+
+    - bsdiff4 = bsdiff4.cli:main_bsdiff4
+    - bspatch4 = bsdiff4.cli:main_bspatch4
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - bsdiff4
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bsdiff4 --help
+    - bspatch4 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ilanschnell/bsdiff4
+  license: BSD
+  summary: 'binary diff and patch using the BSDIFF4-format'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

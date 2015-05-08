@@ -1,0 +1,67 @@
+package:
+  name: django-courriers
+  version: "0.5.17"
+
+source:
+  fn: django-courriers-0.5.17.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-courriers/django-courriers-0.5.17.tar.gz
+  md5: 1d46243b74d43392812c6e201f8f6c1a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-courriers = django-courriers:main
+    #
+    # Would create an entry point called django-courriers that calls django-courriers.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-separatedvaluesfield
+
+  run:
+    - python
+    - django-separatedvaluesfield
+
+test:
+  # Python imports
+  imports:
+    - courriers
+    - courriers.backends
+    - courriers.management
+    - courriers.management.commands
+    - courriers.migrations
+    - courriers.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ulule/django-courriers
+  license: MIT License
+  summary: 'A generic application to manage your newsletters'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

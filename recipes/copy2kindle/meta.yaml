@@ -1,0 +1,66 @@
+package:
+  name: copy2kindle
+  version: "0.1"
+
+source:
+  fn: copy2kindle-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/copy2kindle/copy2kindle-0.1.tar.gz
+  md5: 33513f1338a97286c8d0d03e440801d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - copy2kindle = copy2kindle:main
+    #
+    # Would create an entry point called copy2kindle that calls copy2kindle.main()
+
+    - copy2kindle=copy2kindle.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - subprocess32
+
+  run:
+    - python
+    - argparse
+    - subprocess32
+
+test:
+  # Python imports
+  imports:
+    - copy2kindle
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - copy2kindle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dottedmag/copy2kindle
+  license: BSD License
+  summary: 'A tool to copy .mobi to USB-attached Kinlde'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

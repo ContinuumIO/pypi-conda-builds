@@ -1,0 +1,64 @@
+package:
+  name: redsolutioncms.django-chunks
+  version: "0.2.2"
+
+source:
+  fn: redsolutioncms.django-chunks-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/redsolutioncms.django-chunks/redsolutioncms.django-chunks-0.2.2.tar.gz
+  md5: a729a38454a70c389ac7ef192e35189c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redsolutioncms.django-chunks = redsolutioncms.django-chunks:main
+    #
+    # Would create an entry point called redsolutioncms.django-chunks that calls redsolutioncms.django-chunks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - chunks
+    - chunks.migrations
+    - chunks.redsolution_setup
+    - chunks.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/django-chunks/
+  license: BSD License
+  summary: 'Parts of reusable content across your site. Usable for validation meta codes, \nanalytics codes, phone numbers, addresses and so on.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

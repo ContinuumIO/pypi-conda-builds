@@ -1,0 +1,67 @@
+package:
+  name: clonedigger
+  version: "1.0.11-beta"
+
+source:
+  fn: clonedigger-1.0.11-beta.tar.gz
+  url: https://pypi.python.org/packages/source/c/clonedigger/clonedigger-1.0.11-beta.tar.gz
+  md5: 681a3e4693e941b89fbffb876b3e2790
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clonedigger = clonedigger:main
+    #
+    # Would create an entry point called clonedigger that calls clonedigger.main()
+
+    - clonedigger = clonedigger.clonedigger:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - clonedigger
+    - clonedigger.logilab
+    - clonedigger.logilab.astng
+    - clonedigger.logilab.common
+    - clonedigger.logilab.common.ureports
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clonedigger --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://clonedigger.sourceforge.net
+  license: GPL
+  summary: 'Clone Digger aimed to detect similar code in Python and Java programs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

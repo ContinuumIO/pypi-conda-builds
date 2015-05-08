@@ -1,0 +1,69 @@
+package:
+  name: django-cas-dev-server
+  version: "0.1.2"
+
+source:
+  fn: django-cas-dev-server-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cas-dev-server/django-cas-dev-server-0.1.2.tar.gz
+  md5: 0311e2b4e58ba9c76c9cf8ad2574e60d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cas-dev-server = django-cas-dev-server:main
+    #
+    # Would create an entry point called django-cas-dev-server that calls django-cas-dev-server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - django-environ
+    - django-mama-cas
+
+  run:
+    - python
+    - django >=1.7
+    - django-environ
+    - django-mama-cas
+
+test:
+  # Python imports
+  imports:
+    - cas_dev_server
+    - cas_dev_server.internal
+    - cas_dev_server.management
+    - cas_dev_server.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/TaymonB/django-cas-dev-server
+  license: MIT License
+  summary: 'Extends the Django development server to include a local CAS server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

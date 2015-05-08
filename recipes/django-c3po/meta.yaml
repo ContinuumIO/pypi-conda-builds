@@ -1,0 +1,70 @@
+package:
+  name: django-c3po
+  version: "0.3.0"
+
+source:
+  fn: django-C3PO-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-C3PO/django-C3PO-0.3.0.tar.gz
+  md5: 25c3140911edbacbbff6eb1304d686b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-c3po = django-c3po:main
+    #
+    # Would create an entry point called django-c3po that calls django-c3po.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5.1
+    - gdata ==2.0.18
+    - c3po ==0.3.0
+    - celery ==3.0.23
+    - django-celery ==3.0.23
+
+  run:
+    - python
+    - django ==1.5.1
+    - gdata ==2.0.18
+    - c3po ==0.3.0
+    - celery ==3.0.23
+    - django-celery ==3.0.23
+
+test:
+  # Python imports
+  imports:
+    - django_c3po
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/VorskiImagineering/django-C3PO
+  license: MIT
+  summary: 'django-C3PO is a Django application using C3PO - module\n    responsible for converting .po files from locale folder with translations\n    to .ods format and sending them to Google Spreadsheets.\n\n    This Django application provides panel where user can synchronize\n    translations with GDocs and it gives possibility to push all translations\n    on git and checkout last commit.\n\n    django-C3PO uses celery since version 0.2. Be sure to properly configure\n    it before using application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: nburnclient
+  version: "0.8.0"
+
+source:
+  fn: NbUrnClient-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/N/NbUrnClient/NbUrnClient-0.8.0.tar.gz
+  md5: 96f784bd6f1e4359b18477921f4cf79d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nburnclient = nburnclient:main
+    #
+    # Would create an entry point called nburnclient that calls nburnclient.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - suds ==0.4
+
+  run:
+    - python
+    - pyyaml
+    - suds ==0.4
+
+test:
+  # Python imports
+  imports:
+    - nb_urn_client
+    - nburnclient
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/runelk/NB_URN_Client_Python
+  license: LICENSE.txt
+  summary: 'Python Client for the URN PID service at the National Library of Norway'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

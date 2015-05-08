@@ -1,0 +1,66 @@
+package:
+  name: httphq
+  version: "0.0.6"
+
+source:
+  fn: httphq-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/h/httphq/httphq-0.0.6.tar.gz
+  md5: 8a7098a9d43956217d1d40efedbdf1fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - httphq = httphq:main
+    #
+    # Would create an entry point called httphq that calls httphq.main()
+
+    - httphq = httphq.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado ==2.4.1
+    - commandor ==0.1.5
+
+  run:
+    - python
+    - tornado ==2.4.1
+    - commandor ==0.1.5
+
+test:
+  # Python imports
+  imports:
+    - httphq
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - httphq --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Lispython/httphq
+  license: BSD License
+  summary: 'HTTP Request & Response service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

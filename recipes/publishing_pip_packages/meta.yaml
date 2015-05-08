@@ -1,0 +1,64 @@
+package:
+  name: publishing_pip_packages
+  version: "0.1.1"
+
+source:
+  fn: publishing_pip_packages-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/publishing_pip_packages/publishing_pip_packages-0.1.1.tar.gz
+  md5: 34fc4b146a5a39eb531b2dabcacb51e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - publishing_pip_packages = publishing_pip_packages:main
+    #
+    # Would create an entry point called publishing_pip_packages that calls publishing_pip_packages.main()
+
+    - publishing_pip_packages = publishing_pip_packages.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - landslide ==1.1.1
+
+  run:
+    - python
+    - landslide ==1.1.1
+
+test:
+  # Python imports
+  imports:
+    - publishing_pip_packages
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - publishing_pip_packages --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brianc/publishing-pip-packages.git
+  license: UNKNOWN
+  summary: '\na pip package containing information\non how to publish pip packages\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

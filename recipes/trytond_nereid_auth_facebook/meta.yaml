@@ -1,0 +1,70 @@
+package:
+  name: trytond_nereid_auth_facebook
+  version: "3.0.2.2"
+
+source:
+  fn: trytond_nereid_auth_facebook-3.0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_nereid_auth_facebook/trytond_nereid_auth_facebook-3.0.2.2.tar.gz
+  md5: 696de7a739a142de66c41e9f824972e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_nereid_auth_facebook = trytond_nereid_auth_facebook:main
+    #
+    # Would create an entry point called trytond_nereid_auth_facebook that calls trytond_nereid_auth_facebook.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask_oauth
+    - trytond_nereid >=3.0.7.0,<3.1
+    - trytond_nereid >=3.0,<3.1
+    - trytond >=3.0,<3.1
+
+  run:
+    - python
+    - setuptools
+    - flask_oauth
+    - trytond_nereid >=3.0.7.0,<3.1
+    - trytond_nereid >=3.0,<3.1
+    - trytond >=3.0,<3.1
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.nereid_auth_facebook
+    - trytond_nereid_auth_facebook
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openlabs.co.in
+  license: GNU General Public License (GPL)
+  summary: 'Nereid User Authentication using Facebook'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

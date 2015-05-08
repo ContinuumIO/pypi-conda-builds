@@ -1,0 +1,68 @@
+package:
+  name: tornado-babel
+  version: "0.2"
+
+source:
+  fn: Tornado-Babel-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/T/Tornado-Babel/Tornado-Babel-0.2.tar.gz
+  md5: 34036cbf48e620bb3d5bf42768612ac9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado-babel = tornado-babel:main
+    #
+    # Would create an entry point called tornado-babel that calls tornado-babel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - babel
+    - speaklater
+
+  run:
+    - python
+    - setuptools
+    - tornado
+    - babel
+    - speaklater
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - tornadobabel
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/openlabs/tornado-babel
+  license: BSD
+  summary: 'Babel localisation support for Torando'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

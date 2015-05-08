@@ -1,0 +1,67 @@
+package:
+  name: openerp-stock-invoice-directly
+  version: "7.0.406"
+
+source:
+  fn: openerp-stock-invoice-directly-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-stock-invoice-directly/openerp-stock-invoice-directly-7.0.406.tar.gz
+  md5: a4d32ebfd4a5bab95c00b41138085531
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-stock-invoice-directly = openerp-stock-invoice-directly:main
+    #
+    # Would create an entry point called openerp-stock-invoice-directly that calls openerp-stock-invoice-directly.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-delivery
+    - openerp-stock
+    - openerp-sale-stock
+
+  run:
+    - python
+    - openerp-delivery
+    - openerp-stock
+    - openerp-sale-stock
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.stock_invoice_directly
+    - openerp.addons.stock_invoice_directly.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Invoice Picking Directly'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

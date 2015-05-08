@@ -1,0 +1,79 @@
+package:
+  name: eea.annotator
+  version: "3.1"
+
+source:
+  fn: eea.annotator-3.1.zip
+  url: https://pypi.python.org/packages/source/e/eea.annotator/eea.annotator-3.1.zip
+  md5: b91e4bd8344e649beaf283f7b1ebc1ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.annotator = eea.annotator:main
+    #
+    # Would create an entry point called eea.annotator that calls eea.annotator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - eea.jquery >6.6
+    - eea.icons
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - eea.jquery >6.6
+    - eea.icons
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.annotator
+    - eea.annotator.browser
+    - eea.annotator.browser.app
+    - eea.annotator.cache
+    - eea.annotator.controlpanel
+    - eea.annotator.events
+    - eea.annotator.portlets
+    - eea.annotator.rules
+    - eea.annotator.storage
+    - eea.annotator.subtypes
+    - eea.annotator.tests
+    - eea.annotator.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.io
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'EEA Annotator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

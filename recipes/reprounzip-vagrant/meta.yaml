@@ -1,0 +1,71 @@
+package:
+  name: reprounzip-vagrant
+  version: "0.6.3"
+
+source:
+  fn: reprounzip-vagrant-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/reprounzip-vagrant/reprounzip-vagrant-0.6.3.tar.gz
+  md5: 6084a3b62881b197fe7048864b279f28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reprounzip-vagrant = reprounzip-vagrant:main
+    #
+    # Would create an entry point called reprounzip-vagrant that calls reprounzip-vagrant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - reprounzip >=0.6
+    - rpaths >=0.8
+    - paramiko
+    - scp
+
+  run:
+    - python
+    - setuptools
+    - reprounzip >=0.6
+    - rpaths >=0.8
+    - paramiko
+    - scp
+
+test:
+  # Python imports
+  imports:
+    - reprounzip
+    - reprounzip.unpackers
+    - reprounzip.unpackers.vagrant
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://vida-nyu.github.io/reprozip/
+  license: BSD License
+  summary: 'Allows the ReproZip unpacker to create virtual machines'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

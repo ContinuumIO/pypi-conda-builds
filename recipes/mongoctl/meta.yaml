@@ -1,0 +1,79 @@
+package:
+  name: mongoctl
+  version: "0.7.81"
+
+source:
+  fn: mongoctl-0.7.81.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongoctl/mongoctl-0.7.81.tar.gz
+  md5: 1af5c63ae00b24f979f3c782bf06de28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongoctl = mongoctl:main
+    #
+    # Would create an entry point called mongoctl that calls mongoctl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dargparse >=0.2.5
+    - pymongo >=2.7,<3.0
+    - verlib ==0.1
+    - boto ==2.31.1
+
+  run:
+    - python
+    - dargparse >=0.2.5
+    - pymongo >=2.7,<3.0
+    - verlib ==0.1
+    - boto ==2.31.1
+
+test:
+  # Python imports
+  imports:
+    - mongoctl
+    - mongoctl.commands
+    - mongoctl.commands.cluster
+    - mongoctl.commands.common
+    - mongoctl.commands.misc
+    - mongoctl.commands.server
+    - mongoctl.commands.sharding
+    - mongoctl.minify_json
+    - mongoctl.objects
+    - mongoctl.sample_conf
+    - mongoctl.tests
+    - mongoctl.tests.testing_conf
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mongolab/mongoctl
+  license: MIT
+  summary: 'MongoDB command line utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

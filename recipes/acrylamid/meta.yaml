@@ -1,0 +1,77 @@
+package:
+  name: acrylamid
+  version: "0.7.10"
+
+source:
+  fn: acrylamid-0.7.10.tar.gz
+  url: https://pypi.python.org/packages/source/a/acrylamid/acrylamid-0.7.10.tar.gz
+  md5: 7a2e469485c2e76232c74514a045d510
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - acrylamid = acrylamid:main
+    #
+    # Would create an entry point called acrylamid that calls acrylamid.main()
+
+    - acrylamid = acrylamid:Acryl
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.6
+    - markdown >=2.0.1
+    - translitcodec >=0.2
+
+  run:
+    - python
+    - jinja2 ==2.6
+    - markdown >=2.0.1
+    - translitcodec >=0.2
+
+test:
+  # Python imports
+  imports:
+    - acrylamid
+    - acrylamid.defaults
+    - acrylamid.defaults.html5
+    - acrylamid.filters
+    - acrylamid.lib
+    - acrylamid.specs
+    - acrylamid.tasks
+    - acrylamid.templates
+    - acrylamid.views
+    - acrylamid.views.search
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - acrylamid --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://posativ.org/acrylamid/
+  license: BSD License
+  summary: 'static blog compiler with incremental updates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

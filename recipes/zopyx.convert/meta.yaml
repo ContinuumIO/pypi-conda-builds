@@ -1,0 +1,68 @@
+package:
+  name: zopyx.convert
+  version: "1.1.11"
+
+source:
+  fn: zopyx.convert-1.1.11.tar.gz
+  url: https://pypi.python.org/packages/source/z/zopyx.convert/zopyx.convert-1.1.11.tar.gz
+  md5: 41811a6170b3468208d6feb87a520d75
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.convert = zopyx.convert:main
+    #
+    # Would create an entry point called zopyx.convert that calls zopyx.convert.main()
+
+    - xslfo-convert = zopyx.convert.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elementtree
+    - beautifulsoup
+
+  run:
+    - python
+    - setuptools
+    - elementtree
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - zopyx
+    - zopyx.convert
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - xslfo-convert --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/zopyx.convert
+  license: ZPL 2.1 (see LICENSE.txt)
+  summary: 'A Python interface to XSL-FO libraries (Conversion HTML to PDF, RTF, DOCX, WML and ODT)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: django-request-profiler
+  version: "0.8"
+
+source:
+  fn: django-request-profiler-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-request-profiler/django-request-profiler-0.8.tar.gz
+  md5: cb9adfe211a8dc56f45288550bd2bbf4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-request-profiler = django-request-profiler:main
+    #
+    # Would create an entry point called django-request-profiler that calls django-request-profiler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - request_profiler
+    - request_profiler.migrations
+    - request_profiler.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yunojuno/django-request-profiler
+  license: MIT License
+  summary: 'Django Request Profiler - a simple profiler for timing HTTP requests.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

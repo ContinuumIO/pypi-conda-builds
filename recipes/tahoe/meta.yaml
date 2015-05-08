@@ -1,0 +1,95 @@
+package:
+  name: tahoe
+  version: "1.0.3.1"
+
+source:
+  fn: tahoe-1.0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tahoe/tahoe-1.0.3.1.tar.gz
+  md5: 5ba5b498dfa0d55992db0f32aab25ae1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tahoe = tahoe:main
+    #
+    # Would create an entry point called tahoe that calls tahoe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - sqlalchemy
+    - flask-sqlalchemy
+    - flask-security
+    - flask-testing
+    - py-bcrypt
+    - simplejson
+    - boto
+    - pyes
+    - sphinx
+    - sphinxcontrib-httpdomain
+    - python-ultramemcached
+    - fixture
+    - alembic
+    - celery
+    - celery-with-redis
+
+  run:
+    - python
+    - setuptools
+    - flask
+    - sqlalchemy
+    - flask-sqlalchemy
+    - flask-security
+    - flask-testing
+    - py-bcrypt
+    - simplejson
+    - boto
+    - pyes
+    - sphinx
+    - sphinxcontrib-httpdomain
+    - python-ultramemcached
+    - fixture
+    - alembic
+    - celery
+    - celery-with-redis
+
+test:
+  # Python imports
+  imports:
+    - tahoe
+    - tahoe.models
+    - tahoe.models.mixins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lunarcorp.github.io/tahoe/
+  license: MIT License
+  summary: 'A Flask-based framework that handles the tedious things'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

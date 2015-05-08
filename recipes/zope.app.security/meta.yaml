@@ -1,0 +1,89 @@
+package:
+  name: zope.app.security
+  version: "3.7.5"
+
+source:
+  fn: zope.app.security-3.7.5.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.security/zope.app.security-3.7.5.tar.gz
+  md5: c7cec00f6d8379b93180faf6ffaa89ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.security = zope.app.security:main
+    #
+    # Would create an entry point called zope.app.security that calls zope.app.security.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.localpermission
+    - zope.app.pagetemplate
+    - zope.app.publisher
+    - zope.authentication
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.principalregistry
+    - zope.publisher >=3.12
+    - zope.security
+    - zope.securitypolicy
+    - zope.login
+
+  run:
+    - python
+    - setuptools
+    - zope.app.localpermission
+    - zope.app.pagetemplate
+    - zope.app.publisher
+    - zope.authentication
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.principalregistry
+    - zope.publisher >=3.12
+    - zope.security
+    - zope.securitypolicy
+    - zope.login
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.security
+    - zope.app.security.browser
+    - zope.app.security.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.security
+  license: Zope Public License
+  summary: 'ZMI Views For Zope3 Security Components'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

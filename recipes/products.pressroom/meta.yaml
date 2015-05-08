@@ -1,0 +1,67 @@
+package:
+  name: products.pressroom
+  version: "3.18"
+
+source:
+  fn: Products.PressRoom-3.18.zip
+  url: https://pypi.python.org/packages/source/P/Products.PressRoom/Products.PressRoom-3.18.zip
+  md5: 340693e77ccaa4cd0e11bc568c41fc6f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.pressroom = products.pressroom:main
+    #
+    # Would create an entry point called products.pressroom that calls products.pressroom.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PressRoom
+    - Products.PressRoom.Extensions
+    - Products.PressRoom.browser
+    - Products.PressRoom.content
+    - Products.PressRoom.interfaces
+    - Products.PressRoom.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/pressroom
+  license: GPL
+  summary: 'Allows users to instantly create a polished, professional press room, featuring press releases, press clips and press contacts.  Manage an online Press Room within your Plone site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

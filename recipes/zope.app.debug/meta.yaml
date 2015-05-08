@@ -1,0 +1,69 @@
+package:
+  name: zope.app.debug
+  version: "3.4.1"
+
+source:
+  fn: zope.app.debug-3.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.debug/zope.app.debug-3.4.1.tar.gz
+  md5: 1a9d349b14d91137b57da52a2b9d185f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.debug = zope.app.debug:main
+    #
+    # Would create an entry point called zope.app.debug that calls zope.app.debug.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.publisher
+    - zope.app.appsetup
+    - zope.app.publication
+
+  run:
+    - python
+    - setuptools
+    - zope.publisher
+    - zope.app.appsetup
+    - zope.app.publication
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.debug
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/zope.app.debug
+  license: Zope Public License
+  summary: 'Zope Debug Mode'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

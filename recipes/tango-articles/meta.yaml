@@ -1,0 +1,66 @@
+package:
+  name: tango-articles
+  version: "0.7.1"
+
+source:
+  fn: tango-articles-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tango-articles/tango-articles-0.7.1.tar.gz
+  md5: 34cbf4b41baa3ab2292d8a39f41d5a5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tango-articles = tango-articles:main
+    #
+    # Would create an entry point called tango-articles that calls tango-articles.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-twitter >=1.1
+    - tango-shared-core >=0.6
+
+  run:
+    - python
+    - python-twitter >=1.1
+    - tango-shared-core >=0.6
+
+test:
+  # Python imports
+  imports:
+    - articles
+    - articles.templatetags
+    - articles.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tBaxter/tango-articles
+  license: LICENSE.txt
+  summary: 'Reusable Django articles/blog content app. Can be used with or without Tango.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: django-kvisits
+  version: "0.0.1"
+
+source:
+  fn: django-kvisits-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-kvisits/django-kvisits-0.0.1.tar.gz
+  md5: a84d690161c9b43b559d0a0f36f2db83
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-kvisits = django-kvisits:main
+    #
+    # Would create an entry point called django-kvisits that calls django-kvisits.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - kvisits
+    - kvisits.counterhandlers
+    - kvisits.counterhandlers.dbcounterhandler
+    - kvisits.hashhandlers
+    - kvisits.ignorehandlers
+    - kvisits.loghandlers
+    - kvisits.loghandlers.dbloghandler
+    - kvisits.tests
+    - kvisits.uniqhandlers
+    - kvisits.uniqhandlers.dbuniqhandler
+    - testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kaleidos/django-kvisits
+  license: BSD License
+  summary: 'Visit counter for model objects and urls'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,61 @@
+package:
+  name: tailer
+  version: "0.3"
+
+source:
+  fn: tailer-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tailer/tailer-0.3.tar.gz
+  md5: 9d1fc073e48ca682786d50c077e823ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tailer = tailer:main
+    #
+    # Would create an entry point called tailer that calls tailer.main()
+
+    - pytail = tailer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - tailer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pytail --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/six8/pytailer
+  license: MIT License
+  summary: 'Python tail is a simple implementation of GNU tail and head.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

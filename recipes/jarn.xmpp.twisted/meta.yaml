@@ -1,0 +1,70 @@
+package:
+  name: jarn.xmpp.twisted
+  version: "0.1"
+
+source:
+  fn: jarn.xmpp.twisted-0.1.zip
+  url: https://pypi.python.org/packages/source/j/jarn.xmpp.twisted/jarn.xmpp.twisted-0.1.zip
+  md5: ee6f70e1a4101742a4a34f1b51968556
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jarn.xmpp.twisted = jarn.xmpp.twisted:main
+    #
+    # Would create an entry point called jarn.xmpp.twisted that calls jarn.xmpp.twisted.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - twisted
+    - wokkel >0.6.3
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - twisted
+    - wokkel >0.6.3
+
+test:
+  # Python imports
+  imports:
+    - jarn
+    - jarn.xmpp
+    - jarn.xmpp.twisted
+    - jarn.xmpp.twisted.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ggozad/jarn.xmpp.twisted
+  license: GPL
+  summary: 'Zope/Twisted integration for jarn.xmpp packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

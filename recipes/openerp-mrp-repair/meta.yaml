@@ -1,0 +1,68 @@
+package:
+  name: openerp-mrp-repair
+  version: "7.0.406"
+
+source:
+  fn: openerp-mrp-repair-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-mrp-repair/openerp-mrp-repair-7.0.406.tar.gz
+  md5: 0ffe85e4e77f66df36b5dc3f3ea4d52a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-mrp-repair = openerp-mrp-repair:main
+    #
+    # Would create an entry point called openerp-mrp-repair that calls openerp-mrp-repair.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-mrp
+    - openerp-sale
+    - openerp-account
+
+  run:
+    - python
+    - openerp-mrp
+    - openerp-sale
+    - openerp-account
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.mrp_repair
+    - openerp.addons.mrp_repair.report
+    - openerp.addons.mrp_repair.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Repairs Management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

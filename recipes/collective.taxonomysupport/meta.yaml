@@ -1,0 +1,74 @@
+package:
+  name: collective.taxonomysupport
+  version: "1.4.0"
+
+source:
+  fn: collective.taxonomysupport-1.4.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.taxonomysupport/collective.taxonomysupport-1.4.0.zip
+  md5: abae79fa3dfebdbd8b556a3991abedf3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.taxonomysupport = collective.taxonomysupport:main
+    #
+    # Would create an entry point called collective.taxonomysupport that calls collective.taxonomysupport.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - archetypes.schemaextender
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - archetypes.schemaextender
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.taxonomysupport
+    - collective.taxonomysupport.browser
+    - collective.taxonomysupport.content
+    - collective.taxonomysupport.interfaces
+    - collective.taxonomysupport.tests
+    - collective.taxonomysupport.upgrades
+    - collective.taxonomysupport.utility
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.taxonomysupport
+  license: GNU General Public License (GPL)
+  summary: 'Add support for taxonomies to Plone contents as a news tag-like field'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,89 @@
+package:
+  name: products.resourceregistries
+  version: "3.0.2"
+
+source:
+  fn: Products.ResourceRegistries-3.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.ResourceRegistries/Products.ResourceRegistries-3.0.2.tar.gz
+  md5: 51a82a5576b7e1375035bc7b6a2df663
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.resourceregistries = products.resourceregistries:main
+    #
+    # Would create an entry point called products.resourceregistries that calls products.resourceregistries.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component
+    - zope.interface
+    - zope.viewlet
+    - products.cmfcore
+    - plone.protect >=3.0.0a1
+    - products.genericsetup
+    - acquisition
+    - datetime
+    - zodb3
+    - zope2
+    - plone.app.registry
+
+  run:
+    - python
+    - setuptools
+    - zope.component
+    - zope.interface
+    - zope.viewlet
+    - products.cmfcore
+    - plone.protect >=3.0.0a1
+    - products.genericsetup
+    - acquisition
+    - datetime
+    - zodb3
+    - zope2
+    - plone.app.registry
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.ResourceRegistries
+    - Products.ResourceRegistries.browser
+    - Products.ResourceRegistries.exportimport
+    - Products.ResourceRegistries.interfaces
+    - Products.ResourceRegistries.tests
+    - Products.ResourceRegistries.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.ResourceRegistries
+  license: GNU General Public License (GPL)
+  summary: 'Registry for managing CSS and JS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

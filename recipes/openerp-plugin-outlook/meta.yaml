@@ -1,0 +1,66 @@
+package:
+  name: openerp-plugin-outlook
+  version: "7.0.406"
+
+source:
+  fn: openerp-plugin-outlook-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-plugin-outlook/openerp-plugin-outlook-7.0.406.tar.gz
+  md5: 854ce7d2dce9e8caf356f7f09a0f46fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-plugin-outlook = openerp-plugin-outlook:main
+    #
+    # Would create an entry point called openerp-plugin-outlook that calls openerp-plugin-outlook.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-core
+    - openerp-mail
+    - openerp-plugin
+
+  run:
+    - python
+    - openerp-core
+    - openerp-mail
+    - openerp-plugin
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.plugin_outlook
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com/
+  license: GNU Affero General Public License v3
+  summary: 'Outlook Plug-In'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

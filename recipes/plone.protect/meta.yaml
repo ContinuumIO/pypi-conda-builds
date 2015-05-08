@@ -1,0 +1,79 @@
+package:
+  name: plone.protect
+  version: "3.0.3"
+
+source:
+  fn: plone.protect-3.0.3.zip
+  url: https://pypi.python.org/packages/source/p/plone.protect/plone.protect-3.0.3.zip
+  md5: e5073bac5ca94bf35c8d1f9835eb585a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.protect = plone.protect:main
+    #
+    # Would create an entry point called plone.protect that calls plone.protect.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.keyring >=3.0dev
+    - zope.component
+    - zope.interface
+    - zope2
+    - plone.transformchain
+    - repoze.xmliter >=0.3
+    - five.globalrequest
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - plone.keyring >=3.0dev
+    - zope.component
+    - zope.interface
+    - zope2
+    - plone.transformchain
+    - repoze.xmliter >=0.3
+    - five.globalrequest
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.protect
+    - plone.protect.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.protect
+  license: BSD License
+  summary: 'Security for browser forms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

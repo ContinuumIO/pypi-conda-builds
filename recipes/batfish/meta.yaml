@@ -1,0 +1,72 @@
+package:
+  name: batfish
+  version: "0.0.2"
+
+source:
+  fn: batfish-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/batfish/batfish-0.0.2.tar.gz
+  md5: 7ad1f35a9604d5b180ca87dc189d2d7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - batfish = batfish:main
+    #
+    # Would create an entry point called batfish that calls batfish.main()
+
+    - batfish = batfish.cli:cli
+    - batfish-cli = batfish.cli:cli
+    - batfish-console = batfish.console:shell
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - click
+
+  run:
+    - python
+    - requests
+    - click
+
+test:
+  # Python imports
+  imports:
+    - batfish
+    - batfish.models
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - batfish --help
+    - batfish-cli --help
+    - batfish-console --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://batfish.readthedocs.org/
+  license: MIT License
+  summary: 'A DigitalOcean shell, API and CLI interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

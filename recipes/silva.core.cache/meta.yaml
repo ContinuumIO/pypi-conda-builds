@@ -1,0 +1,84 @@
+package:
+  name: silva.core.cache
+  version: "3.0.2"
+
+source:
+  fn: silva.core.cache-3.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.core.cache/silva.core.cache-3.0.2.tar.gz
+  md5: e271afb094408aff622c3ba6a660208b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.core.cache = silva.core.cache:main
+    #
+    # Would create an entry point called silva.core.cache that calls silva.core.cache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - beaker
+    - five.grok
+    - infrae.cache
+    - python-memcached
+    - setuptools
+    - silva.core.views
+    - zope.component
+    - zope.datetime
+    - zope.interface
+    - zope.publisher
+    - zope.session
+
+  run:
+    - python
+    - beaker
+    - five.grok
+    - infrae.cache
+    - python-memcached
+    - setuptools
+    - silva.core.views
+    - zope.component
+    - zope.datetime
+    - zope.interface
+    - zope.publisher
+    - zope.session
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.core
+    - silva.core.cache
+    - silva.core.cache.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.core.cache
+  license: Zope Public License
+  summary: 'Caching sub-system for Silva CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

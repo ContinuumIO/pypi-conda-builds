@@ -1,0 +1,64 @@
+package:
+  name: django-download-stats
+  version: "0.2"
+
+source:
+  fn: django-download-stats-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-download-stats/django-download-stats-0.2.tar.gz
+  md5: b6f529a42a54d27a23e6b8d90835977d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-download-stats = django-download-stats:main
+    #
+    # Would create an entry point called django-download-stats that calls django-download-stats.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - download_stats
+    - download_stats.migrations
+    - download_stats.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://git://github.com/bitmazk/django-download-stats.git#egg=download_stats
+  license: The MIT License
+  summary: 'A reusable Django app to track download statistis.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

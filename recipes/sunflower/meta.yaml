@@ -1,0 +1,89 @@
+package:
+  name: sunflower
+  version: "1.1.0"
+
+source:
+  fn: Sunflower-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/S/Sunflower/Sunflower-1.1.0.tar.gz
+  md5: ba21c8ce857ef05a5ac645a413064725
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sunflower = sunflower:main
+    #
+    # Would create an entry point called sunflower that calls sunflower.main()
+
+    - h5attr=sunflower.h5attr:main
+    - h5cat=sunflower.h5cat:main
+    - pwm2sfl=sunflower.pwm2sfl:main
+    - sunrecompose=sunflower.recompose:main
+    - sunflower=sunflower.simulator:main
+    - sunreport=sunflower.report:main
+    - sunsplit=sunflower.split:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - path >=2.2
+    - tables >=2.0.dev
+    - textinput >=0.1.1
+    - setuptools >=0.6c9
+    - numpy >=1.0.3
+
+  run:
+    - python
+    - setuptools
+    - path >=2.2
+    - tables >=2.0.dev
+    - textinput >=0.1.1
+    - setuptools >=0.6c9
+    - numpy >=1.0.3
+
+test:
+  # Python imports
+  imports:
+    - sunflower
+    - sunflower.data
+    - sunflower.data.jaspar
+    - sunflower.data.jaspar.core
+    - sunflower.driver
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - h5attr --help
+    - h5cat --help
+    - pwm2sfl --help
+    - sunrecompose --help
+    - sunflower --help
+    - sunreport --help
+    - sunsplit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ebi.ac.uk/~hoffman/software/sunflower/
+  license: all rights reserved
+  summary: 'model transcription factor binding to DNA'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

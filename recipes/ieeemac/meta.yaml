@@ -1,0 +1,64 @@
+package:
+  name: ieeemac
+  version: "0.3"
+
+source:
+  fn: ieeemac-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/ieeemac/ieeemac-0.3.tar.gz
+  md5: 87e3601777ae121ffff4462645c38c58
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ieeemac = ieeemac:main
+    #
+    # Would create an entry point called ieeemac that calls ieeemac.main()
+
+    - ieeemac  = ieeemac:main
+    - ieeemac-extract  = ieeemac.mac_extract:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ieeemac
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ieeemac --help
+    - ieeemac-extract --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT License
+  summary: 'Parse and convert MAC addresses'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

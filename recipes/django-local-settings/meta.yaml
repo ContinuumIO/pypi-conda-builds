@@ -1,0 +1,65 @@
+package:
+  name: django-local-settings
+  version: "1.0a2"
+
+source:
+  fn: django-local-settings-1.0a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-local-settings/django-local-settings-1.0a2.tar.gz
+  md5: 315ca12baab8d844a4b4b9a16a01de6b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-local-settings = django-local-settings:main
+    #
+    # Would create an entry point called django-local-settings that calls django-local-settings.main()
+
+    - make-local-settings=local_settings:make_local_settings
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  # Python imports
+  imports:
+    - local_settings
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - make-local-settings --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PSU-OIT-ARC/django-local-settings
+  license: UNKNOWN
+  summary: 'A system for dealing with local settings in Django projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

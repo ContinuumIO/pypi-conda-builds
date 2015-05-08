@@ -1,0 +1,83 @@
+package:
+  name: weblate
+  version: "2.2"
+
+source:
+  fn: Weblate-2.2.tar.gz
+  url: https://pypi.python.org/packages/source/W/Weblate/Weblate-2.2.tar.gz
+  md5: ea9f2210adb20bb0a1724c0d4ad093c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - weblate = weblate:main
+    #
+    # Would create an entry point called weblate that calls weblate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - weblate
+    - weblate.accounts
+    - weblate.accounts.management
+    - weblate.accounts.management.commands
+    - weblate.accounts.migrations
+    - weblate.accounts.south_migrations
+    - weblate.accounts.templatetags
+    - weblate.lang
+    - weblate.lang.management
+    - weblate.lang.management.commands
+    - weblate.lang.migrations
+    - weblate.lang.south_migrations
+    - weblate.trans
+    - weblate.trans.autofixes
+    - weblate.trans.checks
+    - weblate.trans.machine
+    - weblate.trans.management
+    - weblate.trans.management.commands
+    - weblate.trans.migrations
+    - weblate.trans.models
+    - weblate.trans.south_migrations
+    - weblate.trans.templatetags
+    - weblate.trans.tests
+    - weblate.trans.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://weblate.org/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'A web-based translation tool with tight version control integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

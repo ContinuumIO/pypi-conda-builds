@@ -1,0 +1,66 @@
+package:
+  name: boardgamegeek
+  version: "0.10.1"
+
+source:
+  fn: boardgamegeek-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/boardgamegeek/boardgamegeek-0.10.1.tar.gz
+  md5: 29f0f89821a6c7d7a4c04ece9e9c207b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boardgamegeek = boardgamegeek:main
+    #
+    # Would create an entry point called boardgamegeek that calls boardgamegeek.main()
+
+    - boardgamegeek = boardgamegeek.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.3.0
+    - requests-cache >=0.4.4
+
+  run:
+    - python
+    - requests >=2.3.0
+    - requests-cache >=0.4.4
+
+test:
+  # Python imports
+  imports:
+    - boardgamegeek
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boardgamegeek --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lcosmin/boardgamegeek
+  license: BSD License
+  summary: "A Python interface to boardgamegeek.com's API"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

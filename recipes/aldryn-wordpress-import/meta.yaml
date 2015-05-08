@@ -1,0 +1,79 @@
+package:
+  name: aldryn-wordpress-import
+  version: "1.0b10"
+
+source:
+  fn: aldryn-wordpress-import-1.0b10.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-wordpress-import/aldryn-wordpress-import-1.0b10.tar.gz
+  md5: 70f0bb5c41cf719f025f5fbcc639524c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-wordpress-import = aldryn-wordpress-import:main
+    #
+    # Would create an entry point called aldryn-wordpress-import that calls aldryn-wordpress-import.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5.5
+    - aldryn-blog
+    - beautifulsoup
+    - django-taggit
+    - django-filer
+    - lxml
+    - python-dateutil
+    - requests
+
+  run:
+    - python
+    - django >=1.5.5
+    - aldryn-blog
+    - beautifulsoup
+    - django-taggit
+    - django-filer
+    - lxml
+    - python-dateutil
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - aldryn_wordpress_import
+    - aldryn_wordpress_import.management
+    - aldryn_wordpress_import.management.commands
+    - aldryn_wordpress_import.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-wordpress-import
+  license: BSD License
+  summary: 'Wordpress import for aldryn-blog'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

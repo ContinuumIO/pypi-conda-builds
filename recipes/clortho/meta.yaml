@@ -1,0 +1,67 @@
+package:
+  name: clortho
+  version: "0.0.0"
+
+source:
+  fn: Clortho-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/C/Clortho/Clortho-0.0.0.tar.gz
+  md5: a49e853719f607491a0ca3f1fbdbc265
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clortho = clortho:main
+    #
+    # Would create an entry point called clortho that calls clortho.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - py-bcrypt
+    - pysqlite
+
+  run:
+    - python
+    - sqlalchemy
+    - py-bcrypt
+    - pysqlite
+
+test:
+  # Python imports
+  imports:
+    - clortho
+    - clortho.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shopwiki/clortho
+  license: Apache Software License
+  summary: 'Web Authentication with SQLAlchemy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

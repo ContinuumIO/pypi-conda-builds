@@ -1,0 +1,76 @@
+package:
+  name: zope.errorview
+  version: "0.11"
+
+source:
+  fn: zope.errorview-0.11.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.errorview/zope.errorview-0.11.tar.gz
+  md5: 7ad7e5404557bd7cfbd9126b7f2c067a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.errorview = zope.errorview:main
+    #
+    # Would create an entry point called zope.errorview that calls zope.errorview.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.publisher
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - zope.component
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.publisher
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.errorview
+    - zope.errorview.i18n
+    - zope.errorview.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.errorview
+  license: Zope Public License
+  summary: 'Basic HTTP and Browser exception views.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

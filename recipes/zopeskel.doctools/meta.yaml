@@ -1,0 +1,67 @@
+package:
+  name: zopeskel.doctools
+  version: "1.0"
+
+source:
+  fn: zopeskel.doctools-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zopeskel.doctools/zopeskel.doctools-1.0.tar.gz
+  md5: 8cf9ecf5a422759ca8368577255c0152
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopeskel.doctools = zopeskel.doctools:main
+    #
+    # Would create an entry point called zopeskel.doctools that calls zopeskel.doctools.main()
+
+    - pastegraph=zopeskel.doctools.graph:graph
+    - pastedoc=zopeskel.doctools.html_doc:make_html
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zopeskel
+
+  run:
+    - python
+    - zopeskel
+
+test:
+  # Python imports
+  imports:
+    - zopeskel
+    - zopeskel.doctools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pastegraph --help
+    - pastedoc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT License
+  summary: 'Tools for documenting ZopeSkel.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

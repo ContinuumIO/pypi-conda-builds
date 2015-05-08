@@ -1,0 +1,70 @@
+package:
+  name: aditam.server
+  version: "0.1"
+
+source:
+  fn: aditam.server-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/aditam.server/aditam.server-0.1.tar.gz
+  md5: 6660176d259139e6e9683474bf6baa0e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aditam.server = aditam.server:main
+    #
+    # Would create an entry point called aditam.server that calls aditam.server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyro >=0.7
+    - aditam.core >=0.1
+    - setuptools >=0.6c7
+
+  run:
+    - python
+    - pyro >=0.7
+    - aditam.core >=0.1
+    - setuptools >=0.6c7
+
+test:
+  # Python imports
+  imports:
+    - aditam
+    - aditam.server
+    - aditam.server.crontab
+    - aditam.server.network
+    - aditam.server.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.aditam.org/
+  license: GNU General Public License (GPL)
+  summary: 'Automated and DIstributed TAsk Manager server part.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

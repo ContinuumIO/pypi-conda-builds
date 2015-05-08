@@ -1,0 +1,66 @@
+package:
+  name: pystuck
+  version: "0.5"
+
+source:
+  fn: pystuck-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/p/pystuck/pystuck-0.5.tar.gz
+  md5: a651e1298d8ac9fa07abe87e469b2a22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pystuck = pystuck:main
+    #
+    # Would create an entry point called pystuck that calls pystuck.main()
+
+    - pystuck=pystuck:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rpyc ==3.2.3
+    - ipython
+
+  run:
+    - python
+    - rpyc ==3.2.3
+    - ipython
+
+test:
+  # Python imports
+  imports:
+    - pystuck
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pystuck --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alonho/pystuck
+  license: BSD License
+  summary: "\npystuck.py is a utility for analyzing stuck python programs (or just hardcore debugging).\n\nin order to debug a python program (hence, the debugee),\nadd this line anywhere at startup: import pystuck; pystuck.run_server().\n\nthis script is the client, once invoked it connects to the debuggee\nand prints the debugee's threads stack traces (good for most cases).\nin addition, it opens an ipython prompt with an rpyc connection that provides\naccess to the debuggee's modules (good for inspecting variables)."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

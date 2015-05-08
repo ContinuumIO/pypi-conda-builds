@@ -1,0 +1,67 @@
+package:
+  name: rwslib
+  version: "1.0.5"
+
+source:
+  fn: rwslib-1.0.5.zip
+  url: https://pypi.python.org/packages/source/r/rwslib/rwslib-1.0.5.zip
+  md5: 2f6ad5782d45c7b150b2aaba5bff7f0e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rwslib = rwslib:main
+    #
+    # Would create an entry point called rwslib that calls rwslib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - lxml
+    - httpretty
+
+  run:
+    - python
+    - requests
+    - lxml
+    - httpretty
+
+test:
+  # Python imports
+  imports:
+    - rwslib
+    - rwslib.rws_requests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Rave web services for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

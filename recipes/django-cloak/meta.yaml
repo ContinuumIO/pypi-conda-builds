@@ -1,0 +1,62 @@
+package:
+  name: django-cloak
+  version: "1.0.0"
+
+source:
+  fn: django-cloak-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cloak/django-cloak-1.0.0.tar.gz
+  md5: 0882f8b95b9f2ad22b4a6b1492954b50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cloak = django-cloak:main
+    #
+    # Would create an entry point called django-cloak that calls django-cloak.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cloak
+    - cloak.management
+    - cloak.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PSU-OIT-ARC/django-cloak
+  license: UNKNOWN
+  summary: 'App for Django to cloak as a user, or generate a login link'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

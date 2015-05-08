@@ -1,0 +1,67 @@
+package:
+  name: gentle
+  version: "0.1"
+
+source:
+  fn: Gentle-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/G/Gentle/Gentle-0.1.tar.gz
+  md5: f462041c87d5a804c6a3d7de87452d45
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gentle = gentle:main
+    #
+    # Would create an entry point called gentle that calls gentle.main()
+
+    - gt = gentle.main:gentleman
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - docopt
+
+  run:
+    - python
+    - fabric
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - gentle
+    - gentle.gt
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.dongwm.com
+  license: BSD License
+  summary: 'Gentle is a help you quickly submit code to the test environment tools.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

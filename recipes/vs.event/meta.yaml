@@ -1,0 +1,79 @@
+package:
+  name: vs.event
+  version: "0.3.1"
+
+source:
+  fn: vs.event-0.3.1.zip
+  url: https://pypi.python.org/packages/source/v/vs.event/vs.event-0.3.1.zip
+  md5: 87042d03b5dda111eb10f0f881155d72
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vs.event = vs.event:main
+    #
+    # Would create an entry point called vs.event that calls vs.event.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - dateable.chronos
+    - dateable.kalends
+    - collective.calendarwidget
+    - products.datagridfield
+    - zope.app.annotation
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - dateable.chronos
+    - dateable.kalends
+    - collective.calendarwidget
+    - products.datagridfield
+    - zope.app.annotation
+
+test:
+  # Python imports
+  imports:
+    - vs
+    - vs.event
+    - vs.event.browser
+    - vs.event.content
+    - vs.event.validators
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/vs.event
+  license: GPL
+  summary: 'An extended event content-type for Plone (and Plone4Artists calendar)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

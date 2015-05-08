@@ -1,0 +1,64 @@
+package:
+  name: django-linklist
+  version: "0.4"
+
+source:
+  fn: django-linklist-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-linklist/django-linklist-0.4.tar.gz
+  md5: aea2dc6523651a15354f2a3a8191ccc2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-linklist = django-linklist:main
+    #
+    # Would create an entry point called django-linklist that calls django-linklist.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - linklist
+    - linklist.migrations
+    - linklist.templatetags
+    - linklist.tests
+    - linklist.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-linklist
+  license: The MIT License
+  summary: 'Django app to render a list of links with some meta information and a screenshot.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

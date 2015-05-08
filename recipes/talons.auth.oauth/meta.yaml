@@ -1,0 +1,67 @@
+package:
+  name: talons.auth.oauth
+  version: "0.0.1"
+
+source:
+  fn: talons.auth.oauth-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/talons.auth.oauth/talons.auth.oauth-0.0.1.tar.gz
+  md5: 61e099675b65389c50b832119af05bef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - talons.auth.oauth = talons.auth.oauth:main
+    #
+    # Would create an entry point called talons.auth.oauth that calls talons.auth.oauth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - talons
+    - oauthlib
+
+  run:
+    - python
+    - talons
+    - oauthlib
+
+test:
+  # Python imports
+  imports:
+    - talons
+    - talons.auth
+    - talons.auth.oauth
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/swistakm/talons-oauth
+  license: BSD License
+  summary: 'OAuth 1.0 extension for Talons WSGI middleware library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

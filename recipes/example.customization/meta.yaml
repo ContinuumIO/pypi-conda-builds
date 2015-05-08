@@ -1,0 +1,69 @@
+package:
+  name: example.customization
+  version: "1.0b2"
+
+source:
+  fn: example.customization-1.0b2.tar.gz
+  url: https://pypi.python.org/packages/source/e/example.customization/example.customization-1.0b2.tar.gz
+  md5: 79d7756f20deded5bc9f13253f0bbd37
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - example.customization = example.customization:main
+    #
+    # Would create an entry point called example.customization that calls example.customization.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.portlets
+    - plone.browserlayer
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.portlets
+    - plone.browserlayer
+
+test:
+  # Python imports
+  imports:
+    - example
+    - example.customization
+    - example.customization.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/documentation/tutorial/customization-for-developers
+  license: GPL
+  summary: 'Examples of Plone 3 customization'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

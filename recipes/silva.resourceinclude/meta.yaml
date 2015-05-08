@@ -1,0 +1,103 @@
+package:
+  name: silva.resourceinclude
+  version: "2.2.1"
+
+source:
+  fn: silva.resourceinclude-2.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.resourceinclude/silva.resourceinclude-2.2.1.tar.gz
+  md5: 90f9989b3d8fd44c4d6ff8c25156998b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.resourceinclude = silva.resourceinclude:main
+    #
+    # Would create an entry point called silva.resourceinclude that calls silva.resourceinclude.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - chameleon
+    - cssmin
+    - five.grok
+    - martian
+    - setuptools
+    - silva.core.cache
+    - silva.core.conf
+    - silva.core.views
+    - zope.component
+    - zope.configuration
+    - zope.datetime
+    - zope.interface
+    - zope.processlifetime
+    - zope.publisher
+    - zope.schema
+    - zope.testing
+    - zope.traversing
+
+  run:
+    - python
+    - chameleon
+    - cssmin
+    - five.grok
+    - martian
+    - setuptools
+    - silva.core.cache
+    - silva.core.conf
+    - silva.core.views
+    - zope.component
+    - zope.configuration
+    - zope.datetime
+    - zope.interface
+    - zope.processlifetime
+    - zope.publisher
+    - zope.schema
+    - zope.testing
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.resourceinclude
+    - silva.resourceinclude.martiansupport
+    - silva.resourceinclude.tests
+    - silva.resourceinclude.tests.collector
+    - silva.resourceinclude.tests.collector.collector_fixtures
+    - silva.resourceinclude.tests.directive
+    - silva.resourceinclude.tests.merging
+    - silva.resourceinclude.tests.resource
+    - silva.resourceinclude.tests.resource.grok_fixture
+    - silva.resourceinclude.tests.resource.requests_fixture
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.resourceinclude
+  license: Zope Public License
+  summary: 'z3c.resourceinclude like support for Silva'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

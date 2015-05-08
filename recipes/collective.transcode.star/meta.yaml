@@ -1,0 +1,76 @@
+package:
+  name: collective.transcode.star
+  version: "0.21"
+
+source:
+  fn: collective.transcode.star-0.21.zip
+  url: https://pypi.python.org/packages/source/c/collective.transcode.star/collective.transcode.star-0.21.zip
+  md5: 53884825abcf38f74d70731f0a3bf997
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.transcode.star = collective.transcode.star:main
+    #
+    # Would create an entry point called collective.transcode.star that calls collective.transcode.star.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.registry
+    - plone.app.async
+    - five.intid
+    - collective.mediaelementjs
+    - pycrypto
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.registry
+    - plone.app.async
+    - five.intid
+    - collective.mediaelementjs
+    - pycrypto
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.transcode
+    - collective.transcode.star
+    - collective.transcode.star.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plumi/collective.transcode.star
+  license: GNU General Public License (GPL)
+  summary: 'Transcoding support for Plone video files, using collective.transcode.daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

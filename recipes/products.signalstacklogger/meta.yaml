@@ -1,0 +1,64 @@
+package:
+  name: products.signalstacklogger
+  version: "0.9"
+
+source:
+  fn: Products.signalstackLogger-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.signalstackLogger/Products.signalstackLogger-0.9.tar.gz
+  md5: 996eaf6e640e764f652c9317ffb07e97
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.signalstacklogger = products.signalstacklogger:main
+    #
+    # Would create an entry point called products.signalstacklogger that calls products.signalstacklogger.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - z3c.deadlockdebugger
+
+  run:
+    - python
+    - setuptools
+    - z3c.deadlockdebugger
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.signalstackLogger
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'Output zope stacktrace on signal using logging facility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

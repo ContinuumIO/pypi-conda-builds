@@ -1,0 +1,63 @@
+package:
+  name: django-nose-qunit
+  version: "1.5.5"
+
+source:
+  fn: django-nose-qunit-1.5.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nose-qunit/django-nose-qunit-1.5.5.tar.gz
+  md5: c339e462bce5702a7d7fc51d76aaea08
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nose-qunit = django-nose-qunit:main
+    #
+    # Would create an entry point called django-nose-qunit that calls django-nose-qunit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sbo-selenium >=0.4.0
+
+  run:
+    - python
+    - setuptools
+    - sbo-selenium >=0.4.0
+
+test:
+  # Python imports
+  imports:
+    - django_nose_qunit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/safarijv/django-qunit-ci
+  license: BSD License
+  summary: 'Integrate QUnit JavaScript tests into a Django test suite via nose'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,109 @@
+package:
+  name: typhoonae
+  version: "0.2.0"
+
+source:
+  fn: typhoonae-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/typhoonae/typhoonae-0.2.0.tar.gz
+  md5: cf1cdf9660d9fb7373f532acdce304da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - typhoonae = typhoonae:main
+    #
+    # Would create an entry point called typhoonae that calls typhoonae.main()
+
+    - appcfg_service=typhoonae.appcfg.service:main
+    - appserver=typhoonae.fcgiserver:main
+    - apptool=typhoonae.apptool:main
+    - deferred_taskworker=typhoonae.taskqueue.deferred_worker:main
+    - ejabberdauth=typhoonae.xmpp.ejabberdauth:main
+    - runtask=typhoonae.runtask:main
+    - taskworker=typhoonae.taskqueue.worker:main
+    - websocket=typhoonae.websocket.server:main
+    - xmpp_http_dispatch=typhoonae.xmpp.xmpp_http_dispatch:main
+    - imap_http_dispatch=typhoonae.mail.imap_http_dispatch:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fcgiapp
+    - setuptools
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - fcgiapp
+    - setuptools
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - typhoonae
+    - typhoonae.appcfg
+    - typhoonae.blobstore
+    - typhoonae.blobstore.tests
+    - typhoonae.channel
+    - typhoonae.channel.tests
+    - typhoonae.handlers
+    - typhoonae.handlers.tests
+    - typhoonae.mail
+    - typhoonae.memcache
+    - typhoonae.memcache.tests
+    - typhoonae.mongodb
+    - typhoonae.mongodb.tests
+    - typhoonae.mysql
+    - typhoonae.mysql.tests
+    - typhoonae.taskqueue
+    - typhoonae.taskqueue.tests
+    - typhoonae.tests
+    - typhoonae.tests.sample
+    - typhoonae.websocket
+    - typhoonae.websocket.tests
+    - typhoonae.xmpp
+    - typhoonae.xmpp.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - appcfg_service --help
+    - appserver --help
+    - apptool --help
+    - deferred_taskworker --help
+    - ejabberdauth --help
+    - runtask --help
+    - taskworker --help
+    - websocket --help
+    - xmpp_http_dispatch --help
+    - imap_http_dispatch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/typhoonae
+  license: Apache Software License
+  summary: 'Typhoon App Engine.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

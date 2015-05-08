@@ -1,0 +1,69 @@
+package:
+  name: products.statusmessages
+  version: "4.0"
+
+source:
+  fn: Products.statusmessages-4.0.zip
+  url: https://pypi.python.org/packages/source/P/Products.statusmessages/Products.statusmessages-4.0.zip
+  md5: 265324b0a58a032dd0ed038103ed0473
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.statusmessages = products.statusmessages:main
+    #
+    # Would create an entry point called products.statusmessages that calls products.statusmessages.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.i18n
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.i18n
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.statusmessages
+    - Products.statusmessages.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.statusmessages
+  license: BSD License
+  summary: 'statusmessages provides an easy way of handling internationalized status messages managed via an BrowserRequest adapter storing status messages in client-side cookies.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

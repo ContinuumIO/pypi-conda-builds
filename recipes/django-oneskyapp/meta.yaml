@@ -1,0 +1,69 @@
+package:
+  name: django-oneskyapp
+  version: "0.1.5"
+
+source:
+  fn: django-oneskyapp-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oneskyapp/django-oneskyapp-0.1.5.tar.gz
+  md5: 6384ac3f3fa82c36f418c5ace76d8992
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oneskyapp = django-oneskyapp:main
+    #
+    # Would create an entry point called django-oneskyapp that calls django-oneskyapp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - polib >=1.0
+    - requests >=2.0
+
+  run:
+    - python
+    - django >=1.4
+    - polib >=1.0
+    - requests >=2.0
+
+test:
+  # Python imports
+  imports:
+    - django_oneskyapp
+    - django_oneskyapp.management
+    - django_oneskyapp.management.commands
+    - testapp
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pista329/django-oneskyapp
+  license: MIT
+  summary: 'OneSkyApp translation service management commands for your django app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

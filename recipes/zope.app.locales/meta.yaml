@@ -1,0 +1,71 @@
+package:
+  name: zope.app.locales
+  version: "3.7.4"
+
+source:
+  fn: zope.app.locales-3.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.locales/zope.app.locales-3.7.4.tar.gz
+  md5: 13daace877d25f5a7e6e03d48e93abf2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.locales = zope.app.locales:main
+    #
+    # Would create an entry point called zope.app.locales that calls zope.app.locales.main()
+
+    - i18nextract=zope.app.locales.extract:main [extract]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.i18nmessageid
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.i18nmessageid
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.locales
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - i18nextract --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.locales
+  license: Zope Public License
+  summary: 'Zope locale extraction and management utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

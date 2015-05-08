@@ -1,0 +1,81 @@
+package:
+  name: django-fancy-apps
+  version: "0.1.7b5"
+
+source:
+  fn: django-fancy-apps-0.1.7b5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fancy-apps/django-fancy-apps-0.1.7b5.tar.gz
+  md5: 329e3bee057c630637c0566aa3127f19
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fancy-apps = django-fancy-apps:main
+    #
+    # Would create an entry point called django-fancy-apps that calls django-fancy-apps.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-taggit >=0.8
+    - django-mptt >=0.5.2
+
+  run:
+    - python
+    - django >=1.4
+    - django-taggit >=0.8
+    - django-mptt >=0.5.2
+
+test:
+  # Python imports
+  imports:
+    - fancy
+    - fancy.blog
+    - fancy.blog.management
+    - fancy.blog.management.commands
+    - fancy.events
+    - fancy.gallery
+    - fancy.gallery.templatetags
+    - fancy.mailform
+    - fancy.mailform.templatetags
+    - fancy.pages
+    - fancy.pages.management
+    - fancy.pages.management.commands
+    - fancy.pages.templatetags
+    - fancy.products
+    - fancy.utils
+    - fancy.utils.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/muratcorlu/django-fancy-apps
+  license: MIT
+  summary: 'Django Fancy Apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

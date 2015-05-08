@@ -1,0 +1,73 @@
+package:
+  name: django-massmedia
+  version: "1.0.1"
+
+source:
+  fn: django-massmedia-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-massmedia/django-massmedia-1.0.1.tar.gz
+  md5: 4735a3b15ba5f287bceb62b3751abfd0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-massmedia = django-massmedia:main
+    #
+    # Would create an entry point called django-massmedia that calls django-massmedia.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gdata
+    - iptcinfo
+    - hachoir-metadata
+    - hachoir-core
+    - hachoir-parser
+
+  run:
+    - python
+    - gdata
+    - iptcinfo
+    - hachoir-metadata
+    - hachoir-core
+    - hachoir-parser
+
+test:
+  # Python imports
+  imports:
+    - massmedia
+    - massmedia.management
+    - massmedia.management.commands
+    - massmedia.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/washingtontimes/django-massmedia
+  license: UNKNOWN
+  summary: 'Allows for site staff can upload and edit the media files through the site, and the filesystem is maintained in the background.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

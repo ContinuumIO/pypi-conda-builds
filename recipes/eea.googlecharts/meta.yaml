@@ -1,0 +1,87 @@
+package:
+  name: eea.googlecharts
+  version: "13.2"
+
+source:
+  fn: eea.googlecharts-13.2.zip
+  url: https://pypi.python.org/packages/source/e/eea.googlecharts/eea.googlecharts-13.2.zip
+  md5: 6e190a89f581d18106b9419b5e3c68a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.googlecharts = eea.googlecharts:main
+    #
+    # Would create an entry point called eea.googlecharts that calls eea.googlecharts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - lxml
+    - eea.converter >=6.0
+    - eea.app.visualization >6.9
+    - eea.icons
+    - collective.js.underscore
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - lxml
+    - eea.converter >=6.0
+    - eea.app.visualization >6.9
+    - eea.icons
+    - collective.js.underscore
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.googlecharts
+    - eea.googlecharts.browser
+    - eea.googlecharts.browser.res
+    - eea.googlecharts.cache
+    - eea.googlecharts.controlpanel
+    - eea.googlecharts.events
+    - eea.googlecharts.tests
+    - eea.googlecharts.upgrades
+    - eea.googlecharts.views
+    - eea.googlecharts.widgets
+    - eea.googlecharts.widgets.chart
+    - eea.googlecharts.widgets.multiples
+    - eea.googlecharts.widgets.portlet
+    - eea.googlecharts.widgets.textarea
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.com/docs/eea.googlecharts
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'Configurator for GoogleCharts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

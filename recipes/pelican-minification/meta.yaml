@@ -1,0 +1,66 @@
+package:
+  name: pelican-minification
+  version: "0.1.1"
+
+source:
+  fn: pelican-minification-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pelican-minification/pelican-minification-0.1.1.tar.gz
+  md5: 05a86c131ed258ce8d329221152c0899
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pelican-minification = pelican-minification:main
+    #
+    # Would create an entry point called pelican-minification that calls pelican-minification.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - csscompressor >=0.9.1
+    - htmlmin >=0.1.5
+    - pelican
+
+  run:
+    - python
+    - csscompressor >=0.9.1
+    - htmlmin >=0.1.5
+    - pelican
+
+test:
+  # Python imports
+  imports:
+    - minification
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dArignac/pelican-minification
+  license: MIT License
+  summary: 'Minifies HTML, CSS and JS of generated Pelican content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

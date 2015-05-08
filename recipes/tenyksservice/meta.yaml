@@ -1,0 +1,76 @@
+package:
+  name: tenyksservice
+  version: "1.8"
+
+source:
+  fn: tenyksservice-1.8.tar.gz
+  url: https://pypi.python.org/packages/source/t/tenyksservice/tenyksservice-1.8.tar.gz
+  md5: 50e5546d8289a57deb49973f0d356c16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tenyksservice = tenyksservice:main
+    #
+    # Would create an entry point called tenyksservice that calls tenyksservice.main()
+
+    - tenyks-service-mkconfig = tenyksservice.config:make_config
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - redis
+    - nose
+    - unittest2
+    - clint
+    - peewee
+    - jinja2
+
+  run:
+    - python
+    - gevent
+    - redis
+    - nose
+    - unittest2
+    - clint
+    - peewee
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - tenyksservice
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tenyks-service-mkconfig --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kyleterry/tenyks-service
+  license: LICENSE
+  summary: 'Tenyks service class for making fun things'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

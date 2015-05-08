@@ -1,0 +1,71 @@
+package:
+  name: trytond_purchase_invoice_line_standalone
+  version: "3.6.0"
+
+source:
+  fn: trytond_purchase_invoice_line_standalone-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_purchase_invoice_line_standalone/trytond_purchase_invoice_line_standalone-3.6.0.tar.gz
+  md5: 7b3f11c05fd2f2f4ef4e67ce5e8161ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_purchase_invoice_line_standalone = trytond_purchase_invoice_line_standalone:main
+    #
+    # Would create an entry point called trytond_purchase_invoice_line_standalone that calls trytond_purchase_invoice_line_standalone.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-sql
+    - trytond_account_invoice_line_standalone >=3.6,<3.7
+    - trytond_purchase >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - python-sql
+    - trytond_account_invoice_line_standalone >=3.6,<3.7
+    - trytond_purchase >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.purchase_invoice_line_standalone
+    - trytond.modules.purchase_invoice_line_standalone.tests
+    - trytond_purchase_invoice_line_standalone
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module for standalone invoice line from purchase'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

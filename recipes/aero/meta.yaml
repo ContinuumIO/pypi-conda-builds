@@ -1,0 +1,73 @@
+package:
+  name: aero
+  version: "0.3.6a"
+
+source:
+  fn: aero-0.3.6a.tar.gz
+  url: https://pypi.python.org/packages/source/a/aero/aero-0.3.6a.tar.gz
+  md5: b3259b2170c4f33545f1a74984851e8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aero = aero:main
+    #
+    # Would create an entry point called aero that calls aero.main()
+
+    - aero = aero.console:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - cyrusbus ==0.1.0
+
+  run:
+    - python
+    - tornado
+    - cyrusbus ==0.1.0
+
+test:
+  # Python imports
+  imports:
+    - aero
+    - aero.apps
+    - aero.apps.healthcheck
+    - vows
+    - vows.console_app
+    - vows.fixtures
+    - vows.fixtures.apps
+    - vows.fixtures.apps.staticapp
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aero --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://heynemann.github.com/aero/
+  license: MIT License
+  summary: 'aero adds django-like apps support to tornado and automates common actions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

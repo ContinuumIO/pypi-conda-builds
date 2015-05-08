@@ -1,0 +1,179 @@
+package:
+  name: mediagoblin
+  version: "0.7.0"
+
+source:
+  fn: mediagoblin-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mediagoblin/mediagoblin-0.7.0.tar.gz
+  md5: 2762942543d9cf4b118f8821839a5b50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mediagoblin = mediagoblin:main
+    #
+    # Would create an entry point called mediagoblin that calls mediagoblin.main()
+
+    - gmg=mediagoblin.gmg_commands:main_cli
+    - pybabel=mediagoblin.babel.messages.frontend:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - pastescript
+    - wtforms
+    - py-bcrypt
+    - pytest >=2.3.1
+    - pytest-xdist
+    - werkzeug >=0.7
+    - celery >=3.0
+    - kombu
+    - jinja2
+    - sphinx
+    - babel >=1.0
+    - argparse
+    - webtest <2
+    - configobj
+    - markdown
+    - sqlalchemy <0.9.0,>0.8.0
+    - sqlalchemy-migrate <0.8
+    - mock
+    - itsdangerous
+    - pytz
+    - six >=1.4.1
+    - oauthlib
+    - unidecode
+    - jsonschema
+    - requests
+    - pyld
+    - exifread
+    - six ==1.5.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - pastescript
+    - wtforms
+    - py-bcrypt
+    - pytest >=2.3.1
+    - pytest-xdist
+    - werkzeug >=0.7
+    - celery >=3.0
+    - kombu
+    - jinja2
+    - sphinx
+    - babel >=1.0
+    - argparse
+    - webtest <2
+    - configobj
+    - markdown
+    - sqlalchemy <0.9.0,>0.8.0
+    - sqlalchemy-migrate <0.8
+    - mock
+    - itsdangerous
+    - pytz
+    - six >=1.4.1
+    - oauthlib
+    - unidecode
+    - jsonschema
+    - requests
+    - pyld
+    - exifread
+    - six ==1.5.2
+
+test:
+  # Python imports
+  imports:
+    - mediagoblin
+    - mediagoblin.auth
+    - mediagoblin.db
+    - mediagoblin.edit
+    - mediagoblin.federation
+    - mediagoblin.gmg_commands
+    - mediagoblin.init
+    - mediagoblin.init.celery
+    - mediagoblin.init.plugins
+    - mediagoblin.listings
+    - mediagoblin.meddleware
+    - mediagoblin.media_types
+    - mediagoblin.media_types.ascii
+    - mediagoblin.media_types.audio
+    - mediagoblin.media_types.blog
+    - mediagoblin.media_types.image
+    - mediagoblin.media_types.pdf
+    - mediagoblin.media_types.raw_image
+    - mediagoblin.media_types.stl
+    - mediagoblin.media_types.video
+    - mediagoblin.moderation
+    - mediagoblin.notifications
+    - mediagoblin.oauth
+    - mediagoblin.oauth.tools
+    - mediagoblin.plugins
+    - mediagoblin.plugins.api
+    - mediagoblin.plugins.archivalook
+    - mediagoblin.plugins.basic_auth
+    - mediagoblin.plugins.flatpagesfile
+    - mediagoblin.plugins.geolocation
+    - mediagoblin.plugins.httpapiauth
+    - mediagoblin.plugins.ldap
+    - mediagoblin.plugins.metadata_display
+    - mediagoblin.plugins.oauth
+    - mediagoblin.plugins.openid
+    - mediagoblin.plugins.persona
+    - mediagoblin.plugins.piwigo
+    - mediagoblin.plugins.raven
+    - mediagoblin.plugins.sampleplugin
+    - mediagoblin.plugins.trim_whitespace
+    - mediagoblin.processing
+    - mediagoblin.storage
+    - mediagoblin.submit
+    - mediagoblin.tests
+    - mediagoblin.tests.auth_configs
+    - mediagoblin.tests.testplugins
+    - mediagoblin.tests.testplugins.callables1
+    - mediagoblin.tests.testplugins.callables2
+    - mediagoblin.tests.testplugins.callables3
+    - mediagoblin.tests.testplugins.modify_context
+    - mediagoblin.tests.testplugins.pluginspec
+    - mediagoblin.tests.testplugins.staticstuff
+    - mediagoblin.tools
+    - mediagoblin.tools.extlib
+    - mediagoblin.user_pages
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gmg --help
+    - pybabel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mediagoblin.org/
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

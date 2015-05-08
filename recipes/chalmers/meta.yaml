@@ -1,0 +1,78 @@
+package:
+  name: chalmers
+  version: "0.7.2"
+
+source:
+  fn: chalmers-0.7.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/chalmers/chalmers-0.7.2.tar.gz
+  md5: 7630436c7ade1c9c46dee4f8412b2a8f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chalmers = chalmers:main
+    #
+    # Would create an entry point called chalmers that calls chalmers.main()
+
+    - chalmers = chalmers.scripts.chalmers_main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psutil >=2.1.3
+    - clyent
+    - pyyaml
+
+  run:
+    - python
+    - psutil >=2.1.3
+    - clyent
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - chalmers
+    - chalmers.commands
+    - chalmers.program
+    - chalmers.program.tests
+    - chalmers.scripts
+    - chalmers.service
+    - chalmers.service.tests
+    - chalmers.tests
+    - chalmers.utils
+    - chalmers.utils.tests
+    - chalmers.windows
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chalmers --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/binstar/chalmers
+  license: UNKNOWN
+  summary: 'Process Control System'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

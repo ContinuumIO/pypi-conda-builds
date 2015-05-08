@@ -1,0 +1,68 @@
+package:
+  name: colorview2d
+  version: "0.54"
+
+source:
+  fn: colorview2d-0.54.tar.gz
+  url: https://pypi.python.org/packages/source/c/colorview2d/colorview2d-0.54.tar.gz
+  md5: aedc179053f8c1aacdd15c52ea5615e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - colorview2d = colorview2d:main
+    #
+    # Would create an entry point called colorview2d that calls colorview2d.main()
+
+    - colorview2d = colorview2d.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pydispatcher
+    - yapsy
+    - pyyaml
+
+  run:
+    - python
+    - pydispatcher
+    - yapsy
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - colorview2d
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - colorview2d --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://sourceforge.net/p/colorview2d
+  license: UNKNOWN
+  summary: '2d color plotting tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

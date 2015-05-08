@@ -1,0 +1,63 @@
+package:
+  name: rcsb_browser
+  version: "0.1.0"
+
+source:
+  fn: rcsb_browser-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/rcsb_browser/rcsb_browser-0.1.0.tar.gz
+  md5: 327b7983727f13608d7e72bb8bb123d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rcsb_browser = rcsb_browser:main
+    #
+    # Would create an entry point called rcsb_browser that calls rcsb_browser.main()
+
+    - rcsb_browser = browser.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - browser
+    - rcsb_browser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rcsb_browser --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dilawar/rcsb_browser
+  license: MIT License
+  summary: 'Command line browser for RCSB database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

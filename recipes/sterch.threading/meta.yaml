@@ -1,0 +1,73 @@
+package:
+  name: sterch.threading
+  version: "0.1.2"
+
+source:
+  fn: sterch.threading-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sterch.threading/sterch.threading-0.1.2.tar.gz
+  md5: bce565bfd7baf5c030ac0f4566007561
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sterch.threading = sterch.threading:main
+    #
+    # Would create an entry point called sterch.threading that calls sterch.threading.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.schema
+    - zope.configuration
+    - zope.component
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.schema
+    - zope.configuration
+    - zope.component
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - sterch
+    - sterch.threading
+    - sterch.threading.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.sterch.net/sterch.threading
+  license: Zope Public License
+  summary: 'Provides interfaces and ZCML directives for standard threading library objects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

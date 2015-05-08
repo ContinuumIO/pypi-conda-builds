@@ -1,0 +1,71 @@
+package:
+  name: collective.testcaselayer
+  version: "1.6"
+
+source:
+  fn: collective.testcaselayer-1.6.zip
+  url: https://pypi.python.org/packages/source/c/collective.testcaselayer/collective.testcaselayer-1.6.zip
+  md5: fd8387d6b6ebd8645ec92f5f1e512450
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.testcaselayer = collective.testcaselayer:main
+    #
+    # Would create an entry point called collective.testcaselayer that calls collective.testcaselayer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing >=3.6dev
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing >=3.6dev
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.testcaselayer
+    - collective.testcaselayer.testing
+    - collective.testcaselayer.testing.CollectiveTestCaseLayerTesting
+    - collective.testcaselayer.testing.CollectiveTestCaseLayerTesting.Extensions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.testcaselayer
+  license: GPL
+  summary: 'Use test cases as zope.testing layers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

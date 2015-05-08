@@ -1,0 +1,66 @@
+package:
+  name: django-phpbb3
+  version: "0.3.0"
+
+source:
+  fn: django-phpBB3-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-phpBB3/django-phpBB3-0.3.0.tar.gz
+  md5: 049d3f15bc7995d528db342246fed9a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-phpbb3 = django-phpbb3:main
+    #
+    # Would create an entry point called django-phpbb3 that calls django-phpbb3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - django_phpBB3
+    - django_phpBB3.management
+    - django_phpBB3.management.commands
+    - django_phpBB3_project
+    - phpBB2DjangoBB_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jedie/django-phpBB3/
+  license: GNU General Public License (GPL)
+  summary: 'django database models of phpBB3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

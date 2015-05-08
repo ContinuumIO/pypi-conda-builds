@@ -1,0 +1,64 @@
+package:
+  name: lazycat
+  version: "3.11"
+
+source:
+  fn: lazycat-3.11.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazycat/lazycat-3.11.tar.gz
+  md5: 4a608d7bb858bb833ce82414e84b2e54
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazycat = lazycat:main
+    #
+    # Would create an entry point called lazycat that calls lazycat.main()
+
+    - lazycat = lazycat:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygame
+
+  run:
+    - python
+    - pygame
+
+test:
+  # Python imports
+  imports:
+    - lazycat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lazycat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/moggers87/lazycat
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'A simple game of cat and mouse'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: plex.activity.py
+  version: "0.6.2"
+
+source:
+  fn: plex.activity.py-0.6.2.zip
+  url: https://pypi.python.org/packages/source/p/plex.activity.py/plex.activity.py-0.6.2.zip
+  md5: 13cf64048104dee9d0aae485892c3ec8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plex.activity.py = plex.activity.py:main
+    #
+    # Would create an entry point called plex.activity.py that calls plex.activity.py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plex.py
+    - plex.metadata.py
+    - asio
+    - pyemitter
+    - websocket-client
+
+  run:
+    - python
+    - plex.py
+    - plex.metadata.py
+    - asio
+    - pyemitter
+    - websocket-client
+
+test:
+  # Python imports
+  imports:
+    - plex_activity
+    - plex_activity.core
+    - plex_activity.sources
+    - plex_activity.sources.s_logging
+    - plex_activity.sources.s_logging.parsers
+    - plex_activity.sources.s_websocket
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fuzeman/plex.activity.py
+  license: MIT
+  summary: 'Real-time activity extension for plex.py'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

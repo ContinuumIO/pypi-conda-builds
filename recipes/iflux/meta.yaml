@@ -1,0 +1,76 @@
+package:
+  name: iflux
+  version: "0.0.117"
+
+source:
+  fn: iFlux-0.0.117.tar.gz
+  url: https://pypi.python.org/packages/source/i/iFlux/iFlux-0.0.117.tar.gz
+  md5: e1b0f7180ea2e63317e68fe78f7a2e6c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iflux = iflux:main
+    #
+    # Would create an entry point called iflux that calls iflux.main()
+
+    - iflux = iflux.core.scaffolding:run_from_command_line
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3.2
+    - redis >=2.9.1
+    - sqlalchemy ==0.9.4
+
+  run:
+    - python
+    - tornado >=3.2
+    - redis >=2.9.1
+    - sqlalchemy ==0.9.4
+
+test:
+  # Python imports
+  imports:
+    - iflux
+    - iflux.core
+    - iflux.core.data
+    - iflux.core.scaffolding
+    - iflux.core.session
+    - iflux.modules
+    - iflux.modules.admin
+    - iflux.modules.iflux
+    - iflux.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iflux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.candango.org/p/iflux
+  license: Apache Software License
+  summary: 'iFlux is a python web framework based on Tornado web framework/server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

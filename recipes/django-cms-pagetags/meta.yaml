@@ -1,0 +1,63 @@
+package:
+  name: django-cms-pagetags
+  version: "0.1.6"
+
+source:
+  fn: django-cms-pagetags-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cms-pagetags/django-cms-pagetags-0.1.6.tar.gz
+  md5: d99edfe79f32e012a09203719faf272e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cms-pagetags = django-cms-pagetags:main
+    #
+    # Would create an entry point called django-cms-pagetags that calls django-cms-pagetags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-tagging ==0.3.1
+
+  run:
+    - python
+    - django-tagging ==0.3.1
+
+test:
+  # Python imports
+  imports:
+    - pagetags
+    - pagetags.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pbs/django-cms-pagetags
+  license: BSD License
+  summary: 'Tag fileds for CMS pages. Works with django-tagging or django-tagging-ng.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

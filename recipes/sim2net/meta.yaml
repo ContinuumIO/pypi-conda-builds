@@ -1,0 +1,71 @@
+package:
+  name: sim2net
+  version: "3.1.2"
+
+source:
+  fn: sim2net-3.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sim2net/sim2net-3.1.2.tar.gz
+  md5: 801e740406d6f8897ad8ef1ef8bcdd28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sim2net = sim2net:main
+    #
+    # Would create an entry point called sim2net that calls sim2net.main()
+
+    - sim2net=sim2net.cli.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sim2net
+    - sim2net.area
+    - sim2net.cli
+    - sim2net.failure
+    - sim2net.mobility
+    - sim2net.packet_loss
+    - sim2net.placement
+    - sim2net.propagation
+    - sim2net.speed
+    - sim2net.utility
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sim2net --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mkalewski/sim2net
+  license: MIT License
+  summary: 'Simple Network Simulator (sim2net) is a discrete event simulator of mobile ad hoc networks (MANETs).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

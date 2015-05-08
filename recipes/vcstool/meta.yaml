@@ -1,0 +1,99 @@
+package:
+  name: vcstool
+  version: "0.1.13"
+
+source:
+  fn: vcstool-0.1.13.tar.gz
+  url: https://pypi.python.org/packages/source/v/vcstool/vcstool-0.1.13.tar.gz
+  md5: 72dea5f1a3f493bc59c273baa0b6a956
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vcstool = vcstool:main
+    #
+    # Would create an entry point called vcstool that calls vcstool.main()
+
+    - vcs = vcstool.commands.vcs:main
+    - vcs-branch = vcstool.commands.branch:main
+    - vcs-bzr = vcstool.commands.custom:bzr_main
+    - vcs-custom = vcstool.commands.custom:main
+    - vcs-diff = vcstool.commands.diff:main
+    - vcs-export = vcstool.commands.export:main
+    - vcs-git = vcstool.commands.custom:git_main
+    - vcs-help = vcstool.commands.help:main
+    - vcs-hg = vcstool.commands.custom:hg_main
+    - vcs-import = vcstool.commands.import_:main
+    - vcs-log = vcstool.commands.log:main
+    - vcs-pull = vcstool.commands.pull:main
+    - vcs-push = vcstool.commands.push:main
+    - vcs-remotes = vcstool.commands.remotes:main
+    - vcs-status = vcstool.commands.status:main
+    - vcs-svn = vcstool.commands.custom:svn_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - argparse
+
+  run:
+    - python
+    - pyyaml
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - vcstool
+    - vcstool.clients
+    - vcstool.commands
+    - vcstool.compat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - vcs --help
+    - vcs-branch --help
+    - vcs-bzr --help
+    - vcs-custom --help
+    - vcs-diff --help
+    - vcs-export --help
+    - vcs-git --help
+    - vcs-help --help
+    - vcs-hg --help
+    - vcs-import --help
+    - vcs-log --help
+    - vcs-pull --help
+    - vcs-push --help
+    - vcs-remotes --help
+    - vcs-status --help
+    - vcs-svn --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dirk-thomas/vcstool
+  license: Apache Software License
+  summary: 'vcstool provides a command line tool to invoke vcs commands on multiple repositories.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

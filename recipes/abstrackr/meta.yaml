@@ -1,0 +1,85 @@
+package:
+  name: abstrackr
+  version: "0.3.0dev"
+
+source:
+  fn: abstrackr-0.3.0dev.tar.gz
+  url: https://pypi.python.org/packages/source/a/abstrackr/abstrackr-0.3.0dev.tar.gz
+  md5: fd2230287610674762c3419f78486939
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - abstrackr = abstrackr:main
+    #
+    # Would create an entry point called abstrackr that calls abstrackr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons ==1.0
+    - sqlalchemy >=0.5
+    - turbomail >=3.0.3,<=3.0.99
+    - repoze.what-quickstart >=1.0.8,<=1.0.99
+    - repoze.what_pylons >=1.0,<=1.0.99
+    - mysql-python >=1.2.3,<=1.2.99
+    - elementtree >=1.2.7,<=1.2.99
+    - webtest >=1.2.3,<=1.2.99
+    - webob >=1.0.7,<=1.0.99
+
+  run:
+    - python
+    - setuptools
+    - pylons ==1.0
+    - sqlalchemy >=0.5
+    - turbomail >=3.0.3,<=3.0.99
+    - repoze.what-quickstart >=1.0.8,<=1.0.99
+    - repoze.what_pylons >=1.0,<=1.0.99
+    - mysql-python >=1.2.3,<=1.2.99
+    - elementtree >=1.2.7,<=1.2.99
+    - webtest >=1.2.3,<=1.2.99
+    - webob >=1.0.7,<=1.0.99
+
+test:
+  # Python imports
+  imports:
+    - abstrackr
+    - abstrackr.config
+    - abstrackr.controllers
+    - abstrackr.lib
+    - abstrackr.model
+    - abstrackr.tests
+    - abstrackr.tests.functional
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://research.brown.edu/myresearch/Byron_Wallace
+  license: UNKNOWN
+  summary: 'Web-based Citation Screening Tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

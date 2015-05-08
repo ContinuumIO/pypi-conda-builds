@@ -1,0 +1,78 @@
+package:
+  name: idxtools
+  version: "0.12.1"
+
+source:
+  fn: idxtools-0.12.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/idxtools/idxtools-0.12.1.tar.gz
+  md5: 4de3a74908b97b90086c669958d0cd24
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - idxtools = idxtools:main
+    #
+    # Would create an entry point called idxtools that calls idxtools.main()
+
+    - idxtools = indexfile.cli.indexfile_main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - clint >=0.3.1
+    - docopt >=0.6.1
+    - schema >=0.3.1
+    - simplejson >=3.3.2
+    - lockfile >=0.9.1
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - argparse >=1.2.1
+    - clint >=0.3.1
+    - docopt >=0.6.1
+    - schema >=0.3.1
+    - simplejson >=3.3.2
+    - lockfile >=0.9.1
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - idxtools
+    - indexfile
+    - indexfile.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - idxtools --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/emi80/idxtools
+  license: GNU General Public License (GPL)
+  summary: 'Indexfile API and tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

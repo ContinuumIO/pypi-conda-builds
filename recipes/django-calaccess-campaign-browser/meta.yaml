@@ -1,0 +1,81 @@
+package:
+  name: django-calaccess-campaign-browser
+  version: "0.1.1"
+
+source:
+  fn: django-calaccess-campaign-browser-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-calaccess-campaign-browser/django-calaccess-campaign-browser-0.1.1.tar.gz
+  md5: b5eb0bc0dd61a4b1abecb74d0f6fc080
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-calaccess-campaign-browser = django-calaccess-campaign-browser:main
+    #
+    # Would create an entry point called django-calaccess-campaign-browser that calls django-calaccess-campaign-browser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-calaccess-raw-data >=0.1.2
+    - django >=1.6
+    - csvkit >=0.6.1
+    - python-dateutil ==2.2
+    - mysql-python >=1.2.5
+    - hurry.filesize >=0.9
+    - django-tastypie >=0.11.1
+    - beautifulsoup4 >=4.3.2
+
+  run:
+    - python
+    - django-calaccess-raw-data >=0.1.2
+    - django >=1.6
+    - csvkit >=0.6.1
+    - python-dateutil ==2.2
+    - mysql-python >=1.2.5
+    - hurry.filesize >=0.9
+    - django-tastypie >=0.11.1
+    - beautifulsoup4 >=4.3.2
+
+test:
+  # Python imports
+  imports:
+    - calaccess_campaign_browser
+    - calaccess_campaign_browser.management
+    - calaccess_campaign_browser.management.commands
+    - calaccess_campaign_browser.templatetags
+    - calaccess_campaign_browser.utils
+    - calaccess_campaign_browser.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-calaccess-campaign-browser.californiacivicdata.org
+  license: MIT
+  summary: 'A Django app to refine and investigate campaign finance data drawn from the California Secretary of State\xe2\x80\x99s CAL-ACCESS database. This is a work in progress. Its analysis should be considered as provisional until it is further tested and debugged.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

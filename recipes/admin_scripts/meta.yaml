@@ -1,0 +1,68 @@
+package:
+  name: admin_scripts
+  version: "0.1.17"
+
+source:
+  fn: admin_scripts-0.1.17.zip
+  url: https://pypi.python.org/packages/source/a/admin_scripts/admin_scripts-0.1.17.zip
+  md5: 43ca24a2d67e5a18a2ef2f7f6ec234fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - admin_scripts = admin_scripts:main
+    #
+    # Would create an entry point called admin_scripts that calls admin_scripts.main()
+
+    - cleanup = admin_scripts.base.cleanup:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - legacy
+
+  run:
+    - python
+    - legacy
+
+test:
+  # Python imports
+  imports:
+    - admin_scripts
+    - admin_scripts.base
+    - admin_scripts.config
+    - admin_scripts.config.development
+    - admin_scripts.extra
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cleanup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://admin_scripts.hive.pt
+  license: GNU General Public License (GPL)
+  summary: 'Administration Scripts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

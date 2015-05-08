@@ -1,0 +1,64 @@
+package:
+  name: boxmongodb
+  version: "0.0.10"
+
+source:
+  fn: boxmongodb-0.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/b/boxmongodb/boxmongodb-0.0.10.tar.gz
+  md5: 2916b682e08d1d25ada28049ebdc4bc5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boxmongodb = boxmongodb:main
+    #
+    # Would create an entry point called boxmongodb that calls boxmongodb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=2.7.1
+    - bson >=0.3.3
+
+  run:
+    - python
+    - pymongo >=2.7.1
+    - bson >=0.3.3
+
+test:
+  # Python imports
+  imports:
+    - boxmongodb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'just a simple mongodb orm'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: python-gettext
+  version: "2.1"
+
+source:
+  fn: python-gettext-2.1.zip
+  url: https://pypi.python.org/packages/source/p/python-gettext/python-gettext-2.1.zip
+  md5: 06632b51fc3d66334cc79fb20e6464b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-gettext = python-gettext:main
+    #
+    # Would create an entry point called python-gettext that calls python-gettext.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unittest2
+
+  run:
+    - python
+    - unittest2
+
+test:
+  # Python imports
+  imports:
+    - pythongettext
+    - pythongettext.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/python-gettext
+  license: BSD License
+  summary: 'Python Gettext po to mo file compiler.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

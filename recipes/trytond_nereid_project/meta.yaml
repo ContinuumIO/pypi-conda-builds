@@ -1,0 +1,85 @@
+package:
+  name: trytond_nereid_project
+  version: "3.2.0.1"
+
+source:
+  fn: trytond_nereid_project-3.2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_nereid_project/trytond_nereid_project-3.2.0.1.tar.gz
+  md5: 93160ab1258b78cdd11996a699183322
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_nereid_project = trytond_nereid_project:main
+    #
+    # Would create an entry point called trytond_nereid_project that calls trytond_nereid_project.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - raven
+    - blinker
+    - simplejson
+    - docutils
+    - trytond_product >=3.2,<3.3
+    - trytond_project >=3.2,<3.3
+    - trytond_project_revenue >=3.2,<3.3
+    - trytond_project_plan >=3.2,<3.3
+    - trytond_nereid_activity_stream >=3.2,<3.3
+    - openlabs_email_queue >=3.2,<3.3
+    - trytond >=3.2,<3.3
+
+  run:
+    - python
+    - setuptools
+    - raven
+    - blinker
+    - simplejson
+    - docutils
+    - trytond_product >=3.2,<3.3
+    - trytond_project >=3.2,<3.3
+    - trytond_project_revenue >=3.2,<3.3
+    - trytond_project_plan >=3.2,<3.3
+    - trytond_nereid_activity_stream >=3.2,<3.3
+    - openlabs_email_queue >=3.2,<3.3
+    - trytond >=3.2,<3.3
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.nereid_project
+    - trytond.modules.nereid_project.tests
+    - trytond_nereid_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openlabs.co.in/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton Nereid Web based Project Management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

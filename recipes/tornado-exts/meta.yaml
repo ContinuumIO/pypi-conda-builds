@@ -1,0 +1,66 @@
+package:
+  name: tornado-exts
+  version: "0.0.3"
+
+source:
+  fn: tornado-exts-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado-exts/tornado-exts-0.0.3.tar.gz
+  md5: 261c084aa8b03e3a18fa0ee22e70ad92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado-exts = tornado-exts:main
+    #
+    # Would create an entry point called tornado-exts that calls tornado-exts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - tornado_extensions
+    - tornado_extensions.cache
+    - tornado_extensions.cache.backends
+    - tornado_extensions.celery
+    - tornado_extensions.sessions
+    - tornado_extensions.sessions.backends
+    - tornado_extensions.sockjs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/Rustem/iogame-tor-exts
+  license: MIT License
+  summary: 'A python module that contain common definitions for Django and Tornado game project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

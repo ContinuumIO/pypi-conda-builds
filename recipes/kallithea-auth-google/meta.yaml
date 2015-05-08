@@ -1,0 +1,66 @@
+package:
+  name: kallithea-auth-google
+  version: "1.0.6"
+
+source:
+  fn: kallithea-auth-google-1.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/k/kallithea-auth-google/kallithea-auth-google-1.0.6.tar.gz
+  md5: f583c9e365af10d5e7b3f13f304f4f1e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kallithea-auth-google = kallithea-auth-google:main
+    #
+    # Would create an entry point called kallithea-auth-google that calls kallithea-auth-google.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kallithea
+    - requests-oauthlib
+
+  run:
+    - python
+    - setuptools
+    - kallithea
+    - requests-oauthlib
+
+test:
+  # Python imports
+  imports:
+    - kallithea_auth_google
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paylogic/kallithea-google-auth
+  license: MIT license
+  summary: 'Kallithea google auth plugin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

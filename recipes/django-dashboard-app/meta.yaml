@@ -1,0 +1,72 @@
+package:
+  name: django-dashboard-app
+  version: "0.2.1"
+
+source:
+  fn: django-dashboard-app-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dashboard-app/django-dashboard-app-0.2.1.tar.gz
+  md5: 7eb3617c8b88a8c7ef14acea2f127790
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dashboard-app = django-dashboard-app:main
+    #
+    # Would create an entry point called django-dashboard-app that calls django-dashboard-app.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-libs
+    - django-load
+    - requests
+
+  run:
+    - python
+    - django
+    - django-libs
+    - django-load
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - dashboard_app
+    - dashboard_app.migrations
+    - dashboard_app.tests
+    - dashboard_app.tests.test_app
+    - dashboard_app.tests.test_widget_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-dashboard-app
+  license: The MIT License
+  summary: 'A reusable Django app for displaying a dashboard with a fluid grid of widgets.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

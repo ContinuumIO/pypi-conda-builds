@@ -1,0 +1,73 @@
+package:
+  name: tako
+  version: "0.0.26"
+
+source:
+  fn: tako-0.0.26.tar.gz
+  url: https://pypi.python.org/packages/source/t/tako/tako-0.0.26.tar.gz
+  md5: 0c859d93dd734d3d5f3125d20b00c82e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tako = tako:main
+    #
+    # Would create an entry point called tako that calls tako.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - socketless >=0.4.0
+    - pytc >=0.8
+    - argparse
+    - pyyaml
+    - simplejson
+    - urllib3
+
+  run:
+    - python
+    - socketless >=0.4.0
+    - pytc >=0.8
+    - argparse
+    - pyyaml
+    - simplejson
+    - urllib3
+
+test:
+  # Python imports
+  imports:
+    - tako
+    - tako.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/danielnorberg/tako/
+  license: Apache Software License
+  summary: 'Tako: A distributed data store.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

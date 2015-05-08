@@ -1,0 +1,91 @@
+package:
+  name: mozregression
+  version: "0.36"
+
+source:
+  fn: mozregression-0.36.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozregression/mozregression-0.36.tar.gz
+  md5: ecf08568d71acdf71b64cebdb8fe6dbd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozregression = mozregression:main
+    #
+    # Would create an entry point called mozregression that calls mozregression.main()
+
+    - mozregression=mozregression.main:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mozfile >=0.1
+    - mozprofile >=0.4
+    - mozrunner >=6.5
+    - beautifulsoup >=3.0.4
+    - mozinstall >=1.4
+    - mozinfo >=0.4
+    - mozlog >=2.11
+    - mozversion >=1.2
+    - requests >=2.5.0
+    - redo
+    - cachecontrol >=0.10.2
+    - lockfile >=0.10.2
+    - futures >=2.1.6
+    - mozdevice >=0.43
+
+  run:
+    - python
+    - setuptools
+    - mozfile >=0.1
+    - mozprofile >=0.4
+    - mozrunner >=6.5
+    - beautifulsoup >=3.0.4
+    - mozinstall >=1.4
+    - mozinfo >=0.4
+    - mozlog >=2.11
+    - mozversion >=1.2
+    - requests >=2.5.0
+    - redo
+    - cachecontrol >=0.10.2
+    - lockfile >=0.10.2
+    - futures >=2.1.6
+    - mozdevice >=0.43
+
+test:
+  # Python imports
+  imports:
+    - mozregression
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozregression --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla/mozregression
+  license: MPL 1.1/GPL 2.0/LGPL 2.1
+  summary: 'Regression range finder for Mozilla nightly builds'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

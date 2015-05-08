@@ -1,0 +1,96 @@
+package:
+  name: cslbot
+  version: "0.15"
+
+source:
+  fn: CslBot-0.15.tar.gz
+  url: https://pypi.python.org/packages/source/C/CslBot/CslBot-0.15.tar.gz
+  md5: a794953065d0d585e9ade3412bbee771
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cslbot = cslbot:main
+    #
+    # Would create an entry point called cslbot that calls cslbot.main()
+
+    - cslbot = cslbot.helpers.core:init
+    - cslbot-parselogs = scripts.parselogs:main
+    - cslbot-parsedata = scripts.parsedata:main
+    - cslbot-genbabble = scripts.gen_babble:main
+    - cslbot-reload = scripts.reload:main
+    - cslbot-migrate = scripts.migrate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=1.0.0
+    - requests >=2.4.0
+    - alembic
+    - beautifulsoup4
+    - geoip2
+    - irc
+    - jinja2
+    - lxml
+    - python-dateutil
+    - simplejson
+
+  run:
+    - python
+    - sqlalchemy >=1.0.0
+    - requests >=2.4.0
+    - alembic
+    - beautifulsoup4
+    - geoip2
+    - irc
+    - jinja2
+    - lxml
+    - python-dateutil
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - cslbot
+    - cslbot.commands
+    - cslbot.helpers
+    - cslbot.hooks
+    - scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cslbot --help
+    - cslbot-parselogs --help
+    - cslbot-parsedata --help
+    - cslbot-genbabble --help
+    - cslbot-reload --help
+    - cslbot-migrate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tjcsl/cslbot
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'An easily extensible, modular irc bot.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

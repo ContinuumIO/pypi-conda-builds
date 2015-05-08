@@ -1,0 +1,76 @@
+package:
+  name: vr.cli
+  version: "2.5"
+
+source:
+  fn: vr.cli-2.5.zip
+  url: https://pypi.python.org/packages/source/v/vr.cli/vr.cli-2.5.zip
+  md5: 7181626dee0915047127948044287cb5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vr.cli = vr.cli:main
+    #
+    # Would create an entry point called vr.cli that calls vr.cli.main()
+
+    - vr.cli = vr.cli:handle_command_line
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jaraco.functools >=1.0,<2dev
+    - vr.common >=3.17
+    - more_itertools
+    - six
+    - datadiff >=1.1.6
+    - jaraco.ui >=1.2
+    - jaraco.timing
+
+  run:
+    - python
+    - jaraco.functools >=1.0,<2dev
+    - vr.common >=3.17
+    - more_itertools
+    - six
+    - datadiff >=1.1.6
+    - jaraco.ui >=1.2
+    - jaraco.timing
+
+test:
+  # Python imports
+  imports:
+    - vr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - vr.cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/yougov/vr.cli
+  license: UNKNOWN
+  summary: 'Command-line client for working with Velociraptor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

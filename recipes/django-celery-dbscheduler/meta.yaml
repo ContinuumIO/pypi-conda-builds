@@ -1,0 +1,64 @@
+package:
+  name: django-celery-dbscheduler
+  version: "3.2.1"
+
+source:
+  fn: django-celery-dbscheduler-3.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-celery-dbscheduler/django-celery-dbscheduler-3.2.1.tar.gz
+  md5: 8aa23db58a6dc9fdb19775bcfb432195
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-celery-dbscheduler = django-celery-dbscheduler:main
+    #
+    # Would create an entry point called django-celery-dbscheduler that calls django-celery-dbscheduler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.1.10
+
+  run:
+    - python
+    - celery >=3.1.10
+
+test:
+  # Python imports
+  imports:
+    - dbscheduler
+    - dbscheduler.migrations
+    - dbscheduler.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'Old django celery integration project.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

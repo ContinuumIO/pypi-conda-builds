@@ -1,0 +1,68 @@
+package:
+  name: django-bundles
+  version: "0.6.0"
+
+source:
+  fn: django-bundles-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bundles/django-bundles-0.6.0.tar.gz
+  md5: 7c4817109943e071690aa1115fa66416
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bundles = django-bundles:main
+    #
+    # Would create an entry point called django-bundles that calls django-bundles.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_bundles
+    - django_bundles.conf
+    - django_bundles.management
+    - django_bundles.management.commands
+    - django_bundles.processors
+    - django_bundles.templatetags
+    - django_bundles.tests
+    - django_bundles.tests.utils
+    - django_bundles.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sdcooke/django_bundles
+  license: MIT license, see LICENSE file
+  summary: 'Another Django media bundler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

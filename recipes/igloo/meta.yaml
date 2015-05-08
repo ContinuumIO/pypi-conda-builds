@@ -1,0 +1,68 @@
+package:
+  name: igloo
+  version: "0.1.6"
+
+source:
+  fn: igloo-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/i/igloo/igloo-0.1.6.tar.gz
+  md5: a1d99453b24ca908367d1472b3d712e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - igloo = igloo:main
+    #
+    # Would create an entry point called igloo that calls igloo.main()
+
+    - igloo = igloo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - paramiko
+    - pyyaml
+
+  run:
+    - python
+    - docopt
+    - paramiko
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - igloo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - igloo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mtth/igloo/
+  license: MIT License
+  summary: 'A command line SCP client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: discoball
+  version: "0.1.0"
+
+source:
+  fn: discoball-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/discoball/discoball-0.1.0.tar.gz
+  md5: bb74639eda100e2d8c428cebaa6d9811
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - discoball = discoball:main
+    #
+    # Would create an entry point called discoball that calls discoball.main()
+
+    - discoball=discoball:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabulous
+    - argparse
+
+  run:
+    - python
+    - setuptools
+    - fabulous
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - discoball
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - discoball --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'A simple stream filter to highlight patterns'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

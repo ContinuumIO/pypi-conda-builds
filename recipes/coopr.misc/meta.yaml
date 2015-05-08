@@ -1,0 +1,80 @@
+package:
+  name: coopr.misc
+  version: "2.8.2"
+
+source:
+  fn: coopr.misc-2.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/coopr.misc/coopr.misc-2.8.2.tar.gz
+  md5: 24c1dcb96b6d475d57fa36d8ccc89660
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coopr.misc = coopr.misc:main
+    #
+    # Would create an entry point called coopr.misc that calls coopr.misc.main()
+
+    - test.coopr=coopr.misc.runtests:runCooprTests
+    - coopr=coopr.misc.coopr_main:main
+    - coopr_ns=coopr.misc.scripts:coopr_ns
+    - coopr_nsc=coopr.misc.scripts:coopr_nsc
+    - kill_pyro_mip_servers=coopr.misc.scripts:kill_pyro_mip_servers
+    - launch_pyro_mip_servers=coopr.misc.scripts:launch_pyro_mip_servers
+    - readsol=coopr.misc.scripts:readsol
+    - ossolverservice=coopr.misc.scripts:OSSolverService
+    - coopr_python=coopr.misc.scripts:coopr_python
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - coopr
+    - coopr.misc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - test.coopr --help
+    - coopr --help
+    - coopr_ns --help
+    - coopr_nsc --help
+    - kill_pyro_mip_servers --help
+    - launch_pyro_mip_servers --help
+    - readsol --help
+    - ossolverservice --help
+    - coopr_python --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://software.sandia.gov/svn/public/coopr/coopr.misc
+  license: BSD License
+  summary: 'Miscellaneous Coopr utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

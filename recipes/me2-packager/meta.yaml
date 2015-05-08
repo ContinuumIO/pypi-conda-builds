@@ -1,0 +1,67 @@
+package:
+  name: me2-packager
+  version: "0.0.5"
+
+source:
+  fn: me2-packager-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/me2-packager/me2-packager-0.0.5.tar.gz
+  md5: 4870be82386e043885365ff956fc5264
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - me2-packager = me2-packager:main
+    #
+    # Would create an entry point called me2-packager that calls me2-packager.main()
+
+    - me2pack = me2.packaging.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lockfile >=0.9.0
+    - python_webdav_library >=0.3.0
+
+  run:
+    - python
+    - lockfile >=0.9.0
+    - python_webdav_library >=0.3.0
+
+test:
+  # Python imports
+  imports:
+    - me2
+    - me2.packaging
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - me2pack --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://developers.mosaic-cloud.eu
+  license: Apache Software License
+  summary: 'me2-pack is the packaging component of me2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

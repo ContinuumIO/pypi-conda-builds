@@ -1,0 +1,68 @@
+package:
+  name: onetworedblue
+  version: "0.1.1"
+
+source:
+  fn: onetworedblue-0.1.1.zip
+  url: https://pypi.python.org/packages/source/o/onetworedblue/onetworedblue-0.1.1.zip
+  md5: f6e1c07eaa7226977fc6afba0be7fd69
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - onetworedblue = onetworedblue:main
+    #
+    # Would create an entry point called onetworedblue that calls onetworedblue.main()
+
+    - onetworedblue = onetworedblue.main:run_application
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cython
+    - kivy >=1.8.0
+    - pillow
+
+  run:
+    - python
+    - cython
+    - kivy >=1.8.0
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - onetworedblue
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - onetworedblue --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ericgallimore.com/projects/onetworedblue
+  license: GPLv3+
+  summary: 'A tool for identifiying and counting benthic organisms in bottom photographs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: products.ploneservicescenter
+  version: "0.2.7"
+
+source:
+  fn: Products.PloneServicesCenter-0.2.7.zip
+  url: https://pypi.python.org/packages/source/P/Products.PloneServicesCenter/Products.PloneServicesCenter-0.2.7.zip
+  md5: 7a9bd8381c273f5817b16b5c79d2be50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.ploneservicescenter = products.ploneservicescenter:main
+    #
+    # Would create an entry point called products.ploneservicescenter that calls products.ploneservicescenter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - products.archaddon
+
+  run:
+    - python
+    - plone
+    - products.archaddon
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PloneServicesCenter
+    - Products.PloneServicesCenter.browser
+    - Products.PloneServicesCenter.content
+    - Products.PloneServicesCenter.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/Products.PloneServicesCenter/trunk
+  license: GPL
+  summary: 'A hub for information about the service options and deployments for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

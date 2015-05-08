@@ -1,0 +1,67 @@
+package:
+  name: discoplot
+  version: "1.0.2"
+
+source:
+  fn: DiscoPlot-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/DiscoPlot/DiscoPlot-1.0.2.tar.gz
+  md5: d1b9d0bc9ab5ea272cb933c311242aa3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - discoplot = discoplot:main
+    #
+    # Would create an entry point called discoplot that calls discoplot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy ==1.8.1
+    - matplotlib ==1.3.1
+    - pysam ==0.8.1
+
+  run:
+    - python
+    - numpy ==1.8.1
+    - matplotlib ==1.3.1
+    - pysam ==0.8.1
+
+test:
+  # Python imports
+  imports:
+    - DiscoPlot
+    - discoplot
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/BeatsonLab-MicrobialGenomics/DiscoPlot
+  license: GPLv3
+  summary: 'DiscoPlot: identify genomic rearrangements, misassemblies and sequencing artefacts in NGS data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

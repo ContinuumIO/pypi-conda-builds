@@ -1,0 +1,63 @@
+package:
+  name: bat-man
+  version: "0.3.1"
+
+source:
+  fn: Bat-man-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/B/Bat-man/Bat-man-0.3.1.tar.gz
+  md5: 29d0ffcff58ca3838169b4a391e7558d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bat-man = bat-man:main
+    #
+    # Would create an entry point called bat-man that calls bat-man.main()
+
+    - bat-man=batman.gtk_batch_downloader:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - batman
+    - batman.codec_interface
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bat-man --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ElegantMonkey/Bat-man
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A YouTube batch downloader and converter.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

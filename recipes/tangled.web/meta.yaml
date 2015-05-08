@@ -1,0 +1,74 @@
+package:
+  name: tangled.web
+  version: "0.1a9"
+
+source:
+  fn: tangled.web-0.1a9.tar.gz
+  url: https://pypi.python.org/packages/source/t/tangled.web/tangled.web-0.1a9.tar.gz
+  md5: 37f90de9676ea3fe6df716897b34eeb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tangled.web = tangled.web:main
+    #
+    # Would create an entry point called tangled.web that calls tangled.web.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tangled >=0.1a8
+    - markupsafe >=0.23
+    - webob >=1.4
+    - zc.recipe.egg >=2.0.1
+
+  run:
+    - python
+    - setuptools
+    - tangled >=0.1a8
+    - markupsafe >=0.23
+    - webob >=1.4
+    - zc.recipe.egg >=2.0.1
+
+test:
+  # Python imports
+  imports:
+    - tangled
+    - tangled.web
+    - tangled.web.resource
+    - tangled.web.scaffolds
+    - tangled.web.scripts
+    - tangled.web.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tangledframework.org/
+  license: MIT License
+  summary: 'RESTful Web Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

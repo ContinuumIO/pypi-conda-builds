@@ -1,0 +1,66 @@
+package:
+  name: hatak_statics
+  version: "0.2.3"
+
+source:
+  fn: Hatak_Statics-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/H/Hatak_Statics/Hatak_Statics-0.2.3.tar.gz
+  md5: 86a1cfd13a1ee4f3abb99b47d62699e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hatak_statics = hatak_statics:main
+    #
+    # Would create an entry point called hatak_statics that calls hatak_statics.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hatak >=0.2.1
+    - hatak_jinja2
+
+  run:
+    - python
+    - hatak >=0.2.1
+    - hatak_jinja2
+
+test:
+  # Python imports
+  imports:
+    - haplugin
+    - haplugin.statics
+    - hatak_statics
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache License 2.0
+  summary: 'Statics plugin for Hatak.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,85 @@
+package:
+  name: infpy
+  version: "0.4.13"
+
+source:
+  fn: infpy-0.4.13.tar.gz
+  url: https://pypi.python.org/packages/source/i/infpy/infpy-0.4.13.tar.gz
+  md5: ae3201699025def5e517d0560cbf03ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infpy = infpy:main
+    #
+    # Would create an entry point called infpy that calls infpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cookbook
+    - distribute
+    - scipy
+
+  run:
+    - python
+    - cookbook
+    - distribute
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - infpy
+    - infpy.dbn
+    - infpy.decision
+    - infpy.decision.test
+    - infpy.dp
+    - infpy.dp.hdpm
+    - infpy.dp.hdpm.uncertainty
+    - infpy.exp
+    - infpy.exp.test
+    - infpy.genepy
+    - infpy.gp
+    - infpy.gp.test
+    - infpy.madbayes
+    - infpy.madbayes.test
+    - infpy.mixture
+    - infpy.mixture.test
+    - infpy.test
+    - infpy.variational
+    - infpy.variational.message_passing
+    - infpy.variational.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sysbio.mrc-bsu.cam.ac.uk/johns/infpy/docs/build/html/
+  license: BSD License
+  summary: 'A python inference library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

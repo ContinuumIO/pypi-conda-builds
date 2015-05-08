@@ -1,0 +1,64 @@
+package:
+  name: pyconza2014
+  version: "0.2.10"
+
+source:
+  fn: pyconza2014-0.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyconza2014/pyconza2014-0.2.10.tar.gz
+  md5: cb9d680a9360800982a110fece153f7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyconza2014 = pyconza2014:main
+    #
+    # Would create an entry point called pyconza2014 that calls pyconza2014.main()
+
+    - pyconza2014 = pyconza2014.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click <2.1.0
+
+  run:
+    - python
+    - click <2.1.0
+
+test:
+  # Python imports
+  imports:
+    - pyconza2014
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyconza2014 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/michaeljoseph/pyconza2014
+  license: pycookiecheat
+  summary: 'PyConZA 2014 Demo'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

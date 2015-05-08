@@ -1,0 +1,64 @@
+package:
+  name: pythongrid
+  version: "0.2"
+
+source:
+  fn: pythongrid-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pythongrid/pythongrid-0.2.tar.gz
+  md5: 7abeb4635dfa76ab1df4109f75e9951b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pythongrid = pythongrid:main
+    #
+    # Would create an entry point called pythongrid that calls pythongrid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - drmaa
+    - pyzmq
+
+  run:
+    - python
+    - drmaa
+    - pyzmq
+
+test:
+  # Python imports
+  imports:
+    - pythongrid
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/pythongrid/
+  license: GPL
+  summary: 'High-level python wapper for the Sun Grid Engine (SGE) using DRMAA and ZMQ'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

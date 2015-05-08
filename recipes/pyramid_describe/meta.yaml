@@ -1,0 +1,87 @@
+package:
+  name: pyramid_describe
+  version: "0.4.5"
+
+source:
+  fn: pyramid_describe-0.4.5.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_describe/pyramid_describe-0.4.5.tar.gz
+  md5: 51a271334f5150f263711c08a8808b5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyramid_describe = pyramid_describe:main
+    #
+    # Would create an entry point called pyramid_describe that calls pyramid_describe.main()
+
+    - pdescribe          = pyramid_describe.cli:main
+    - rst2rst.py         = pyramid_describe.writers.tools_rst2rst:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6.24
+    - argparse >=1.2.1
+    - pyramid >=1.4.2
+    - pyramid-controllers >=0.3.21
+    - pyramid-iniherit >=0.1.7
+    - six >=1.6.0
+    - docutils >=0.10
+    - pyyaml >=3.10
+    - numpydoc >=0.4
+    - globre >=0.1.2
+
+  run:
+    - python
+    - distribute >=0.6.24
+    - argparse >=1.2.1
+    - pyramid >=1.4.2
+    - pyramid-controllers >=0.3.21
+    - pyramid-iniherit >=0.1.7
+    - six >=1.6.0
+    - docutils >=0.10
+    - pyyaml >=3.10
+    - numpydoc >=0.4
+    - globre >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - pyramid_describe
+    - pyramid_describe.syntax
+    - pyramid_describe.test
+    - pyramid_describe.writers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pdescribe --help
+    - rst2rst.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cadithealth/pyramid_describe
+  license: MIT License
+  summary: 'A pyramid plugin that describes a pyramid application URL hierarchy via inspection.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

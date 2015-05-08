@@ -1,0 +1,79 @@
+package:
+  name: plone.i18n
+  version: "3.0.2"
+
+source:
+  fn: plone.i18n-3.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.i18n/plone.i18n-3.0.2.tar.gz
+  md5: 9e349c922a8e083d235b55a6e1647fed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.i18n = plone.i18n:main
+    #
+    # Would create an entry point called plone.i18n that calls plone.i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component
+    - zope.i18n
+    - zope.interface
+    - zope.publisher
+    - unidecode
+
+  run:
+    - python
+    - setuptools
+    - zope.component
+    - zope.i18n
+    - zope.interface
+    - zope.publisher
+    - unidecode
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.i18n
+    - plone.i18n.locales
+    - plone.i18n.locales.browser
+    - plone.i18n.locales.tests
+    - plone.i18n.negotiate
+    - plone.i18n.normalizer
+    - plone.i18n.normalizer.tests
+    - plone.i18n.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.i18n
+  license: GNU General Public License (GPL)
+  summary: 'Advanced i18n/l10n features'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

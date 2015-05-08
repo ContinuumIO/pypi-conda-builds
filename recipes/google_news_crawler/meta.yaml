@@ -1,0 +1,78 @@
+package:
+  name: google_news_crawler
+  version: "0.3.8"
+
+source:
+  fn: google_news_crawler-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/g/google_news_crawler/google_news_crawler-0.3.8.tar.gz
+  md5: 07fea546b8e752558d82db41618a3fda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google_news_crawler = google_news_crawler:main
+    #
+    # Would create an entry point called google_news_crawler that calls google_news_crawler.main()
+
+    - google_news_crawler=google_news_crawler.google_news_crawler:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - elasticsearch
+    - feedparser
+    - lxml
+    - pytz
+    - pyyaml
+    - requests
+
+  run:
+    - python
+    - docopt
+    - elasticsearch
+    - feedparser
+    - lxml
+    - pytz
+    - pyyaml
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - google_news_crawler
+    - google_news_crawler.datastore
+    - google_news_crawler.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - google_news_crawler --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ilps/google_news_crawler
+  license: Apache Software License
+  summary: 'Google News Crawler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: jarvis
+  version: "0.1.9"
+
+source:
+  fn: jarvis-0.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/j/jarvis/jarvis-0.1.9.tar.gz
+  md5: edb859c83f20ff1cc243768c1eda7998
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jarvis = jarvis:main
+    #
+    # Would create an entry point called jarvis that calls jarvis.main()
+
+    - jarvis=jarvis:main
+    - jarvis_command_run=jarvis.emacs.utils:command_run
+    - jarvis_server=jarvis.server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - jarvis
+    - jarvis.emacs
+    - jarvis.redis
+    - jarvis.server
+    - jarvis.server.tests
+    - jarvis.server.tests.broker
+    - jarvis.server.tests.routes
+    - jarvis.tests
+    - jarvis.tests.conf
+    - jarvis.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jarvis --help
+    - jarvis_command_run --help
+    - jarvis_server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT
+  summary: 'Developer companion'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

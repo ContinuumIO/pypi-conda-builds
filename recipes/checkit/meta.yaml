@@ -1,0 +1,64 @@
+package:
+  name: checkit
+  version: "0.3.2b"
+
+source:
+  fn: checkit-0.3.2b.zip
+  url: https://pypi.python.org/packages/source/c/checkit/checkit-0.3.2b.zip
+  md5: 3bf5e6bfe98ad476070813adec94a1bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkit = checkit:main
+    #
+    # Would create an entry point called checkit that calls checkit.main()
+
+    - checkit = checkit:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+
+  run:
+    - python
+    - nose
+
+test:
+  # Python imports
+  imports:
+    - checkit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - checkit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/rudylattae/checkit
+  license: BSD License
+  summary: 'Validate your Python software against specifications created with BDD style grammar.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

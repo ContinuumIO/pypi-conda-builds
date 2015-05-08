@@ -1,0 +1,66 @@
+package:
+  name: ctypeslib2
+  version: "2.0rc3"
+
+source:
+  fn: ctypeslib2-2.0rc3.tar.gz
+  url: https://pypi.python.org/packages/source/c/ctypeslib2/ctypeslib2-2.0rc3.tar.gz
+  md5: 677c73f84f3dbae0f5fbe38b6c639421
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ctypeslib2 = ctypeslib2:main
+    #
+    # Would create an entry point called ctypeslib2 that calls ctypeslib2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clang >=3.4.dev191928
+
+  run:
+    - python
+    - clang >=3.4.dev191928
+
+test:
+  # Python imports
+  imports:
+    - ctypeslib
+    - ctypeslib.codegen
+    - ctypeslib.contrib
+    - ctypeslib.util
+    - ctypeslib2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/trolldbois/ctypeslib
+  license: MIT License
+  summary: 'ctypeslib2 - FFI toolkit, relies on clang'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

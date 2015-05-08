@@ -1,0 +1,63 @@
+package:
+  name: django-sass-processor
+  version: "0.2.2"
+
+source:
+  fn: django-sass-processor-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sass-processor/django-sass-processor-0.2.2.tar.gz
+  md5: b4b63aba46641c7718b03d29a644e296
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sass-processor = django-sass-processor:main
+    #
+    # Would create an entry point called django-sass-processor that calls django-sass-processor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sass_processor
+    - sass_processor.management
+    - sass_processor.management.commands
+    - sass_processor.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jrief/django-sass-processor
+  license: MIT License
+  summary: 'SASS processor to compile SCSS files into *.css, while rendering, or offline.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

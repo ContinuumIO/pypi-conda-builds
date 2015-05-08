@@ -1,0 +1,74 @@
+package:
+  name: chassis
+  version: "0.1.4"
+
+source:
+  fn: chassis-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/chassis/chassis-0.1.4.tar.gz
+  md5: 8ce8bcaf28710560993e4084f3447f73
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chassis = chassis:main
+    #
+    # Would create an entry point called chassis that calls chassis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - six
+
+  run:
+    - python
+    - tornado
+    - six
+
+test:
+  # Python imports
+  imports:
+    - chassis
+    - chassis.models
+    - chassis.services
+    - chassis.services.dependency_injection
+    - chassis.test
+    - chassis.test.services
+    - chassis.test.services.dependency_injection
+    - chassis.test.util
+    - chassis.tools
+    - chassis.util
+    - chassis.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/refinery29/chassis
+  license: MIT License
+  summary: 'Opinionated REST Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

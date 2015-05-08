@@ -1,0 +1,81 @@
+package:
+  name: batchmp
+  version: "0.74"
+
+source:
+  fn: batchmp-0.74.tar.gz
+  url: https://pypi.python.org/packages/source/b/batchmp/batchmp-0.74.tar.gz
+  md5: 8b3af2f8a6f61b38b3e3db3afa6ef48f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - batchmp = batchmp:main
+    #
+    # Would create an entry point called batchmp that calls batchmp.main()
+
+    - bmfp = scripts.bmfp:main
+    - renamer = scripts.renamer:main
+    - tagger = scripts.tagger:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mutagen >=1.27
+
+  run:
+    - python
+    - mutagen >=1.27
+
+test:
+  # Python imports
+  imports:
+    - batchmp
+    - batchmp.commons
+    - batchmp.ffmptools
+    - batchmp.ffmptools.ffcommands
+    - batchmp.ffmptools.processors
+    - batchmp.fstools
+    - batchmp.tags
+    - batchmp.tags.extern
+    - batchmp.tags.handlers
+    - batchmp.tags.handlers.ffmphandlers
+    - batchmp.tags.output
+    - batchmp.tags.processors
+    - scripts
+    - scripts.base
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bmfp --help
+    - renamer --help
+    - tagger --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/akpw/batch-mp-tools
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Command-line tools for batch media processing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

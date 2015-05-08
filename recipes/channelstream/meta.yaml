@@ -1,0 +1,73 @@
+package:
+  name: channelstream
+  version: "0.2"
+
+source:
+  fn: channelstream-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/channelstream/channelstream-0.2.tar.gz
+  md5: 9a5b479070cc52baa4ac3c0989d26657
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - channelstream = channelstream:main
+    #
+    # Would create an entry point called channelstream that calls channelstream.main()
+
+    - channelstream = channelstream.cli:cli_start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent >=1.0
+    - gevent-websocket >=0.9.3
+    - pyramid
+    - pyramid_jinja2
+    - itsdangerous
+
+  run:
+    - python
+    - gevent >=1.0
+    - gevent-websocket >=0.9.3
+    - pyramid
+    - pyramid_jinja2
+    - itsdangerous
+
+test:
+  # Python imports
+  imports:
+    - channelstream
+    - channelstream.wsgi_views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - channelstream --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'Websocket server supporting channels/users communication'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

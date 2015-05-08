@@ -1,0 +1,93 @@
+package:
+  name: zope.pluggableauth
+  version: "2.0.0"
+
+source:
+  fn: zope.pluggableauth-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.pluggableauth/zope.pluggableauth-2.0.0.tar.gz
+  md5: c0c15a5f17aa2852b020b051b9527701
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.pluggableauth = zope.pluggableauth:main
+    #
+    # Would create an entry point called zope.pluggableauth that calls zope.pluggableauth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - persistent
+    - setuptools
+    - transaction
+    - zope.authentication
+    - zope.component
+    - zope.container
+    - zope.event
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.password >=3.5.1
+    - zope.publisher >=3.12
+    - zope.schema
+    - zope.security
+    - zope.session
+    - zope.site
+    - zope.traversing
+
+  run:
+    - python
+    - persistent
+    - setuptools
+    - transaction
+    - zope.authentication
+    - zope.component
+    - zope.container
+    - zope.event
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.password >=3.5.1
+    - zope.publisher >=3.12
+    - zope.schema
+    - zope.security
+    - zope.session
+    - zope.site
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.pluggableauth
+    - zope.pluggableauth.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.pluggableauth
+  license: Zope Public License
+  summary: 'Pluggable Authentication Utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

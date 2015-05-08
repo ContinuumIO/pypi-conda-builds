@@ -1,0 +1,81 @@
+package:
+  name: python-automationclient
+  version: "1.2.1"
+
+source:
+  fn: python-automationclient-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-automationclient/python-automationclient-1.2.1.tar.gz
+  md5: 214a84ef26fba2ff18730f7f4cf7a809
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-automationclient = python-automationclient:main
+    #
+    # Would create an entry point called python-automationclient that calls python-automationclient.main()
+
+    - automation = automationclient.shell:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - prettytable >=0.6,<0.8
+    - requests >=1.1
+    - simplejson >=2.0.9
+    - babel >=0.9.6
+    - six
+
+  run:
+    - python
+    - prettytable >=0.6,<0.8
+    - requests >=1.1
+    - simplejson >=2.0.9
+    - babel >=0.9.6
+    - six
+
+test:
+  # Python imports
+  imports:
+    - automationclient
+    - automationclient.openstack
+    - automationclient.openstack.common
+    - automationclient.openstack.common.apiclient
+    - automationclient.tests
+    - automationclient.tests.v1_1
+    - automationclient.tests.v1_1.contrib
+    - automationclient.tests.v1_1.fake_files
+    - automationclient.v1_1
+    - automationclient.v1_1.contrib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - automation --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/StackOps/python-automationclient
+  license: Apache Software License
+  summary: 'Client library for StackOps Automation API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

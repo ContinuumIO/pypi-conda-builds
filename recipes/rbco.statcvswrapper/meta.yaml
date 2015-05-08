@@ -1,0 +1,68 @@
+package:
+  name: rbco.statcvswrapper
+  version: "0.2"
+
+source:
+  fn: rbco.statcvswrapper-0.2.zip
+  url: https://pypi.python.org/packages/source/r/rbco.statcvswrapper/rbco.statcvswrapper-0.2.zip
+  md5: ba1bfd4f17008388b7add404ff2c76e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rbco.statcvswrapper = rbco.statcvswrapper:main
+    #
+    # Would create an entry point called rbco.statcvswrapper that calls rbco.statcvswrapper.main()
+
+    - statcvs_wrapper = rbco.statcvswrapper.main:main
+    - statcvs_format = rbco.statcvswrapper.format:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - prdg.util >=0.0.7,<=0.0.99
+
+  run:
+    - python
+    - setuptools
+    - prdg.util >=0.0.7,<=0.0.99
+
+test:
+  # Python imports
+  imports:
+    - rbco
+    - rbco.statcvswrapper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - statcvs_wrapper --help
+    - statcvs_format --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPL
+  summary: 'Very simple package to make use of StatCVS easier.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

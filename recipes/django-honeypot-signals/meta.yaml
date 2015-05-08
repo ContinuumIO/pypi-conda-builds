@@ -1,0 +1,62 @@
+package:
+  name: django-honeypot-signals
+  version: "0.1.1"
+
+source:
+  fn: django-honeypot-signals-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-honeypot-signals/django-honeypot-signals-0.1.1.tar.gz
+  md5: 9e401d68979889d8433424c9dfab15e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-honeypot-signals = django-honeypot-signals:main
+    #
+    # Would create an entry point called django-honeypot-signals that calls django-honeypot-signals.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-admin-honeypot
+
+  run:
+    - python
+    - django-admin-honeypot
+
+test:
+  # Python imports
+  imports:
+    - honeypot_signals
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/bitmazk/django-honeypot-signals
+  license: UNKNOWN
+  summary: '* This app provides a simple signal handler for the App django-admin-honeypot *\nhttps://github.com/dmpayton/django-admin-honeypot\n\nFunctions:\nIf someone tries to login using the wrong admin url, django-admin-honeypot\ncreates a new model instance, which includes all significant information about\nthis attempt. After save() the signal handler sends a notification email to\nsettings.MANAGERS, which includes the basic model information.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

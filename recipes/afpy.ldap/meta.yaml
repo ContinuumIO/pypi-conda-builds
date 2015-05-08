@@ -1,0 +1,71 @@
+package:
+  name: afpy.ldap
+  version: "1.0"
+
+source:
+  fn: afpy.ldap-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/afpy.ldap/afpy.ldap-1.0.tar.gz
+  md5: 29230cf03ed94c2b07903eb932bf9fa0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - afpy.ldap = afpy.ldap:main
+    #
+    # Would create an entry point called afpy.ldap that calls afpy.ldap.main()
+
+    - ldapsh=afpy.ldap.scripts:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - configobject
+    - dataflake.ldapconnection >0.9
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - configobject
+    - dataflake.ldapconnection >0.9
+
+test:
+  # Python imports
+  imports:
+    - afpy
+    - afpy.ldap
+    - afpy.ldap.ldaputil
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ldapsh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg.afpy.org/gawel/afpy.ldap/
+  license: MIT
+  summary: 'This module provide an easy way to deal with ldap stuff in python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

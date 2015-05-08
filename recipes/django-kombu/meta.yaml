@@ -1,0 +1,62 @@
+package:
+  name: django-kombu
+  version: "0.9.4"
+
+source:
+  fn: django-kombu-0.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-kombu/django-kombu-0.9.4.tar.gz
+  md5: 8d0b27cf87fedf88e1fd735e13c46dd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-kombu = django-kombu:main
+    #
+    # Would create an entry point called django-kombu that calls django-kombu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djkombu
+    - djkombu.management
+    - djkombu.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ask/django-kombu/
+  license: BSD
+  summary: 'Kombu transport using the Django database as a message store.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

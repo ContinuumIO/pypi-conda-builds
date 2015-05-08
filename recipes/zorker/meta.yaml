@@ -1,0 +1,68 @@
+package:
+  name: zorker
+  version: "0.1"
+
+source:
+  fn: zorker-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zorker/zorker-0.1.tar.gz
+  md5: ad097e07b7d9418be53a5eb1b3408cfe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zorker = zorker:main
+    #
+    # Would create an entry point called zorker that calls zorker.main()
+
+    - zorker=zorker:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tweepy
+    - pexpect
+
+  run:
+    - python
+    - setuptools
+    - tweepy
+    - pexpect
+
+test:
+  # Python imports
+  imports:
+    - zorker
+    - zorker.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zorker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/storborg/zorker
+  license: MIT License
+  summary: 'A Twitter bot to play text adventure games'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: django-nomad-notifier
+  version: "1.3.0"
+
+source:
+  fn: django-nomad-notifier-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nomad-notifier/django-nomad-notifier-1.3.0.tar.gz
+  md5: acbd901b99274b9ab9a0588995b9ab80
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nomad-notifier = django-nomad-notifier:main
+    #
+    # Would create an entry point called django-nomad-notifier that calls django-nomad-notifier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django-model-utils
+
+  run:
+    - python
+    - django-model-utils
+
+test:
+  # Python imports
+  imports:
+    - notifier
+    - notifier.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Nomadblue/django-nomad-notifier
+  license: BSD License
+  summary: 'Django app to implement a system of notifications for the users of web apps that tipically must receive updates from the site activity.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

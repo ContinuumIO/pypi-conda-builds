@@ -1,0 +1,64 @@
+package:
+  name: dad
+  version: "1.0.2"
+
+source:
+  fn: DAD-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/DAD/DAD-1.0.2.tar.gz
+  md5: 6c3cae0071b7f07cc4ab723dd1a85d6d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dad = dad:main
+    #
+    # Would create an entry point called dad that calls dad.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - stomp.py ==3.1.3
+    - ujson ==1.30
+
+  run:
+    - python
+    - stomp.py ==3.1.3
+    - ujson ==1.30
+
+test:
+  # Python imports
+  imports:
+    - dad
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/globocom/dad
+  license: GNU GPLv2
+  summary: u'Deliver Asynchronous Data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: coop-geo
+  version: "0.2.0"
+
+source:
+  fn: coop-geo-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/coop-geo/coop-geo-0.2.0.tar.gz
+  md5: f600963bfb2f27bda157c7f0f1fa13c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coop-geo = coop-geo:main
+    #
+    # Would create an entry point called coop-geo that calls coop-geo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-floppyforms ==0.4.7
+
+  run:
+    - python
+    - django-floppyforms ==0.4.7
+
+test:
+  # Python imports
+  imports:
+    - coop_geo
+    - coop_geo.management
+    - coop_geo.management.commands
+    - coop_geo.migrations
+    - coop_geo.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quinode/coop-geo/
+  license: BSD License
+  summary: 'GeoDjango fields and geo widgets for django-coop'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-hosts
+  version: "1.2"
+
+source:
+  fn: django-hosts-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-hosts/django-hosts-1.2.tar.gz
+  md5: fe386a7e2855114a59d56f88bb38704a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-hosts = django-hosts:main
+    #
+    # Would create an entry point called django-hosts that calls django-hosts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_hosts
+    - django_hosts.templatetags
+    - tests
+    - tests.hosts
+    - tests.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-hosts.rtfd.org/
+  license: BSD License
+  summary: 'Dynamic and static host resolving for Django. Maps hostnames to URLconfs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

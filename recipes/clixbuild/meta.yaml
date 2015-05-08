@@ -1,0 +1,68 @@
+package:
+  name: clixbuild
+  version: "1.2.3"
+
+source:
+  fn: clixbuild-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/clixbuild/clixbuild-1.2.3.tar.gz
+  md5: 6156ff0468c3601ca211bc80fa40c00d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clixbuild = clixbuild:main
+    #
+    # Would create an entry point called clixbuild that calls clixbuild.main()
+
+    - clixbuild = clixbuild.build:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - argparse
+    - pyyaml
+
+  run:
+    - python
+    - jinja2
+    - argparse
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - clixbuild
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clixbuild --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://silassnider.com
+  license: UNKNOWN
+  summary: 'ClixBuild, here to make your troubles vanish, your teeth whiter, and your .htaccess problem disappear'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

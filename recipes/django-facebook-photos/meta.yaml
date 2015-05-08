@@ -1,0 +1,69 @@
+package:
+  name: django-facebook-photos
+  version: "0.5.0"
+
+source:
+  fn: django-facebook-photos-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-facebook-photos/django-facebook-photos-0.5.0.tar.gz
+  md5: 88fbd6c2dab5f4010352fe161e3e1c40
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-facebook-photos = django-facebook-photos:main
+    #
+    # Would create an entry point called django-facebook-photos that calls django-facebook-photos.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-facebook-api >=0.5.0
+    - django-facebook-users >=0.1.0
+    - django-facebook-pages >=0.3.0
+    - django-m2m-history >=0.1.2
+
+  run:
+    - python
+    - django-facebook-api >=0.5.0
+    - django-facebook-users >=0.1.0
+    - django-facebook-pages >=0.3.0
+    - django-m2m-history >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - facebook_photos
+    - facebook_photos.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-facebook-photos
+  license: BSD License
+  summary: 'Django implementation for Facebook Graph API Photos and Albums'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

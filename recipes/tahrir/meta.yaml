@@ -1,0 +1,94 @@
+package:
+  name: tahrir
+  version: "0.8.2"
+
+source:
+  fn: tahrir-0.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/tahrir/tahrir-0.8.2.tar.gz
+  md5: 41e9984c7f5c9b358afca8709b730ac7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tahrir = tahrir:main
+    #
+    # Would create an entry point called tahrir that calls tahrir.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - pyramid_mako
+    - tahrir_api
+    - sqlalchemy >=0.8.2
+    - transaction
+    - pyramid_tm
+    - zope.sqlalchemy
+    - weberror
+    - velruse
+    - qrcode
+    - dogpile.cache
+    - docutils
+    - python-dateutil
+    - moksha.wsgi >=1.2.1
+    - webhelpers
+    - rdflib
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - pyramid_mako
+    - tahrir_api
+    - sqlalchemy >=0.8.2
+    - transaction
+    - pyramid_tm
+    - zope.sqlalchemy
+    - weberror
+    - velruse
+    - qrcode
+    - dogpile.cache
+    - docutils
+    - python-dateutil
+    - moksha.wsgi >=1.2.1
+    - webhelpers
+    - rdflib
+
+test:
+  # Python imports
+  imports:
+    - tahrir
+    - tahrir.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fedora-infra/tahrir
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'A pyramid app for issuing your own Open Badges'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

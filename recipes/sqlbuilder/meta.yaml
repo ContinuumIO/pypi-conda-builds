@@ -1,0 +1,63 @@
+package:
+  name: sqlbuilder
+  version: "0.7.9.1"
+
+source:
+  fn: sqlbuilder-0.7.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlbuilder/sqlbuilder-0.7.9.1.tar.gz
+  md5: e5531eb07eda56f40a8942421e25567a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlbuilder = sqlbuilder:main
+    #
+    # Would create an entry point called sqlbuilder that calls sqlbuilder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sqlbuilder
+    - sqlbuilder.django_sqlbuilder
+    - sqlbuilder.smartsql
+    - sqlbuilder.smartsql.compilers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/emacsway/sqlbuilder-0.7.9.1
+  license: BSD License
+  summary: 'SmartSQL - lightweight sql builder.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

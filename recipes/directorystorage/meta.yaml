@@ -1,0 +1,83 @@
+package:
+  name: directorystorage
+  version: "1.1.21"
+
+source:
+  fn: DirectoryStorage-1.1.21.tar.gz
+  url: https://pypi.python.org/packages/source/D/DirectoryStorage/DirectoryStorage-1.1.21.tar.gz
+  md5: 825289c7584947df7894b8113f00faed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - directorystorage = directorystorage:main
+    #
+    # Would create an entry point called directorystorage that calls directorystorage.main()
+
+    - dirstorage_backup = DirectoryStorage.backup:main
+    - dirstorage_checkds = DirectoryStorage.checkds:main
+    - dirstorage_ds2fs = DirectoryStorage.ds2fs:main
+    - dirstorage_dumpdsf = DirectoryStorage.dumpdsf:main
+    - dirstorage_fs2ds = DirectoryStorage.fs2ds:main
+    - dirstorage_mkds = DirectoryStorage.mkds:main
+    - dirstorage_replica = DirectoryStorage.replica:main
+    - dirstorage_snapshot = DirectoryStorage.snapshot:main
+    - dirstorage_whatsnew = DirectoryStorage.whatsnew:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.lockfile >=1.0.0
+
+  run:
+    - python
+    - zc.lockfile >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - DirectoryStorage
+    - DirectoryStorage.browser
+    - DirectoryStorage.tests
+    - directorystorage
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dirstorage_backup --help
+    - dirstorage_checkds --help
+    - dirstorage_ds2fs --help
+    - dirstorage_dumpdsf --help
+    - dirstorage_fs2ds --help
+    - dirstorage_mkds --help
+    - dirstorage_replica --help
+    - dirstorage_snapshot --help
+    - dirstorage_whatsnew --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dirstorage.sourceforge.net
+  license: GPL 2.1
+  summary: 'A ZODB Storage which uses one file per revision of an object'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

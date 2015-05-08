@@ -1,0 +1,63 @@
+package:
+  name: influx-nagios-plugin
+  version: "1.0.0"
+
+source:
+  fn: influx-nagios-plugin-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/influx-nagios-plugin/influx-nagios-plugin-1.0.0.tar.gz
+  md5: 020ec45153d3ae428b7aa8bbb11f48f7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - influx-nagios-plugin = influx-nagios-plugin:main
+    #
+    # Would create an entry point called influx-nagios-plugin that calls influx-nagios-plugin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - influxdb
+    - nagaconda
+
+  run:
+    - python
+    - influxdb
+    - nagaconda
+
+test:
+  # Python imports
+  imports:
+    - src
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shaharke/nagios-influx-plugin.git
+  license: MIT
+  summary: 'Nagios plugin for querying stats from InfluxDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

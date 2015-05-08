@@ -1,0 +1,77 @@
+package:
+  name: schema2rst
+  version: "0.9.0"
+
+source:
+  fn: schema2rst-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/schema2rst/schema2rst-0.9.0.tar.gz
+  md5: de025ccf2a5a16ecd7baeba2991b599b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - schema2rst = schema2rst:main
+    #
+    # Would create an entry point called schema2rst that calls schema2rst.main()
+
+    - schemadump=schema2rst.commands.dump:main
+    - schema2rst=schema2rst.commands.rst:main
+    - schema2graph=schema2rst.commands.graph:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - sqlalchemy
+    - pyyaml
+    - six
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - sqlalchemy
+    - pyyaml
+    - six
+
+test:
+  # Python imports
+  imports:
+    - schema2rst
+    - schema2rst.commands
+    - schema2rst.inspectors
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - schemadump --help
+    - schema2rst --help
+    - schema2graph --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/tk0miya/schema2rst
+  license: Python Software Foundation License
+  summary: 'schema2rst generates reST doc from database schema'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

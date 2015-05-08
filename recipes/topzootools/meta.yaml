@@ -1,0 +1,85 @@
+package:
+  name: topzootools
+  version: "0.4.2dev-20130414"
+
+source:
+  fn: topzootools-0.4.2dev-20130414.tar.gz
+  url: https://pypi.python.org/packages/source/t/topzootools/topzootools-0.4.2dev-20130414.tar.gz
+  md5: 004c4cb802c47743ab4b98e0db166799
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - topzootools = topzootools:main
+    #
+    # Would create an entry point called topzootools that calls topzootools.main()
+
+    - yed2zoo = TopZooTools.yed2zoo:main
+    - zooconvert = TopZooTools.converter:main
+    - zooplot = TopZooTools.geoplot:main
+    - zoofilter = TopZooTools.filter:main
+    - zoodiff = TopZooTools.diff:main
+    - zoostats= TopZooTools.zoostats:main
+    - zoostitch= TopZooTools.stitch:main
+    - zoogeocode= TopZooTools.geocoder:main
+    - rocketfuel2zoo= TopZooTools.rocketfuel2zoo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mako
+    - networkx
+    - pyparsing
+
+  run:
+    - python
+    - mako
+    - networkx
+    - pyparsing
+
+test:
+  # Python imports
+  imports:
+    - TopZooTools
+    - topzootools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - yed2zoo --help
+    - zooconvert --help
+    - zooplot --help
+    - zoofilter --help
+    - zoodiff --help
+    - zoostats --help
+    - zoostitch --help
+    - zoogeocode --help
+    - rocketfuel2zoo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.topology-zoo.org
+  license: UNKNOWN
+  summary: 'Processing and conversion tools for Internet Topology Zoo'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

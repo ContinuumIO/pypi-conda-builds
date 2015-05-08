@@ -1,0 +1,76 @@
+package:
+  name: reducer
+  version: "0.1.dev9"
+
+source:
+  fn: reducer-0.1.dev9.tar.gz
+  url: https://pypi.python.org/packages/source/r/reducer/reducer-0.1.dev9.tar.gz
+  md5: 32f1fa677d9c13a5844d4424a8fd4344
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reducer = reducer:main
+    #
+    # Would create an entry point called reducer that calls reducer.main()
+
+    - reducer = reducer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - astropy >=1.0
+    - numpy
+    - scipy
+    - pillow
+    - ipython >2.0,<3
+    - msumastro >=0.8
+    - ccdproc >=0.3
+
+  run:
+    - python
+    - astropy >=1.0
+    - numpy
+    - scipy
+    - pillow
+    - ipython >2.0,<3
+    - msumastro >=0.8
+    - ccdproc >=0.3
+
+test:
+  # Python imports
+  imports:
+    - reducer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - reducer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mwcraig/reducer
+  license: BSD License
+  summary: 'Process FITS files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

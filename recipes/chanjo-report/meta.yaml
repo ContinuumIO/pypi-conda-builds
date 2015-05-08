@@ -1,0 +1,93 @@
+package:
+  name: chanjo-report
+  version: "1.0.0-rc1"
+
+source:
+  fn: chanjo-report-1.0.0-rc1.tar.gz
+  url: https://pypi.python.org/packages/source/c/chanjo-report/chanjo-report-1.0.0-rc1.tar.gz
+  md5: 05ba4d6f04ea37ba2fb20b0507938777
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chanjo-report = chanjo-report:main
+    #
+    # Would create an entry point called chanjo-report that calls chanjo-report.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - chanjo >=2.1.0
+    - flask-weasyprint
+    - cairocffi
+    - toml
+    - lxml >=3.0
+    - cffi
+    - flask
+    - sqlalchemy
+    - flask-babel
+    - tabulate
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - chanjo >=2.1.0
+    - flask-weasyprint
+    - cairocffi
+    - toml
+    - lxml >=3.0
+    - cffi
+    - flask
+    - sqlalchemy
+    - flask-babel
+    - tabulate
+
+test:
+  # Python imports
+  imports:
+    - chanjo_report
+    - chanjo_report.cli
+    - chanjo_report.interfaces
+    - chanjo_report.interfaces.html
+    - chanjo_report.interfaces.json
+    - chanjo_report.interfaces.pdf
+    - chanjo_report.interfaces.tabular
+    - chanjo_report.miner
+    - chanjo_report.server
+    - chanjo_report.server.blueprints
+    - chanjo_report.server.blueprints.report
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/robinandeer/chanjo-report
+  license: MIT License
+  summary: 'Automatically render coverage reports from Chanjo ouput'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

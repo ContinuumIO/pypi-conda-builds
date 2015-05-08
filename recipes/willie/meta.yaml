@@ -1,0 +1,77 @@
+package:
+  name: willie
+  version: "5.3.0"
+
+source:
+  fn: willie-5.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/w/willie/willie-5.3.0.tar.gz
+  md5: 1dbeb7cedad5df0d1cf8b9a9563b240e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - willie = willie:main
+    #
+    # Would create an entry point called willie that calls willie.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser
+    - pytz
+    - lxml
+    - praw
+    - pyenchant
+    - pygeoip
+    - backports.ssl_match_hostname
+
+  run:
+    - python
+    - feedparser
+    - pytz
+    - lxml
+    - praw
+    - pyenchant
+    - pygeoip
+    - backports.ssl_match_hostname
+
+test:
+  # Python imports
+  imports:
+    - willie
+    - willie.config
+    - willie.modules
+    - willie.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://willie.dftba.net/
+  license: Eiffel Forum License, version 2
+  summary: u'Simple and extendible IRC bot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

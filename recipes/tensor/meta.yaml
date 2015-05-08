@@ -1,0 +1,85 @@
+package:
+  name: tensor
+  version: "0.3.0"
+
+source:
+  fn: tensor-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/tensor/tensor-0.3.0.tar.gz
+  md5: f19c7557289586ef288442543080799d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tensor = tensor:main
+    #
+    # Would create an entry point called tensor that calls tensor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted
+    - pyyaml
+    - protobuf
+    - construct
+    - pysnmp
+
+  run:
+    - python
+    - twisted
+    - pyyaml
+    - protobuf
+    - construct
+    - pysnmp
+
+test:
+  # Python imports
+  imports:
+    - dstv
+    - tensor
+    - tensor.ihateprotobuf
+    - tensor.logs
+    - tensor.outputs
+    - tensor.protocol
+    - tensor.protocol.sflow
+    - tensor.protocol.sflow.protocol
+    - tensor.sources
+    - tensor.sources.database
+    - tensor.sources.linux
+    - tensor.sources.logs
+    - tensor.sources.media
+    - tensor.sources.python
+    - tensor.tests
+    - twisted.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/calston/tensor
+  license: MIT License
+  summary: 'A Twisted based monitoring agent for Riemann'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

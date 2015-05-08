@@ -1,0 +1,83 @@
+package:
+  name: zope.pytest
+  version: "0.1"
+
+source:
+  fn: zope.pytest-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.pytest/zope.pytest-0.1.tar.gz
+  md5: 724985c604b5fad096abeabc1871cb86
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.pytest = zope.pytest:main
+    #
+    # Would create an entry point called zope.pytest that calls zope.pytest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.configuration
+    - zope.component
+    - zope.testing
+    - zope.event
+    - zope.processlifetime
+    - zope.app.publication
+    - zope.app.wsgi
+    - zodb3
+    - webob
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - zope.configuration
+    - zope.component
+    - zope.testing
+    - zope.event
+    - zope.processlifetime
+    - zope.app.publication
+    - zope.app.wsgi
+    - zodb3
+    - webob
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.pytest
+    - zope.pytest.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.pytest
+  license: Zope Public License
+  summary: 'zope pytest integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

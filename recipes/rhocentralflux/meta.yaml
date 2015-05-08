@@ -1,0 +1,80 @@
+package:
+  name: rhocentralflux
+  version: "2.1"
+
+source:
+  fn: rhoCentralFlux-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/rhoCentralFlux/rhoCentralFlux-2.1.tar.gz
+  md5: ae8b9c3f7d28a7a5693adbbdd3ca32ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rhocentralflux = rhocentralflux:main
+    #
+    # Would create an entry point called rhocentralflux that calls rhocentralflux.main()
+
+    - rhoCentralFlux = rhoCentralFlux:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pythonflu >=9.1-SWIG
+
+  run:
+    - python
+    - pythonflu >=9.1-SWIG
+
+test:
+  # Python imports
+  imports:
+    - rhoCentralFlux
+    - rhoCentralFlux.r1_6
+    - rhoCentralFlux.r1_6.BCs
+    - rhoCentralFlux.r1_6.BCs.rho
+    - rhoCentralFlux.r1_7_0
+    - rhoCentralFlux.r1_7_0.BCs
+    - rhoCentralFlux.r1_7_0.BCs.rho
+    - rhoCentralFlux.r2_0_0
+    - rhoCentralFlux.r2_0_0.BCs
+    - rhoCentralFlux.r2_0_0.BCs.rho
+    - rhoCentralFlux.r2_1_0
+    - rhoCentralFlux.r2_1_0.BCs
+    - rhoCentralFlux.r2_1_0.BCs.rho
+    - rhoCentralFlux.r2_1_1
+    - rhoCentralFlux.r2_1_1.BCs
+    - rhoCentralFlux.r2_1_1.BCs.rho
+    - rhocentralflux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rhoCentralFlux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the rhoCentralFoam'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

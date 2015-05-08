@@ -1,0 +1,70 @@
+package:
+  name: django-simple-import
+  version: "1.21"
+
+source:
+  fn: django-simple-import-1.21.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-simple-import/django-simple-import-1.21.tar.gz
+  md5: 4f7372fc398b7edf1c45ac4c61500181
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-simple-import = django-simple-import:main
+    #
+    # Would create an entry point called django-simple-import that calls django-simple-import.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - openpyxl
+    - odfpy
+    - xlrd
+
+  run:
+    - python
+    - django
+    - openpyxl
+    - odfpy
+    - xlrd
+
+test:
+  # Python imports
+  imports:
+    - simple_import
+    - simple_import.migrations
+    - simple_import.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/burke-software/django-simple-import
+  license: BSD License
+  summary: 'A Django import tool easy enough your users could use it'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: django-gearman-proxy
+  version: "1.0.1"
+
+source:
+  fn: django-gearman-proxy-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-gearman-proxy/django-gearman-proxy-1.0.1.tar.gz
+  md5: 7de0448fecfe939c882c068bbcac0190
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-gearman-proxy = django-gearman-proxy:main
+    #
+    # Would create an entry point called django-gearman-proxy that calls django-gearman-proxy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django_gearman_commands
+    - smssluzbacz-api
+    - django-sendsms
+
+  run:
+    - python
+    - django
+    - django_gearman_commands
+    - smssluzbacz-api
+    - django-sendsms
+
+test:
+  # Python imports
+  imports:
+    - django_gearman_proxy
+    - django_gearman_proxy.backends
+    - django_gearman_proxy.management
+    - django_gearman_proxy.management.commands
+    - django_gearman_proxy.serializers
+    - django_gearman_proxy.serializers.mail
+    - django_gearman_proxy.serializers.sms
+    - django_gearman_proxy.tests
+    - django_gearman_proxy.tests.backends
+    - django_gearman_proxy.tests.management
+    - django_gearman_proxy.tests.management.commands
+    - django_gearman_proxy.tests.serializers
+    - django_gearman_proxy.tests.serializers.mail
+    - django_gearman_proxy.tests.serializers.sms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.codescale.net/en/community#django-gearman-proxy
+  license: BSD License
+  summary: 'Proxy backends/workers for asynchronous email and sms sending using gearman as message queue.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

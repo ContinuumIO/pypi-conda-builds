@@ -1,0 +1,71 @@
+package:
+  name: django-categories
+  version: "1.2.3"
+
+source:
+  fn: django-categories-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-categories/django-categories-1.2.3.tar.gz
+  md5: 76ab2ad9a5377fdaee68b28319b05fb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-categories = django-categories:main
+    #
+    # Would create an entry point called django-categories that calls django-categories.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-mptt >=0.5.2
+    - unicode-slugify ==0.1.1
+
+  run:
+    - python
+    - django-mptt >=0.5.2
+    - unicode-slugify ==0.1.1
+
+test:
+  # Python imports
+  imports:
+    - categories
+    - categories.editor
+    - categories.editor.templatetags
+    - categories.management
+    - categories.management.commands
+    - categories.migrations
+    - categories.templatetags
+    - categories.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/callowayproject/django-categories
+  license: UNKNOWN
+  summary: 'A way to handle one or more hierarchical category trees in django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

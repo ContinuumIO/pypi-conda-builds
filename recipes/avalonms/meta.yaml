@@ -1,0 +1,79 @@
+package:
+  name: avalonms
+  version: "0.5.1"
+
+source:
+  fn: avalonms-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/avalonms/avalonms-0.5.1.tar.gz
+  md5: 3b0ec62f55bccff3d59eb8d67f8fdb85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - avalonms = avalonms:main
+    #
+    # Would create an entry point called avalonms that calls avalonms.main()
+
+    - avalon-echo-config = avalon.cli.config:main
+    - avalon-scan = avalon.cli.scan:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - mutagen
+    - simplejson
+    - sqlalchemy
+
+  run:
+    - python
+    - flask
+    - mutagen
+    - simplejson
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - avalon
+    - avalon.app
+    - avalon.cli
+    - avalon.packages
+    - avalon.tags
+    - avalon.web
+    - avalonms
+    - fabfile
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - avalon-echo-config --help
+    - avalon-scan --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tshlabs.org/
+  license: MIT License
+  summary: 'Avalon Music Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

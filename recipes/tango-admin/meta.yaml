@@ -1,0 +1,63 @@
+package:
+  name: tango-admin
+  version: "0.2.10"
+
+source:
+  fn: tango-admin-0.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/t/tango-admin/tango-admin-0.2.10.tar.gz
+  md5: cf23b820d8732bb48fc690c4ba33c534
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tango-admin = tango-admin:main
+    #
+    # Would create an entry point called tango-admin that calls tango-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tango-shared-core >=0.7
+
+  run:
+    - python
+    - tango-shared-core >=0.7
+
+test:
+  # Python imports
+  imports:
+    - tango_admin
+    - tango_admin.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tBaxter/tango-admin
+  license: LICENSE.txt
+  summary: 'Simple admin helpers for Tango apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

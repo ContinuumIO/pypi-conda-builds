@@ -1,0 +1,64 @@
+package:
+  name: tamper
+  version: "0.24.3"
+
+source:
+  fn: tamper-0.24.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tamper/tamper-0.24.3.tar.gz
+  md5: c41870e092c715a61ab198f88ac32d91
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tamper = tamper:main
+    #
+    # Would create an entry point called tamper that calls tamper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent-websocket >=0.9.3
+    - mitmproxy >=0.11.1
+
+  run:
+    - python
+    - gevent-websocket >=0.9.3
+    - mitmproxy >=0.11.1
+
+test:
+  # Python imports
+  imports:
+    - tamper
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dutzi.github.com/tamper
+  license: MIT License
+  summary: 'Mitmproxy extension, companion for Tamper. Locally edit files served from the web'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

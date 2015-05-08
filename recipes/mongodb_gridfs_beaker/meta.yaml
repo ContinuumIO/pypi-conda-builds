@@ -1,0 +1,66 @@
+package:
+  name: mongodb_gridfs_beaker
+  version: "0.5.4"
+
+source:
+  fn: mongodb_gridfs_beaker-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongodb_gridfs_beaker/mongodb_gridfs_beaker-0.5.4.tar.gz
+  md5: b01b8ee67aa53e2d7336c83e926f8ab3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongodb_gridfs_beaker = mongodb_gridfs_beaker:main
+    #
+    # Would create an entry point called mongodb_gridfs_beaker that calls mongodb_gridfs_beaker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=1.9
+    - beaker >=1.5
+
+  run:
+    - python
+    - setuptools
+    - pymongo >=1.9
+    - beaker >=1.5
+
+test:
+  # Python imports
+  imports:
+    - mongodb_gridfs_beaker
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/loucash/mongodb_gridfs_beaker
+  license: BSD License
+  summary: 'Beaker backend to write sessions and caches to a MongoDB GridFS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

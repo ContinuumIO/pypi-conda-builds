@@ -1,0 +1,91 @@
+package:
+  name: chanjo
+  version: "2.3.2"
+
+source:
+  fn: chanjo-2.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/chanjo/chanjo-2.3.2.tar.gz
+  md5: 2bda151b48bf79a275cffea3e3eeb38e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chanjo = chanjo:main
+    #
+    # Would create an entry point called chanjo that calls chanjo.main()
+
+    - chanjo = chanjo.__main__:cli
+    - sex-check = chanjo.sex_checker:sex_check
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - setuptools
+    - pysam >=0.7.5
+    - toolz
+    - path.py
+    - toml
+    - numpy
+    - sqlalchemy >=0.8.2
+
+  run:
+    - python
+    - setuptools
+    - click
+    - setuptools
+    - pysam >=0.7.5
+    - toolz
+    - path.py
+    - toml
+    - numpy
+    - sqlalchemy >=0.8.2
+
+test:
+  # Python imports
+  imports:
+    - chanjo
+    - chanjo.annotator
+    - chanjo.builder
+    - chanjo.config
+    - chanjo.converter
+    - chanjo.demo
+    - chanjo.depth_reader
+    - chanjo.exporter
+    - chanjo.importer
+    - chanjo.sex_checker
+    - chanjo.store
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chanjo --help
+    - sex-check --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.chanjo.co/
+  license: MIT License
+  summary: u'Coverage analysis tool for clinical sequencing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

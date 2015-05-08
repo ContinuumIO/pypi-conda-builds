@@ -1,0 +1,66 @@
+package:
+  name: hatak_sql
+  version: "0.1.15"
+
+source:
+  fn: Hatak_Sql-0.1.15.tar.gz
+  url: https://pypi.python.org/packages/source/H/Hatak_Sql/Hatak_Sql-0.1.15.tar.gz
+  md5: 3ab3c954b01a21706427afc7443eb0fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hatak_sql = hatak_sql:main
+    #
+    # Would create an entry point called hatak_sql that calls hatak_sql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hatak >=0.2.7.5
+    - sqlalchemy ==0.9.9
+
+  run:
+    - python
+    - hatak >=0.2.7.5
+    - sqlalchemy ==0.9.9
+
+test:
+  # Python imports
+  imports:
+    - haplugin
+    - haplugin.sql
+    - hatak_sql
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache License 2.0
+  summary: 'SqlAlchemy plugin for Hatak.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

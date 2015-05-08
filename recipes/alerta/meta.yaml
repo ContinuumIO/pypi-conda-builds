@@ -1,0 +1,68 @@
+package:
+  name: alerta
+  version: "4.1.6"
+
+source:
+  fn: alerta-4.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/alerta/alerta-4.1.6.tar.gz
+  md5: 0c2e6ce7af97311d2e21b4c99eeaa337
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alerta = alerta:main
+    #
+    # Would create an entry point called alerta that calls alerta.main()
+
+    - alerta = alerta.shell:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - requests
+    - pytz
+
+  run:
+    - python
+    - argparse
+    - requests
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - alerta
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - alerta --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/alerta/python-alerta-client
+  license: MIT License
+  summary: 'Alerta unified command-line tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

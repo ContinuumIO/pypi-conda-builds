@@ -1,0 +1,64 @@
+package:
+  name: openerp-portal-crm
+  version: "7.0.406"
+
+source:
+  fn: openerp-portal-crm-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-portal-crm/openerp-portal-crm-7.0.406.tar.gz
+  md5: 12cc1e6cb1a1e8cb5793cfb4679f9a26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-portal-crm = openerp-portal-crm:main
+    #
+    # Would create an entry point called openerp-portal-crm that calls openerp-portal-crm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-crm
+    - openerp-portal
+
+  run:
+    - python
+    - openerp-crm
+    - openerp-portal
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.portal_crm
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Portal CRM'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,95 @@
+package:
+  name: mapproxy
+  version: "1.7.1"
+
+source:
+  fn: MapProxy-1.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/M/MapProxy/MapProxy-1.7.1.tar.gz
+  md5: 6dbc7a5b980730c626057c7dadd4c5a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mapproxy = mapproxy:main
+    #
+    # Would create an entry point called mapproxy that calls mapproxy.main()
+
+    - mapproxy-seed = mapproxy.seed.script:main
+    - mapproxy-util = mapproxy.script.util:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.0,<3.99
+    - pillow !=2.4.0
+
+  run:
+    - python
+    - setuptools
+    - pyyaml >=3.0,<3.99
+    - pillow !=2.4.0
+
+test:
+  # Python imports
+  imports:
+    - mapproxy
+    - mapproxy.cache
+    - mapproxy.client
+    - mapproxy.config
+    - mapproxy.config_template
+    - mapproxy.image
+    - mapproxy.image.fonts
+    - mapproxy.platform
+    - mapproxy.platform.cpython
+    - mapproxy.request
+    - mapproxy.request.wms
+    - mapproxy.script
+    - mapproxy.script.conf
+    - mapproxy.security
+    - mapproxy.seed
+    - mapproxy.service
+    - mapproxy.source
+    - mapproxy.test
+    - mapproxy.test.system
+    - mapproxy.test.unit
+    - mapproxy.util
+    - mapproxy.util.ext
+    - mapproxy.util.ext.dictspec
+    - mapproxy.util.ext.dictspec.test
+    - mapproxy.util.ext.tempita
+    - mapproxy.util.ext.wmsparse
+    - mapproxy.util.ext.wmsparse.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mapproxy-seed --help
+    - mapproxy-util --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mapproxy.org
+  license: Apache Software License
+  summary: 'An accelerating proxy for web map services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

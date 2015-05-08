@@ -1,0 +1,71 @@
+package:
+  name: autoneg
+  version: "0.5"
+
+source:
+  fn: autoneg-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/autoneg/autoneg-0.5.tar.gz
+  md5: 6af4e81a116aa139bd8b442ade4c547c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autoneg = autoneg:main
+    #
+    # Would create an entry point called autoneg that calls autoneg.main()
+
+    - autoneg_cgi=autoneg.command:autoneg_cgi
+    - autoneg_fcgi=autoneg.command:autoneg_fcgi
+    - rdfan_cgi=autoneg.command:rdfan_cgi
+    - rdfan_fcgi=autoneg.command:rdfan_fcgi
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flup
+
+  run:
+    - python
+    - setuptools
+    - flup
+
+test:
+  # Python imports
+  imports:
+    - autoneg
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - autoneg_cgi --help
+    - autoneg_fcgi --help
+    - rdfan_cgi --help
+    - rdfan_fcgi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://river.styx.org/~ww/2010/10/autoneg/
+  license: BSD
+  summary: 'Simple Content Autonegotiation (F)CGI'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

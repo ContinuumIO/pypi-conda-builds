@@ -1,0 +1,80 @@
+package:
+  name: commcare-export
+  version: "0.11.8"
+
+source:
+  fn: commcare-export-0.11.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/commcare-export/commcare-export-0.11.8.tar.gz
+  md5: 956b28bc52d95ff2cc111e8fb12a1b52
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - commcare-export = commcare-export:main
+    #
+    # Would create an entry point called commcare-export that calls commcare-export.main()
+
+    - commcare-export = commcare_export.cli:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - alembic
+    - argparse
+    - jsonpath-rw >=1.2.1
+    - openpyxl >=2.0.3
+    - python-dateutil
+    - requests
+    - simplejson
+    - six
+    - sqlalchemy
+
+  run:
+    - python
+    - alembic
+    - argparse
+    - jsonpath-rw >=1.2.1
+    - openpyxl >=2.0.3
+    - python-dateutil
+    - requests
+    - simplejson
+    - six
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - commcare_export
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - commcare-export --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dimagi/commcare-export
+  license: MIT License
+  summary: 'A command-line tool (and Python library) to extract data from CommCareHQ into a SQL database or Excel workbook'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

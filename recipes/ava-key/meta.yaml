@@ -1,0 +1,70 @@
+package:
+  name: ava-key
+  version: "0.2.0"
+
+source:
+  fn: ava-key-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/ava-key/ava-key-0.2.0.tar.gz
+  md5: 93aa60c3700e58c40acdef936bc1f431
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ava-key = ava-key:main
+    #
+    # Would create an entry point called ava-key that calls ava-key.main()
+
+    - ava-key = ava.key:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - base58 >=0.2.1
+    - click >=3.3
+    - libnacl >=1.4.1
+    - pyscrypt >=1.6.2
+
+  run:
+    - python
+    - base58 >=0.2.1
+    - click >=3.3
+    - libnacl >=1.4.1
+    - pyscrypt >=1.6.2
+
+test:
+  # Python imports
+  imports:
+    - ava
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ava-key --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Key generator and validator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

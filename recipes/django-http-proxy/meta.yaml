@@ -1,0 +1,63 @@
+package:
+  name: django-http-proxy
+  version: "0.4"
+
+source:
+  fn: django-http-proxy-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-http-proxy/django-http-proxy-0.4.tar.gz
+  md5: 4727db9184705ad81a633f9ae8e0408d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-http-proxy = django-http-proxy:main
+    #
+    # Would create an entry point called django-http-proxy that calls django-http-proxy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.1
+
+  run:
+    - python
+    - django >=1.1
+
+test:
+  # Python imports
+  imports:
+    - httpproxy
+    - httpproxy.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-http-proxy.readthedocs.org/
+  license: MIT License
+  summary: 'A simple HTTP proxy for the Django framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

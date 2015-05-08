@@ -1,0 +1,67 @@
+package:
+  name: supertagging
+  version: "0.5.4"
+
+source:
+  fn: supertagging-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/s/supertagging/supertagging-0.5.4.tar.gz
+  md5: 1184af7e1dc4fe6eb7a4e26c9f8e091c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - supertagging = supertagging:main
+    #
+    # Would create an entry point called supertagging that calls supertagging.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson ==2.0.9
+
+  run:
+    - python
+    - simplejson ==2.0.9
+
+test:
+  # Python imports
+  imports:
+    - supertagging
+    - supertagging.management
+    - supertagging.management.commands
+    - supertagging.migrations
+    - supertagging.modules
+    - supertagging.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/washingtontimes/django-supertagging
+  license: Apache Software License
+  summary: 'An interface to the Open Calais service for semantic markup.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

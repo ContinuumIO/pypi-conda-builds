@@ -1,0 +1,67 @@
+package:
+  name: django-facebook-realtime
+  version: "0.1.1-20130208"
+
+source:
+  fn: django-facebook-realtime-0.1.1-20130208.zip
+  url: https://pypi.python.org/packages/source/d/django-facebook-realtime/django-facebook-realtime-0.1.1-20130208.zip
+  md5: 4302bf1119ab1bdc60c71db8649e8457
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-facebook-realtime = django-facebook-realtime:main
+    #
+    # Would create an entry point called django-facebook-realtime that calls django-facebook-realtime.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - django
+
+  run:
+    - python
+    - requests
+    - django
+
+test:
+  # Python imports
+  imports:
+    - dj_facebook_realtime
+    - dj_facebook_realtime.management
+    - dj_facebook_realtime.management.commands
+    - dj_facebook_realtime.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rmaceissoft/django-facebook-realtime
+  license: BSD License
+  summary: 'django app for adding/removing/listing facebook realtime subscriptions and retrieving facebook realtime updates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

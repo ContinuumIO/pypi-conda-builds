@@ -1,0 +1,72 @@
+package:
+  name: blueberrypy
+  version: "0.5.4"
+
+source:
+  fn: blueberrypy-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/blueberrypy/blueberrypy-0.5.4.tar.gz
+  md5: 012d998fe4a69c0e14f189b920bbe57e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blueberrypy = blueberrypy:main
+    #
+    # Would create an entry point called blueberrypy that calls blueberrypy.main()
+
+    - blueberrypy = blueberrypy.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cherrypy >=3.2.2
+    - jinja2 >=2.6
+    - pyyaml >=3.10
+    - python-dateutil <2.0
+    - simplejson >=2.4.0
+
+  run:
+    - python
+    - cherrypy >=3.2.2
+    - jinja2 >=2.6
+    - pyyaml >=3.10
+    - python-dateutil <2.0
+    - simplejson >=2.4.0
+
+test:
+  # Python imports
+  imports:
+    - blueberrypy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - blueberrypy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/wyuenho/blueberrypy
+  license: BSD License
+  summary: 'CherryPy plugins and tools for integration with various libraries, including logging, Redis, SQLAlchemy and Jinja2 and webassets.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

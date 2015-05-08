@@ -1,0 +1,86 @@
+package:
+  name: zktraffic
+  version: "0.1.2"
+
+source:
+  fn: zktraffic-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zktraffic/zktraffic-0.1.2.tar.gz
+  md5: c74e8182f7175a0ddcd8c4a61656277f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zktraffic = zktraffic:main
+    #
+    # Would create an entry point called zktraffic that calls zktraffic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ansicolors
+    - dpkt-fix
+    - psutil >=2.1.0
+    - scapy ==2.2.0-dev
+    - twitter.common.app
+    - twitter.common.collections
+    - twitter.common.exceptions
+    - twitter.common.http
+    - twitter.common.log
+
+  run:
+    - python
+    - ansicolors
+    - dpkt-fix
+    - psutil >=2.1.0
+    - scapy ==2.2.0-dev
+    - twitter.common.app
+    - twitter.common.collections
+    - twitter.common.exceptions
+    - twitter.common.http
+    - twitter.common.log
+
+test:
+  # Python imports
+  imports:
+    - zktraffic
+    - zktraffic.base
+    - zktraffic.cli
+    - zktraffic.endpoints
+    - zktraffic.fle
+    - zktraffic.network
+    - zktraffic.stats
+    - zktraffic.tests
+    - zktraffic.zab
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/twitter/zktraffic
+  license: Apache Software License
+  summary: 'ZooKeeper protocol analyzer and stats gathering daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: zope.app.undo
+  version: "3.5.0"
+
+source:
+  fn: zope.app.undo-3.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.undo/zope.app.undo-3.5.0.tar.gz
+  md5: 7a40060aa0451a635a31d6e12d17a82e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.undo = zope.app.undo:main
+    #
+    # Would create an entry point called zope.app.undo that calls zope.app.undo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.security
+    - zope.component
+    - zope.interface
+    - zope.location
+    - zope.publisher
+    - zope.security
+    - zope.traversing
+
+  run:
+    - python
+    - setuptools
+    - zope.app.security
+    - zope.component
+    - zope.interface
+    - zope.location
+    - zope.publisher
+    - zope.security
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.undo
+    - zope.app.undo.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.undo
+  license: Zope Public License
+  summary: 'Transaction Undo API and UI'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

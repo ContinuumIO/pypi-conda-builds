@@ -1,0 +1,68 @@
+package:
+  name: django-pwutils
+  version: "0.1.14"
+
+source:
+  fn: django-pwutils-0.1.14.zip
+  url: https://pypi.python.org/packages/source/d/django-pwutils/django-pwutils-0.1.14.zip
+  md5: b70b8f85958f1570a6f05c246d779b5d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pwutils = django-pwutils:main
+    #
+    # Would create an entry point called django-pwutils that calls django-pwutils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lockfile
+
+  run:
+    - python
+    - lockfile
+
+test:
+  # Python imports
+  imports:
+    - pwutils
+    - pwutils.email
+    - pwutils.management
+    - pwutils.middleware
+    - pwutils.search
+    - pwutils.settings
+    - pwutils.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/suvitorg/django-pwutils
+  license: MIT License
+  summary: 'Django specific utils and helpers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

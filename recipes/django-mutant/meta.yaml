@@ -1,0 +1,92 @@
+package:
+  name: django-mutant
+  version: "0.1.2"
+
+source:
+  fn: django-mutant-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mutant/django-mutant-0.1.2.tar.gz
+  md5: 795237592476cdf1db568c8983fbd738
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mutant = django-mutant:main
+    #
+    # Would create an entry point called django-mutant that calls django-mutant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - south >=0.8.1
+    - django-picklefield >=0.3.0
+    - django-polymodels >=1.2.2
+
+  run:
+    - python
+    - django >=1.5
+    - south >=0.8.1
+    - django-picklefield >=0.3.0
+    - django-polymodels >=1.2.2
+
+test:
+  # Python imports
+  imports:
+    - mutant
+    - mutant.contrib
+    - mutant.contrib.boolean
+    - mutant.contrib.file
+    - mutant.contrib.geo
+    - mutant.contrib.geo.models
+    - mutant.contrib.numeric
+    - mutant.contrib.related
+    - mutant.contrib.related.management
+    - mutant.contrib.temporal
+    - mutant.contrib.text
+    - mutant.contrib.web
+    - mutant.db
+    - mutant.db.fields
+    - mutant.management
+    - mutant.management.commands
+    - mutant.models
+    - mutant.models.field
+    - mutant.models.model
+    - mutant.state
+    - mutant.state.handlers
+    - mutant.state.handlers.pubsub
+    - mutant.test
+    - mutant.tests
+    - mutant.tests.settings
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/charettes/django-mutant
+  license: MIT License
+  summary: 'Dynamic model definition and alteration (evolving schemas)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: basil
+  version: "0.1"
+
+source:
+  fn: basil-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/basil/basil-0.1.tar.gz
+  md5: 0f1b2702933fc9a78859494623ee61e5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - basil = basil:main
+    #
+    # Would create an entry point called basil that calls basil.main()
+
+    - basil0 = basil.v0.main:main
+    - basil = basil.v0.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenvwrapper
+
+  run:
+    - python
+    - virtualenvwrapper
+
+test:
+  # Python imports
+  imports:
+    - basil
+    - basil.v0
+    - basil.v0.db_managers
+    - basil.v0.templates
+    - basil.v0.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - basil0 --help
+    - basil --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/basil
+  license: LICENSE.txt
+  summary: 'Build a system instant-like.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

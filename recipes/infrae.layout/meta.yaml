@@ -1,0 +1,69 @@
+package:
+  name: infrae.layout
+  version: "1.0"
+
+source:
+  fn: infrae.layout-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/infrae.layout/infrae.layout-1.0.tar.gz
+  md5: 2d9ca0061206917af38098474a310322
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infrae.layout = infrae.layout:main
+    #
+    # Would create an entry point called infrae.layout that calls infrae.layout.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zope2 >=2.12.4
+    - five.grok
+    - setuptools
+    - infrae.wsgi
+
+  run:
+    - python
+    - zope2 >=2.12.4
+    - five.grok
+    - setuptools
+    - infrae.wsgi
+
+test:
+  # Python imports
+  imports:
+    - infrae
+    - infrae.layout
+    - infrae.layout.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.infrae.com/infrae.layout/trunk
+  license: Zope Public License
+  summary: 'Layout system for Zope 2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

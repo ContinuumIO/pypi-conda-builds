@@ -1,0 +1,65 @@
+package:
+  name: dataone.cli
+  version: "1.2.5"
+
+source:
+  fn: dataone.cli-1.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/dataone.cli/dataone.cli-1.2.5.tar.gz
+  md5: 0f3504877d5e664a0f2b3efbca72222e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dataone.cli = dataone.cli:main
+    #
+    # Would create an entry point called dataone.cli that calls dataone.cli.main()
+
+    - dataone = d1_client_cli.dataone:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dataone.libclient ==1.2.6
+
+  run:
+    - python
+    - dataone.libclient ==1.2.6
+
+test:
+  # Python imports
+  imports:
+    - d1_client_cli
+    - d1_client_cli.impl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dataone --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dataone.org
+  license: Apache License, Version 2.0
+  summary: 'A DataONE Command-line interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: charm
+  version: "1.0b4"
+
+source:
+  fn: charm-1.0b4.zip
+  url: https://pypi.python.org/packages/source/c/charm/charm-1.0b4.zip
+  md5: f7d9c80f49513e5b2bcea265b0e06e8f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - charm = charm:main
+    #
+    # Would create an entry point called charm that calls charm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+    - lxml
+    - xlrd
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup
+    - lxml
+    - xlrd
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - charm
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aclark4life/charm
+  license: UNKNOWN
+  summary: 'Import static websites on the file system into Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

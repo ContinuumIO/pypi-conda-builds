@@ -1,0 +1,83 @@
+package:
+  name: trytond_timesheet_invoice
+  version: "2.2.2"
+
+source:
+  fn: trytond_timesheet_invoice-2.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_timesheet_invoice/trytond_timesheet_invoice-2.2.2.tar.gz
+  md5: 8054bd605718af118dc268171a0536a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_timesheet_invoice = trytond_timesheet_invoice:main
+    #
+    # Would create an entry point called trytond_timesheet_invoice that calls trytond_timesheet_invoice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_account >=2.2,<2.3
+    - trytond_account_invoice >=2.2,<2.3
+    - trytond_product >=2.2,<2.3
+    - trytond_company >=2.2,<2.3
+    - trytond_currency >=2.2,<2.3
+    - trytond_timesheet >=2.2,<2.3
+    - trytond_project >=2.2,<2.3
+    - trytond_project_revenue >=2.2,<2.3
+    - trytond >=2.2,<2.3
+
+  run:
+    - python
+    - setuptools
+    - trytond_account >=2.2,<2.3
+    - trytond_account_invoice >=2.2,<2.3
+    - trytond_product >=2.2,<2.3
+    - trytond_company >=2.2,<2.3
+    - trytond_currency >=2.2,<2.3
+    - trytond_timesheet >=2.2,<2.3
+    - trytond_project >=2.2,<2.3
+    - trytond_project_revenue >=2.2,<2.3
+    - trytond >=2.2,<2.3
+
+test:
+  # Python imports
+  imports:
+    - trytond
+    - trytond.modules
+    - trytond.modules.timesheet_invoice
+    - trytond.modules.timesheet_invoice.tests
+    - trytond_timesheet_invoice
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pjstevns/trytond_timesheet_invoice
+  license: GNU General Public License (GPL)
+  summary: 'Support creation of invoices based on timesheets.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: django-celery-email-with-retry
+  version: "1.0.3"
+
+source:
+  fn: django-celery-email-with-retry-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-celery-email-with-retry/django-celery-email-with-retry-1.0.3.tar.gz
+  md5: a17e8b634ca4cf9d1a8e2bad8607741f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-celery-email-with-retry = django-celery-email-with-retry:main
+    #
+    # Would create an entry point called django-celery-email-with-retry that calls django-celery-email-with-retry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-celery >=2.2.0
+
+  run:
+    - python
+    - django-celery >=2.2.0
+
+test:
+  # Python imports
+  imports:
+    - djcelery_email
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/pmclanahan/django-celery-email
+  license: BSD License
+  summary: 'Django email backend for celery.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

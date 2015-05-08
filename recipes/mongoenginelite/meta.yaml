@@ -1,0 +1,65 @@
+package:
+  name: mongoenginelite
+  version: "1.1"
+
+source:
+  fn: mongoenginelite-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongoenginelite/mongoenginelite-1.1.tar.gz
+  md5: 037c0104f71fe2161ada00d688bb3fcf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongoenginelite = mongoenginelite:main
+    #
+    # Would create an entry point called mongoenginelite that calls mongoenginelite.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mongoengine >=0.8.7
+
+  run:
+    - python
+    - mongoengine >=0.8.7
+
+test:
+  # Python imports
+  imports:
+    - mongoenginelite
+    - mongoenginelite.mengine
+    - mongoenginelite.mongo
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lmanzurv/mongo_engine_lite
+  license: Academic Free License (AFL)
+  summary: 'This is a lite version of MongoEngine ORM that persists the information in a JSON file, similar to SQLite to SQL databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

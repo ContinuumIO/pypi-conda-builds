@@ -1,0 +1,66 @@
+package:
+  name: hatom2atom
+  version: "0.6"
+
+source:
+  fn: hatom2atom-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/h/hatom2atom/hatom2atom-0.6.tar.gz
+  md5: 9cc5ec116a69d32fad0377e5f4b273aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hatom2atom = hatom2atom:main
+    #
+    # Would create an entry point called hatom2atom that calls hatom2atom.main()
+
+    - h2aserve = hatom2atom.h2aproxy:cmd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+    - kid >=0.8
+
+  run:
+    - python
+    - beautifulsoup
+    - kid >=0.8
+
+test:
+  # Python imports
+  imports:
+    - hatom2atom
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - h2aserve --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lukearno.com/projects/hatom2atom
+  license: GNU General Public License (GPL)
+  summary: 'WSGI proxy for transforming hAtom to Atom via hAtom2Atom.xsl.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

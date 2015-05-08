@@ -1,0 +1,62 @@
+package:
+  name: omstd-hh-001
+  version: "0.1.3"
+
+source:
+  fn: OMSTD-hh-001-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/O/OMSTD-hh-001/OMSTD-hh-001-0.1.3.tar.gz
+  md5: 6077bed2211477f17e854dcf1307f8bf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - omstd-hh-001 = omstd-hh-001:main
+    #
+    # Would create an entry point called omstd-hh-001 that calls omstd-hh-001.main()
+
+    - omstd-hh-001 = omstd_hh_001.hh_001:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - omstd_hh_001
+    - omstd_hh_001.lib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - omstd-hh-001 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cr0hn/OMSTD/tree/master/examples/hacking/hh-001
+  license: BSD License
+  summary: 'OMSTD HH-001 study case: High performance TCP port scanner nmap friendly.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

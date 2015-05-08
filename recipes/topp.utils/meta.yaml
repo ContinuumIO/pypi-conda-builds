@@ -1,0 +1,68 @@
+package:
+  name: topp.utils
+  version: "0.5.1"
+
+source:
+  fn: topp.utils-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/topp.utils/topp.utils-0.5.1.tar.gz
+  md5: 295b9847eb8858d8b510f083db4116a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - topp.utils = topp.utils:main
+    #
+    # Would create an entry point called topp.utils that calls topp.utils.main()
+
+    - pytroff=topp.utils.modules:uninstall_package
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - zope.dottedname
+
+  run:
+    - python
+    - setuptools
+    - python-dateutil
+    - zope.dottedname
+
+test:
+  # Python imports
+  imports:
+    - topp
+    - topp.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pytroff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.openplans.org/svn/topp.utils
+  license: GPL
+  summary: 'utility library used for openplans.org'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

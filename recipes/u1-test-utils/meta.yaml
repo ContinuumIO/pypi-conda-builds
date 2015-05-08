@@ -1,0 +1,71 @@
+package:
+  name: u1-test-utils
+  version: "0.3.2"
+
+source:
+  fn: u1-test-utils-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/u/u1-test-utils/u1-test-utils-0.3.2.tar.gz
+  md5: 68cd0903da5ded16d31247012c94858b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - u1-test-utils = u1-test-utils:main
+    #
+    # Would create an entry point called u1-test-utils that calls u1-test-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - fabtasks
+    - u1testutils
+    - u1testutils.selftests
+    - u1testutils.selftests.django_project
+    - u1testutils.selftests.static
+    - u1testutils.selftests.unit
+    - u1testutils.sst
+    - u1testutils.sst.sso
+    - u1testutils.sst.sso.selftests
+    - u1testutils.sst.sso.selftests.unit
+    - u1testutils.sst.sso.utils
+    - u1testutils.static
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Common testcases and utilities for testing Ubuntu One applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

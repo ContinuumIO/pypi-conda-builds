@@ -1,0 +1,74 @@
+package:
+  name: plone.formwidget.recaptcha
+  version: "1.0b3"
+
+source:
+  fn: plone.formwidget.recaptcha-1.0b3.zip
+  url: https://pypi.python.org/packages/source/p/plone.formwidget.recaptcha/plone.formwidget.recaptcha-1.0b3.zip
+  md5: 027df255d36e270659a448e366f9214a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.formwidget.recaptcha = plone.formwidget.recaptcha:main
+    #
+    # Would create an entry point called plone.formwidget.recaptcha that calls plone.formwidget.recaptcha.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.z3cform
+    - plone.registry
+    - plone.app.registry
+    - recaptcha-client !=1.0.4
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.z3cform
+    - plone.registry
+    - plone.app.registry
+    - recaptcha-client !=1.0.4
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.formwidget
+    - plone.formwidget.recaptcha
+    - plone.formwidget.recaptcha.demo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.formwidget.recaptcha
+  license: GPL
+  summary: 'ReCaptcha widget for Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

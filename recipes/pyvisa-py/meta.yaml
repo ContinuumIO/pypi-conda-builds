@@ -1,0 +1,64 @@
+package:
+  name: pyvisa-py
+  version: "0.1"
+
+source:
+  fn: PyVISA-py-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyVISA-py/PyVISA-py-0.1.tar.gz
+  md5: 8b61cd1b33753b8ae2e994b736cef972
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyvisa-py = pyvisa-py:main
+    #
+    # Would create an entry point called pyvisa-py that calls pyvisa-py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyvisa >=1.6.3
+
+  run:
+    - python
+    - pyvisa >=1.6.3
+
+test:
+  # Python imports
+  imports:
+    - pyvisa-py
+    - pyvisa-py.protocols
+    - pyvisa-py.testsuite
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hgrecco/pyvisa-py
+  license: MIT License
+  summary: 'Python VISA bindings for GPIB, RS232, and USB instruments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: jarn.mkrelease
+  version: "3.8"
+
+source:
+  fn: jarn.mkrelease-3.8.zip
+  url: https://pypi.python.org/packages/source/j/jarn.mkrelease/jarn.mkrelease-3.8.zip
+  md5: 6bae7013df091cb4d96e9da9372eb29c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jarn.mkrelease = jarn.mkrelease:main
+    #
+    # Would create an entry point called jarn.mkrelease that calls jarn.mkrelease.main()
+
+    - mkrelease=jarn.mkrelease.mkrelease:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools-subversion >=3.1
+    - setuptools-hg >=0.4
+    - setuptools-git >=1.0
+    - lazy >=1.1
+
+  run:
+    - python
+    - setuptools
+    - setuptools-subversion >=3.1
+    - setuptools-hg >=0.4
+    - setuptools-git >=1.0
+    - lazy >=1.1
+
+test:
+  # Python imports
+  imports:
+    - jarn
+    - jarn.mkrelease
+    - jarn.mkrelease.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mkrelease --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/jarn.mkrelease
+  license: BSD License
+  summary: 'Python egg releaser'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

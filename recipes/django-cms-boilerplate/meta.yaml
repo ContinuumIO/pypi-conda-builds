@@ -1,0 +1,75 @@
+package:
+  name: django-cms-boilerplate
+  version: "1.0"
+
+source:
+  fn: django-cms-boilerplate-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cms-boilerplate/django-cms-boilerplate-1.0.tar.gz
+  md5: 2b6d86d1755648cd97a553b899492464
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cms-boilerplate = django-cms-boilerplate:main
+    #
+    # Would create an entry point called django-cms-boilerplate that calls django-cms-boilerplate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-mptt ==0.5.2
+    - django-cms ==2.4.3
+    - django-reversion ==1.7
+    - pillow
+
+  run:
+    - python
+    - django-mptt ==0.5.2
+    - django-cms ==2.4.3
+    - django-reversion ==1.7
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - cms_boilerplate
+    - startproject
+    - startproject.myproject
+    - startproject.static
+    - startproject.static-new
+    - startproject.static-new.css
+    - startproject.static-new.img
+    - startproject.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/cms-boilerplate
+  license: MIT License
+  summary: 'Django-cms initial project template'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

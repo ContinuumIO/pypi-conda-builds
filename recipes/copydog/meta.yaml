@@ -1,0 +1,83 @@
+package:
+  name: copydog
+  version: "0.1"
+
+source:
+  fn: copydog-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/copydog/copydog-0.1.tar.gz
+  md5: 6e88658deb0a810a548efe1833589eea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - copydog = copydog:main
+    #
+    # Would create an entry point called copydog that calls copydog.main()
+
+    - copydog = copydog.bin.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==0.13.6
+    - redis ==2.6.2
+    - python-dateutil ==2.1
+    - pytz ==2012c
+    - docopt ==0.4.1
+    - pyyaml ==3.10
+    - python-daemon ==1.6
+    - texttable ==0.8.1
+
+  run:
+    - python
+    - requests ==0.13.6
+    - redis ==2.6.2
+    - python-dateutil ==2.1
+    - pytz ==2012c
+    - docopt ==0.4.1
+    - pyyaml ==3.10
+    - python-daemon ==1.6
+    - texttable ==0.8.1
+
+test:
+  # Python imports
+  imports:
+    - copydog
+    - copydog.api
+    - copydog.bin
+    - copydog.storage
+    - copydog.storage.backends
+    - copydog.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - copydog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://copydog.readthedocs.org/
+  license: BSD
+  summary: 'Copies issues between Redmine and Trello on the fly'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

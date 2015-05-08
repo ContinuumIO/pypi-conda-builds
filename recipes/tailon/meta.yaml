@@ -1,0 +1,68 @@
+package:
+  name: tailon
+  version: "0.3.1"
+
+source:
+  fn: tailon-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tailon/tailon-0.3.1.tar.gz
+  md5: 2f8b2039a19cd1de0899c1a66e30f67e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tailon = tailon:main
+    #
+    # Would create an entry point called tailon that calls tailon.main()
+
+    - tailon = tailon.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=4.0.2
+    - sockjs-tornado >=1.0.1
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - tornado >=4.0.2
+    - sockjs-tornado >=1.0.1
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - tailon
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tailon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gvalkov/tailon
+  license: BSD License
+  summary: 'Webapp for looking at and searching through log files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

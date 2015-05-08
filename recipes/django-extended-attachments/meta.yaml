@@ -1,0 +1,67 @@
+package:
+  name: django-extended-attachments
+  version: "0.4.0"
+
+source:
+  fn: django-extended-attachments-0.4.0.tar.bz2
+  url: https://pypi.python.org/packages/source/d/django-extended-attachments/django-extended-attachments-0.4.0.tar.bz2
+  md5: 25da8e0dd8219d28a0741009c2787e7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-extended-attachments = django-extended-attachments:main
+    #
+    # Would create an entry point called django-extended-attachments that calls django-extended-attachments.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django_extensions
+    - django >=1.2
+
+  run:
+    - python
+    - django_extensions
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - attachments
+    - attachments.backends
+    - attachments.management
+    - attachments.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://vehq.ru/project/django-extended-attachments/
+  license: BSD License
+  summary: 'A generic Django application to attach Files (Attachments) to any model'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

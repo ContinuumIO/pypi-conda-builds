@@ -1,0 +1,63 @@
+package:
+  name: django-facebook-applications
+  version: "0.1.0"
+
+source:
+  fn: django-facebook-applications-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-facebook-applications/django-facebook-applications-0.1.0.tar.gz
+  md5: df5d7721d05a07ac79734a45c6cc6ae7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-facebook-applications = django-facebook-applications:main
+    #
+    # Would create an entry point called django-facebook-applications that calls django-facebook-applications.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-facebook-api >=0.1.0
+
+  run:
+    - python
+    - django-facebook-api >=0.1.0
+
+test:
+  # Python imports
+  imports:
+    - facebook_applications
+    - facebook_applications.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-facebook-applications
+  license: BSD License
+  summary: 'Django implementation for Facebook Graph API Applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

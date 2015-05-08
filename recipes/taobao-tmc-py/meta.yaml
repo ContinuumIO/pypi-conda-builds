@@ -1,0 +1,65 @@
+package:
+  name: taobao-tmc-py
+  version: "0.1dev-r0"
+
+source:
+  fn: taobao-tmc-py-0.1dev-r0.tar.gz
+  url: https://pypi.python.org/packages/source/t/taobao-tmc-py/taobao-tmc-py-0.1dev-r0.tar.gz
+  md5: 207965a163365e5e3617d0ec550fe749
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - taobao-tmc-py = taobao-tmc-py:main
+    #
+    # Would create an entry point called taobao-tmc-py that calls taobao-tmc-py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado ==4.0
+
+  run:
+    - python
+    - setuptools
+    - tornado ==4.0
+
+test:
+  # Python imports
+  imports:
+    - connectiontests
+    - taobaotmcpy
+    - unpacktests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/baocaixiong/taobao-tmc-python
+  license: MIT
+  summary: '\xe6\xb7\x98\xe5\xae\x9d\xe5\xb9\xb3\xe5\x8f\xb0\xe6\xb6\x88\xe6\x81\xaf\xe6\x9c\x8d\xe5\x8a\xa1python\xe7\x89\x88\xe6\x9c\xac'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

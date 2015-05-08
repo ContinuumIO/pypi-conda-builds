@@ -1,0 +1,87 @@
+package:
+  name: mozmill-automation
+  version: "2.0.10"
+
+source:
+  fn: mozmill-automation-2.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozmill-automation/mozmill-automation-2.0.10.tar.gz
+  md5: 5d3b28c21e61101387b526235fb64488
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozmill-automation = mozmill-automation:main
+    #
+    # Would create an entry point called mozmill-automation that calls mozmill-automation.main()
+
+    - testrun_addons=mozmill_automation:addons_cli
+    - testrun_endurance=mozmill_automation:endurance_cli
+    - testrun_functional=mozmill_automation:functional_cli
+    - testrun_l10n=mozmill_automation:l10n_cli
+    - testrun_remote=mozmill_automation:remote_cli
+    - testrun_update=mozmill_automation:update_cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mercurial ==2.6.2
+    - mozdownload ==1.13
+    - mozfile ==1.1
+    - mozinfo ==0.7
+    - mozinstall ==1.11
+    - mozmill ==2.0.10
+    - mozversion ==1.0
+
+  run:
+    - python
+    - setuptools
+    - mercurial ==2.6.2
+    - mozdownload ==1.13
+    - mozfile ==1.1
+    - mozinfo ==0.7
+    - mozinstall ==1.11
+    - mozmill ==2.0.10
+    - mozversion ==1.0
+
+test:
+  # Python imports
+  imports:
+    - mozmill_automation
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - testrun_addons --help
+    - testrun_endurance --help
+    - testrun_functional --help
+    - testrun_l10n --help
+    - testrun_remote --help
+    - testrun_update --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla/mozmill-automation
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Automation scripts for Mozmill test execution'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

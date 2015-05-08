@@ -1,0 +1,64 @@
+package:
+  name: openerp-product-visible-discount
+  version: "7.0.406"
+
+source:
+  fn: openerp-product-visible-discount-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-product-visible-discount/openerp-product-visible-discount-7.0.406.tar.gz
+  md5: 5deadd7632a967ce26eb80a193a2a5c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-product-visible-discount = openerp-product-visible-discount:main
+    #
+    # Would create an entry point called openerp-product-visible-discount that calls openerp-product-visible-discount.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-sale
+    - openerp-purchase
+
+  run:
+    - python
+    - openerp-sale
+    - openerp-purchase
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.product_visible_discount
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Prices Visible Discounts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

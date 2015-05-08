@@ -1,0 +1,67 @@
+package:
+  name: clldmpg
+  version: "0.6"
+
+source:
+  fn: clldmpg-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/clldmpg/clldmpg-0.6.tar.gz
+  md5: b432f196b8599a546fc7074a8d266972
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clldmpg = clldmpg:main
+    #
+    # Would create an entry point called clldmpg that calls clldmpg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clld >=0.19
+    - newrelic
+
+  run:
+    - python
+    - setuptools
+    - clld >=0.19
+    - newrelic
+
+test:
+  # Python imports
+  imports:
+    - clldmpg
+    - clldmpg.scaffolds
+    - clldmpg.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://clld.org
+  license: Apache Software License
+  summary: 'Python library supporting development of CLLD apps maintained by MPG'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

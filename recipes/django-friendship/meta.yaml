@@ -1,0 +1,63 @@
+package:
+  name: django-friendship
+  version: "1.2.0"
+
+source:
+  fn: django-friendship-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-friendship/django-friendship-1.2.0.tar.gz
+  md5: c0db9deb5d66e26125c241301a8357b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-friendship = django-friendship:main
+    #
+    # Would create an entry point called django-friendship that calls django-friendship.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - friendship
+    - friendship.migrations
+    - friendship.templatetags
+    - friendship.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/revsys/django-friendship/
+  license: BSD License
+  summary: 'django-friendship provides an easy extensible interface for following and friendship'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

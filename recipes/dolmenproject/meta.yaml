@@ -1,0 +1,65 @@
+package:
+  name: dolmenproject
+  version: "1.0a3"
+
+source:
+  fn: dolmenproject-1.0a3.zip
+  url: https://pypi.python.org/packages/source/d/dolmenproject/dolmenproject-1.0a3.zip
+  md5: dc0b09c7ad2434a2f67f4b5b956fa8a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dolmenproject = dolmenproject:main
+    #
+    # Would create an entry point called dolmenproject that calls dolmenproject.main()
+
+    - dolmenproject = dolmenproject:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - grokproject >=2.5,<2.6
+
+  run:
+    - python
+    - setuptools
+    - grokproject >=2.5,<2.6
+
+test:
+  # Python imports
+  imports:
+    - dolmenproject
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dolmenproject --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.dolmen-project.org
+  license: ZPL
+  summary: 'Script that creates a Dolmen project directory, installs Grok, the Grok Toolkit and the Zope Toolkit and sets up a complete skeleton for a new Dolmen application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

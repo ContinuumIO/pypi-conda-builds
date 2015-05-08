@@ -1,0 +1,81 @@
+package:
+  name: aldryn-people
+  version: "0.5.2"
+
+source:
+  fn: aldryn-people-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-people/aldryn-people-0.5.2.tar.gz
+  md5: e8543a108bbbbdd30ab363b400d37dc8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-people = aldryn-people:main
+    #
+    # Would create an entry point called aldryn-people that calls aldryn-people.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-parler
+    - phonenumbers
+    - django-phonenumber-field >=0.7.2
+    - vobject
+    - django-filer
+    - aldryn-common >=0.1.3
+    - djangocms-text-ckeditor
+    - aldryn-boilerplates
+
+  run:
+    - python
+    - django-parler
+    - phonenumbers
+    - django-phonenumber-field >=0.7.2
+    - vobject
+    - django-filer
+    - aldryn-common >=0.1.3
+    - djangocms-text-ckeditor
+    - aldryn-boilerplates
+
+test:
+  # Python imports
+  imports:
+    - aldryn_people
+    - aldryn_people.admin
+    - aldryn_people.migrations
+    - aldryn_people.south_migrations
+    - aldryn_people.templatetags
+    - aldryn_people.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-people
+  license: BSD License
+  summary: 'Renders a list of people'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: django-localized-names
+  version: "0.2"
+
+source:
+  fn: django-localized-names-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-localized-names/django-localized-names-0.2.tar.gz
+  md5: bd36194d7c49b952002688717cac0811
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-localized-names = django-localized-names:main
+    #
+    # Would create an entry point called django-localized-names that calls django-localized-names.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.3
+    - south
+    - django-libs
+
+  run:
+    - python
+    - django >=1.4.3
+    - south
+    - django-libs
+
+test:
+  # Python imports
+  imports:
+    - localized_names
+    - localized_names.formats
+    - localized_names.formats.de
+    - localized_names.formats.en
+    - localized_names.formats.zh
+    - localized_names.templatetags
+    - localized_names.tests
+    - localized_names.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-localized-names
+  license: The MIT License
+  summary: 'A reusable Django app to provide a correct order for names according to the\ncurrently set language.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

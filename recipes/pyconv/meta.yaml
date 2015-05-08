@@ -1,0 +1,64 @@
+package:
+  name: pyconv
+  version: "0.2"
+
+source:
+  fn: pyconv-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyconv/pyconv-0.2.tar.gz
+  md5: 4f2f55811b34c89aa2035c2196c385bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyconv = pyconv:main
+    #
+    # Would create an entry point called pyconv that calls pyconv.main()
+
+    - pyconv = pyconv.core:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chardet
+
+  run:
+    - python
+    - chardet
+
+test:
+  # Python imports
+  imports:
+    - pyconv
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyconv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/reorx/pyconv
+  license: License :: OSI Approved :: MIT License
+  summary: 'Text file code conversion Tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

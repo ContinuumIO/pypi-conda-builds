@@ -1,0 +1,75 @@
+package:
+  name: zope.i18n
+  version: "4.0.0"
+
+source:
+  fn: zope.i18n-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.i18n/zope.i18n-4.0.0.tar.gz
+  md5: d52df830a730e5092722ab847ca10138
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.i18n = zope.i18n:main
+    #
+    # Would create an entry point called zope.i18n that calls zope.i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+    - zope.schema
+    - zope.i18nmessageid
+    - zope.component
+
+  run:
+    - python
+    - setuptools
+    - pytz
+    - zope.schema
+    - zope.i18nmessageid
+    - zope.component
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.i18n
+    - zope.i18n.interfaces
+    - zope.i18n.locales
+    - zope.i18n.locales.tests
+    - zope.i18n.tests
+    - zope.i18n.tests.locale2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.i18n
+  license: Zope Public License
+  summary: 'Zope Internationalization Support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: redturtle.monkey
+  version: "1.2.1"
+
+source:
+  fn: redturtle.monkey-1.2.1.zip
+  url: https://pypi.python.org/packages/source/r/redturtle.monkey/redturtle.monkey-1.2.1.zip
+  md5: d2f700d07d7a193549b920b89ace30a0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redturtle.monkey = redturtle.monkey:main
+    #
+    # Would create an entry point called redturtle.monkey that calls redturtle.monkey.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - plone.app.portlets
+    - plone.app.registry
+    - postmonkey
+    - jarn.jsi18n
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - plone.app.portlets
+    - plone.app.registry
+    - postmonkey
+    - jarn.jsi18n
+
+test:
+  # Python imports
+  imports:
+    - redturtle
+    - redturtle.monkey
+    - redturtle.monkey.browser
+    - redturtle.monkey.content
+    - redturtle.monkey.portlet
+    - redturtle.monkey.slots
+    - redturtle.monkey.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/redturtle.monkey
+  license: GPL
+  summary: 'mailchimp integration for Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

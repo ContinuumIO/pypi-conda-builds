@@ -1,0 +1,86 @@
+package:
+  name: zope.dublincore
+  version: "4.1.1"
+
+source:
+  fn: zope.dublincore-4.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.dublincore/zope.dublincore-4.1.1.tar.gz
+  md5: 8605df5596da27f88b1724bf58e2c9ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.dublincore = zope.dublincore:main
+    #
+    # Would create an entry point called zope.dublincore that calls zope.dublincore.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - persistent
+    - pytz
+    - setuptools
+    - six
+    - zope.annotation
+    - zope.component[zcml]
+    - zope.datetime
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.location
+    - zope.schema
+    - zope.security[zcml] >=3.8
+
+  run:
+    - python
+    - persistent
+    - pytz
+    - setuptools
+    - six
+    - zope.annotation
+    - zope.component[zcml]
+    - zope.datetime
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.location
+    - zope.schema
+    - zope.security[zcml] >=3.8
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.dublincore
+    - zope.dublincore.browser
+    - zope.dublincore.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.dublincore
+  license: Zope Public License
+  summary: 'Zope Dublin Core implementation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

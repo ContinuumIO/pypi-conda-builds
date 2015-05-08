@@ -1,0 +1,80 @@
+package:
+  name: corejet.core
+  version: "1.0.2"
+
+source:
+  fn: corejet.core-1.0.2.zip
+  url: https://pypi.python.org/packages/source/c/corejet.core/corejet.core-1.0.2.zip
+  md5: fac95fcbf9789d5d423a41341c5cfb00
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - corejet.core = corejet.core:main
+    #
+    # Would create an entry point called corejet.core that calls corejet.core.main()
+
+    - corejet2py=corejet.core.scripts.corejet2py:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - lxml
+    - argparse
+    - python-dateutil <2.0dev
+    - unittest2
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - lxml
+    - argparse
+    - python-dateutil <2.0dev
+    - unittest2
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - corejet
+    - corejet.core
+    - corejet.core.scripts
+    - corejet.core.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - corejet2py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://corejet.org
+  license: ZPL 2.1
+  summary: 'Defines test infrastructure for building CoreJet tests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

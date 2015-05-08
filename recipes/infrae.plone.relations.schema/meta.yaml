@@ -1,0 +1,66 @@
+package:
+  name: infrae.plone.relations.schema
+  version: "1.0"
+
+source:
+  fn: infrae.plone.relations.schema-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/infrae.plone.relations.schema/infrae.plone.relations.schema-1.0.tar.gz
+  md5: b14edb57938ba3c42c479dc1ccb116b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infrae.plone.relations.schema = infrae.plone.relations.schema:main
+    #
+    # Would create an entry point called infrae.plone.relations.schema that calls infrae.plone.relations.schema.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - plone.app.relations
+    - setuptools
+
+  run:
+    - python
+    - plone.app.relations
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infrae
+    - infrae.plone
+    - infrae.plone.relations
+    - infrae.plone.relations.schema
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.infrae.com/PloneComponent/infrae.plone.relations.schema/trunk
+  license: GPL
+  summary: 'Zope 3 schema for plone.app.relations items.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

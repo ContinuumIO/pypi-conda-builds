@@ -1,0 +1,87 @@
+package:
+  name: penelope.trac
+  version: "1.2.10"
+
+source:
+  fn: penelope.trac-1.2.10.zip
+  url: https://pypi.python.org/packages/source/p/penelope.trac/penelope.trac-1.2.10.zip
+  md5: a8d92edb21c77de153ad45ccdea2e222
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - penelope.trac = penelope.trac:main
+    #
+    # Would create an entry point called penelope.trac that calls penelope.trac.main()
+
+    - auth_wsgi = penelope.trac.auth_wsgi:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - mandrill
+    - penelope.core
+    - privatecomments
+    - python-creole
+    - sensitivetickets >=0.21
+    - setuptools
+    - trac
+    - tracdynamicfields
+    - tracthemeengine >=2.0
+    - tracxmlrpc
+
+  run:
+    - python
+    - setuptools
+    - distribute
+    - mandrill
+    - penelope.core
+    - privatecomments
+    - python-creole
+    - sensitivetickets >=0.21
+    - setuptools
+    - trac
+    - tracdynamicfields
+    - tracthemeengine >=2.0
+    - tracxmlrpc
+
+test:
+  # Python imports
+  imports:
+    - penelope
+    - penelope.trac
+    - penelope.trac.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - auth_wsgi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://getpenelope.github.com
+  license: UNKNOWN
+  summary: 'Penelope: Trac integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

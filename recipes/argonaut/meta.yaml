@@ -1,0 +1,82 @@
+package:
+  name: argonaut
+  version: "0.3.4"
+
+source:
+  fn: Argonaut-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/A/Argonaut/Argonaut-0.3.4.tar.gz
+  md5: 5e21a80ee2861eca6497db0b266dd08f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - argonaut = argonaut:main
+    #
+    # Would create an entry point called argonaut that calls argonaut.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons >=1.0
+    - sqlalchemy >=0.5
+    - repoze.what-pylons
+    - repoze.what-quickstart
+    - hashlib
+    - turbomail
+    - sqlalchemy-migrate >=0.6
+
+  run:
+    - python
+    - setuptools
+    - pylons >=1.0
+    - sqlalchemy >=0.5
+    - repoze.what-pylons
+    - repoze.what-quickstart
+    - hashlib
+    - turbomail
+    - sqlalchemy-migrate >=0.6
+
+test:
+  # Python imports
+  imports:
+    - argonaut
+    - argonaut.config
+    - argonaut.controllers
+    - argonaut.lib
+    - argonaut.model
+    - argonaut.model.initial_data
+    - argonaut.tests
+    - argonaut.tests.functional
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.basshero.org
+  license: BSD License
+  summary: 'Lightweight Pylons powered blogging engine.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

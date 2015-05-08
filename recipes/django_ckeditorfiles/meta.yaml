@@ -1,0 +1,64 @@
+package:
+  name: django_ckeditorfiles
+  version: "1.1"
+
+source:
+  fn: django_ckeditorfiles-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_ckeditorfiles/django_ckeditorfiles-1.1.tar.gz
+  md5: 9a50bf408548f714c9ab9e00a48574f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_ckeditorfiles = django_ckeditorfiles:main
+    #
+    # Would create an entry point called django_ckeditorfiles that calls django_ckeditorfiles.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - setuptools
+    - django
+
+test:
+  # Python imports
+  imports:
+    - ckeditorfiles
+    - django_ckeditorfiles
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/espenak/django_ckeditorfiles
+  license: LGPL
+  summary: 'CKEditor bundled as a django staticfiles app.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

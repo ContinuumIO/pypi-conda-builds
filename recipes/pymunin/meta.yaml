@@ -1,0 +1,110 @@
+package:
+  name: pymunin
+  version: "0.9.27"
+
+source:
+  fn: PyMunin-0.9.27.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyMunin/PyMunin-0.9.27.tar.gz
+  md5: 2694c500de4b63f75b62ed5d06f8dd05
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pymunin = pymunin:main
+    #
+    # Would create an entry point called pymunin that calls pymunin.main()
+
+    - pymunin-apachestats = pymunin.plugins.apachestats:main
+    - pymunin-asteriskstats = pymunin.plugins.asteriskstats:main
+    - pymunin-diskiostats = pymunin.plugins.diskiostats:main
+    - pymunin-diskusagestats = pymunin.plugins.diskusagestats:main
+    - pymunin-fsstats = pymunin.plugins.fsstats:main
+    - pymunin-lighttpdstats = pymunin.plugins.lighttpdstats:main
+    - pymunin-memcachedstats = pymunin.plugins.memcachedstats:main
+    - pymunin-mysqlstats = pymunin.plugins.mysqlstats:main
+    - pymunin-netifacestats = pymunin.plugins.netifacestats:main
+    - pymunin-netstats = pymunin.plugins.netstats:main
+    - pymunin-nginxstats = pymunin.plugins.nginxstats:main
+    - pymunin-ntphostoffset_ = pymunin.plugins.ntphostoffset_:main
+    - pymunin-ntphostoffsets = pymunin.plugins.ntphostoffsets:main
+    - pymunin-ntpstats = pymunin.plugins.ntpstats:main
+    - pymunin-pgstats = pymunin.plugins.pgstats:main
+    - pymunin-phpapcstats = pymunin.plugins.phpapcstats:main
+    - pymunin-phpfpmstats = pymunin.plugins.phpfpmstats:main
+    - pymunin-procstats = pymunin.plugins.procstats:main
+    - pymunin-rackspacestats = pymunin.plugins.rackspacestats:main
+    - pymunin-redisstats = pymunin.plugins.redisstats:main
+    - pymunin-sysstats = pymunin.plugins.sysstats:main
+    - pymunin-tomcatstats = pymunin.plugins.tomcatstats:main
+    - pymunin-varnishstats = pymunin.plugins.varnishstats:main
+    - pymunin-wanpipestats = pymunin.plugins.wanpipestats:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pymunin
+    - pymunin.plugins
+    - pysysinfo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pymunin-apachestats --help
+    - pymunin-asteriskstats --help
+    - pymunin-diskiostats --help
+    - pymunin-diskusagestats --help
+    - pymunin-fsstats --help
+    - pymunin-lighttpdstats --help
+    - pymunin-memcachedstats --help
+    - pymunin-mysqlstats --help
+    - pymunin-netifacestats --help
+    - pymunin-netstats --help
+    - pymunin-nginxstats --help
+    - pymunin-ntphostoffset_ --help
+    - pymunin-ntphostoffsets --help
+    - pymunin-ntpstats --help
+    - pymunin-pgstats --help
+    - pymunin-phpapcstats --help
+    - pymunin-phpfpmstats --help
+    - pymunin-procstats --help
+    - pymunin-rackspacestats --help
+    - pymunin-redisstats --help
+    - pymunin-sysstats --help
+    - pymunin-tomcatstats --help
+    - pymunin-varnishstats --help
+    - pymunin-wanpipestats --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://aouyar.github.com/PyMunin
+  license: GNU General Public License (GPL)
+  summary: u'Python Module for developing Munin Multigraph Monitoring Plugins.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: contactvis
+  version: "0.1.6"
+
+source:
+  fn: ContactVis-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/C/ContactVis/ContactVis-0.1.6.tar.gz
+  md5: f1c1445e5eddf5c2aaf52c1372be5da0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - contactvis = contactvis:main
+    #
+    # Would create an entry point called contactvis that calls contactvis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - biopython >=1.59
+    - matplotlib >=1.3.1
+
+  run:
+    - python
+    - biopython >=1.59
+    - matplotlib >=1.3.1
+
+test:
+  # Python imports
+  imports:
+    - contactvis
+    - contactvis.parsing
+    - contactvis.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/MMichel/contact-vis.git
+  license: LICENSE.txt
+  summary: 'Contact map plotting for predicted protein residue-residue contacts.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: hatak
+  version: "0.2.7.9"
+
+source:
+  fn: hatak-0.2.7.9.tar.gz
+  url: https://pypi.python.org/packages/source/h/hatak/hatak-0.2.7.9.tar.gz
+  md5: edaa6d4e0d2639d35e42ac433b89b434
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hatak = hatak:main
+    #
+    # Would create an entry point called hatak that calls hatak.main()
+
+    - hatak=bael.hatak.recipe:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bael.project >=0.1.5
+    - pyramid
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - bael.project >=0.1.5
+    - pyramid
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - bael
+    - bael.hatak
+    - hatak
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hatak --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/socek/hatak
+  license: Apache License 2.0
+  summary: 'Small Pyramid extension/project managment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

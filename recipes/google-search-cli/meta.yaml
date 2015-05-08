@@ -1,0 +1,62 @@
+package:
+  name: google-search-cli
+  version: "0.0.5"
+
+source:
+  fn: google-search-cli-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/google-search-cli/google-search-cli-0.0.5.tar.gz
+  md5: e6943f6d570ae86bb9c5081f10c7072e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google-search-cli = google-search-cli:main
+    #
+    # Would create an entry point called google-search-cli that calls google-search-cli.main()
+
+    - google-search=google_search_cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - google_search_cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - google-search --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zweifisch/google-search-cli
+  license: MIT License
+  summary: 'google search cli'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

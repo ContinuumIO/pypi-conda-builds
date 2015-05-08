@@ -1,0 +1,67 @@
+package:
+  name: django-bundledmedia
+  version: "0.1b3"
+
+source:
+  fn: django-bundledmedia-0.1b3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bundledmedia/django-bundledmedia-0.1b3.tar.gz
+  md5: 2feb8ce5eaa3159201524dfe274038c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bundledmedia = django-bundledmedia:main
+    #
+    # Would create an entry point called django-bundledmedia that calls django-bundledmedia.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup ==3.2.0
+    - django_compressor ==0.5.3
+    - django-classy-tags ==0.3.0
+
+  run:
+    - python
+    - beautifulsoup ==3.2.0
+    - django_compressor ==0.5.3
+    - django-classy-tags ==0.3.0
+
+test:
+  # Python imports
+  imports:
+    - bundledmedia
+    - bundledmedia.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Django application for adding compressed CSS and JS files in some prepared slots'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

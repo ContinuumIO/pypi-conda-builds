@@ -1,0 +1,63 @@
+package:
+  name: django-pygments
+  version: "0.1"
+
+source:
+  fn: django-pygments-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pygments/django-pygments-0.1.tar.gz
+  md5: e42dbc1a7cd11c1a8b98403f3b5c7898
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pygments = django-pygments:main
+    #
+    # Would create an entry point called django-pygments that calls django-pygments.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+
+  run:
+    - python
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - django_pygments
+    - django_pygments.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/odeoncg/django-pygments/tree/master
+  license: UNKNOWN
+  summary: 'A django app that provides a template tag and 2 filters for                 doing syntax highlighting with Pygments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

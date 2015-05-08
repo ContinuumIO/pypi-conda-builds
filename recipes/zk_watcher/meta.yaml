@@ -1,0 +1,65 @@
+package:
+  name: zk_watcher
+  version: "0.3.2"
+
+source:
+  fn: zk_watcher-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zk_watcher/zk_watcher-0.3.2.tar.gz
+  md5: 5dd9392cf1ed94d53749a9d6559add29
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zk_watcher = zk_watcher:main
+    #
+    # Would create an entry point called zk_watcher that calls zk_watcher.main()
+
+    - zk_watcher = zk_watcher.zk_watcher:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - nd_service_registry >=0.2.5
+    - setuptools
+
+  run:
+    - python
+    - nd_service_registry >=0.2.5
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zk_watcher
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zk_watcher --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Nextdoor/zkwatcher
+  license: Apache Software License
+  summary: 'Python-based service registration daemon for Apache ZooKeeper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: clixevolve
+  version: "0.4.1dev"
+
+source:
+  fn: clixevolve-0.4.1dev.tar.gz
+  url: https://pypi.python.org/packages/source/c/clixevolve/clixevolve-0.4.1dev.tar.gz
+  md5: 39e0a248d2a915ea4d36f4b9961f8938
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clixevolve = clixevolve:main
+    #
+    # Would create an entry point called clixevolve that calls clixevolve.main()
+
+    - clixextract = clixevolve.extract_structure:main
+    - clixdiff = clixevolve.diff:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - pyyaml
+    - mysql-python
+
+  run:
+    - python
+    - argparse
+    - pyyaml
+    - mysql-python
+
+test:
+  # Python imports
+  imports:
+    - clixevolve
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clixextract --help
+    - clixdiff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://silassnider.com
+  license: UNKNOWN
+  summary: 'ClixEvolve -- the righteous schema evolver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

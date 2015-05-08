@@ -1,0 +1,66 @@
+package:
+  name: django_bricklayer
+  version: "0.3.5"
+
+source:
+  fn: master.zip
+  url: https://github.com/Ianus/bricklayer/archive/master.zip
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_bricklayer = django_bricklayer:main
+    #
+    # Would create an entry point called django_bricklayer that calls django_bricklayer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.1
+
+  run:
+    - python
+    - django >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - bricklayer
+    - bricklayer.management
+    - bricklayer.management.commands
+    - bricklayer.testsuite
+    - django_bricklayer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Ianus/bricklayer/
+  license: BSD License
+  summary: "Django application providing command-lines utilities similar to Ruby on Rails 'scaffold' command."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: bellatrix
+  version: "1.1.10"
+
+source:
+  fn: bellatrix-1.1.10.zip
+  url: https://pypi.python.org/packages/source/b/bellatrix/bellatrix-1.1.10.zip
+  md5: 517aa7b00ec5ca631118e81ffca63542
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bellatrix = bellatrix:main
+    #
+    # Would create an entry point called bellatrix that calls bellatrix.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.4.1
+    - argparse ==1.2.1
+
+  run:
+    - python
+    - boto ==2.4.1
+    - argparse ==1.2.1
+
+test:
+  # Python imports
+  imports:
+    - bellatrix
+    - bellatrix.lib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/deccico/bellatrix
+  license: Apache Software License
+  summary: 'Bellatrix is a set of (magic) tools to automate the management of Amazon EC2 services.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

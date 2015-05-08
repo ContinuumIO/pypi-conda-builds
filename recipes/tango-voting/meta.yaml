@@ -1,0 +1,62 @@
+package:
+  name: tango-voting
+  version: "0.2"
+
+source:
+  fn: tango-voting-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/tango-voting/tango-voting-0.2.tar.gz
+  md5: 7616c8c34ae50c732bda4f425b9dfbf6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tango-voting = tango-voting:main
+    #
+    # Would create an entry point called tango-voting that calls tango-voting.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - voting
+    - voting.templatetags
+    - voting.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tBaxter/django-voting
+  license: BSD License
+  summary: 'Generic voting application for Django, based on django-voting by Jonathan Buchanan'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

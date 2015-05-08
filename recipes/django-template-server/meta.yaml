@@ -1,0 +1,64 @@
+package:
+  name: django-template-server
+  version: "0.3.1"
+
+source:
+  fn: django-template-server-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-template-server/django-template-server-0.3.1.tar.gz
+  md5: d2fbafc910a22cd07285b25941258654
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-template-server = django-template-server:main
+    #
+    # Would create an entry point called django-template-server that calls django-template-server.main()
+
+    - maketemplateserver=templateserver.maketemplateserver:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenv >=1.6
+
+  run:
+    - python
+    - virtualenv >=1.6
+
+test:
+  # Python imports
+  imports:
+    - templateserver
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - maketemplateserver --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ojii/django-template-server
+  license: BSD License
+  summary: 'Makes it easy to test Django templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

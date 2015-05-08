@@ -1,0 +1,72 @@
+package:
+  name: atompiglet
+  version: "0.9b1"
+
+source:
+  fn: atompiglet-0.9b1.tar.gz
+  url: https://pypi.python.org/packages/source/a/atompiglet/atompiglet-0.9b1.tar.gz
+  md5: 0a6ce01e1b52874b93c7974aca71bc70
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - atompiglet = atompiglet:main
+    #
+    # Would create an entry point called atompiglet that calls atompiglet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml >=2.1.2
+    - isodate >=0.3
+    - pytz
+    - friendly_curl >=0.8.2
+
+  run:
+    - python
+    - setuptools
+    - lxml >=2.1.2
+    - isodate >=0.3
+    - pytz
+    - friendly_curl >=0.8.2
+
+test:
+  # Python imports
+  imports:
+    - atompiglet
+    - atompiglet.ext
+    - atompiglet.tests
+    - atompiglet.xslt
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/gavin/atom-piglet/
+  license: Apache
+  summary: 'AtomPiglet is a library for interacting with Atom Feeds and AtomPub servers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

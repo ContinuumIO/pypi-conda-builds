@@ -1,0 +1,71 @@
+package:
+  name: products.reflecto
+  version: "3.0.6"
+
+source:
+  fn: Products.Reflecto-3.0.6.zip
+  url: https://pypi.python.org/packages/source/P/Products.Reflecto/Products.Reflecto-3.0.6.zip
+  md5: d62cf77bd0afe41c2294f75c956a8430
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.reflecto = products.reflecto:main
+    #
+    # Would create an entry point called products.reflecto that calls products.reflecto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.file
+    - zope.app.container
+
+  run:
+    - python
+    - setuptools
+    - zope.app.file
+    - zope.app.container
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.Reflecto
+    - Products.Reflecto.browser
+    - Products.Reflecto.chardet
+    - Products.Reflecto.content
+    - Products.Reflecto.formlib
+    - Products.Reflecto.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPL
+  summary: 'Access the filesystem from Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

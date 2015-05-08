@@ -1,0 +1,70 @@
+package:
+  name: collective.viewlet.links
+  version: "0.2rc1"
+
+source:
+  fn: collective.viewlet.links-0.2rc1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.viewlet.links/collective.viewlet.links-0.2rc1.tar.gz
+  md5: e25961b18ccf381d593c5d13bb483b87
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.viewlet.links = collective.viewlet.links:main
+    #
+    # Would create an entry point called collective.viewlet.links that calls collective.viewlet.links.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.z3cform
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.z3cform
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.viewlet
+    - collective.viewlet.links
+    - collective.viewlet.links.Extensions
+    - collective.viewlet.links.browser
+    - collective.viewlet.links.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/collective.viewlet.links
+  license: GPL
+  summary: 'Viewlet displaying user-editable links on portal or folder level'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

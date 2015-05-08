@@ -1,0 +1,63 @@
+package:
+  name: django-downtime
+  version: "1.0.1"
+
+source:
+  fn: django-downtime-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-downtime/django-downtime-1.0.1.tar.gz
+  md5: ac3398b1dbc83d1980c9ab69ac6af45d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-downtime = django-downtime:main
+    #
+    # Would create an entry point called django-downtime that calls django-downtime.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - downtime
+    - downtime.migrations
+    - downtime.south_migrations
+    - downtime.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dstegelman/django-downtime
+  license: MIT License
+  summary: 'Give your site a down page, or redirect to another error page.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

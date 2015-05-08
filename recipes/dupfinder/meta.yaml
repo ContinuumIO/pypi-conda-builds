@@ -1,0 +1,65 @@
+package:
+  name: dupfinder
+  version: "1.4.3"
+
+source:
+  fn: dupfinder-1.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/dupfinder/dupfinder-1.4.3.tar.gz
+  md5: 25b2b06a31e74ce1e59a23de682af1ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dupfinder = dupfinder:main
+    #
+    # Would create an entry point called dupfinder that calls dupfinder.main()
+
+    - dupfind = dupfinder.finder:main
+    - dupmanage = dupfinder.manager:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - dupfinder
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dupfind --help
+    - dupmanage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://python.org/pypi/dupfinder
+  license: GPL
+  summary: 'Find and manage duplication files on the file system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

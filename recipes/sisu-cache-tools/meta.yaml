@@ -1,0 +1,64 @@
+package:
+  name: sisu-cache-tools
+  version: "0.1.6"
+
+source:
+  fn: sisu-cache-tools-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/sisu-cache-tools/sisu-cache-tools-0.1.6.tar.gz
+  md5: a5692a7563a1d233aa5b4124f4398e4b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sisu-cache-tools = sisu-cache-tools:main
+    #
+    # Would create an entry point called sisu-cache-tools that calls sisu-cache-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.4.3
+
+  run:
+    - python
+    - requests >=2.4.3
+
+test:
+  # Python imports
+  imports:
+    - cache_tools
+    - cache_tools.management
+    - cache_tools.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mkoistinen/sisu-cache-tools
+  license: BSD License
+  summary: 'Management tools for managing the cache'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

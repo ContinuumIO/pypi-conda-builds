@@ -1,0 +1,76 @@
+package:
+  name: adium-sh
+  version: "0.2.4"
+
+source:
+  fn: adium-sh-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/adium-sh/adium-sh-0.2.4.tar.gz
+  md5: ed1e6169ac360d230dbec616577bd66c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - adium-sh = adium-sh:main
+    #
+    # Would create an entry point called adium-sh that calls adium-sh.main()
+
+    - adiumsh = adiumsh.adiumsh:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - configparser
+    - psutil ==2.0.0
+    - beautifulsoup4
+    - watchdog
+    - python-dateutil
+    - requests
+
+  run:
+    - python
+    - argparse
+    - configparser
+    - psutil ==2.0.0
+    - beautifulsoup4
+    - watchdog
+    - python-dateutil
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - adiumsh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - adiumsh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shichao-an/adium-sh
+  license: BSD License
+  summary: 'Command-line wrapper of Adium'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: products.pluggableauthservice
+  version: "1.10.0"
+
+source:
+  fn: Products.PluggableAuthService-1.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.PluggableAuthService/Products.PluggableAuthService-1.10.0.tar.gz
+  md5: 1a1db6b1d9dd34f8b93a8a3104385a37
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.pluggableauthservice = products.pluggableauthservice:main
+    #
+    # Would create an entry point called products.pluggableauthservice that calls products.pluggableauthservice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.pluginregistry
+    - products.genericsetup
+    - zope2 >=2.12
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.pluginregistry
+    - products.genericsetup
+    - zope2 >=2.12
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PluggableAuthService
+    - Products.PluggableAuthService.Extensions
+    - Products.PluggableAuthService.interfaces
+    - Products.PluggableAuthService.plugins
+    - Products.PluggableAuthService.plugins.tests
+    - Products.PluggableAuthService.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.PluggableAuthService
+  license: Zope Public License
+  summary: 'Pluggable Zope2 authentication / authorization framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

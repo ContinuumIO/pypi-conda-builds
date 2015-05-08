@@ -1,0 +1,68 @@
+package:
+  name: django-bower
+  version: "5.0.4"
+
+source:
+  fn: django-bower-5.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bower/django-bower-5.0.4.tar.gz
+  md5: a6cbf096e9a7d33edb10ee89012d5cef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bower = django-bower:main
+    #
+    # Would create an entry point called django-bower that calls django-bower.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - six
+
+  run:
+    - python
+    - setuptools
+    - django
+    - six
+
+test:
+  # Python imports
+  imports:
+    - djangobower
+    - djangobower.management
+    - djangobower.management.commands
+    - djangobower.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nvbn/django-bower
+  license: BSD
+  summary: 'Integrate django with bower'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

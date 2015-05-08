@@ -1,0 +1,97 @@
+package:
+  name: terapy
+  version: "2.00b6"
+
+source:
+  fn: terapy-2.00b6.tar.gz
+  url: https://pypi.python.org/packages/source/t/terapy/terapy-2.00b6.tar.gz
+  md5: e2194b530a1e94ac12fe5f4b11a13c3b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - terapy = terapy:main
+    #
+    # Would create an entry point called terapy that calls terapy.main()
+
+    - terapy = tera:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wxpython
+    - matplotlib
+    - numpy
+    - scipy
+    - quantities
+    - h5py
+    - xlrd
+    - xlwt
+    - xlutils
+    - statsmodels
+    - pywavelets
+    - pandas
+    - pyvisa
+
+  run:
+    - python
+    - wxpython
+    - matplotlib
+    - numpy
+    - scipy
+    - quantities
+    - h5py
+    - xlrd
+    - xlwt
+    - xlutils
+    - statsmodels
+    - pywavelets
+    - pandas
+    - pyvisa
+
+test:
+  # Python imports
+  imports:
+    - terapy
+    - terapy.core
+    - terapy.files
+    - terapy.filters
+    - terapy.hardware
+    - terapy.hardware.axes
+    - terapy.hardware.input
+    - terapy.icons
+    - terapy.plot
+    - terapy.scan
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - terapy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: UNKNOWN
+  summary: 'Graphical interface for scientific measurements'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: django-html5-appcache
+  version: "0.4.0"
+
+source:
+  fn: django-html5-appcache-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-html5-appcache/django-html5-appcache-0.4.0.tar.gz
+  md5: a0e642ab9e817be5e6629ee6ffb9bd12
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-html5-appcache = django-html5-appcache:main
+    #
+    # Would create an entry point called django-html5-appcache that calls django-html5-appcache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - lxml
+    - html5lib
+
+  run:
+    - python
+    - django
+    - lxml
+    - html5lib
+
+test:
+  # Python imports
+  imports:
+    - html5_appcache
+    - html5_appcache.management
+    - html5_appcache.management.commands
+    - html5_appcache.middleware
+    - html5_appcache.migrations
+    - html5_appcache.packages
+    - html5_appcache.packages.cms
+    - html5_appcache.packages.cmsplugin_filer
+    - html5_appcache.packages.filer
+    - html5_appcache.templatetags
+    - html5_appcache.test_utils
+    - html5_appcache.test_utils.testapp
+    - html5_appcache.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.nephila.it
+  license: BSD License
+  summary: 'HTML5 AppCache manifest generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

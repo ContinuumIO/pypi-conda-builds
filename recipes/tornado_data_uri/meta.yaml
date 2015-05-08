@@ -1,0 +1,66 @@
+package:
+  name: tornado_data_uri
+  version: "0.0.3"
+
+source:
+  fn: tornado_data_uri-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado_data_uri/tornado_data_uri-0.0.3.tar.gz
+  md5: 3e8a8d49773d0b7db5abff0a5927fca6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado_data_uri = tornado_data_uri:main
+    #
+    # Would create an entry point called tornado_data_uri that calls tornado_data_uri.main()
+
+    - tornado_data_uri = tornado_data_uri.__main__:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - data_uri
+
+  run:
+    - python
+    - tornado
+    - data_uri
+
+test:
+  # Python imports
+  imports:
+    - tornado_data_uri
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tornado_data_uri --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: 'Tornado Data-URI Encoder Template Tag'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

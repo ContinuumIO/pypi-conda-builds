@@ -1,0 +1,77 @@
+package:
+  name: lumper
+  version: "0.2.25"
+
+source:
+  fn: lumper-0.2.25.tar.gz
+  url: https://pypi.python.org/packages/source/l/lumper/lumper-0.2.25.tar.gz
+  md5: 04bf6e95300fe64aee3e941fe9b20b8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lumper = lumper:main
+    #
+    # Would create an entry point called lumper that calls lumper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - arconfig
+    - crew
+    - gitpython
+    - docker-py
+    - arrow
+
+  run:
+    - python
+    - tornado
+    - arconfig
+    - crew
+    - gitpython
+    - docker-py
+    - arrow
+
+test:
+  # Python imports
+  imports:
+    - lumper
+    - lumper.mailer
+    - lumper.modes
+    - lumper.server
+    - lumper.server.handlers
+    - lumper.worker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mosquito/lumper
+  license: MIT
+  summary: 'Containers builder for docker.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

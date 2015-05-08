@@ -1,0 +1,64 @@
+package:
+  name: django-facebook_gallery
+  version: "0.9"
+
+source:
+  fn: django-facebook_gallery-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-facebook_gallery/django-facebook_gallery-0.9.tar.gz
+  md5: 3b7e0ce96d378ba7c7def6b3bb8ab0ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-facebook_gallery = django-facebook_gallery:main
+    #
+    # Would create an entry point called django-facebook_gallery that calls django-facebook_gallery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_facebook_gallery
+    - facebook_gallery
+    - facebook_gallery.management
+    - facebook_gallery.management.commands
+    - facebook_gallery.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nagyv/facebook_gallery
+  license: MIT License
+  summary: u'Facebook Gallery for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

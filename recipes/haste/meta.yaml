@@ -1,0 +1,66 @@
+package:
+  name: haste
+  version: "0.6"
+
+source:
+  fn: haste-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/h/haste/haste-0.6.tar.gz
+  md5: ea2ec8971e107c64165f636404843657
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - haste = haste:main
+    #
+    # Would create an entry point called haste that calls haste.main()
+
+    - haste = haste:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - docopt >=0.3.0
+
+  run:
+    - python
+    - requests
+    - docopt >=0.3.0
+
+test:
+  # Python imports
+  imports:
+    - haste
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - haste --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cdf.utoronto.ca/~g8m/
+  license: MIT
+  summary: 'Pure Python replacement of the hastebin.com client.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: zope.browserresource
+  version: "4.1.0"
+
+source:
+  fn: zope.browserresource-4.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.browserresource/zope.browserresource-4.1.0.tar.gz
+  md5: 0b72e5220b6866f7b0ecc47b932cb8a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.browserresource = zope.browserresource:main
+    #
+    # Would create an entry point called zope.browserresource that calls zope.browserresource.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component >=3.8.0
+    - zope.configuration
+    - zope.contenttype >=4.0.1
+    - zope.i18n
+    - zope.interface
+    - zope.location
+    - zope.publisher >=3.8
+    - zope.schema
+    - zope.traversing >3.7
+
+  run:
+    - python
+    - setuptools
+    - zope.component >=3.8.0
+    - zope.configuration
+    - zope.contenttype >=4.0.1
+    - zope.i18n
+    - zope.interface
+    - zope.location
+    - zope.publisher >=3.8
+    - zope.schema
+    - zope.traversing >3.7
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.browserresource
+    - zope.browserresource.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.browserresource/
+  license: Zope Public License
+  summary: 'Browser resources implementation for Zope.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

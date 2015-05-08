@@ -1,0 +1,72 @@
+package:
+  name: corneti.recipes.codeintel
+  version: "0.3"
+
+source:
+  fn: corneti.recipes.codeintel-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/corneti.recipes.codeintel/corneti.recipes.codeintel-0.3.tar.gz
+  md5: 292213233e8705ca36882f33415c7b80
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - corneti.recipes.codeintel = corneti.recipes.codeintel:main
+    #
+    # Would create an entry point called corneti.recipes.codeintel that calls corneti.recipes.codeintel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - corneti
+    - corneti.recipes
+    - corneti.recipes.codeintel
+    - corneti.recipes.codeintel.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fabiocorneti/corneti.recipes.codeintel
+  license: MIT License
+  summary: 'A Sublime Text 2 / SublimeCodeIntel auto-completion data generator for buildout'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

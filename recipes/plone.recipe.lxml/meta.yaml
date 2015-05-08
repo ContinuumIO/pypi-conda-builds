@@ -1,0 +1,69 @@
+package:
+  name: plone.recipe.lxml
+  version: "0.4"
+
+source:
+  fn: plone.recipe.lxml-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.recipe.lxml/plone.recipe.lxml-0.4.tar.gz
+  md5: 0a60883ad83dcd494749492fc2d5f430
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.recipe.lxml = plone.recipe.lxml:main
+    #
+    # Would create an entry point called plone.recipe.lxml that calls plone.recipe.lxml.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.recipe
+    - plone.recipe.lxml
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/buildout/plone.recipe.lxml
+  license: Zope Public License
+  summary: 'Recipe that builds lxml and dependencies (libxslt, libxml2).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

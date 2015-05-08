@@ -1,0 +1,144 @@
+package:
+  name: django-cms
+  version: "3.1.0"
+
+source:
+  fn: django-cms-3.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cms/django-cms-3.1.0.tar.gz
+  md5: e37d81a641d41bae01f59a241a9506bf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cms = django-cms:main
+    #
+    # Would create an entry point called django-cms that calls django-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6,<1.8
+    - django-classy-tags >=0.5
+    - html5lib
+    - django-treebeard ==3.0
+    - django-sekizai >=0.7
+    - djangocms-admin-style
+
+  run:
+    - python
+    - django >=1.6,<1.8
+    - django-classy-tags >=0.5
+    - html5lib
+    - django-treebeard ==3.0
+    - django-sekizai >=0.7
+    - djangocms-admin-style
+
+test:
+  # Python imports
+  imports:
+    - cms
+    - cms.admin
+    - cms.admin.dialog
+    - cms.cache
+    - cms.extensions
+    - cms.forms
+    - cms.management
+    - cms.management.commands
+    - cms.management.commands.subcommands
+    - cms.middleware
+    - cms.migrations
+    - cms.models
+    - cms.publisher
+    - cms.signals
+    - cms.sitemaps
+    - cms.south_migrations
+    - cms.templatetags
+    - cms.test_utils
+    - cms.test_utils.fixtures
+    - cms.test_utils.project
+    - cms.test_utils.project.brokenpluginapp
+    - cms.test_utils.project.bunch_of_plugins
+    - cms.test_utils.project.bunch_of_plugins.migrations
+    - cms.test_utils.project.bunch_of_plugins.south_migrations
+    - cms.test_utils.project.custom_templates
+    - cms.test_utils.project.customuserapp
+    - cms.test_utils.project.emailuserapp
+    - cms.test_utils.project.emailuserapp.migrations
+    - cms.test_utils.project.emailuserapp.south_migrations
+    - cms.test_utils.project.extensionapp
+    - cms.test_utils.project.extensionapp.migrations
+    - cms.test_utils.project.extensionapp.south_migrations
+    - cms.test_utils.project.fakemlng
+    - cms.test_utils.project.fakemlng.migrations
+    - cms.test_utils.project.fakemlng.south_migrations
+    - cms.test_utils.project.fileapp
+    - cms.test_utils.project.fileapp.migrations
+    - cms.test_utils.project.fileapp.south_migrations
+    - cms.test_utils.project.mti_pluginapp
+    - cms.test_utils.project.mti_pluginapp.migrations
+    - cms.test_utils.project.mti_pluginapp.south_migrations
+    - cms.test_utils.project.objectpermissionsapp
+    - cms.test_utils.project.objectpermissionsapp.migrations
+    - cms.test_utils.project.objectpermissionsapp.south_migrations
+    - cms.test_utils.project.placeholderapp
+    - cms.test_utils.project.placeholderapp.migrations
+    - cms.test_utils.project.placeholderapp.south_migrations
+    - cms.test_utils.project.pluginapp
+    - cms.test_utils.project.pluginapp.plugins
+    - cms.test_utils.project.pluginapp.plugins.caching
+    - cms.test_utils.project.pluginapp.plugins.extra_context
+    - cms.test_utils.project.pluginapp.plugins.manytomany_rel
+    - cms.test_utils.project.pluginapp.plugins.manytomany_rel.migrations
+    - cms.test_utils.project.pluginapp.plugins.manytomany_rel.south_migrations
+    - cms.test_utils.project.pluginapp.plugins.meta
+    - cms.test_utils.project.pluginapp.plugins.meta.migrations
+    - cms.test_utils.project.pluginapp.plugins.meta.south_migrations
+    - cms.test_utils.project.pluginapp.plugins.one_thing
+    - cms.test_utils.project.pluginapp.plugins.one_thing.migrations
+    - cms.test_utils.project.pluginapp.plugins.one_thing.south_migrations
+    - cms.test_utils.project.pluginapp.plugins.validation
+    - cms.test_utils.project.sampleapp
+    - cms.test_utils.project.sampleapp.migrations
+    - cms.test_utils.project.sampleapp.south_migrations
+    - cms.test_utils.util
+    - cms.tests
+    - cms.toolbar
+    - cms.utils
+    - cms.utils.compat
+    - menus
+    - menus.migrations
+    - menus.south_migrations
+    - menus.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.django-cms.org/
+  license: BSD License
+  summary: 'An Advanced Django CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

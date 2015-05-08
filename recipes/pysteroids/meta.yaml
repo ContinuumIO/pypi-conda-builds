@@ -1,0 +1,68 @@
+package:
+  name: pysteroids
+  version: "1.0.1"
+
+source:
+  fn: pysteroids-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pysteroids/pysteroids-1.0.1.tar.gz
+  md5: 6a3c18efe46f8df3bc201817ab6f971f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pysteroids = pysteroids:main
+    #
+    # Would create an entry point called pysteroids that calls pysteroids.main()
+
+    - pysteroids = pysteroids.pysteroids:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.7.1
+    - pyglet >1.1.4
+
+  run:
+    - python
+    - numpy >=1.7.1
+    - pyglet >1.1.4
+
+test:
+  # Python imports
+  imports:
+    - pysteroids
+    - pysteroids.lib
+    - pysteroids.lib.geometry
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pysteroids --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Cheeser12/pysteroids
+  license: MIT License
+  summary: 'A clone of the game Asteroids, with some extra bells and whistles'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

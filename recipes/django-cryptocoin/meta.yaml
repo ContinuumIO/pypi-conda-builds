@@ -1,0 +1,64 @@
+package:
+  name: django-cryptocoin
+  version: "0.1.1"
+
+source:
+  fn: django-cryptocoin-0.1.1.zip
+  url: https://pypi.python.org/packages/source/d/django-cryptocoin/django-cryptocoin-0.1.1.zip
+  md5: 25f92fc5cbe7e2fe9427bc6613e6f272
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cryptocoin = django-cryptocoin:main
+    #
+    # Would create an entry point called django-cryptocoin that calls django-cryptocoin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_cryptocoin
+    - django_cryptocoin.bitcoinrpc
+    - django_cryptocoin.management
+    - django_cryptocoin.management.commands
+    - django_cryptocoin.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quantum13/django-cryptocoin
+  license: BSD (3-Clause) License
+  summary: 'A Django app to organize accepting bitcoin, litecoin, novacoin and other cryptocoins.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: moksha.common
+  version: "1.2.3"
+
+source:
+  fn: moksha.common-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/moksha.common/moksha.common-1.2.3.tar.gz
+  md5: c0898257d033d41f8f8c7e8fdb77058d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moksha.common = moksha.common:main
+    #
+    # Would create an entry point called moksha.common that calls moksha.common.main()
+
+    - moksha=moksha.common.commands.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - decorator
+    - pytz
+    - kitchen
+
+  run:
+    - python
+    - setuptools
+    - six
+    - decorator
+    - pytz
+    - kitchen
+
+test:
+  # Python imports
+  imports:
+    - moksha
+    - moksha.common
+    - moksha.common.commands
+    - moksha.common.exc
+    - moksha.common.lib
+    - moksha.common.tests
+    - moksha.common.testtools
+    - moksha.common.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - moksha --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://moksha.fedorahosted.org
+  license: Apache Software License
+  summary: 'Common components for Moksha'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

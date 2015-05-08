@@ -1,0 +1,76 @@
+package:
+  name: ramlfications
+  version: "0.1.2"
+
+source:
+  fn: ramlfications-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/ramlfications/ramlfications-0.1.2.tar.gz
+  md5: accd7262bab5178b180400c00fc1bbf6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ramlfications = ramlfications:main
+    #
+    # Would create an entry point called ramlfications that calls ramlfications.main()
+
+    - ramlfications = ramlfications.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - attrs
+    - click
+    - markdown2
+    - pyyaml
+    - six
+    - termcolor
+    - xmltodict
+
+  run:
+    - python
+    - attrs
+    - click
+    - markdown2
+    - pyyaml
+    - six
+    - termcolor
+    - xmltodict
+
+test:
+  # Python imports
+  imports:
+    - ramlfications
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ramlfications --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://ramlfications.readthedocs.org
+  license: Apache 2.0
+  summary: u'A Python RAML parser'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

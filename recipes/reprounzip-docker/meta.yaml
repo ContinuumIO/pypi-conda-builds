@@ -1,0 +1,66 @@
+package:
+  name: reprounzip-docker
+  version: "0.6.3"
+
+source:
+  fn: reprounzip-docker-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/reprounzip-docker/reprounzip-docker-0.6.3.tar.gz
+  md5: cb05d9bad8ae65b0ea29a7bde1bced7c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reprounzip-docker = reprounzip-docker:main
+    #
+    # Would create an entry point called reprounzip-docker that calls reprounzip-docker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - reprounzip >=0.6
+    - rpaths >=0.8
+
+  run:
+    - python
+    - setuptools
+    - reprounzip >=0.6
+    - rpaths >=0.8
+
+test:
+  # Python imports
+  imports:
+    - reprounzip
+    - reprounzip.unpackers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://vida-nyu.github.io/reprozip/
+  license: BSD License
+  summary: 'Allows the ReproZip unpacker to create Docker containers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

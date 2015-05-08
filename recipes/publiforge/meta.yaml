@@ -1,0 +1,128 @@
+package:
+  name: publiforge
+  version: "1.2"
+
+source:
+  fn: PubliForge-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/PubliForge/PubliForge-1.2.tar.gz
+  md5: e29148f15ac4703eace9132a777d7e5e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - publiforge = publiforge:main
+    #
+    # Would create an entry point called publiforge that calls publiforge.main()
+
+    - pfpopulate=publiforge.scripts.pfpopulate:main
+    - pfbackup=publiforge.scripts.pfbackup:main
+    - pfbuild=publiforge.scripts.pfbuild:main
+    - pftexmath=publiforge.scripts.pftexmath:main
+    - pfimage2svg=publiforge.scripts.pfimage2svg:main
+    - pfminify=publiforge.scripts.pfminify:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid >=1.5
+    - pyramid_beaker >=0.8
+    - pyramid_rpc >=0.5.2
+    - pyramid_chameleon >=0.3
+    - webhelpers2 <2.0b5
+    - colander >=0.9.9
+    - sqlalchemy >=0.9
+    - psycopg2 >=2.5
+    - lxml >=3.3
+    - pycrypto >=2.6
+    - mercurial >=2.9
+    - hgsubversion >=1.6
+    - subvertpy >=0.9
+    - docutils >=0.11
+    - pygments >=1.6
+    - whoosh >=2.6
+    - babel >=0.9.6
+    - waitress >=0.8
+    - pyramid_debugtoolbar >=2.0
+    - webtest >=2.0
+    - weberror >=0.10
+
+  run:
+    - python
+    - setuptools
+    - pyramid >=1.5
+    - pyramid_beaker >=0.8
+    - pyramid_rpc >=0.5.2
+    - pyramid_chameleon >=0.3
+    - webhelpers2 <2.0b5
+    - colander >=0.9.9
+    - sqlalchemy >=0.9
+    - psycopg2 >=2.5
+    - lxml >=3.3
+    - pycrypto >=2.6
+    - mercurial >=2.9
+    - hgsubversion >=1.6
+    - subvertpy >=0.9
+    - docutils >=0.11
+    - pygments >=1.6
+    - whoosh >=2.6
+    - babel >=0.9.6
+    - waitress >=0.8
+    - pyramid_debugtoolbar >=2.0
+    - webtest >=2.0
+    - weberror >=0.10
+
+test:
+  # Python imports
+  imports:
+    - publiforge
+    - publiforge.lib
+    - publiforge.lib.build
+    - publiforge.lib.opener
+    - publiforge.lib.processor
+    - publiforge.lib.processor.leprisme
+    - publiforge.lib.processor.publiseter
+    - publiforge.lib.processor.validator
+    - publiforge.lib.rsync
+    - publiforge.lib.vcs
+    - publiforge.models
+    - publiforge.scripts
+    - publiforge.tests
+    - publiforge.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pfpopulate --help
+    - pfbackup --help
+    - pfbuild --help
+    - pftexmath --help
+    - pfimage2svg --help
+    - pfminify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: www.publiforge.org
+  license: UNKNOWN
+  summary: 'Online multimedia publishing system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: kabaret.core
+  version: "0.1.0b3"
+
+source:
+  fn: kabaret.core-0.1.0b3.zip
+  url: https://pypi.python.org/packages/source/k/kabaret.core/kabaret.core-0.1.0b3.zip
+  md5: 0375b1864c7240c6b35814b0837c4e72
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kabaret.core = kabaret.core:main
+    #
+    # Would create an entry point called kabaret.core that calls kabaret.core.main()
+
+    - kabadmin = kabaret.core.scripts.kabadmin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyro4 ==4.18
+    - kabaret
+
+  run:
+    - python
+    - pyro4 ==4.18
+    - kabaret
+
+test:
+  # Python imports
+  imports:
+    - kabaret
+    - kabaret.core
+    - kabaret.core.apphost
+    - kabaret.core.apps
+    - kabaret.core.cmdln
+    - kabaret.core.conf
+    - kabaret.core.events
+    - kabaret.core.log
+    - kabaret.core.project
+    - kabaret.core.ro
+    - kabaret.core.scripts
+    - kabaret.core.syscmd
+    - kabaret.core.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kabadmin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/kabaret
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'Base package for the kabaret framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

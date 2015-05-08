@@ -1,0 +1,71 @@
+package:
+  name: rollout
+  version: "0.3"
+
+source:
+  fn: rollout-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/rollout/rollout-0.3.tar.gz
+  md5: d6d15ed1c83a26c6303b168cb61b173c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rollout = rollout:main
+    #
+    # Would create an entry point called rollout that calls rollout.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+    - proclaim
+    - django
+
+  run:
+    - python
+    - redis
+    - proclaim
+    - django
+
+test:
+  # Python imports
+  imports:
+    - rollout
+    - rollout.management
+    - rollout.management.commands
+    - rollout.templatetags
+    - rollout.tests
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/e-loue/rollout
+  license: MIT License
+  summary: 'Use Proclaim to release features to target users inside your Django project.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

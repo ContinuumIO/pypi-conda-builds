@@ -1,0 +1,72 @@
+package:
+  name: tagalog
+  version: "0.5.0"
+
+source:
+  fn: tagalog-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/tagalog/tagalog-0.5.0.tar.gz
+  md5: 00157e5984a07865298a8b70f7de97cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tagalog = tagalog:main
+    #
+    # Would create an entry point called tagalog that calls tagalog.main()
+
+    - logship=tagalog.command.logship:main
+    - logstamp=tagalog.command.logstamp:main
+    - logtag=tagalog.command.logtag:main
+    - logtext=tagalog.command.logtext:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis ==2.7.2
+
+  run:
+    - python
+    - redis ==2.7.2
+
+test:
+  # Python imports
+  imports:
+    - tagalog
+    - tagalog.command
+    - tagalog.shipper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - logship --help
+    - logstamp --help
+    - logtag --help
+    - logtext --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nickstenning/tagalog
+  license: MIT
+  summary: 'Tagalog: tools for manipulating, tagging and shipping log data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

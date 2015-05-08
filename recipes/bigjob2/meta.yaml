@@ -1,0 +1,112 @@
+package:
+  name: bigjob2
+  version: "0.54-42-g09ea8bc"
+
+source:
+  fn: BigJob2-0.54-42-g09ea8bc.tar.gz
+  url: https://pypi.python.org/packages/source/B/BigJob2/BigJob2-0.54-42-g09ea8bc.tar.gz
+  md5: cee07d6ed41d091ff2c34fc152c0657a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bigjob2 = bigjob2:main
+    #
+    # Would create an entry point called bigjob2 that calls bigjob2.main()
+
+    - test-bigjob = examples.example_local_single:main
+    - test-bigjob-dynamic = examples.example_manyjob_local:main
+    - pilot-cli = cli.pilot_cli:main
+    - mesos-executor = bigjob.job_plugin.mesos_executor:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >2.0
+    - uuid
+    - threadpool
+    - virtualenv
+    - redis
+    - radical.utils
+    - saga-python
+    - google-api-python-client
+    - python-hostlist
+    - globusonline-transfer-api-client
+    - boto >=2.2,<2.3
+    - simplejson <2.1
+    - pexpect
+    - tldextract
+
+  run:
+    - python
+    - setuptools >2.0
+    - uuid
+    - threadpool
+    - virtualenv
+    - redis
+    - radical.utils
+    - saga-python
+    - google-api-python-client
+    - python-hostlist
+    - globusonline-transfer-api-client
+    - boto >=2.2,<2.3
+    - simplejson <2.1
+    - pexpect
+    - tldextract
+
+test:
+  # Python imports
+  imports:
+    - api
+    - bigjob
+    - bigjob.job_plugin
+    - bigjob2
+    - bigjob_dynamic
+    - bootstrap
+    - cli
+    - coordination
+    - examples
+    - pilot
+    - pilot.api
+    - pilot.api.compute
+    - pilot.api.data
+    - pilot.coordination
+    - pilot.filemanagement
+    - pilot.impl
+    - pilot.scheduler
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - test-bigjob --help
+    - test-bigjob-dynamic --help
+    - pilot-cli --help
+    - mesos-executor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saga-project/BigJob
+  license: UNKNOWN
+  summary: 'P* Pilot-Job Implementation based on SAGA-Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

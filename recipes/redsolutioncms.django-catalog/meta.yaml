@@ -1,0 +1,75 @@
+package:
+  name: redsolutioncms.django-catalog
+  version: "2.0.2"
+
+source:
+  fn: redsolutioncms.django-catalog-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/redsolutioncms.django-catalog/redsolutioncms.django-catalog-2.0.2.tar.gz
+  md5: ff209f06df73d5b7c21cfc05292d81cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redsolutioncms.django-catalog = redsolutioncms.django-catalog:main
+    #
+    # Would create an entry point called redsolutioncms.django-catalog that calls redsolutioncms.django-catalog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - extdirect.django
+    - django-classy-tags
+    - django-mptt
+
+  run:
+    - python
+    - setuptools
+    - extdirect.django
+    - django-classy-tags
+    - django-mptt
+
+test:
+  # Python imports
+  imports:
+    - catalog
+    - catalog.contrib
+    - catalog.contrib.defaults
+    - catalog.contrib.defaults.management
+    - catalog.contrib.defaults.management.commands
+    - catalog.redsolution_setup
+    - catalog.templatetags
+    - catalog.tests
+    - catalog.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'Django generic catalog application. Organize objects in tree structure, allows\nto make links for objects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

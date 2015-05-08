@@ -1,0 +1,95 @@
+package:
+  name: zope.container
+  version: "4.0.0"
+
+source:
+  fn: zope.container-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.container/zope.container-4.0.0.tar.gz
+  md5: b24d2303ece65a2d9ce23a5bd074c335
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.container = zope.container:main
+    #
+    # Would create an entry point called zope.container that calls zope.container.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - zope.interface
+    - zope.dottedname
+    - zope.schema
+    - zope.component
+    - zope.event
+    - zope.location >=3.5.4
+    - zope.security
+    - zope.lifecycleevent >=3.5.2
+    - zope.i18nmessageid
+    - zope.filerepresentation
+    - zope.size
+    - zope.traversing >=4.0.0a1
+    - zope.publisher
+    - btrees
+    - persistent
+
+  run:
+    - python
+    - setuptools
+    - six
+    - zope.interface
+    - zope.dottedname
+    - zope.schema
+    - zope.component
+    - zope.event
+    - zope.location >=3.5.4
+    - zope.security
+    - zope.lifecycleevent >=3.5.2
+    - zope.i18nmessageid
+    - zope.filerepresentation
+    - zope.size
+    - zope.traversing >=4.0.0a1
+    - zope.publisher
+    - btrees
+    - persistent
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.container
+    - zope.container.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.container
+  license: Zope Public License
+  summary: 'Zope Container'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

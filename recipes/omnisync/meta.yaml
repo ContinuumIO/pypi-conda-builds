@@ -1,0 +1,63 @@
+package:
+  name: omnisync
+  version: "0.1a2"
+
+source:
+  fn: omnisync-0.1a2.tar.gz
+  url: https://pypi.python.org/packages/source/o/omnisync/omnisync-0.1a2.tar.gz
+  md5: 86195d0b2f5d71218d24a68e4355601b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - omnisync = omnisync:main
+    #
+    # Would create an entry point called omnisync that calls omnisync.main()
+
+    - omnisync = omnisync.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - omnisync
+    - omnisync.transports
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - omnisync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/omnisync/
+  license: Simplified BSD License
+  summary: 'Multiprotocol file synchroniser.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

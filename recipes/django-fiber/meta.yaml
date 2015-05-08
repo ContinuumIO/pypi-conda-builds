@@ -1,0 +1,78 @@
+package:
+  name: django-fiber
+  version: "1.1"
+
+source:
+  fn: django-fiber-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fiber/django-fiber-1.1.tar.gz
+  md5: 69aa9c1e220c6d5c6a7e61aa9b7bd76f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fiber = django-fiber:main
+    #
+    # Would create an entry point called django-fiber that calls django-fiber.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow >=2.2.1
+    - django-mptt >=0.6.1
+    - django_compressor >=1.4
+    - djangorestframework >=2.3.8,<3.0
+    - easy-thumbnails >=2.2
+
+  run:
+    - python
+    - pillow >=2.2.1
+    - django-mptt >=0.6.1
+    - django_compressor >=1.4
+    - djangorestframework >=2.3.8,<3.0
+    - easy-thumbnails >=2.2
+
+test:
+  # Python imports
+  imports:
+    - docs
+    - fiber
+    - fiber.editor_definitions
+    - fiber.fiber_admin
+    - fiber.migrations
+    - fiber.rest_api
+    - fiber.south_migrations
+    - fiber.templatetags
+    - fiber.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ridethepony/django-fiber
+  license: Apache Software License
+  summary: 'Django Fiber - a simple, user-friendly CMS for all your Django projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

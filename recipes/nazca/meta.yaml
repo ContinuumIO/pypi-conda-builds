@@ -1,0 +1,66 @@
+package:
+  name: nazca
+  version: "0.7.1"
+
+source:
+  fn: nazca-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/nazca/nazca-0.7.1.tar.gz
+  md5: ed233bc5ff9d85fc7737bd04bcd2fa69
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nazca = nazca:main
+    #
+    # Would create an entry point called nazca that calls nazca.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - nazca
+    - nazca.data
+    - nazca.examples
+    - nazca.ner
+    - nazca.rl
+    - nazca.test
+    - nazca.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.logilab.org/project/nazca
+  license: LGPL
+  summary: 'Python library for data alignment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

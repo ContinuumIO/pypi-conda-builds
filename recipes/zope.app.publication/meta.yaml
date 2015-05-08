@@ -1,0 +1,86 @@
+package:
+  name: zope.app.publication
+  version: "4.0.0a1.dev"
+
+source:
+  fn: zope.app.publication-4.0.0a1.dev.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.publication/zope.app.publication-4.0.0a1.dev.tar.gz
+  md5: 81d487019b31804ff6ba67bea0dde519
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.publication = zope.app.publication:main
+    #
+    # Would create an entry point called zope.app.publication that calls zope.app.publication.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - six
+    - zope.interface
+    - zope.authentication
+    - zope.component
+    - zope.error
+    - zope.browser >=1.2
+    - zope.location
+    - zope.publisher >=4.0.0a2
+    - zope.traversing >=4.0.0a2
+    - zope.i18n >=4.0.0a3
+    - transaction >=1.1.0
+    - setuptools
+
+  run:
+    - python
+    - six
+    - zope.interface
+    - zope.authentication
+    - zope.component
+    - zope.error
+    - zope.browser >=1.2
+    - zope.location
+    - zope.publisher >=4.0.0a2
+    - zope.traversing >=4.0.0a2
+    - zope.i18n >=4.0.0a3
+    - transaction >=1.1.0
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.publication
+    - zope.app.publication.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.publication
+  license: Zope Public License
+  summary: 'Zope publication'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

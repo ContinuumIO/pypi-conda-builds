@@ -1,0 +1,66 @@
+package:
+  name: battleschool
+  version: "0.6.0"
+
+source:
+  fn: battleschool-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/battleschool/battleschool-0.6.0.tar.gz
+  md5: 32002ff279d18ab1fbed970b148f030f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - battleschool = battleschool:main
+    #
+    # Would create an entry point called battleschool that calls battleschool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - ansible >=1.9.1
+    - jinja2
+    - pyyaml
+
+  run:
+    - python
+    - ansible >=1.9.1
+    - jinja2
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - battleschool
+    - battleschool.source
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://spencer.gibb.us
+  license: Apache Software License
+  summary: 'simple dev box provisioning'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

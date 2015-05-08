@@ -1,0 +1,89 @@
+package:
+  name: silva.core.upgrade
+  version: "3.0.2"
+
+source:
+  fn: silva.core.upgrade-3.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.core.upgrade/silva.core.upgrade-3.0.2.tar.gz
+  md5: 9454e4f3dd27f7b926e24254a94d81fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.core.upgrade = silva.core.upgrade:main
+    #
+    # Would create an entry point called silva.core.upgrade that calls silva.core.upgrade.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - martian
+    - five.grok
+    - five.localsitemanager
+    - grokcore.site
+    - silva.core.interfaces
+    - silva.core.services
+    - silva.system.utils
+    - zope.annotation
+    - zope.interface
+    - zope.component
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - martian
+    - five.grok
+    - five.localsitemanager
+    - grokcore.site
+    - silva.core.interfaces
+    - silva.core.services
+    - silva.system.utils
+    - zope.annotation
+    - zope.interface
+    - zope.component
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.core
+    - silva.core.upgrade
+    - silva.core.upgrade.martiansupport
+    - silva.core.upgrade.tests
+    - silva.core.upgrade.upgrader
+    - silva.core.upgrade.upgrader.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.core.upgrade
+  license: BSD License
+  summary: 'Upgrade between the different versions of Silva CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

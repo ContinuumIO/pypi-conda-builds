@@ -1,0 +1,81 @@
+package:
+  name: behaving
+  version: "1.1"
+
+source:
+  fn: behaving-1.1.zip
+  url: https://pypi.python.org/packages/source/b/behaving/behaving-1.1.zip
+  md5: e92413d6d08c9b44d1fb2fcb026f653e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - behaving = behaving:main
+    #
+    # Would create an entry point called behaving that calls behaving.main()
+
+    - mailmock=behaving.mail.mock:main
+    - smsmock=behaving.sms.mock:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - parse
+    - behave
+    - splinter
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - parse
+    - behave
+    - splinter
+
+test:
+  # Python imports
+  imports:
+    - behaving
+    - behaving.mail
+    - behaving.personas
+    - behaving.sms
+    - behaving.tests
+    - behaving.tests.features
+    - behaving.tests.features.steps
+    - behaving.web
+    - behaving.web.steps
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mailmock --help
+    - smsmock --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ggozad/behaving
+  license: GPL
+  summary: 'Behavior-Driven-Development testing for multi-user web/mail/sms apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

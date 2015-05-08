@@ -1,0 +1,65 @@
+package:
+  name: django-care
+  version: "0.1.0"
+
+source:
+  fn: django-care-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-care/django-care-0.1.0.tar.gz
+  md5: 9e737c440922ed5e17e835f30ed16e09
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-care = django-care:main
+    #
+    # Would create an entry point called django-care that calls django-care.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  # Python imports
+  imports:
+    - care
+    - care.management
+    - care.management.commands
+    - care.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kidosoft.pl
+  license: BSD License
+  summary: 'Tools which help finding performance issues in Django projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: plone.formwidget.multifile
+  version: "1.1"
+
+source:
+  fn: plone.formwidget.multifile-1.1.zip
+  url: https://pypi.python.org/packages/source/p/plone.formwidget.multifile/plone.formwidget.multifile-1.1.zip
+  md5: 3df9518c477796367c4e3b55228925ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.formwidget.multifile = plone.formwidget.multifile:main
+    #
+    # Would create an entry point called plone.formwidget.multifile that calls plone.formwidget.multifile.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - z3c.form
+    - setuptools
+    - plone.z3cform
+    - plone.namedfile
+    - plone.formwidget.namedfile
+
+  run:
+    - python
+    - setuptools
+    - z3c.form
+    - setuptools
+    - plone.z3cform
+    - plone.namedfile
+    - plone.formwidget.namedfile
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.formwidget
+    - plone.formwidget.multifile
+    - plone.formwidget.multifile.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/plone/plone.formwidget.multifile
+  license: GPL
+  summary: 'z3c.form widget for adding multiple files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

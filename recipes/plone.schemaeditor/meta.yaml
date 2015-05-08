@@ -1,0 +1,88 @@
+package:
+  name: plone.schemaeditor
+  version: "2.0.3"
+
+source:
+  fn: plone.schemaeditor-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.schemaeditor/plone.schemaeditor-2.0.3.tar.gz
+  md5: 13eeeca74727dec93a9db8be17f62bd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.schemaeditor = plone.schemaeditor:main
+    #
+    # Would create an entry point called plone.schemaeditor that calls plone.schemaeditor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope2
+    - zope.component
+    - zope.container
+    - zope.globalrequest
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.schema
+    - zope.publisher
+    - z3c.form
+    - plone.z3cform
+    - plone.autoform
+
+  run:
+    - python
+    - setuptools
+    - zope2
+    - zope.component
+    - zope.container
+    - zope.globalrequest
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.schema
+    - zope.publisher
+    - z3c.form
+    - plone.z3cform
+    - plone.autoform
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.schemaeditor
+    - plone.schemaeditor.browser
+    - plone.schemaeditor.browser.field
+    - plone.schemaeditor.browser.schema
+    - plone.schemaeditor.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/plone/plone.schemaeditor
+  license: BSD License
+  summary: 'Provides through-the-web editing of a zope schema/interface.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: django-node
+  version: "4.0.2"
+
+source:
+  fn: django-node-4.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-node/django-node-4.0.2.tar.gz
+  md5: b66647f7f5692aace7cbbc935fa24ef2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-node = django-node:main
+    #
+    # Would create an entry point called django-node that calls django-node.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests >=2.5.1
+
+  run:
+    - python
+    - django
+    - requests >=2.5.1
+
+test:
+  # Python imports
+  imports:
+    - django_node
+    - django_node.management
+    - django_node.management.commands
+    - django_node.services
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/markfinger/django-node
+  license: UNKNOWN
+  summary: 'Bindings and utils for integrating Node.js and NPM into a Django application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: plicata
+  version: "0.0.141"
+
+source:
+  fn: plicata-0.0.141.tar.gz
+  url: https://pypi.python.org/packages/source/p/plicata/plicata-0.0.141.tar.gz
+  md5: 41d4585620d851aba4089a749597caf9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plicata = plicata:main
+    #
+    # Would create an entry point called plicata that calls plicata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools_git >=0.3
+    - django >=1.6
+    - mezzanine >=3.0
+
+  run:
+    - python
+    - setuptools_git >=0.3
+    - django >=1.6
+    - mezzanine >=3.0
+
+test:
+  # Python imports
+  imports:
+    - plicata
+    - plicata.authors
+    - plicata.books
+    - plicata.characters
+    - plicata.events
+    - plicata.plotlines
+    - plicata.reviews
+    - plicata.setting
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plicata.com
+  license: UNKNOWN
+  summary: 'Django Application for Book Publishers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

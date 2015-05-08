@@ -1,0 +1,94 @@
+package:
+  name: blazeweb
+  version: "0.4.11"
+
+source:
+  fn: BlazeWeb-0.4.11.tar.gz
+  url: https://pypi.python.org/packages/source/B/BlazeWeb/BlazeWeb-0.4.11.tar.gz
+  md5: f2a67d403a35f04bc390919f20114c56
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blazeweb = blazeweb:main
+    #
+    # Would create an entry point called blazeweb that calls blazeweb.main()
+
+    - bw=blazeweb.scripting:blazeweb_entry
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beaker >=1.5
+    - blazeutils >0.3.7
+    - blinker >=1.0
+    - decorator >=3.0.1
+    - formencode >=1.2
+    - html2text >=2.35
+    - jinja2 >=2.5
+    - markdown2 >=1.0.1
+    - minimock
+    - nose >=0.11
+    - paste >=1.7
+    - pastescript >=1.7
+    - webhelpers >=1.0
+    - werkzeug >=0.6
+
+  run:
+    - python
+    - setuptools
+    - beaker >=1.5
+    - blazeutils >0.3.7
+    - blinker >=1.0
+    - decorator >=3.0.1
+    - formencode >=1.2
+    - html2text >=2.35
+    - jinja2 >=2.5
+    - markdown2 >=1.0.1
+    - minimock
+    - nose >=0.11
+    - paste >=1.7
+    - pastescript >=1.7
+    - webhelpers >=1.0
+    - werkzeug >=0.6
+
+test:
+  # Python imports
+  imports:
+    - blazeweb
+    - blazeweb.templating
+    - blazeweb.utils
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bw --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/BlazeWeb/
+  license: BSD License
+  summary: 'A light weight WSGI framework with a pluggable architecture'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

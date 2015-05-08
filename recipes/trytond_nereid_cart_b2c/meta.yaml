@@ -1,0 +1,71 @@
+package:
+  name: trytond_nereid_cart_b2c
+  version: "3.4.2.10"
+
+source:
+  fn: trytond_nereid_cart_b2c-3.4.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_nereid_cart_b2c/trytond_nereid_cart_b2c-3.4.2.10.tar.gz
+  md5: 2cca8bd05d35e7907afef7896c9021dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_nereid_cart_b2c = trytond_nereid_cart_b2c:main
+    #
+    # Would create an entry point called trytond_nereid_cart_b2c that calls trytond_nereid_cart_b2c.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blinker
+    - trytond_nereid_catalog >=3.4,<3.5
+    - openlabs_sale_channel >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - blinker
+    - trytond_nereid_catalog >=3.4,<3.5
+    - openlabs_sale_channel >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.nereid_cart_b2c
+    - trytond.modules.nereid_cart_b2c.tests
+    - trytond_nereid_cart_b2c
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openlabs.co.in
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Nereid Cart B2C'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

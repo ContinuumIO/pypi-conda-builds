@@ -1,0 +1,66 @@
+package:
+  name: django-candv-choices
+  version: "1.1.3"
+
+source:
+  fn: django-candv-choices-1.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-candv-choices/django-candv-choices-1.1.3.tar.gz
+  md5: 0f1b3b23b5638f33010ca7cf53daf613
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-candv-choices = django-candv-choices:main
+    #
+    # Would create an entry point called django-candv-choices that calls django-candv-choices.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - candv >=1.2.0
+
+  run:
+    - python
+    - django
+    - candv >=1.2.0
+
+test:
+  # Python imports
+  imports:
+    - candv_x
+    - candv_x.django
+    - candv_x.django.choices
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/oblalex/django-candv-choices
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: "Use complex constants built with 'candv' library instead of standard 'choices' fields for 'Django' models."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

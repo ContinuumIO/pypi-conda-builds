@@ -1,0 +1,74 @@
+package:
+  name: rux
+  version: "0.6.6"
+
+source:
+  fn: rux-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/r/rux/rux-0.6.6.tar.gz
+  md5: e568e11813598a6f81d15ada20f1a712
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rux = rux:main
+    #
+    # Would create an entry point called rux that calls rux.main()
+
+    - rux=rux.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.6
+    - pygments >=1.6
+    - docopt >=0.6.1
+    - houdini.py >=0.1.0
+    - misaka >=1.0.2
+    - toml.py >=0.1.2
+
+  run:
+    - python
+    - jinja2 >=2.6
+    - pygments >=1.6
+    - docopt >=0.6.1
+    - houdini.py >=0.1.0
+    - misaka >=1.0.2
+    - toml.py >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - rux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/hit9/rux
+  license: BSD License
+  summary: 'Micro & Fast static blog generator based on markdown'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

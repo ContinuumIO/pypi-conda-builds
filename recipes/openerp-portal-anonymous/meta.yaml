@@ -1,0 +1,64 @@
+package:
+  name: openerp-portal-anonymous
+  version: "7.0.406"
+
+source:
+  fn: openerp-portal-anonymous-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-portal-anonymous/openerp-portal-anonymous-7.0.406.tar.gz
+  md5: 93e0f70fb3e5b9ed641d69327e64ca9e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-portal-anonymous = openerp-portal-anonymous:main
+    #
+    # Would create an entry point called openerp-portal-anonymous that calls openerp-portal-anonymous.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-portal
+    - openerp-web
+
+  run:
+    - python
+    - openerp-portal
+    - openerp-web
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.portal_anonymous
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Anonymous portal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

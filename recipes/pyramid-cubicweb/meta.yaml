@@ -1,0 +1,69 @@
+package:
+  name: pyramid-cubicweb
+  version: "0.2.1"
+
+source:
+  fn: pyramid_cubicweb-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid-cubicweb/pyramid_cubicweb-0.2.1.tar.gz
+  md5: 433f56f5e701c2111fe53e479b1e370c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyramid-cubicweb = pyramid-cubicweb:main
+    #
+    # Would create an entry point called pyramid-cubicweb that calls pyramid-cubicweb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid >=1.5.0
+    - waitress >=0.8.9
+    - cubicweb >=3.19.3
+    - wsgicors >=0.3
+
+  run:
+    - python
+    - pyramid >=1.5.0
+    - waitress >=0.8.9
+    - cubicweb >=3.19.3
+    - wsgicors >=0.3
+
+test:
+  # Python imports
+  imports:
+    - pyramid_cubicweb
+    - pyramid_cubicweb.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.cubicweb.org/project/pyramid-cubicweb
+  license: UNKNOWN
+  summary: 'Integrate CubicWeb with a Pyramid application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

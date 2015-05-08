@@ -1,0 +1,64 @@
+package:
+  name: python-translate-cli
+  version: "0.0.1"
+
+source:
+  fn: python-translate-cli-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-translate-cli/python-translate-cli-0.0.1.tar.gz
+  md5: 50c2f9b683d4c1e609bd56a29d9ede73
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-translate-cli = python-translate-cli:main
+    #
+    # Would create an entry point called python-translate-cli that calls python-translate-cli.main()
+
+    - tl = python_translate_cli.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - python_translate_cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sillymind.me
+  license: GPL
+  summary: '\xe5\x91\xbd\xe4\xbb\xa4\xe8\xa1\x8c\xe6\x9f\xa5\xe8\xaf\x8d'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

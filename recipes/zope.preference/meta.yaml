@@ -1,0 +1,76 @@
+package:
+  name: zope.preference
+  version: "4.0.0a1"
+
+source:
+  fn: zope.preference-4.0.0a1.zip
+  url: https://pypi.python.org/packages/source/z/zope.preference/zope.preference-4.0.0a1.zip
+  md5: 6b7d5fd1c4399290211e65cf26172a61
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.preference = zope.preference:main
+    #
+    # Would create an entry point called zope.preference that calls zope.preference.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - btrees
+    - zope.annotation
+    - zope.component >=3.8.0
+    - zope.container
+    - zope.schema
+    - zope.security
+    - zope.traversing
+
+  run:
+    - python
+    - setuptools
+    - btrees
+    - zope.annotation
+    - zope.component >=3.8.0
+    - zope.container
+    - zope.schema
+    - zope.security
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.preference
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.preference
+  license: Zope Public License
+  summary: 'User Preferences Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

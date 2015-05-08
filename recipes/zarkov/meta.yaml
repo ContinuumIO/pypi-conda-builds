@@ -1,0 +1,84 @@
+package:
+  name: zarkov
+  version: "0.1.0dev-20120328"
+
+source:
+  fn: Zarkov-0.1.0dev-20120328.tar.gz
+  url: http://downloads.sourceforge.net/project/zarkov/0.1.0dev-20120328/Zarkov-0.1.0dev-20120328.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zarkov = zarkov:main
+    #
+    # Would create an entry point called zarkov that calls zarkov.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ming >=0.2.2dev-20110922
+    - webob
+    - ipython >=0.11
+    - gevent
+    - pyyaml
+    - python-dateutil ==1.5
+    - gevent-zeromq
+    - formencode
+    - setproctitle
+    - colander
+
+  run:
+    - python
+    - setuptools
+    - ming >=0.2.2dev-20110922
+    - webob
+    - ipython >=0.11
+    - gevent
+    - pyyaml
+    - python-dateutil ==1.5
+    - gevent-zeromq
+    - formencode
+    - setproctitle
+    - colander
+
+test:
+  # Python imports
+  imports:
+    - zarkov
+    - zarkov.command
+    - zarkov.tests
+    - zarkov.zmr
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sf.net/p/zarkov
+  license: Apache 2.0
+  summary: 'Event logger and aggregator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

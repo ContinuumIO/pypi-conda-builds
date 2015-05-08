@@ -1,0 +1,72 @@
+package:
+  name: reprounzip
+  version: "0.6.3"
+
+source:
+  fn: reprounzip-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/reprounzip/reprounzip-0.6.3.tar.gz
+  md5: 0d5f06b8da1d4d0c123516b2b8acc64e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reprounzip = reprounzip:main
+    #
+    # Would create an entry point called reprounzip that calls reprounzip.main()
+
+    - reprounzip = reprounzip.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - rpaths >=0.8
+    - usagestats >=0.3
+
+  run:
+    - python
+    - setuptools
+    - pyyaml
+    - rpaths >=0.8
+    - usagestats >=0.3
+
+test:
+  # Python imports
+  imports:
+    - reprounzip
+    - reprounzip.plugins
+    - reprounzip.unpackers
+    - reprounzip.unpackers.common
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - reprounzip --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://vida-nyu.github.io/reprozip/
+  license: BSD License
+  summary: 'Linux tool enabling reproducible experiments (unpacker)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: aldryn-apphook-reload
+  version: "0.2"
+
+source:
+  fn: aldryn-apphook-reload-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-apphook-reload/aldryn-apphook-reload-0.2.tar.gz
+  md5: b710329280a7849f9260c36b6a14a909
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-apphook-reload = aldryn-apphook-reload:main
+    #
+    # Would create an entry point called aldryn-apphook-reload that calls aldryn-apphook-reload.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6,<1.8
+    - south >=1.0.1,<2
+
+  run:
+    - python
+    - django >=1.6,<1.8
+    - south >=1.0.1,<2
+
+test:
+  # Python imports
+  imports:
+    - aldryn_apphook_reload
+    - aldryn_apphook_reload.south_migrations
+    - aldryn_apphook_reload.test_utils
+    - aldryn_apphook_reload.test_utils.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-apphook-reload/
+  license: BSD License
+  summary: 'Reload urls of django CMS Apphooks without a restart'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

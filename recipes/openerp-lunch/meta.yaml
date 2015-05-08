@@ -1,0 +1,65 @@
+package:
+  name: openerp-lunch
+  version: "7.0.406"
+
+source:
+  fn: openerp-lunch-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-lunch/openerp-lunch-7.0.406.tar.gz
+  md5: 1a9fe00e9b9c135a2076df276b95dcd9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-lunch = openerp-lunch:main
+    #
+    # Would create an entry point called openerp-lunch that calls openerp-lunch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-core
+
+  run:
+    - python
+    - openerp-core
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.lunch
+    - openerp.addons.lunch.report
+    - openerp.addons.lunch.tests
+    - openerp.addons.lunch.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Lunch Orders'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

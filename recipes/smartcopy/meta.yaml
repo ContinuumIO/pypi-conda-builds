@@ -1,0 +1,63 @@
+package:
+  name: smartcopy
+  version: "0.6"
+
+source:
+  fn: smartcopy-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/smartcopy/smartcopy-0.6.tar.gz
+  md5: a59019efe27fb576826d4f5eefd20f27
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - smartcopy = smartcopy:main
+    #
+    # Would create an entry point called smartcopy that calls smartcopy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog >=0.7.1
+
+  run:
+    - python
+    - watchdog >=0.7.1
+
+test:
+  # Python imports
+  imports:
+    - smartcopy
+    - smartutils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/sarchak/smartcopy
+  license: MIT
+  summary: 'Intelligent layer on top of any cloud storage provider like Dropbox/Box/Google Drive'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

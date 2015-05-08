@@ -1,0 +1,68 @@
+package:
+  name: second_hand_songs_wrapper
+  version: "0.2.3"
+
+source:
+  fn: second_hand_songs_wrapper-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/s/second_hand_songs_wrapper/second_hand_songs_wrapper-0.2.3.tar.gz
+  md5: 8cf15b821b7316c7831d7b840c2caadb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - second_hand_songs_wrapper = second_hand_songs_wrapper:main
+    #
+    # Would create an entry point called second_hand_songs_wrapper that calls second_hand_songs_wrapper.main()
+
+    - second_hand_songs_api_cmdline=bin.second_hand_songs_api_cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - voluptuous ==0.4
+    - docopt ==0.5
+
+  run:
+    - python
+    - setuptools
+    - voluptuous ==0.4
+    - docopt ==0.5
+
+test:
+  # Python imports
+  imports:
+    - second_hand_songs_wrapper
+    - second_hand_songs_wrapper.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - second_hand_songs_api_cmdline --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://crouchofthewildtiger.com/
+  license: MIT License
+  summary: 'An API wrapper for second hand song db'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: boosh
+  version: "0.1.0.dev1"
+
+source:
+  fn: boosh-0.1.0.dev1.tar.gz
+  url: https://pypi.python.org/packages/source/b/boosh/boosh-0.1.0.dev1.tar.gz
+  md5: 48ddf3aa362baf13af1931f99299dcd4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boosh = boosh:main
+    #
+    # Would create an entry point called boosh that calls boosh.main()
+
+    - boosh_proxy = boosh.ssh:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - botocore >=0.94.0
+
+  run:
+    - python
+    - botocore >=0.94.0
+
+test:
+  # Python imports
+  imports:
+    - boosh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boosh_proxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/betaworks/boosh
+  license: MIT License
+  summary: 'SSH to your your private EC2 instances by ID'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

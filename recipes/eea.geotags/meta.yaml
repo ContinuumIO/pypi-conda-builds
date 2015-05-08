@@ -1,0 +1,87 @@
+package:
+  name: eea.geotags
+  version: "7.1"
+
+source:
+  fn: eea.geotags-7.1.zip
+  url: https://pypi.python.org/packages/source/e/eea.geotags/eea.geotags-7.1.zip
+  md5: 04e2a72b23001a0d2c2afba74743b868
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.geotags = eea.geotags:main
+    #
+    # Would create an entry point called eea.geotags that calls eea.geotags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.atvocabularymanager
+    - archetypes.schemaextender
+    - eea.jquery
+    - eea.alchemy
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.atvocabularymanager
+    - archetypes.schemaextender
+    - eea.jquery
+    - eea.alchemy
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.geotags
+    - eea.geotags.browser
+    - eea.geotags.browser.app
+    - eea.geotags.cache
+    - eea.geotags.catalog
+    - eea.geotags.content
+    - eea.geotags.default
+    - eea.geotags.field
+    - eea.geotags.json
+    - eea.geotags.rdf
+    - eea.geotags.storage
+    - eea.geotags.tests
+    - eea.geotags.upgrades
+    - eea.geotags.vocabularies
+    - eea.geotags.vocabularies.data
+    - eea.geotags.widget
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.eionet.europa.eu/projects/Zope/browser/trunk/eea.geotags
+  license: GPL
+  summary: 'EEA Geotags package redefines the location field in Plone. Right now in Plone location field is a free text field. EEA Geotags lets you easy define locations using a map picker and http://geonames.org geographical database.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

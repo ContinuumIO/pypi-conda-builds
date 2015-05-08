@@ -1,0 +1,63 @@
+package:
+  name: redsolutioncms.django-hex-storage
+  version: "0.1.2"
+
+source:
+  fn: redsolutioncms.django-hex-storage-0.1.2.zip
+  url: https://pypi.python.org/packages/source/r/redsolutioncms.django-hex-storage/redsolutioncms.django-hex-storage-0.1.2.zip
+  md5: 3c634697689fe1440fd911dc256a4d07
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redsolutioncms.django-hex-storage = redsolutioncms.django-hex-storage:main
+    #
+    # Would create an entry point called redsolutioncms.django-hex-storage that calls redsolutioncms.django-hex-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - hex_storage
+    - hex_storage.redsolution_setup
+    - pinyin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'Django hex storage is add-on on the top of Django file system.\nIt has improvements that cover: international filenames (processed with pinyin module)\nand the same file names (django adds underscore to same filename, we add HEX hash) - hence the name :)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

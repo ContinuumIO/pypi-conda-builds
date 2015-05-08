@@ -1,0 +1,76 @@
+package:
+  name: moksha.feeds
+  version: "1.2.0"
+
+source:
+  fn: moksha.feeds-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/moksha.feeds/moksha.feeds-1.2.0.tar.gz
+  md5: eca9c4eec0a34a9e3ff35b7ff386277e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moksha.feeds = moksha.feeds:main
+    #
+    # Would create an entry point called moksha.feeds that calls moksha.feeds.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - moksha.common
+    - moksha.wsgi
+    - shove <=0.3.3
+    - feedcache
+    - feedparser
+
+  run:
+    - python
+    - setuptools
+    - moksha.common
+    - moksha.wsgi
+    - shove <=0.3.3
+    - feedcache
+    - feedparser
+
+test:
+  # Python imports
+  imports:
+    - moksha
+    - moksha.feeds
+    - moksha.feeds.tests
+    - moksha.feeds.tests.templates
+    - moksha.feeds.widgets
+    - moksha.feeds.widgets.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://moksha.fedorahosted.org
+  license: UNKNOWN
+  summary: 'WSGI components for Moksha.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

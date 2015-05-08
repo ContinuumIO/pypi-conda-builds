@@ -1,0 +1,71 @@
+package:
+  name: products.roleawareportlet
+  version: "1.0b3"
+
+source:
+  fn: Products.RoleAwarePortlet-1.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.RoleAwarePortlet/Products.RoleAwarePortlet-1.0b3.tar.gz
+  md5: 1ddfdb38b1fea51946608cfdab98f990
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.roleawareportlet = products.roleawareportlet:main
+    #
+    # Would create an entry point called products.roleawareportlet that calls products.roleawareportlet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.namedfile[blobs]
+    - plone.formwidget.namedfile
+    - plone.app.z3cform
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.namedfile[blobs]
+    - plone.formwidget.namedfile
+    - plone.app.z3cform
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.RoleAwarePortlet
+    - Products.RoleAwarePortlet.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://raptus.com
+  license: GPL
+  summary: 'Provides a portlet which is visible only for specific roles'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

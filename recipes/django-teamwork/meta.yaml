@@ -1,0 +1,66 @@
+package:
+  name: django-teamwork
+  version: "0.2.0"
+
+source:
+  fn: django-teamwork-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-teamwork/django-teamwork-0.2.0.tar.gz
+  md5: 54d9c43391f5b39f1f5ef7276cf12e1d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-teamwork = django-teamwork:main
+    #
+    # Would create an entry point called django-teamwork that calls django-teamwork.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - teamwork
+    - teamwork.migrations
+    - teamwork.south_migrations
+    - teamwork.templatetags
+    - teamwork.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lmorchard/django-teamwork
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Django app that offers an authorization backend with support for per-object permissions based on combinations of Teams, Roles, and Policies.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

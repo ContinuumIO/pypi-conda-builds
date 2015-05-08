@@ -1,0 +1,63 @@
+package:
+  name: pyelastictest
+  version: "0.3"
+
+source:
+  fn: pyelastictest-0.3.zip
+  url: https://pypi.python.org/packages/source/p/pyelastictest/pyelastictest-0.3.zip
+  md5: 2013506bd12d771bbf028ef072a0483f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyelastictest = pyelastictest:main
+    #
+    # Would create an entry point called pyelastictest that calls pyelastictest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyelasticsearch
+
+  run:
+    - python
+    - pyelasticsearch
+
+test:
+  # Python imports
+  imports:
+    - pyelastictest
+    - pyelastictest.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pyelastictest.readthedocs.org
+  license: Apache Software License
+  summary: 'Integration test harness for ElasticSearch'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

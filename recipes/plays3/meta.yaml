@@ -1,0 +1,65 @@
+package:
+  name: plays3
+  version: "0.2"
+
+source:
+  fn: PlayS3-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/PlayS3/PlayS3-0.2.tar.gz
+  md5: 44be2e57d8c323034e3613deb0a4e740
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plays3 = plays3:main
+    #
+    # Would create an entry point called plays3 that calls plays3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - filechunkio
+    - boto
+
+  run:
+    - python
+    - filechunkio
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - PlayS3
+    - plays3
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'Python library for working directly on Amazon S3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

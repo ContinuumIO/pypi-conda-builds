@@ -1,0 +1,81 @@
+package:
+  name: vvveb
+  version: "1.0.26"
+
+source:
+  fn: vvveb-1.0.26.tar.gz
+  url: https://pypi.python.org/packages/source/v/vvveb/vvveb-1.0.26.tar.gz
+  md5: d60f3ae6c90d09179ccf0a3632ce3870
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vvveb = vvveb:main
+    #
+    # Would create an entry point called vvveb that calls vvveb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - coloredlogs
+    - jadi >=1.0.2
+    - pyyaml
+    - mako
+    - python-augeas
+
+  run:
+    - python
+    - coloredlogs
+    - jadi >=1.0.2
+    - pyyaml
+    - mako
+    - python-augeas
+
+test:
+  # Python imports
+  imports:
+    - vvv
+    - vvv.api
+    - vvv.plugins
+    - vvv.plugins.core
+    - vvv.plugins.help
+    - vvv.plugins.nginx
+    - vvv.plugins.nodejs
+    - vvv.plugins.phpfpm
+    - vvv.plugins.plugins
+    - vvv.plugins.python
+    - vvv.plugins.supervisor
+    - vvveb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ajenti/veb
+  license: UNKNOWN
+  summary: 'An automatic website hosting configurator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

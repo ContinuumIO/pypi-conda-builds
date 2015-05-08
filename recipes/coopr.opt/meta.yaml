@@ -1,0 +1,78 @@
+package:
+  name: coopr.opt
+  version: "2.12.2"
+
+source:
+  fn: coopr.opt-2.12.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/coopr.opt/coopr.opt-2.12.2.tar.gz
+  md5: 57521d32eb761e2419aa2c49d9a1a614
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coopr.opt = coopr.opt:main
+    #
+    # Would create an entry point called coopr.opt that calls coopr.opt.main()
+
+    - results_schema=coopr.opt.results_schema:main
+    - pyro_mip_server=coopr.opt.scripts.pyro_mip_server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - coopr
+    - coopr.opt
+    - coopr.opt.base
+    - coopr.opt.blackbox
+    - coopr.opt.parallel
+    - coopr.opt.plugins
+    - coopr.opt.problem
+    - coopr.opt.results
+    - coopr.opt.scripts
+    - coopr.opt.solver
+    - coopr.opt.testing
+    - coopr.opt.tests
+    - coopr.opt.tests.base
+    - coopr.opt.tests.blackbox
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - results_schema --help
+    - pyro_mip_server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://software.sandia.gov/svn/public/coopr/coopr.opt
+  license: BSD License
+  summary: 'Coopr generic optimization interfaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

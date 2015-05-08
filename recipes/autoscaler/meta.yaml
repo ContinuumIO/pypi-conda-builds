@@ -1,0 +1,68 @@
+package:
+  name: autoscaler
+  version: "0.0.10"
+
+source:
+  fn: autoscaler-0.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/a/autoscaler/autoscaler-0.0.10.tar.gz
+  md5: 9cee7fa63d27a54c3c5199df7b3727b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autoscaler = autoscaler:main
+    #
+    # Would create an entry point called autoscaler that calls autoscaler.main()
+
+    - autoscaler_launch_config = autoscaler.cli:launch_config
+    - autoscaler_auto_scaling_group = autoscaler.cli:autoscaling_group
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.27.0
+    - docopt
+
+  run:
+    - python
+    - boto >=2.27.0
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - autoscaler
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - autoscaler_launch_config --help
+    - autoscaler_auto_scaling_group --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spulec/autoscaler
+  license: UNKNOWN
+  summary: 'AutoScaler makes it easier to create and manage a large number of Launch Configurations and AutoScaling Groups'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

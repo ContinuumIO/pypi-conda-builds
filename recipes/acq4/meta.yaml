@@ -1,0 +1,164 @@
+package:
+  name: acq4
+  version: "0.9.2"
+
+source:
+  fn: acq4-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/acq4/acq4-0.9.2.tar.gz
+  md5: 2553cb1cf5928fa45b7950810afe7717
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - acq4 = acq4:main
+    #
+    # Would create an entry point called acq4 that calls acq4.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - numpy
+    - scipy
+    - h5py
+    - pillow
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - h5py
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - acq4
+    - acq4.analysis
+    - acq4.analysis.atlas
+    - acq4.analysis.atlas.AuditoryCortex
+    - acq4.analysis.dataModels
+    - acq4.analysis.dataModels.PatchEPhys
+    - acq4.analysis.modules
+    - acq4.analysis.modules.AtlasBuilder
+    - acq4.analysis.modules.CellHealthTracker
+    - acq4.analysis.modules.DatabaseExplorer
+    - acq4.analysis.modules.EventDetector
+    - acq4.analysis.modules.IVCurve
+    - acq4.analysis.modules.IVCurve_mbk
+    - acq4.analysis.modules.ImageAnalysis
+    - acq4.analysis.modules.MapAnalyzer
+    - acq4.analysis.modules.MapCombiner
+    - acq4.analysis.modules.MapImager
+    - acq4.analysis.modules.MosaicEditor
+    - acq4.analysis.modules.Photostim
+    - acq4.analysis.modules.RoiEventDetector
+    - acq4.analysis.modules.TraceAnalyzer
+    - acq4.analysis.modules.pbm_ImageAnalysis
+    - acq4.analysis.old
+    - acq4.analysis.scripts
+    - acq4.analysis.tools
+    - acq4.analysis.tools.poissonScore
+    - acq4.devices
+    - acq4.devices.AxoPatch200
+    - acq4.devices.Camera
+    - acq4.devices.CoherentLaser
+    - acq4.devices.DAQGeneric
+    - acq4.devices.DIOSwitch
+    - acq4.devices.Laser
+    - acq4.devices.Microscope
+    - acq4.devices.MockCamera
+    - acq4.devices.MockClamp
+    - acq4.devices.MultiClamp
+    - acq4.devices.NiDAQ
+    - acq4.devices.PVCam
+    - acq4.devices.QCam
+    - acq4.devices.Scanner
+    - acq4.devices.SerialMouse
+    - acq4.devices.Stage
+    - acq4.devices.SutterMP285
+    - acq4.devices.SutterMPC200
+    - acq4.devices.Trigger
+    - acq4.drivers
+    - acq4.drivers.Coherent
+    - acq4.drivers.MultiClamp
+    - acq4.drivers.MultiClamp.multiclamp_server
+    - acq4.drivers.QImaging
+    - acq4.drivers.SutterMP285
+    - acq4.drivers.SutterMPC200
+    - acq4.drivers.nidaq
+    - acq4.drivers.pvcam
+    - acq4.filetypes
+    - acq4.modules
+    - acq4.modules.Camera
+    - acq4.modules.Console
+    - acq4.modules.DataManager
+    - acq4.modules.Imager
+    - acq4.modules.Manager
+    - acq4.modules.Patch
+    - acq4.modules.TaskRunner
+    - acq4.modules.TaskRunner.analysisModules
+    - acq4.modules.TaskRunner.analysisModules.Imaging
+    - acq4.modules.TaskRunner.analysisModules.Uncaging
+    - acq4.pyqtgraph
+    - acq4.pyqtgraph.GraphicsScene
+    - acq4.pyqtgraph.canvas
+    - acq4.pyqtgraph.console
+    - acq4.pyqtgraph.dockarea
+    - acq4.pyqtgraph.exporters
+    - acq4.pyqtgraph.flowchart
+    - acq4.pyqtgraph.flowchart.library
+    - acq4.pyqtgraph.graphicsItems
+    - acq4.pyqtgraph.graphicsItems.PlotItem
+    - acq4.pyqtgraph.graphicsItems.ViewBox
+    - acq4.pyqtgraph.imageview
+    - acq4.pyqtgraph.metaarray
+    - acq4.pyqtgraph.multiprocess
+    - acq4.pyqtgraph.opengl
+    - acq4.pyqtgraph.opengl.items
+    - acq4.pyqtgraph.parametertree
+    - acq4.pyqtgraph.pixmaps
+    - acq4.pyqtgraph.widgets
+    - acq4.util
+    - acq4.util.Canvas
+    - acq4.util.Canvas.items
+    - acq4.util.ColorMapper
+    - acq4.util.ContourPlotter
+    - acq4.util.DatabaseGui
+    - acq4.util.DirTreeWidget
+    - acq4.util.FileLoader
+    - acq4.util.clibrary
+    - acq4.util.database
+    - acq4.util.flowchart
+    - acq4.util.generator
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.acq4.org
+  license: MIT License
+  summary: 'Neurophysiology acquisition and analysis platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

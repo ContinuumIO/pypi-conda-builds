@@ -1,0 +1,65 @@
+package:
+  name: django-cms-wunderground
+  version: "1.0.0"
+
+source:
+  fn: django-cms-wunderground-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cms-wunderground/django-cms-wunderground-1.0.0.tar.gz
+  md5: 890c038786e250c2bfec8e7932755b6d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cms-wunderground = django-cms-wunderground:main
+    #
+    # Would create an entry point called django-cms-wunderground that calls django-cms-wunderground.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-cms
+
+  run:
+    - python
+    - setuptools
+    - django
+    - django-cms
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_wunderground
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/megamark16/django-cms-wunderground
+  license: BSD License
+  summary: 'An extension for Django CMS that displays the current local weather pulled from  wunderground.com'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

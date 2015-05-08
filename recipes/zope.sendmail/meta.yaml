@@ -1,0 +1,79 @@
+package:
+  name: zope.sendmail
+  version: "4.0.1"
+
+source:
+  fn: zope.sendmail-4.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.sendmail/zope.sendmail-4.0.1.tar.gz
+  md5: 2ad614793f3d7e38029efa1a5915cfff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.sendmail = zope.sendmail:main
+    #
+    # Would create an entry point called zope.sendmail that calls zope.sendmail.main()
+
+    - zope-sendmail=zope.sendmail.queue:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - transaction
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+    - zope.component >=3.8.0
+    - zope.configuration
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - transaction
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+    - zope.component >=3.8.0
+    - zope.configuration
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.sendmail
+    - zope.sendmail.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zope-sendmail --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.sendmail
+  license: Zope Public License
+  summary: 'Zope sendmail'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

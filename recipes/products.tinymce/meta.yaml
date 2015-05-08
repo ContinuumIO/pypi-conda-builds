@@ -1,0 +1,85 @@
+package:
+  name: products.tinymce
+  version: "1.3.9"
+
+source:
+  fn: Products.TinyMCE-1.3.9.zip
+  url: https://pypi.python.org/packages/source/P/Products.TinyMCE/Products.TinyMCE-1.3.9.zip
+  md5: 82cb4c7bd50281693fbd3b15a9f55460
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.tinymce = products.tinymce:main
+    #
+    # Would create an entry point called products.tinymce that calls products.tinymce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.app.imaging >=1.0.2
+    - plone.outputfilters
+    - plone.namedfile
+    - plone.app.layout >=2.3.7
+    - plone.caching
+    - products.resourceregistries
+    - zope.app.content
+    - zope.schema >=3.5.4
+
+  run:
+    - python
+    - setuptools
+    - plone.app.imaging >=1.0.2
+    - plone.outputfilters
+    - plone.namedfile
+    - plone.app.layout >=2.3.7
+    - plone.caching
+    - products.resourceregistries
+    - zope.app.content
+    - zope.schema >=3.5.4
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.TinyMCE
+    - Products.TinyMCE.adapters
+    - Products.TinyMCE.adapters.interfaces
+    - Products.TinyMCE.browser
+    - Products.TinyMCE.browser.interfaces
+    - Products.TinyMCE.interfaces
+    - Products.TinyMCE.mimetypes
+    - Products.TinyMCE.transforms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/tinymce
+  license: LGPL
+  summary: 'Adds support for TinyMCE, a platform independent web based Javascript HTML WYSIWYG editor, to Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: zopyx.sharepoint
+  version: "0.2.0"
+
+source:
+  fn: zopyx.sharepoint-0.2.0.zip
+  url: https://pypi.python.org/packages/source/z/zopyx.sharepoint/zopyx.sharepoint-0.2.0.zip
+  md5: 6d35558842be48fc358773d0ecfa1729
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.sharepoint = zopyx.sharepoint:main
+    #
+    # Would create an entry point called zopyx.sharepoint that calls zopyx.sharepoint.main()
+
+    - sharepoint-inspector=zopyx.sharepoint.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - suds
+    - argparse
+    - python-ntlm
+
+  run:
+    - python
+    - suds
+    - argparse
+    - python-ntlm
+
+test:
+  # Python imports
+  imports:
+    - zopyx
+    - zopyx.sharepoint
+    - zopyx.sharepoint.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sharepoint-inspector --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zopyx.sharepoint
+  license: ZPL
+  summary: 'Experimental Python-Sharepoint connector'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

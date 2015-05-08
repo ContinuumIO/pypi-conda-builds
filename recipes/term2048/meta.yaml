@@ -1,0 +1,66 @@
+package:
+  name: term2048
+  version: "0.2.5"
+
+source:
+  fn: term2048-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/t/term2048/term2048-0.2.5.tar.gz
+  md5: c6cf68803aa324635c21a50efe532b28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - term2048 = term2048:main
+    #
+    # Would create an entry point called term2048 that calls term2048.main()
+
+    - term2048 = term2048.ui:start_game
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama >=0.2.7
+    - argparse >=1.1
+
+  run:
+    - python
+    - colorama >=0.2.7
+    - argparse >=1.1
+
+test:
+  # Python imports
+  imports:
+    - term2048
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - term2048 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bfontaine/term2048
+  license: MIT License
+  summary: '2048 in your terminal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

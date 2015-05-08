@@ -1,0 +1,67 @@
+package:
+  name: trytond_ldap_connection
+  version: "3.2.1"
+
+source:
+  fn: trytond_ldap_connection-3.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_ldap_connection/trytond_ldap_connection-3.2.1.tar.gz
+  md5: 1dead9e065f7e1b426cd6b24db03d467
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_ldap_connection = trytond_ldap_connection:main
+    #
+    # Would create an entry point called trytond_ldap_connection that calls trytond_ldap_connection.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-ldap
+    - trytond >=3.2,<3.3
+
+  run:
+    - python
+    - setuptools
+    - python-ldap
+    - trytond >=3.2,<3.3
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.ldap_connection
+    - trytond.modules.ldap_connection.tests
+    - trytond_ldap_connection
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module to add LDAP connection'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

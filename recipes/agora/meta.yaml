@@ -1,0 +1,89 @@
+package:
+  name: agora
+  version: "3.0.3"
+
+source:
+  fn: agora-3.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/agora/agora-3.0.3.tar.gz
+  md5: fb27064dd13cbaaf05023c3d6a4bfaca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - agora = agora:main
+    #
+    # Would create an entry point called agora that calls agora.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - onyx
+    - apscheduler
+    - argh
+    - numpy
+    - scipy
+    - matplotlib
+    - tornado
+    - sqlalchemy
+
+  run:
+    - python
+    - onyx
+    - apscheduler
+    - argh
+    - numpy
+    - scipy
+    - matplotlib
+    - tornado
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - agora
+    - agora.corelibs
+    - agora.datafeeds
+    - agora.econometrics
+    - agora.econometrics.test
+    - agora.quantlib
+    - agora.quantlib.test
+    - agora.risk
+    - agora.risk.test
+    - agora.scheduler
+    - agora.system
+    - agora.system.test
+    - agora.tradables
+    - agora.tradables.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache Software License
+  summary: 'A portfolio and risk management system based on onyx.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

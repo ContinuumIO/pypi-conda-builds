@@ -1,0 +1,77 @@
+package:
+  name: vr.common
+  version: "3.17"
+
+source:
+  fn: vr.common-3.17.zip
+  url: https://pypi.python.org/packages/source/v/vr.common/vr.common-3.17.zip
+  md5: 6dab4e8dd44cd21874378e606b10ece0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vr.common = vr.common:main
+    #
+    # Would create an entry point called vr.common that calls vr.common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - isodate >=0.4.4
+    - six >=1.4.1
+    - utc
+    - requests
+    - pyyaml >=3.10
+    - sseclient ==0.0.8
+    - suds ==0.4
+
+  run:
+    - python
+    - isodate >=0.4.4
+    - six >=1.4.1
+    - utc
+    - requests
+    - pyyaml >=3.10
+    - sseclient ==0.0.8
+    - suds ==0.4
+
+test:
+  # Python imports
+  imports:
+    - vr
+    - vr.common
+    - vr.common.balancer
+    - vr.common.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/yougov/velociraptor
+  license: UNKNOWN
+  summary: 'Libraries and for deploying with Velociraptor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

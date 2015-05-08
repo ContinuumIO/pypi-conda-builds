@@ -1,0 +1,65 @@
+package:
+  name: sunlight
+  version: "1.2.8"
+
+source:
+  fn: sunlight-1.2.8.tar.gz
+  url: https://pypi.python.org/packages/source/s/sunlight/sunlight-1.2.8.tar.gz
+  md5: 0e22e05ca28732c24c6c6bb91c62cccc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sunlight = sunlight:main
+    #
+    # Would create an entry point called sunlight that calls sunlight.main()
+
+    - sunlight = sunlight.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clint
+
+  run:
+    - python
+    - clint
+
+test:
+  # Python imports
+  imports:
+    - sunlight
+    - sunlight.services
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sunlight --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sunlightlabs/python-sunlight
+  license: BSD
+  summary: 'Unified Sunlight API bindings'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

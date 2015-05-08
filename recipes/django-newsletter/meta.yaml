@@ -1,0 +1,84 @@
+package:
+  name: django-newsletter
+  version: "0.5.2"
+
+source:
+  fn: django-newsletter-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-newsletter/django-newsletter-0.5.2.tar.gz
+  md5: 61b6c9b087e53556d1fa18adb2e64cdb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-newsletter = django-newsletter:main
+    #
+    # Would create an entry point called django-newsletter that calls django-newsletter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-extensions
+    - django >=1.4.10
+    - vobject
+    - chardet
+    - surlex >=0.2.0
+    - sorl-thumbnail
+    - webtest
+    - django-webtest
+
+  run:
+    - python
+    - django-extensions
+    - django >=1.4.10
+    - vobject
+    - chardet
+    - surlex >=0.2.0
+    - sorl-thumbnail
+    - webtest
+    - django-webtest
+
+test:
+  # Python imports
+  imports:
+    - newsletter
+    - newsletter.addressimport
+    - newsletter.jobs
+    - newsletter.jobs.daily
+    - newsletter.jobs.hourly
+    - newsletter.jobs.monthly
+    - newsletter.jobs.weekly
+    - newsletter.migrations
+    - newsletter.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dokterbob/django-newsletter/
+  license: GNU Affero General Public License v3
+  summary: 'Django app for managing multiple mass-mailing lists with both plaintext as well as HTML templates (and pluggable WYSIWYG editors for messages), images and a smart queueing system all right from the admin interface.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

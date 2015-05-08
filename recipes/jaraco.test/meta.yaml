@@ -1,0 +1,75 @@
+package:
+  name: jaraco.test
+  version: "2.1"
+
+source:
+  fn: jaraco.test-2.1.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.test/jaraco.test-2.1.zip
+  md5: ced5bf951cf7bfe0a46cbee0c0f2e449
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaraco.test = jaraco.test:main
+    #
+    # Would create an entry point called jaraco.test that calls jaraco.test.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - path.py
+    - jaraco.timing
+    - jaraco.classes
+    - portend
+    - jaraco.mongodb >=2.6
+    - jaraco.services
+
+  run:
+    - python
+    - six
+    - path.py
+    - jaraco.timing
+    - jaraco.classes
+    - portend
+    - jaraco.mongodb >=2.6
+    - jaraco.services
+
+test:
+  # Python imports
+  imports:
+    - jaraco
+    - jaraco.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/jaraco/jaraco.test
+  license: MIT License
+  summary: 'jaraco.test'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

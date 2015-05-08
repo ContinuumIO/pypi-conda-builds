@@ -1,0 +1,67 @@
+package:
+  name: django-federal-reserve
+  version: "0.1.7"
+
+source:
+  fn: django-federal-reserve-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-federal-reserve/django-federal-reserve-0.1.7.tar.gz
+  md5: 0d0060c7e50c635e61be554f5d6592aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-federal-reserve = django-federal-reserve:main
+    #
+    # Would create an entry point called django-federal-reserve that calls django-federal-reserve.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - fred >=3.0
+    - django-data-mirror >=0.2.2
+
+  run:
+    - python
+    - django >=1.4
+    - fred >=3.0
+    - django-data-mirror >=0.2.2
+
+test:
+  # Python imports
+  imports:
+    - django_federal_reserve
+    - django_federal_reserve.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrisspen/django-federal-reserve
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Django model for storing Federal Reserve time series.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

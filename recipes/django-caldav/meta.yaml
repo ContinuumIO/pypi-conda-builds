@@ -1,0 +1,68 @@
+package:
+  name: django-caldav
+  version: "0.5"
+
+source:
+  fn: django-caldav-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-caldav/django-caldav-0.5.tar.gz
+  md5: 8c0f635dca915aa7bfcd51ada251d447
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-caldav = django-caldav:main
+    #
+    # Would create an entry point called django-caldav that calls django-caldav.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-ical
+    - djangodav >=0.0.1b5
+    - lxml
+
+  run:
+    - python
+    - django
+    - django-ical
+    - djangodav >=0.0.1b5
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - django_caldav
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.wpj.cz
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'CalDAV implementation for Django offering Feed interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

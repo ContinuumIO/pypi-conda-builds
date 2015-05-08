@@ -1,0 +1,69 @@
+package:
+  name: tzf.pyramid_yml
+  version: "1.0.1"
+
+source:
+  fn: tzf.pyramid_yml-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tzf.pyramid_yml/tzf.pyramid_yml-1.0.1.tar.gz
+  md5: bf9d14b557d9ef0c347a494092d309e5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tzf.pyramid_yml = tzf.pyramid_yml:main
+    #
+    # Would create an entry point called tzf.pyramid_yml that calls tzf.pyramid_yml.main()
+
+    - pconfig=tzf.pyramid_yml.scripts:print_config
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - pymlconf >=0.3.7
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - pymlconf >=0.3.7
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - tzf
+    - tzf.pyramid_yml
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pconfig --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fizyk/pyramid_yml
+  license: MIT License
+  summary: 'Loads a yml defined configuration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

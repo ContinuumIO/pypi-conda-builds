@@ -1,0 +1,64 @@
+package:
+  name: jsl10n
+  version: "1.1"
+
+source:
+  fn: jsl10n-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jsl10n/jsl10n-1.1.tar.gz
+  md5: 14a7d81f5e39bed2e21707a8e585ccb4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jsl10n = jsl10n:main
+    #
+    # Would create an entry point called jsl10n that calls jsl10n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - jsl10n
+    - jsl10n.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/jsl10n
+  license: Apache 2.0
+  summary: 'Javascript localization using Zope i18n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

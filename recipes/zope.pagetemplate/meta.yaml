@@ -1,0 +1,81 @@
+package:
+  name: zope.pagetemplate
+  version: "4.1.0"
+
+source:
+  fn: zope.pagetemplate-4.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.pagetemplate/zope.pagetemplate-4.1.0.tar.gz
+  md5: f4a00d774aea70cc3128219582395b01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.pagetemplate = zope.pagetemplate:main
+    #
+    # Would create an entry point called zope.pagetemplate that calls zope.pagetemplate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - zope.interface
+    - zope.component
+    - zope.tales
+    - zope.tal
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.traversing
+
+  run:
+    - python
+    - setuptools
+    - six
+    - zope.interface
+    - zope.component
+    - zope.tales
+    - zope.tal
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.pagetemplate
+    - zope.pagetemplate.tests
+    - zope.pagetemplate.tests.input
+    - zope.pagetemplate.tests.output
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.pagetemplate
+  license: Zope Public License
+  summary: 'Zope Page Templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

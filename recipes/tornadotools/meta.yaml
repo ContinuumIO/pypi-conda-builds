@@ -1,0 +1,65 @@
+package:
+  name: tornadotools
+  version: "0.2.2"
+
+source:
+  fn: tornadotools-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornadotools/tornadotools-0.2.2.tar.gz
+  md5: 4676560f5053a95c7f9925a87f5f7a10
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornadotools = tornadotools:main
+    #
+    # Would create an entry point called tornadotools that calls tornadotools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=2.0
+    - pycurl >=7.19.0
+
+  run:
+    - python
+    - tornado >=2.0
+    - pycurl >=7.19.0
+
+test:
+  # Python imports
+  imports:
+    - tornadotools
+    - tornadotools.mongrel2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/truemped/tornadotools
+  license: Apache Software License
+  summary: 'A set of tools for working with tornado'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

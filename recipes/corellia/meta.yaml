@@ -1,0 +1,64 @@
+package:
+  name: corellia
+  version: "0.5.1"
+
+source:
+  fn: Corellia-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/C/Corellia/Corellia-0.5.1.tar.gz
+  md5: 56b0d15fb11687f5188054a5a095e0ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - corellia = corellia:main
+    #
+    # Would create an entry point called corellia that calls corellia.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=2.7.0
+
+  run:
+    - python
+    - redis >=2.7.0
+
+test:
+  # Python imports
+  imports:
+    - Corellia
+    - Corellia.utils
+    - corellia
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Tefx/Corellia
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Fast Task Queue Using Redis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

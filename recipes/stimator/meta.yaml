@@ -1,0 +1,72 @@
+package:
+  name: stimator
+  version: "0.9.98"
+
+source:
+  fn: stimator-0.9.98.zip
+  url: https://pypi.python.org/packages/source/s/stimator/stimator-0.9.98.zip
+  md5: 57e18d5ab2187f1e15003d7c01707dbe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - stimator = stimator:main
+    #
+    # Would create an entry point called stimator that calls stimator.main()
+
+    - start_stimator_wx = stimator.gui:run_wxgui
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sympy
+    - pandas
+    - seaborn
+
+  run:
+    - python
+    - sympy
+    - pandas
+    - seaborn
+
+test:
+  # Python imports
+  imports:
+    - stimator
+    - stimator.examples
+    - stimator.gui
+    - stimator.moo
+    - stimator.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - start_stimator_wx --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://webpages.fc.ul.pt/~aeferreira/stimator
+  license: BSD License
+  summary: 'Analysis of ODE models with focus on model selection and parameter estimation.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

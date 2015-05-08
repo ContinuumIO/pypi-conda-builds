@@ -1,0 +1,73 @@
+package:
+  name: checkio_cli
+  version: "0.0.11"
+
+source:
+  fn: checkio_cli-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/c/checkio_cli/checkio_cli-0.0.11.tar.gz
+  md5: 76ececa830271e29ecbc7269ba58bb39
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkio_cli = checkio_cli:main
+    #
+    # Would create an entry point called checkio_cli that calls checkio_cli.main()
+
+    - checkio-cli = checkio_cli.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython ==0.3.5
+    - coloredlogs ==0.8
+    - tornado ==4.1
+    - checkio_docker ==0.0.13
+    - future
+
+  run:
+    - python
+    - gitpython ==0.3.5
+    - coloredlogs ==0.8
+    - tornado ==4.1
+    - checkio_docker ==0.0.13
+    - future
+
+test:
+  # Python imports
+  imports:
+    - checkio_cli
+    - checkio_cli.server
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - checkio-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CheckiO/checkio-cli
+  license: UNKNOWN
+  summary: 'CheckiO common line interface for run and debug mission'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

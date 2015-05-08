@@ -1,0 +1,75 @@
+package:
+  name: repoze.zodbconn
+  version: "0.15"
+
+source:
+  fn: repoze.zodbconn-0.15.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.zodbconn/repoze.zodbconn-0.15.tar.gz
+  md5: 1fb9c2f1b3f13341273e06cddd7e2a45
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - repoze.zodbconn = repoze.zodbconn:main
+    #
+    # Would create an entry point called repoze.zodbconn that calls repoze.zodbconn.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - transaction
+    - persistent
+    - zconfig
+    - zodb
+    - zeo
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - transaction
+    - persistent
+    - zconfig
+    - zodb
+    - zeo
+
+test:
+  # Python imports
+  imports:
+    - repoze
+    - repoze.zodbconn
+    - repoze.zodbconn.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.repoze.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'Opens ZODB by URI and provides ZODB-related WSGI apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

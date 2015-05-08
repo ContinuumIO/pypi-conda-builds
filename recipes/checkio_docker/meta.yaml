@@ -1,0 +1,64 @@
+package:
+  name: checkio_docker
+  version: "0.0.15"
+
+source:
+  fn: checkio_docker-0.0.15.tar.gz
+  url: https://pypi.python.org/packages/source/c/checkio_docker/checkio_docker-0.0.15.tar.gz
+  md5: 27d8b3fb7288cf590f4a74801f318e9b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkio_docker = checkio_docker:main
+    #
+    # Would create an entry point called checkio_docker that calls checkio_docker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython ==0.3.5
+    - docker-py ==1.1.0
+
+  run:
+    - python
+    - gitpython ==0.3.5
+    - docker-py ==1.1.0
+
+test:
+  # Python imports
+  imports:
+    - checkio_docker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CheckiO/checkio-docker
+  license: UNKNOWN
+  summary: 'Build docker images from CheckiO mission module'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: vs.genericsetup.ldap
+  version: "1.2"
+
+source:
+  fn: vs.genericsetup.ldap-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/v/vs.genericsetup.ldap/vs.genericsetup.ldap-1.2.tar.gz
+  md5: db36f24a7d56e042a6f03c8b48c6011f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vs.genericsetup.ldap = vs.genericsetup.ldap:main
+    #
+    # Would create an entry point called vs.genericsetup.ldap that calls vs.genericsetup.ldap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.genericsetup
+    - products.ploneldap
+    - products.ldapmultiplugins
+    - products.ldapuserfolder
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.genericsetup
+    - products.ploneldap
+    - products.ldapmultiplugins
+    - products.ldapuserfolder
+
+test:
+  # Python imports
+  imports:
+    - vs
+    - vs.genericsetup
+    - vs.genericsetup.ldap
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/vs.genericsetup.ldap
+  license: GPL
+  summary: 'Extension for GenericSetup, support for LDAP and AD'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

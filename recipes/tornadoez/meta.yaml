@@ -1,0 +1,68 @@
+package:
+  name: tornadoez
+  version: "0.9.30"
+
+source:
+  fn: tornadoez-0.9.30.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornadoez/tornadoez-0.9.30.tar.gz
+  md5: afe77b2ef180d5c12fd9f443e12d1dd2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornadoez = tornadoez:main
+    #
+    # Would create an entry point called tornadoez that calls tornadoez.main()
+
+    - ez = tornadoez.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - certifi
+    - cliez
+
+  run:
+    - python
+    - tornado
+    - certifi
+    - cliez
+
+test:
+  # Python imports
+  imports:
+    - tornadoez
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ez --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: http://opensource.org/licenses/MIT
+  summary: 'tornado improved package,currently it is experimental,with less document help.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

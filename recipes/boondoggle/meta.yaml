@@ -1,0 +1,69 @@
+package:
+  name: boondoggle
+  version: "2.4"
+
+source:
+  fn: boondoggle-2.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/boondoggle/boondoggle-2.4.tar.gz
+  md5: 22e8ea2c610c8d42c38e0f6349daa9ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boondoggle = boondoggle:main
+    #
+    # Would create an entry point called boondoggle that calls boondoggle.main()
+
+    - boondoggle=boondoggle.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - boto
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - click
+    - boto
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - boondoggle
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boondoggle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/scopely-devops/boondoggle
+  license: UNKNOWN
+  summary: 'A script to deploy server fleets using pre-baked AMIs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

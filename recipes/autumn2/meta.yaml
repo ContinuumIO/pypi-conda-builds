@@ -1,0 +1,65 @@
+package:
+  name: autumn2
+  version: "0.7.2.0"
+
+source:
+  fn: autumn2-0.7.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/autumn2/autumn2-0.7.2.0.tar.gz
+  md5: 457baab6b7434f3b37173fb5c9a10423
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autumn2 = autumn2:main
+    #
+    # Would create an entry point called autumn2 that calls autumn2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlbuilder >=0.7.9.1
+
+  run:
+    - python
+    - sqlbuilder >=0.7.9.1
+
+test:
+  # Python imports
+  imports:
+    - autumn
+    - autumn.contrib
+    - autumn.contrib.tests
+    - autumn2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/emacsway/autumn
+  license: MIT License
+  summary: 'Lightweight python ORM (Object-relational mapper).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

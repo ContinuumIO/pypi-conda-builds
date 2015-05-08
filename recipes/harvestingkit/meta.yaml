@@ -1,0 +1,82 @@
+package:
+  name: harvestingkit
+  version: "0.5.0"
+
+source:
+  fn: HarvestingKit-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/H/HarvestingKit/HarvestingKit-0.5.0.tar.gz
+  md5: 7eb798b2b04e325c57ac51b11e09a30f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - harvestingkit = harvestingkit:main
+    #
+    # Would create an entry point called harvestingkit that calls harvestingkit.main()
+
+    - harvestingkit_cli = harvestingkit.harvestingkit_cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 >=4.1.3
+    - unidecode ==0.04.14
+    - argcomplete ==0.8.0
+    - httpretty ==0.8.3
+    - lxml >=3.1.2
+    - requests >=2.2.0
+    - six >=1.7.3
+    - python-dateutil ==1.5
+    - htmlparser ==0.0.2
+
+  run:
+    - python
+    - beautifulsoup4 >=4.1.3
+    - unidecode ==0.04.14
+    - argcomplete ==0.8.0
+    - httpretty ==0.8.3
+    - lxml >=3.1.2
+    - requests >=2.2.0
+    - six >=1.7.3
+    - python-dateutil ==1.5
+    - htmlparser ==0.0.2
+
+test:
+  # Python imports
+  imports:
+    - harvestingkit
+    - harvestingkit.inspire_cds_package
+    - harvestingkit.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - harvestingkit_cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/inspirehep/harvesting-kit
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Kit of tools to convert publisher XML (NLM/JATS) to MARCXML.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

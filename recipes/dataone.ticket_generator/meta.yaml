@@ -1,0 +1,66 @@
+package:
+  name: dataone.ticket_generator
+  version: "0.3.3"
+
+source:
+  fn: dataone.ticket_generator-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/dataone.ticket_generator/dataone.ticket_generator-0.3.3.tar.gz
+  md5: 0b60afa4a4a147fb535702281c84b1cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dataone.ticket_generator = dataone.ticket_generator:main
+    #
+    # Would create an entry point called dataone.ticket_generator that calls dataone.ticket_generator.main()
+
+    - ticketgen = d1_ticket_generator.mn_deployment_ticket_generator:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-redmine ==0.6.1
+    - pyyaml ==3.10
+
+  run:
+    - python
+    - python-redmine ==0.6.1
+    - pyyaml ==3.10
+
+test:
+  # Python imports
+  imports:
+    - d1_ticket_generator
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ticketgen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dataone.org
+  license: Apache License, Version 2.0
+  summary: 'Generate a set of Redmine tickets based on YAML template and value files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: trytond_stock_lot
+  version: "3.6.0"
+
+source:
+  fn: trytond_stock_lot-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_stock_lot/trytond_stock_lot-3.6.0.tar.gz
+  md5: 32eb918f4676cb9d1eee3c082066f3bf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_stock_lot = trytond_stock_lot:main
+    #
+    # Would create an entry point called trytond_stock_lot that calls trytond_stock_lot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_product >=3.6,<3.7
+    - trytond_stock >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - trytond_product >=3.6,<3.7
+    - trytond_stock >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.stock_lot
+    - trytond.modules.stock_lot.tests
+    - trytond_stock_lot
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module for lot of products'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

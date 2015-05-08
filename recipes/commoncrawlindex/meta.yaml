@@ -1,0 +1,69 @@
+package:
+  name: commoncrawlindex
+  version: "0.0.8"
+
+source:
+  fn: commoncrawlindex-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/commoncrawlindex/commoncrawlindex-0.0.8.tar.gz
+  md5: 1b6392c454ae06dd70d54e1434d77e1f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - commoncrawlindex = commoncrawlindex:main
+    #
+    # Would create an entry point called commoncrawlindex that calls commoncrawlindex.main()
+
+    - cci_lookup = commoncrawlindex.cli.cci_lookup:cli_main
+    - cci_fetch = commoncrawlindex.cli.cci_fetch:cli_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.9.0
+    - python-gflags
+
+  run:
+    - python
+    - boto ==2.9.0
+    - python-gflags
+
+test:
+  # Python imports
+  imports:
+    - commoncrawlindex
+    - commoncrawlindex.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cci_lookup --help
+    - cci_fetch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wiseman/common_crawl_index
+  license: MIT
+  summary: 'Access to an index of Common Crawl URLs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

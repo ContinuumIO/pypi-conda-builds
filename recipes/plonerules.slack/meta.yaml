@@ -1,0 +1,67 @@
+package:
+  name: plonerules.slack
+  version: "1.0.4"
+
+source:
+  fn: plonerules.slack-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/plonerules.slack/plonerules.slack-1.0.4.tar.gz
+  md5: 63ca64dea871434ec67f70114db695f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plonerules.slack = plonerules.slack:main
+    #
+    # Would create an entry point called plonerules.slack that calls plonerules.slack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - slacker
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - slacker
+
+test:
+  # Python imports
+  imports:
+    - plonerules
+    - plonerules.slack
+    - plonerules.slack.actions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sgiraud01/plonerules.slack/
+  license: GPL
+  summary: 'Post to a slack channel action for plone rules'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: uber.py
+  version: "1.0.3"
+
+source:
+  fn: uber.py-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/u/uber.py/uber.py-1.0.3.tar.gz
+  md5: 14921277f67477b9b7c027a6e8a8e49e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - uber.py = uber.py:main
+    #
+    # Would create an entry point called uber.py that calls uber.py.main()
+
+    - ubercli = examples.ubercli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.0.0
+    - pycrypto >=2.5
+    - python-dateutil >=1.5
+
+  run:
+    - python
+    - requests >=1.0.0
+    - pycrypto >=2.5
+    - python-dateutil >=1.5
+
+test:
+  # Python imports
+  imports:
+    - examples
+    - uber
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ubercli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tals/uber.py
+  license: MIT
+  summary: 'Python client for Uber'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

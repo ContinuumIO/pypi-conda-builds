@@ -1,0 +1,66 @@
+package:
+  name: vwr
+  version: "0.1.5"
+
+source:
+  fn: vwr-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/v/vwr/vwr-0.1.5.tar.gz
+  md5: a51495e414282419ce1fae0025cf6193
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vwr = vwr:main
+    #
+    # Would create an entry point called vwr that calls vwr.main()
+
+    - vwr = vwr:command_line
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - blessings
+
+  run:
+    - python
+    - tornado
+    - blessings
+
+test:
+  # Python imports
+  imports:
+    - vwr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - vwr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/numat/vwr/
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Python driver for VWR circulating baths.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

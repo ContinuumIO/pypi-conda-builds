@@ -1,0 +1,129 @@
+package:
+  name: zope.app.apidoc
+  version: "3.7.5"
+
+source:
+  fn: zope.app.apidoc-3.7.5.zip
+  url: https://pypi.python.org/packages/source/z/zope.app.apidoc/zope.app.apidoc-3.7.5.zip
+  md5: 91e969b2d1089bb0a6a303990d269f0a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.apidoc = zope.app.apidoc:main
+    #
+    # Would create an entry point called zope.app.apidoc that calls zope.app.apidoc.main()
+
+    - static-apidoc=zope.app.apidoc.static:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.8.0
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.basicskin
+    - zope.app.onlinehelp
+    - zope.app.preference
+    - zope.app.publisher
+    - zope.app.renderer
+    - zope.app.testing
+    - zope.app.tree
+    - zope.cachedescriptors
+    - zope.component >=3.8.0
+    - zope.container
+    - zope.configuration
+    - zope.deprecation
+    - zope.i18n
+    - zope.site
+    - zope.hookable
+    - zope.interface
+    - zope.location >=3.7.0
+    - zope.proxy
+    - zope.publisher >=3.12.0
+    - zope.schema
+    - zope.security
+    - zope.testbrowser
+    - zope.testing
+    - zope.traversing >=3.5.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.8.0
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.basicskin
+    - zope.app.onlinehelp
+    - zope.app.preference
+    - zope.app.publisher
+    - zope.app.renderer
+    - zope.app.testing
+    - zope.app.tree
+    - zope.cachedescriptors
+    - zope.component >=3.8.0
+    - zope.container
+    - zope.configuration
+    - zope.deprecation
+    - zope.i18n
+    - zope.site
+    - zope.hookable
+    - zope.interface
+    - zope.location >=3.7.0
+    - zope.proxy
+    - zope.publisher >=3.12.0
+    - zope.schema
+    - zope.security
+    - zope.testbrowser
+    - zope.testing
+    - zope.traversing >=3.5.0
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.apidoc
+    - zope.app.apidoc.bookmodule
+    - zope.app.apidoc.browser
+    - zope.app.apidoc.codemodule
+    - zope.app.apidoc.codemodule.browser
+    - zope.app.apidoc.ifacemodule
+    - zope.app.apidoc.typemodule
+    - zope.app.apidoc.utilitymodule
+    - zope.app.apidoc.zcmlmodule
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - static-apidoc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.apidoc
+  license: Zope Public License
+  summary: 'API Documentation and Component Inspection for Zope 3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

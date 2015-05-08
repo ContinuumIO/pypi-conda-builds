@@ -1,0 +1,65 @@
+package:
+  name: django-simple-registration
+  version: "0.9b0"
+
+source:
+  fn: django-simple-registration-0.9b0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-simple-registration/django-simple-registration-0.9b0.tar.gz
+  md5: d3f0156c9e1a0e95425b0e135c676162
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-simple-registration = django-simple-registration:main
+    #
+    # Would create an entry point called django-simple-registration that calls django-simple-registration.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - registration
+    - registration.backends
+    - registration.backends.default
+    - registration.backends.simple
+    - registration.management
+    - registration.management.commands
+    - registration.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gbezyuk/django-simple-registration/
+  license: BSD License
+  summary: 'An extensible user-registration application for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

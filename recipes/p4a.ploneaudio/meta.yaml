@@ -1,0 +1,66 @@
+package:
+  name: p4a.ploneaudio
+  version: "1.1rc1"
+
+source:
+  fn: p4a.ploneaudio-1.1rc1.tar.gz
+  url: https://pypi.python.org/packages/source/p/p4a.ploneaudio/p4a.ploneaudio-1.1rc1.tar.gz
+  md5: 0828a4c733e26582fcec9c281eedd826
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - p4a.ploneaudio = p4a.ploneaudio:main
+    #
+    # Would create an entry point called p4a.ploneaudio that calls p4a.ploneaudio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - p4a.audio >=1.1dev
+
+  run:
+    - python
+    - setuptools
+    - p4a.audio >=1.1dev
+
+test:
+  # Python imports
+  imports:
+    - p4a
+    - p4a.ploneaudio
+    - p4a.ploneaudio.ataudio
+    - p4a.ploneaudio.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.plone4artists.org/products/plone4artistsaudio
+  license: GNU General Public License (GPL)
+  summary: 'Plone4Artists audio add-on for Plone '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

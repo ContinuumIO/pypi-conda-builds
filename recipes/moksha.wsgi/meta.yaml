@@ -1,0 +1,127 @@
+package:
+  name: moksha.wsgi
+  version: "1.2.2"
+
+source:
+  fn: moksha.wsgi-1.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/moksha.wsgi/moksha.wsgi-1.2.2.tar.gz
+  md5: 6ffdbe771480c02a6f600a9fc5a17527
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moksha.wsgi = moksha.wsgi:main
+    #
+    # Would create an entry point called moksha.wsgi that calls moksha.wsgi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - moksha.common >=1.0.6
+    - tw2.core
+    - tw2.forms
+    - tw2.jquery
+    - tw2.jqplugins.ui
+    - tw2.jqplugins.flot
+    - tw2.jqplugins.gritter
+    - tw2.jit
+    - tw2.excanvas
+    - paste
+    - pastescript
+    - tempita
+    - pygments
+
+  run:
+    - python
+    - setuptools
+    - moksha.common >=1.0.6
+    - tw2.core
+    - tw2.forms
+    - tw2.jquery
+    - tw2.jqplugins.ui
+    - tw2.jqplugins.flot
+    - tw2.jqplugins.gritter
+    - tw2.jit
+    - tw2.excanvas
+    - paste
+    - pastescript
+    - tempita
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - moksha
+    - moksha.wsgi
+    - moksha.wsgi.distutils
+    - moksha.wsgi.ext
+    - moksha.wsgi.lib
+    - moksha.wsgi.middleware
+    - moksha.wsgi.public
+    - moksha.wsgi.public.javascript
+    - moksha.wsgi.templates
+    - moksha.wsgi.tests
+    - moksha.wsgi.tests.templates
+    - moksha.wsgi.widgets
+    - moksha.wsgi.widgets.api
+    - moksha.wsgi.widgets.api.amqp
+    - moksha.wsgi.widgets.api.amqp.templates
+    - moksha.wsgi.widgets.api.buttons
+    - moksha.wsgi.widgets.api.flot
+    - moksha.wsgi.widgets.api.flot.templates
+    - moksha.wsgi.widgets.api.global_resources
+    - moksha.wsgi.widgets.api.global_resources.templates
+    - moksha.wsgi.widgets.api.jit
+    - moksha.wsgi.widgets.api.layout
+    - moksha.wsgi.widgets.api.layout.templates
+    - moksha.wsgi.widgets.api.live
+    - moksha.wsgi.widgets.api.orbited
+    - moksha.wsgi.widgets.api.orbited.templates
+    - moksha.wsgi.widgets.api.selectable
+    - moksha.wsgi.widgets.api.selectable.templates
+    - moksha.wsgi.widgets.api.stomp
+    - moksha.wsgi.widgets.api.stomp.templates
+    - moksha.wsgi.widgets.api.templates
+    - moksha.wsgi.widgets.api.websocket
+    - moksha.wsgi.widgets.api.websocket.templates
+    - moksha.wsgi.widgets.container
+    - moksha.wsgi.widgets.container.templates
+    - moksha.wsgi.widgets.container.tests
+    - moksha.wsgi.widgets.container.tests.templates
+    - moksha.wsgi.widgets.expander
+    - moksha.wsgi.widgets.livegraph
+    - moksha.wsgi.widgets.static
+    - moksha.wsgi.widgets.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://moksha.fedorahosted.org
+  license: UNKNOWN
+  summary: 'WSGI components for Moksha.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

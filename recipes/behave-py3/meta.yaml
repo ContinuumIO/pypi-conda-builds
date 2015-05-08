@@ -1,0 +1,72 @@
+package:
+  name: behave-py3
+  version: "1.2.5-r2014122202"
+
+source:
+  fn: behave-py3-1.2.5-r2014122202.tar.gz
+  url: https://pypi.python.org/packages/source/b/behave-py3/behave-py3-1.2.5-r2014122202.tar.gz
+  md5: e84b228d687da03bb84c90574b3af673
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - behave-py3 = behave-py3:main
+    #
+    # Would create an entry point called behave-py3 that calls behave-py3.main()
+
+    - behave = behave.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - parse >=1.6.3
+    - parse_type >=0.3.4
+    - six
+
+  run:
+    - python
+    - setuptools
+    - parse >=1.6.3
+    - parse_type >=0.3.4
+    - six
+
+test:
+  # Python imports
+  imports:
+    - behave
+    - behave.compat
+    - behave.formatter
+    - behave.reporter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - behave --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/sunliwen/behave
+  license: BSD License
+  summary: 'behave is behaviour-driven development, Python style.\nbehave-py3 is a personal fork with python 3 support.\nHope it could be merged back to upstream.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

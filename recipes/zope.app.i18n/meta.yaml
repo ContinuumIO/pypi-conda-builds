@@ -1,0 +1,85 @@
+package:
+  name: zope.app.i18n
+  version: "3.6.4"
+
+source:
+  fn: zope.app.i18n-3.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.i18n/zope.app.i18n-3.6.4.tar.gz
+  md5: 8ec47f37e000e11a43e71563457e5cb2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.i18n = zope.app.i18n:main
+    #
+    # Would create an entry point called zope.app.i18n that calls zope.app.i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.publisher >=3.9
+    - zope.component >=3.6
+    - zope.container
+    - zope.configuration
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.security
+    - zodb3
+
+  run:
+    - python
+    - setuptools
+    - zope.publisher >=3.9
+    - zope.component >=3.6
+    - zope.container
+    - zope.configuration
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.security
+    - zodb3
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.i18n
+    - zope.app.i18n.browser
+    - zope.app.i18n.browser.tests
+    - zope.app.i18n.tests
+    - zope.app.i18n.xmlrpc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.i18n
+  license: Zope Public License
+  summary: 'Persistent translation domains and message catalogs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

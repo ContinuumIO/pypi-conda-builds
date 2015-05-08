@@ -1,0 +1,67 @@
+package:
+  name: django-command-interface
+  version: "0.4"
+
+source:
+  fn: django-command-interface-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-command-interface/django-command-interface-0.4.tar.gz
+  md5: 4749a0e201a9b222ff5e928e0a2bf6b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-command-interface = django-command-interface:main
+    #
+    # Would create an entry point called django-command-interface that calls django-command-interface.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - command_interface
+    - command_interface.tests
+    - command_interface.tests.integration_tests
+    - command_interface.tests.test_app
+    - command_interface.tests.test_app.management
+    - command_interface.tests.test_app.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-command-interface
+  license: The MIT License
+  summary: 'A reusable Django app that allows to list manage.py commands and lauch them with one click\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

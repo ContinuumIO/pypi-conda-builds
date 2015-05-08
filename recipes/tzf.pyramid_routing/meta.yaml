@@ -1,0 +1,71 @@
+package:
+  name: tzf.pyramid_routing
+  version: "0.1.2"
+
+source:
+  fn: tzf.pyramid_routing-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/tzf.pyramid_routing/tzf.pyramid_routing-0.1.2.tar.gz
+  md5: 28c3808ec5c1cddae122fbf95bfba6e1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tzf.pyramid_routing = tzf.pyramid_routing:main
+    #
+    # Would create an entry point called tzf.pyramid_routing that calls tzf.pyramid_routing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+
+  run:
+    - python
+    - pyramid
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - tests.routes_definitions
+    - tests.routes_definitions.routing
+    - tests.routes_definitions.routing_moduled
+    - tests.routes_definitions.routing_prefixed
+    - tests.routes_definitions.routing_to_include_1
+    - tests.routes_definitions.routing_to_include_2
+    - tests.routes_definitions.routing_two_moduled
+    - tzf
+    - tzf.pyramid_routing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fizyk/pyramid_routing
+  license: MIT License
+  summary: 'Reads and sets routing configuration from a package'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,89 @@
+package:
+  name: coop-cms
+  version: "0.7.0"
+
+source:
+  fn: coop-cms-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/coop-cms/coop-cms-0.7.0.tar.gz
+  md5: dcb40ea11650a72fc3a850ee887d4ad2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coop-cms = coop-cms:main
+    #
+    # Would create an entry point called coop-cms that calls coop-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-floppyforms ==0.4.7
+    - django-extensions ==0.9
+    - sorl-thumbnail ==11.09
+    - coop-colorbox
+    - coop-bar
+    - djaloha
+    - django-pagination
+    - feedparser
+
+  run:
+    - python
+    - django-floppyforms ==0.4.7
+    - django-extensions ==0.9
+    - sorl-thumbnail ==11.09
+    - coop-colorbox
+    - coop-bar
+    - djaloha
+    - django-pagination
+    - feedparser
+
+test:
+  # Python imports
+  imports:
+    - coop_cms
+    - coop_cms.apps
+    - coop_cms.apps.basic_cms
+    - coop_cms.apps.basic_cms.migrations
+    - coop_cms.apps.demo_cms
+    - coop_cms.apps.demo_cms.migrations
+    - coop_cms.apps.rss_sync
+    - coop_cms.apps.rss_sync.management
+    - coop_cms.apps.rss_sync.management.commands
+    - coop_cms.apps.rss_sync.migrations
+    - coop_cms.management
+    - coop_cms.management.commands
+    - coop_cms.migrations
+    - coop_cms.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quinode/coop_cms/
+  license: BSD License
+  summary: 'Small CMS built around a tree navigation open to any django models'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

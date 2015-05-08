@@ -1,0 +1,64 @@
+package:
+  name: redsolutioncms.django-easy-news
+  version: "0.2.4"
+
+source:
+  fn: redsolutioncms.django-easy-news-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/redsolutioncms.django-easy-news/redsolutioncms.django-easy-news-0.2.4.tar.gz
+  md5: 774ea1d72cb2569c219e72e53ca6b296
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redsolutioncms.django-easy-news = redsolutioncms.django-easy-news:main
+    #
+    # Would create an entry point called redsolutioncms.django-easy-news that calls redsolutioncms.django-easy-news.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - easy_news
+    - easy_news.migrations
+    - easy_news.redsolution_setup
+    - easy_news.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/django-easy-news
+  license: GNU General Public License (GPL)
+  summary: 'News application. Allow to publish news on site. You can show news archive,\ncalendar block, or latest news block in template. \nAdmin editor compatible with django-tinyMCE.  '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: django-facebook
+  version: "6.0.2"
+
+source:
+  fn: django-facebook-6.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-facebook/django-facebook-6.0.2.tar.gz
+  md5: 76d4c01a7eb6105622deac10b2d1fc7c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-facebook = django-facebook:main
+    #
+    # Would create an entry point called django-facebook that calls django-facebook.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unidecode
+
+  run:
+    - python
+    - unidecode
+
+test:
+  # Python imports
+  imports:
+    - django_facebook
+    - django_facebook.management
+    - django_facebook.management.commands
+    - django_facebook.templatetags
+    - django_facebook.test_utils
+    - open_facebook
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tschellenbach/Django-facebook
+  license: GNU General Public License (GPL)
+  summary: 'Facebook open graph API client in python. Enables django applications to register users using facebook.\nFixes issues with the official but unsupported Facebook python-sdk. Enables mobile facebook authentication.\nCanvas page authentication for facebook applications. FQL access via the server side api.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

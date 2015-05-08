@@ -1,0 +1,108 @@
+package:
+  name: crawlmi
+  version: "0.1.2"
+
+source:
+  fn: crawlmi-0.1.2.zip
+  url: https://pypi.python.org/packages/source/c/crawlmi/crawlmi-0.1.2.zip
+  md5: da6329e0e1103cb60be57d628a610560
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crawlmi = crawlmi:main
+    #
+    # Would create an entry point called crawlmi that calls crawlmi.main()
+
+    - crawlmi = crawlmi.cmdline:execute
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=13.0.0
+    - lxml
+    - pyopenssl
+    - charade
+    - cssselect >=0.9
+
+  run:
+    - python
+    - twisted >=13.0.0
+    - lxml
+    - pyopenssl
+    - charade
+    - cssselect >=0.9
+
+test:
+  # Python imports
+  imports:
+    - crawlmi
+    - crawlmi.commands
+    - crawlmi.core
+    - crawlmi.core.handlers
+    - crawlmi.extractor
+    - crawlmi.http
+    - crawlmi.http.request
+    - crawlmi.http.response
+    - crawlmi.middleware
+    - crawlmi.middleware.extensions
+    - crawlmi.middleware.pipelines
+    - crawlmi.middleware.pipelines.http_cache
+    - crawlmi.parser
+    - crawlmi.parser.selectors
+    - crawlmi.queue
+    - crawlmi.settings
+    - crawlmi.spider
+    - crawlmi.stats
+    - crawlmi.tests
+    - crawlmi.tests.mocks
+    - crawlmi.tests.test_cmdline
+    - crawlmi.tests.test_cmdline.sample_commands
+    - crawlmi.tests.test_cmdline.sample_commands.mod
+    - crawlmi.tests.test_extractor
+    - crawlmi.tests.test_http
+    - crawlmi.tests.test_middleware
+    - crawlmi.tests.test_parser
+    - crawlmi.tests.test_project
+    - crawlmi.tests.test_queue
+    - crawlmi.tests.test_spider_manager
+    - crawlmi.tests.test_spider_manager.test_spiders
+    - crawlmi.tests.test_utils
+    - crawlmi.tests.test_utils.test_iter_submodules
+    - crawlmi.tests.test_utils.test_iter_submodules.mod
+    - crawlmi.utils
+    - crawlmi.xlib
+    - crawlmi.xlib.pydispatch
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - crawlmi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Mimino666/crawlmi
+  license: UNKNOWN
+  summary: 'Highly optimized web scraping framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: alauda
+  version: "0.1.0"
+
+source:
+  fn: alauda-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/alauda/alauda-0.1.0.tar.gz
+  md5: 87909b1c9d40135680ec93178df035dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alauda = alauda:main
+    #
+    # Would create an entry point called alauda that calls alauda.main()
+
+    - alauda=alaudacli.alauda_cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - alauda
+    - alaudacli
+    - clitests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - alauda --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.alauda.io
+  license: MIT License
+  summary: 'Alauda CLI'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

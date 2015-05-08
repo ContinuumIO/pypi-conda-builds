@@ -1,0 +1,73 @@
+package:
+  name: products.shibbolethpermissions
+  version: "0.8b2"
+
+source:
+  fn: Products.ShibbolethPermissions-0.8b2.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.ShibbolethPermissions/Products.ShibbolethPermissions-0.8b2.tar.gz
+  md5: 6bf80e8616f66cb8c4198c306c11fc57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.shibbolethpermissions = products.shibbolethpermissions:main
+    #
+    # Would create an entry point called products.shibbolethpermissions that calls products.shibbolethpermissions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.app.workflow
+    - plone.memoize
+    - setuptools
+    - zope.component
+
+  run:
+    - python
+    - setuptools
+    - plone.app.workflow
+    - plone.memoize
+    - setuptools
+    - zope.component
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.ShibbolethPermissions
+    - Products.ShibbolethPermissions.Extensions
+    - Products.ShibbolethPermissions.browser
+    - Products.ShibbolethPermissions.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.ShibbolethPermissions/
+  license: GPL
+  summary: 'Use shibboleth attributes as authenitcation information in Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

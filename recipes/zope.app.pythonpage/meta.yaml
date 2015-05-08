@@ -1,0 +1,77 @@
+package:
+  name: zope.app.pythonpage
+  version: "3.5.1"
+
+source:
+  fn: zope.app.pythonpage-3.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.pythonpage/zope.app.pythonpage-3.5.1.tar.gz
+  md5: 6d4695cf480357d78357528c981acb47
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.pythonpage = zope.app.pythonpage:main
+    #
+    # Would create an entry point called zope.app.pythonpage that calls zope.app.pythonpage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb3
+    - zope.container
+    - zope.app.interpreter
+    - zope.interface
+    - zope.schema
+    - zope.app.i18n
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - zodb3
+    - zope.container
+    - zope.app.interpreter
+    - zope.interface
+    - zope.schema
+    - zope.app.i18n
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.pythonpage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.pythonpage
+  license: Zope Public License
+  summary: 'Python Page -- Zope 3 Content Components'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

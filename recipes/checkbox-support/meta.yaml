@@ -1,0 +1,79 @@
+package:
+  name: checkbox-support
+  version: "0.19"
+
+source:
+  fn: checkbox-support-0.19.tar.gz
+  url: https://pypi.python.org/packages/source/c/checkbox-support/checkbox-support-0.19.tar.gz
+  md5: 7a3a6a9899f42f4b3c41affc96069afc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkbox-support = checkbox-support:main
+    #
+    # Would create an entry point called checkbox-support that calls checkbox-support.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml >=2.3
+    - pyparsing >=2.0.0
+    - configparser
+
+  run:
+    - python
+    - setuptools
+    - lxml >=2.3
+    - pyparsing >=2.0.0
+    - configparser
+
+test:
+  # Python imports
+  imports:
+    - checkbox_support
+    - checkbox_support.contrib
+    - checkbox_support.dbus
+    - checkbox_support.helpers
+    - checkbox_support.heuristics
+    - checkbox_support.heuristics.tests
+    - checkbox_support.lib
+    - checkbox_support.parsers
+    - checkbox_support.parsers.tests
+    - checkbox_support.scripts
+    - checkbox_support.scripts.tests
+    - checkbox_support.tests
+    - checkbox_support.vendor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/checkbox/
+  license: GPLv3
+  summary: 'CheckBox support library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

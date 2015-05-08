@@ -1,0 +1,64 @@
+package:
+  name: flask-dynamo
+  version: "0.0.6"
+
+source:
+  fn: flask-dynamo-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-dynamo/flask-dynamo-0.0.6.tar.gz
+  md5: 86b05da955f4654a750e4ab73d444dc0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-dynamo = flask-dynamo:main
+    #
+    # Would create an entry point called flask-dynamo that calls flask-dynamo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.29.1
+    - flask >=0.10.1
+
+  run:
+    - python
+    - boto >=2.29.1
+    - flask >=0.10.1
+
+test:
+  # Python imports
+  imports:
+    - flask_dynamo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rdegges/flask-dynamo
+  license: UNLICENSE
+  summary: 'DynamoDB integration for Flask.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

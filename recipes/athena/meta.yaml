@@ -1,0 +1,84 @@
+package:
+  name: athena
+  version: "0.6.0"
+
+source:
+  fn: athena-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/athena/athena-0.6.0.tar.gz
+  md5: 49bb53f76bfc666a03f3ef1468e901f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - athena = athena:main
+    #
+    # Would create an entry point called athena that calls athena.main()
+
+    - athena = athena.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - impyla ==0.9.0
+    - click ==3.3
+    - paramiko ==1.15.2
+    - tabulate ==0.7.3
+    - pyyaml ==3.11
+    - mailshake ==0.9.8
+    - python-slugify ==0.1.0
+    - jinja2 ==2.7.3
+    - ipy ==0.81
+
+  run:
+    - python
+    - impyla ==0.9.0
+    - click ==3.3
+    - paramiko ==1.15.2
+    - tabulate ==0.7.3
+    - pyyaml ==3.11
+    - mailshake ==0.9.8
+    - python-slugify ==0.1.0
+    - jinja2 ==2.7.3
+    - ipy ==0.81
+
+test:
+  # Python imports
+  imports:
+    - athena
+    - athena.broadcasting
+    - athena.queries
+    - athena.scheduling
+    - athena.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - athena --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datadudes/athena
+  license: MIT License
+  summary: 'Interact with your Hadoop cluster from the convenience of your local command line.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

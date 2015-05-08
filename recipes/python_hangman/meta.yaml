@@ -1,0 +1,67 @@
+package:
+  name: python_hangman
+  version: "1.4.0"
+
+source:
+  fn: python_hangman-1.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python_hangman/python_hangman-1.4.0.tar.gz
+  md5: f4c16e26e974312725cc3ca21ebb530f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python_hangman = python_hangman:main
+    #
+    # Would create an entry point called python_hangman that calls python_hangman.main()
+
+    - hangman = hangman.__main__:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - future
+
+  run:
+    - python
+    - click
+    - future
+
+test:
+  # Python imports
+  imports:
+    - hangman
+    - python_hangman
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hangman --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bionikspoon/Hangman
+  license: MIT License
+  summary: 'Python hangman TDD demonstration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

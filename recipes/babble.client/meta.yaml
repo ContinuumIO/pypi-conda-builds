@@ -1,0 +1,83 @@
+package:
+  name: babble.client
+  version: "2.0"
+
+source:
+  fn: babble.client-2.0.zip
+  url: https://pypi.python.org/packages/source/b/babble.client/babble.client-2.0.zip
+  md5: 22f6c5b400f781cc22472ac0d8de2330
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - babble.client = babble.client:main
+    #
+    # Would create an entry point called babble.client that calls babble.client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - simplejson
+    - babble.server >=1.0b5
+    - products.cmfplone
+    - five.grok
+    - plone.app.dexterity
+    - plone.app.referenceablebehavior
+    - plone.app.portlets
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - simplejson
+    - babble.server >=1.0b5
+    - products.cmfplone
+    - five.grok
+    - plone.app.dexterity
+    - plone.app.referenceablebehavior
+    - plone.app.portlets
+
+test:
+  # Python imports
+  imports:
+    - babble
+    - babble.client
+    - babble.client.browser
+    - babble.client.exportimport
+    - babble.client.portlets
+    - babble.client.tests
+    - babble.client.upgrade
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/babble.client
+  license: GPL
+  summary: 'Babble: Instant messaging client for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

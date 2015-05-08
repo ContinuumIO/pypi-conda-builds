@@ -1,0 +1,65 @@
+package:
+  name: act-bb-usage
+  version: "1.0"
+
+source:
+  fn: act-bb-usage-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/act-bb-usage/act-bb-usage-1.0.tar.gz
+  md5: 8a2185d6dfdd397dc2f7521ec2a78425
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - act-bb-usage = act-bb-usage:main
+    #
+    # Would create an entry point called act-bb-usage that calls act-bb-usage.main()
+
+    - act_bb_usage = act_bb_usage.usage:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - act_bb_usage
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - act_bb_usage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lgp171188/act_bb_usage
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Fetch the total internet usage for the month\n                   from ACT broadband portal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

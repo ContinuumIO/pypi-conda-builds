@@ -1,0 +1,72 @@
+package:
+  name: plock
+  version: "0.3.0"
+
+source:
+  fn: plock-0.3.0.zip
+  url: https://pypi.python.org/packages/source/p/plock/plock-0.3.0.zip
+  md5: 98750c54771c0f11703da747453ede5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plock = plock:main
+    #
+    # Would create an entry point called plock that calls plock.main()
+
+    - plock=plock.install:install
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configparser
+    - sh
+    - virtualenv
+    - yolk
+    - zc.buildout
+
+  run:
+    - python
+    - configparser
+    - sh
+    - virtualenv
+    - yolk
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - plock
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - plock --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plock/plock
+  license: Whatever license Plone is
+  summary: 'A Plone installer for the pip-loving crowd'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

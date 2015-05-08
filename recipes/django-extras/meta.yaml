@@ -1,0 +1,83 @@
+package:
+  name: django-extras
+  version: "0.3"
+
+source:
+  fn: django-extras-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-extras/django-extras-0.3.tar.gz
+  md5: 8c903d149096cb37e4a05454dfe94fec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-extras = django-extras:main
+    #
+    # Would create an entry point called django-extras that calls django-extras.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - six
+
+  run:
+    - python
+    - django >=1.4
+    - six
+
+test:
+  # Python imports
+  imports:
+    - django_extras
+    - django_extras.contrib
+    - django_extras.contrib.auth
+    - django_extras.core
+    - django_extras.db
+    - django_extras.db.models
+    - django_extras.db.models.fields
+    - django_extras.forms
+    - django_extras.http
+    - django_extras.middleware
+    - django_extras.templatetags
+    - django_extras.tests
+    - django_extras.tests.contrib
+    - django_extras.tests.core
+    - django_extras.tests.db
+    - django_extras.tests.forms
+    - django_extras.tests.http
+    - django_extras.tests.middleware
+    - django_extras.tests.utils
+    - django_extras.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/timsavage/django-extras
+  license: BSD License
+  summary: 'Object Data Mapping for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

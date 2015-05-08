@@ -1,0 +1,81 @@
+package:
+  name: zope.app.tree
+  version: "3.6.0"
+
+source:
+  fn: zope.app.tree-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.tree/zope.app.tree-3.6.0.tar.gz
+  md5: fbde3403c682bc7cf7b73d43cd2eed3a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.tree = zope.app.tree:main
+    #
+    # Would create an entry point called zope.app.tree that calls zope.app.tree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.container
+    - zope.component
+    - zope.interface
+    - zope.location
+    - zope.publisher
+    - zope.schema
+    - zope.security
+    - zope.traversing
+
+  run:
+    - python
+    - setuptools
+    - zope.container
+    - zope.component
+    - zope.interface
+    - zope.location
+    - zope.publisher
+    - zope.schema
+    - zope.security
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.tree
+    - zope.app.tree.browser
+    - zope.app.tree.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.tree
+  license: Zope Public License
+  summary: 'Static Tree Implementation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

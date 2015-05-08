@@ -1,0 +1,68 @@
+package:
+  name: boundaryflux
+  version: "2.1"
+
+source:
+  fn: boundaryFlux-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/boundaryFlux/boundaryFlux-2.1.tar.gz
+  md5: 89e3b906992e3bfb4dd77f42905449e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boundaryflux = boundaryflux:main
+    #
+    # Would create an entry point called boundaryflux that calls boundaryflux.main()
+
+    - boundaryFlux = boundaryFlux:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pythonflu >=9.0-porting
+
+  run:
+    - python
+    - pythonflu >=9.0-porting
+
+test:
+  # Python imports
+  imports:
+    - boundaryFlux
+    - boundaryFlux.r1_6
+    - boundaryFlux.r1_7_0
+    - boundaryFlux.r2_0_0
+    - boundaryflux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boundaryFlux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the boundaryFoam'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

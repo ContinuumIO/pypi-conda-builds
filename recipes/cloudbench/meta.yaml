@@ -1,0 +1,83 @@
+package:
+  name: cloudbench
+  version: "0.14.1"
+
+source:
+  fn: cloudbench-0.14.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudbench/cloudbench-0.14.1.tar.gz
+  md5: ab5aa834f797881742095b77b39c3183
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudbench = cloudbench:main
+    #
+    # Would create an entry point called cloudbench that calls cloudbench.main()
+
+    - cloudbench = cloudbench.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - six
+    - lockfile
+    - argparse
+    - simplejson
+
+  run:
+    - python
+    - requests
+    - six
+    - lockfile
+    - argparse
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - cloudbench
+    - cloudbench.api
+    - cloudbench.cloud
+    - cloudbench.fio
+    - cloudbench.fio.config
+    - cloudbench.fio.report
+    - cloudbench.test
+    - cloudbench.test.api
+    - cloudbench.test.cli
+    - cloudbench.test.cloud
+    - cloudbench.test.fio
+    - cloudbench.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cloudbench --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Scalr/cloudbench
+  license: Apache Software License
+  summary: 'An utility to benchmark your Cloud'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

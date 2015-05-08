@@ -1,0 +1,94 @@
+package:
+  name: rbc-tools
+  version: "0.3.4"
+
+source:
+  fn: rbc-tools-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/rbc-tools/rbc-tools-0.3.4.tar.gz
+  md5: 3b013b08a18ba959e6784efefd0324b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rbc-tools = rbc-tools:main
+    #
+    # Would create an entry point called rbc-tools that calls rbc-tools.main()
+
+    - rbc-instances=rbc_tools.instance:main
+    - rbc-templates=rbc_tools.template:main
+    - rbc-networks=rbc_tools.network:main
+    - rbc-offerings=rbc_tools.offering:main
+    - rbc-vpns=rbc_tools.vpn:main
+    - rbc-sshkeys=rbc_tools.sshkey:main
+    - rbc-ipaddresses=rbc_tools.ipaddress:main
+    - rbc-staticnat=rbc_tools.staticnat:main
+    - rbc-portforward=rbc_tools.portforward:main
+    - rbc-egress=rbc_tools.egress:main
+    - rbc-setup=rbc_tools.config:main
+    - rbc-inventory=rbc_tools.inventory:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - molnctrl >=0.6.0
+    - tabulate
+    - docopt
+    - translitcodec
+    - simplejson
+
+  run:
+    - python
+    - molnctrl >=0.6.0
+    - tabulate
+    - docopt
+    - translitcodec
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - rbc_tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rbc-instances --help
+    - rbc-templates --help
+    - rbc-networks --help
+    - rbc-offerings --help
+    - rbc-vpns --help
+    - rbc-sshkeys --help
+    - rbc-ipaddresses --help
+    - rbc-staticnat --help
+    - rbc-portforward --help
+    - rbc-egress --help
+    - rbc-setup --help
+    - rbc-inventory --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/redbridge/rbc-tools
+  license: Apache 2.0
+  summary: 'Command line tools for managing RedBridge Cloud'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

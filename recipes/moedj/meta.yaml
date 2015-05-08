@@ -1,0 +1,97 @@
+package:
+  name: moedj
+  version: "0.6.0.1"
+
+source:
+  fn: moedj-0.6.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/moedj/moedj-0.6.0.1.tar.gz
+  md5: 8da95df1976d09bef24178ea4ff0f210
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moedj = moedj:main
+    #
+    # Would create an entry point called moedj that calls moedj.main()
+
+    - mpserver=moedjpack.run:main
+    - mpcron=moedjpack.moepad.cron:main
+    - mpupdate=moedjpack.moepad.update:update
+    - mpsend=moedjpack.moepad.update:send
+    - delprefix=moedjpack.moepad.update:deletePrefix
+    - mplog=moedjpack.moepad.showstatus:showlog
+    - mpverify=moedjpack.moepad.showstatus:show_verifying
+    - mpsyncdb=moedjpack.moepad.mputils:create_default_db
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup >=3.2.1
+    - redis >=2.8.0
+    - pytz >=2012d
+    - django >=1.5.1
+    - pysqlite >=2.6.3
+    - requests >=2.2.1
+    - celery >=3.1.9
+
+  run:
+    - python
+    - beautifulsoup >=3.2.1
+    - redis >=2.8.0
+    - pytz >=2012d
+    - django >=1.5.1
+    - pysqlite >=2.6.3
+    - requests >=2.2.1
+    - celery >=3.1.9
+
+test:
+  # Python imports
+  imports:
+    - moedj
+    - moedjpack
+    - moedjpack.auth
+    - moedjpack.forbidden
+    - moedjpack.moedj
+    - moedjpack.moepad
+    - moedjpack.moewiki
+    - moedjpack.qqweibo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mpserver --help
+    - mpcron --help
+    - mpupdate --help
+    - mpsend --help
+    - delprefix --help
+    - mplog --help
+    - mpverify --help
+    - mpsyncdb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/deloeating/moedj
+  license: MIT License
+  summary: 'A simple weibo bot for zh.moegirl.org'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

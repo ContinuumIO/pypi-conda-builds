@@ -1,0 +1,72 @@
+package:
+  name: collective.videolink
+  version: "3.0a5"
+
+source:
+  fn: collective.videolink-3.0a5.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.videolink/collective.videolink-3.0a5.tar.gz
+  md5: d5d0b6e9c85b8f95ca6315434aed6028
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.videolink = collective.videolink:main
+    #
+    # Would create an entry point called collective.videolink that calls collective.videolink.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.prettyphoto
+    - p4a.videoembed
+    - z3c.unconfigure ==1.0.1
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.prettyphoto
+    - p4a.videoembed
+    - z3c.unconfigure ==1.0.1
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.videolink
+    - collective.videolink.browser
+    - collective.videolink.videoembedproviders
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/alteroo/collective.videolink
+  license: GPL
+  summary: 'Display link content type as embedded video, provide a video gallery view'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

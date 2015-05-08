@@ -1,0 +1,76 @@
+package:
+  name: pyensembl
+  version: "0.6.8"
+
+source:
+  fn: pyensembl-0.6.8.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyensembl/pyensembl-0.6.8.tar.gz
+  md5: 327ddc871103eb3c7e2407c1195085d4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyensembl = pyensembl:main
+    #
+    # Would create an entry point called pyensembl that calls pyensembl.main()
+
+    - pyensembl = pyensembl.shell:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - typechecks >=0.0.2
+    - numpy >=1.7
+    - pandas >=0.13.1
+    - datacache >=0.4.11
+    - biopython >=1.65
+    - memoized-property >=1.0.2
+    - mock >=1.0.1
+
+  run:
+    - python
+    - typechecks >=0.0.2
+    - numpy >=1.7
+    - pandas >=0.13.1
+    - datacache >=0.4.11
+    - biopython >=1.65
+    - memoized-property >=1.0.2
+    - mock >=1.0.1
+
+test:
+  # Python imports
+  imports:
+    - pyensembl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyensembl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hammerlab/pyensembl
+  license: Apache Software License
+  summary: 'Python interface to ensembl reference genome metadata'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

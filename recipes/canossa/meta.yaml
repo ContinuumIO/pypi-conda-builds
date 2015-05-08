@@ -1,0 +1,71 @@
+package:
+  name: canossa
+  version: "0.2.1"
+
+source:
+  fn: canossa-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/canossa/canossa-0.2.1.tar.gz
+  md5: 0848b810723e9a757eeba7ffee04d8d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - canossa = canossa:main
+    #
+    # Would create an entry point called canossa that calls canossa.main()
+
+    - canossa=canossa:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tff
+
+  run:
+    - python
+    - setuptools
+    - tff
+
+test:
+  # Python imports
+  imports:
+    - canossa
+    - canossa.termprop
+    - canossa.termprop.termprop
+    - canossa.termprop.termprop.db
+    - canossa.termprop.termprop.db.iterm2
+    - canossa.termprop.termprop.db.unicode6_2
+    - canossa.tff
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - canossa --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saitoha/canossa
+  license: MIT License
+  summary: 'Provides basic, transparent, off-screen(invisible) terminal emulation service, for terminal apps.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

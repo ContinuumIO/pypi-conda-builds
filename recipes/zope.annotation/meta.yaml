@@ -1,0 +1,71 @@
+package:
+  name: zope.annotation
+  version: "4.4.1"
+
+source:
+  fn: zope.annotation-4.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.annotation/zope.annotation-4.4.1.tar.gz
+  md5: 97fdb024e34614d0f54bd1fd55be70d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.annotation = zope.annotation:main
+    #
+    # Would create an entry point called zope.annotation that calls zope.annotation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.component
+    - zope.location
+    - zope.proxy
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.component
+    - zope.location
+    - zope.proxy
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.annotation
+    - zope.annotation.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.annotation
+  license: Zope Public License
+  summary: 'Object annotation mechanism'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

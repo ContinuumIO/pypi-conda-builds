@@ -1,0 +1,80 @@
+package:
+  name: tensortoolbox
+  version: "0.3.7"
+
+source:
+  fn: TensorToolbox-0.3.7.tar.gz
+  url: https://pypi.python.org/packages/source/T/TensorToolbox/TensorToolbox-0.3.7.tar.gz
+  md5: 5a6ebccf3fba119d3d0eb0c3300efc99
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tensortoolbox = tensortoolbox:main
+    #
+    # Would create an entry point called tensortoolbox that calls tensortoolbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx
+    - prettytable
+    - uqtoolbox >=0.1
+    - spectraltoolbox >=0.1
+    - scipy
+    - numpy
+    - h5py
+    - mpi_map
+
+  run:
+    - python
+    - sphinx
+    - prettytable
+    - uqtoolbox >=0.1
+    - spectraltoolbox >=0.1
+    - scipy
+    - numpy
+    - h5py
+    - mpi_map
+
+test:
+  # Python imports
+  imports:
+    - TensorToolbox
+    - TensorToolbox.core
+    - TensorToolbox.multilinalg
+    - TensorToolbox.unittests
+    - tensortoolbox
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www2.compute.dtu.dk/~dabi/
+  license: COPYING.LESSER
+  summary: 'Tools for the decomposition of tensors'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

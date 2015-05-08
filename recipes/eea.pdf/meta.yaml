@@ -1,0 +1,84 @@
+package:
+  name: eea.pdf
+  version: "5.3"
+
+source:
+  fn: eea.pdf-5.3.zip
+  url: https://pypi.python.org/packages/source/e/eea.pdf/eea.pdf-5.3.zip
+  md5: ff3285fd0c64b411a4357d78d0af6f43
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.pdf = eea.pdf:main
+    #
+    # Would create an entry point called eea.pdf that calls eea.pdf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.async
+    - eea.converter >8.9
+    - eea.downloads >1.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.async
+    - eea.converter >8.9
+    - eea.downloads >1.0
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.pdf
+    - eea.pdf.browser
+    - eea.pdf.browser.app
+    - eea.pdf.cache
+    - eea.pdf.content
+    - eea.pdf.events
+    - eea.pdf.exportimport
+    - eea.pdf.rules
+    - eea.pdf.subtypes
+    - eea.pdf.tests
+    - eea.pdf.themes
+    - eea.pdf.themes.book
+    - eea.pdf.themes.page
+    - eea.pdf.upgrades
+    - eea.pdf.vocabulary
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.io
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'Download as PDF'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

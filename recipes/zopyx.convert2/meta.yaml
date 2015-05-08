@@ -1,0 +1,76 @@
+package:
+  name: zopyx.convert2
+  version: "2.4.5"
+
+source:
+  fn: zopyx.convert2-2.4.5.zip
+  url: https://pypi.python.org/packages/source/z/zopyx.convert2/zopyx.convert2-2.4.5.zip
+  md5: ccc2f5ec996cec9d65ca59e9fa2f645e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.convert2 = zopyx.convert2:main
+    #
+    # Would create an entry point called zopyx.convert2 that calls zopyx.convert2.main()
+
+    - html-convert = zopyx.convert2.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elementtree
+    - beautifulsoup
+    - pisa
+    - reportlab
+    - pypdf
+    - html5lib
+
+  run:
+    - python
+    - setuptools
+    - elementtree
+    - beautifulsoup
+    - pisa
+    - reportlab
+    - pypdf
+    - html5lib
+
+test:
+  # Python imports
+  imports:
+    - zopyx
+    - zopyx.convert2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - html-convert --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zopyx.convert2
+  license: ZPL (see LICENSE.txt)
+  summary: 'A Python interface for the conversion of HTML to PDF, RTF, DOCX, WML and ODT) - belongs to zopyx.smartprintng.core'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

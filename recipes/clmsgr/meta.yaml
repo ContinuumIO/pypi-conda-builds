@@ -1,0 +1,69 @@
+package:
+  name: clmsgr
+  version: "0.0.0-pre-alpha-build-3"
+
+source:
+  fn: CLMsgr-0.0.0-pre-alpha-build-3.tar.gz
+  url: https://pypi.python.org/packages/source/C/CLMsgr/CLMsgr-0.0.0-pre-alpha-build-3.tar.gz
+  md5: cefce24b0ad16b4a654c4e36ddbeb1e1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clmsgr = clmsgr:main
+    #
+    # Would create an entry point called clmsgr that calls clmsgr.main()
+
+    - CLMsgr = CLMsgr.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - colorama
+
+  run:
+    - python
+    - argparse
+    - colorama
+
+test:
+  # Python imports
+  imports:
+    - CLMsgr
+    - CLMsgr.chs
+    - CLMsgr.core
+    - clmsgr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - CLMsgr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/GochoMugo/CLMsgr
+  license: MIT License
+  summary: 'A Python Core for Command Line Messaging, with extensibility and modularity'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

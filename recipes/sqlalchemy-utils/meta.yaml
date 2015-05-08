@@ -1,0 +1,68 @@
+package:
+  name: sqlalchemy-utils
+  version: "0.30.1"
+
+source:
+  fn: SQLAlchemy-Utils-0.30.1.tar.gz
+  url: https://pypi.python.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-0.30.1.tar.gz
+  md5: 302bd66f6177230c7130782d891281f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlalchemy-utils = sqlalchemy-utils:main
+    #
+    # Would create an entry point called sqlalchemy-utils that calls sqlalchemy-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - sqlalchemy >=1.0
+
+  run:
+    - python
+    - six
+    - sqlalchemy >=1.0
+
+test:
+  # Python imports
+  imports:
+    - sqlalchemy_utils
+    - sqlalchemy_utils.functions
+    - sqlalchemy_utils.primitives
+    - sqlalchemy_utils.relationships
+    - sqlalchemy_utils.types
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kvesteri/sqlalchemy-utils
+  license: BSD License
+  summary: 'Various utility functions for SQLAlchemy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

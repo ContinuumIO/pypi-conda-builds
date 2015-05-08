@@ -1,0 +1,65 @@
+package:
+  name: tornado-rest-handler
+  version: "0.0.7"
+
+source:
+  fn: tornado-rest-handler-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado-rest-handler/tornado-rest-handler-0.0.7.tar.gz
+  md5: 8f1692e441fa81cd998c1813344325a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado-rest-handler = tornado-rest-handler:main
+    #
+    # Would create an entry point called tornado-rest-handler that calls tornado-rest-handler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado ==3.0.1
+    - python-rest-handler ==0.0.2
+
+  run:
+    - python
+    - tornado ==3.0.1
+    - python-rest-handler ==0.0.2
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - tornado_rest_handler
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paulocheque/tornado-rest-handler
+  license: MIT
+  summary: 'A simple Python Tornado handler that manage Rest requests automatically.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

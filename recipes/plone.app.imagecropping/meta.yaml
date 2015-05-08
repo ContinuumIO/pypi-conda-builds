@@ -1,0 +1,100 @@
+package:
+  name: plone.app.imagecropping
+  version: "1.2"
+
+source:
+  fn: plone.app.imagecropping-1.2.zip
+  url: https://pypi.python.org/packages/source/p/plone.app.imagecropping/plone.app.imagecropping-1.2.zip
+  md5: b18574ae964b3f8fec051e2b38769203
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.imagecropping = plone.app.imagecropping:main
+    #
+    # Would create an entry point called plone.app.imagecropping that calls plone.app.imagecropping.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - acquisition
+    - pillow
+    - plone.app.blob
+    - plone.app.imaging
+    - plone.app.registry
+    - plone.behavior
+    - plone.namedfile >=2.0.1
+    - plone.registry
+    - plone.scale
+    - products.cmfcore
+    - products.cmfplone >=4.2Products.GenericSetup
+    - setuptools
+    - zope.component
+    - zope.globalrequest
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.schema
+
+  run:
+    - python
+    - setuptools
+    - acquisition
+    - pillow
+    - plone.app.blob
+    - plone.app.imaging
+    - plone.app.registry
+    - plone.behavior
+    - plone.namedfile >=2.0.1
+    - plone.registry
+    - plone.scale
+    - products.cmfcore
+    - products.cmfplone >=4.2Products.GenericSetup
+    - setuptools
+    - zope.component
+    - zope.globalrequest
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.imagecropping
+    - plone.app.imagecropping.browser
+    - plone.app.imagecropping.tests
+    - plone.app.imagecropping.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/plone.app.imagecropping
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'allows images to be manually cropped using JCrop JS library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

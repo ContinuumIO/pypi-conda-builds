@@ -1,0 +1,95 @@
+package:
+  name: pyemma
+  version: "1.2"
+
+source:
+  fn: pyEMMA-1.2.zip
+  url: https://pypi.python.org/packages/source/p/pyEMMA/pyEMMA-1.2.zip
+  md5: eca9a5ab6807e7c10d642af3beba33bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyemma = pyemma:main
+    #
+    # Would create an entry point called pyemma that calls pyemma.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.6.0
+    - scipy >=0.11
+    - mdtraj
+    - scikit-learn
+    - matplotlib
+
+  run:
+    - python
+    - numpy >=1.6.0
+    - scipy >=0.11
+    - mdtraj
+    - scikit-learn
+    - matplotlib
+
+test:
+  # Python imports
+  imports:
+    - pyemma
+    - pyemma-ipython
+    - pyemma.coordinates
+    - pyemma.coordinates.clustering
+    - pyemma.coordinates.data
+    - pyemma.coordinates.data.util
+    - pyemma.coordinates.tests
+    - pyemma.coordinates.transform
+    - pyemma.coordinates.util
+    - pyemma.msm
+    - pyemma.msm.analysis
+    - pyemma.msm.analysis.dense
+    - pyemma.msm.analysis.sparse
+    - pyemma.msm.estimation
+    - pyemma.msm.estimation.dense
+    - pyemma.msm.estimation.sparse
+    - pyemma.msm.flux
+    - pyemma.msm.flux.dense
+    - pyemma.msm.flux.sparse
+    - pyemma.msm.generation
+    - pyemma.msm.io
+    - pyemma.msm.io.matrix
+    - pyemma.msm.ui
+    - pyemma.plots
+    - pyemma.util
+    - pyemma.util.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/markovmodel/PyEMMA
+  license: BSD License
+  summary: "EMMA: Emma's Markov Model Algorithms"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,127 @@
+package:
+  name: jaraco.net
+  version: "5.2"
+
+source:
+  fn: jaraco.net-5.2.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.net/jaraco.net-5.2.zip
+  md5: 0efeacb8189cdfc005665bfdeb0b540a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaraco.net = jaraco.net:main
+    #
+    # Would create an entry point called jaraco.net that calls jaraco.net.main()
+
+    - whois-bridge = jaraco.net.whois:serve
+    - scanner = jaraco.net.scanner:scan
+    - fake-http = jaraco.net.http.servers:Simple.start
+    - fake-http-auth = jaraco.net.http.servers:AuthRequest.start
+    - serve-local = jaraco.net.http.static:serve_local
+    - fake-smtp = jaraco.net.smtp:start_simple_server
+    - udp-send = jaraco.net.udp:Sender
+    - udp-echo = jaraco.net.udp:EchoServer
+    - dns-forward-service = jaraco.net.dns:ForwardingService.handle_command_line
+    - dnsbl-check = jaraco.net.dnsbl:Service.handle_command_line
+    - ntp = jaraco.net.ntp:handle_command_line
+    - remove-known-spammers = jaraco.net.email:remove_known_spammers
+    - tcp-test-connect = jaraco.net.tcp:test_connect
+    - tcp-echo-server = jaraco.net.tcp:start_echo_server
+    - http-headers = jaraco.net.http:headers
+    - build-dir-index = jaraco.net.site:make_index_cmd
+    - content-type-reporter = jaraco.net.http.content:ContentTypeReporter.run
+    - web-tail = jaraco.net.tail:handle_command_line
+    - rss-launch = jaraco.net.rss:launch_feed_enclosure
+    - rss-download = jaraco.net.rss:download_enclosures
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - more_itertools
+    - beautifulsoup4
+    - keyring >=0.6
+    - lxml
+    - requests
+    - feedparser
+    - six >=1.4
+    - backports.method_request
+    - jaraco.text
+    - jaraco.logging
+    - jaraco.email
+    - jaraco.path
+
+  run:
+    - python
+    - more_itertools
+    - beautifulsoup4
+    - keyring >=0.6
+    - lxml
+    - requests
+    - feedparser
+    - six >=1.4
+    - backports.method_request
+    - jaraco.text
+    - jaraco.logging
+    - jaraco.email
+    - jaraco.path
+
+test:
+  # Python imports
+  imports:
+    - jaraco
+    - jaraco.net
+    - jaraco.net.devices
+    - jaraco.net.http
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - whois-bridge --help
+    - scanner --help
+    - fake-http --help
+    - fake-http-auth --help
+    - serve-local --help
+    - fake-smtp --help
+    - udp-send --help
+    - udp-echo --help
+    - dns-forward-service --help
+    - dnsbl-check --help
+    - ntp --help
+    - remove-known-spammers --help
+    - tcp-test-connect --help
+    - tcp-echo-server --help
+    - http-headers --help
+    - build-dir-index --help
+    - content-type-reporter --help
+    - web-tail --help
+    - rss-launch --help
+    - rss-download --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/jaraco/jaraco.net
+  license: MIT License
+  summary: 'Networking tools by jaraco'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

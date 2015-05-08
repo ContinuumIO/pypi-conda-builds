@@ -1,0 +1,82 @@
+package:
+  name: jaws
+  version: "0.1"
+
+source:
+  fn: jaws-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jaws/jaws-0.1.tar.gz
+  md5: 217c7aff8577e921c2dda16b90a07c35
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaws = jaws:main
+    #
+    # Would create an entry point called jaws that calls jaws.main()
+
+    - jaws=jaws:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pil >=1.1.7
+    - webob >=1.2.3
+    - chardet >=2.1.1
+    - docopt >=0.5.0
+    - lxml >=3.0
+    - python-dateutil >=2.1
+    - routr >=0.6
+    - routr-schema >=0.1
+    - schemify >=0.1
+
+  run:
+    - python
+    - setuptools
+    - pil >=1.1.7
+    - webob >=1.2.3
+    - chardet >=2.1.1
+    - docopt >=0.5.0
+    - lxml >=3.0
+    - python-dateutil >=2.1
+    - routr >=0.6
+    - routr-schema >=0.1
+    - schemify >=0.1
+
+test:
+  # Python imports
+  imports:
+    - jaws
+    - justext
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jaws --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'metadata extraction toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

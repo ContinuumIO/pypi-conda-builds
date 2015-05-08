@@ -1,0 +1,69 @@
+package:
+  name: rdc.common
+  version: "0.1.0"
+
+source:
+  fn: rdc.common-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/rdc.common/rdc.common-0.1.0.tar.gz
+  md5: 66f686eb07dca3fa73ff9eb001ac9114
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rdc.common = rdc.common:main
+    #
+    # Would create an entry point called rdc.common that calls rdc.common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - unidecode
+    - blessings
+
+  run:
+    - python
+    - requests
+    - unidecode
+    - blessings
+
+test:
+  # Python imports
+  imports:
+    - rdc
+    - rdc.common
+    - rdc.common.test
+    - rdc.common.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://common.rdc.li/
+  license: Apache Software License
+  summary: 'Common tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

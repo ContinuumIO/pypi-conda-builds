@@ -1,0 +1,67 @@
+package:
+  name: tango-happenings
+  version: "0.8.3"
+
+source:
+  fn: tango-happenings-0.8.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tango-happenings/tango-happenings-0.8.3.tar.gz
+  md5: 95e9576222e830455b63ef6eb3fb3d26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tango-happenings = tango-happenings:main
+    #
+    # Would create an entry point called tango-happenings that calls tango-happenings.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vobject >=0.8.2
+    - tango-shared-core >=0.6
+    - tango-comments >=0.1
+
+  run:
+    - python
+    - vobject >=0.8.2
+    - tango-shared-core >=0.6
+    - tango-comments >=0.1
+
+test:
+  # Python imports
+  imports:
+    - happenings
+    - happenings.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tBaxter/django-happenings
+  license: MIT License
+  summary: 'Reusable Django events and calendaring.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

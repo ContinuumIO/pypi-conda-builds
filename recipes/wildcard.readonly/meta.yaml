@@ -1,0 +1,64 @@
+package:
+  name: wildcard.readonly
+  version: "1.0"
+
+source:
+  fn: wildcard.readonly-1.0.zip
+  url: https://pypi.python.org/packages/source/w/wildcard.readonly/wildcard.readonly-1.0.zip
+  md5: 44c2f5a62749a7496799421b789e5108
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - wildcard.readonly = wildcard.readonly:main
+    #
+    # Would create an entry point called wildcard.readonly that calls wildcard.readonly.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - wildcard
+    - wildcard.readonly
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/wildcard.readonly
+  license: GPL
+  summary: 'Easily setup readonly zeo clients'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

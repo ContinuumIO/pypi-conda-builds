@@ -1,0 +1,76 @@
+package:
+  name: plone.recipe.zope2instance
+  version: "4.2.17"
+
+source:
+  fn: plone.recipe.zope2instance-4.2.17.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.recipe.zope2instance/plone.recipe.zope2instance-4.2.17.tar.gz
+  md5: 683f4f954bf4931e83caac1166f0c7af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.recipe.zope2instance = plone.recipe.zope2instance:main
+    #
+    # Would create an entry point called plone.recipe.zope2instance that calls plone.recipe.zope2instance.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - mailinglogger
+    - zc.recipe.egg
+    - zope2 >=2.12.1
+    - zodb3 >=3.9
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - mailinglogger
+    - zc.recipe.egg
+    - zope2 >=2.12.1
+    - zodb3 >=3.9
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.recipe
+    - plone.recipe.zope2instance
+    - plone.recipe.zope2instance.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.recipe.zope2instance
+  license: Zope Public License
+  summary: 'Buildout recipe for creating a Zope 2 instance'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

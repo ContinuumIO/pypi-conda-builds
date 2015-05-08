@@ -1,0 +1,62 @@
+package:
+  name: coolmit
+  version: "0.0.2.dev.1"
+
+source:
+  fn: coolmit-0.0.2.dev.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/coolmit/coolmit-0.0.2.dev.1.tar.gz
+  md5: 808faa21f85c8efb0a9fd7209d825fc0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coolmit = coolmit:main
+    #
+    # Would create an entry point called coolmit that calls coolmit.main()
+
+    - git-coolmit = coolmit:run_commandline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - coolmit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-coolmit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/awentzonline/coolmit
+  license: MIT License
+  summary: "Don't just commit; coolmit."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

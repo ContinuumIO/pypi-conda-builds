@@ -1,0 +1,64 @@
+package:
+  name: django-atc-api
+  version: "0.1.1"
+
+source:
+  fn: django-atc-api-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-atc-api/django-atc-api-0.1.1.tar.gz
+  md5: b3be7bcd09c227d3c9123ffd606ce41f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-atc-api = django-atc-api:main
+    #
+    # Would create an entry point called django-atc-api that calls django-atc-api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - atc_thrift
+    - djangorestframework
+
+  run:
+    - python
+    - atc_thrift
+    - djangorestframework
+
+test:
+  # Python imports
+  imports:
+    - atc_api
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/facebook/augmented-traffic-control
+  license: django-atc-demo-ui
+  summary: 'REST API for ATC'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: hisparc-sapphire
+  version: "0.10.0"
+
+source:
+  fn: hisparc-sapphire-0.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/hisparc-sapphire/hisparc-sapphire-0.10.0.tar.gz
+  md5: db7ffb4afa313a18595b30fc5675d7dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hisparc-sapphire = hisparc-sapphire:main
+    #
+    # Would create an entry point called hisparc-sapphire that calls hisparc-sapphire.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - tables >=3.0.0
+    - progressbar2
+    - lazy
+    - mock
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - tables >=3.0.0
+    - progressbar2
+    - lazy
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - sapphire
+    - sapphire.analysis
+    - sapphire.corsika
+    - sapphire.data
+    - sapphire.simulations
+    - sapphire.tests
+    - sapphire.tests.analysis
+    - sapphire.tests.corsika
+    - sapphire.tests.simulations
+    - sapphire.tests.transformations
+    - sapphire.transformations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/hisparc/sapphire/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A framework for the HiSPARC experiment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: wildcard.pfg.stripe
+  version: "1.1b6"
+
+source:
+  fn: wildcard.pfg.stripe-1.1b6.zip
+  url: https://pypi.python.org/packages/source/w/wildcard.pfg.stripe/wildcard.pfg.stripe-1.1b6.zip
+  md5: 2dffb3c091eaa54a81f63eb17752fb4b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - wildcard.pfg.stripe = wildcard.pfg.stripe:main
+    #
+    # Would create an entry point called wildcard.pfg.stripe that calls wildcard.pfg.stripe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.ploneformgen
+    - requests
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.ploneformgen
+    - requests
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - wildcard
+    - wildcard.pfg
+    - wildcard.pfg.stripe
+    - wildcard.pfg.stripe.Extensions
+    - wildcard.pfg.stripe.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/wildcard.pfg.stripe
+  license: GNU General Public License (GPL)
+  summary: 'Provides PFG stripe field'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

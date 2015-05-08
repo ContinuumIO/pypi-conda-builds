@@ -1,0 +1,66 @@
+package:
+  name: django-nvd3
+  version: "0.8.2"
+
+source:
+  fn: django-nvd3-0.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nvd3/django-nvd3-0.8.2.tar.gz
+  md5: 249b2b8daa552c896658642136654b0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nvd3 = django-nvd3:main
+    #
+    # Would create an entry point called django-nvd3 that calls django-nvd3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-nvd3 ==0.13.7
+
+  run:
+    - python
+    - python-nvd3 ==0.13.7
+
+test:
+  # Python imports
+  imports:
+    - django_nvd3
+    - django_nvd3.templatetags
+    - nvd3_tests
+    - nvd3_tests.testproject
+    - nvd3_tests.testproject.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/areski/django-nvd3
+  license: MIT License
+  summary: 'Django NVD3 - Chart Library for d3.js'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

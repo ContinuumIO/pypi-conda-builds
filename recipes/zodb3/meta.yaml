@@ -1,0 +1,70 @@
+package:
+  name: zodb3
+  version: "3.11.0"
+
+source:
+  fn: ZODB3-3.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/Z/ZODB3/ZODB3-3.11.0.tar.gz
+  md5: 21975c1609296e7834e8cf4025af3039
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zodb3 = zodb3:main
+    #
+    # Would create an entry point called zodb3 that calls zodb3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zeo >=4.0.0dev
+    - zodb >=4.0.0dev
+    - persistent >=4.0.0dev
+    - btrees >=4.0.0dev
+    - transaction
+
+  run:
+    - python
+    - zeo >=4.0.0dev
+    - zodb >=4.0.0dev
+    - persistent >=4.0.0dev
+    - btrees >=4.0.0dev
+    - transaction
+
+test:
+  # Python imports
+  imports:
+    - zodb3
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Zope Public License
+  summary: 'ZODB3 - Meta release for ZODB, persistent, BTrees and ZEO'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

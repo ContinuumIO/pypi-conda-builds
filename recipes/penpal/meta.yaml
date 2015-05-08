@@ -1,0 +1,69 @@
+package:
+  name: penpal
+  version: "0.4.0"
+
+source:
+  fn: penpal-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/penpal/penpal-0.4.0.tar.gz
+  md5: 4f8045c22f9e9ed7504888cf5b6aa1fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - penpal = penpal:main
+    #
+    # Would create an entry point called penpal that calls penpal.main()
+
+    - pen = pen.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paxo
+    - clint
+    - urwid
+
+  run:
+    - python
+    - paxo
+    - clint
+    - urwid
+
+test:
+  # Python imports
+  imports:
+    - pen
+    - penpal
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cwoebker/pen
+  license: BSD License
+  summary: 'pen: terminal notes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

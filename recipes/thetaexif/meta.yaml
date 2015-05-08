@@ -1,0 +1,66 @@
+package:
+  name: thetaexif
+  version: "0.1"
+
+source:
+  fn: thetaexif-0.1.zip
+  url: https://pypi.python.org/packages/source/t/thetaexif/thetaexif-0.1.zip
+  md5: 36728f8acb11083a12cf8943ed66424d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - thetaexif = thetaexif:main
+    #
+    # Would create an entry point called thetaexif that calls thetaexif.main()
+
+    - theta-rectify = thetaexif.cli:rectify [rectify]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pillow
+
+  run:
+    - python
+    - numpy
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - thetaexif
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - theta-rectify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/regen100/thetaexif
+  license: MIT License
+  summary: 'THETA EXIF Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

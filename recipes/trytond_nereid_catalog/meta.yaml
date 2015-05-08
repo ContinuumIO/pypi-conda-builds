@@ -1,0 +1,73 @@
+package:
+  name: trytond_nereid_catalog
+  version: "3.4.2.5"
+
+source:
+  fn: trytond_nereid_catalog-3.4.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_nereid_catalog/trytond_nereid_catalog-3.4.2.5.tar.gz
+  md5: 475cc5508701040d7e3801a287930338
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_nereid_catalog = trytond_nereid_catalog:main
+    #
+    # Would create an entry point called trytond_nereid_catalog that calls trytond_nereid_catalog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_product >=3.4,<3.5
+    - openlabs_product_notebook >=3.4,<3.5
+    - trytond_nereid >=3.4,<3.5
+    - trytond_nereid_image_transformation >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - trytond_product >=3.4,<3.5
+    - openlabs_product_notebook >=3.4,<3.5
+    - trytond_nereid >=3.4,<3.5
+    - trytond_nereid_image_transformation >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.nereid_catalog
+    - trytond.modules.nereid_catalog.tests
+    - trytond_nereid_catalog
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openlabs.co.in
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Nereid Catalog'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

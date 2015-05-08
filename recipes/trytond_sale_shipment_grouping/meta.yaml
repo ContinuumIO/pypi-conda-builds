@@ -1,0 +1,70 @@
+package:
+  name: trytond_sale_shipment_grouping
+  version: "3.6.0"
+
+source:
+  fn: trytond_sale_shipment_grouping-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_sale_shipment_grouping/trytond_sale_shipment_grouping-3.6.0.tar.gz
+  md5: 0ab0444609f1de75beba26d1c8aa4509
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_sale_shipment_grouping = trytond_sale_shipment_grouping:main
+    #
+    # Would create an entry point called trytond_sale_shipment_grouping that calls trytond_sale_shipment_grouping.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_party >=3.6,<3.7
+    - trytond_stock >=3.6,<3.7
+    - trytond_sale >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - trytond_party >=3.6,<3.7
+    - trytond_stock >=3.6,<3.7
+    - trytond_sale >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.sale_shipment_grouping
+    - trytond_sale_shipment_grouping
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module to group sale stock moves'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

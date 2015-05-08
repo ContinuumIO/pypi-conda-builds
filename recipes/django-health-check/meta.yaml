@@ -1,0 +1,68 @@
+package:
+  name: django-health-check
+  version: "1.0.2"
+
+source:
+  fn: django-health-check-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-health-check/django-health-check-1.0.2.tar.gz
+  md5: 0025bf4c005aa20cd4ae615f237bb18b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-health-check = django-health-check:main
+    #
+    # Would create an entry point called django-health-check that calls django-health-check.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - health_check
+    - health_check.backends
+    - health_check_cache
+    - health_check_celery
+    - health_check_celery3
+    - health_check_db
+    - health_check_storage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/KristianOellegaard/django-health-check
+  license: BSD
+  summary: 'a pluggable app that runs a full check on the deployment, using a number of plugins to check e.g. database, queue server, celery processes, etc.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: zope.app.folder
+  version: "3.5.2"
+
+source:
+  fn: zope.app.folder-3.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.folder/zope.app.folder-3.5.2.tar.gz
+  md5: 5ba3a2a7ec527a7eb0cc3c2eb7bb75e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.folder = zope.app.folder:main
+    #
+    # Would create an entry point called zope.app.folder that calls zope.app.folder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.container
+    - zope.site
+    - zope.app.content
+
+  run:
+    - python
+    - setuptools
+    - zope.container
+    - zope.site
+    - zope.app.content
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.folder
+    - zope.app.folder.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.folder
+  license: Zope Public License
+  summary: 'Folder Content Type for Zope 3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

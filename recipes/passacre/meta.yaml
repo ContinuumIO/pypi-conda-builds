@@ -1,0 +1,67 @@
+package:
+  name: passacre
+  version: "0.14.0.0rc1"
+
+source:
+  fn: passacre-0.14.0.0rc1.tar.gz
+  url: https://pypi.python.org/packages/source/p/passacre/passacre-0.14.0.0rc1.tar.gz
+  md5: 580013bb57002f243679b79ff9adf46e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - passacre = passacre:main
+    #
+    # Would create an entry point called passacre that calls passacre.main()
+
+    - passacre = passacre.application:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cffi
+    - pycparser
+
+  run:
+    - python
+    - cffi
+    - pycparser
+
+test:
+  # Python imports
+  imports:
+    - passacre
+    - passacre.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - passacre --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/habnabit/passacre
+  license: ISC License (ISCL)
+  summary: 'better repeatable password generation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: python-intercom
+  version: "2.0.beta"
+
+source:
+  fn: python-intercom-2.0.beta.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-intercom/python-intercom-2.0.beta.tar.gz
+  md5: 7800f3f0465c86b59fd7f47f7e71ec49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-intercom = python-intercom:main
+    #
+    # Would create an entry point called python-intercom that calls python-intercom.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - inflection
+    - certifi
+    - six
+
+  run:
+    - python
+    - requests
+    - inflection
+    - certifi
+    - six
+
+test:
+  # Python imports
+  imports:
+    - intercom
+    - intercom.api_operations
+    - intercom.extended_api_operations
+    - intercom.generic_handlers
+    - intercom.lib
+    - intercom.traits
+    - tests
+    - tests.integration
+    - tests.integration.issues
+    - tests.unit
+    - tests.unit.lib
+    - tests.unit.traits
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jkeyes/python-intercom
+  license: MIT License
+  summary: 'Intercom API wrapper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

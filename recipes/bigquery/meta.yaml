@@ -1,0 +1,73 @@
+package:
+  name: bigquery
+  version: "2.0.17"
+
+source:
+  fn: bigquery-2.0.17.tar.gz
+  url: https://pypi.python.org/packages/source/b/bigquery/bigquery-2.0.17.tar.gz
+  md5: 21a29060ad05d96a266c21494c225e16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bigquery = bigquery:main
+    #
+    # Would create an entry point called bigquery that calls bigquery.main()
+
+    - bq = bq:run_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - google-apputils
+    - python-gflags
+    - google-api-python-client ==1.2
+    - oauth2client ==1.2
+    - httplib2
+
+  run:
+    - python
+    - google-apputils
+    - python-gflags
+    - google-api-python-client ==1.2
+    - oauth2client ==1.2
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - bigquery
+    - discovery
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bq --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/google-bigquery-tools/
+  license: Apache Software License
+  summary: 'BigQuery command-line tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

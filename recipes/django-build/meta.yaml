@@ -1,0 +1,64 @@
+package:
+  name: django-build
+  version: "0.2"
+
+source:
+  fn: django-build-0.2.zip
+  url: https://pypi.python.org/packages/source/d/django-build/django-build-0.2.zip
+  md5: c4f731b42ab0d898f5bf84a2f586dd75
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-build = django-build:main
+    #
+    # Would create an entry point called django-build that calls django-build.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto
+
+  run:
+    - python
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - build
+    - build.management
+    - build.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://oppian.com/labs/django-build/
+  license: BSD License
+  summary: "django-build provides a management command 'build2s3' which tar and gzips the source code and stores it in s3."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

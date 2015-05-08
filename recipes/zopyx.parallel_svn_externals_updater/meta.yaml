@@ -1,0 +1,66 @@
+package:
+  name: zopyx.parallel_svn_externals_updater
+  version: "0.2.0"
+
+source:
+  fn: zopyx.parallel_svn_externals_updater-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zopyx.parallel_svn_externals_updater/zopyx.parallel_svn_externals_updater-0.2.0.tar.gz
+  md5: 6dab256f91c6c186aa59d76c4a5deb36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.parallel_svn_externals_updater = zopyx.parallel_svn_externals_updater:main
+    #
+    # Would create an entry point called zopyx.parallel_svn_externals_updater that calls zopyx.parallel_svn_externals_updater.main()
+
+    - svn-externals-updater= zopyx.parallel_svn_externals_updater.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - processing
+
+  run:
+    - python
+    - setuptools
+    - processing
+
+test:
+  # Python imports
+  imports:
+    - zopyx
+    - zopyx.parallel_svn_externals_updater
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - svn-externals-updater --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/zopyx.parallel_svn_externals_updater
+  license: ZPL
+  summary: 'Script for parallel update of  svn:externals within a SVN checkout'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

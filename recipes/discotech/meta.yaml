@@ -1,0 +1,64 @@
+package:
+  name: discotech
+  version: "0.4.7.1"
+
+source:
+  fn: discotech-0.4.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/discotech/discotech-0.4.7.1.tar.gz
+  md5: 1e07734ea7ece4cf7f019d4b11e6e7c2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - discotech = discotech:main
+    #
+    # Would create an entry point called discotech that calls discotech.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests-oauthlib
+
+  run:
+    - python
+    - requests-oauthlib
+
+test:
+  # Python imports
+  imports:
+    - discotech
+    - discotech.APIProviders
+    - discotech.discoAPI
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/discoapi/discotech
+  license: GPL
+  summary: 'python library to help working with social media providers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

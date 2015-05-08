@@ -1,0 +1,64 @@
+package:
+  name: trytond_sentry
+  version: "3.4.0.1"
+
+source:
+  fn: trytond_sentry-3.4.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_sentry/trytond_sentry-3.4.0.1.tar.gz
+  md5: fbcc55ac98030e7c9a0d849250825c78
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_sentry = trytond_sentry:main
+    #
+    # Would create an entry point called trytond_sentry that calls trytond_sentry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond >=3.4,<3.5
+    - raven
+
+  run:
+    - python
+    - trytond >=3.4,<3.5
+    - raven
+
+test:
+  # Python imports
+  imports:
+    - trytond_sentry
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/openlabs/trytond-sentry
+  license: GNU General Public License (GPL)
+  summary: 'Sentry Client for Tryton'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

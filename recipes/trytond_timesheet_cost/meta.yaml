@@ -1,0 +1,69 @@
+package:
+  name: trytond_timesheet_cost
+  version: "3.6.0"
+
+source:
+  fn: trytond_timesheet_cost-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_timesheet_cost/trytond_timesheet_cost-3.6.0.tar.gz
+  md5: f91a1a85fc00d0894e41935998e83073
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_timesheet_cost = trytond_timesheet_cost:main
+    #
+    # Would create an entry point called trytond_timesheet_cost that calls trytond_timesheet_cost.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_company >=3.6,<3.7
+    - trytond_timesheet >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - trytond_company >=3.6,<3.7
+    - trytond_timesheet >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.timesheet_cost
+    - trytond.modules.timesheet_cost.tests
+    - trytond_timesheet_cost
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module to add cost on timesheet'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

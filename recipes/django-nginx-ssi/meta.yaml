@@ -1,0 +1,65 @@
+package:
+  name: django-nginx-ssi
+  version: "0.1.1"
+
+source:
+  fn: django-nginx-ssi-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-nginx-ssi/django-nginx-ssi-0.1.1.tar.gz
+  md5: 0411ee538fe4bf043f72eaf2845c9a35
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-nginx-ssi = django-nginx-ssi:main
+    #
+    # Would create an entry point called django-nginx-ssi that calls django-nginx-ssi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - python-memcached
+
+  run:
+    - python
+    - django
+    - python-memcached
+
+test:
+  # Python imports
+  imports:
+    - ssi
+    - ssi.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/smn/django-nginx-ssi
+  license: BSD License
+  summary: 'Django SSI library for use with Nginx'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

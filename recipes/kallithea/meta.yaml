@@ -1,0 +1,158 @@
+package:
+  name: kallithea
+  version: "0.2.1"
+
+source:
+  fn: Kallithea-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/K/Kallithea/Kallithea-0.2.1.tar.gz
+  md5: f904119d065fe4e05249fcbc8b67abfb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kallithea = kallithea:main
+    #
+    # Would create an entry point called kallithea that calls kallithea.main()
+
+    - kallithea-api=kallithea.bin.kallithea_api:main
+    - kallithea-gist=kallithea.bin.kallithea_gist:main
+    - kallithea-config=kallithea.bin.kallithea_config:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - waitress ==0.8.8
+    - webob ==1.0.8
+    - webtest ==1.4.3
+    - pylons ==1.0.0
+    - beaker ==1.6.4
+    - webhelpers ==1.3
+    - formencode >=1.2.4,<=1.2.6
+    - sqlalchemy ==0.7.10
+    - mako >=0.9.0,<=1.0.0
+    - pygments >=1.5
+    - whoosh >=2.4.0,<=2.5.7
+    - celery >=2.2.5,<2.3
+    - babel >=0.9.6,<=1.3
+    - python-dateutil >=1.5.0,<2.0.0
+    - markdown ==2.2.1
+    - docutils >=0.8.1,<=0.11
+    - simplejson ==2.5.2
+    - mock
+    - pycrypto >=2.6.0,<=2.6.1
+    - urlobject ==2.3.4
+    - routes ==1.13
+    - dulwich >=0.9.9,<=0.9.9
+    - mercurial >=2.9,<3.4
+    - py-bcrypt >=0.3.0,<=0.4
+
+  run:
+    - python
+    - setuptools
+    - waitress ==0.8.8
+    - webob ==1.0.8
+    - webtest ==1.4.3
+    - pylons ==1.0.0
+    - beaker ==1.6.4
+    - webhelpers ==1.3
+    - formencode >=1.2.4,<=1.2.6
+    - sqlalchemy ==0.7.10
+    - mako >=0.9.0,<=1.0.0
+    - pygments >=1.5
+    - whoosh >=2.4.0,<=2.5.7
+    - celery >=2.2.5,<2.3
+    - babel >=0.9.6,<=1.3
+    - python-dateutil >=1.5.0,<2.0.0
+    - markdown ==2.2.1
+    - docutils >=0.8.1,<=0.11
+    - simplejson ==2.5.2
+    - mock
+    - pycrypto >=2.6.0,<=2.6.1
+    - urlobject ==2.3.4
+    - routes ==1.13
+    - dulwich >=0.9.9,<=0.9.9
+    - mercurial >=2.9,<3.4
+    - py-bcrypt >=0.3.0,<=0.4
+
+test:
+  # Python imports
+  imports:
+    - kallithea
+    - kallithea.bin
+    - kallithea.config
+    - kallithea.config.rcextensions
+    - kallithea.controllers
+    - kallithea.controllers.admin
+    - kallithea.controllers.api
+    - kallithea.lib
+    - kallithea.lib.auth_modules
+    - kallithea.lib.celerylib
+    - kallithea.lib.celerypylons
+    - kallithea.lib.dbmigrate
+    - kallithea.lib.dbmigrate.migrate
+    - kallithea.lib.dbmigrate.migrate.changeset
+    - kallithea.lib.dbmigrate.migrate.changeset.databases
+    - kallithea.lib.dbmigrate.migrate.versioning
+    - kallithea.lib.dbmigrate.migrate.versioning.script
+    - kallithea.lib.dbmigrate.migrate.versioning.templates
+    - kallithea.lib.dbmigrate.migrate.versioning.templates.repository
+    - kallithea.lib.dbmigrate.migrate.versioning.templates.repository.default
+    - kallithea.lib.dbmigrate.migrate.versioning.templates.repository.default.versions
+    - kallithea.lib.dbmigrate.migrate.versioning.templates.repository.pylons
+    - kallithea.lib.dbmigrate.migrate.versioning.templates.repository.pylons.versions
+    - kallithea.lib.dbmigrate.migrate.versioning.templates.script
+    - kallithea.lib.dbmigrate.migrate.versioning.util
+    - kallithea.lib.dbmigrate.schema
+    - kallithea.lib.dbmigrate.versions
+    - kallithea.lib.indexers
+    - kallithea.lib.middleware
+    - kallithea.lib.paster_commands
+    - kallithea.lib.rcmail
+    - kallithea.lib.vcs
+    - kallithea.lib.vcs.backends
+    - kallithea.lib.vcs.backends.git
+    - kallithea.lib.vcs.backends.hg
+    - kallithea.lib.vcs.conf
+    - kallithea.lib.vcs.utils
+    - kallithea.model
+    - kallithea.tests
+    - kallithea.tests.api
+    - kallithea.tests.functional
+    - kallithea.tests.models
+    - kallithea.tests.other
+    - kallithea.tests.vcs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kallithea-api --help
+    - kallithea-gist --help
+    - kallithea-config --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://kallithea-scm.org/
+  license: GNU General Public License (GPL)
+  summary: 'Kallithea is a fast and powerful management tool for Mercurial and Git with a built in push/pull server, full text search and code-review.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

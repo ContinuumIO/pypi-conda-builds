@@ -1,0 +1,64 @@
+package:
+  name: lymon
+  version: "0.2r58dev-r58"
+
+source:
+  fn: lymon-0.2r58dev-r58.tar.gz
+  url: https://pypi.python.org/packages/source/l/lymon/lymon-0.2r58dev-r58.tar.gz
+  md5: f4931ade83349b28ce5eceb9c1840c02
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lymon = lymon:main
+    #
+    # Would create an entry point called lymon that calls lymon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - lymon
+    - lymon.core
+    - lymon.tw
+    - lymon.view
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/lymon/
+  license: MIT
+  summary: 'Lymon Web Development Toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

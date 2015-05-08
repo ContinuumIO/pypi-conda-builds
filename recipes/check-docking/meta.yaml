@@ -1,0 +1,69 @@
+package:
+  name: check-docking
+  version: "1.2"
+
+source:
+  fn: check-docking-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/check-docking/check-docking-1.2.tar.gz
+  md5: 82d00c359b5917a0d4751132dadaf4d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - check-docking = check-docking:main
+    #
+    # Would create an entry point called check-docking that calls check-docking.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - django
+
+  run:
+    - python
+    - six
+    - django
+
+test:
+  # Python imports
+  imports:
+    - check_docking
+    - check_docking.management
+    - check_docking.management.commands
+    - check_docking.stored
+    - check_docking.stored.django
+    - check_docking.utility
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/kylinfish/check-docking
+  license: MIT License
+  summary: 'check-docking is a Python package that inspect request data from client for you.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

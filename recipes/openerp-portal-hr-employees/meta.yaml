@@ -1,0 +1,64 @@
+package:
+  name: openerp-portal-hr-employees
+  version: "7.0.406"
+
+source:
+  fn: openerp-portal-hr-employees-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-portal-hr-employees/openerp-portal-hr-employees-7.0.406.tar.gz
+  md5: b60b38442ba6a09cf110a62aa1e8981c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-portal-hr-employees = openerp-portal-hr-employees:main
+    #
+    # Would create an entry point called openerp-portal-hr-employees that calls openerp-portal-hr-employees.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-hr
+    - openerp-portal-crm
+
+  run:
+    - python
+    - openerp-hr
+    - openerp-portal-crm
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.portal_hr_employees
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Portal HR employees'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

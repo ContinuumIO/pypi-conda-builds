@@ -1,0 +1,74 @@
+package:
+  name: products.tidstorage
+  version: "5.4.9"
+
+source:
+  fn: Products.TIDStorage-5.4.9.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.TIDStorage/Products.TIDStorage-5.4.9.tar.gz
+  md5: 5c35e99b971353234273f220a01a9971
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.tidstorage = products.tidstorage:main
+    #
+    # Would create an entry point called products.tidstorage that calls products.tidstorage.main()
+
+    - tidstoraged = Products.TIDStorage.bin.tidstorage:main
+    - tidstorage_repozo = Products.TIDStorage.repozo.repozo_tidstorage:main
+    - tidstorage_restore = Products.TIDStorage.repozo.restore_tidstorage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.TIDStorage
+    - Products.TIDStorage.bin
+    - Products.TIDStorage.repozo
+    - Products.TIDStorage.tests
+    - Products.TIDStorage.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tidstoraged --help
+    - tidstorage_repozo --help
+    - tidstorage_restore --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.erp5.org/repos/public/erp5/trunk/utils/Products.TIDStorage/
+  license: UNKNOWN
+  summary: 'TIDStorage Product provides a way to have consistent backups when running a multi-storage instance (only ZEO is supported at the moment).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

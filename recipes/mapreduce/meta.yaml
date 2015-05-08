@@ -1,0 +1,113 @@
+package:
+  name: mapreduce
+  version: "0.3.4"
+
+source:
+  fn: mapreduce-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mapreduce/mapreduce-0.3.4.tar.gz
+  md5: bf4c39faefb40c18096cca16cbe4d680
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mapreduce = mapreduce:main
+    #
+    # Would create an entry point called mapreduce that calls mapreduce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - werkzeug ==0.9.6
+    - etcd
+    - fs ==0.5.0
+    - gevent ==1.0.1
+    - graphviz ==0.4
+    - greenlet ==0.4.2
+    - gunicorn ==19.1.1
+    - itsdangerous ==0.24
+    - nsqs ==0.2.0
+    - pytz ==2013.8
+    - redis ==2.10.3
+    - requests ==2.1.0
+    - six ==1.8.0
+    - wsgiref ==0.1.2
+    - markdown
+
+  run:
+    - python
+    - flask ==0.10.1
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - werkzeug ==0.9.6
+    - etcd
+    - fs ==0.5.0
+    - gevent ==1.0.1
+    - graphviz ==0.4
+    - greenlet ==0.4.2
+    - gunicorn ==19.1.1
+    - itsdangerous ==0.24
+    - nsqs ==0.2.0
+    - pytz ==2013.8
+    - redis ==2.10.3
+    - requests ==2.1.0
+    - six ==1.8.0
+    - wsgiref ==0.1.2
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - mapreduce
+    - mr
+    - mr.app
+    - mr.cache
+    - mr.config
+    - mr.fs
+    - mr.fs.backend
+    - mr.handlers
+    - mr.handlers.processors
+    - mr.models
+    - mr.models.kv
+    - mr.models.kv.queues
+    - mr.models.kv.trees
+    - mr.queue
+    - mr.queue.backends
+    - mr.result_writers
+    - mr.views
+    - mr.views.ui
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dsoprea/JobX
+  license: GPL 2
+  summary: 'A Python-based, distributed MapReduce solution.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

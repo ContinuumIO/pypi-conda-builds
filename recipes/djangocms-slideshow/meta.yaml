@@ -1,0 +1,67 @@
+package:
+  name: djangocms-slideshow
+  version: "0.1.5"
+
+source:
+  fn: djangocms-slideshow-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangocms-slideshow/djangocms-slideshow-0.1.5.tar.gz
+  md5: 55a341f30ddbba997aad6412a34c5beb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangocms-slideshow = djangocms-slideshow:main
+    #
+    # Would create an entry point called djangocms-slideshow that calls djangocms-slideshow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-admin-sortable ==1.6.7
+    - django-sekizai ==0.7
+    - easy-thumbnails ==2.0.1
+
+  run:
+    - python
+    - django-admin-sortable ==1.6.7
+    - django-sekizai ==0.7
+    - easy-thumbnails ==2.0.1
+
+test:
+  # Python imports
+  imports:
+    - slideshow
+    - slideshow.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/urga/djangocms-slideshow
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'A simple django cms slideshow plugin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

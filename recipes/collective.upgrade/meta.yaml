@@ -1,0 +1,74 @@
+package:
+  name: collective.upgrade
+  version: "1.1"
+
+source:
+  fn: collective.upgrade-1.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.upgrade/collective.upgrade-1.1.zip
+  md5: fd991477f0d5ca9008ecb05b220dfd25
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.upgrade = collective.upgrade:main
+    #
+    # Would create an entry point called collective.upgrade that calls collective.upgrade.main()
+
+    - upgrade-portals=collective.upgrade.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.globalrequest
+    - zodbupdate
+    - products.genericsetup
+    - products.cmfcore
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.globalrequest
+    - zodbupdate
+    - products.genericsetup
+    - products.cmfcore
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.upgrade
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - upgrade-portals --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/collective.upgrade
+  license: GPL
+  summary: 'CMF portal upgrade helpers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

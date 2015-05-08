@@ -1,0 +1,73 @@
+package:
+  name: mozinstall
+  version: "1.12"
+
+source:
+  fn: mozInstall-1.12.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozInstall/mozInstall-1.12.tar.gz
+  md5: e86e392af00f0d69000054c3b8dd152c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozinstall = mozinstall:main
+    #
+    # Would create an entry point called mozinstall that calls mozinstall.main()
+
+    - mozinstall=mozinstall:install_cli
+    - mozuninstall=mozinstall:uninstall_cli
+    - moz_add_to_system=mozinstall:install_cli
+    - moz_remove_from_system=mozinstall:uninstall_cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mozinfo >=0.7
+    - mozfile >=1.0
+
+  run:
+    - python
+    - setuptools
+    - mozinfo >=0.7
+    - mozfile >=1.0
+
+test:
+  # Python imports
+  imports:
+    - mozinstall
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozinstall --help
+    - mozuninstall --help
+    - moz_add_to_system --help
+    - moz_remove_from_system --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://wiki.mozilla.org/Auto-tools/Projects/Mozbase
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'package for installing and uninstalling Mozilla applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

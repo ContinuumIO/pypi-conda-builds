@@ -1,0 +1,68 @@
+package:
+  name: ncutils
+  version: "0.3.0"
+
+source:
+  fn: ncutils-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/ncutils/ncutils-0.3.0.tar.gz
+  md5: 579f8371e5176970eb5f05cbfb0ade8e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ncutils = ncutils:main
+    #
+    # Would create an entry point called ncutils that calls ncutils.main()
+
+    - ncsh               = ncutils.ncsh:main
+    - nc_download        = ncutils.recipes:download_video
+    - nc_download_mylist = ncutils.recipes:download_video_in_mylist
+    - nc_queue_consume   = ncutils.recipes:download_video_and_remove_entry_from_mylist
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ncutils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ncsh --help
+    - nc_download --help
+    - nc_download_mylist --help
+    - nc_queue_consume --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sakamotomsh/ncutils
+  license: BSD License
+  summary: 'niconico douga module'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

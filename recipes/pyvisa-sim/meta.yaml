@@ -1,0 +1,67 @@
+package:
+  name: pyvisa-sim
+  version: "0.1"
+
+source:
+  fn: PyVISA-sim-0.1.zip
+  url: https://pypi.python.org/packages/source/P/PyVISA-sim/PyVISA-sim-0.1.zip
+  md5: f22b900030c944a6b797fd93e6002ea9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyvisa-sim = pyvisa-sim:main
+    #
+    # Would create an entry point called pyvisa-sim that calls pyvisa-sim.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - stringparser
+    - pyvisa >1.5
+    - pyyaml
+
+  run:
+    - python
+    - stringparser
+    - pyvisa >1.5
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - pyvisa-sim
+    - pyvisa-sim.testsuite
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hgrecco/pyvisa-sim
+  license: MIT License
+  summary: 'Simulated backend for PyVISA implementing TCPIP, GPIB, RS232, and USB resources'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: tags2sdists
+  version: "1.1"
+
+source:
+  fn: tags2sdists-1.1.zip
+  url: https://pypi.python.org/packages/source/t/tags2sdists/tags2sdists-1.1.zip
+  md5: 43ecd3a05112d35ecc060dbaf4b47605
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tags2sdists = tags2sdists:main
+    #
+    # Would create an entry point called tags2sdists that calls tags2sdists.main()
+
+    - tags2sdists = tags2sdists.script:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pkginfo
+    - setuptools
+    - zest.releaser
+
+  run:
+    - python
+    - pkginfo
+    - setuptools
+    - zest.releaser
+
+test:
+  # Python imports
+  imports:
+    - tags2sdists
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tags2sdists --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lizardsystem/tags2sdists/
+  license: GPL
+  summary: 'Create python sdists from tags'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

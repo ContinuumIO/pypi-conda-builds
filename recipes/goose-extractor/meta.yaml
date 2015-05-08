@@ -1,0 +1,76 @@
+package:
+  name: goose-extractor
+  version: "1.0.25"
+
+source:
+  fn: goose-extractor-1.0.25.tar.gz
+  url: https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.25.tar.gz
+  md5: 1ee99a36a8bfe62b76812b8769c6f6f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - goose-extractor = goose-extractor:main
+    #
+    # Would create an entry point called goose-extractor that calls goose-extractor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow
+    - lxml
+    - cssselect
+    - jieba
+    - beautifulsoup
+    - nltk
+
+  run:
+    - python
+    - pillow
+    - lxml
+    - cssselect
+    - jieba
+    - beautifulsoup
+    - nltk
+
+test:
+  # Python imports
+  imports:
+    - goose
+    - goose.extractors
+    - goose.utils
+    - tests
+    - tests.extractors
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/grangier/python-goose
+  license: Apache Software License
+  summary: 'Html Content / Article Extractor, web scrapping'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

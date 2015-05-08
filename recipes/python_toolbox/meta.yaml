@@ -1,0 +1,165 @@
+package:
+  name: python_toolbox
+  version: "0.7.0"
+
+source:
+  fn: python_toolbox-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python_toolbox/python_toolbox-0.7.0.tar.gz
+  md5: dec83435edb78a2d185b5aa783485499
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python_toolbox = python_toolbox:main
+    #
+    # Would create an entry point called python_toolbox that calls python_toolbox.main()
+
+    - _test_python_toolbox = test_python_toolbox:invoke_nose
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - python_toolbox
+    - python_toolbox._bootstrap
+    - python_toolbox.address_tools
+    - python_toolbox.binary_search
+    - python_toolbox.caching
+    - python_toolbox.cheat_hashing
+    - python_toolbox.combi
+    - python_toolbox.combi.perming
+    - python_toolbox.context_management
+    - python_toolbox.context_management.base_classes
+    - python_toolbox.cute_inspect
+    - python_toolbox.cute_profile
+    - python_toolbox.emitting
+    - python_toolbox.emitting.emitter_system
+    - python_toolbox.freezing
+    - python_toolbox.human_names
+    - python_toolbox.locking
+    - python_toolbox.math_tools
+    - python_toolbox.misc_tools
+    - python_toolbox.nifty_collections
+    - python_toolbox.persistent
+    - python_toolbox.sequence_tools
+    - python_toolbox.sleek_reffing
+    - python_toolbox.string_tools
+    - python_toolbox.temp_value_setting
+    - python_toolbox.third_party
+    - python_toolbox.third_party.enum
+    - python_toolbox.third_party.envelopes
+    - python_toolbox.third_party.funcsigs
+    - python_toolbox.third_party.sortedcontainers
+    - python_toolbox.third_party.unittest2
+    - python_toolbox.tracing_tools
+    - python_toolbox.wx_tools
+    - python_toolbox.wx_tools.cursors
+    - python_toolbox.wx_tools.cursors.collection
+    - python_toolbox.wx_tools.cursors.collection.images
+    - python_toolbox.wx_tools.drawing_tools
+    - python_toolbox.wx_tools.keyboard
+    - python_toolbox.wx_tools.keyboard.keys
+    - python_toolbox.wx_tools.timing
+    - python_toolbox.wx_tools.widgets
+    - python_toolbox.wx_tools.widgets.cute_window
+    - python_toolbox.wx_tools.widgets.cute_window.bind_savvy_evt_handler
+    - python_toolbox.wx_tools.widgets.hue_selection_dialog
+    - python_toolbox.wx_tools.widgets.knob
+    - python_toolbox.wx_tools.widgets.knob.images
+    - python_toolbox.wx_tools.widgets.third_party
+    - test_python_toolbox
+    - test_python_toolbox.scripts
+    - test_python_toolbox.test_abc_tools
+    - test_python_toolbox.test_address_tools
+    - test_python_toolbox.test_address_tools.sample_module_tree
+    - test_python_toolbox.test_address_tools.sample_module_tree.w
+    - test_python_toolbox.test_address_tools.sample_module_tree.w.x
+    - test_python_toolbox.test_address_tools.sample_module_tree.w.x.y
+    - test_python_toolbox.test_address_tools.sample_module_tree.w.x.y.z
+    - test_python_toolbox.test_binary_search
+    - test_python_toolbox.test_caching
+    - test_python_toolbox.test_color_tools
+    - test_python_toolbox.test_combi
+    - test_python_toolbox.test_context_management
+    - test_python_toolbox.test_cute_iter_tools
+    - test_python_toolbox.test_cute_profile
+    - test_python_toolbox.test_cute_testing
+    - test_python_toolbox.test_dict_tools
+    - test_python_toolbox.test_emitting
+    - test_python_toolbox.test_exceptions
+    - test_python_toolbox.test_freezing
+    - test_python_toolbox.test_identities
+    - test_python_toolbox.test_import_tools
+    - test_python_toolbox.test_import_tools.test_exists
+    - test_python_toolbox.test_import_tools.test_exists.resources
+    - test_python_toolbox.test_introspection_tools
+    - test_python_toolbox.test_logic_tools
+    - test_python_toolbox.test_math_tools
+    - test_python_toolbox.test_misc_tools
+    - test_python_toolbox.test_misc_tools.test_name_mangling
+    - test_python_toolbox.test_nifty_collections
+    - test_python_toolbox.test_nifty_collections.test_cute_enum
+    - test_python_toolbox.test_nifty_collections.test_lazy_tuple
+    - test_python_toolbox.test_nifty_collections.test_ordered_dict
+    - test_python_toolbox.test_nifty_collections.test_ordered_set
+    - test_python_toolbox.test_nifty_collections.test_weak_key_default_dict
+    - test_python_toolbox.test_nifty_collections.test_weak_key_identity_dict
+    - test_python_toolbox.test_path_tools
+    - test_python_toolbox.test_persistent
+    - test_python_toolbox.test_pickle_tools
+    - test_python_toolbox.test_queue_tools
+    - test_python_toolbox.test_random_tools
+    - test_python_toolbox.test_read_write_lock
+    - test_python_toolbox.test_rst_tools
+    - test_python_toolbox.test_segment_tools
+    - test_python_toolbox.test_sequence_tools
+    - test_python_toolbox.test_sleek_reffing
+    - test_python_toolbox.test_sleek_reffing.test_cute_sleek_value_dict
+    - test_python_toolbox.test_string_cataloging
+    - test_python_toolbox.test_string_tools
+    - test_python_toolbox.test_sys_tools
+    - test_python_toolbox.test_temp_file_tools
+    - test_python_toolbox.test_temp_value_setting
+    - test_python_toolbox.test_tracing_tools
+    - test_python_toolbox.test_zip_tools
+    - test_python_toolbox.third_party
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - _test_python_toolbox --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'A collection of Python tools for various tasks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

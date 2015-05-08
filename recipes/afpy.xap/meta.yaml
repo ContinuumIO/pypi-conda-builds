@@ -1,0 +1,71 @@
+package:
+  name: afpy.xap
+  version: "0.1"
+
+source:
+  fn: afpy.xap-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/afpy.xap/afpy.xap-0.1.tar.gz
+  md5: e07090b024f440598fb448e72201aa10
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - afpy.xap = afpy.xap:main
+    #
+    # Would create an entry point called afpy.xap that calls afpy.xap.main()
+
+    - afpy_indexer = afpy.xap.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zopyx.textindexng3
+    - sqlalchemy
+    - pysqlite
+
+  run:
+    - python
+    - setuptools
+    - zopyx.textindexng3
+    - sqlalchemy
+    - pysqlite
+
+test:
+  # Python imports
+  imports:
+    - afpy
+    - afpy.xap
+    - afpy.xap.tokenizer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - afpy_indexer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://afpy.org
+  license: Python Software Foundation License
+  summary: 'afpy xapian indexer package'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

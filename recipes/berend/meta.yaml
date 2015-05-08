@@ -1,0 +1,71 @@
+package:
+  name: berend
+  version: "0.4"
+
+source:
+  fn: berend-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/berend/berend-0.4.tar.gz
+  md5: 9d0658fa281aecc6a75bc3a659e751d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - berend = berend:main
+    #
+    # Would create an entry point called berend that calls berend.main()
+
+    - berend = berend.noapi:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.0
+    - pyopenssl >=0.13.0
+    - pyyaml >=3.10
+    - twisted >=13.0.0
+
+  run:
+    - python
+    - flask >=0.10.0
+    - pyopenssl >=0.13.0
+    - pyyaml >=3.10
+    - twisted >=13.0.0
+
+test:
+  # Python imports
+  imports:
+    - berend
+    - berend.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - berend --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ronaldevers/berend
+  license: UNKNOWN
+  summary: 'Extensible IRC bot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

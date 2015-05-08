@@ -1,0 +1,82 @@
+package:
+  name: silva.app.sitemap
+  version: "1.0"
+
+source:
+  fn: silva.app.sitemap-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.app.sitemap/silva.app.sitemap-1.0.tar.gz
+  md5: 4045a58702e9c1ea83faf245acdbe75b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.app.sitemap = silva.app.sitemap:main
+    #
+    # Would create an entry point called silva.app.sitemap that calls silva.app.sitemap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - five.grok
+    - setuptools
+    - silva.core.conf
+    - silva.core.interfaces
+    - silva.core.services
+    - zeam.form.silva
+    - zope.component
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.schema
+
+  run:
+    - python
+    - five.grok
+    - setuptools
+    - silva.core.conf
+    - silva.core.interfaces
+    - silva.core.services
+    - zeam.form.silva
+    - zope.component
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.app
+    - silva.app.sitemap
+    - silva.app.sitemap.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.app.sitemap
+  license: BSD License
+  summary: 'Generate XML Sitemaps for Silva CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

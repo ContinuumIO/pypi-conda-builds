@@ -1,0 +1,87 @@
+package:
+  name: silva.export.html
+  version: "3.0"
+
+source:
+  fn: silva.export.html-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.export.html/silva.export.html-3.0.tar.gz
+  md5: c11acb4b4a25fa656aacc1d438daa904
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.export.html = silva.export.html:main
+    #
+    # Would create an entry point called silva.export.html that calls silva.export.html.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - five.grok
+    - setuptools
+    - silva.core.interfaces
+    - silva.core.layout
+    - silva.core.references
+    - silva.core.services
+    - silva.core.views
+    - silva.translations
+    - zope.component
+    - zope.interface
+    - zope.schema
+    - zope.publisher
+    - zope.traversing
+
+  run:
+    - python
+    - five.grok
+    - setuptools
+    - silva.core.interfaces
+    - silva.core.layout
+    - silva.core.references
+    - silva.core.services
+    - silva.core.views
+    - silva.translations
+    - zope.component
+    - zope.interface
+    - zope.schema
+    - zope.publisher
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.export
+    - silva.export.html
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.export.html
+  license: BSD License
+  summary: 'Export Silva content to standalone HTML'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

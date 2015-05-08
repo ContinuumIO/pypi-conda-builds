@@ -1,0 +1,117 @@
+package:
+  name: django_cradmin
+  version: "1.0.0-beta.019"
+
+source:
+  fn: django_cradmin-1.0.0-beta.019.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_cradmin/django_cradmin-1.0.0-beta.019.tar.gz
+  md5: 25ac63783b1606ef25a0b2558bb26862
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_cradmin = django_cradmin:main
+    #
+    # Would create an entry point called django_cradmin that calls django_cradmin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-crispy-forms
+    - django
+    - django-multiupload
+    - pytz
+
+  run:
+    - python
+    - setuptools
+    - django-crispy-forms
+    - django
+    - django-multiupload
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - django_cradmin
+    - django_cradmin.acemarkdown
+    - django_cradmin.apps
+    - django_cradmin.apps.cradmin_account
+    - django_cradmin.apps.cradmin_account.views
+    - django_cradmin.apps.cradmin_activate_account
+    - django_cradmin.apps.cradmin_activate_account.tests
+    - django_cradmin.apps.cradmin_activate_account.views
+    - django_cradmin.apps.cradmin_authenticate
+    - django_cradmin.apps.cradmin_authenticate.tests
+    - django_cradmin.apps.cradmin_authenticate.tests.cradmin_authenticate_testapp
+    - django_cradmin.apps.cradmin_authenticate.views
+    - django_cradmin.apps.cradmin_generic_token_with_metadata
+    - django_cradmin.apps.cradmin_generic_token_with_metadata.management
+    - django_cradmin.apps.cradmin_generic_token_with_metadata.management.commands
+    - django_cradmin.apps.cradmin_imagearchive
+    - django_cradmin.apps.cradmin_imagearchive.tests
+    - django_cradmin.apps.cradmin_invite
+    - django_cradmin.apps.cradmin_invite.baseviews
+    - django_cradmin.apps.cradmin_invite.tests
+    - django_cradmin.apps.cradmin_register_account
+    - django_cradmin.apps.cradmin_register_account.forms
+    - django_cradmin.apps.cradmin_register_account.tests
+    - django_cradmin.apps.cradmin_register_account.tests.cradmin_register_account_testapp
+    - django_cradmin.apps.cradmin_register_account.tests.forms
+    - django_cradmin.apps.cradmin_register_account.tests.views
+    - django_cradmin.apps.cradmin_register_account.views
+    - django_cradmin.apps.cradmin_resetpassword
+    - django_cradmin.apps.cradmin_resetpassword.tests
+    - django_cradmin.apps.cradmin_resetpassword.views
+    - django_cradmin.apps.cradmin_temporaryfileuploadstore
+    - django_cradmin.apps.cradmin_temporaryfileuploadstore.tests
+    - django_cradmin.apps.cradmin_temporaryfileuploadstore.views
+    - django_cradmin.django_cradmin_testapp
+    - django_cradmin.formfields
+    - django_cradmin.sortable
+    - django_cradmin.templatetags
+    - django_cradmin.tests
+    - django_cradmin.tests.formfields
+    - django_cradmin.tests.sortable
+    - django_cradmin.tests.sortable.cradmin_sortable_testapp
+    - django_cradmin.tests.templatetags
+    - django_cradmin.tests.viewhelpers
+    - django_cradmin.tests.viewhelpers.cradmin_viewhelpers_testapp
+    - django_cradmin.tests.views
+    - django_cradmin.viewhelpers
+    - django_cradmin.views
+    - django_cradmin.widgets
+    - django_cradmin.wysihtml5
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/appressoas/django_cradmin
+  license: BSD
+  summary: 'A role based admin UI for Django that produces a user friendly and beautiful UI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

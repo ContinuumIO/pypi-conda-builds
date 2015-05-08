@@ -1,0 +1,62 @@
+package:
+  name: tools-ark930-0.0.2
+  version: "0.0.2"
+
+source:
+  fn: tools-ark930-0.0.2-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/tools-ark930-0.0.2/tools-ark930-0.0.2-0.0.2.tar.gz
+  md5: 1ac1a815f9b8218cd5d8c14719d30a28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tools-ark930-0.0.2 = tools-ark930-0.0.2:main
+    #
+    # Would create an entry point called tools-ark930-0.0.2 that calls tools-ark930-0.0.2.main()
+
+    - ark930=format_key:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ark930 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: ark.com
+  license: MIT License
+  summary: 'a simple egg for test'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

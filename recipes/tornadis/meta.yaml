@@ -1,0 +1,71 @@
+package:
+  name: tornadis
+  version: "0.2.2"
+
+source:
+  fn: tornadis-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornadis/tornadis-0.2.2.tar.gz
+  md5: 3a4929854db531dcf267bbcc379669be
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornadis = tornadis:main
+    #
+    # Would create an entry point called tornadis that calls tornadis.main()
+
+    - tornadis-benchmark=tornadis.benchmark:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado ==4.1
+    - hiredis ==0.1.6
+    - toro ==0.8
+    - six ==1.9.0
+
+  run:
+    - python
+    - setuptools
+    - tornado ==4.1
+    - hiredis ==0.1.6
+    - toro ==0.8
+    - six ==1.9.0
+
+test:
+  # Python imports
+  imports:
+    - tornadis
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tornadis-benchmark --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thefab/tornadis
+  license: MIT License
+  summary: 'tornadis is an async minimal redis client for tornado ioloop designed for performances (use C hiredis parser)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

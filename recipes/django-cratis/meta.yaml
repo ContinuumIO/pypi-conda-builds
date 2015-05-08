@@ -1,0 +1,72 @@
+package:
+  name: django-cratis
+  version: "0.6.0"
+
+source:
+  fn: django-cratis-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cratis/django-cratis-0.6.0.tar.gz
+  md5: e9f0f4a245e01f7a316233074691083c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cratis = django-cratis:main
+    #
+    # Would create an entry point called django-cratis that calls django-cratis.main()
+
+    - cratis = cratis.cli:cratis_cmd
+    - cratis-wsgi = cratis.wsgi
+    - cratis-init = cratis.cli:cratis_init_cmd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django <1.7
+    - django-configurations
+    - inject
+
+  run:
+    - python
+    - django <1.7
+    - django-configurations
+    - inject
+
+test:
+  # Python imports
+  imports:
+    - cratis
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cratis --help
+    - cratis-wsgi --help
+    - cratis-init --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: Simplified BSD License
+  summary: 'Django-cratis is a way to group together django applications, so they form reusable features.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

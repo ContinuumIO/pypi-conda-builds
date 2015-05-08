@@ -1,0 +1,73 @@
+package:
+  name: cosmic_ray
+  version: "0.1.2"
+
+source:
+  fn: cosmic_ray-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cosmic_ray/cosmic_ray-0.1.2.tar.gz
+  md5: 53307363e03a4b93569c0f388558ac68
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cosmic_ray = cosmic_ray:main
+    #
+    # Would create an entry point called cosmic_ray that calls cosmic_ray.main()
+
+    - cosmic-ray = cosmic_ray.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator
+    - docopt
+    - stevedore
+    - with_fixture
+
+  run:
+    - python
+    - setuptools
+    - decorator
+    - docopt
+    - stevedore
+    - with_fixture
+
+test:
+  # Python imports
+  imports:
+    - cosmic_ray
+    - cosmic_ray.operators
+    - cosmic_ray.testing
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cosmic-ray --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/sixty-north/cosmic-ray
+  license: MIT License
+  summary: 'Mutation testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

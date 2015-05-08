@@ -1,0 +1,83 @@
+package:
+  name: p4a.plonecalendar
+  version: "2.1"
+
+source:
+  fn: p4a.plonecalendar-2.1.zip
+  url: https://pypi.python.org/packages/source/p/p4a.plonecalendar/p4a.plonecalendar-2.1.zip
+  md5: e968571dcba3668c2a0e4c2cc47e716f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - p4a.plonecalendar = p4a.plonecalendar:main
+    #
+    # Would create an entry point called p4a.plonecalendar that calls p4a.plonecalendar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - plone.memoize
+    - dateable.chronos
+    - dateable.kalends
+    - p4a.common >=1.0.1
+    - p4a.z2utils >=1.0
+    - products.plonetestcase
+    - zope.globalrequest
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - plone.memoize
+    - dateable.chronos
+    - dateable.kalends
+    - p4a.common >=1.0.1
+    - p4a.z2utils >=1.0
+    - products.plonetestcase
+    - zope.globalrequest
+
+test:
+  # Python imports
+  imports:
+    - p4a
+    - p4a.plonecalendar
+    - p4a.plonecalendar.Extensions
+    - p4a.plonecalendar.browser
+    - p4a.plonecalendar.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/p4a.plonecalendar
+  license: GNU General Public License (GPL)
+  summary: 'Plone4Artists calendar add-on for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

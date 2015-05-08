@@ -1,0 +1,64 @@
+package:
+  name: django-test-extras
+  version: "1.1.4"
+
+source:
+  fn: django-test-extras-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-test-extras/django-test-extras-1.1.4.tar.gz
+  md5: ea33dac47d61aca0ef4d21b11de42c0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-test-extras = django-test-extras:main
+    #
+    # Would create an entry point called django-test-extras that calls django-test-extras.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.8
+
+  run:
+    - python
+    - django >=1.4,<1.8
+
+test:
+  # Python imports
+  imports:
+    - test_extras
+    - test_extras/management
+    - test_extras/management/commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/brightinteractive/django-test-extras/
+  license: BSD
+  summary: 'Enhancements for the Django test command and testing utility code'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

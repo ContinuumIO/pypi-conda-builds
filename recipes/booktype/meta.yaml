@@ -1,0 +1,86 @@
+package:
+  name: booktype
+  version: "1.5"
+
+source:
+  fn: Booktype-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/B/Booktype/Booktype-1.5.tar.gz
+  md5: 72dc7f942adb22d72987b22ea1a806d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - booktype = booktype:main
+    #
+    # Would create an entry point called booktype that calls booktype.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - django
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+    - django
+
+test:
+  # Python imports
+  imports:
+    - booki
+    - booki.account
+    - booki.account.migrations
+    - booki.account.templatetags
+    - booki.channels
+    - booki.editor
+    - booki.editor.management
+    - booki.editor.management.commands
+    - booki.editor.migrations
+    - booki.editor.templatetags
+    - booki.messaging
+    - booki.messaging.migrations
+    - booki.messaging.templatetags
+    - booki.portal
+    - booki.portal.templatetags
+    - booki.reader
+    - booki.site_static
+    - booki.statusnet
+    - booki.utils
+    - booktype
+    - redis
+    - sputnik
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://booki-dev.flossmanuals.net/
+  license: GNU General Public License (GPL)
+  summary: 'FLOSS Manuals collaborative book writing tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

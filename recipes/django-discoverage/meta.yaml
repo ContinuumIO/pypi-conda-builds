@@ -1,0 +1,66 @@
+package:
+  name: django-discoverage
+  version: "1.0.0"
+
+source:
+  fn: django-discoverage-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-discoverage/django-discoverage-1.0.0.tar.gz
+  md5: c1af5714fce44bb76a90a90696b358ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-discoverage = django-discoverage:main
+    #
+    # Would create an entry point called django-discoverage that calls django-discoverage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - coverage >=3.6
+    - django-discover-runner ==1.0
+
+  run:
+    - python
+    - coverage >=3.6
+    - django-discover-runner ==1.0
+
+test:
+  # Python imports
+  imports:
+    - discoverage
+    - discoverage.management
+    - discoverage.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ryankask/django-discoverage
+  license: BSD License
+  summary: "Adds coverage to Django's DiscoverRunner."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

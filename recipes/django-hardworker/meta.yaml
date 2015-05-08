@@ -1,0 +1,66 @@
+package:
+  name: django-hardworker
+  version: "0.1.0"
+
+source:
+  fn: Django-HardWorker-0.1.0.zip
+  url: https://pypi.python.org/packages/source/D/Django-HardWorker/Django-HardWorker-0.1.0.zip
+  md5: 86f2a521661baf239381968f37f8d46a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-hardworker = django-hardworker:main
+    #
+    # Would create an entry point called django-hardworker that calls django-hardworker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - hardworker
+    - hardworker.management
+    - hardworker.management.commands
+    - hardworker.middleware
+    - hardworker.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/weholt/django-hardworker
+  license: BSD License
+  summary: 'Simplified background worker for django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

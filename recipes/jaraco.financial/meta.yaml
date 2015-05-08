@@ -1,0 +1,94 @@
+package:
+  name: jaraco.financial
+  version: "1.9"
+
+source:
+  fn: jaraco.financial-1.9.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.financial/jaraco.financial-1.9.zip
+  md5: ec8e24772c44c1e38df299e5a2382fe2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaraco.financial = jaraco.financial:main
+    #
+    # Would create an entry point called jaraco.financial that calls jaraco.financial.main()
+
+    - fix-qif-date-format = jaraco.financial.qif:fix_dates_cmd
+    - launch-in-money = jaraco.financial.msmoney:launch_cmd
+    - ofx = jaraco.financial.ofx:handle_command_line
+    - clean-msmoney-temp = jaraco.financial.msmoney:clean_temp
+    - record-document-hashes = jaraco.financial.records:send_hashes
+    - cornerstone-portfolio = jaraco.financial.merchant:Portfolio.handle_command_line
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - keyring
+    - path.py
+    - ofxparse
+    - requests
+    - jaraco.itertools
+    - jaraco.logging
+    - jaraco.ui
+    - jaraco.text
+    - jaraco.collections
+    - python-dateutil <2.0dev
+
+  run:
+    - python
+    - keyring
+    - path.py
+    - ofxparse
+    - requests
+    - jaraco.itertools
+    - jaraco.logging
+    - jaraco.ui
+    - jaraco.text
+    - jaraco.collections
+    - python-dateutil <2.0dev
+
+test:
+  # Python imports
+  imports:
+    - jaraco
+    - jaraco.financial
+    - jaraco.financial.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fix-qif-date-format --help
+    - launch-in-money --help
+    - ofx --help
+    - clean-msmoney-temp --help
+    - record-document-hashes --help
+    - cornerstone-portfolio --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/jaraco.financial
+  license: MIT
+  summary: 'Financial tools by jaraco'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

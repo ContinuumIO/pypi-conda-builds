@@ -1,0 +1,82 @@
+package:
+  name: django_th
+  version: "0.10.1"
+
+source:
+  fn: django_th-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_th/django_th-0.10.1.tar.gz
+  md5: e7c290aa331fd0ff95b5c0477f20d768
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_th = django_th:main
+    #
+    # Would create an entry point called django_th that calls django_th.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.8
+    - django-formtools ==1.0
+    - django-th-rss >=0.3.2
+    - django-th-pocket >=0.2.2
+    - arrow ==0.4.2
+    - django-js-reverse ==0.3.3
+    - trollius ==1.0.2
+
+  run:
+    - python
+    - django >=1.8
+    - django-formtools ==1.0
+    - django-th-rss >=0.3.2
+    - django-th-pocket >=0.2.2
+    - arrow ==0.4.2
+    - django-js-reverse ==0.3.3
+    - trollius ==1.0.2
+
+test:
+  # Python imports
+  imports:
+    - django_th
+    - django_th._migrations
+    - django_th.forms
+    - django_th.management
+    - django_th.management.commands
+    - django_th.models
+    - django_th.services
+    - django_th.templatetags
+    - django_th.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/foxmask/django-th
+  license: BSD License
+  summary: 'Trigger Happy - micro enterprise service bus (ESB) - a bridge between your internet services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

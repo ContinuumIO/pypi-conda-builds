@@ -1,0 +1,64 @@
+package:
+  name: sqlalchemy_sqlany
+  version: "1.0.1"
+
+source:
+  fn: sqlalchemy_sqlany-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlalchemy_sqlany/sqlalchemy_sqlany-1.0.1.tar.gz
+  md5: df393cc3f1a726e002f743b652f4aea5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlalchemy_sqlany = sqlalchemy_sqlany:main
+    #
+    # Would create an entry point called sqlalchemy_sqlany that calls sqlalchemy_sqlany.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlanydb >=1.0.6
+
+  run:
+    - python
+    - setuptools
+    - sqlanydb >=1.0.6
+
+test:
+  # Python imports
+  imports:
+    - sqlalchemy_sqlany
+    - test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sqlanywhere/sqlalchemy-sqlany
+  license: Apache Software License
+  summary: 'SAP Sybase SQL Anywhere dialect for SQLAlchemy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

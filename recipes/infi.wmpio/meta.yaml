@@ -1,0 +1,79 @@
+package:
+  name: infi.wmpio
+  version: "0.1.22"
+
+source:
+  fn: infi.wmpio-0.1.22.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.wmpio/infi.wmpio-0.1.22.tar.gz
+  md5: 02b2028fe28bac12ca4d151aaa66111a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.wmpio = infi.wmpio:main
+    #
+    # Would create an entry point called infi.wmpio that calls infi.wmpio.main()
+
+    - travel = infi.wmpio.scripts:travel
+    - profile = infi.wmpio.scripts:profile
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.execute
+    - infi.registry
+    - infi.winver
+    - infi.wmi
+    - setuptools
+
+  run:
+    - python
+    - infi.execute
+    - infi.registry
+    - infi.winver
+    - infi.wmi
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.wmpio
+    - infi.wmpio.mpclaim
+    - infi.wmpio.scripts
+    - infi.wmpio.wmi
+    - infi.wmpio.wmi.model
+    - infi.wmpio.wmi.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - travel --help
+    - profile --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.wmpio
+  license: Python Software Foundation License
+  summary: 'Windows MPIO Management in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

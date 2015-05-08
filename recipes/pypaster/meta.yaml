@@ -1,0 +1,62 @@
+package:
+  name: pypaster
+  version: "0.6"
+
+source:
+  fn: pypaster-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pypaster/pypaster-0.6.tar.gz
+  md5: 81abb45f727d398b49ee2d6d217e294a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pypaster = pypaster:main
+    #
+    # Would create an entry point called pypaster that calls pypaster.main()
+
+    - pypaster = pypaster.pypaster:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pypaster
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pypaster --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://hg.mattikus.com/pypaster/
+  license: MIT
+  summary: 'Uploads code snippets to http://pypaste.com'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

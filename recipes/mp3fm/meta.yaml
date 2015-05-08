@@ -1,0 +1,68 @@
+package:
+  name: mp3fm
+  version: "1.0.4"
+
+source:
+  fn: mp3fm-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mp3fm/mp3fm-1.0.4.tar.gz
+  md5: cd3ee58a550168c7b1c5e7155d769012
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mp3fm = mp3fm:main
+    #
+    # Would create an entry point called mp3fm that calls mp3fm.main()
+
+    - mp3fm = mp3fm.mp3fm:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - easygui
+    - mutagen
+    - musicbrainzngs
+
+  run:
+    - python
+    - easygui
+    - mutagen
+    - musicbrainzngs
+
+test:
+  # Python imports
+  imports:
+    - mp3fm
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mp3fm --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Aki92/mp3fm
+  license: MIT
+  summary: 'I believe that for Music Lovers its a big problem to keep songs organized into folders, so here comes a simple solution to that problem. Just run the app and it will Pack the Songs into folders according to the option you choose from Album(Movie)/Artist/Year/Comments/Title/Duration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

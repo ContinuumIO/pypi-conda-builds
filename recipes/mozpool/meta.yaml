@@ -1,0 +1,96 @@
+package:
+  name: mozpool
+  version: "4.2.1"
+
+source:
+  fn: mozpool-4.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozpool/mozpool-4.2.1.tar.gz
+  md5: 263eedb1ebb793316a2e390b97f65524
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozpool = mozpool:main
+    #
+    # Would create an entry point called mozpool that calls mozpool.main()
+
+    - pxe-config = mozpool.bmm.scripts:pxe_config_script
+    - relay = mozpool.bmm.scripts:relay_script
+    - mozpool-server = mozpool.web.server:main
+    - mozpool-inventorysync = mozpool.lifeguard.inventorysync:main
+    - mozpool-db = mozpool.db.scripts:db_script
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - requests >=1.0.0
+    - distribute
+    - argparse
+    - mozdevice
+    - templeton >=0.6.2
+
+  run:
+    - python
+    - sqlalchemy
+    - requests >=1.0.0
+    - distribute
+    - argparse
+    - mozdevice
+    - templeton >=0.6.2
+
+test:
+  # Python imports
+  imports:
+    - mozpool
+    - mozpool.bmm
+    - mozpool.db
+    - mozpool.lifeguard
+    - mozpool.mozpool
+    - mozpool.test
+    - mozpool.test.integration
+    - mozpool.test.unit
+    - mozpool.test.unit.bmm
+    - mozpool.test.unit.db
+    - mozpool.test.unit.lifeguard
+    - mozpool.test.unit.mozpool
+    - mozpool.test.unit.web
+    - mozpool.web
+    - mozpoolclient
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pxe-config --help
+    - relay --help
+    - mozpool-server --help
+    - mozpool-inventorysync --help
+    - mozpool-db --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg.mozilla.org/build/mozpool
+  license: UNKNOWN
+  summary: 'System to manage a pool of cranky mobile devices'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

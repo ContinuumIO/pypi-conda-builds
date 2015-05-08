@@ -1,0 +1,62 @@
+package:
+  name: plink
+  version: "1.8"
+
+source:
+  fn: plink-1.8.tar.gz
+  url: https://pypi.python.org/packages/source/p/plink/plink-1.8.tar.gz
+  md5: 6a4bc1f153ad6fa7bdca5d7eb8f70972
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plink = plink:main
+    #
+    # Would create an entry point called plink that calls plink.main()
+
+    - plink = plink.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - plink
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - plink --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.math.uic.edu/t3m/plink/doc/
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'A full featured Tk-based knot and link editor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

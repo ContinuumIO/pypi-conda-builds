@@ -1,0 +1,63 @@
+package:
+  name: django-crowdsourced-fields
+  version: "0.4"
+
+source:
+  fn: django-crowdsourced-fields-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-crowdsourced-fields/django-crowdsourced-fields-0.4.tar.gz
+  md5: 02cea99893df64603f1d8289454d1011
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-crowdsourced-fields = django-crowdsourced-fields:main
+    #
+    # Would create an entry point called django-crowdsourced-fields that calls django-crowdsourced-fields.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - crowdsourced_fields
+    - crowdsourced_fields.migrations
+    - crowdsourced_fields.tests
+    - crowdsourced_fields.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-crowdsourced-fields
+  license: The MIT License
+  summary: 'A reusable Django app that allows to mark certain fields of your models as\nmasterdata. Users would still be able to enter their own values but the app\nwill map them to unique instances. Admin staff is able to review all user\ngenerated entriesand mark them as approved.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

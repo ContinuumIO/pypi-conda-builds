@@ -1,0 +1,62 @@
+package:
+  name: adsbibdesk
+  version: "3.2.0"
+
+source:
+  fn: adsbibdesk-3.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/adsbibdesk/adsbibdesk-3.2.0.tar.gz
+  md5: aaac606a41cd7bb1366cb0c797566384
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - adsbibdesk = adsbibdesk:main
+    #
+    # Would create an entry point called adsbibdesk that calls adsbibdesk.main()
+
+    - adsbibdesk = adsbibdesk:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - adsbibdesk
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - adsbibdesk --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.jonathansick.ca/adsbibdesk/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Add papers from arxiv.org or NASA/SAO ADS to your BibDesk bibliography.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

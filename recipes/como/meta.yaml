@@ -1,0 +1,74 @@
+package:
+  name: como
+  version: "0.6.0"
+
+source:
+  fn: como-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/como/como-0.6.0.tar.gz
+  md5: 6a2a633fd404f278b4a0698c6f5c45ee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - como = como:main
+    #
+    # Would create an entry point called como that calls como.main()
+
+    - como = como.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paxo
+    - python-dateutil
+    - clint
+    - python-crontab
+    - tablib
+    - requests
+
+  run:
+    - python
+    - paxo
+    - python-dateutil
+    - clint
+    - python-crontab
+    - tablib
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - como
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - como --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: como.cwoebker.com
+  license: BSD License
+  summary: 'como: batteries complete'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

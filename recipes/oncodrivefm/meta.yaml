@@ -1,0 +1,70 @@
+package:
+  name: oncodrivefm
+  version: "0.6.0"
+
+source:
+  fn: oncodrivefm-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/oncodrivefm/oncodrivefm-0.6.0.tar.gz
+  md5: 138201af34d3a12a23b71f2465a20db7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oncodrivefm = oncodrivefm:main
+    #
+    # Would create an entry point called oncodrivefm that calls oncodrivefm.main()
+
+    - oncodrivefm = oncodrivefm.command.full:main
+    - oncodrivefm-compute = oncodrivefm.command.compute:main
+    - oncodrivefm-combine = oncodrivefm.command.combine:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bgcore >=0.4.0
+
+  run:
+    - python
+    - bgcore >=0.4.0
+
+test:
+  # Python imports
+  imports:
+    - oncodrivefm
+    - oncodrivefm.command
+    - oncodrivefm.method
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - oncodrivefm --help
+    - oncodrivefm-compute --help
+    - oncodrivefm-combine --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/bbglab/oncodrivefm
+  license: UPF Free Source Code
+  summary: 'OncodriveFM'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

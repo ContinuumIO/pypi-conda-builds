@@ -1,0 +1,74 @@
+package:
+  name: repoze.workflow
+  version: "1.0b1"
+
+source:
+  fn: repoze.workflow-1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.workflow/repoze.workflow-1.0b1.tar.gz
+  md5: d1705e4e9a0a848dcbbfb12e0fae1ba4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - repoze.workflow = repoze.workflow:main
+    #
+    # Would create an entry point called repoze.workflow that calls repoze.workflow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - repoze.zcml
+    - zope.component
+    - zope.interface
+    - zope.configuration >=3.8.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - repoze.zcml
+    - zope.component
+    - zope.interface
+    - zope.configuration >=3.8.0
+
+test:
+  # Python imports
+  imports:
+    - repoze
+    - repoze.workflow
+    - repoze.workflow.tests
+    - repoze.workflow.tests.fixtures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.repoze.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'Content workflow for repoze.bfg'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

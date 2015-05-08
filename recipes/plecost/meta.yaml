@@ -1,0 +1,75 @@
+package:
+  name: plecost
+  version: "1.0.1-1"
+
+source:
+  fn: plecost-1.0.1-1.tar.gz
+  url: https://pypi.python.org/packages/source/p/plecost/plecost-1.0.1-1.tar.gz
+  md5: b9e106356b2ad488370fbe691758f632
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plecost = plecost:main
+    #
+    # Would create an entry point called plecost that calls plecost.main()
+
+    - plecost = plecost_lib.plecost:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chardet
+    - termcolor
+    - beautifulsoup4
+    - aiohttp
+
+  run:
+    - python
+    - chardet
+    - termcolor
+    - beautifulsoup4
+    - aiohttp
+
+test:
+  # Python imports
+  imports:
+    - plecost
+    - plecost_lib
+    - plecost_lib.libs
+    - plecost_lib.libs.plugins_utils
+    - plecost_lib.libs.updaters
+    - plecost_lib.libs.wordpress_core
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - plecost --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iniqua/plecost/tree/python3
+  license: BSD License
+  summary: 'Wordpress finger printer tool and vulnerabilities searcher'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

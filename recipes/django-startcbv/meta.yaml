@@ -1,0 +1,63 @@
+package:
+  name: django-startcbv
+  version: "0.2.3"
+
+source:
+  fn: django-startcbv-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-startcbv/django-startcbv-0.2.3.tar.gz
+  md5: 92afbae4da04b85491789f3c80d89779
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-startcbv = django-startcbv:main
+    #
+    # Would create an entry point called django-startcbv that calls django-startcbv.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - startcbv
+    - startcbv.management
+    - startcbv.management.commands
+    - test_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/audreyr/django-startcbv
+  license: BSD License
+  summary: 'Management command to start an app with class-based views.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

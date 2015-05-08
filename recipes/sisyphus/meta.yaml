@@ -1,0 +1,71 @@
+package:
+  name: sisyphus
+  version: "0.0.1.4"
+
+source:
+  fn: sisyphus-0.0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/s/sisyphus/sisyphus-0.0.1.4.tar.gz
+  md5: 56535d2bd27f442fb6b792595885f2c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sisyphus = sisyphus:main
+    #
+    # Would create an entry point called sisyphus that calls sisyphus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - pika
+    - wsgiref
+    - pytz
+    - croniter
+
+  run:
+    - python
+    - distribute
+    - pika
+    - wsgiref
+    - pytz
+    - croniter
+
+test:
+  # Python imports
+  imports:
+    - sisyphus
+    - sisyphus.bin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mkorenkov/sisyphus
+  license: Apache License, Version 2.0
+  summary: 'Lightweight task processing queue.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

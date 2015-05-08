@@ -1,0 +1,76 @@
+package:
+  name: zopyx.pysiriproxy
+  version: "0.2.2"
+
+source:
+  fn: zopyx.pysiriproxy-0.2.2.zip
+  url: https://pypi.python.org/packages/source/z/zopyx.pysiriproxy/zopyx.pysiriproxy-0.2.2.zip
+  md5: 14c271bd4b9ae79163c4a52f0b6d4a86
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.pysiriproxy = zopyx.pysiriproxy:main
+    #
+    # Would create an entry point called zopyx.pysiriproxy that calls zopyx.pysiriproxy.main()
+
+    - siriproxy=pysiriproxy.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - biplist >=0.5
+    - twisted ==12.1.0
+    - pyopenssl
+    - pyamp >=1.2
+
+  run:
+    - python
+    - setuptools
+    - biplist >=0.5
+    - twisted ==12.1.0
+    - pyopenssl
+    - pyamp >=1.2
+
+test:
+  # Python imports
+  imports:
+    - pysiriproxy
+    - pysiriproxy.connections
+    - pysiriproxy.objects
+    - pysiriproxy.options
+    - pysiriproxy.plugins
+    - pysiriproxy.testing
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - siriproxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://code.google.com/p/pysiriproxy/
+  license: GNU GPL v3
+  summary: 'Python implementation of SiriProxy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

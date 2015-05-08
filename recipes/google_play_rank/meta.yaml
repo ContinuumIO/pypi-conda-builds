@@ -1,0 +1,65 @@
+package:
+  name: google_play_rank
+  version: "0.1.6"
+
+source:
+  fn: google_play_rank-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/google_play_rank/google_play_rank-0.1.6.tar.gz
+  md5: 0bd3c61a5f498f12d2e45170a1064ed7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google_play_rank = google_play_rank:main
+    #
+    # Would create an entry point called google_play_rank that calls google_play_rank.main()
+
+    - google_play_rank = google_play_rank.play_parser:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - requests
+    - beautifulsoup4
+
+  run:
+    - python
+    - requests
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - google_play_rank
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - google_play_rank --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/davidyen1124/google_play_rank
+  license: UNKNOWN
+  summary: 'Input package name, then find the google play ranking for you.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

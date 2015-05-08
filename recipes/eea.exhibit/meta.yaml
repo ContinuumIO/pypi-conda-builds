@@ -1,0 +1,90 @@
+package:
+  name: eea.exhibit
+  version: "7.9"
+
+source:
+  fn: eea.exhibit-7.9.zip
+  url: https://pypi.python.org/packages/source/e/eea.exhibit/eea.exhibit-7.9.zip
+  md5: d8c37e135890443a429710a095e96d9d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.exhibit = eea.exhibit:main
+    #
+    # Would create an entry point called eea.exhibit that calls eea.exhibit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - rdflib
+    - eea.app.visualization >7.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - rdflib
+    - eea.app.visualization >7.0
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.exhibit
+    - eea.exhibit.babel
+    - eea.exhibit.browser
+    - eea.exhibit.browser.app
+    - eea.exhibit.browser.res
+    - eea.exhibit.controlpanel
+    - eea.exhibit.facets
+    - eea.exhibit.facets.alphabetical
+    - eea.exhibit.facets.cloud
+    - eea.exhibit.facets.hierarchical
+    - eea.exhibit.facets.numeric
+    - eea.exhibit.facets.slider
+    - eea.exhibit.facets.text
+    - eea.exhibit.simile
+    - eea.exhibit.tests
+    - eea.exhibit.upgrades
+    - eea.exhibit.views
+    - eea.exhibit.views.map
+    - eea.exhibit.views.tabular
+    - eea.exhibit.views.thumbnail
+    - eea.exhibit.views.tile
+    - eea.exhibit.views.timeline
+    - eea.exhibit.views.timeplot
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.com/docs/eea.exhibit
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'EEA Exhibit provides Simile Widgets Exhibit JS libraries as Zope 3 resources.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-external-feed
+  version: "0.1"
+
+source:
+  fn: django-external-feed-0.1.zip
+  url: https://pypi.python.org/packages/source/d/django-external-feed/django-external-feed-0.1.zip
+  md5: ed4b52862f278db9d9fd17ece7d131b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-external-feed = django-external-feed:main
+    #
+    # Would create an entry point called django-external-feed that calls django-external-feed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser
+
+  run:
+    - python
+    - setuptools
+    - feedparser
+
+test:
+  # Python imports
+  imports:
+    - externalfeed
+    - externalfeed.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nederhoed/django-external-feed
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Show content from an XML feed on your own site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

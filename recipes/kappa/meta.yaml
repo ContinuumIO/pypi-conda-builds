@@ -1,0 +1,66 @@
+package:
+  name: kappa
+  version: "0.3.0"
+
+source:
+  fn: kappa-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/k/kappa/kappa-0.3.0.tar.gz
+  md5: 36620d6663518e5c3b242baa1bcd9678
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kappa = kappa:main
+    #
+    # Would create an entry point called kappa that calls kappa.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto3 ==0.0.16
+    - click ==4.0
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - boto3 ==0.0.16
+    - click ==4.0
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - kappa
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/garnaat/kappa
+  license: Apache Software License
+  summary: 'A CLI tool for AWS Lambda developers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

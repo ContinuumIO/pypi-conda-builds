@@ -1,0 +1,63 @@
+package:
+  name: django-boundaryservice
+  version: "0.1.11"
+
+source:
+  fn: django-boundaryservice-0.1.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-boundaryservice/django-boundaryservice-0.1.11.tar.gz
+  md5: e8856512bf007d92f92efc6154ef2592
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-boundaryservice = django-boundaryservice:main
+    #
+    # Would create an entry point called django-boundaryservice that calls django-boundaryservice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django-tastypie ==0.9.9
+
+  run:
+    - python
+    - django-tastypie ==0.9.9
+
+test:
+  # Python imports
+  imports:
+    - boundaryservice
+    - boundaryservice.management
+    - boundaryservice.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.apps.chicagotribune.com/
+  license: MIT
+  summary: 'A reusable system for aggregating and providing API access to regional boundary data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

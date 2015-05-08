@@ -1,0 +1,62 @@
+package:
+  name: djangosampler
+  version: "0.6.8"
+
+source:
+  fn: djangosampler-0.6.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangosampler/djangosampler-0.6.8.tar.gz
+  md5: 90893d225b70425ab4bfe1b7ebc2f31c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangosampler = djangosampler:main
+    #
+    # Would create an entry point called djangosampler that calls djangosampler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djangosampler
+    - djangosampler.migrations
+    - djangosampler.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/colinhowe/djangosampler
+  license: Apache Software License
+  summary: 'Samples a percentage of SQL queries and groups them together for easy viewing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

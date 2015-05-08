@@ -1,0 +1,68 @@
+package:
+  name: alchemist.audit
+  version: "0.3.4"
+
+source:
+  fn: alchemist.audit-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/alchemist.audit/alchemist.audit-0.3.4.tar.gz
+  md5: c27908f66e47f4d154973eb4202600be
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alchemist.audit = alchemist.audit:main
+    #
+    # Would create an entry point called alchemist.audit that calls alchemist.audit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ore.alchemist
+    - zope.formlib
+    - zc.table
+
+  run:
+    - python
+    - setuptools
+    - ore.alchemist
+    - zope.formlib
+    - zc.table
+
+test:
+  # Python imports
+  imports:
+    - alchemist
+    - alchemist.audit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/zope-alchemist
+  license: ZPL
+  summary: 'Alchemist Auditing Components ( Event Subscribers, Change Recorders, UI ) for Relational Applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

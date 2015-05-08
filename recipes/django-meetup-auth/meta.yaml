@@ -1,0 +1,63 @@
+package:
+  name: django-meetup-auth
+  version: "0.2.1"
+
+source:
+  fn: django-meetup-auth-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-meetup-auth/django-meetup-auth-0.2.1.tar.gz
+  md5: 707c7a07e406e76777580397d79a617d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-meetup-auth = django-meetup-auth:main
+    #
+    # Would create an entry point called django-meetup-auth that calls django-meetup-auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-social-auth >=0.3.3
+
+  run:
+    - python
+    - django-social-auth >=0.3.3
+
+test:
+  # Python imports
+  imports:
+    - meetup_auth
+    - meetup_auth.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mlavin/django-meetup-auth
+  license: BSD License
+  summary: u'django-meetup-auth is an extension to django-social-auth which adds a backend for Meetup.com.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

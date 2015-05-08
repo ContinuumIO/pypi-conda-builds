@@ -1,0 +1,84 @@
+package:
+  name: cosmos
+  version: "0.01.074.00"
+
+source:
+  fn: cosmos-0.01.074.00.tar.gz
+  url: https://pypi.python.org/packages/source/c/cosmos/cosmos-0.01.074.00.tar.gz
+  md5: a4cf2bed407f6f442543b45673442a13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cosmos = cosmos:main
+    #
+    # Would create an entry point called cosmos that calls cosmos.main()
+
+    - cosmos = cosmos.admin.commands:admin_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - motor
+    - mongolog
+    - mock
+    - requests
+    - python-memcached
+
+  run:
+    - python
+    - tornado
+    - motor
+    - mongolog
+    - mock
+    - requests
+    - python-memcached
+
+test:
+  # Python imports
+  imports:
+    - cosmos
+    - cosmos.admin
+    - cosmos.admin.samples
+    - cosmos.common
+    - cosmos.datamonitor
+    - cosmos.dataservice
+    - cosmos.processors
+    - cosmos.rbac
+    - cosmos.schema
+    - cosmos.service
+    - test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cosmos --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cosmosframework.com
+  license: MIT License
+  summary: 'Thin server application framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

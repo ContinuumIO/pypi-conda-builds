@@ -1,0 +1,64 @@
+package:
+  name: sorty
+  version: "1.0.0"
+
+source:
+  fn: Sorty-1.0.0.zip
+  url: https://pypi.python.org/packages/source/S/Sorty/Sorty-1.0.0.zip
+  md5: 613160f4d12c91d83505f653c0e8f797
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sorty = sorty:main
+    #
+    # Would create an entry point called sorty that calls sorty.main()
+
+    - sorty = sorty:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - sorty
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sorty --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/geekpradd/Sorty
+  license: MIT License
+  summary: 'A File Sorting Magician for your PC built in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

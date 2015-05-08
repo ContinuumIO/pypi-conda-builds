@@ -1,0 +1,71 @@
+package:
+  name: superpy
+  version: "1.2.6"
+
+source:
+  fn: superpy-1.2.6.zip
+  url: https://pypi.python.org/packages/source/s/superpy/superpy-1.2.6.zip
+  md5: 1bd84b97a86d2e58122b9aefcbeff085
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - superpy = superpy:main
+    #
+    # Would create an entry point called superpy that calls superpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pmw
+
+  run:
+    - python
+    - pmw
+
+test:
+  # Python imports
+  imports:
+    - superpy
+    - superpy.SuperWatch
+    - superpy.core
+    - superpy.demos
+    - superpy.demos.pyfog
+    - superpy.demos.pyfog.defaults
+    - superpy.scripts
+    - superpy.utils
+    - superpyMisc
+    - superpyTesting
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/superpy/
+  license: MIT
+  summary: 'Parallel processing tools for supercomputing with python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: django_multiuploader_file
+  version: "2.0.2"
+
+source:
+  fn: django_multiuploader_file-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_multiuploader_file/django_multiuploader_file-2.0.2.tar.gz
+  md5: 453aef3e4aabfc2158f955e6a228a292
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_multiuploader_file = django_multiuploader_file:main
+    #
+    # Would create an entry point called django_multiuploader_file that calls django_multiuploader_file.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pil >=1.1.7
+    - sorl-thumbnail >=11.12
+
+  run:
+    - python
+    - pil >=1.1.7
+    - sorl-thumbnail >=11.12
+
+test:
+  # Python imports
+  imports:
+    - django_multiuploader_file
+    - multiuploader
+    - multiuploader.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/matheussl/django_multiuploader
+  license: Apache License 2.0.1
+  summary: 'A fork of django-multiuploader that allow upload any file type.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

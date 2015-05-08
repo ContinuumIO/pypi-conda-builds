@@ -1,0 +1,68 @@
+package:
+  name: harvest-sow
+  version: "1.0.0b1"
+
+source:
+  fn: harvest-sow-1.0.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/h/harvest-sow/harvest-sow-1.0.0b1.tar.gz
+  md5: 5397dd752d63985f5777f319fd76cab7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - harvest-sow = harvest-sow:main
+    #
+    # Would create an entry point called harvest-sow that calls harvest-sow.main()
+
+    - sow = sow.console:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - keyring
+    - python-harvest
+
+  run:
+    - python
+    - docopt
+    - keyring
+    - python-harvest
+
+test:
+  # Python imports
+  imports:
+    - sow
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sow --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/mekhami/Sow
+  license: MIT
+  summary: 'Harvest Command Line App'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

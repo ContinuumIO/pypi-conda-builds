@@ -1,0 +1,66 @@
+package:
+  name: django-eztables
+  version: "0.3.2"
+
+source:
+  fn: django-eztables-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-eztables/django-eztables-0.3.2.tar.gz
+  md5: 1cc6994579213f8d5b0c47df2d90a42d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-eztables = django-eztables:main
+    #
+    # Would create an entry point called django-eztables that calls django-eztables.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django.js >=0.7.6
+
+  run:
+    - python
+    - django >=1.4
+    - django.js >=0.7.6
+
+test:
+  # Python imports
+  imports:
+    - eztables
+    - eztables.demo
+    - eztables.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/noirbizarre/django-eztables
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'jQuery Datatables integration for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: django-census-places
+  version: "1.2.6"
+
+source:
+  fn: django-census-places-1.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-census-places/django-census-places-1.2.6.tar.gz
+  md5: fcd9a56b81d3bb3f5230c9d1dbadb4d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-census-places = django-census-places:main
+    #
+    # Would create an entry point called django-census-places that calls django-census-places.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - census_places
+    - census_places.management
+    - census_places.management.commands
+    - census_places.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/latestrevision/django-census-places/
+  license: MIT License
+  summary: 'Use city (and census designated place) boundaries provided by the United States Census'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,95 @@
+package:
+  name: zope.app.appsetup
+  version: "4.0.0a1"
+
+source:
+  fn: zope.app.appsetup-4.0.0a1.zip
+  url: https://pypi.python.org/packages/source/z/zope.app.appsetup/zope.app.appsetup-4.0.0a1.zip
+  md5: 2545c53b94eb80e3071c37207d64d8a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.appsetup = zope.app.appsetup:main
+    #
+    # Would create an entry point called zope.app.appsetup that calls zope.app.appsetup.main()
+
+    - debug=zope.app.appsetup.debug:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb
+    - setuptools
+    - zope.app.publication
+    - zope.component >=3.8.0
+    - zope.configuration
+    - zope.container >=4.0.0a2
+    - zope.error
+    - zope.event
+    - zope.interface
+    - zope.processlifetime
+    - zope.security >=4.0.0a2
+    - zope.session >=4.0.0a1
+    - zope.site >=4.0.0a1
+    - zope.traversing >=4.0.0a2
+
+  run:
+    - python
+    - setuptools
+    - zodb
+    - setuptools
+    - zope.app.publication
+    - zope.component >=3.8.0
+    - zope.configuration
+    - zope.container >=4.0.0a2
+    - zope.error
+    - zope.event
+    - zope.interface
+    - zope.processlifetime
+    - zope.security >=4.0.0a2
+    - zope.session >=4.0.0a1
+    - zope.site >=4.0.0a1
+    - zope.traversing >=4.0.0a2
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.appsetup
+    - zope.app.appsetup.testpackage
+    - zope.app.appsetup.testproduct
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - debug --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.appsetup
+  license: Zope Public License
+  summary: 'Zope app setup helper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

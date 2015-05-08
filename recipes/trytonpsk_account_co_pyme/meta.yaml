@@ -1,0 +1,69 @@
+package:
+  name: trytonpsk_account_co_pyme
+  version: "3.4.8"
+
+source:
+  fn: trytonpsk_account_co_pyme-3.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytonpsk_account_co_pyme/trytonpsk_account_co_pyme-3.4.8.tar.gz
+  md5: 884733ad13f5fde2ca06e58a5c1362d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytonpsk_account_co_pyme = trytonpsk_account_co_pyme:main
+    #
+    # Would create an entry point called trytonpsk_account_co_pyme that calls trytonpsk_account_co_pyme.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_party >=3.4,<3.5
+    - trytond_account >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - trytond_party >=3.4,<3.5
+    - trytond_account >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.account_co_pyme
+    - trytond.modules.account_co_pyme.tests
+    - trytonpsk_account_co_pyme
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.presik.com/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton chart account for pymes module for Colombia'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

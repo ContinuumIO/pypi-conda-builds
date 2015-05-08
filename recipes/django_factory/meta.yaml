@@ -1,0 +1,64 @@
+package:
+  name: django_factory
+  version: "0.11"
+
+source:
+  fn: django_factory-0.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_factory/django_factory-0.11.tar.gz
+  md5: 32094666022831e0d29df9b964b19f60
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_factory = django_factory:main
+    #
+    # Would create an entry point called django_factory that calls django_factory.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.1
+    - testtools
+
+  run:
+    - python
+    - django >=1.1
+    - testtools
+
+test:
+  # Python imports
+  imports:
+    - django_factory
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/django-factory
+  license: Apache Software License
+  summary: 'Generic factory for creating instances of Django models in tests.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

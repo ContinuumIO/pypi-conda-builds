@@ -1,0 +1,92 @@
+package:
+  name: ro-manager
+  version: "0.2.20"
+
+source:
+  fn: ro-manager-0.2.20.tar.gz
+  url: https://pypi.python.org/packages/source/r/ro-manager/ro-manager-0.2.20.tar.gz
+  md5: b6fdeb1d12e7a46b06413a8f69ad04d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ro-manager = ro-manager:main
+    #
+    # Would create an entry point called ro-manager that calls ro-manager.main()
+
+    - ro = rocommand.ro:runMain
+    - mkminim = checklist.mkminim:runMain
+    - roverlay = roverlay.rovcmd.roverlay:runMain
+    - ro-manager-test = rocommand.test.RunRoManagerTests:runTestSuite
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rdflib ==4.0.1
+    - rdflib-sparql ==0.2
+    - httplib2
+    - uritemplate
+    - xlrd
+
+  run:
+    - python
+    - rdflib ==4.0.1
+    - rdflib-sparql ==0.2
+    - httplib2
+    - uritemplate
+    - xlrd
+
+test:
+  # Python imports
+  imports:
+    - MiscUtils
+    - checklist
+    - checklist.test
+    - iaeval
+    - iaeval.test
+    - rocommand
+    - rocommand.test
+    - roverlay
+    - roverlay.rovcmd
+    - roverlay.rovweb
+    - roverlay.rovweb.rovserver
+    - roverlay.rovweb.rovweb
+    - roweb
+    - roweb.test
+    - samples
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ro --help
+    - mkminim --help
+    - roverlay --help
+    - ro-manager-test --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wf4ever/ro-manager
+  license: MIT License
+  summary: 'Research Object manager (command line tool)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

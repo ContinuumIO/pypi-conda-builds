@@ -1,0 +1,87 @@
+package:
+  name: plone.app.openid
+  version: "2.1.0"
+
+source:
+  fn: plone.app.openid-2.1.0.zip
+  url: https://pypi.python.org/packages/source/p/plone.app.openid/plone.app.openid-2.1.0.zip
+  md5: 89dc715ee55ee64312a8a407461bdda6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.openid = plone.app.openid:main
+    #
+    # Would create an entry point called plone.app.openid that calls plone.app.openid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.openid
+    - plone.portlets
+    - plone.app.portlets
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - products.cmfplone
+    - products.plonepas >=2.0.10dev
+    - products.pluggableauthservice
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.openid
+    - plone.portlets
+    - plone.app.portlets
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - products.cmfplone
+    - products.plonepas >=2.0.10dev
+    - products.pluggableauthservice
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.openid
+    - plone.app.openid.portlets
+    - plone.app.openid.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.app.openid
+  license: GNU General Public License (GPL)
+  summary: 'Plone OpenID authentication support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

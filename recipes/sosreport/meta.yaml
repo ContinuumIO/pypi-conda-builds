@@ -1,0 +1,62 @@
+package:
+  name: sosreport
+  version: "3.2"
+
+source:
+  fn: sosreport-3.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sosreport/sosreport-3.2.tar.gz
+  md5: fb1d0de103a9aa8b78febc1364e6f4b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sosreport = sosreport:main
+    #
+    # Would create an entry point called sosreport that calls sosreport.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sos
+    - sos.plugins
+    - sos.policies
+    - sosreport
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sosreport/sos
+  license: GPLv2+
+  summary: 'Set of tools to gather troubleshooting data\n      from a system Sos is a set of tools that gathers information about system \n      hardware and configuration. The information can then be used for\n      diagnostic purposes and debugging. Sos is commonly used to help\n      support technicians and developers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

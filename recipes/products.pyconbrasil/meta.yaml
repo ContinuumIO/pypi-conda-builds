@@ -1,0 +1,72 @@
+package:
+  name: products.pyconbrasil
+  version: "2.4.1"
+
+source:
+  fn: Products.PyConBrasil-2.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.PyConBrasil/Products.PyConBrasil-2.4.1.tar.gz
+  md5: 320b87210c1ebb8adb83843e8f54a776
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.pyconbrasil = products.pyconbrasil:main
+    #
+    # Would create an entry point called products.pyconbrasil that calls products.pyconbrasil.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.datagridfield <=1.7
+    - collective.brasil.vocab >0.5
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.datagridfield <=1.7
+    - collective.brasil.vocab >0.5
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PyConBrasil
+    - Products.PyConBrasil.browser
+    - Products.PyConBrasil.docs
+    - Products.PyConBrasil.tests
+    - Products.PyConBrasil.vocabularies
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/collective/Products.PyConBrasil/
+  license: GPL
+  summary: 'Package for managing papers and the registration process for PyConBrasil.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

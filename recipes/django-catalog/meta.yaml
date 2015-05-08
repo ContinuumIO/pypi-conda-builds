@@ -1,0 +1,75 @@
+package:
+  name: django-catalog
+  version: "2.1.1"
+
+source:
+  fn: django-catalog-2.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-catalog/django-catalog-2.1.1.tar.gz
+  md5: 6eab64c3765eb7ab13a0ebf8bd1b377d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-catalog = django-catalog:main
+    #
+    # Would create an entry point called django-catalog that calls django-catalog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - extdirect.django
+    - django-classy-tags
+    - django-mptt
+
+  run:
+    - python
+    - setuptools
+    - extdirect.django
+    - django-classy-tags
+    - django-mptt
+
+test:
+  # Python imports
+  imports:
+    - catalog
+    - catalog.contrib
+    - catalog.contrib.defaults
+    - catalog.contrib.defaults.management
+    - catalog.contrib.defaults.management.commands
+    - catalog.redsolution_setup
+    - catalog.templatetags
+    - catalog.tests
+    - catalog.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'Django generic catalog application. Organize objects in tree structure, allows\nto make links for objects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

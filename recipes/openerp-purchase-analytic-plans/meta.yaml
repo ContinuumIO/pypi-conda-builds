@@ -1,0 +1,64 @@
+package:
+  name: openerp-purchase-analytic-plans
+  version: "7.0.406"
+
+source:
+  fn: openerp-purchase-analytic-plans-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-purchase-analytic-plans/openerp-purchase-analytic-plans-7.0.406.tar.gz
+  md5: 5bdabfaa20b5779630a564f1d581d362
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-purchase-analytic-plans = openerp-purchase-analytic-plans:main
+    #
+    # Would create an entry point called openerp-purchase-analytic-plans that calls openerp-purchase-analytic-plans.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-purchase
+    - openerp-account-analytic-plans
+
+  run:
+    - python
+    - openerp-purchase
+    - openerp-account-analytic-plans
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.purchase_analytic_plans
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Purchase Analytic Plans'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

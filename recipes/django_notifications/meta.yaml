@@ -1,0 +1,62 @@
+package:
+  name: django_notifications
+  version: "0.1.dev"
+
+source:
+  fn: django_notifications-0.1.dev.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_notifications/django_notifications-0.1.dev.tar.gz
+  md5: 7a2ca4dbd775d89fee0c29e22d99a585
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_notifications = django_notifications:main
+    #
+    # Would create an entry point called django_notifications that calls django_notifications.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_notifications
+    - django_notifications.backends
+    - django_notifications.management
+    - django_notifications.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kami.github.com/django-notifications/
+  license: GNU General Public License (GPL)
+  summary: 'Django application which allows you to make subscriptions for different model events (create, edit and delete) and send notification(s) when the subscribed event has occurred.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

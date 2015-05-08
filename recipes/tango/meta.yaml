@@ -1,0 +1,82 @@
+package:
+  name: tango
+  version: "0.2.7"
+
+source:
+  fn: Tango-0.2.7.tar.bz2
+  url: https://pypi.python.org/packages/source/T/Tango/Tango-0.2.7.tar.bz2
+  md5: b1c1572ec48a2797dda58737ce55a84f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tango = tango:main
+    #
+    # Would create an entry point called tango that calls tango.main()
+
+    - tango = tango.manage:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - beautifulsoup ==3.2.0
+    - flask >=0.9
+    - flask-script ==0.3.2
+    - lxml
+    - oauth2
+    - pytest
+    - pyyaml
+    - cssselect
+
+  run:
+    - python
+    - distribute
+    - beautifulsoup ==3.2.0
+    - flask >=0.9
+    - flask-script ==0.3.2
+    - lxml
+    - oauth2
+    - pytest
+    - pyyaml
+    - cssselect
+
+test:
+  # Python imports
+  imports:
+    - tango
+    - tango.factory
+    - tango.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tango --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.willowtreeapps.com
+  license: BSD
+  summary: 'Tango mobile web optimization framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

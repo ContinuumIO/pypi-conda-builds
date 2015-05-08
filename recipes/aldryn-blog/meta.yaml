@@ -1,0 +1,85 @@
+package:
+  name: aldryn-blog
+  version: "0.4.6"
+
+source:
+  fn: aldryn-blog-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-blog/aldryn-blog-0.4.6.tar.gz
+  md5: bc7a21aee55999217d34e7132ace35f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-blog = aldryn-blog:main
+    #
+    # Would create an entry point called aldryn-blog that calls aldryn-blog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-taggit <0.12
+    - django-filer
+    - django_select2
+    - djangocms-text-ckeditor
+    - django-appconf
+    - django-classy-tags
+    - south >=0.8
+    - aldryn_common
+    - django-hvad
+    - unidecode
+    - django-appdata
+
+  run:
+    - python
+    - django-taggit <0.12
+    - django-filer
+    - django_select2
+    - djangocms-text-ckeditor
+    - django-appconf
+    - django-classy-tags
+    - south >=0.8
+    - aldryn_common
+    - django-hvad
+    - unidecode
+    - django-appdata
+
+test:
+  # Python imports
+  imports:
+    - aldryn_blog
+    - aldryn_blog.migrations
+    - aldryn_blog.sitemaps
+    - aldryn_blog.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-blog
+  license: BSD License
+  summary: 'Adds blogging abilities to django CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

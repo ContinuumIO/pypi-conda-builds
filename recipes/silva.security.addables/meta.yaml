@@ -1,0 +1,74 @@
+package:
+  name: silva.security.addables
+  version: "3.0.2"
+
+source:
+  fn: silva.security.addables-3.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.security.addables/silva.security.addables-3.0.2.tar.gz
+  md5: 748d8cbf4f1a6a20f74308d9e8a73f01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.security.addables = silva.security.addables:main
+    #
+    # Would create an entry point called silva.security.addables that calls silva.security.addables.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - products.silva
+    - five.grok
+    - setuptools
+    - silva.core.conf
+    - silva.core.interfaces
+    - silva.core.services
+
+  run:
+    - python
+    - products.silva
+    - five.grok
+    - setuptools
+    - silva.core.conf
+    - silva.core.interfaces
+    - silva.core.services
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.security
+    - silva.security.addables
+    - silva.security.addables.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.security.addables
+  license: BSD License
+  summary: 'Configure which content type is addable for which Silva roles'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

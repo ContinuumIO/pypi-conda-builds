@@ -1,0 +1,69 @@
+package:
+  name: trytond_product_cost_history
+  version: "3.6.0"
+
+source:
+  fn: trytond_product_cost_history-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_product_cost_history/trytond_product_cost_history-3.6.0.tar.gz
+  md5: 08e35c9eaa7bf32e9a5d40f80f6d40d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_product_cost_history = trytond_product_cost_history:main
+    #
+    # Would create an entry point called trytond_product_cost_history that calls trytond_product_cost_history.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-sql
+    - trytond_product >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - python-sql
+    - trytond_product >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.product_cost_history
+    - trytond.modules.product_cost_history.tests
+    - trytond_product_cost_history
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module to historize product cost'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

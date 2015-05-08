@@ -1,0 +1,88 @@
+package:
+  name: django-fias
+  version: "0.5.1"
+
+source:
+  fn: django-fias-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fias/django-fias-0.5.1.tar.gz
+  md5: e1282fa15222e4b9631ace919716cdd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fias = django-fias:main
+    #
+    # Would create an entry point called django-fias that calls django-fias.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-extensions >=1.0.0
+    - rarfile
+    - six
+    - lxml
+    - south >=1.0
+    - unrar
+    - django_select2 >=4.2.2
+    - suds >=0.4
+
+  run:
+    - python
+    - django >=1.4
+    - django-extensions >=1.0.0
+    - rarfile
+    - six
+    - lxml
+    - south >=1.0
+    - unrar
+    - django_select2 >=4.2.2
+    - suds >=0.4
+
+test:
+  # Python imports
+  imports:
+    - fias
+    - fias.fields
+    - fias.importer
+    - fias.importer.loader
+    - fias.management
+    - fias.management.commands
+    - fias.management.utils
+    - fias.models
+    - fias.south_migrations
+    - fias.tests
+    - fias.tests.mock
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Yuego/django-fias
+  license: MIT License
+  summary: 'FIAS Django integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

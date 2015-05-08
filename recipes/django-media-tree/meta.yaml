@@ -1,0 +1,89 @@
+package:
+  name: django-media-tree
+  version: "0.8.1"
+
+source:
+  fn: django-media-tree-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-media-tree/django-media-tree-0.8.1.tar.gz
+  md5: 1dc3da4b6b1c18057f569211fffb1dc3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-media-tree = django-media-tree:main
+    #
+    # Would create an entry point called django-media-tree that calls django-media-tree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - media_tree
+    - media_tree.admin
+    - media_tree.admin.actions
+    - media_tree.contrib
+    - media_tree.contrib.cms_plugins
+    - media_tree.contrib.cms_plugins.media_tree_gallery
+    - media_tree.contrib.cms_plugins.media_tree_image
+    - media_tree.contrib.cms_plugins.media_tree_listing
+    - media_tree.contrib.cms_plugins.media_tree_slideshow
+    - media_tree.contrib.legacy_mptt_support
+    - media_tree.contrib.legacy_mptt_support.templatetags
+    - media_tree.contrib.media_backends
+    - media_tree.contrib.media_backends.easy_thumbnails
+    - media_tree.contrib.media_backends.sorl_thumbnail
+    - media_tree.contrib.media_extensions
+    - media_tree.contrib.media_extensions.images
+    - media_tree.contrib.media_extensions.images.focal_point
+    - media_tree.contrib.media_extensions.zipfiles
+    - media_tree.contrib.media_tree_modeltranslation
+    - media_tree.contrib.views
+    - media_tree.contrib.views.detail
+    - media_tree.contrib.views.listing
+    - media_tree.extension
+    - media_tree.extension.base_extenders
+    - media_tree.management
+    - media_tree.management.commands
+    - media_tree.media_backends
+    - media_tree.migrations
+    - media_tree.templatetags
+    - media_tree.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/samluescher/django-media-tree
+  license: BSD License
+  summary: "Django Media Tree is a Django app for managing your website's media files in a folder tree, and using them in your own applications."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

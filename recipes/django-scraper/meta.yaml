@@ -1,0 +1,71 @@
+package:
+  name: django-scraper
+  version: "0.3.0"
+
+source:
+  fn: django-scraper-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-scraper/django-scraper-0.3.0.tar.gz
+  md5: bf48e1fe42d82f2ecd594212d72b826f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-scraper = django-scraper:main
+    #
+    # Would create an entry point called django-scraper that calls django-scraper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - lxml
+    - simplejson ==3.6.5
+    - django-jsonfield ==0.9.13
+
+  run:
+    - python
+    - requests
+    - lxml
+    - simplejson ==3.6.5
+    - django-jsonfield ==0.9.13
+
+test:
+  # Python imports
+  imports:
+    - scraper
+    - scraper.management
+    - scraper.management.commands
+    - scraper.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zniper/django-scraper
+  license: The MIT License (MIT)
+  summary: 'Django application which crawls and downloads online content following instructions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

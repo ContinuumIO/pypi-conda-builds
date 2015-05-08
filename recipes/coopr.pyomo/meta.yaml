@@ -1,0 +1,97 @@
+package:
+  name: coopr.pyomo
+  version: "3.6.4"
+
+source:
+  fn: coopr.pyomo-3.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/coopr.pyomo/coopr.pyomo-3.6.4.tar.gz
+  md5: 03c5807e474bac75b938c7f234abfbcf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coopr.pyomo = coopr.pyomo:main
+    #
+    # Would create an entry point called coopr.pyomo that calls coopr.pyomo.main()
+
+    - pyomo=coopr.pyomo.scripting.pyomo:main
+    - pyomo2nl=coopr.pyomo.scripting.convert:pyomo2nl_main
+    - pyomo2lp=coopr.pyomo.scripting.convert:pyomo2lp_main
+    - pyomo2osil=coopr.pyomo.scripting.convert:pyomo2osil_main
+    - pyomo2dakota=coopr.pyomo.scripting.convert:pyomo2dakota_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - coopr
+    - coopr.pyomo
+    - coopr.pyomo.base
+    - coopr.pyomo.check
+    - coopr.pyomo.components
+    - coopr.pyomo.data
+    - coopr.pyomo.expr
+    - coopr.pyomo.plugins
+    - coopr.pyomo.plugins.check
+    - coopr.pyomo.plugins.check.checkers
+    - coopr.pyomo.plugins.check.checkers.py3k
+    - coopr.pyomo.plugins.check.checkers.pyomo
+    - coopr.pyomo.plugins.check.checkers.sample
+    - coopr.pyomo.plugins.data
+    - coopr.pyomo.plugins.io
+    - coopr.pyomo.plugins.io.ampl
+    - coopr.pyomo.plugins.transform
+    - coopr.pyomo.preprocess
+    - coopr.pyomo.scripting
+    - coopr.pyomo.tests
+    - coopr.pyomo.tests.ampl
+    - coopr.pyomo.tests.check
+    - coopr.pyomo.tests.data
+    - coopr.pyomo.tests.diet
+    - coopr.pyomo.tests.examples
+    - coopr.pyomo.tests.expr
+    - coopr.pyomo.tests.unit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyomo --help
+    - pyomo2nl --help
+    - pyomo2lp --help
+    - pyomo2osil --help
+    - pyomo2dakota --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://software.sandia.gov/svn/public/coopr/coopr.pyomo
+  license: BSD License
+  summary: "Coopr's Pyomo math programming language"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

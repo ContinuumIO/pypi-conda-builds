@@ -1,0 +1,65 @@
+package:
+  name: charset
+  version: "1.0.1"
+
+source:
+  fn: charset-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/charset/charset-1.0.1.tar.gz
+  md5: e2e405b27c41e4ba1f25afd47b2dca12
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - charset = charset:main
+    #
+    # Would create an entry point called charset that calls charset.main()
+
+    - charset=charset.cmd:CmdCharset.run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chardet
+
+  run:
+    - python
+    - setuptools
+    - chardet
+
+test:
+  # Python imports
+  imports:
+    - charset
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - charset --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Clases for charset detection. Uses chardet and mozilla universal charset detection.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

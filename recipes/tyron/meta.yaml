@@ -1,0 +1,77 @@
+package:
+  name: tyron
+  version: "0.2.4"
+
+source:
+  fn: tyron-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/t/tyron/tyron-0.2.4.tar.gz
+  md5: 5cdccd676dfe56eb8ca2d8a91381ea71
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tyron = tyron:main
+    #
+    # Would create an entry point called tyron that calls tyron.main()
+
+    - tyron = tyron.tyron:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.9
+    - jinja2 ==2.6
+    - werkzeug ==0.8.3
+    - greenlet ==0.4.0
+    - gunicorn ==0.17.2
+    - redis ==2.7.2
+    - gevent >=1.0rc2
+
+  run:
+    - python
+    - flask ==0.9
+    - jinja2 ==2.6
+    - werkzeug ==0.8.3
+    - greenlet ==0.4.0
+    - gunicorn ==0.17.2
+    - redis ==2.7.2
+    - gevent >=1.0rc2
+
+test:
+  # Python imports
+  imports:
+    - tyron
+    - tyron.ext
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tyron --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tbarbugli/tyron
+  license: BSD License
+  summary: 'Gevent redis/pubsub event notifier written in flask and gevent'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

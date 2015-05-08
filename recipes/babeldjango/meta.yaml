@@ -1,0 +1,64 @@
+package:
+  name: babeldjango
+  version: "0.2.2"
+
+source:
+  fn: BabelDjango-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/B/BabelDjango/BabelDjango-0.2.2.tar.gz
+  md5: c4df5f579c5798829987d2334ed0e2dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - babeldjango = babeldjango:main
+    #
+    # Would create an entry point called babeldjango that calls babeldjango.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babel
+
+  run:
+    - python
+    - setuptools
+    - babel
+
+test:
+  # Python imports
+  imports:
+    - babeldjango
+    - babeldjango.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://babel.edgewall.org/wiki/BabelDjango
+  license: BSD
+  summary: 'Utilities for using Babel in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: trytond_stock_location_sequence
+  version: "3.6.0"
+
+source:
+  fn: trytond_stock_location_sequence-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_stock_location_sequence/trytond_stock_location_sequence-3.6.0.tar.gz
+  md5: ac416679c818e559ff1da1f227de2969
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_stock_location_sequence = trytond_stock_location_sequence:main
+    #
+    # Would create an entry point called trytond_stock_location_sequence that calls trytond_stock_location_sequence.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-sql >=0.4
+    - trytond_stock >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - python-sql >=0.4
+    - trytond_stock >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.stock_location_sequence
+    - trytond.modules.stock_location_sequence.tests
+    - trytond_stock_location_sequence
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module to add sequence on location'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

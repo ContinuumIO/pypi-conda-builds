@@ -1,0 +1,77 @@
+package:
+  name: products.pythonscripts
+  version: "2.13.2"
+
+source:
+  fn: Products.PythonScripts-2.13.2.zip
+  url: https://pypi.python.org/packages/source/P/Products.PythonScripts/Products.PythonScripts-2.13.2.zip
+  md5: 04c86f2c45a29a162297a80dac61d14f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.pythonscripts = products.pythonscripts:main
+    #
+    # Would create an entry point called products.pythonscripts that calls products.pythonscripts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - accesscontrol
+    - acquisition
+    - datetime
+    - documenttemplate
+    - restrictedpython
+    - zexceptions
+    - zope2 >=2.13.0a1
+
+  run:
+    - python
+    - setuptools
+    - accesscontrol
+    - acquisition
+    - datetime
+    - documenttemplate
+    - restrictedpython
+    - zexceptions
+    - zope2 >=2.13.0a1
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PythonScripts
+    - Products.PythonScripts.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.PythonScripts
+  license: ZPL 2.1
+  summary: 'Provides support for restricted execution of Python scripts in Zope 2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

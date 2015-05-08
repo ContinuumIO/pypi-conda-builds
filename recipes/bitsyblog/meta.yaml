@@ -1,0 +1,79 @@
+package:
+  name: bitsyblog
+  version: "2.4.5"
+
+source:
+  fn: bitsyblog-2.4.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/bitsyblog/bitsyblog-2.4.5.tar.gz
+  md5: f1b63f27136e7cb1f4a83b7cac318241
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bitsyblog = bitsyblog:main
+    #
+    # Would create an entry point called bitsyblog that calls bitsyblog.main()
+
+    - blog=bitsyblog.blogme:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - paste
+    - pastescript
+    - python-dateutil
+    - pyrss2gen
+    - docutils
+    - genshi
+    - bitsyauth
+
+  run:
+    - python
+    - setuptools
+    - webob
+    - paste
+    - pastescript
+    - python-dateutil
+    - pyrss2gen
+    - docutils
+    - genshi
+    - bitsyauth
+
+test:
+  # Python imports
+  imports:
+    - bitsyblog
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - blog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://k0s.org/blog
+  license: GPL
+  summary: 'a tiny tiny blog'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

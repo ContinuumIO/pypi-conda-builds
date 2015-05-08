@@ -1,0 +1,65 @@
+package:
+  name: django-theherk-events
+  version: "1.8.1"
+
+source:
+  fn: django-theherk-events-1.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-theherk-events/django-theherk-events-1.8.1.tar.gz
+  md5: eaee84ec02e1ad1fb66090c1fc1311b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-theherk-events = django-theherk-events:main
+    #
+    # Would create an entry point called django-theherk-events that calls django-theherk-events.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms >=2.4.1
+    - django-theherk-resources >=1.4
+
+  run:
+    - python
+    - django-cms >=2.4.1
+    - django-theherk-resources >=1.4
+
+test:
+  # Python imports
+  imports:
+    - events
+    - events.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/theherk/django-theherk-events
+  license: see file LICENSE
+  summary: 'Django CMS plugin to track events on multiple calendars'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

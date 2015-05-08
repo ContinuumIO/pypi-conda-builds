@@ -1,0 +1,70 @@
+package:
+  name: django-brevisurl
+  version: "2.0.0"
+
+source:
+  fn: django-brevisurl-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-brevisurl/django-brevisurl-2.0.0.tar.gz
+  md5: ac037d7ad4d453be8b4fe422b3360f3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-brevisurl = django-brevisurl:main
+    #
+    # Would create an entry point called django-brevisurl that calls django-brevisurl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - south
+
+  run:
+    - python
+    - django
+    - south
+
+test:
+  # Python imports
+  imports:
+    - brevisurl
+    - brevisurl.backends
+    - brevisurl.migrations
+    - brevisurl.templatetags
+    - brevisurl.tests
+    - brevisurl.tests.backends
+    - brevisurl.tests.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.codescale.net/en/community#django-brevisurl
+  license: BSD License
+  summary: 'django-brevisurl is django app for shortening urls'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

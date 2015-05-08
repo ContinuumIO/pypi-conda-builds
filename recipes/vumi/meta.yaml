@@ -1,0 +1,197 @@
+package:
+  name: vumi
+  version: "0.5.19"
+
+source:
+  fn: vumi-0.5.19.tar.gz
+  url: https://pypi.python.org/packages/source/v/vumi/vumi-0.5.19.tar.gz
+  md5: b9ce334171132013e8bab566c9bf423a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vumi = vumi:main
+    #
+    # Would create an entry point called vumi that calls vumi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - twisted >=13.1.0
+    - txamqp >=0.6.2
+    - pyyaml
+    - iso8601
+    - pyopenssl
+    - service_identity
+    - txssmi >=0.3.0
+    - wokkel
+    - redis >=2.10.0
+    - txredis
+    - python-smpp >=0.1.5
+    - pytz
+    - riak >=2.1
+    - txjson-rpc ==0.3.1
+    - txtwitter >=0.1.4a
+    - treq
+    - confmodel >=0.2.0
+    - hyperloglog
+
+  run:
+    - python
+    - zope.interface
+    - twisted >=13.1.0
+    - txamqp >=0.6.2
+    - pyyaml
+    - iso8601
+    - pyopenssl
+    - service_identity
+    - txssmi >=0.3.0
+    - wokkel
+    - redis >=2.10.0
+    - txredis
+    - python-smpp >=0.1.5
+    - pytz
+    - riak >=2.1
+    - txjson-rpc ==0.3.1
+    - txtwitter >=0.1.4a
+    - treq
+    - confmodel >=0.2.0
+    - hyperloglog
+
+test:
+  # Python imports
+  imports:
+    - twisted.plugins
+    - vumi
+    - vumi.application
+    - vumi.application.tests
+    - vumi.blinkenlights
+    - vumi.blinkenlights.heartbeat
+    - vumi.blinkenlights.heartbeat.tests
+    - vumi.blinkenlights.tests
+    - vumi.codecs
+    - vumi.codecs.tests
+    - vumi.components
+    - vumi.components.tests
+    - vumi.demos
+    - vumi.demos.tests
+    - vumi.dispatchers
+    - vumi.dispatchers.simple
+    - vumi.dispatchers.simple.tests
+    - vumi.dispatchers.tests
+    - vumi.middleware
+    - vumi.middleware.tests
+    - vumi.persist
+    - vumi.persist.tests
+    - vumi.resources
+    - vumi.scripts
+    - vumi.scripts.tests
+    - vumi.tests
+    - vumi.transports
+    - vumi.transports.airtel
+    - vumi.transports.airtel.tests
+    - vumi.transports.api
+    - vumi.transports.api.tests
+    - vumi.transports.apposit
+    - vumi.transports.apposit.tests
+    - vumi.transports.cellulant
+    - vumi.transports.cellulant.tests
+    - vumi.transports.devnull
+    - vumi.transports.devnull.tests
+    - vumi.transports.dmark
+    - vumi.transports.dmark.tests
+    - vumi.transports.httprpc
+    - vumi.transports.httprpc.tests
+    - vumi.transports.imimobile
+    - vumi.transports.imimobile.tests
+    - vumi.transports.infobip
+    - vumi.transports.infobip.tests
+    - vumi.transports.integrat
+    - vumi.transports.integrat.tests
+    - vumi.transports.irc
+    - vumi.transports.irc.tests
+    - vumi.transports.mediaedgegsm
+    - vumi.transports.mediaedgegsm.tests
+    - vumi.transports.mediafonemc
+    - vumi.transports.mediafonemc.tests
+    - vumi.transports.mtech_kenya
+    - vumi.transports.mtech_kenya.tests
+    - vumi.transports.mtech_ussd
+    - vumi.transports.mtech_ussd.tests
+    - vumi.transports.mtn_nigeria
+    - vumi.transports.mtn_nigeria.tests
+    - vumi.transports.mtn_rwanda
+    - vumi.transports.mtn_rwanda.tests
+    - vumi.transports.mxit
+    - vumi.transports.mxit.tests
+    - vumi.transports.netcore
+    - vumi.transports.netcore.tests
+    - vumi.transports.opera
+    - vumi.transports.opera.tests
+    - vumi.transports.parlayx
+    - vumi.transports.parlayx.tests
+    - vumi.transports.safaricom
+    - vumi.transports.safaricom.tests
+    - vumi.transports.smpp
+    - vumi.transports.smpp.deprecated
+    - vumi.transports.smpp.deprecated.clientserver
+    - vumi.transports.smpp.deprecated.clientserver.tests
+    - vumi.transports.smpp.deprecated.tests
+    - vumi.transports.smpp.processors
+    - vumi.transports.smpp.processors.tests
+    - vumi.transports.smpp.tests
+    - vumi.transports.smssync
+    - vumi.transports.smssync.tests
+    - vumi.transports.telnet
+    - vumi.transports.telnet.tests
+    - vumi.transports.tests
+    - vumi.transports.trueafrican
+    - vumi.transports.trueafrican.tests
+    - vumi.transports.truteq
+    - vumi.transports.truteq.tests
+    - vumi.transports.twitter
+    - vumi.transports.twitter.tests
+    - vumi.transports.vas2nets
+    - vumi.transports.vas2nets.tests
+    - vumi.transports.vodacom_messaging
+    - vumi.transports.vodacom_messaging.tests
+    - vumi.transports.vumi_bridge
+    - vumi.transports.vumi_bridge.tests
+    - vumi.transports.wechat
+    - vumi.transports.wechat.tests
+    - vumi.transports.xmpp
+    - vumi.transports.xmpp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/vumi
+  license: BSD License
+  summary: 'Super-scalable messaging engine for the delivery of SMS, Star Menu and chat messages to diverse audiences in emerging markets and beyond.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

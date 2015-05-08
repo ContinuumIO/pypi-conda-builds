@@ -1,0 +1,67 @@
+package:
+  name: python-u2flib-server
+  version: "3.1.0"
+
+source:
+  fn: python-u2flib-server-3.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-u2flib-server/python-u2flib-server-3.1.0.tar.gz
+  md5: 7d91669bca4e038f8c84bf3557e9c4d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-u2flib-server = python-u2flib-server:main
+    #
+    # Would create an entry point called python-u2flib-server that calls python-u2flib-server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m2crypto
+    - pyasn1 >=0.1.7
+    - pyasn1-modules
+
+  run:
+    - python
+    - m2crypto
+    - pyasn1 >=0.1.7
+    - pyasn1-modules
+
+test:
+  # Python imports
+  imports:
+    - u2flib_server
+    - u2flib_server.attestation
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Yubico/python-u2flib-server
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Python based U2F server library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

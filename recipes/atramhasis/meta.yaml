@@ -1,0 +1,111 @@
+package:
+  name: atramhasis
+  version: "0.4.3"
+
+source:
+  fn: atramhasis-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/atramhasis/atramhasis-0.4.3.tar.gz
+  md5: 5f3ada3d7b733d1f02ddaec6a27c80a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - atramhasis = atramhasis:main
+    #
+    # Would create an entry point called atramhasis that calls atramhasis.main()
+
+    - initialize_atramhasis_db=atramhasis.scripts.initializedb:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - pyramid_tm
+    - sqlalchemy
+    - transaction
+    - zope.sqlalchemy
+    - waitress
+    - skosprovider
+    - skosprovider_sqlalchemy
+    - skosprovider_rdf
+    - skosprovider_getty
+    - skosprovider_heritagedata
+    - pyramid_skosprovider
+    - language_tags
+    - pyramid_jinja2
+    - alembic
+    - babel
+    - colander
+    - requests
+    - dogpile.cache
+    - six
+    - pyramid_rewrite
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - pyramid_tm
+    - sqlalchemy
+    - transaction
+    - zope.sqlalchemy
+    - waitress
+    - skosprovider
+    - skosprovider_sqlalchemy
+    - skosprovider_rdf
+    - skosprovider_getty
+    - skosprovider_heritagedata
+    - pyramid_skosprovider
+    - language_tags
+    - pyramid_jinja2
+    - alembic
+    - babel
+    - colander
+    - requests
+    - dogpile.cache
+    - six
+    - pyramid_rewrite
+
+test:
+  # Python imports
+  imports:
+    - atramhasis
+    - atramhasis.data
+    - atramhasis.scaffolds
+    - atramhasis.scripts
+    - atramhasis.skos
+    - atramhasis.views
+    - fixtures
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - initialize_atramhasis_db --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://atramhasis.readthedocs.org
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A web based editor for thesauri adhering to the SKOS specification.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

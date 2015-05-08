@@ -1,0 +1,68 @@
+package:
+  name: django-teamcity
+  version: "0.1.2"
+
+source:
+  fn: django-teamcity-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-teamcity/django-teamcity-0.1.2.tar.gz
+  md5: 4973618cff38cf2c8f30bd7b82b39213
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-teamcity = django-teamcity:main
+    #
+    # Would create an entry point called django-teamcity that calls django-teamcity.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django <1.6
+    - django-discover-runner
+    - teamcity-messages
+
+  run:
+    - python
+    - django <1.6
+    - django-discover-runner
+    - teamcity-messages
+
+test:
+  # Python imports
+  imports:
+    - django_teamcity
+    - django_teamcity.management
+    - django_teamcity.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/raymank26/django-teamcity
+  license: BSD
+  summary: 'send test result to TeamCity and provide Selenium support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

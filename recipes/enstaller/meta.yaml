@@ -1,0 +1,105 @@
+package:
+  name: enstaller
+  version: "4.8.4"
+
+source:
+  fn: enstaller-4.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/e/enstaller/enstaller-4.8.4.tar.gz
+  md5: fc40f053ba08c8924c86e1ed567c4bc7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - enstaller = enstaller:main
+    #
+    # Would create an entry point called enstaller that calls enstaller.main()
+
+    - enpkg = enstaller.main:main_noexc
+    - egginst = egginst.main:main
+    - enpkg-repair = egginst.repair_broken_egg_info:main
+    - update-patches = enstaller.patch:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - egginst
+    - egginst.console
+    - egginst.tests
+    - egginst.vendor
+    - enstaller
+    - enstaller.auth
+    - enstaller.auth.tests
+    - enstaller.cli
+    - enstaller.cli.tests
+    - enstaller.indexed_repo
+    - enstaller.indexed_repo.tests
+    - enstaller.solver
+    - enstaller.solver.tests
+    - enstaller.tests
+    - enstaller.tools
+    - enstaller.tools.tests
+    - enstaller.vendor
+    - enstaller.vendor.cachecontrol
+    - enstaller.vendor.cachecontrol.caches
+    - enstaller.vendor.futures
+    - enstaller.vendor.jsonschema
+    - enstaller.vendor.keyring
+    - enstaller.vendor.keyring.backends
+    - enstaller.vendor.keyring.util
+    - enstaller.vendor.requests
+    - enstaller.vendor.requests.packages
+    - enstaller.vendor.requests.packages.chardet
+    - enstaller.vendor.requests.packages.urllib3
+    - enstaller.vendor.requests.packages.urllib3.contrib
+    - enstaller.vendor.requests.packages.urllib3.packages
+    - enstaller.vendor.requests.packages.urllib3.packages.ssl_match_hostname
+    - enstaller.vendor.requests.packages.urllib3.util
+    - enstaller.vendor.sqlite_cache
+    - enstaller.vendor.win32ctypes
+    - enstaller.vendor.yaml
+    - enstaller.vendor.yaml_py3
+    - enstaller.versions
+    - enstaller.versions.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - enpkg --help
+    - egginst --help
+    - enpkg-repair --help
+    - update-patches --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/enthought/enstaller
+  license: BSD License
+  summary: 'Install and managing tool for egg-based packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

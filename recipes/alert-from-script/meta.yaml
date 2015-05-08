@@ -1,0 +1,64 @@
+package:
+  name: alert-from-script
+  version: "0.1.2"
+
+source:
+  fn: alert-from-script-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/alert-from-script/alert-from-script-0.1.2.tar.gz
+  md5: 77e2f0f2418d9b53b164990a306b4f59
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alert-from-script = alert-from-script:main
+    #
+    # Would create an entry point called alert-from-script that calls alert-from-script.main()
+
+    - alert-from-script = alert_from_script:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.12.0
+
+  run:
+    - python
+    - boto >=2.12.0
+
+test:
+  # Python imports
+  imports:
+    - alert_from_script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - alert-from-script --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/adamsb6/alert_from_script
+  license: UNKNOWN
+  summary: 'Generate SNS alerts from any command.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: flowy
+  version: "0.3.3"
+
+source:
+  fn: flowy-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flowy/flowy-0.3.3.tar.gz
+  md5: f7f35d42eda2aef471b193f52a86dd80
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flowy = flowy:main
+    #
+    # Would create an entry point called flowy that calls flowy.main()
+
+    - flowy = flowy.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.33.0
+    - venusian >=1.0a8
+
+  run:
+    - python
+    - boto ==2.33.0
+    - venusian >=1.0a8
+
+test:
+  # Python imports
+  imports:
+    - flowy
+    - flowy.tests
+    - flowy.tests.integration
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flowy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pbs/flowy
+  license: MIT License
+  summary: 'Python library for Amazon Simple Workflow Service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

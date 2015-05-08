@@ -1,0 +1,62 @@
+package:
+  name: django-php-bridge
+  version: "0.1.1"
+
+source:
+  fn: django-php-bridge-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-php-bridge/django-php-bridge-0.1.1.tar.gz
+  md5: 57466d028b5b249d45f1c443f3e35112
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-php-bridge = django-php-bridge:main
+    #
+    # Would create an entry point called django-php-bridge that calls django-php-bridge.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - phpserialize ==1.3
+
+  run:
+    - python
+    - phpserialize ==1.3
+
+test:
+  # Python imports
+  imports:
+    - django_php_bridge
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/winhamwr/django-php-bridge/
+  license: BSD License
+  summary: 'Authentication bridge between Django and PHP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

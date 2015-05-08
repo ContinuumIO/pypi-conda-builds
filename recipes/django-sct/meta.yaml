@@ -1,0 +1,95 @@
+package:
+  name: django-sct
+  version: "0.7"
+
+source:
+  fn: django-sct-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sct/django-sct-0.7.tar.gz
+  md5: cdba2bfb7d72c377ed7cea08e85103ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sct = django-sct:main
+    #
+    # Would create an entry point called django-sct that calls django-sct.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - pycrypto >=2.0
+
+  run:
+    - python
+    - django >=1.4
+    - pycrypto >=2.0
+
+test:
+  # Python imports
+  imports:
+    - sphene
+    - sphene.community
+    - sphene.community.management
+    - sphene.community.management.commands
+    - sphene.community.migrations
+    - sphene.community.templatetags
+    - sphene.contrib
+    - sphene.contrib.libs
+    - sphene.contrib.libs.codecoverage
+    - sphene.contrib.libs.common
+    - sphene.contrib.libs.common.text
+    - sphene.contrib.libs.common.utils
+    - sphene.contrib.libs.custom
+    - sphene.contrib.libs.markdown
+    - sphene.generic
+    - sphene.generic.advanced_object_list
+    - sphene.sphblockframework
+    - sphene.sphblockframework.templatetags
+    - sphene.sphblog
+    - sphene.sphblog.templatetags
+    - sphene.sphboard
+    - sphene.sphboard.migrations
+    - sphene.sphboard.templatetags
+    - sphene.sphcomments
+    - sphene.sphcomments.templatetags
+    - sphene.sphlinklist
+    - sphene.sphquestions
+    - sphene.sphquestions.migrations
+    - sphene.sphquestions.templatetags
+    - sphene.sphsearchboard
+    - sphene.sphsearchboard.templatetags
+    - sphene.sphwiki
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sct.sphene.net/
+  license: BSD License
+  summary: 'SCT (Sphene Community Tools) is a collection of Django applications for communities. It currently consists of a Forum and Wiki application which are applicable for communities, support forums, blogs, etc.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

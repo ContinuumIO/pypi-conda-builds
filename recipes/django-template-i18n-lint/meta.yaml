@@ -1,0 +1,62 @@
+package:
+  name: django-template-i18n-lint
+  version: "1.2.1"
+
+source:
+  fn: django-template-i18n-lint-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-template-i18n-lint/django-template-i18n-lint-1.2.1.tar.gz
+  md5: 9bba46c3b1293479ef21a559e7aac76a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-template-i18n-lint = django-template-i18n-lint:main
+    #
+    # Would create an entry point called django-template-i18n-lint that calls django-template-i18n-lint.main()
+
+    - django-template-i18n-lint = django_template_i18n_lint:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_template_i18n_lint
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - django-template-i18n-lint --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.technomancy.org/python/django-template-i18n-lint/
+  license: GNU General Public License v3 or later (GPLv3+) or BSD License
+  summary: 'Lint tool to find non-trans/blocktrans text in django templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

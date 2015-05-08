@@ -1,0 +1,89 @@
+package:
+  name: beim
+  version: "0.01"
+
+source:
+  fn: beim-0.01.tar.gz
+  url: http://dev.danse.us/packages/beim-0.01.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - beim = beim:main
+    #
+    # Would create an entry point called beim that calls beim.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - beim
+    - beim.build
+    - beim.envvars
+    - beim.envvars.operations
+    - beim.envvars.renderers
+    - beim.install
+    - beim.installers
+    - beim.installers.HDF4
+    - beim.installers.HDF5
+    - beim.installers.boostpython
+    - beim.installers.h4h5tools
+    - beim.installers.matplotlib
+    - beim.installers.mpich2
+    - beim.installers.py_cjson
+    - beim.installers.py_h5py
+    - beim.installers.py_numpy
+    - beim.installers.py_psutil
+    - beim.installers.pylons
+    - beim.installers.wxPython
+    - beim.misc
+    - beim.mm
+    - beim.mm.dottools
+    - beim.mm.dottools.dependencies
+    - beim.package
+    - beim.package.repoutils
+    - beim.packages
+    - beim.packages.factories
+    - beim.paths
+    - beim.scripts
+    - beim.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: []
+  license: UNKNOWN
+  summary: 'beim: a release builder'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

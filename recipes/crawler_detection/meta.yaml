@@ -1,0 +1,70 @@
+package:
+  name: crawler_detection
+  version: "0.1"
+
+source:
+  fn: crawler-detection.zip
+  url: https://pypi.python.org/packages/source/c/crawler_detection/crawler-detection.zip
+  md5: 67ed5a157109fedfcca0939b51246f79
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crawler_detection = crawler_detection:main
+    #
+    # Would create an entry point called crawler_detection that calls crawler_detection.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pandas ==0.12.0
+    - apachelog ==1.0
+    - numpy ==1.8.0
+    - httpbl
+    - bulkwhois ==0.2.1
+
+  run:
+    - python
+    - pandas ==0.12.0
+    - apachelog ==1.0
+    - numpy ==1.8.0
+    - httpbl
+    - bulkwhois ==0.2.1
+
+test:
+  # Python imports
+  imports:
+    - crawler_detection
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: 'Example package that says hello'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

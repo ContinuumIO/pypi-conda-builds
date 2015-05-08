@@ -1,0 +1,70 @@
+package:
+  name: ploddle.tools
+  version: "0.0"
+
+source:
+  fn: ploddle.tools-0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/ploddle.tools/ploddle.tools-0.0.tar.gz
+  md5: 58e29d84dd0563c4035e4ed496ffc262
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ploddle.tools = ploddle.tools:main
+    #
+    # Would create an entry point called ploddle.tools that calls ploddle.tools.main()
+
+    - ploddle-top=ploddle.top.main:main
+    - adb2ploddle=ploddle.adb2ploddle.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - blessings
+
+  run:
+    - python
+    - setuptools
+    - requests
+    - blessings
+
+test:
+  # Python imports
+  imports:
+    - ploddle.adb2ploddle
+    - ploddle.top
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ploddle-top --help
+    - adb2ploddle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.shishnet.org/ploddle
+  license: UNKNOWN
+  summary: 'command line Ploddle utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

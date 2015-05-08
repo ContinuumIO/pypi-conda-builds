@@ -1,0 +1,64 @@
+package:
+  name: binaryplist
+  version: "0.0.1"
+
+source:
+  fn: binaryplist-0.0.1.zip
+  url: https://pypi.python.org/packages/source/b/binaryplist/binaryplist-0.0.1.zip
+  md5: c9c4332feecea6c01a797ac995593511
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - binaryplist = binaryplist:main
+    #
+    # Would create an entry point called binaryplist that calls binaryplist.main()
+
+    - binarylist-cli = binaryplist.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+
+  run:
+    - python
+    - click
+
+test:
+  # Python imports
+  imports:
+    - binaryplist
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - binarylist-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/provegard/binaryplist
+  license: BSD License
+  summary: 'Reads Apple binary plist files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

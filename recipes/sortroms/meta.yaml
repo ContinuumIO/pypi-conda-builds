@@ -1,0 +1,62 @@
+package:
+  name: sortroms
+  version: "1.2.2"
+
+source:
+  fn: sortroms-1.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sortroms/sortroms-1.2.2.tar.gz
+  md5: e8c0f060ca151d9c60390c25058041c9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sortroms = sortroms:main
+    #
+    # Would create an entry point called sortroms that calls sortroms.main()
+
+    - sortroms=sortroms:command_line_entrypoint
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sortroms
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sortroms --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/natemara/sortroms
+  license: MIT
+  summary: 'Python package for sorting emulator ROM files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

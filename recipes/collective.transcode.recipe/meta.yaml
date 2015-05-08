@@ -1,0 +1,76 @@
+package:
+  name: collective.transcode.recipe
+  version: "0.2"
+
+source:
+  fn: collective.transcode.recipe-0.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.transcode.recipe/collective.transcode.recipe-0.2.zip
+  md5: 15531fc7b9cefad187fe392e2977f7bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.transcode.recipe = collective.transcode.recipe:main
+    #
+    # Would create an entry point called collective.transcode.recipe that calls collective.transcode.recipe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+    - zc.buildout
+    - zc.recipe.egg
+    - py
+    - collective.transcode.daemon
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+    - zc.buildout
+    - zc.recipe.egg
+    - py
+    - collective.transcode.daemon
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.transcode
+    - collective.transcode.recipe
+    - collective.transcode.recipe.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://unweb.me
+  license: GNU General Public License (GPL)
+  summary: 'Recipe to setup a transcode daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

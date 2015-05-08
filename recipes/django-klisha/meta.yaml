@@ -1,0 +1,76 @@
+package:
+  name: django-klisha
+  version: "1.0.4"
+
+source:
+  fn: django-klisha-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-klisha/django-klisha-1.0.4.tar.gz
+  md5: 106e1f69fde9d12dbc2436067eb6f768
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-klisha = django-klisha:main
+    #
+    # Would create an entry point called django-klisha that calls django-klisha.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5.2
+    - pil ==1.1.7
+    - south ==0.7.6
+    - django-compressor ==1.3
+    - django-pure-pagination ==0.2.1
+    - sorl-thumbnail ==11.12
+    - django-admin-bootstrapped ==0.4.1
+
+  run:
+    - python
+    - django ==1.5.2
+    - pil ==1.1.7
+    - south ==0.7.6
+    - django-compressor ==1.3
+    - django-pure-pagination ==0.2.1
+    - sorl-thumbnail ==11.12
+    - django-admin-bootstrapped ==0.4.1
+
+test:
+  # Python imports
+  imports:
+    - klisha
+    - klisha.migrations
+    - klisha.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zenzire/django-klisha
+  license: BSD License
+  summary: 'A standards-compliant and responsive photoblog web application, written in Python and Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

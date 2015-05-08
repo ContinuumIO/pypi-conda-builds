@@ -1,0 +1,71 @@
+package:
+  name: vpoller
+  version: "0.5.3"
+
+source:
+  fn: vpoller-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/v/vpoller/vpoller-0.5.3.tar.gz
+  md5: f7fc4e4902f88f3bbe8416d9325f42a9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vpoller = vpoller:main
+    #
+    # Would create an entry point called vpoller that calls vpoller.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq >=14.3.1
+    - docopt >=0.6.2
+    - pyvmomi >=5.5.0-2014.1.1
+    - vconnector >=0.3.7
+
+  run:
+    - python
+    - pyzmq >=14.3.1
+    - docopt >=0.6.2
+    - pyvmomi >=5.5.0-2014.1.1
+    - vconnector >=0.3.7
+
+test:
+  # Python imports
+  imports:
+    - vpoller
+    - vpoller.helpers
+    - vpoller.task
+    - vpoller.vsphere
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dnaeon/py-vpoller
+  license: BSD
+  summary: 'Distributed VMware vSphere API Proxy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

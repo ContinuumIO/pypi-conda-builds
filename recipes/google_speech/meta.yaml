@@ -1,0 +1,67 @@
+package:
+  name: google_speech
+  version: "1.0.4"
+
+source:
+  fn: google_speech-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/google_speech/google_speech-1.0.4.tar.gz
+  md5: 05d7d11c2dcff86ed9a920c226d9c587
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google_speech = google_speech:main
+    #
+    # Would create an entry point called google_speech that calls google_speech.main()
+
+    - google_speech = google_speech:cl_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - enum34
+    - requests >=2.6.0
+
+  run:
+    - python
+    - enum34
+    - requests >=2.6.0
+
+test:
+  # Python imports
+  imports:
+    - google_speech
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - google_speech --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/desbma/GoogleSpeech
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Read text using Google Translate TTS API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

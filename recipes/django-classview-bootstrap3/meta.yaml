@@ -1,0 +1,77 @@
+package:
+  name: django-classview-bootstrap3
+  version: "0.0.8"
+
+source:
+  fn: django-classview-bootstrap3-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-classview-bootstrap3/django-classview-bootstrap3-0.0.8.tar.gz
+  md5: 247daafb0672c721e6a91aa4d3642861
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-classview-bootstrap3 = django-classview-bootstrap3:main
+    #
+    # Would create an entry point called django-classview-bootstrap3 that calls django-classview-bootstrap3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django_conventions
+    - south
+    - django-webtest
+    - dj_database_url
+    - simplejson
+
+  run:
+    - python
+    - django_conventions
+    - south
+    - django-webtest
+    - dj_database_url
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - django_bootstrap3view_app
+    - django_bootstrap3view_app.management
+    - django_bootstrap3view_app.management.commands
+    - django_bootstrap3view_app.management.commands.lib
+    - django_bootstrap3view_app.services
+    - django_bootstrap3view_app.test
+    - django_bootstrap3view_app.utils
+    - django_bootstrap3view_app.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bossiernesto.github.io/django-bootstrap3-classview/
+  license: BSD-3
+  summary: 'Django-Bootstrap 3 generic template with class views'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

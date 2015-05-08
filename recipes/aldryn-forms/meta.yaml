@@ -1,0 +1,80 @@
+package:
+  name: aldryn-forms
+  version: "0.3.1"
+
+source:
+  fn: aldryn-forms-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-forms/aldryn-forms-0.3.1.tar.gz
+  md5: c478a7c2aa776c5d6d549299a5446dd4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-forms = aldryn-forms:main
+    #
+    # Would create an entry point called aldryn-forms that calls aldryn-forms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-emailit
+    - django-simple-captcha
+    - django-tablib
+    - south >=0.8.1
+    - tablib
+    - pillow
+    - django-filer
+    - django-sizefield
+    - aldryn-boilerplates >=0.6
+
+  run:
+    - python
+    - django-emailit
+    - django-simple-captcha
+    - django-tablib
+    - south >=0.8.1
+    - tablib
+    - pillow
+    - django-filer
+    - django-sizefield
+    - aldryn-boilerplates >=0.6
+
+test:
+  # Python imports
+  imports:
+    - aldryn_forms
+    - aldryn_forms.migrations
+    - aldryn_forms.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-forms
+  license: BSD License
+  summary: 'Create forms and embed them on CMS pages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

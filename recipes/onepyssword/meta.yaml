@@ -1,0 +1,67 @@
+package:
+  name: onepyssword
+  version: "0.3.2"
+
+source:
+  fn: onepyssword-0.3.2.zip
+  url: https://pypi.python.org/packages/source/o/onepyssword/onepyssword-0.3.2.zip
+  md5: eefa6e4183ec629e3298d1676a8f4575
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - onepyssword = onepyssword:main
+    #
+    # Would create an entry point called onepyssword that calls onepyssword.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbkdf2-ctypes >=0.99.3
+    - pycrypto >=2.6.1
+    - copypaste >=0.2.0
+
+  run:
+    - python
+    - setuptools
+    - pbkdf2-ctypes >=0.99.3
+    - pycrypto >=2.6.1
+    - copypaste >=0.2.0
+
+test:
+  # Python imports
+  imports:
+    - onepyssword
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gr1n.github.io/1pwd/
+  license: MIT License
+  summary: 'A command line interface for 1Password'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

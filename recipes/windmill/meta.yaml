@@ -1,0 +1,80 @@
+package:
+  name: windmill
+  version: "1.6"
+
+source:
+  fn: windmill-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/w/windmill/windmill-1.6.tar.gz
+  md5: 56eb5bd57a52d8e762b488e647e5efb4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - windmill = windmill:main
+    #
+    # Would create an entry point called windmill that calls windmill.main()
+
+    - windmill = windmill.bin.windmill_bin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - windmill
+    - windmill.authoring
+    - windmill.bin
+    - windmill.browser
+    - windmill.conf
+    - windmill.dep
+    - windmill.dep._functest
+    - windmill.dep._mozrunner
+    - windmill.dep._simplejson
+    - windmill.dep._simplejson.tests
+    - windmill.dep._simplesettings
+    - windmill.dep._wsgi_fileserver
+    - windmill.dep._wsgi_jsonrpc
+    - windmill.dep._wsgi_xmlrpc
+    - windmill.management
+    - windmill.management.commands
+    - windmill.server
+    - windmill.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - windmill --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.getwindmill.com/
+  license: Apache Software License
+  summary: 'Web testing framework intended for complete automation of user interface testing, with strong test debugging and recording capabilities.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

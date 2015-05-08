@@ -1,0 +1,91 @@
+package:
+  name: eea.app.visualization
+  version: "9.3"
+
+source:
+  fn: eea.app.visualization-9.3.zip
+  url: https://pypi.python.org/packages/source/e/eea.app.visualization/eea.app.visualization-9.3.zip
+  md5: 66ad84633e0742f18fd5789a36833ebc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.app.visualization = eea.app.visualization:main
+    #
+    # Would create an entry point called eea.app.visualization that calls eea.app.visualization.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - plone.i18n
+    - z3c.autoinclude
+    - eea.jquery >=6.3
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-dateutil
+    - plone.i18n
+    - z3c.autoinclude
+    - eea.jquery >=6.3
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.app
+    - eea.app.visualization
+    - eea.app.visualization.browser
+    - eea.app.visualization.browser.app
+    - eea.app.visualization.browser.res
+    - eea.app.visualization.cache
+    - eea.app.visualization.controlpanel
+    - eea.app.visualization.converter
+    - eea.app.visualization.converter.types
+    - eea.app.visualization.data
+    - eea.app.visualization.events
+    - eea.app.visualization.facets
+    - eea.app.visualization.facets.list
+    - eea.app.visualization.storage
+    - eea.app.visualization.subtypes
+    - eea.app.visualization.tests
+    - eea.app.visualization.upgrades
+    - eea.app.visualization.views
+    - eea.app.visualization.views.data
+    - eea.app.visualization.zopera
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eea.github.com/docs/eea.app.visualization
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'Visualization API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

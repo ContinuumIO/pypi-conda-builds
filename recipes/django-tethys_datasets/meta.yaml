@@ -1,0 +1,68 @@
+package:
+  name: django-tethys_datasets
+  version: "1.0.0"
+
+source:
+  fn: django-tethys_datasets-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tethys_datasets/django-tethys_datasets-1.0.0.tar.gz
+  md5: 6da158f314cb0f55b9ba70bc1c0eecfa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tethys_datasets = django-tethys_datasets:main
+    #
+    # Would create an entry point called django-tethys_datasets that calls django-tethys_datasets.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests
+    - tethys_dataset_services
+
+  run:
+    - python
+    - django
+    - requests
+    - tethys_dataset_services
+
+test:
+  # Python imports
+  imports:
+    - tethys_datasets
+    - tethys_datasets.migrations
+    - tethys_datasets.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'An app to enable provide access to dataset storage for apps.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

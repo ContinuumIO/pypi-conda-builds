@@ -1,0 +1,81 @@
+package:
+  name: me2-supervisor
+  version: "0.0.9"
+
+source:
+  fn: me2-supervisor-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/m/me2-supervisor/me2-supervisor-0.0.9.tar.gz
+  md5: 960782f8f38b1fb299850108444f8d08
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - me2-supervisor = me2-supervisor:main
+    #
+    # Would create an entry point called me2-supervisor that calls me2-supervisor.main()
+
+    - mded = me2.server.apps.mded:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mjsrpc2 ==0.0.6
+    - lockfile >=0.9.0
+    - python-daemon >=1.6
+    - pyyaml >=3.0
+    - mako >=0.6.0
+    - me2-packager ==0.0.5
+    - cherrypy >=3.0.0
+
+  run:
+    - python
+    - mjsrpc2 ==0.0.6
+    - lockfile >=0.9.0
+    - python-daemon >=1.6
+    - pyyaml >=3.0
+    - mako >=0.6.0
+    - me2-packager ==0.0.5
+    - cherrypy >=3.0.0
+
+test:
+  # Python imports
+  imports:
+    - me2
+    - me2.common
+    - me2.server
+    - me2.server.apps
+    - me2.server.lxc
+    - me2.server.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mded --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://developers.mosaic-cloud.eu
+  license: Apache Software License
+  summary: 'me2 is a mOSAIC Cloud Project component responsible for the deployment and supervision of application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: datanommer.models
+  version: "0.6.5"
+
+source:
+  fn: datanommer.models-0.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/datanommer.models/datanommer.models-0.6.5.tar.gz
+  md5: 84bab0753c6c8c2ca468cf9b4a9d3126
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datanommer.models = datanommer.models:main
+    #
+    # Would create an entry point called datanommer.models that calls datanommer.models.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.7
+    - fedmsg
+    - alembic
+
+  run:
+    - python
+    - sqlalchemy >=0.7
+    - fedmsg
+    - alembic
+
+test:
+  # Python imports
+  imports:
+    - datanommer
+    - datanommer.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fedora-infra/datanommer
+  license: GPLv3+
+  summary: 'SQLAlchemy models for datanommer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

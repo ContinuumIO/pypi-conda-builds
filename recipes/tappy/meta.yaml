@@ -1,0 +1,65 @@
+package:
+  name: tappy
+  version: "0.9.0"
+
+source:
+  fn: tappy-0.9.0.tar.gz
+  url: http://prdownloads.sourceforge.net/tappy/tappy-0.9.0.tar.gz?download
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tappy = tappy:main
+    #
+    # Would create an entry point called tappy that calls tappy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - tappy
+    - tappy_lib
+    - tappy_lib/astronomia/astronomia
+    - tappy_lib/filelike/filelike
+    - tappy_lib/pad
+    - tappy_lib/pyparsing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tappy.sourceforge.net
+  license: GNU General Public License (GPL)
+  summary: 'Tidal Analysis Program in PYthon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

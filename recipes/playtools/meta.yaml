@@ -1,0 +1,69 @@
+package:
+  name: playtools
+  version: "0.1.1"
+
+source:
+  fn: Playtools-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/Playtools/Playtools-0.1.1.tar.gz
+  md5: e5e7a5e0e905e360b69ce2d5f03bdc1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - playtools = playtools:main
+    #
+    # Would create an entry point called playtools that calls playtools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pysqlite >=2
+    - storm >=0.13
+    - rdflib <3a
+
+  run:
+    - python
+    - pysqlite >=2
+    - storm >=0.13
+    - rdflib <3a
+
+test:
+  # Python imports
+  imports:
+    - playtools
+    - playtools.hg
+    - playtools.plugins
+    - playtools.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://goonmill.org/playtools/
+  license: MIT License
+  summary: 'Playtools for RPG Software'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

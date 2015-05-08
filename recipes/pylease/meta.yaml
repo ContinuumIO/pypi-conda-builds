@@ -1,0 +1,66 @@
+package:
+  name: pylease
+  version: "0.2"
+
+source:
+  fn: pylease-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pylease/pylease-0.2.tar.gz
+  md5: 0e75640afa8f1d50dcca5bfb6376c0cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pylease = pylease:main
+    #
+    # Would create an entry point called pylease that calls pylease.main()
+
+    - pylease = pylease.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pip
+
+  run:
+    - python
+    - pip
+
+test:
+  # Python imports
+  imports:
+    - pylease
+    - pylease.extension
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pylease --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: git@github.com:n9code/pylease.git
+  license: MIT License
+  summary: 'Easy package versioning and release management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

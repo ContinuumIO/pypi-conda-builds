@@ -1,0 +1,87 @@
+package:
+  name: inginious
+  version: "0.0.2"
+
+source:
+  fn: INGInious-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/I/INGInious/INGInious-0.0.2.tar.gz
+  md5: 5a88eb6e59321e6869df6f4ecaba8430
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inginious = inginious:main
+    #
+    # Would create an entry point called inginious that calls inginious.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+    - pytidylib
+    - docker-py
+    - sh
+    - web.py
+    - docutils
+    - simpleldap
+    - webtest
+
+  run:
+    - python
+    - pymongo
+    - pytidylib
+    - docker-py
+    - sh
+    - web.py
+    - docutils
+    - simpleldap
+    - webtest
+
+test:
+  # Python imports
+  imports:
+    - inginious
+    - inginious.backend
+    - inginious.common
+    - inginious.common.task_file_managers
+    - inginious.frontend
+    - inginious.frontend.custom
+    - inginious.frontend.pages
+    - inginious.frontend.pages.course_admin
+    - inginious.frontend.plugins
+    - inginious.frontend.plugins.auth
+    - inginious.frontend.plugins.contests
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/UCL-INGI/INGInious
+  license: LICENSE
+  summary: 'INGInious is an intelligent grader that allows secured and automated testing of code made by students.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

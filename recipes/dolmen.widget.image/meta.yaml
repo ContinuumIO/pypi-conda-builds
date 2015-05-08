@@ -1,0 +1,81 @@
+package:
+  name: dolmen.widget.image
+  version: "1.0b1"
+
+source:
+  fn: dolmen.widget.image-1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dolmen.widget.image/dolmen.widget.image-1.0b1.tar.gz
+  md5: 5799baa4aa4fea5bfea026b9cff1b7fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dolmen.widget.image = dolmen.widget.image:main
+    #
+    # Would create an entry point called dolmen.widget.image that calls dolmen.widget.image.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dolmen.file >=0.5.1
+    - dolmen.thumbnailer
+    - dolmen.widget.file >=1.0b1
+    - grokcore.component
+    - grokcore.view
+    - setuptools
+    - zeam.form.base >=1.0rc1
+    - zeam.form.ztk >=1.0rc1
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - dolmen.file >=0.5.1
+    - dolmen.thumbnailer
+    - dolmen.widget.file >=1.0b1
+    - grokcore.component
+    - grokcore.view
+    - setuptools
+    - zeam.form.base >=1.0rc1
+    - zeam.form.ztk >=1.0rc1
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - dolmen
+    - dolmen.widget
+    - dolmen.widget.image
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU General Public License (GPL)
+  summary: 'Image widget (with thumbnails) for `zeam.form`'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

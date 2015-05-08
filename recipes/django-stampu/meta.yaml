@@ -1,0 +1,67 @@
+package:
+  name: django-stampu
+  version: "0.1.4"
+
+source:
+  fn: django-stampu-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-stampu/django-stampu-0.1.4.tar.gz
+  md5: 90cd1ec6a3c2d1d19a13570dec214e66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-stampu = django-stampu:main
+    #
+    # Would create an entry point called django-stampu that calls django-stampu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml ==3.2.1
+    - django >=1.5
+
+  run:
+    - python
+    - lxml ==3.2.1
+    - django >=1.5
+
+test:
+  # Python imports
+  imports:
+    - stampu
+    - stampu.management
+    - stampu.management.commands
+    - stampu.renderers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fmartingr/django-stampu
+  license: GPLv2
+  summary: 'Convert your django sites into static content'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

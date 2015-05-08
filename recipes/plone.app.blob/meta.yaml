@@ -1,0 +1,81 @@
+package:
+  name: plone.app.blob
+  version: "1.5.13"
+
+source:
+  fn: plone.app.blob-1.5.13.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.app.blob/plone.app.blob-1.5.13.tar.gz
+  md5: f030acb823687f58885704359bc7f44c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.blob = plone.app.blob:main
+    #
+    # Would create an entry point called plone.app.blob that calls plone.app.blob.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.mimetypesregistry
+    - zodb3 >=3.8.1
+    - archetypes.schemaextender >=1.6
+    - plone.app.imaging >1.0b9
+    - plone.scale
+    - setuptools
+    - zope.proxy >=3.4
+
+  run:
+    - python
+    - setuptools
+    - products.mimetypesregistry
+    - zodb3 >=3.8.1
+    - archetypes.schemaextender >=1.6
+    - plone.app.imaging >1.0b9
+    - plone.scale
+    - setuptools
+    - zope.proxy >=3.4
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.blob
+    - plone.app.blob.adapters
+    - plone.app.blob.browser
+    - plone.app.blob.subtypes
+    - plone.app.blob.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/plone.app.blob
+  license: GNU General Public License (GPL)
+  summary: 'ZODB blob support for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

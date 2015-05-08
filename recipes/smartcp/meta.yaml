@@ -1,0 +1,66 @@
+package:
+  name: smartcp
+  version: "0.2"
+
+source:
+  fn: smartcp-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/smartcp/smartcp-0.2.tar.gz
+  md5: 46c06af9f14953f94a5fa85e835f3a1e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - smartcp = smartcp:main
+    #
+    # Would create an entry point called smartcp that calls smartcp.main()
+
+    - smartcp=smartcp:main
+    - smartcp-2.7=smartcp:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+
+  run:
+    - python
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - smartcp
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - smartcp --help
+    - smartcp-2.7 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/blegat/smartcp
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Smart Copy Utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

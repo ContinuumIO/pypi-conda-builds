@@ -1,0 +1,74 @@
+package:
+  name: django-oauth-tokens
+  version: "0.5.1"
+
+source:
+  fn: django-oauth-tokens-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oauth-tokens/django-oauth-tokens-0.5.1.tar.gz
+  md5: ff59f9463e23b5d819185a2d2feee848
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oauth-tokens = django-oauth-tokens:main
+    #
+    # Would create an entry point called django-oauth-tokens that calls django-oauth-tokens.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests
+    - requests_oauthlib
+    - beautifulsoup4
+    - django-taggit
+    - django-annoying
+
+  run:
+    - python
+    - django
+    - requests
+    - requests_oauthlib
+    - beautifulsoup4
+    - django-taggit
+    - django-annoying
+
+test:
+  # Python imports
+  imports:
+    - oauth_tokens
+    - oauth_tokens.migrations
+    - oauth_tokens.providers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-oauth-tokens
+  license: BSD License
+  summary: 'Application for getting, refreshing and storing OAuth access_tokens for Django standalone applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

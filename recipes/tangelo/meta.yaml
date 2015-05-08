@@ -1,0 +1,72 @@
+package:
+  name: tangelo
+  version: "0.9.0"
+
+source:
+  fn: tangelo-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/tangelo/tangelo-0.9.0.tar.gz
+  md5: 1551a0d11de408e9cfb67f6fce66aa60
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tangelo = tangelo:main
+    #
+    # Would create an entry point called tangelo that calls tangelo.main()
+
+    - tangelo = tangelo.__main__:main
+    - tangelo-passwd = tangelo.__main__:tangelo_passwd
+    - tangelo-pkgdata = tangelo.__main__:tangelo_pkgdata
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cherrypy >=3.2,<4.0
+    - pyyaml ==3.11
+    - ws4py ==0.3.2
+
+  run:
+    - python
+    - cherrypy >=3.2,<4.0
+    - pyyaml ==3.11
+    - ws4py ==0.3.2
+
+test:
+  # Python imports
+  imports:
+    - tangelo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tangelo --help
+    - tangelo-passwd --help
+    - tangelo-pkgdata --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kitware.github.io/tangelo
+  license: Apache License, Version 2.0
+  summary: 'Tangelo Web Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

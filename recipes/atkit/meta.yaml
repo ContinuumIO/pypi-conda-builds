@@ -1,0 +1,66 @@
+package:
+  name: atkit
+  version: "0.1.0"
+
+source:
+  fn: atkit-0.1.0.zip
+  url: https://pypi.python.org/packages/source/a/atkit/atkit-0.1.0.zip
+  md5: b55b2118574faec250ad9615a8e3815a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - atkit = atkit:main
+    #
+    # Would create an entry point called atkit that calls atkit.main()
+
+    - atkit.activate = atkit.cli:activate
+    - atkit.sandbox = atkit.cli:sandbox
+    - atkit.logview = atkit.cli:logview
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - atkit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - atkit.activate --help
+    - atkit.sandbox --help
+    - atkit.logview --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stnbu/atkit
+  license: MIT License
+  summary: 'atkit (an Admin Took KIT) provides a suite of tools whose goal is "total knowledge" regarding the python environment and process.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

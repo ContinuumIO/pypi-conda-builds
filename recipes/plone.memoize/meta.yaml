@@ -1,0 +1,70 @@
+package:
+  name: plone.memoize
+  version: "1.1.1"
+
+source:
+  fn: plone.memoize-1.1.1.zip
+  url: https://pypi.python.org/packages/source/p/plone.memoize/plone.memoize-1.1.1.zip
+  md5: d07cd14b976160e1f26a859e3370147e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.memoize = plone.memoize:main
+    #
+    # Would create an entry point called plone.memoize that calls plone.memoize.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.component
+    - zope.interface
+    - zope.ramcache
+
+  run:
+    - python
+    - setuptools
+    - zope.annotation
+    - zope.component
+    - zope.interface
+    - zope.ramcache
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.memoize
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.memoize
+  license: GNU General Public License (GPL)
+  summary: 'Decorators for caching the values of functions and methods'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

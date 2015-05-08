@@ -1,0 +1,67 @@
+package:
+  name: mongate
+  version: "2.1.6"
+
+source:
+  fn: mongate-2.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongate/mongate-2.1.6.tar.gz
+  md5: 518e438105e7c58e62ea31a65a7af4cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongate = mongate:main
+    #
+    # Would create an entry point called mongate that calls mongate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+    - httplib2
+    - simplejson
+
+  run:
+    - python
+    - pymongo
+    - httplib2
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - mongate
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bcoe/mongate
+  license: UNKNOWN
+  summary: 'A client library for Sleepy Mongoose that provides the same interface as Pymongo. With support for batch operations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

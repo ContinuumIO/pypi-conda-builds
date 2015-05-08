@@ -1,0 +1,68 @@
+package:
+  name: harry
+  version: "0.0.22"
+
+source:
+  fn: harry-0.0.22.tar.gz
+  url: https://pypi.python.org/packages/source/h/harry/harry-0.0.22.tar.gz
+  md5: 760ab6627e28515584dff370d07dd357
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - harry = harry:main
+    #
+    # Would create an entry point called harry that calls harry.main()
+
+    - harry=harry.harry:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt >=0.6.1
+    - jinja2 >=2.7.3
+
+  run:
+    - python
+    - docopt >=0.6.1
+    - jinja2 >=2.7.3
+
+test:
+  # Python imports
+  imports:
+    - harry
+    - harry.harpy
+    - harry.harpy.harpy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - harry --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/munrocape/harry
+  license: apache
+  summary: 'harry converts HTTP Archives (.har) into JMeter test plans (.jmx).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

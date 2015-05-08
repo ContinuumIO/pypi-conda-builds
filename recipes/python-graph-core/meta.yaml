@@ -1,0 +1,66 @@
+package:
+  name: python-graph-core
+  version: "1.8.2"
+
+source:
+  fn: python-graph-core-1.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-graph-core/python-graph-core-1.8.2.tar.gz
+  md5: 16f177496beb6e6bc507b12b8346ff96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-graph-core = python-graph-core:main
+    #
+    # Would create an entry point called python-graph-core that calls python-graph-core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pygraph
+    - pygraph/algorithms
+    - pygraph/algorithms.filters
+    - pygraph/algorithms.heuristics
+    - pygraph/classes
+    - pygraph/mixins
+    - pygraph/readwrite
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/python-graph/
+  license: MIT License
+  summary: 'A library for working with graphs in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: reprep
+  version: "2.4"
+
+source:
+  fn: reprep-2.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/reprep/reprep-2.4.tar.gz
+  md5: 22911b75e8e85344d02499b43b88999a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reprep = reprep:main
+    #
+    # Would create an entry point called reprep that calls reprep.main()
+
+    - reprep_demos = reprep.demos.manager:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils
+    - pycontracts >=1.2,<2
+
+  run:
+    - python
+    - docutils
+    - pycontracts >=1.2,<2
+
+test:
+  # Python imports
+  imports:
+    - reprep
+    - reprep.demos
+    - reprep.graphics
+    - reprep.output
+    - reprep.output.hdf
+    - reprep.plot_utils
+    - reprep.report_utils
+    - reprep.report_utils.statistics
+    - reprep.report_utils.statistics.library
+    - reprep.report_utils.statistics.structures
+    - reprep.report_utils.statistics.tables
+    - reprep.report_utils.storing
+    - reprep.tests
+    - reprep.tests.utils
+    - reprep.utils
+    - reprep_tables
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - reprep_demos --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://AndreaCensi.github.com/reprep/
+  license: LGPL
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

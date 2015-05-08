@@ -1,0 +1,74 @@
+package:
+  name: giki
+  version: "0.1pre"
+
+source:
+  fn: giki-0.1pre.tar.gz
+  url: https://pypi.python.org/packages/source/g/giki/giki-0.1pre.tar.gz
+  md5: cea38db47c192d5f7cff03291313732e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - giki = giki:main
+    #
+    # Would create an entry point called giki that calls giki.main()
+
+    - giki = giki.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dulwich ==0.8.5
+    - jinja2 ==2.6
+    - werkzeug ==0.8.3
+    - markdown2 ==2.0.1
+    - docutils ==0.9.1
+    - textile ==2.1.5
+
+  run:
+    - python
+    - dulwich ==0.8.5
+    - jinja2 ==2.6
+    - werkzeug ==0.8.3
+    - markdown2 ==2.0.1
+    - docutils ==0.9.1
+    - textile ==2.1.5
+
+test:
+  # Python imports
+  imports:
+    - giki
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - giki --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: UNKNOWN
+  summary: 'a Git-based wiki'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

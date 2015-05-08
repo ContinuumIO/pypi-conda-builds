@@ -1,0 +1,62 @@
+package:
+  name: genzshcomp
+  version: "0.5.2"
+
+source:
+  fn: genzshcomp-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/genzshcomp/genzshcomp-0.5.2.tar.gz
+  md5: fe5f02380c10af5341c7fdd9efacc716
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - genzshcomp = genzshcomp:main
+    #
+    # Would create an entry point called genzshcomp that calls genzshcomp.main()
+
+    - genzshcomp = genzshcomp:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - genzshcomp
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - genzshcomp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/hhatto/genzshcomp/
+  license: BSD License
+  summary: "Automatic generated to zsh completion function, for Python's Option Parser Modules."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

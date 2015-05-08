@@ -1,0 +1,70 @@
+package:
+  name: plone.app.search
+  version: "1.2.2"
+
+source:
+  fn: plone.app.search-1.2.2.zip
+  url: https://pypi.python.org/packages/source/p/plone.app.search/plone.app.search-1.2.2.zip
+  md5: 15430d40eda157df3fbbb75d052ed2d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.search = plone.app.search:main
+    #
+    # Would create an entry point called plone.app.search that calls plone.app.search.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.contentlisting
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.contentlisting
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.search
+    - plone.app.search.tests
+    - plone.app.search.tests.performance
+    - plone.app.search.tests.selenium
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/plone/plone.app.search
+  license: GPL
+  summary: 'Search user interface for Plone CMS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

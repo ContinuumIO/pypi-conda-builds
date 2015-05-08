@@ -1,0 +1,77 @@
+package:
+  name: autosubmit
+  version: "3.0.0rc8"
+
+source:
+  fn: autosubmit-3.0.0rc8.tar.gz
+  url: https://pypi.python.org/packages/source/a/autosubmit/autosubmit-3.0.0rc8.tar.gz
+  md5: 84c03d907d3ab08c9b9f0f57233ce3d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autosubmit = autosubmit:main
+    #
+    # Would create an entry point called autosubmit that calls autosubmit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2,<2
+    - python-dateutil >=1,<2
+    - pydotplus
+    - pyparsing
+    - paramiko
+
+  run:
+    - python
+    - argparse >=1.2,<2
+    - python-dateutil >=1,<2
+    - pydotplus
+    - pyparsing
+    - paramiko
+
+test:
+  # Python imports
+  imports:
+    - autosubmit
+    - autosubmit.config
+    - autosubmit.database
+    - autosubmit.date
+    - autosubmit.git
+    - autosubmit.job
+    - autosubmit.monitor
+    - autosubmit.platforms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://autosubmit.ic3.cat
+  license: GNU GPL v3
+  summary: 'Autosubmit: a versatile tool to manage Weather and Climate Experiments in diverse Supercomputing Environments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

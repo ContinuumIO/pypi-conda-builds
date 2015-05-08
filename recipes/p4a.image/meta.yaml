@@ -1,0 +1,71 @@
+package:
+  name: p4a.image
+  version: "0.2"
+
+source:
+  fn: p4a.image-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/p4a.image/p4a.image-0.2.tar.gz
+  md5: e81c4d4e8a662d93cb447d193bbf5bf5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - p4a.image = p4a.image:main
+    #
+    # Would create an entry point called p4a.image that calls p4a.image.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - p4a.subtyper
+    - p4a.z2utils
+    - p4a.fileimage
+
+  run:
+    - python
+    - setuptools
+    - p4a.subtyper
+    - p4a.z2utils
+    - p4a.fileimage
+
+test:
+  # Python imports
+  imports:
+    - p4a
+    - p4a.image
+    - p4a.image.browser
+    - p4a.image.tests
+    - p4a.image.thirdparty
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.plone.org/svn/plone/plone.example
+  license: GPL
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

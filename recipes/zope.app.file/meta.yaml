@@ -1,0 +1,94 @@
+package:
+  name: zope.app.file
+  version: "3.6.1"
+
+source:
+  fn: zope.app.file-3.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.file/zope.app.file-3.6.1.tar.gz
+  md5: fff140c36a2872c85b55433835ac3b98
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.file = zope.app.file:main
+    #
+    # Would create an entry point called zope.app.file that calls zope.app.file.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - transaction
+    - zodb3
+    - zope.app.publication
+    - zope.contenttype >=3.5.0dev
+    - zope.datetime
+    - zope.dublincore >=3.7
+    - zope.event
+    - zope.exceptions
+    - zope.filerepresentation
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+    - zope.site
+    - zope.size
+
+  run:
+    - python
+    - setuptools
+    - transaction
+    - zodb3
+    - zope.app.publication
+    - zope.contenttype >=3.5.0dev
+    - zope.datetime
+    - zope.dublincore >=3.7
+    - zope.event
+    - zope.exceptions
+    - zope.filerepresentation
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.schema
+    - zope.site
+    - zope.size
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.file
+    - zope.app.file.browser
+    - zope.app.file.browser.tests
+    - zope.app.file.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.file
+  license: Zope Public License
+  summary: 'File and Image -- Zope 3 Content Components'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

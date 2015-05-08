@@ -1,0 +1,66 @@
+package:
+  name: python-auspost-pac
+  version: "1.0.0"
+
+source:
+  fn: python-auspost-pac-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-auspost-pac/python-auspost-pac-1.0.0.tar.gz
+  md5: 0550785e8b71dec7b3fc0b4080693f9b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-auspost-pac = python-auspost-pac:main
+    #
+    # Would create an entry point called python-auspost-pac that calls python-auspost-pac.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cached_property
+    - frozendict
+    - requests
+
+  run:
+    - python
+    - cached_property
+    - frozendict
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - auspost_pac
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sjkingo/python-auspost-pac
+  license: BSD License
+  summary: "Python API for Australia Post's Postage Assessment Calculator (pac)."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

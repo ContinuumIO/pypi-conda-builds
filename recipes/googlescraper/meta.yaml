@@ -1,0 +1,77 @@
+package:
+  name: googlescraper
+  version: "0.1.37"
+
+source:
+  fn: GoogleScraper-0.1.37.tar.gz
+  url: https://pypi.python.org/packages/source/G/GoogleScraper/GoogleScraper-0.1.37.tar.gz
+  md5: aaae565a89b25391044782f21333f004
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - googlescraper = googlescraper:main
+    #
+    # Would create an entry point called googlescraper that calls googlescraper.main()
+
+    - GoogleScraper = GoogleScraper.core:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - selenium
+    - cssselect
+    - requests
+    - pymysql
+    - sqlalchemy
+    - aiohttp
+
+  run:
+    - python
+    - lxml
+    - selenium
+    - cssselect
+    - requests
+    - pymysql
+    - sqlalchemy
+    - aiohttp
+
+test:
+  # Python imports
+  imports:
+    - GoogleScraper
+    - googlescraper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - GoogleScraper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://incolumitas.com
+  license: UNKNOWN
+  summary: 'A module to scrape and extract links, titles and descriptions from Google search results'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

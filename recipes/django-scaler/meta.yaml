@@ -1,0 +1,63 @@
+package:
+  name: django-scaler
+  version: "0.2"
+
+source:
+  fn: django-scaler-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-scaler/django-scaler-0.2.tar.gz
+  md5: 4b68724531100a71f59d5b2b6c964eb6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-scaler = django-scaler:main
+    #
+    # Would create an entry point called django-scaler that calls django-scaler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - scaler
+    - scaler.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/django-scaler
+  license: BSD License
+  summary: 'Degrade gracefully by automatically replacing heavy pages with static pages while a server is taking strain.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

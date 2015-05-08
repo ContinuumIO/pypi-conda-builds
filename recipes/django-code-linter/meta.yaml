@@ -1,0 +1,62 @@
+package:
+  name: django-code-linter
+  version: "0.0.3"
+
+source:
+  fn: django-code-linter-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-code-linter/django-code-linter-0.0.3.tar.gz
+  md5: f7cb2c6c321581b574efa01eaf366d9a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-code-linter = django-code-linter:main
+    #
+    # Would create an entry point called django-code-linter that calls django-code-linter.main()
+
+    - djinter = djinter.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djinter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - djinter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/42cc/django-code-linter
+  license: BSD License
+  summary: 'suite to test django code style'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

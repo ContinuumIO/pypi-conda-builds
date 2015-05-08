@@ -1,0 +1,67 @@
+package:
+  name: django-cms-mailchimp
+  version: "0.1"
+
+source:
+  fn: django-cms-mailchimp-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cms-mailchimp/django-cms-mailchimp-0.1.tar.gz
+  md5: 389c5382d7ca8a5f907eade3e558e996
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cms-mailchimp = django-cms-mailchimp:main
+    #
+    # Would create an entry point called django-cms-mailchimp that calls django-cms-mailchimp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.6
+    - django-classy-tags >=0.3.4.1
+    - mailsnake
+
+  run:
+    - python
+    - django >=1.4,<1.6
+    - django-classy-tags >=0.3.4.1
+    - mailsnake
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_mailchimp
+    - cmsplugin_mailchimp.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nagyv/django-cms-mailchimp
+  license: MIT License
+  summary: u'A simple mailchimp sign-up plugin for django-cms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

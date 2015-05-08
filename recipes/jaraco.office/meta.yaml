@@ -1,0 +1,67 @@
+package:
+  name: jaraco.office
+  version: "1.0.1"
+
+source:
+  fn: jaraco.office-1.0.1.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.office/jaraco.office-1.0.1.zip
+  md5: 73f5c38c63063c48908c0b0ec19ccbda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaraco.office = jaraco.office:main
+    #
+    # Would create an entry point called jaraco.office that calls jaraco.office.main()
+
+    - doc-to-pdf = jaraco.office.word:doc_to_pdf_cmd
+    - doc-to-pdf-server = jaraco.office.convert:ConvertServer.start_server
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jaraco.util >=3.8.1
+
+  run:
+    - python
+    - jaraco.util >=3.8.1
+
+test:
+  # Python imports
+  imports:
+    - jaraco
+    - jaraco.office
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - doc-to-pdf --help
+    - doc-to-pdf-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/jaraco.office
+  license: MIT License
+  summary: 'Utility library for working with MS Office documents'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

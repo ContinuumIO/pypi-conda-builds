@@ -1,0 +1,67 @@
+package:
+  name: rdbtools
+  version: "0.1.6"
+
+source:
+  fn: rdbtools-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/r/rdbtools/rdbtools-0.1.6.tar.gz
+  md5: 3be556b09b4fbb6575975db47ac39ef7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rdbtools = rdbtools:main
+    #
+    # Would create an entry point called rdbtools that calls rdbtools.main()
+
+    - rdb = rdbtools.cli.rdb:main
+    - redis-memory-for-key = rdbtools.cli.redis_memory_for_key:main
+    - redis-profiler = rdbtools.cli.redis_profiler:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - rdbtools
+    - rdbtools.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rdb --help
+    - redis-memory-for-key --help
+    - redis-profiler --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sripathikrishnan/redis-rdb-tools
+  license: MIT License
+  summary: 'Utilities to convert Redis RDB files to JSON or SQL formats'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: python-thumbnails
+  version: "0.5.1"
+
+source:
+  fn: python-thumbnails-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-thumbnails/python-thumbnails-0.5.1.tar.gz
+  md5: 4522700c4cb3b3162c07e59efcc2186a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-thumbnails = python-thumbnails:main
+    #
+    # Would create an entry point called python-thumbnails that calls python-thumbnails.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six ==1.9.0
+    - requests ==2.6.0
+
+  run:
+    - python
+    - six ==1.9.0
+    - requests ==2.6.0
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - thumbnails
+    - thumbnails.conf
+    - thumbnails.engines
+    - thumbnails.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/relekang/python-thumbnails
+  license: MIT
+  summary: 'Thumbnails for Django, Flask and other Python projects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

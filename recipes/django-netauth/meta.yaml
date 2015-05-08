@@ -1,0 +1,70 @@
+package:
+  name: django-netauth
+  version: "0.1.94"
+
+source:
+  fn: django-netauth-0.1.94.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-netauth/django-netauth-0.1.94.tar.gz
+  md5: 7716060c6fb8c7e3b384167e91dcf942
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-netauth = django-netauth:main
+    #
+    # Would create an entry point called django-netauth that calls django-netauth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-openid
+    - oauth2
+
+  run:
+    - python
+    - python-openid
+    - oauth2
+
+test:
+  # Python imports
+  imports:
+    - example_project
+    - example_project.main
+    - example_project.main.tests
+    - example_project.settings
+    - netauth
+    - netauth.backends
+    - netauth.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/klen/django-netauth.git
+  license: GNU LGPL
+  summary: 'Django openid, oauth authentification.\n\nSupport next sites:\n\n- http://google.com\n- http://yandex.ru\n- http://vkontakte.ru\n- http://facebook.com\n- http://twitter.com\n\nand custom openid and oauth providers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

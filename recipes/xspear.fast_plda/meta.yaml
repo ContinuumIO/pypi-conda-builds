@@ -1,0 +1,81 @@
+package:
+  name: xspear.fast_plda
+  version: "1.1.1"
+
+source:
+  fn: xspear.fast_plda-1.1.1.zip
+  url: https://pypi.python.org/packages/source/x/xspear.fast_plda/xspear.fast_plda-1.1.1.zip
+  md5: a916bfa38287696705893fad8d3376ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - xspear.fast_plda = xspear.fast_plda:main
+    #
+    # Would create an entry point called xspear.fast_plda that calls xspear.fast_plda.main()
+
+    - ivec_whitening_lnorm.py = xspear.fast_plda.script.ivec_whitening_lnorm:main
+    - ivec_whitening_lnorm_wccn.py = xspear.fast_plda.script.ivec_whitening_lnorm_wccn:main
+    - ivec_whitening_lnorm_lda.py = xspear.fast_plda.script.ivec_whitening_lnorm_lda:main
+    - svm.py = xspear.fast_plda.script.svm:main
+    - evaluate_new.py = xspear.fast_plda.script.evaluate_new:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gridtk
+    - bob ==1.2.2
+    - xbob.db.verification.filelist
+
+  run:
+    - python
+    - setuptools
+    - gridtk
+    - bob ==1.2.2
+    - xbob.db.verification.filelist
+
+test:
+  # Python imports
+  imports:
+    - xspear
+    - xspear.fast_plda
+    - xspear.fast_plda.script
+    - xspear.fast_plda.toolchain
+    - xspear.fast_plda.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ivec_whitening_lnorm.py --help
+    - ivec_whitening_lnorm_wccn.py --help
+    - ivec_whitening_lnorm_lda.py --help
+    - svm.py --help
+    - evaluate_new.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/spear.fast_plda
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Toolchains for speaker recognition and anti-spoofing using PLDA'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

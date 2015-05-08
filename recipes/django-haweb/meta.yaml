@@ -1,0 +1,70 @@
+package:
+  name: django-haweb
+  version: "0.2.5"
+
+source:
+  fn: django-haweb-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-haweb/django-haweb-0.2.5.tar.gz
+  md5: 39f03fedfddeb8feb9de5db3a99cf060
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-haweb = django-haweb:main
+    #
+    # Would create an entry point called django-haweb that calls django-haweb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5
+    - simplejson ==2.6.2
+    - django-compressor ==1.3
+    - hautomation_restclient
+
+  run:
+    - python
+    - django ==1.5
+    - simplejson ==2.6.2
+    - django-compressor ==1.3
+    - hautomation_restclient
+
+test:
+  # Python imports
+  imports:
+    - haweb
+    - haweb.management
+    - haweb.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.digitalhigh.es
+  license: BSD License
+  summary: 'A Django app which shows a web front for django-hautomation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

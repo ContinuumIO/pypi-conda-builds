@@ -1,0 +1,74 @@
+package:
+  name: nbserve
+  version: "0.3.1"
+
+source:
+  fn: nbserve-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/nbserve/nbserve-0.3.1.tar.gz
+  md5: 277e5268b8c2519d7b4ad291ed50de4f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nbserve = nbserve:main
+    #
+    # Would create an entry point called nbserve that calls nbserve.main()
+
+    - nbserve=nbserve.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - runipy
+    - ipython
+    - tornado
+    - jinja2
+    - pyzmq
+
+  run:
+    - python
+    - flask
+    - runipy
+    - ipython
+    - tornado
+    - jinja2
+    - pyzmq
+
+test:
+  # Python imports
+  imports:
+    - nbserve
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - nbserve --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/robchambers/nbserve
+  license: UNKNOWN
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

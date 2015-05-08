@@ -1,0 +1,138 @@
+package:
+  name: mediagoblin-spaetz
+  version: "0.3.2.dev"
+
+source:
+  fn: mediagoblin-spaetz-0.3.2.dev.tar.gz
+  url: https://pypi.python.org/packages/source/m/mediagoblin-spaetz/mediagoblin-spaetz-0.3.2.dev.tar.gz
+  md5: adf414d0ee9f338482494829df645609
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mediagoblin-spaetz = mediagoblin-spaetz:main
+    #
+    # Would create an entry point called mediagoblin-spaetz that calls mediagoblin-spaetz.main()
+
+    - gmg=mediagoblin.gmg_commands:main_cli
+    - pybabel=mediagoblin.babel.messages.frontend:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pastescript
+    - beaker
+    - webob <=1.2a2,>=1.1
+    - wtforms
+    - py-bcrypt
+    - nose
+    - werkzeug >=0.7
+    - celery ==2.5.3
+    - kombu ==2.1.7
+    - jinja2
+    - sphinx
+    - babel
+    - translitcodec
+    - argparse
+    - webtest
+    - configobj
+    - markdown
+    - sqlalchemy >=0.7.0
+    - sqlalchemy-migrate
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pastescript
+    - beaker
+    - webob <=1.2a2,>=1.1
+    - wtforms
+    - py-bcrypt
+    - nose
+    - werkzeug >=0.7
+    - celery ==2.5.3
+    - kombu ==2.1.7
+    - jinja2
+    - sphinx
+    - babel
+    - translitcodec
+    - argparse
+    - webtest
+    - configobj
+    - markdown
+    - sqlalchemy >=0.7.0
+    - sqlalchemy-migrate
+
+test:
+  # Python imports
+  imports:
+    - mediagoblin
+    - mediagoblin.admin
+    - mediagoblin.auth
+    - mediagoblin.db
+    - mediagoblin.db.mongo
+    - mediagoblin.db.sql
+    - mediagoblin.edit
+    - mediagoblin.gmg_commands
+    - mediagoblin.init
+    - mediagoblin.init.celery
+    - mediagoblin.init.plugins
+    - mediagoblin.listings
+    - mediagoblin.meddleware
+    - mediagoblin.media_types
+    - mediagoblin.media_types.ascii
+    - mediagoblin.media_types.audio
+    - mediagoblin.media_types.image
+    - mediagoblin.media_types.video
+    - mediagoblin.plugins
+    - mediagoblin.plugins.api
+    - mediagoblin.plugins.flatpagesfile
+    - mediagoblin.plugins.httpapiauth
+    - mediagoblin.plugins.oauth
+    - mediagoblin.plugins.sampleplugin
+    - mediagoblin.plugins.trim_whitespace
+    - mediagoblin.processing
+    - mediagoblin.storage
+    - mediagoblin.submit
+    - mediagoblin.tests
+    - mediagoblin.tools
+    - mediagoblin.tools.extlib
+    - mediagoblin.user_pages
+    - mediagoblin.webfinger
+    - mediagoblin_licenses
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gmg --help
+    - pybabel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mediagoblin.org/
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

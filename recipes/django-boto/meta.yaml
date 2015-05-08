@@ -1,0 +1,67 @@
+package:
+  name: django-boto
+  version: "0.3.9"
+
+source:
+  fn: django-boto-0.3.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-boto/django-boto-0.3.9.tar.gz
+  md5: 2bbb70116d3140077ef75594b26e1d87
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-boto = django-boto:main
+    #
+    # Would create an entry point called django-boto that calls django-boto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - boto >=2.3.0
+    - python-dateutil >=2.4.0
+
+  run:
+    - python
+    - django >=1.3
+    - boto >=2.3.0
+    - python-dateutil >=2.4.0
+
+test:
+  # Python imports
+  imports:
+    - django_boto
+    - django_boto.s3
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/qnub/django-boto/
+  license: MIT License
+  summary: 'Wrapper of boto package for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

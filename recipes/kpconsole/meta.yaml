@@ -1,0 +1,65 @@
+package:
+  name: kpconsole
+  version: "1.0.2"
+
+source:
+  fn: kpconsole-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/k/kpconsole/kpconsole-1.0.2.tar.gz
+  md5: c0f87a21366e6819fbb2aadf4b5eedb2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kpconsole = kpconsole:main
+    #
+    # Would create an entry point called kpconsole that calls kpconsole.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kpwrapper >=1.0.2
+    - ipython
+
+  run:
+    - python
+    - setuptools
+    - kpwrapper >=1.0.2
+    - ipython
+
+test:
+  # Python imports
+  imports:
+    - kpconsole
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://asibsync.sourceforge.net
+  license: BSD
+  summary: 'Smart-M3 KP console for interactive testing and debugging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

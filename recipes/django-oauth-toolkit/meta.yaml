@@ -1,0 +1,74 @@
+package:
+  name: django-oauth-toolkit
+  version: "0.8.1"
+
+source:
+  fn: django-oauth-toolkit-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oauth-toolkit/django-oauth-toolkit-0.8.1.tar.gz
+  md5: 88e83ce86d9b7fe2b02089d7b5e1ee92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oauth-toolkit = django-oauth-toolkit:main
+    #
+    # Would create an entry point called django-oauth-toolkit that calls django-oauth-toolkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-braces >=1.2.2
+    - oauthlib >=0.6.2
+    - six
+
+  run:
+    - python
+    - django >=1.4
+    - django-braces >=1.2.2
+    - oauthlib >=0.6.2
+    - six
+
+test:
+  # Python imports
+  imports:
+    - oauth2_provider
+    - oauth2_provider.ext
+    - oauth2_provider.ext.rest_framework
+    - oauth2_provider.migrations
+    - oauth2_provider.south_migrations
+    - oauth2_provider.tests
+    - oauth2_provider.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/evonove/django-oauth-toolkit
+  license: BSD License
+  summary: 'OAuth2 goodies for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

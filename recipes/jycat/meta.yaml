@@ -1,0 +1,62 @@
+package:
+  name: jycat
+  version: "0.0.14"
+
+source:
+  fn: jycat-0.0.14.tar.gz
+  url: https://pypi.python.org/packages/source/j/jycat/jycat-0.0.14.tar.gz
+  md5: 4cab2fe6dbc60314abaaaa7e793cf3cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jycat = jycat:main
+    #
+    # Would create an entry point called jycat that calls jycat.main()
+
+    - jycat=jycat.jycat:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - jycat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jycat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tacodata/jycat
+  license: Apache Software License
+  summary: 'concat yaml and json files into a Kubernetes List'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

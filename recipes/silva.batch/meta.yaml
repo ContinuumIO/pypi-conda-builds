@@ -1,0 +1,68 @@
+package:
+  name: silva.batch
+  version: "1.1"
+
+source:
+  fn: silva.batch-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.batch/silva.batch-1.1.tar.gz
+  md5: 896f792204441f402be9108d84204cb4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.batch = silva.batch:main
+    #
+    # Would create an entry point called silva.batch that calls silva.batch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zeam.utils.batch
+    - silva.core.views
+    - grokcore.component
+
+  run:
+    - python
+    - setuptools
+    - zeam.utils.batch
+    - silva.core.views
+    - grokcore.component
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.batch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.batch
+  license: BSD License
+  summary: 'Batch integration for Silva CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

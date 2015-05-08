@@ -1,0 +1,71 @@
+package:
+  name: django-kss-styleguide
+  version: "0.5.9"
+
+source:
+  fn: django-kss-styleguide-0.5.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-kss-styleguide/django-kss-styleguide-0.5.9.tar.gz
+  md5: c998268fbe08ac201174a37814922b56
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-kss-styleguide = django-kss-styleguide:main
+    #
+    # Would create an entry point called django-kss-styleguide that calls django-kss-styleguide.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+    - django_compressor
+    - django-libsass
+
+  run:
+    - python
+    - pygments
+    - django_compressor
+    - django-libsass
+
+test:
+  # Python imports
+  imports:
+    - django_kss
+    - django_kss.pykss
+    - django_kss.pykss.contrib
+    - django_kss.pykss.contrib.django
+    - django_kss.pykss.contrib.django.templatetags
+    - django_kss.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/timtan/django_kss
+  license: BSD License
+  summary: 'A simple Django app to make styleguide'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

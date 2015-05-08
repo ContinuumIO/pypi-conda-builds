@@ -1,0 +1,85 @@
+package:
+  name: zope.rdb
+  version: "3.5.0"
+
+source:
+  fn: zope.rdb-3.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.rdb/zope.rdb-3.5.0.tar.gz
+  md5: 2068b469c07c9c0b41392cd9839e3728
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.rdb = zope.rdb:main
+    #
+    # Would create an entry point called zope.rdb that calls zope.rdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - transaction
+    - zodb3
+    - zope.container
+    - zope.interface
+    - zope.i18nmessageid
+    - zope.security
+    - zope.configuration
+    - zope.container
+    - zope.schema
+    - zope.thread
+
+  run:
+    - python
+    - setuptools
+    - transaction
+    - zodb3
+    - zope.container
+    - zope.interface
+    - zope.i18nmessageid
+    - zope.security
+    - zope.configuration
+    - zope.container
+    - zope.schema
+    - zope.thread
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.rdb
+    - zope.rdb.browser
+    - zope.rdb.gadfly
+    - zope.rdb.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.rdb
+  license: Zope Public License
+  summary: 'Zope RDBMS transaction integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

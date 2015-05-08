@@ -1,0 +1,65 @@
+package:
+  name: sphinxcontrib-robotdoc
+  version: "0.7.4"
+
+source:
+  fn: sphinxcontrib-robotdoc-0.7.4.zip
+  url: https://pypi.python.org/packages/source/s/sphinxcontrib-robotdoc/sphinxcontrib-robotdoc-0.7.4.zip
+  md5: 66bacf05344d25c97a7e1b4b55f2b78a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sphinxcontrib-robotdoc = sphinxcontrib-robotdoc:main
+    #
+    # Would create an entry point called sphinxcontrib-robotdoc that calls sphinxcontrib-robotdoc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments >=1.6rc1
+    - robotframework >=2.7.1
+
+  run:
+    - python
+    - setuptools
+    - pygments >=1.6rc1
+    - robotframework >=2.7.1
+
+test:
+  # Python imports
+  imports:
+    - sphinxcontrib_robotdoc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datakurre/sphinxcontrib-robotdoc/
+  license: GPL
+  summary: 'Sphinx extension to embed Robot Framework test cases and and user keywords into Sphinx documents'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

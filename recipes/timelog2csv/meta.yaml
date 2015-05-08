@@ -1,0 +1,66 @@
+package:
+  name: timelog2csv
+  version: "0.1.1"
+
+source:
+  fn: timelog2csv-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/timelog2csv/timelog2csv-0.1.1.tar.gz
+  md5: 540f3c319fc7a8db46edb2e30fdf727d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - timelog2csv = timelog2csv:main
+    #
+    # Would create an entry point called timelog2csv that calls timelog2csv.main()
+
+    - timelog2csv = timelog2csv:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt ==0.6.1
+    - icalendar ==3.5
+
+  run:
+    - python
+    - docopt ==0.6.1
+    - icalendar ==3.5
+
+test:
+  # Python imports
+  imports:
+    - timelog2csv
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - timelog2csv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/keimlink/timelog2csv
+  license: BSD License
+  summary: 'Converts a TimeLog calendar to a CSV file.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

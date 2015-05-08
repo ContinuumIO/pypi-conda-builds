@@ -1,0 +1,62 @@
+package:
+  name: mp3albumcheck
+  version: "1"
+
+source:
+  fn: MP3AlbumCheck-1.tar.gz
+  url: https://pypi.python.org/packages/source/M/MP3AlbumCheck/MP3AlbumCheck-1.tar.gz
+  md5: f3dba8d0f43cd2f27f9fe8867da4de59
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mp3albumcheck = mp3albumcheck:main
+    #
+    # Would create an entry point called mp3albumcheck that calls mp3albumcheck.main()
+
+    - mp3albumcheck = mp3albumcheck.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mp3albumcheck
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mp3albumcheck --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://terrarum.net/mp3albumcheck.html
+  license: BSD
+  summary: 'Checks a directory of MP3s to ensure it matches its CD equivilent'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

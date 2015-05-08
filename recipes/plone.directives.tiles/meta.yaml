@@ -1,0 +1,78 @@
+package:
+  name: plone.directives.tiles
+  version: "1.1"
+
+source:
+  fn: plone.directives.tiles-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.directives.tiles/plone.directives.tiles-1.1.tar.gz
+  md5: 4be4d847f863d19887af75cba4ca65ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.directives.tiles = plone.directives.tiles:main
+    #
+    # Would create an entry point called plone.directives.tiles that calls plone.directives.tiles.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - martian
+    - grokcore.component
+    - grokcore.security
+    - zope.component
+    - plone.tiles >=1.1
+    - five.grok
+    - zope.deferredimport
+
+  run:
+    - python
+    - setuptools
+    - martian
+    - grokcore.component
+    - grokcore.security
+    - zope.component
+    - plone.tiles >=1.1
+    - five.grok
+    - zope.deferredimport
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.directives
+    - plone.directives.tiles
+    - plone.directives.tiles.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/plone.directives.tiles
+  license: GPL
+  summary: 'Grokkers for plone.tiles'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

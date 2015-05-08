@@ -1,0 +1,66 @@
+package:
+  name: django-cratis-i18n
+  version: "0.1.2"
+
+source:
+  fn: django-cratis-i18n-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cratis-i18n/django-cratis-i18n-0.1.2.tar.gz
+  md5: c426de5cd2fabe2819b226245727d12b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cratis-i18n = django-cratis-i18n:main
+    #
+    # Would create an entry point called django-cratis-i18n that calls django-cratis-i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django-cratis
+    - voluptuous
+    - setuptools
+
+  run:
+    - python
+    - django-cratis
+    - voluptuous
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - cratis_i18n
+    - cratis_i18n.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT
+  summary: 'I18n support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

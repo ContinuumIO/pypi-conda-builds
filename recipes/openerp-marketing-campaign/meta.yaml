@@ -1,0 +1,69 @@
+package:
+  name: openerp-marketing-campaign
+  version: "7.0.406"
+
+source:
+  fn: openerp-marketing-campaign-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-marketing-campaign/openerp-marketing-campaign-7.0.406.tar.gz
+  md5: c5a628e51a0bdc18e24ec60dc1642de5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-marketing-campaign = openerp-marketing-campaign:main
+    #
+    # Would create an entry point called openerp-marketing-campaign that calls openerp-marketing-campaign.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-marketing
+    - openerp-document
+    - openerp-email-template
+    - openerp-decimal-precision
+
+  run:
+    - python
+    - openerp-marketing
+    - openerp-document
+    - openerp-email-template
+    - openerp-decimal-precision
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.marketing_campaign
+    - openerp.addons.marketing_campaign.report
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Marketing Campaigns'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

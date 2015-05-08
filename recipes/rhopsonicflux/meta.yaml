@@ -1,0 +1,69 @@
+package:
+  name: rhopsonicflux
+  version: "1.2"
+
+source:
+  fn: rhopSonicFlux-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/rhopSonicFlux/rhopSonicFlux-1.2.tar.gz
+  md5: b437a4fc5c1c6fbfba2a1b0478fc77b8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rhopsonicflux = rhopsonicflux:main
+    #
+    # Would create an entry point called rhopsonicflux that calls rhopsonicflux.main()
+
+    - rhopSonicFlux = rhopSonicFlux:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - foam >=8.2-hybrid
+
+  run:
+    - python
+    - foam >=8.2-hybrid
+
+test:
+  # Python imports
+  imports:
+    - rhopSonicFlux
+    - rhopSonicFlux.r1_6
+    - rhopSonicFlux.r1_6.BCs
+    - rhopSonicFlux.r1_6.BCs.rho
+    - rhopSonicFlux.r1_6.BCs.rhoE
+    - rhopsonicflux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rhopSonicFlux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the rhopSonicFoam'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

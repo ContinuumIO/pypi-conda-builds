@@ -1,0 +1,69 @@
+package:
+  name: aldryn-boilerplates
+  version: "0.7"
+
+source:
+  fn: aldryn-boilerplates-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-boilerplates/aldryn-boilerplates-0.7.tar.gz
+  md5: e32043a496a54dfbe14a6c28b790a853
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-boilerplates = aldryn-boilerplates:main
+    #
+    # Would create an entry point called aldryn-boilerplates that calls aldryn-boilerplates.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6,<1.8
+    - yurl >=0.13
+    - django-appconf
+
+  run:
+    - python
+    - django >=1.6,<1.8
+    - yurl >=0.13
+    - django-appconf
+
+test:
+  # Python imports
+  imports:
+    - aldryn_boilerplates
+    - aldryn_boilerplates.test_helpers
+    - aldryn_boilerplates.test_helpers.testapp
+    - aldryn_boilerplates.test_helpers.testapp_no_default
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-boilerplates/
+  license: BSD License
+  summary: 'An extension that allows re-usable apps to provide sets of templates and staticfiles for different boilerplates.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

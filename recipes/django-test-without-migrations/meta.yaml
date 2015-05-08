@@ -1,0 +1,62 @@
+package:
+  name: django-test-without-migrations
+  version: "0.2"
+
+source:
+  fn: django-test-without-migrations-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-test-without-migrations/django-test-without-migrations-0.2.tar.gz
+  md5: 835cf1fdbaf4f099b648bab0008ddbcc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-test-without-migrations = django-test-without-migrations:main
+    #
+    # Would create an entry point called django-test-without-migrations that calls django-test-without-migrations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - test_without_migrations
+    - test_without_migrations.management
+    - test_without_migrations.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/henriquebastos/django-test-without-migrations/
+  license: MIT License
+  summary: 'Disable migrations when running your Django tests.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

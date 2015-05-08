@@ -1,0 +1,61 @@
+package:
+  name: django-captcha-admin
+  version: "0.1"
+
+source:
+  fn: django-captcha-admin-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-captcha-admin/django-captcha-admin-0.1.tar.gz
+  md5: 621c3885e0160a7dd95a43c81168b1c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-captcha-admin = django-captcha-admin:main
+    #
+    # Would create an entry point called django-captcha-admin that calls django-captcha-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django-recaptcha ==1.0
+
+  run:
+    - python
+    - django-recaptcha ==1.0
+
+test:
+  # Python imports
+  imports:
+    - captcha_admin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/volrath/django-captcha-admin
+  license: MIT License
+  summary: "Provides a recaptcha field in django's default admin login page."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

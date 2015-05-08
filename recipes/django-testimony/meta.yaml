@@ -1,0 +1,65 @@
+package:
+  name: django-testimony
+  version: "0.0.2"
+
+source:
+  fn: django-testimony-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-testimony/django-testimony-0.0.2.tar.gz
+  md5: 89579d82234d0338faff995942e458ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-testimony = django-testimony:main
+    #
+    # Would create an entry point called django-testimony that calls django-testimony.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-cms >=2.3.5
+
+  run:
+    - python
+    - django >=1.4
+    - django-cms >=2.3.5
+
+test:
+  # Python imports
+  imports:
+    - testimony
+    - testimony.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/oddotterco/django-testimony
+  license: BSD License
+  summary: 'A Django app that will create a pluggable django-cms testimony form and content plugin within your project..'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

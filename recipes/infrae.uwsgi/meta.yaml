@@ -1,0 +1,64 @@
+package:
+  name: infrae.uwsgi
+  version: "1.0"
+
+source:
+  fn: infrae.uwsgi-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/infrae.uwsgi/infrae.uwsgi-1.0.tar.gz
+  md5: 4c0f59f6ad1f7c98f1ef7915604dad41
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infrae.uwsgi = infrae.uwsgi:main
+    #
+    # Would create an entry point called infrae.uwsgi that calls infrae.uwsgi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - infrae
+    - infrae.uwsgi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.infrae.com/buildout/infrae.uwsgi/trunk/
+  license: BSD License
+  summary: 'Buildout recipe downloading, compiling and configuring uWSGI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

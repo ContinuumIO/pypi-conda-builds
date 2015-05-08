@@ -1,0 +1,69 @@
+package:
+  name: pyconizr
+  version: "0.1b2"
+
+source:
+  fn: pyconizr-0.1b2.zip
+  url: https://pypi.python.org/packages/source/p/pyconizr/pyconizr-0.1b2.zip
+  md5: 1990f7c63ade36a29cd3c3324006d17b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyconizr = pyconizr:main
+    #
+    # Would create an entry point called pyconizr that calls pyconizr.main()
+
+    - pyconizr = pyconizr.run:execute_from_cl
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - scour >=0.29
+    - lxml >=3.3
+    - jinja2 >=2.7
+
+  run:
+    - python
+    - scour >=0.29
+    - lxml >=3.3
+    - jinja2 >=2.7
+
+test:
+  # Python imports
+  imports:
+    - pyconizr
+    - pyconizr.img
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyconizr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/tkhyn/pyconizr/
+  license: MIT License
+  summary: 'Generate sprites from SVG icons'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

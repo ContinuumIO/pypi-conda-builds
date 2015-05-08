@@ -1,0 +1,75 @@
+package:
+  name: django-locksmith
+  version: "0.8.0"
+
+source:
+  fn: django-locksmith-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-locksmith/django-locksmith-0.8.0.tar.gz
+  md5: 2f2afc4f41c597b1a913f9aa1190f2ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-locksmith = django-locksmith:main
+    #
+    # Would create an entry point called django-locksmith that calls django-locksmith.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - locksmith
+    - locksmith.auth
+    - locksmith.auth.management
+    - locksmith.auth.management.commands
+    - locksmith.hub
+    - locksmith.hub.management
+    - locksmith.hub.management.commands
+    - locksmith.hub.migrations
+    - locksmith.hub.templatetags
+    - locksmith.lightauth
+    - locksmith.logparse
+    - locksmith.logparse.management
+    - locksmith.logparse.management.commands
+    - locksmith.mongoauth
+    - locksmith.mongoauth.management
+    - locksmith.mongoauth.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/sunlightlabs/django-locksmith/
+  license: BSD
+  summary: 'Django apps for API authentication and centralized authorization'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

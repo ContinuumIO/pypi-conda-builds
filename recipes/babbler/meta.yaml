@@ -1,0 +1,73 @@
+package:
+  name: babbler
+  version: "0.3.4"
+
+source:
+  fn: babbler-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/babbler/babbler-0.3.4.tar.gz
+  md5: da6b0bbbfd25579bf6e9f44586ca0efb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - babbler = babbler:main
+    #
+    # Would create an entry point called babbler that calls babbler.main()
+
+    - babbler=babbler:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - daemon
+    - feedparser
+    - python-twitter
+    - sphinx-me
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - daemon
+    - feedparser
+    - python-twitter
+    - sphinx-me
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - babbler
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - babbler --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stephenmcd/babbler/
+  license: BSD License
+  summary: "A Twitter bot that polls an RSS feed and posts its entries as tweets, with auto-generated hashtags. For extra mischief, replies to the bot are responded to using a basic Eliza implementation.  After installing, the 'babbler' command will be available which you can use to run the bot. Data will be stored in the current directory."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: django-homegate
+  version: "0.1.1"
+
+source:
+  fn: django-homegate-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-homegate/django-homegate-0.1.1.tar.gz
+  md5: f236434e6fe4edfd6ac872ac32d926d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-homegate = django-homegate:main
+    #
+    # Would create an entry point called django-homegate that calls django-homegate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - homegate
+
+  run:
+    - python
+    - django
+    - homegate
+
+test:
+  # Python imports
+  imports:
+    - django_homegate
+    - django_homegate.management
+    - django_homegate.management.commands
+    - django_homegate.templatetags
+    - django_homegate.tests
+    - django_homegate.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/arteria/django-homegate
+  license: The MIT License
+  summary: 'django-homegate provides IDX3.01 API support for your Django project by closing the gap between python-homegate (https://github.com/arteria/python-homegate) and your real estate Django app.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

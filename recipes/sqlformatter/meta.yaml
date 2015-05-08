@@ -1,0 +1,64 @@
+package:
+  name: sqlformatter
+  version: "1.0"
+
+source:
+  fn: sqlformatter-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlformatter/sqlformatter-1.0.tar.gz
+  md5: 038199b371d207cf68f4fb45cb309aed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlformatter = sqlformatter:main
+    #
+    # Would create an entry point called sqlformatter that calls sqlformatter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments ==1.6
+    - sqlparse ==0.1.11
+
+  run:
+    - python
+    - pygments ==1.6
+    - sqlparse ==0.1.11
+
+test:
+  # Python imports
+  imports:
+    - sqlformatter
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/henriquebastos/sqlformatter/
+  license: MIT License
+  summary: 'SQLFormatter: Beautiful colored SQL staments for logging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

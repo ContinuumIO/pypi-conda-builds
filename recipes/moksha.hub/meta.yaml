@@ -1,0 +1,79 @@
+package:
+  name: moksha.hub
+  version: "1.4.4"
+
+source:
+  fn: moksha.hub-1.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/moksha.hub/moksha.hub-1.4.4.tar.gz
+  md5: 97ec72d1fb223de0d883715185b63e06
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moksha.hub = moksha.hub:main
+    #
+    # Would create an entry point called moksha.hub that calls moksha.hub.main()
+
+    - moksha-hub=moksha.hub:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - moksha.common >=1.0.6
+    - twisted
+    - pyzmq
+    - txzmq
+    - txws
+
+  run:
+    - python
+    - setuptools
+    - moksha.common >=1.0.6
+    - twisted
+    - pyzmq
+    - txzmq
+    - txws
+
+test:
+  # Python imports
+  imports:
+    - moksha
+    - moksha.hub
+    - moksha.hub.amqp
+    - moksha.hub.api
+    - moksha.hub.stomp
+    - moksha.hub.tests
+    - moksha.hub.zeromq
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - moksha-hub --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://moksha.fedorahosted.org
+  license: UNKNOWN
+  summary: 'Hub components for Moksha.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

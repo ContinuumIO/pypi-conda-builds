@@ -1,0 +1,66 @@
+package:
+  name: vulcanize
+  version: "0.2"
+
+source:
+  fn: vulcanize-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/v/vulcanize/vulcanize-0.2.tar.gz
+  md5: 9c5782b58f7ad25de87ee3f5d1d1e8dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vulcanize = vulcanize:main
+    #
+    # Would create an entry point called vulcanize that calls vulcanize.main()
+
+    - vulcanize=vulcanize.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - html5lib
+
+  run:
+    - python
+    - lxml
+    - html5lib
+
+test:
+  # Python imports
+  imports:
+    - vulcanize
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - vulcanize --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bslatkin/pyvulcanize
+  license: Apache Software License
+  summary: 'Vulcanizes HTML files that use Polymer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

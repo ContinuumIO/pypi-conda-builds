@@ -1,0 +1,66 @@
+package:
+  name: blobstore
+  version: "0.1-alpha-2"
+
+source:
+  fn: blobstore-0.1-alpha-2.tar.gz
+  url: https://pypi.python.org/packages/source/b/blobstore/blobstore-0.1-alpha-2.tar.gz
+  md5: a5fa4d1484924d2adcf0dd81c20e59eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blobstore = blobstore:main
+    #
+    # Would create an entry point called blobstore that calls blobstore.main()
+
+    - blobstore_server = blobstore.server:main
+    - blobstore_client = blobstore.client:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zerorpc
+
+  run:
+    - python
+    - zerorpc
+
+test:
+  # Python imports
+  imports:
+    - blobstore
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - blobstore_server --help
+    - blobstore_client --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rshk/blobstore
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Generic, zerorpc-powered, blobs storage'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

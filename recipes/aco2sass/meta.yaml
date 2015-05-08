@@ -1,0 +1,62 @@
+package:
+  name: aco2sass
+  version: "0.1"
+
+source:
+  fn: aco2sass-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/aco2sass/aco2sass-0.1.tar.gz
+  md5: b40b94deb06d86399c5d10243862b66a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aco2sass = aco2sass:main
+    #
+    # Would create an entry point called aco2sass that calls aco2sass.main()
+
+    - aco2sass = aco2sass:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - aco2sass
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aco2sass --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vinilios/aco2sass
+  license: MIT
+  summary: 'About\n=====\n\n*aco2sass* is a small python script which converts photoshop `.aco` swatch files \nto a list of the corresponding swatch colors formatted as SASS varibles.\n\nThe implementation is based on the file format specified by `Adobe` here::\n\n    https://www.adobe.com/devnet-apps/photoshop/fileformatashtml/#50577411_pgfId-1055819\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

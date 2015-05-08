@@ -1,0 +1,69 @@
+package:
+  name: cosent.buildtools
+  version: "1.2.1"
+
+source:
+  fn: cosent.buildtools-1.2.1.zip
+  url: https://pypi.python.org/packages/source/c/cosent.buildtools/cosent.buildtools-1.2.1.zip
+  md5: 205a90deacb0a50617be8eeb3fa82d5c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cosent.buildtools = cosent.buildtools:main
+    #
+    # Would create an entry point called cosent.buildtools that calls cosent.buildtools.main()
+
+    - bumpversion=cosent.buildtools.bumpversion:main
+    - buildtool=cosent.buildtools.buildtool:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jarn.mkrelease
+
+  run:
+    - python
+    - setuptools
+    - jarn.mkrelease
+
+test:
+  # Python imports
+  imports:
+    - cosent
+    - cosent.buildtools
+    - cosent.buildtools.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bumpversion --help
+    - buildtool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cosent.nl
+  license: GNU General Public License (GPL)
+  summary: 'Release scripts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,102 @@
+package:
+  name: superdesk-server
+  version: "0.1.6"
+
+source:
+  fn: Superdesk-Server-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/S/Superdesk-Server/Superdesk-Server-0.1.6.tar.gz
+  md5: fe5388eed35a364cfbf88e1edb835b14
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - superdesk-server = superdesk-server:main
+    #
+    # Would create an entry point called superdesk-server that calls superdesk-server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - eve >=0.4
+    - eve-elastic >=0.1.13
+    - flask >=0.10,<0.11
+    - flask-mail >=0.9.0,<0.10
+    - flask-script ==2.0.5,<2.1
+    - flask-pymongo >=0.3.0
+    - autobahn[asyncio] >=0.8.15
+    - celery[redis] >=3.1.13
+    - bcrypt >=1.0.2
+    - blinker >=1.3
+
+  run:
+    - python
+    - eve >=0.4
+    - eve-elastic >=0.1.13
+    - flask >=0.10,<0.11
+    - flask-mail >=0.9.0,<0.10
+    - flask-script ==2.0.5,<2.1
+    - flask-pymongo >=0.3.0
+    - autobahn[asyncio] >=0.8.15
+    - celery[redis] >=3.1.13
+    - bcrypt >=1.0.2
+    - blinker >=1.3
+
+test:
+  # Python imports
+  imports:
+    - apps
+    - apps.archive
+    - apps.auth
+    - apps.auth.db
+    - apps.auth.ldap
+    - apps.common
+    - apps.common.components
+    - apps.common.models
+    - apps.common.models.io
+    - apps.item_autosave
+    - apps.item_autosave.components
+    - apps.item_autosave.models
+    - apps.item_lock
+    - apps.item_lock.components
+    - apps.item_lock.models
+    - apps.users
+    - superdesk
+    - superdesk.comments
+    - superdesk.emails
+    - superdesk.io
+    - superdesk.media
+    - superdesk.storage
+    - superdesk.storage.amazon
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/superdesk/superdesk-server
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Superdesk REST API server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

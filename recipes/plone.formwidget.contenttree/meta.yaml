@@ -1,0 +1,72 @@
+package:
+  name: plone.formwidget.contenttree
+  version: "1.0.11"
+
+source:
+  fn: plone.formwidget.contenttree-1.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.formwidget.contenttree/plone.formwidget.contenttree-1.0.11.tar.gz
+  md5: b915cbdf9beb5e4360bdf74ac8102289
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.formwidget.contenttree = plone.formwidget.contenttree:main
+    #
+    # Would create an entry point called plone.formwidget.contenttree that calls plone.formwidget.contenttree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.formwidget.query
+    - plone.formwidget.autocomplete >=1.2.0
+    - plone.z3cform >=0.7.4
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - z3c.formwidget.query
+    - plone.formwidget.autocomplete >=1.2.0
+    - plone.z3cform >=0.7.4
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.formwidget
+    - plone.formwidget.contenttree
+    - plone.formwidget.contenttree.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/plone.formwidget.contenttree
+  license: GPL
+  summary: 'AJAX selection widget for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

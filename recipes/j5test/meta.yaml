@@ -1,0 +1,64 @@
+package:
+  name: j5test
+  version: "1.1"
+
+source:
+  fn: j5test-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/j5test/j5test-1.1.tar.gz
+  md5: e629c2dcde9c38f8e5a2b7f5da8f7948
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - j5test = j5test:main
+    #
+    # Would create an entry point called j5test that calls j5test.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+    - j5basic
+
+  run:
+    - python
+    - nose
+    - j5basic
+
+test:
+  # Python imports
+  imports:
+    - j5test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sjsoft.com/
+  license: Apache Software License
+  summary: 'Some testing utilities used by other j5 projects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

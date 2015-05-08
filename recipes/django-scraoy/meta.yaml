@@ -1,0 +1,64 @@
+package:
+  name: django-scraoy
+  version: "0.1a1"
+
+source:
+  fn: django-scraoy-0.1a1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-scraoy/django-scraoy-0.1a1.tar.gz
+  md5: 4e10c5df80aad2ddf70e485b02e8c5fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-scraoy = django-scraoy:main
+    #
+    # Would create an entry point called django-scraoy that calls django-scraoy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+
+  run:
+    - python
+    - setuptools
+    - django >=1.6
+
+test:
+  # Python imports
+  imports:
+    - djscrapy
+    - djscrapy.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/youngershen/django-scrapy
+  license: MIT License
+  summary: 'apis for you can use scrapy in django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

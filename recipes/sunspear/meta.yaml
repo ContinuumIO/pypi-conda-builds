@@ -1,0 +1,71 @@
+package:
+  name: sunspear
+  version: "0.2.2"
+
+source:
+  fn: sunspear-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sunspear/sunspear-0.2.2.tar.gz
+  md5: 751175ba3a733efc45c5ab5e05b74ec6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sunspear = sunspear:main
+    #
+    # Would create an entry point called sunspear that calls sunspear.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - riak ==2.0.2
+    - python-dateutil ==1.5
+    - protobuf ==2.4.1
+
+  run:
+    - python
+    - riak ==2.0.2
+    - python-dateutil ==1.5
+    - protobuf ==2.4.1
+
+test:
+  # Python imports
+  imports:
+    - sunspear
+    - sunspear.activitystreams
+    - sunspear.aggregators
+    - sunspear.backends
+    - sunspear.contrib
+    - sunspear.lib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/numan/sunspear
+  license: Apache License 2.0
+  summary: 'Activity streams backed by Riak.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

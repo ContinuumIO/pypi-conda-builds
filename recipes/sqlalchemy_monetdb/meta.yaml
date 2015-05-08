@@ -1,0 +1,65 @@
+package:
+  name: sqlalchemy_monetdb
+  version: "0.9"
+
+source:
+  fn: sqlalchemy_monetdb-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlalchemy_monetdb/sqlalchemy_monetdb-0.9.tar.gz
+  md5: 389dec9541da3ab009c057e3ec485e28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlalchemy_monetdb = sqlalchemy_monetdb:main
+    #
+    # Would create an entry point called sqlalchemy_monetdb that calls sqlalchemy_monetdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-monetdb >=11.19.3.2
+    - sqlalchemy >=0.8
+
+  run:
+    - python
+    - setuptools
+    - python-monetdb >=11.19.3.2
+    - sqlalchemy >=0.8
+
+test:
+  # Python imports
+  imports:
+    - sqlalchemy_monetdb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: 'SQLAlchemy dialect for MonetDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

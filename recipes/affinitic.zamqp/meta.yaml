@@ -1,0 +1,75 @@
+package:
+  name: affinitic.zamqp
+  version: "0.6"
+
+source:
+  fn: affinitic.zamqp-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/affinitic.zamqp/affinitic.zamqp-0.6.tar.gz
+  md5: 8dc9d8cfd751ef0b26ec2a8290185ccf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - affinitic.zamqp = affinitic.zamqp:main
+    #
+    # Would create an entry point called affinitic.zamqp that calls affinitic.zamqp.main()
+
+    - publishmsg = affinitic.zamqp.publisher:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - carrot
+    - transaction
+    - zope.component
+    - grokcore.component
+    - z3c.autoinclude
+
+  run:
+    - python
+    - setuptools
+    - carrot
+    - transaction
+    - zope.component
+    - grokcore.component
+    - z3c.autoinclude
+
+test:
+  # Python imports
+  imports:
+    - affinitic
+    - affinitic.zamqp
+    - affinitic.zamqp.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - publishmsg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/jfroche/affinitic.zamqp
+  license: ZPL
+  summary: 'AMQP Consumer and publisher integration with Zope'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

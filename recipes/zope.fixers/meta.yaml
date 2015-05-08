@@ -1,0 +1,66 @@
+package:
+  name: zope.fixers
+  version: "1.1.2"
+
+source:
+  fn: zope.fixers-1.1.2.zip
+  url: https://pypi.python.org/packages/source/z/zope.fixers/zope.fixers-1.1.2.zip
+  md5: 4bcdc78798c772e6d1dd03ff3870d4a9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.fixers = zope.fixers:main
+    #
+    # Would create an entry point called zope.fixers that calls zope.fixers.main()
+
+    - zope-2to3=zope.fixers.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.fixers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zope-2to3 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.zope.org/zope.fixers/
+  license: ZPL
+  summary: '2to3 fixers for Zope'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,89 @@
+package:
+  name: silva.pas.openid
+  version: "3.0"
+
+source:
+  fn: silva.pas.openid-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/silva.pas.openid/silva.pas.openid-3.0.tar.gz
+  md5: ec56902482fc7a08feea70cebfb671ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silva.pas.openid = silva.pas.openid:main
+    #
+    # Would create an entry point called silva.pas.openid that calls silva.pas.openid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - python-openid >=2.1
+    - five.grok
+    - silva.core.interfaces
+    - silva.core.conf
+    - silva.core.views
+    - silva.core.services
+    - silva.pas.base
+    - silva.pas.membership
+    - silva.captcha
+    - setuptools
+    - zope.component
+    - zope.interface
+    - zope.publisher
+
+  run:
+    - python
+    - python-openid >=2.1
+    - five.grok
+    - silva.core.interfaces
+    - silva.core.conf
+    - silva.core.views
+    - silva.core.services
+    - silva.pas.base
+    - silva.pas.membership
+    - silva.captcha
+    - setuptools
+    - zope.component
+    - zope.interface
+    - zope.publisher
+
+test:
+  # Python imports
+  imports:
+    - silva
+    - silva.pas
+    - silva.pas.openid
+    - silva.pas.openid.plugins
+    - silva.pas.openid.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/silvacms/silva.pas.openid
+  license: BSD License
+  summary: 'OpenID suport for Silva CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

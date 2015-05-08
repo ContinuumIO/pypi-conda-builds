@@ -1,0 +1,69 @@
+package:
+  name: trytond_nereid_catalog_tree
+  version: "3.4.1.1"
+
+source:
+  fn: trytond_nereid_catalog_tree-3.4.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_nereid_catalog_tree/trytond_nereid_catalog_tree-3.4.1.1.tar.gz
+  md5: 02ca6a4b656ac9183d374dc12973326a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_nereid_catalog_tree = trytond_nereid_catalog_tree:main
+    #
+    # Would create an entry point called trytond_nereid_catalog_tree that calls trytond_nereid_catalog_tree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - trytond_nereid_catalog >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+    - trytond_nereid_catalog >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.nereid_catalog_tree
+    - trytond.modules.nereid_catalog_tree.tests
+    - trytond_nereid_catalog_tree
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openlabs.co.in
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Nereid Catalog Tree'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: albuminer
+  version: "1.2.0"
+
+source:
+  fn: albuminer-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/albuminer/albuminer-1.2.0.tar.gz
+  md5: c07e84e7b580b32ff451f6af9258ddc0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - albuminer = albuminer:main
+    #
+    # Would create an entry point called albuminer that calls albuminer.main()
+
+    - albuminize=albuminer.albuminize:wrap
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mutagen
+    - imagine
+
+  run:
+    - python
+    - mutagen
+    - imagine
+
+test:
+  # Python imports
+  imports:
+    - albuminer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - albuminize --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/unrar/albuminer
+  license: MIT License
+  summary: 'Tool that, given an audio file or a path with audio files, gets a cover for all of them.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: openerp-project-long-term
+  version: "7.0.406"
+
+source:
+  fn: openerp-project-long-term-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-project-long-term/openerp-project-long-term-7.0.406.tar.gz
+  md5: bf3e63a8b7c154f6a62d746f04ef74b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-project-long-term = openerp-project-long-term:main
+    #
+    # Would create an entry point called openerp-project-long-term that calls openerp-project-long-term.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-project
+
+  run:
+    - python
+    - openerp-project
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.project_long_term
+    - openerp.addons.project_long_term.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Long Term Projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

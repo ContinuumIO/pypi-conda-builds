@@ -1,0 +1,71 @@
+package:
+  name: hatak_auth
+  version: "0.2.4"
+
+source:
+  fn: Hatak_Auth-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/H/Hatak_Auth/Hatak_Auth-0.2.4.tar.gz
+  md5: cb76b7ac247686f53f81786357be7a99
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hatak_auth = hatak_auth:main
+    #
+    # Would create an entry point called hatak_auth that calls hatak_auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hatak >=0.2.7.8
+    - hatak_formskit >=0.2.3.1
+    - hatak_sql >=0.1.15
+    - hatak_jinja2
+
+  run:
+    - python
+    - hatak >=0.2.7.8
+    - hatak_formskit >=0.2.3.1
+    - hatak_sql >=0.1.15
+    - hatak_jinja2
+
+test:
+  # Python imports
+  imports:
+    - haplugin
+    - haplugin.auth
+    - haplugin.auth.tests
+    - hatak_auth
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache License 2.0
+  summary: 'Auth plugin for Hatak.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

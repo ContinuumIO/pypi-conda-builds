@@ -1,0 +1,67 @@
+package:
+  name: crawl-me
+  version: "0.1.9dev-20140619-2"
+
+source:
+  fn: crawl-me-0.1.9dev-20140619-2.tar.gz
+  url: https://pypi.python.org/packages/source/c/crawl-me/crawl-me-0.1.9dev-20140619-2.tar.gz
+  md5: 0ee32f380acaead0e2d20cf35c210fe2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crawl-me = crawl-me:main
+    #
+    # Would create an entry point called crawl-me that calls crawl-me.main()
+
+    - crawl-me = crawl_me.common.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyquery >=1.2.5
+
+  run:
+    - python
+    - pyquery >=1.2.5
+
+test:
+  # Python imports
+  imports:
+    - crawl_me
+    - crawl_me.common
+    - crawl_me.plugin
+    - crawl_me.third_party
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - crawl-me --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nyankosama/crawl-me
+  license: MIT License
+  summary: u'This is a plugin based web picture crawler. Now pixiv/gamersky plugin available!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

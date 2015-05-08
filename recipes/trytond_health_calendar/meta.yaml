@@ -1,0 +1,70 @@
+package:
+  name: trytond_health_calendar
+  version: "2.8.1"
+
+source:
+  fn: trytond_health_calendar-2.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_health_calendar/trytond_health_calendar-2.8.1.tar.gz
+  md5: 8e0639a5e6bbaa79bc10a1e6b5cb9ad3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_health_calendar = trytond_health_calendar:main
+    #
+    # Would create an entry point called trytond_health_calendar that calls trytond_health_calendar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_health ==2.8.1
+    - trytond_calendar >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - trytond_health ==2.8.1
+    - trytond_calendar >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.health_calendar
+    - trytond.modules.health_calendar.tests
+    - trytond.modules.health_calendar.wizard
+    - trytond_health_calendar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://health.gnu.org/
+  license: GNU General Public License (GPL)
+  summary: 'GNU Health Calendar Module'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: typesafe-conductr-cli
+  version: "0.12"
+
+source:
+  fn: typesafe-conductr-cli-0.12.tar.gz
+  url: https://pypi.python.org/packages/source/t/typesafe-conductr-cli/typesafe-conductr-cli-0.12.tar.gz
+  md5: 9b7dc061f3114fa2c48d49f6c3f2ea73
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - typesafe-conductr-cli = typesafe-conductr-cli:main
+    #
+    # Would create an entry point called typesafe-conductr-cli that calls typesafe-conductr-cli.main()
+
+    - conduct = typesafe_conductr_cli.conduct:run
+    - shazar = typesafe_conductr_cli.shazar:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.3.0
+    - argcomplete >=0.8.1
+    - pyhocon ==0.2.1
+
+  run:
+    - python
+    - requests >=2.3.0
+    - argcomplete >=0.8.1
+    - pyhocon ==0.2.1
+
+test:
+  # Python imports
+  imports:
+    - typesafe_conductr_cli
+    - typesafe_conductr_cli.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - conduct --help
+    - shazar --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/typesafehub/typesafe-conductr-cli
+  license: Apache 2
+  summary: 'A CLI client for Typesafe ConductR'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

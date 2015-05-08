@@ -1,0 +1,77 @@
+package:
+  name: zopyx.smartprintng.core
+  version: "2.0.0"
+
+source:
+  fn: zopyx.smartprintng.core-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zopyx.smartprintng.core/zopyx.smartprintng.core-2.0.0.tar.gz
+  md5: 67f7a9ef39920de82c6d6d18381ed124
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.smartprintng.core = zopyx.smartprintng.core:main
+    #
+    # Would create an entry point called zopyx.smartprintng.core that calls zopyx.smartprintng.core.main()
+
+    - spng-demo=zopyx.smartprintng.core.demo.demo_app:main
+    - spng-demo2=zopyx.smartprintng.core.demo2.demo_app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component
+    - zope.pagetemplate
+    - zopyx.convert2
+
+  run:
+    - python
+    - setuptools
+    - zope.component
+    - zope.pagetemplate
+    - zopyx.convert2
+
+test:
+  # Python imports
+  imports:
+    - zopyx
+    - zopyx.smartprintng
+    - zopyx.smartprintng.core
+    - zopyx.smartprintng.core.demo
+    - zopyx.smartprintng.core.demo2
+    - zopyx.smartprintng.core.demo3
+    - zopyx.smartprintng.core.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - spng-demo --help
+    - spng-demo2 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: ZPL
+  summary: 'SmartPrintNG core engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

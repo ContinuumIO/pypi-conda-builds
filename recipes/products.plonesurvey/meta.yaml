@@ -1,0 +1,79 @@
+package:
+  name: products.plonesurvey
+  version: "1.4.8"
+
+source:
+  fn: Products.PloneSurvey-1.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/P/Products.PloneSurvey/Products.PloneSurvey-1.4.8.tar.gz
+  md5: a2e64bf9c18779fb0ff24849276e1a19
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.plonesurvey = products.plonesurvey:main
+    #
+    # Would create an entry point called products.plonesurvey that calls products.plonesurvey.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - z3c.rml <2.6.0
+    - reportlab <3.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - z3c.rml <2.6.0
+    - reportlab <3.0
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PloneSurvey
+    - Products.PloneSurvey.browser
+    - Products.PloneSurvey.browser.questions
+    - Products.PloneSurvey.browser.results
+    - Products.PloneSurvey.browser.templates
+    - Products.PloneSurvey.browser.viewlets
+    - Products.PloneSurvey.content
+    - Products.PloneSurvey.interfaces
+    - Products.PloneSurvey.tests
+    - Products.PloneSurvey.tests.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/plonesurvey
+  license: GPL
+  summary: 'Plone Survey is an addon collecting data from people.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

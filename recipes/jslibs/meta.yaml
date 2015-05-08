@@ -1,0 +1,67 @@
+package:
+  name: jslibs
+  version: "0.10"
+
+source:
+  fn: jslibs-0.10.tar.gz
+  url: https://pypi.python.org/packages/source/j/jslibs/jslibs-0.10.tar.gz
+  md5: 0b2d099226cb7f672b872af373de8b7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jslibs = jslibs:main
+    #
+    # Would create an entry point called jslibs that calls jslibs.main()
+
+    - juice_jslibs=jslibs.juice_jslibs:main
+    - jslibs_prepare_sources=jslibs.jslibs_prepare_sources:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+
+test:
+  # Python imports
+  imports:
+    - jslibs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - juice_jslibs --help
+    - jslibs_prepare_sources --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.pylonsproject.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'A package which does stuff with js libs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

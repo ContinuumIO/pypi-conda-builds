@@ -1,0 +1,70 @@
+package:
+  name: jaraco.packaging
+  version: "2.5.1"
+
+source:
+  fn: jaraco.packaging-2.5.1.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.packaging/jaraco.packaging-2.5.1.zip
+  md5: 210a5334250229c0ba425b1f3c4a50c2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaraco.packaging = jaraco.packaging:main
+    #
+    # Would create an entry point called jaraco.packaging that calls jaraco.packaging.main()
+
+    - dependency-tree=jaraco.packaging.depends:tree_cmd
+    - upload-package=jaraco.packaging.cheese:do_upload
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - six >=1.4,<2dev
+
+  run:
+    - python
+    - setuptools
+    - requests
+    - six >=1.4,<2dev
+
+test:
+  # Python imports
+  imports:
+    - jaraco
+    - jaraco.packaging
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dependency-tree --help
+    - upload-package --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/jaraco/jaraco.packaging
+  license: UNKNOWN
+  summary: 'tools to supplement packaging Python releases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

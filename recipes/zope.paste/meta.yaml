@@ -1,0 +1,75 @@
+package:
+  name: zope.paste
+  version: "1.0.0a1"
+
+source:
+  fn: zope.paste-1.0.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.paste/zope.paste-1.0.0a1.tar.gz
+  md5: 4f50bf8d0a9d45c5f517dba7481a3287
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.paste = zope.paste:main
+    #
+    # Would create an entry point called zope.paste that calls zope.paste.main()
+
+    - serve=zope.paste.serve:serve
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pastedeploy
+    - zope.interface
+    - zope.app.appsetup
+    - zope.app.wsgi
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pastedeploy
+    - zope.interface
+    - zope.app.appsetup
+    - zope.app.wsgi
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.paste
+    - zope.paste.test_app
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - serve --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.paste
+  license: Zope Public License
+  summary: 'Zope 3 and PasteDeploy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

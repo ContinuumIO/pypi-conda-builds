@@ -1,0 +1,71 @@
+package:
+  name: jz.stream
+  version: "0.1"
+
+source:
+  fn: jz.stream-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jz.stream/jz.stream-0.1.tar.gz
+  md5: c9d03e9a98bccaa685495b2d21d3c338
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jz.stream = jz.stream:main
+    #
+    # Would create an entry point called jz.stream that calls jz.stream.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jz.common
+    - jz.magic
+    - jz.filerepresentation
+    - jz.datetime
+
+  run:
+    - python
+    - setuptools
+    - jz.common
+    - jz.magic
+    - jz.filerepresentation
+    - jz.datetime
+
+test:
+  # Python imports
+  imports:
+    - jz
+    - jz.stream
+    - jz.stream.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.jellofishi.com/zope
+  license: GPL
+  summary: 'Generic data stream classes and views.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

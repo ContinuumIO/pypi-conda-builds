@@ -1,0 +1,74 @@
+package:
+  name: zope.app.http
+  version: "4.0.0a1.dev"
+
+source:
+  fn: zope.app.http-4.0.0a1.dev.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.app.http/zope.app.http-4.0.0a1.dev.tar.gz
+  md5: 77c8e49370bad3b4f549e9d4ef5e8d8f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.app.http = zope.app.http:main
+    #
+    # Would create an entry point called zope.app.http that calls zope.app.http.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.publisher >=4.0.0a2
+    - zope.container >=4.0.0a2
+    - zope.filerepresentation
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.publisher >=4.0.0a2
+    - zope.container >=4.0.0a2
+    - zope.filerepresentation
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.app
+    - zope.app.http
+    - zope.app.http.exception
+    - zope.app.http.exception.tests
+    - zope.app.http.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.app.http
+  license: Zope Public License
+  summary: 'HTTP Behavior for the Zope Publisher'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

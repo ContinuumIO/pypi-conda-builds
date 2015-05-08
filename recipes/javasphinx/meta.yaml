@@ -1,0 +1,68 @@
+package:
+  name: javasphinx
+  version: "0.9.12"
+
+source:
+  fn: javasphinx-0.9.12.tar.gz
+  url: https://pypi.python.org/packages/source/j/javasphinx/javasphinx-0.9.12.tar.gz
+  md5: 11a3e1a758b2de35252414240ac092c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - javasphinx = javasphinx:main
+    #
+    # Would create an entry point called javasphinx that calls javasphinx.main()
+
+    - javasphinx-apidoc = javasphinx.apidoc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - javalang >=0.9.5
+    - lxml
+    - beautifulsoup4
+
+  run:
+    - python
+    - javalang >=0.9.5
+    - lxml
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - javasphinx
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - javasphinx-apidoc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bronto/javasphinx
+  license: MIT License
+  summary: 'Sphinx extension for documenting Java projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

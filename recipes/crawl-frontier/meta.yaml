@@ -1,0 +1,85 @@
+package:
+  name: crawl-frontier
+  version: "0.2.0.post0.dev18"
+
+source:
+  fn: crawl-frontier-0.2.0.post0.dev18.tar.gz
+  url: https://pypi.python.org/packages/source/c/crawl-frontier/crawl-frontier-0.2.0.post0.dev18.tar.gz
+  md5: f01be2890956ac69a9263180225b8d19
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crawl-frontier = crawl-frontier:main
+    #
+    # Would create an entry point called crawl-frontier that calls crawl-frontier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.8.0
+    - w3lib >=1.10.0
+    - tldextract >=1.5.1
+
+  run:
+    - python
+    - six >=1.8.0
+    - w3lib >=1.10.0
+    - tldextract >=1.5.1
+
+test:
+  # Python imports
+  imports:
+    - crawlfrontier
+    - crawlfrontier.contrib
+    - crawlfrontier.contrib.backends
+    - crawlfrontier.contrib.backends.memory
+    - crawlfrontier.contrib.backends.sqlalchemy
+    - crawlfrontier.contrib.middlewares
+    - crawlfrontier.contrib.requests
+    - crawlfrontier.contrib.scrapy
+    - crawlfrontier.contrib.scrapy.middlewares
+    - crawlfrontier.contrib.scrapy.middlewares.seeds
+    - crawlfrontier.contrib.scrapy.schedulers
+    - crawlfrontier.core
+    - crawlfrontier.logger
+    - crawlfrontier.logger.filters
+    - crawlfrontier.logger.formatters
+    - crawlfrontier.logger.handlers
+    - crawlfrontier.settings
+    - crawlfrontier.tests
+    - crawlfrontier.utils
+    - crawlfrontier.utils.graphs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/scrapinghub/crawl-frontier
+  license: BSD License
+  summary: 'A flexible frontier for web crawlers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

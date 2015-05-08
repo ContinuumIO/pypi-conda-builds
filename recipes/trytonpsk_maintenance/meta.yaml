@@ -1,0 +1,77 @@
+package:
+  name: trytonpsk_maintenance
+  version: "3.2.0"
+
+source:
+  fn: trytonpsk_maintenance-3.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytonpsk_maintenance/trytonpsk_maintenance-3.2.0.tar.gz
+  md5: 1d361313e71922748a921f29a37a5bda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytonpsk_maintenance = trytonpsk_maintenance:main
+    #
+    # Would create an entry point called trytonpsk_maintenance that calls trytonpsk_maintenance.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trytond_party >=3.2,<3.3
+    - trytond_currency >=3.2,<3.3
+    - trytond_company >=3.2,<3.3
+    - trytond_product >=3.2,<3.3
+    - trytond_stock >=3.2,<3.3
+    - trytond_company_department >=3.2,<3.3
+    - trytond >=3.2,<3.3
+
+  run:
+    - python
+    - setuptools
+    - trytond_party >=3.2,<3.3
+    - trytond_currency >=3.2,<3.3
+    - trytond_company >=3.2,<3.3
+    - trytond_product >=3.2,<3.3
+    - trytond_stock >=3.2,<3.3
+    - trytond_company_department >=3.2,<3.3
+    - trytond >=3.2,<3.3
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.maintenance
+    - trytond.modules.maintenance.tests
+    - trytonpsk_maintenance
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.presik.com/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module for management of equipment/machinery resources.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

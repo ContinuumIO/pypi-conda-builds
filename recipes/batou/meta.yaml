@@ -1,0 +1,76 @@
+package:
+  name: batou
+  version: "1.0.8"
+
+source:
+  fn: batou-1.0.8.zip
+  url: https://pypi.python.org/packages/source/b/batou/batou-1.0.8.zip
+  md5: 3742ec1254bbfe3017207dc90f027967
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - batou = batou:main
+    #
+    # Would create an entry point called batou that calls batou.main()
+
+    - batou-init=batou.init:console_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - requests
+    - setuptools
+    - execnet
+
+  run:
+    - python
+    - setuptools
+    - jinja2
+    - requests
+    - setuptools
+    - execnet
+
+test:
+  # Python imports
+  imports:
+    - batou
+    - batou.lib
+    - batou.lib.tests
+    - batou.secrets
+    - batou.secrets.tests
+    - batou.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - batou-init --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://plan.flyingcircus.io/projects/batou
+  license: BSD License
+  summary: 'A utility for automating multi-host, multi-environment software builds and deployments.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

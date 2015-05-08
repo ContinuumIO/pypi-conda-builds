@@ -1,0 +1,66 @@
+package:
+  name: vudo.skinsetup
+  version: "0.1"
+
+source:
+  fn: vudo.skinsetup-0.1.zip
+  url: https://pypi.python.org/packages/source/v/vudo.skinsetup/vudo.skinsetup-0.1.zip
+  md5: 38de84e51b74456aa9cab768736c7728
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vudo.skinsetup = vudo.skinsetup:main
+    #
+    # Would create an entry point called vudo.skinsetup that calls vudo.skinsetup.main()
+
+    - vudoskin=vudo.skinsetup:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - vudo
+    - vudo.skinsetup
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - vudoskin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: git://github.com/reco/vudo.git
+  license: BSD
+  summary: 'Package which provides API and scripts to manage a skin directory of a VUDO app.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

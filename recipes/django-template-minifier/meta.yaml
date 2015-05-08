@@ -1,0 +1,61 @@
+package:
+  name: django-template-minifier
+  version: "1.0"
+
+source:
+  fn: django-template-minifier-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-template-minifier/django-template-minifier-1.0.tar.gz
+  md5: b84a67554f96d51459ff57f45038790b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-template-minifier = django-template-minifier:main
+    #
+    # Would create an entry point called django-template-minifier that calls django-template-minifier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - template_minifier
+    - template_minifier.template
+    - template_minifier.template.loaders
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iRynek/django-template-minifier
+  license: GPL
+  summary: 'Python package, providing simple django template loader. It reduces HTML output in templates by stripping out whitespace characters between HTML and django template tags.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

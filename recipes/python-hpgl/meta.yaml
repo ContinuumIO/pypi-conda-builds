@@ -1,0 +1,64 @@
+package:
+  name: python-hpgl
+  version: "0.1.0"
+
+source:
+  fn: python-hpgl-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-hpgl/python-hpgl-0.1.0.tar.gz
+  md5: 7b088a4de328e27a41ad472c43b6a83a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-hpgl = python-hpgl:main
+    #
+    # Would create an entry point called python-hpgl that calls python-hpgl.main()
+
+    - hpgl2svg = hpgl.cli:hpgl2svg
+    - hprtl2bmp = hpgl.cli:hprtl2bmp
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hpgl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hpgl2svg --help
+    - hprtl2bmp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://alexforencich.com/wiki/en/python-hpgl/start
+  license: MIT License
+  summary: 'HPGL parsing library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

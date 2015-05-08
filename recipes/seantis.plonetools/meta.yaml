@@ -1,0 +1,79 @@
+package:
+  name: seantis.plonetools
+  version: "0.16"
+
+source:
+  fn: seantis.plonetools-0.16.tar.gz
+  url: https://pypi.python.org/packages/source/s/seantis.plonetools/seantis.plonetools-0.16.tar.gz
+  md5: e9a3e82c6a52d453b98ccde41b7ac70b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - seantis.plonetools = seantis.plonetools:main
+    #
+    # Would create an entry point called seantis.plonetools that calls seantis.plonetools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone >=4.3
+    - plone.api
+    - plone.app.dexterity
+    - plone.directives.form
+    - python-stdnum >=1.0
+    - five.grok
+    - colour
+
+  run:
+    - python
+    - setuptools
+    - plone >=4.3
+    - plone.api
+    - plone.app.dexterity
+    - plone.directives.form
+    - python-stdnum >=1.0
+    - five.grok
+    - colour
+
+test:
+  # Python imports
+  imports:
+    - seantis
+    - seantis.plonetools
+    - seantis.plonetools.behaviors
+    - seantis.plonetools.browser
+    - seantis.plonetools.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/seantis/seantis.plonetools
+  license: GPL v2
+  summary: 'A collection of tools shared with different Seantis Plone modules.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

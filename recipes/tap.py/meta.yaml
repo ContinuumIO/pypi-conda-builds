@@ -1,0 +1,70 @@
+package:
+  name: tap.py
+  version: "1.4"
+
+source:
+  fn: tap.py-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/t/tap.py/tap.py-1.4.tar.gz
+  md5: 41e6e411b31f8083c66216535f13c487
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tap.py = tap.py:main
+    #
+    # Would create an entry point called tap.py that calls tap.py.main()
+
+    - tappy = tap.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+    - pygments ==2.0.1
+    - mock
+
+  run:
+    - python
+    - setuptools
+    - nose
+    - pygments ==2.0.1
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - tap
+    - tap.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tappy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mblayman/tappy
+  license: BSD License
+  summary: 'Test Anything Protocol (TAP) tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: closure-soy
+  version: "20121221"
+
+source:
+  fn: closure-soy-20121221.tar.gz
+  url: https://pypi.python.org/packages/source/c/closure-soy/closure-soy-20121221.tar.gz
+  md5: f817e44f2da20e089a20ed7368e61b4a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - closure-soy = closure-soy:main
+    #
+    # Would create an entry point called closure-soy that calls closure-soy.main()
+
+    - closure-soy = closure_soy:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - closure_soy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - closure-soy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/closure-soy
+  license: BSD License
+  summary: "Google Closure's Soy templates packaged for Python"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

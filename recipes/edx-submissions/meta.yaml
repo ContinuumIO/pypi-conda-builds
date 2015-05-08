@@ -1,0 +1,75 @@
+package:
+  name: edx-submissions
+  version: "0.0.8"
+
+source:
+  fn: edx-submissions-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/e/edx-submissions/edx-submissions-0.0.8.tar.gz
+  md5: 3a344bd1fb238fb59bab57f883a3b9f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edx-submissions = edx-submissions:main
+    #
+    # Would create an entry point called edx-submissions that calls edx-submissions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-model-utils ==1.4.0
+    - django >=1.4,<1.5
+    - djangorestframework <2.4
+    - django-extensions ==1.2.5
+    - dogapi ==1.2.1
+    - pytz ==2012h
+    - south ==0.7.6
+
+  run:
+    - python
+    - django-model-utils ==1.4.0
+    - django >=1.4,<1.5
+    - djangorestframework <2.4
+    - django-extensions ==1.2.5
+    - dogapi ==1.2.1
+    - pytz ==2012h
+    - south ==0.7.6
+
+test:
+  # Python imports
+  imports:
+    - submissions
+    - submissions.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/edx/edx-submissions.git
+  license: GNU Affero General Public License v3
+  summary: 'An API for creating submissions and scores.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

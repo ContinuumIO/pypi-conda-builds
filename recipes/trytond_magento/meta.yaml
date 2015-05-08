@@ -1,0 +1,79 @@
+package:
+  name: trytond_magento
+  version: "3.4.3.1"
+
+source:
+  fn: trytond_magento-3.4.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_magento/trytond_magento-3.4.3.1.tar.gz
+  md5: 212023d7729f92c1b7371052c99945d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_magento = trytond_magento:main
+    #
+    # Would create an entry point called trytond_magento that calls trytond_magento.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - magento ==0.4
+    - trytond_sale >=3.4,<3.5
+    - trytond_party >=3.4,<3.5
+    - trytond_carrier >=3.4,<3.5
+    - trytond_product_price_list >=3.4,<3.5
+    - trytond_production >=3.4,<3.5
+    - openlabs_sale_channel >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+  run:
+    - python
+    - setuptools
+    - magento ==0.4
+    - trytond_sale >=3.4,<3.5
+    - trytond_party >=3.4,<3.5
+    - trytond_carrier >=3.4,<3.5
+    - trytond_product_price_list >=3.4,<3.5
+    - trytond_production >=3.4,<3.5
+    - openlabs_sale_channel >=3.4,<3.5
+    - trytond >=3.4,<3.5
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.magento
+    - trytond.modules.magento.tests
+    - trytond_magento
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/openlabs/trytond-magento.git
+  license: BSD License
+  summary: 'Tryton Magento Integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

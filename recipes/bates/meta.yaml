@@ -1,0 +1,71 @@
+package:
+  name: bates
+  version: "0.0.1"
+
+source:
+  fn: bates-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bates/bates-0.0.1.tar.gz
+  md5: 0e245b3554602382e1dd86fdac408070
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bates = bates:main
+    #
+    # Would create an entry point called bates that calls bates.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-memcached >=1.53
+    - django >=1.5.4
+    - sorl-thumbnail ==11.12
+    - requests ==1.2.3
+
+  run:
+    - python
+    - python-memcached >=1.53
+    - django >=1.5.4
+    - sorl-thumbnail ==11.12
+    - requests ==1.2.3
+
+test:
+  # Python imports
+  imports:
+    - bates
+    - bates.core
+    - bates.images
+    - bates.origins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PBS-KIDS/Carson/
+  license: MIT
+  summary: 'HTML5 adaptive images polyfill: a Django and javascript solution'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

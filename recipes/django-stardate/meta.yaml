@@ -1,0 +1,81 @@
+package:
+  name: django-stardate
+  version: "0.1.0.a2"
+
+source:
+  fn: django-stardate-0.1.0.a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-stardate/django-stardate-0.1.0.a2.tar.gz
+  md5: 543cc76fada68980b5032920b9470a4e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-stardate = django-stardate:main
+    #
+    # Would create an entry point called django-stardate that calls django-stardate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.7
+    - django-markupfield ==1.1.1
+    - dropbox >=1.4,<2.0
+    - markdown ==2.0.3
+    - pyyaml ==3.11
+    - python-dateutil ==2.1
+    - python-social-auth >=0.1,<0.2
+    - pytz <2014.4
+
+  run:
+    - python
+    - django >=1.4,<1.7
+    - django-markupfield ==1.1.1
+    - dropbox >=1.4,<2.0
+    - markdown ==2.0.3
+    - pyyaml ==3.11
+    - python-dateutil ==2.1
+    - python-social-auth >=0.1,<0.2
+    - pytz <2014.4
+
+test:
+  # Python imports
+  imports:
+    - stardate
+    - stardate.backends
+    - stardate.management
+    - stardate.management.commands
+    - stardate.tests
+    - stardate.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/blturner/django-stardate
+  license: BSD
+  summary: 'Another django blog app.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

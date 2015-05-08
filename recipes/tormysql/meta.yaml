@@ -1,0 +1,66 @@
+package:
+  name: tormysql
+  version: "0.0.8"
+
+source:
+  fn: TorMySQL-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/T/TorMySQL/TorMySQL-0.0.8.tar.gz
+  md5: 36972cb4ce6499e2b1574f6e56e31510
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tormysql = tormysql:main
+    #
+    # Would create an entry point called tormysql that calls tormysql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=4.1
+    - pymysql >=0.6.6
+    - greenlet >=0.4.2
+
+  run:
+    - python
+    - tornado >=4.1
+    - pymysql >=0.6.6
+    - greenlet >=0.4.2
+
+test:
+  # Python imports
+  imports:
+    - tormysql
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/snower/TorMySQL.git
+  license: MIT
+  summary: 'Tornado asynchronous MySQL Driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

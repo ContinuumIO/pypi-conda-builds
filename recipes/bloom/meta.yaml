@@ -1,0 +1,103 @@
+package:
+  name: bloom
+  version: "0.5.20"
+
+source:
+  fn: bloom-0.5.20.tar.gz
+  url: https://pypi.python.org/packages/source/b/bloom/bloom-0.5.20.tar.gz
+  md5: 7acf4275fbbd053742b0ac7936ecab0f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bloom = bloom:main
+    #
+    # Would create an entry point called bloom that calls bloom.main()
+
+    - git-bloom-config = bloom.commands.git.config:main
+    - git-bloom-import-upstream = bloom.commands.git.import_upstream:main
+    - git-bloom-branch = bloom.commands.git.branch:main
+    - git-bloom-patch = bloom.commands.git.patch.patch_main:main
+    - git-bloom-generate = bloom.commands.git.generate:main
+    - git-bloom-release = bloom.commands.git.release:main
+    - bloom-export-upstream = bloom.commands.export_upstream:main
+    - bloom-update = bloom.commands.update:main
+    - bloom-release = bloom.commands.release:main
+    - bloom-generate = bloom.commands.generate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - catkin-pkg >=0.2.2
+    - setuptools
+    - empy
+    - python-dateutil
+    - pyyaml
+    - rosdep >=0.10.25
+    - rosdistro >=0.4.0
+    - vcstools >=0.1.22
+
+  run:
+    - python
+    - setuptools
+    - catkin-pkg >=0.2.2
+    - setuptools
+    - empy
+    - python-dateutil
+    - pyyaml
+    - rosdep >=0.10.25
+    - rosdistro >=0.4.0
+    - vcstools >=0.1.22
+
+test:
+  # Python imports
+  imports:
+    - bloom
+    - bloom.commands
+    - bloom.commands.git
+    - bloom.commands.git.patch
+    - bloom.generators
+    - bloom.generators.debian
+    - bloom.generators.rpm
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-bloom-config --help
+    - git-bloom-import-upstream --help
+    - git-bloom-branch --help
+    - git-bloom-patch --help
+    - git-bloom-generate --help
+    - git-bloom-release --help
+    - bloom-export-upstream --help
+    - bloom-update --help
+    - bloom-release --help
+    - bloom-generate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ros.org/wiki/bloom
+  license: BSD License
+  summary: 'Bloom is a release automation tool.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

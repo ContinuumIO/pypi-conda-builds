@@ -1,0 +1,130 @@
+package:
+  name: charm-tools
+  version: "1.5.1"
+
+source:
+  fn: charm-tools-1.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/charm-tools/charm-tools-1.5.1.tar.gz
+  md5: 754aeaf9114b4868ef933ed3407ad228
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - charm-tools = charm-tools:main
+    #
+    # Would create an entry point called charm-tools that calls charm-tools.main()
+
+    - charm = charmtools:charm
+    - juju-charm = charmtools:charm
+    - juju-bundle = charmtools:bundle
+    - juju-test = charmtools.test:main
+    - charm-get = charmtools.get:main
+    - charm-getall = charmtools.getall:main
+    - charm-proof = charmtools.proof:main
+    - charm-create = charmtools.create:main
+    - charm-list = charmtools.list:main
+    - charm-promulgate = charmtools.promulgate:main
+    - charm-review = charmtools.review:main
+    - charm-review-queue = charmtools.review_queue:main
+    - charm-search = charmtools.search:main
+    - charm-subscribers = charmtools.subscribers:main
+    - charm-unpromulgate = charmtools.unpromulgate:main
+    - charm-update = charmtools.update:main
+    - charm-version = charmtools.version:main
+    - charm-help = charmtools.cli:usage
+    - charm-test = charmtools.test:main
+    - charm-info = charmtools.info:main
+    - charm-generate = charmtools.generate:main
+    - charm-add = charmtools.generate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - launchpadlib
+    - argparse
+    - cheetah
+    - pyyaml
+    - pycrypto
+    - paramiko
+    - bzr
+    - requests
+    - charmworldlib
+
+  run:
+    - python
+    - setuptools
+    - launchpadlib
+    - argparse
+    - cheetah
+    - pyyaml
+    - pycrypto
+    - paramiko
+    - bzr
+    - requests
+    - charmworldlib
+
+test:
+  # Python imports
+  imports:
+    - charmtools
+    - charmtools.generators
+    - charmtools.templates
+    - charmtools.templates.ansible
+    - charmtools.templates.bash
+    - charmtools.templates.chef
+    - charmtools.templates.python
+    - charmtools.templates.python_services
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - charm --help
+    - juju-charm --help
+    - juju-bundle --help
+    - juju-test --help
+    - charm-get --help
+    - charm-getall --help
+    - charm-proof --help
+    - charm-create --help
+    - charm-list --help
+    - charm-promulgate --help
+    - charm-review --help
+    - charm-review-queue --help
+    - charm-search --help
+    - charm-subscribers --help
+    - charm-unpromulgate --help
+    - charm-update --help
+    - charm-version --help
+    - charm-help --help
+    - charm-test --help
+    - charm-info --help
+    - charm-generate --help
+    - charm-add --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/charm-tools
+  license: GPL v3
+  summary: 'Tools for maintaining Juju charms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

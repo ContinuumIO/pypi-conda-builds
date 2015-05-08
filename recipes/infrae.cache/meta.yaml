@@ -1,0 +1,67 @@
+package:
+  name: infrae.cache
+  version: "1.0.1"
+
+source:
+  fn: infrae.cache-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/infrae.cache/infrae.cache-1.0.1.tar.gz
+  md5: b09076a766747e6ed2a755cc62088e32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infrae.cache = infrae.cache:main
+    #
+    # Would create an entry point called infrae.cache that calls infrae.cache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beaker
+    - repoze.lru
+
+  run:
+    - python
+    - setuptools
+    - beaker
+    - repoze.lru
+
+test:
+  # Python imports
+  imports:
+    - infrae
+    - infrae.cache
+    - infrae.cache.beakerext
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg.infrae.com/infrae.cache
+  license: Zope Public License
+  summary: 'Infrae cache utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

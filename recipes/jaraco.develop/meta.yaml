@@ -1,0 +1,95 @@
+package:
+  name: jaraco.develop
+  version: "2.17.1"
+
+source:
+  fn: jaraco.develop-2.17.1.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.develop/jaraco.develop-2.17.1.zip
+  md5: 9bfc97b7a54ab803bca4f79ae3df0447
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jaraco.develop = jaraco.develop:main
+    #
+    # Would create an entry point called jaraco.develop that calls jaraco.develop.main()
+
+    - apply-python-bug-patch=jaraco.develop.python:apply_python_bug_patch_cmd
+    - start-selenium=jaraco.develop.selenium:start_selenium_server
+    - release-package = jaraco.develop.package:release
+    - py-exc-env = jaraco.develop.environments:PythonEnvironment.handle_command_line
+    - make-namespace-package = jaraco.develop.namespace:create_namespace_package_cmd
+    - create-bitbucket-repository = jaraco.develop.bitbucket:create_repository_cmd
+    - build-python = jaraco.develop.python:build_python
+    - vs-upgrade = jaraco.develop.vstudio:upgrade_file
+    - set-tabs-mode = jaraco.develop.indent:set_tabs_mode_cmd
+    - patch-hgrc = jaraco.develop.mercurial:patch_hgrc
+    - hide-hg-dirs = jaraco.develop.mercurial:hide_hg_dirs
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - keyring
+    - path.py
+    - jaraco.text
+    - more_itertools
+    - jaraco.logging
+    - jaraco.ui
+
+  run:
+    - python
+    - keyring
+    - path.py
+    - jaraco.text
+    - more_itertools
+    - jaraco.logging
+    - jaraco.ui
+
+test:
+  # Python imports
+  imports:
+    - jaraco
+    - jaraco.develop
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - apply-python-bug-patch --help
+    - start-selenium --help
+    - release-package --help
+    - py-exc-env --help
+    - make-namespace-package --help
+    - create-bitbucket-repository --help
+    - build-python --help
+    - vs-upgrade --help
+    - set-tabs-mode --help
+    - patch-hgrc --help
+    - hide-hg-dirs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/jaraco/jaraco.develop
+  license: MIT License
+  summary: 'jaraco.develop'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

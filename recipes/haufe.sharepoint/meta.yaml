@@ -1,0 +1,70 @@
+package:
+  name: haufe.sharepoint
+  version: "0.1.9"
+
+source:
+  fn: haufe.sharepoint-0.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/h/haufe.sharepoint/haufe.sharepoint-0.1.9.tar.gz
+  md5: b39f9d1d2f2bf9e3759ed05d1ed3ec24
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - haufe.sharepoint = haufe.sharepoint:main
+    #
+    # Would create an entry point called haufe.sharepoint that calls haufe.sharepoint.main()
+
+    - sharepoint-inspector=haufe.sharepoint.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - suds
+    - argparse
+    - python-ntlm
+
+  run:
+    - python
+    - suds
+    - argparse
+    - python-ntlm
+
+test:
+  # Python imports
+  imports:
+    - haufe
+    - haufe.sharepoint
+    - haufe.sharepoint.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sharepoint-inspector --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/haufe.sharepoint
+  license: ZPL
+  summary: 'Experimental Python-Sharepoint connector'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

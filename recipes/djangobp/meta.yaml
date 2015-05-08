@@ -1,0 +1,74 @@
+package:
+  name: djangobp
+  version: "1.0.4"
+
+source:
+  fn: djangobp-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangobp/djangobp-1.0.4.tar.gz
+  md5: 184ea546f7ea900eacc19229a1cb2f09
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangobp = djangobp:main
+    #
+    # Would create an entry point called djangobp that calls djangobp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djangobp
+    - djangobp.management
+    - djangobp.management.commands
+    - djangobp.scaffold
+    - djangobp.scaffold.app
+    - djangobp.scaffold.app.controllers
+    - djangobp.scaffold.app.static
+    - djangobp.scaffold.app.templates
+    - djangobp.scaffold.model
+    - djangobp.scaffold.model.controllers
+    - djangobp.scaffold.model.templates
+    - djangobp.scaffold.scaffold
+    - djangobp.scaffold.socialauth
+    - djangobp.scaffold.socialauth.controllers
+    - djangobp.scaffold.socialauth.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

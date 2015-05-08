@@ -1,0 +1,128 @@
+package:
+  name: vr.server
+  version: "4.0.0"
+
+source:
+  fn: vr.server-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/v/vr.server/vr.server-4.0.0.tar.gz
+  md5: 49133b28fd7d0eafb9aad753513f5cc3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vr.server = vr.server:main
+    #
+    # Would create an entry point called vr.server that calls vr.server.main()
+
+    - vr_worker = vr.server.commands:start_celery
+    - vr_beat = vr.server.commands:start_celerybeat
+    - vr_migrate = vr.server.commands:run_migrations
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery-schedulers ==0.0.2
+    - diff-match-patch ==20121119
+    - django >=1.4,<1.5
+    - django-celery >=3.0.11,<3.1
+    - django-extensions ==0.7.1
+    - django-picklefield ==0.2.0
+    - django-redis-cache ==0.9.5
+    - django-reversion ==1.6.6
+    - django-tastypie ==0.9.12
+    - fabric ==1.8.0
+    - gevent >=1.0rc2,<2
+    - gevent-psycopg2 ==0.0.3
+    - gunicorn ==0.17.2
+    - mercurial >=2.6.1
+    - paramiko >=1.8.0,<2.0
+    - psycopg2 >=2.4.4,<2.5
+    - pymongo >=2.5.2,<3
+    - redis >=2.6.2,<3
+    - requests
+    - setproctitle
+    - south ==0.7.6
+    - sseclient ==0.0.8
+    - six >=1.4
+    - vr.events >=1.1.3
+    - vr.common
+    - vr.builder
+    - vr.imager
+    - django-yamlfield
+
+  run:
+    - python
+    - celery-schedulers ==0.0.2
+    - diff-match-patch ==20121119
+    - django >=1.4,<1.5
+    - django-celery >=3.0.11,<3.1
+    - django-extensions ==0.7.1
+    - django-picklefield ==0.2.0
+    - django-redis-cache ==0.9.5
+    - django-reversion ==1.6.6
+    - django-tastypie ==0.9.12
+    - fabric ==1.8.0
+    - gevent >=1.0rc2,<2
+    - gevent-psycopg2 ==0.0.3
+    - gunicorn ==0.17.2
+    - mercurial >=2.6.1
+    - paramiko >=1.8.0,<2.0
+    - psycopg2 >=2.4.4,<2.5
+    - pymongo >=2.5.2,<3
+    - redis >=2.6.2,<3
+    - requests
+    - setproctitle
+    - south ==0.7.6
+    - sseclient ==0.0.8
+    - six >=1.4
+    - vr.events >=1.1.3
+    - vr.common
+    - vr.builder
+    - vr.imager
+    - django-yamlfield
+
+test:
+  # Python imports
+  imports:
+    - vr
+    - vr.server
+    - vr.server.api
+    - vr.server.balancer
+    - vr.server.migrations
+    - vr.server.templatetags
+    - vr.server.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - vr_worker --help
+    - vr_beat --help
+    - vr_migrate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: "Velociraptor's Django and Celery components."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

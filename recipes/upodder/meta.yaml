@@ -1,0 +1,71 @@
+package:
+  name: upodder
+  version: "0.5.5"
+
+source:
+  fn: upodder-0.5.5.tar.gz
+  url: https://pypi.python.org/packages/source/u/upodder/upodder-0.5.5.tar.gz
+  md5: c47ad5a8cea7ff6411a1f800969c2e40
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - upodder = upodder:main
+    #
+    # Would create an entry point called upodder that calls upodder.main()
+
+    - upodder = upodder.upodder:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clint
+    - requests
+    - feedparser
+    - sqlobject
+
+  run:
+    - python
+    - clint
+    - requests
+    - feedparser
+    - sqlobject
+
+test:
+  # Python imports
+  imports:
+    - upodder
+    - upodder.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - upodder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/manuelRiel/upodder
+  license: MIT License
+  summary: 'Command Line Podcast Downloader'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

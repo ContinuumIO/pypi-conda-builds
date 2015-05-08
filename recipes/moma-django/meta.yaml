@@ -1,0 +1,73 @@
+package:
+  name: moma-django
+  version: "0.1.1"
+
+source:
+  fn: moma-django-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/moma-django/moma-django-0.1.1.tar.gz
+  md5: 26da43b32c13bfc32b44f43019d17d3d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moma-django = moma-django:main
+    #
+    # Would create an entry point called moma-django that calls moma-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=2.1.1
+    - django >=1.4,<1.5
+    - djangotoolbox >=1.4.0
+
+  run:
+    - python
+    - pymongo >=2.1.1
+    - django >=1.4,<1.5
+    - djangotoolbox >=1.4.0
+
+test:
+  # Python imports
+  imports:
+    - moma_django
+    - moma_django.management.commands
+    - moma_example
+    - moma_example.bootstrapform
+    - moma_example.bootstrapform.templatetags
+    - moma_example.data
+    - moma_example.moma_example
+    - moma_example.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gadio/moma-django
+  license: BSD License
+  summary: 'MoMa-Django provides native Django ORM and admin support for Mongo DB.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

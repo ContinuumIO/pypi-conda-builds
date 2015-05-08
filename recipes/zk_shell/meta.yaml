@@ -1,0 +1,67 @@
+package:
+  name: zk_shell
+  version: "1.0.06"
+
+source:
+  fn: zk_shell-1.0.06.tar.gz
+  url: https://pypi.python.org/packages/source/z/zk_shell/zk_shell-1.0.06.tar.gz
+  md5: b2426091a2a2f2d44e33de7f066a78d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zk_shell = zk_shell:main
+    #
+    # Would create an entry point called zk_shell that calls zk_shell.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ansicolors
+    - kazoo >=2.0
+    - tabulate
+
+  run:
+    - python
+    - ansicolors
+    - kazoo >=2.0
+    - tabulate
+
+test:
+  # Python imports
+  imports:
+    - zk_shell
+    - zk_shell.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rgs1/zk_shell
+  license: Apache Software License
+  summary: 'A Python - Kazoo based - shell for ZooKeeper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

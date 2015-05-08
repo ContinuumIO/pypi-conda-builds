@@ -1,0 +1,72 @@
+package:
+  name: trytond_party_vcarddav
+  version: "3.6.0"
+
+source:
+  fn: trytond_party_vcarddav-3.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/trytond_party_vcarddav/trytond_party_vcarddav-3.6.0.tar.gz
+  md5: af3f6195539d37532e023c3db8895034
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - trytond_party_vcarddav = trytond_party_vcarddav:main
+    #
+    # Would create an entry point called trytond_party_vcarddav that calls trytond_party_vcarddav.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vobject >=0.8.0
+    - pywebdav >=0.9.8
+    - python-sql
+    - trytond_party >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+  run:
+    - python
+    - setuptools
+    - vobject >=0.8.0
+    - pywebdav >=0.9.8
+    - python-sql
+    - trytond_party >=3.6,<3.7
+    - trytond >=3.6,<3.7
+
+test:
+  # Python imports
+  imports:
+    - trytond.modules.party_vcarddav
+    - trytond_party_vcarddav
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tryton.org/
+  license: GNU General Public License (GPL)
+  summary: 'Tryton module for CardDAV'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

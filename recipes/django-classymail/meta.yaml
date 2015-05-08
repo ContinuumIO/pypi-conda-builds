@@ -1,0 +1,65 @@
+package:
+  name: django-classymail
+  version: "0.2"
+
+source:
+  fn: django-classymail-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-classymail/django-classymail-0.2.tar.gz
+  md5: bcf7f314530cfbe587ea99220c85d101
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-classymail = django-classymail:main
+    #
+    # Would create an entry point called django-classymail that calls django-classymail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - premailer
+    - cssselect
+
+  run:
+    - python
+    - premailer
+    - cssselect
+
+test:
+  # Python imports
+  imports:
+    - classymail
+    - classymail.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'E-mails in Django. Classy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

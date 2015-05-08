@@ -1,0 +1,67 @@
+package:
+  name: aldryn-mailchimp
+  version: "0.2.7"
+
+source:
+  fn: aldryn-mailchimp-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-mailchimp/aldryn-mailchimp-0.2.7.tar.gz
+  md5: 749ab220e0d715cfa69a2ca306378059
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-mailchimp = aldryn-mailchimp:main
+    #
+    # Would create an entry point called aldryn-mailchimp that calls aldryn-mailchimp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-admin-sortable
+    - pyrate >=0.5a5
+
+  run:
+    - python
+    - django-admin-sortable
+    - pyrate >=0.5a5
+
+test:
+  # Python imports
+  imports:
+    - aldryn_mailchimp
+    - aldryn_mailchimp.management
+    - aldryn_mailchimp.management.commands
+    - aldryn_mailchimp.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-mailchimp
+  license: BSD License
+  summary: 'Plugins for MailChimp integration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

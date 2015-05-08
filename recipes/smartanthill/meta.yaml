@@ -1,0 +1,78 @@
+package:
+  name: smartanthill
+  version: "0.0.0"
+
+source:
+  fn: smartanthill-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/smartanthill/smartanthill-0.0.0.tar.gz
+  md5: 4ed878a391a576b6524465f5b2bd3c79
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - smartanthill = smartanthill:main
+    #
+    # Would create an entry point called smartanthill that calls smartanthill.main()
+
+    - smartanthill = smartanthill.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - platformio
+    - pyserial
+    - twisted
+
+  run:
+    - python
+    - platformio
+    - pyserial
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - smartanthill
+    - smartanthill.api
+    - smartanthill.cc
+    - smartanthill.dashboard
+    - smartanthill.device
+    - smartanthill.device.board
+    - smartanthill.device.operation
+    - smartanthill.litemq
+    - smartanthill.network
+    - smartanthill.test
+    - twisted.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - smartanthill --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://smartanthill.org
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'An open IoT system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

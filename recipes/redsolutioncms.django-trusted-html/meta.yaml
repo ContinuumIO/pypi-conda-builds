@@ -1,0 +1,69 @@
+package:
+  name: redsolutioncms.django-trusted-html
+  version: "0.2.0"
+
+source:
+  fn: redsolutioncms.django-trusted-html-0.2.0.zip
+  url: https://pypi.python.org/packages/source/r/redsolutioncms.django-trusted-html/redsolutioncms.django-trusted-html-0.2.0.zip
+  md5: b0dc6954fdadc8c4cb511e376d3b388f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redsolutioncms.django-trusted-html = redsolutioncms.django-trusted-html:main
+    #
+    # Would create an entry point called redsolutioncms.django-trusted-html that calls redsolutioncms.django-trusted-html.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-url-methods >=0.2.0,<0.3
+
+  run:
+    - python
+    - setuptools
+    - django-url-methods >=0.2.0,<0.3
+
+test:
+  # Python imports
+  imports:
+    - trustedhtml
+    - trustedhtml.management
+    - trustedhtml.management.commands
+    - trustedhtml.redsolution_setup
+    - trustedhtml.rules
+    - trustedhtml.rules.css
+    - trustedhtml.rules.html
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/redsolution/django-trusted-html
+  license: GNU General Public License (GPL)
+  summary: 'Perhaps the best in the world HTML validator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

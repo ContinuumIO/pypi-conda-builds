@@ -1,0 +1,73 @@
+package:
+  name: flask-easymode
+  version: "0.0.17"
+
+source:
+  fn: flask-easymode-0.0.17.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-easymode/flask-easymode-0.0.17.tar.gz
+  md5: cfe1e9cd906f91aff02f02d4bcd01630
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-easymode = flask-easymode:main
+    #
+    # Would create an entry point called flask-easymode that calls flask-easymode.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - werkzeug
+    - blinker
+    - simplejson
+    - mrpython
+
+  run:
+    - python
+    - flask
+    - werkzeug
+    - blinker
+    - simplejson
+    - mrpython
+
+test:
+  # Python imports
+  imports:
+    - flask_easymode
+    - flask_easymode.mixins
+    - flask_easymode.tests
+    - flask_easymode.tests.test_mixins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/petermelias/flask-easymode
+  license: MIT License
+  summary: 'Make Flask development even easier'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

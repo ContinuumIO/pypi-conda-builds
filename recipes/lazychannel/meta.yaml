@@ -1,0 +1,69 @@
+package:
+  name: lazychannel
+  version: "0.1.3"
+
+source:
+  fn: lazychannel-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazychannel/lazychannel-0.1.3.tar.gz
+  md5: 21878955dd813df001e731ce500886c5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazychannel = lazychannel:main
+    #
+    # Would create an entry point called lazychannel that calls lazychannel.main()
+
+    - lazy = lazychannel.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pyyaml
+    - youtube-dl
+
+  run:
+    - python
+    - requests
+    - pyyaml
+    - youtube-dl
+
+test:
+  # Python imports
+  imports:
+    - lazychannel
+    - lazychannel.processor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lazy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chuckbutler/lazychannel
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Fetch media from remote sources daily!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

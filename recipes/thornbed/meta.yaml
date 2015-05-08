@@ -1,0 +1,68 @@
+package:
+  name: thornbed
+  version: "0.4.8"
+
+source:
+  fn: thornbed-0.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/t/thornbed/thornbed-0.4.8.tar.gz
+  md5: 347a4bae74fe24819f3596450cbbf4e4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - thornbed = thornbed:main
+    #
+    # Would create an entry point called thornbed that calls thornbed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oembed
+    - simplejson
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - oembed
+    - simplejson
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - thornbed
+    - thornbed.services
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/eka/thornbed
+  license: BSD License
+  summary: 'Simple oEmbed wrapper for different services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

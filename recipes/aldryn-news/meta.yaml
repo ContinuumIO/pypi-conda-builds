@@ -1,0 +1,77 @@
+package:
+  name: aldryn-news
+  version: "0.1.16"
+
+source:
+  fn: aldryn-news-0.1.16.tar.gz
+  url: https://pypi.python.org/packages/source/a/aldryn-news/aldryn-news-0.1.16.tar.gz
+  md5: 0ced5d4ef89066cdee50ef9b37a922ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aldryn-news = aldryn-news:main
+    #
+    # Would create an entry point called aldryn-news that calls aldryn-news.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-filer
+    - django-hvad
+    - django_select2
+    - django-taggit <0.12
+    - djangocms-text-ckeditor
+    - translitcodec
+    - unidecode
+
+  run:
+    - python
+    - django-filer
+    - django-hvad
+    - django_select2
+    - django-taggit <0.12
+    - djangocms-text-ckeditor
+    - translitcodec
+    - unidecode
+
+test:
+  # Python imports
+  imports:
+    - aldryn_news
+    - aldryn_news.migrations
+    - aldryn_news.sitemaps
+    - aldryn_news.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryn/aldryn-news
+  license: BSD License
+  summary: 'Publish news in django CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

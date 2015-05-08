@@ -1,0 +1,71 @@
+package:
+  name: eea.uberlisting
+  version: "2.4"
+
+source:
+  fn: eea.uberlisting-2.4.zip
+  url: https://pypi.python.org/packages/source/e/eea.uberlisting/eea.uberlisting-2.4.zip
+  md5: af5fbfb1c8f084399f52bcf629de5398
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.uberlisting = eea.uberlisting:main
+    #
+    # Would create an entry point called eea.uberlisting that calls eea.uberlisting.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - eea.jquery
+    - plone.app.z3cform
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - eea.jquery
+    - plone.app.z3cform
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.uberlisting
+    - eea.uberlisting.browser
+    - eea.uberlisting.browser.app
+    - eea.uberlisting.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eea/eea.uberlisting/
+  license: GNU General Public License (GPL) or Mozilla Public License 1.0 (MPL)
+  summary: 'Plone product for ajax display of available templates for the given content type'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

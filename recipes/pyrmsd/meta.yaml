@@ -1,0 +1,63 @@
+package:
+  name: pyrmsd
+  version: "4.2.1"
+
+source:
+  fn: pyRMSD-4.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyRMSD/pyRMSD-4.2.1.tar.gz
+  md5: 2149c1a678804f75e2a6d0819cb0f18e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyrmsd = pyrmsd:main
+    #
+    # Would create an entry point called pyrmsd that calls pyrmsd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - numpy >=1.6.1
+
+  run:
+    - python
+    - numpy >=1.6.1
+
+test:
+  # Python imports
+  imports:
+    - pyRMSD
+    - pyRMSD.utils
+    - pyrmsd
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/victor-gil-sepulveda/pyRMSD.git
+  license: LICENSE.txt
+  summary: 'pyRMSD is a small Python package that aims to offer an integrative and       efficient way of performing RMSD calculations of large sets of structures. It is specially       tuned to do fast collective RMSD calculations, as pairwise RMSD matrices.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

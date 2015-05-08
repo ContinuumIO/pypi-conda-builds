@@ -1,0 +1,66 @@
+package:
+  name: sqlalchemy-continuum
+  version: "1.1.5"
+
+source:
+  fn: SQLAlchemy-Continuum-1.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/S/SQLAlchemy-Continuum/SQLAlchemy-Continuum-1.1.5.tar.gz
+  md5: 9660365cda3e616ad13fc56bc789a1e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlalchemy-continuum = sqlalchemy-continuum:main
+    #
+    # Would create an entry point called sqlalchemy-continuum that calls sqlalchemy-continuum.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.9.4
+    - sqlalchemy-utils >=0.27.11
+
+  run:
+    - python
+    - sqlalchemy >=0.9.4
+    - sqlalchemy-utils >=0.27.11
+
+test:
+  # Python imports
+  imports:
+    - sqlalchemy_continuum
+    - sqlalchemy_continuum.dialects
+    - sqlalchemy_continuum.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kvesteri/sqlalchemy-continuum
+  license: BSD License
+  summary: 'Versioning and auditing extension for SQLAlchemy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: django-fabfile
+  version: "2013.08.29.2"
+
+source:
+  fn: django-fabfile-2013.08.29.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fabfile/django-fabfile-2013.08.29.2.tar.gz
+  md5: 1e61a616379c295f9ac4b453c7d62a15
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fabfile = django-fabfile:main
+    #
+    # Would create an entry point called django-fabfile that calls django-fabfile.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.4.1
+    - fabric >=1.4.3
+    - python-dateutil >=1.5,<2.0
+
+  run:
+    - python
+    - boto >=2.4.1
+    - fabric >=1.4.3
+    - python-dateutil >=1.5,<2.0
+
+test:
+  # Python imports
+  imports:
+    - django_fabfile
+    - django_fabfile.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/django-fabfile
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Fabric tasks for Django and Amazon Web Services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

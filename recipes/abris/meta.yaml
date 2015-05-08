@@ -1,0 +1,67 @@
+package:
+  name: abris
+  version: "0.1.4"
+
+source:
+  fn: abris-0.1.4.zip
+  url: https://pypi.python.org/packages/source/a/abris/abris-0.1.4.zip
+  md5: b2ec86fd6275243103f78648661507fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - abris = abris:main
+    #
+    # Would create an entry point called abris that calls abris.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - abris
+    - abris_transform
+    - abris_transform.configuration
+    - abris_transform.numpy_helpers
+    - abris_transform.parsing
+    - abris_transform.transformations
+    - abris_transform.type_manipulation
+    - abris_transform.type_manipulation.translation
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Skabed/abris
+  license: UNKNOWN
+  summary: 'Small data preprocessing engine built on top of sklearn for easy prototyping.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

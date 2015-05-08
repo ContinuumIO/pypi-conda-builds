@@ -1,0 +1,64 @@
+package:
+  name: products.signalstack
+  version: "1.0rc2"
+
+source:
+  fn: Products.signalstack-1.0rc2.zip
+  url: https://pypi.python.org/packages/source/P/Products.signalstack/Products.signalstack-1.0rc2.zip
+  md5: 41dc4c1fbbb788b2cc2acb7d5d9db533
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.signalstack = products.signalstack:main
+    #
+    # Would create an entry point called products.signalstack that calls products.signalstack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - z3c.deadlockdebugger
+
+  run:
+    - python
+    - setuptools
+    - z3c.deadlockdebugger
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.signalstack
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'Show stacktrace on signal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

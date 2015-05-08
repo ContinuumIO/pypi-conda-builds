@@ -1,0 +1,65 @@
+package:
+  name: products.plonetemplates
+  version: "1.0.3"
+
+source:
+  fn: Products.PloneTemplates-1.0.3.zip
+  url: https://pypi.python.org/packages/source/P/Products.PloneTemplates/Products.PloneTemplates-1.0.3.zip
+  md5: 87e847c39c624df8bc98fbb69a83da08
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.plonetemplates = products.plonetemplates:main
+    #
+    # Would create an entry point called products.plonetemplates that calls products.plonetemplates.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PloneTemplates
+    - Products.PloneTemplates.browser
+    - Products.PloneTemplates.content
+    - Products.PloneTemplates.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.PloneTemplates
+  license: ZPL
+  summary: 'Content templates for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

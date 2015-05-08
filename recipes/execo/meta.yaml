@@ -1,0 +1,62 @@
+package:
+  name: execo
+  version: "2.4.3"
+
+source:
+  fn: execo-2.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/execo/execo-2.4.3.tar.gz
+  md5: f1965780b515df258fa803db9740a69b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - execo = execo:main
+    #
+    # Would create an entry point called execo that calls execo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - execo
+    - execo_engine
+    - execo_g5k
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://execo.gforge.inria.fr
+  license: GNU GPL v3
+  summary: 'Execo offers a Python API for asynchronous control of local or remote,\nstandalone or parallel, unix processes. It is especially well suited\nfor quickly and easily scripting workflows of parallel/distributed\noperations on local or remote hosts: automate a scientific workflow,\nconduct computer science experiments, perform automated tests,\netc. The core python package is ``execo``. The ``execo_g5k`` package\nprovides a set of tools and extensions for the `Grid5000\n<https://www.grid5000.fr>`_ testbed. The ``execo_engine`` package\nprovides tools to ease the development of computer sciences\nexperiments.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

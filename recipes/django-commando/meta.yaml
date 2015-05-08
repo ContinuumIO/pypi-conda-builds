@@ -1,0 +1,93 @@
+package:
+  name: django-commando
+  version: "0.1.3"
+
+source:
+  fn: django-commando-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-commando/django-commando-0.1.3.tar.gz
+  md5: b420353a359ab1284cea4d588212e0e4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-commando = django-commando:main
+    #
+    # Would create an entry point called django-commando that calls django-commando.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - commando
+    - commando.contrib
+    - commando.contrib.cms
+    - commando.contrib.cms.management
+    - commando.contrib.cms.management.commands
+    - commando.contrib.haystack
+    - commando.contrib.haystack.management
+    - commando.contrib.haystack.management.commands
+    - commando.contrib.south
+    - commando.contrib.south.management
+    - commando.contrib.south.management.commands
+    - commando.django
+    - commando.django.contrib
+    - commando.django.contrib.auth
+    - commando.django.contrib.auth.management
+    - commando.django.contrib.auth.management.commands
+    - commando.django.contrib.gis
+    - commando.django.contrib.gis.management
+    - commando.django.contrib.gis.management.commands
+    - commando.django.contrib.sessions
+    - commando.django.contrib.sessions.management
+    - commando.django.contrib.sessions.management.commands
+    - commando.django.contrib.sitemaps
+    - commando.django.contrib.sitemaps.management
+    - commando.django.contrib.sitemaps.management.commands
+    - commando.django.contrib.staticfiles
+    - commando.django.contrib.staticfiles.management
+    - commando.django.contrib.staticfiles.management.commands
+    - commando.django.core
+    - commando.django.core.management
+    - commando.django.core.management.commands
+    - commando.management
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/skibblenybbles/django-commando
+  license: MIT License
+  summary: 'A declarative API for writing, overriding and sequencing Django management commands'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

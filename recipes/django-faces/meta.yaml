@@ -1,0 +1,66 @@
+package:
+  name: django-faces
+  version: "0.2.1"
+
+source:
+  fn: django-faces-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-faces/django-faces-0.2.1.tar.gz
+  md5: d6db37d1601f96337b84c9dade8af1a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-faces = django-faces:main
+    #
+    # Would create an entry point called django-faces that calls django-faces.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pil
+
+  run:
+    - python
+    - pil
+
+test:
+  # Python imports
+  imports:
+    - django_faces
+    - django_faces.management
+    - django_faces.management.commands
+    - django_faces.migrations
+    - django_faces.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/svetlyak40wt/django-faces/
+  license: BSD License
+  summary: "Django application for nonintrusive avatar support.It uses site's URL and user's email for autodiscovery."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

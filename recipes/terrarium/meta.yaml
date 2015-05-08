@@ -1,0 +1,64 @@
+package:
+  name: terrarium
+  version: "1.0.0-rc.6"
+
+source:
+  fn: terrarium-1.0.0-rc.6.tar.gz
+  url: https://pypi.python.org/packages/source/t/terrarium/terrarium-1.0.0-rc.6.tar.gz
+  md5: 29404197fd47d32ea19aff0af9ce98e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - terrarium = terrarium:main
+    #
+    # Would create an entry point called terrarium that calls terrarium.main()
+
+    - terrarium = terrarium.terrarium:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenv >=1.7.2,<=1.9.1
+
+  run:
+    - python
+    - virtualenv >=1.7.2,<=1.9.1
+
+test:
+  # Python imports
+  imports:
+    - terrarium
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - terrarium --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/policystat/terrarium
+  license: MIT License
+  summary: 'Package and ship relocatable python virtualenvs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

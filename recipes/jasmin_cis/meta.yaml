@@ -1,0 +1,101 @@
+package:
+  name: jasmin_cis
+  version: "1.0.0"
+
+source:
+  fn: jasmin_cis-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/j/jasmin_cis/jasmin_cis-1.0.0.tar.gz
+  md5: 4fc752cccca516bf1377e7ba4e380a52
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jasmin_cis = jasmin_cis:main
+    #
+    # Would create an entry point called jasmin_cis that calls jasmin_cis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - matplotlib >=1.2.0
+    - pyke
+    - cartopy
+    - shapely
+    - netcdf4 >=1.0
+    - numpy
+    - scipy
+    - iris >=1.7.3
+    - pyhdf
+    - psutil
+    - basemap >=1.0.7
+
+  run:
+    - python
+    - matplotlib >=1.2.0
+    - pyke
+    - cartopy
+    - shapely
+    - netcdf4 >=1.0
+    - numpy
+    - scipy
+    - iris >=1.7.3
+    - pyhdf
+    - psutil
+    - basemap >=1.0.7
+
+test:
+  # Python imports
+  imports:
+    - jasmin_cis
+    - jasmin_cis.aggregation
+    - jasmin_cis.data_io
+    - jasmin_cis.data_io.products
+    - jasmin_cis.plotting
+    - jasmin_cis.subsetting
+    - jasmin_cis.test
+    - jasmin_cis.test.harness
+    - jasmin_cis.test.integration
+    - jasmin_cis.test.integration.test_io
+    - jasmin_cis.test.integration.test_io.test_products
+    - jasmin_cis.test.test_files
+    - jasmin_cis.test.unit
+    - jasmin_cis.test.unit.aggregation
+    - jasmin_cis.test.unit.colocate
+    - jasmin_cis.test.unit.eval
+    - jasmin_cis.test.unit.stats
+    - jasmin_cis.test.unit.subset
+    - jasmin_cis.test.unit.test_io
+    - jasmin_cis.test.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://proj.badc.rl.ac.uk/cedaservices/wiki/JASMIN/CommunityIntercomparisonSuite
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'JASMIN Community Inter-comparison Suite'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

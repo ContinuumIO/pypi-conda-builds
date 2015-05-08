@@ -1,0 +1,73 @@
+package:
+  name: django-simple-invoice
+  version: "0.3.5"
+
+source:
+  fn: django-simple-invoice-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-simple-invoice/django-simple-invoice-0.3.5.tar.gz
+  md5: 7d14ff0ba040592553a1b0a76000ede3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-simple-invoice = django-simple-invoice:main
+    #
+    # Would create an entry point called django-simple-invoice that calls django-simple-invoice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - reportlab >=2.7
+    - pypdf2 >=1.20
+    - django-extensions >=1.3.3
+
+  run:
+    - python
+    - django >=1.5
+    - reportlab >=2.7
+    - pypdf2 >=1.20
+    - django-extensions >=1.3.3
+
+test:
+  # Python imports
+  imports:
+    - invoice
+    - invoice.conf
+    - invoice.management
+    - invoice.management.commands
+    - invoice.migrations
+    - invoice.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mwolff44/django-simple-invoice
+  license: GPL v3
+  summary: 'Invoicing application for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: plone.app.workflowmanager
+  version: "2.0b1"
+
+source:
+  fn: plone.app.workflowmanager-2.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/p/plone.app.workflowmanager/plone.app.workflowmanager-2.0b1.tar.gz
+  md5: 4b421d3591db8e43d1b827fad41b1ccd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.app.workflowmanager = plone.app.workflowmanager:main
+    #
+    # Would create an entry point called plone.app.workflowmanager that calls plone.app.workflowmanager.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - setuptools
+    - plone.app.jquery >=1.7
+
+  run:
+    - python
+    - setuptools
+    - plone
+    - setuptools
+    - plone.app.jquery >=1.7
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.app
+    - plone.app.workflowmanager
+    - plone.app.workflowmanager.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/plone.app.workflowmanager
+  license: GNU General Public License (GPL)
+  summary: 'A workflow manager for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

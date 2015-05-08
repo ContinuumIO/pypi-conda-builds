@@ -1,0 +1,77 @@
+package:
+  name: pystick
+  version: "0.1.3"
+
+source:
+  fn: pystick-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pystick/pystick-0.1.3.tar.gz
+  md5: 8ffa96d06635f7f8dccbc111c2a28647
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pystick = pystick:main
+    #
+    # Would create an entry point called pystick that calls pystick.main()
+
+    - pack = pystick.pack:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - SCons
+    - SCons.Node
+    - SCons.Options
+    - SCons.Platform
+    - SCons.Scanner
+    - SCons.Script
+    - SCons.Tool
+    - SCons.Tool.MSCommon
+    - SCons.Tool.docbook
+    - SCons.Tool.packaging
+    - SCons.Variables
+    - SCons.compat
+    - pystick
+    - pystick.buildsystem
+    - pystick.buildsystem.site_scons
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pack --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://infinigit.infinidat.com/host/pystick
+  license: Python Software Foundation License
+  summary: 'embeddable python for the masses'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

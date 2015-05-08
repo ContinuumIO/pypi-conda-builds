@@ -1,0 +1,71 @@
+package:
+  name: collective.synchronisedworkflow
+  version: "1.0"
+
+source:
+  fn: collective.synchronisedworkflow-1.0.zip
+  url: https://pypi.python.org/packages/source/c/collective.synchronisedworkflow/collective.synchronisedworkflow-1.0.zip
+  md5: 1464276323428bd5d81d029215649278
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.synchronisedworkflow = collective.synchronisedworkflow:main
+    #
+    # Would create an entry point called collective.synchronisedworkflow that calls collective.synchronisedworkflow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.linguaplone
+    - products.cmfcore
+    - collective.testcaselayer
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.linguaplone
+    - products.cmfcore
+    - collective.testcaselayer
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.synchronisedworkflow
+    - collective.synchronisedworkflow.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU General Public License (GPL)
+  summary: 'Causes translated Plone content to share the same workflow state.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

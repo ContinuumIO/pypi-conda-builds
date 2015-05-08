@@ -1,0 +1,64 @@
+package:
+  name: zopyx.ep2011
+  version: "0.4.3"
+
+source:
+  fn: zopyx.ep2011-0.4.3.zip
+  url: https://pypi.python.org/packages/source/z/zopyx.ep2011/zopyx.ep2011-0.4.3.zip
+  md5: db1b3a5a7cf6159bfaa6f499c83335a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.ep2011 = zopyx.ep2011:main
+    #
+    # Would create an entry point called zopyx.ep2011 that calls zopyx.ep2011.main()
+
+    - do-import=zopyxep2011.do_import:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+
+  run:
+    - python
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - zopyxep2011
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - do-import --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPL
+  summary: 'Europython MongoDB/Python training material'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django_teamcity_test_runner
+  version: "0.1.0"
+
+source:
+  fn: django_teamcity_test_runner-0.1.0.zip
+  url: https://pypi.python.org/packages/source/d/django_teamcity_test_runner/django_teamcity_test_runner-0.1.0.zip
+  md5: 780910187a135ed58b7217cfb7e7dc25
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_teamcity_test_runner = django_teamcity_test_runner:main
+    #
+    # Would create an entry point called django_teamcity_test_runner that calls django_teamcity_test_runner.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.4.1
+    - teamcity-messages ==1.6
+
+  run:
+    - python
+    - django >=1.4.1
+    - teamcity-messages ==1.6
+
+test:
+  # Python imports
+  imports:
+    - django_teamcity_test_runner
+    - teamcity_runner
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django_teamcity_test_runner/
+  license: LICENSE.txt
+  summary: 'Provides test-runner class to django projects to be run on TeamCity'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

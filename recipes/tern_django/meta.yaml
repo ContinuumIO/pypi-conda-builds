@@ -1,0 +1,62 @@
+package:
+  name: tern_django
+  version: "0.1.0"
+
+source:
+  fn: tern_django-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/tern_django/tern_django-0.1.0.tar.gz
+  md5: 6bfcb822c09301b2c44acfa4e08fbb32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tern_django = tern_django:main
+    #
+    # Would create an entry point called tern_django that calls tern_django.main()
+
+    - tern_django=tern_django:run_tern_django
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - tern_django
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tern_django --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/proofit404/tern-django
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Create Tern projects for Django applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

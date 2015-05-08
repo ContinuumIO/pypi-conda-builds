@@ -1,0 +1,66 @@
+package:
+  name: django-notification
+  version: "1.3.3"
+
+source:
+  fn: django-notification-1.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-notification/django-notification-1.3.3.tar.gz
+  md5: 21ec96f7684724d9ffd903244522c6aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-notification = django-notification:main
+    #
+    # Would create an entry point called django-notification that calls django-notification.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-user-accounts >=1.0.1
+
+  run:
+    - python
+    - django-user-accounts >=1.0.1
+
+test:
+  # Python imports
+  imports:
+    - notification
+    - notification.backends
+    - notification.management
+    - notification.management.commands
+    - notification.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-notification.rtfd.org/
+  license: MIT License
+  summary: 'User notification management for the Django web framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

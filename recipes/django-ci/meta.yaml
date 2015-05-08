@@ -1,0 +1,81 @@
+package:
+  name: django-ci
+  version: "0.0.5"
+
+source:
+  fn: django-ci-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ci/django-ci-0.0.5.tar.gz
+  md5: ce1f74f3d77f0c4689253b4c0833d385
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ci = django-ci:main
+    #
+    # Would create an entry point called django-ci that calls django-ci.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.5,<1.5
+    - django-viewgroups >=0.0.8
+    - socketio_server >=0.0.7
+    - kombu
+    - django-celery
+    - gitpython
+    - socketio_client
+    - django_test_exclude
+
+  run:
+    - python
+    - django >=1.4.5,<1.5
+    - django-viewgroups >=0.0.8
+    - socketio_server >=0.0.7
+    - kombu
+    - django-celery
+    - gitpython
+    - socketio_client
+    - django_test_exclude
+
+test:
+  # Python imports
+  imports:
+    - ci
+    - ci.management
+    - ci.management.commands
+    - ci.migrations
+    - ci.templatetags
+    - ci.virtualenvapi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-ci/
+  license: UNKNOWN
+  summary: 'Django continuous integration and testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

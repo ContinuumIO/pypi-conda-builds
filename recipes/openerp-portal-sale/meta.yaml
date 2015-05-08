@@ -1,0 +1,64 @@
+package:
+  name: openerp-portal-sale
+  version: "7.0.406"
+
+source:
+  fn: openerp-portal-sale-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-portal-sale/openerp-portal-sale-7.0.406.tar.gz
+  md5: 8883c95318ef0353f96a0fffd06787e5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-portal-sale = openerp-portal-sale:main
+    #
+    # Would create an entry point called openerp-portal-sale that calls openerp-portal-sale.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-sale
+    - openerp-portal
+
+  run:
+    - python
+    - openerp-sale
+    - openerp-portal
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.portal_sale
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Portal Sale'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: tornado_elasticsearch
+  version: "0.3.0"
+
+source:
+  fn: tornado_elasticsearch-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado_elasticsearch/tornado_elasticsearch-0.3.0.tar.gz
+  md5: 4812010970fe83e7061c0833cc7c160b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado_elasticsearch = tornado_elasticsearch:main
+    #
+    # Would create an entry point called tornado_elasticsearch that calls tornado_elasticsearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elasticsearch
+    - tornado
+
+  run:
+    - python
+    - elasticsearch
+    - tornado
+
+test:
+  # Python imports
+  imports:
+    - tornado_elasticsearch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gmr/tornado_elasticsearch
+  license: BSD License
+  summary: 'Extends the official Elasticsearch Python API adding Tornado AsyncHTTPClient support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

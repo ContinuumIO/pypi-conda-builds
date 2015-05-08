@@ -1,0 +1,70 @@
+package:
+  name: b64img
+  version: "0.1.0"
+
+source:
+  fn: b64img-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/b64img/b64img-0.1.0.tar.gz
+  md5: ec15d7ec7d3fdf5fe65d7a25c46dcd34
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - b64img = b64img:main
+    #
+    # Would create an entry point called b64img that calls b64img.main()
+
+    - b64img = b64img.__init__:command_line_runner
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - args ==0.1.0
+    - clint ==0.4.1
+    - wsgiref ==0.1.2
+    - xerox ==0.3.1
+
+  run:
+    - python
+    - args ==0.1.0
+    - clint ==0.4.1
+    - wsgiref ==0.1.2
+    - xerox ==0.3.1
+
+test:
+  # Python imports
+  imports:
+    - b64img
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - b64img --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Miserlou/b64img
+  license: Apache Software License
+  summary: 'Base64 Image Converter.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

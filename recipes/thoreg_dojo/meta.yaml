@@ -1,0 +1,76 @@
+package:
+  name: thoreg_dojo
+  version: "0.5"
+
+source:
+  fn: thoreg_dojo-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/t/thoreg_dojo/thoreg_dojo-0.5.tar.gz
+  md5: 20881c557b0fcc2f0f924d8db47eae01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - thoreg_dojo = thoreg_dojo:main
+    #
+    # Would create an entry point called thoreg_dojo that calls thoreg_dojo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - behave
+    - coveralls
+    - flask
+    - flask-wtf
+    - pytest
+    - pytest-cov
+    - watchdog
+
+  run:
+    - python
+    - behave
+    - coveralls
+    - flask
+    - flask-wtf
+    - pytest
+    - pytest-cov
+    - watchdog
+
+test:
+  # Python imports
+  imports:
+    - dojo
+    - dojo.tests
+    - thoreg_dojo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thoreg/dojo
+  license: BSD
+  summary: 'The coding dojo of Thoreg'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

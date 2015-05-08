@@ -1,0 +1,72 @@
+package:
+  name: eea.tags
+  version: "5.7"
+
+source:
+  fn: eea.tags-5.7.zip
+  url: https://pypi.python.org/packages/source/e/eea.tags/eea.tags-5.7.zip
+  md5: e5dce7b8f9941ed248dcfd3b55d3d5d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eea.tags = eea.tags:main
+    #
+    # Would create an entry point called eea.tags that calls eea.tags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - eea.jquery
+    - plone.browserlayer
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - eea.jquery
+    - plone.browserlayer
+
+test:
+  # Python imports
+  imports:
+    - eea
+    - eea.tags
+    - eea.tags.browser
+    - eea.tags.tests
+    - eea.tags.upgrades
+    - eea.tags.widgets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/eea.tags
+  license: GPL
+  summary: 'EEA Tags'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

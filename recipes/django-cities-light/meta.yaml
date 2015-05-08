@@ -1,0 +1,73 @@
+package:
+  name: django-cities-light
+  version: "3.1.2"
+
+source:
+  fn: django-cities-light-3.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-cities-light/django-cities-light-3.1.2.tar.gz
+  md5: 1d270359ea5bfac35f926a4c74a77138
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-cities-light = django-cities-light:main
+    #
+    # Would create an entry point called django-cities-light that calls django-cities-light.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - unidecode >=0.04.13
+    - django_autoslug
+
+  run:
+    - python
+    - six
+    - unidecode >=0.04.13
+    - django_autoslug
+
+test:
+  # Python imports
+  imports:
+    - cities_light
+    - cities_light.contrib
+    - cities_light.management
+    - cities_light.management.commands
+    - cities_light.migrations
+    - cities_light.south_migrations
+    - cities_light.vendor
+    - cities_light.vendor.progressbar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yourlabs/django-cities-light
+  license: MIT License
+  summary: 'Simple alternative to django-cities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

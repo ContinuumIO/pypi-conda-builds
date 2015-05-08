@@ -1,0 +1,66 @@
+package:
+  name: tangled.contrib
+  version: "0.1a3"
+
+source:
+  fn: tangled.contrib-0.1a3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tangled.contrib/tangled.contrib-0.1a3.tar.gz
+  md5: 8dfb5d158af0f52ca6045e858f3efa77
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tangled.contrib = tangled.contrib:main
+    #
+    # Would create an entry point called tangled.contrib that calls tangled.contrib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tangled >=0.1a5
+
+  run:
+    - python
+    - setuptools
+    - tangled >=0.1a5
+
+test:
+  # Python imports
+  imports:
+    - tangled
+    - tangled.contrib
+    - tangled.contrib.scaffolds
+    - tangled.contrib.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tangledframework.org/
+  license: MIT License
+  summary: 'Tangled namespace for contributed packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

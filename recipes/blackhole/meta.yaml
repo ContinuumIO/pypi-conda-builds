@@ -1,0 +1,69 @@
+package:
+  name: blackhole
+  version: "1.8.1"
+
+source:
+  fn: blackhole-1.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/blackhole/blackhole-1.8.1.tar.gz
+  md5: 2d9815601ee8c0e4fee8eb00372be177
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - blackhole = blackhole:main
+    #
+    # Would create an entry point called blackhole that calls blackhole.main()
+
+    - blackhole = blackhole.application:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3.0,<=3.1
+    - setproctitle >=1.1.7
+    - deiman >=0.1.5
+
+  run:
+    - python
+    - tornado >=3.0,<=3.1
+    - setproctitle >=1.1.7
+    - deiman >=0.1.5
+
+test:
+  # Python imports
+  imports:
+    - blackhole
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - blackhole --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blackhole.io/
+  license: MIT License
+  summary: "Tornado powered MTA for accepting all incoming emails without any disk\n I/O, although no messages actually ever get delivered. Mainly for testing huge\n send rates, for making sure developers don't accidentally send emails to real\n users, email integration testing and things like that."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

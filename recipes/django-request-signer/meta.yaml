@@ -1,0 +1,70 @@
+package:
+  name: django-request-signer
+  version: "1.0.0"
+
+source:
+  fn: django-request-signer-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-request-signer/django-request-signer-1.0.0.tar.gz
+  md5: 804e21f222831d30d8bf27426bf327ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-request-signer = django-request-signer:main
+    #
+    # Would create an entry point called django-request-signer that calls django-request-signer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7.0
+    - generic-request-signer >=0.3.1
+
+  run:
+    - python
+    - django >=1.7.0
+    - generic-request-signer >=0.3.1
+
+test:
+  # Python imports
+  imports:
+    - request_signer
+    - request_signer.client
+    - request_signer.client.generic
+    - request_signer.management
+    - request_signer.management.commands
+    - request_signer.migrations
+    - request_signer.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/imtapps/django-request-signer
+  license: BSD License
+  summary: 'A python library for signing http requests.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

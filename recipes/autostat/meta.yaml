@@ -1,0 +1,62 @@
+package:
+  name: autostat
+  version: "0.1.8"
+
+source:
+  fn: autostat-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/a/autostat/autostat-0.1.8.tar.gz
+  md5: 2654c14ca7ad0d038f6a3f1e5d035ab9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - autostat = autostat:main
+    #
+    # Would create an entry point called autostat that calls autostat.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - statsd
+
+  run:
+    - python
+    - statsd
+
+test:
+  # Python imports
+  imports:
+    - autostat
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dantezhu/autostat
+  license: MIT
+  summary: 'make statsd work with flask, django, maple or other server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: openerp-product-expiry
+  version: "7.0.406"
+
+source:
+  fn: openerp-product-expiry-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-product-expiry/openerp-product-expiry-7.0.406.tar.gz
+  md5: 6089d2872e697b36dd8d9b28312d99a9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-product-expiry = openerp-product-expiry:main
+    #
+    # Would create an entry point called openerp-product-expiry that calls openerp-product-expiry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-stock
+
+  run:
+    - python
+    - openerp-stock
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.product_expiry
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Products Expiry Date'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

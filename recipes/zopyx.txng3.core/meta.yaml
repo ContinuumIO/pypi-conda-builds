@@ -1,0 +1,74 @@
+package:
+  name: zopyx.txng3.core
+  version: "3.6.1.1"
+
+source:
+  fn: zopyx.txng3.core-3.6.1.1.zip
+  url: https://pypi.python.org/packages/source/z/zopyx.txng3.core/zopyx.txng3.core-3.6.1.1.zip
+  md5: 4a6067c2ea30d049d319a8db78507da8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zopyx.txng3.core = zopyx.txng3.core:main
+    #
+    # Would create an entry point called zopyx.txng3.core that calls zopyx.txng3.core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb3
+    - zope.component
+    - zope.componentvocabulary
+    - zope.interface
+    - zopyx.txng3.ext
+
+  run:
+    - python
+    - setuptools
+    - zodb3
+    - zope.component
+    - zope.componentvocabulary
+    - zope.interface
+    - zopyx.txng3.ext
+
+test:
+  # Python imports
+  imports:
+    - textindexng
+    - zopyx
+    - zopyx.txng3
+    - zopyx.txng3.core
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sf.net/projects/textindexng/
+  license: UNKNOWN
+  summary: 'TextIndexNG3 core implementation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

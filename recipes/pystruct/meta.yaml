@@ -1,0 +1,72 @@
+package:
+  name: pystruct
+  version: "0.2.3"
+
+source:
+  fn: pystruct-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pystruct/pystruct-0.2.3.tar.gz
+  md5: 8c9ae39b0d0224059ecc5c6e15a235ab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pystruct = pystruct:main
+    #
+    # Would create an entry point called pystruct that calls pystruct.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ad3
+
+  run:
+    - python
+    - ad3
+
+test:
+  # Python imports
+  imports:
+    - pystruct
+    - pystruct.datasets
+    - pystruct.inference
+    - pystruct.learners
+    - pystruct.models
+    - pystruct.tests
+    - pystruct.tests.test_inference
+    - pystruct.tests.test_learners
+    - pystruct.tests.test_models
+    - pystruct.tests.test_utils
+    - pystruct.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pystruct.github.io
+  license: BSD 2-clause
+  summary: 'Structured Learning and Prediction in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

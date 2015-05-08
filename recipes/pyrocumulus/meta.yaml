@@ -1,0 +1,68 @@
+package:
+  name: pyrocumulus
+  version: "0.5-rc2"
+
+source:
+  fn: pyrocumulus-0.5-rc2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyrocumulus/pyrocumulus-0.5-rc2.tar.gz
+  md5: af0c2c2d22207cce30ea3fff89346518
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyrocumulus = pyrocumulus:main
+    #
+    # Would create an entry point called pyrocumulus that calls pyrocumulus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=4.1
+    - mongomotor >=0.3
+    - bcrypt >=1.1.0
+
+  run:
+    - python
+    - tornado >=4.1
+    - mongomotor >=0.3
+    - bcrypt >=1.1.0
+
+test:
+  # Python imports
+  imports:
+    - pyrocumulus
+    - pyrocumulus.commands
+    - pyrocumulus.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://gitorious.org/mongomotor
+  license: GNU General Public License (GPL)
+  summary: '\nGlue-code to make (even more!) easy and fun work with mongoengine and tornado\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

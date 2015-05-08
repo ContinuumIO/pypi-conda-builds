@@ -1,0 +1,68 @@
+package:
+  name: benchmaster
+  version: "1.0b1"
+
+source:
+  fn: benchmaster-1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/b/benchmaster/benchmaster-1.0b1.tar.gz
+  md5: 8f0248c5b15cbe3e0defd1e0e39cd270
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - benchmaster = benchmaster:main
+    #
+    # Would create an entry point called benchmaster that calls benchmaster.main()
+
+    - bench-master = benchmaster.master:main
+    - bench-node = benchmaster.node:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - funkload >=0.12
+    - pssh >=2.1.1
+
+  run:
+    - python
+    - funkload >=0.12
+    - pssh >=2.1.1
+
+test:
+  # Python imports
+  imports:
+    - benchmaster
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bench-master --help
+    - bench-node --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/funkload-bench
+  license: GPL2
+  summary: 'Tools for running and automating distributed loadtests with Funkload'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

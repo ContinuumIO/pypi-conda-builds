@@ -1,0 +1,72 @@
+package:
+  name: plone.recipe.varnish
+  version: "2.0a1"
+
+source:
+  fn: plone.recipe.varnish-2.0a1.zip
+  url: https://pypi.python.org/packages/source/p/plone.recipe.varnish/plone.recipe.varnish-2.0a1.zip
+  md5: 0feed7b4eccecab3be59ef5d5cec3d3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.recipe.varnish = plone.recipe.varnish:main
+    #
+    # Would create an entry point called plone.recipe.varnish that calls plone.recipe.varnish.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.7.3
+    - setuptools
+    - zc.buildout
+    - zc.recipe.cmmi
+
+  run:
+    - python
+    - setuptools
+    - jinja2 >=2.7.3
+    - setuptools
+    - zc.buildout
+    - zc.recipe.cmmi
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.recipe
+    - plone.recipe.varnish
+    - plone.recipe.varnish.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/plone.recipe.varnish
+  license: BSD License
+  summary: 'Build and/or configure Varnish Cache with zc.buildout'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: plone.openid
+  version: "2.0.4"
+
+source:
+  fn: plone.openid-2.0.4.zip
+  url: https://pypi.python.org/packages/source/p/plone.openid/plone.openid-2.0.4.zip
+  md5: 1fae36bbf123a6ec69eb59cbcb6eb935
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.openid = plone.openid:main
+    #
+    # Would create an entry point called plone.openid that calls plone.openid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-openid >=2.2.1,<2.3dev
+    - transaction
+    - acquisition
+    - products.pluggableauthservice
+    - zodb3
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - python-openid >=2.2.1,<2.3dev
+    - transaction
+    - acquisition
+    - products.pluggableauthservice
+    - zodb3
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.openid
+    - plone.openid.plugins
+    - plone.openid.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/plone.openid
+  license: BSD License
+  summary: 'OpenID authentication support for PAS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

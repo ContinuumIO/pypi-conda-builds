@@ -1,0 +1,70 @@
+package:
+  name: silverberg
+  version: "0.1.11"
+
+source:
+  fn: silverberg-0.1.11.tar.gz
+  url: https://pypi.python.org/packages/source/s/silverberg/silverberg-0.1.11.tar.gz
+  md5: ce5cc1726cbe695d101a93b380b2d358
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - silverberg = silverberg:main
+    #
+    # Would create an entry point called silverberg that calls silverberg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=12.0.0
+    - thrift ==0.9.0
+    - mock >=0.9
+    - cql >=1.4.0
+
+  run:
+    - python
+    - twisted >=12.0.0
+    - thrift ==0.9.0
+    - mock >=0.9
+    - cql >=1.4.0
+
+test:
+  # Python imports
+  imports:
+    - silverberg
+    - silverberg.cassandra
+    - silverberg.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rackerlabs/silverberg/
+  license: Apache Software License
+  summary: 'Twisted CQL Cassandra Client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

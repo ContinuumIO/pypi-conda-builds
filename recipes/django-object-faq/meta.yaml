@@ -1,0 +1,70 @@
+package:
+  name: django-object-faq
+  version: "0.1"
+
+source:
+  fn: django-object-faq-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-object-faq/django-object-faq-0.1.tar.gz
+  md5: c24e8d41536bcaa6d023a097f98c63d2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-object-faq = django-object-faq:main
+    #
+    # Would create an entry point called django-object-faq that calls django-object-faq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-hvad
+    - south
+
+  run:
+    - python
+    - django
+    - django-hvad
+    - south
+
+test:
+  # Python imports
+  imports:
+    - object_faq
+    - object_faq.migrations
+    - object_faq.templatetags
+    - object_faq.tests
+    - object_faq.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-object-faq
+  license: The MIT License
+  summary: 'A reusable Django app that allows to attach Q&As to any Django model instance\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

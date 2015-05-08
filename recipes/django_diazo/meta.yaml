@@ -1,0 +1,85 @@
+package:
+  name: django_diazo
+  version: "1.2.2"
+
+source:
+  fn: django_diazo-1.2.2.zip
+  url: https://pypi.python.org/packages/source/d/django_diazo/django_diazo-1.2.2.zip
+  md5: 41e0117b088b83e8402b7d4dce900350
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_diazo = django_diazo:main
+    #
+    # Would create an entry point called django_diazo that calls django_diazo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c11
+    - django >=1.4.2
+    - south >=0.8.2
+    - diazo >=1.0
+    - webob ==1.2.3
+    - repoze.xmliter >=0.3
+    - django-admin-sortable2 >=0.3.1
+
+  run:
+    - python
+    - setuptools >=0.6c11
+    - django >=1.4.2
+    - south >=0.8.2
+    - diazo >=1.0
+    - webob ==1.2.3
+    - repoze.xmliter >=0.3
+    - django-admin-sortable2 >=0.3.1
+
+test:
+  # Python imports
+  imports:
+    - django_diazo
+    - django_diazo.contrib
+    - django_diazo.contrib.cms
+    - django_diazo.contrib.themes
+    - django_diazo.contrib.themes.blue
+    - django_diazo.contrib.themes.django_bootstrap
+    - django_diazo.contrib.themes.red
+    - django_diazo.management
+    - django_diazo.management.commands
+    - django_diazo.migrations
+    - django_diazo.utils
+    - django_diazo.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Goldmund-Wyldebeast-Wunderliebe/django-diazo
+  license: GNU General Public License v2 (GPLv2) or GNU Lesser General Public License v2 or later (LGPLv2+)
+  summary: 'Integrate Diazo in Django using WSGI middleware and\n    add/change themes using the Django Admin interface.\n    '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
