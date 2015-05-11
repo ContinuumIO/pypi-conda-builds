@@ -21,7 +21,7 @@ for package in package_names:
     msg = "Creating Conda recipe for %s\n" % (package)
     print(msg)
     err = subprocess.call(['conda', 'skeleton', 'pypi', package,
-                           '--output-dir', recipes_dir],
+                           '--output-dir', recipes_dir, '--recursive'],
                           stdout=recipe_log_file, stderr=recipe_log_file)
     if err is 0:
         msg = "Succesfully created conda recipe for %s\n" % (package)
