@@ -19,15 +19,17 @@ failures = []
 
 for package in package_names:
     msg = "Creating Conda recipe for %s\n" % (package)
-    recipe_log_file.write(msg)
     print(msg)
     err = subprocess.call(['conda', 'skeleton', 'pypi', package,
                            '--output-dir', recipes_dir],
                           stdout=recipe_log_file, stderr=recipe_log_file)
     if err is 0:
+        msg = "Succesfully created conda recipe for %s\n" % (package)
         successes.append(package)
     else:
+        msg = "Failed to create conda recipe for %s\n" % (package)
         failures.append(package)
+    print(msg)
 
 recipe_log_file.close()
 
