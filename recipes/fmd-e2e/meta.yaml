@@ -1,0 +1,69 @@
+package:
+  name: fmd-e2e
+  version: "0.0.3"
+
+source:
+  fn: fmd-e2e-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/fmd-e2e/fmd-e2e-0.0.3.tar.gz
+  md5: 56b0c3abbf3bfd7f63bc67433db258d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fmd-e2e = fmd-e2e:main
+    #
+    # Would create an entry point called fmd-e2e that calls fmd-e2e.main()
+
+    - fmde2e = fmde2e.fmd_test:FMDTest
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - fxa-python-client
+    - test-out
+    - selenium
+    - psutil
+
+  run:
+    - python
+    - fxa-python-client
+    - test-out
+    - selenium
+    - psutil
+
+test:
+  # Python imports
+  imports:
+    - fmde2e
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fmde2e --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rpappalax/fmd-e2e
+  license: UNKNOWN
+  summary: 'Python script providing an end-to-end test for Mozilla Find My Device.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

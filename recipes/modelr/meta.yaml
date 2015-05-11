@@ -1,0 +1,79 @@
+package:
+  name: modelr
+  version: "0.5.5"
+
+source:
+  fn: modelr-0.5.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/modelr/modelr-0.5.5.tar.gz
+  md5: 111fc33ffc779c47340d500799adb728
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - modelr = modelr:main
+    #
+    # Would create an entry point called modelr that calls modelr.main()
+
+    - modelr-server = modelr.web.server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - agilegeo ==0.1.4
+    - jinja2
+    - pypng
+    - requests
+    - svgwrite
+
+  run:
+    - python
+    - agilegeo ==0.1.4
+    - jinja2
+    - pypng
+    - requests
+    - svgwrite
+
+test:
+  # Python imports
+  imports:
+    - modelr
+    - modelr.web
+    - modelr.web.scripts
+    - modelr.web.scripts.earth
+    - modelr.web.scripts.model_builder
+    - modelr.web.scripts.plots
+    - modelr.web.scripts.scenario
+    - modelr.web.scripts.seismic
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - modelr-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/agile-geoscience/modelr
+  license: BSD License
+  summary: 'Web Service like google charts API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

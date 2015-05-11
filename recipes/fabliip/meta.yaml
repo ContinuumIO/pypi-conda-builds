@@ -1,0 +1,65 @@
+package:
+  name: fabliip
+  version: "0.3.9"
+
+source:
+  fn: fabliip-0.3.9.tar.gz
+  url: https://pypi.python.org/packages/source/f/fabliip/fabliip-0.3.9.tar.gz
+  md5: cbfc0c3faa660b4a09be26156041e3a8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fabliip = fabliip:main
+    #
+    # Would create an entry point called fabliip that calls fabliip.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+
+  run:
+    - python
+    - fabric
+
+test:
+  # Python imports
+  imports:
+    - fabliip
+    - fabliip.database
+    - fabliip.drupal
+    - fabliip.vcs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sephii/fabliip
+  license: UNKNOWN
+  summary: 'Set of Fabric functions to help deploying websites.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

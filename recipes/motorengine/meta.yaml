@@ -1,0 +1,74 @@
+package:
+  name: motorengine
+  version: "0.8.11"
+
+source:
+  fn: motorengine-0.8.11.tar.gz
+  url: https://pypi.python.org/packages/source/m/motorengine/motorengine-0.8.11.tar.gz
+  md5: 2b2a6222f327dc842becd93de174092a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - motorengine = motorengine:main
+    #
+    # Would create an entry point called motorengine that calls motorengine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo ==2.7
+    - tornado
+    - motor ==0.2
+    - six
+    - easydict
+
+  run:
+    - python
+    - pymongo ==2.7
+    - tornado
+    - motor ==0.2
+    - six
+    - easydict
+
+test:
+  # Python imports
+  imports:
+    - motorengine
+    - motorengine.aggregation
+    - motorengine.fields
+    - motorengine.query
+    - motorengine.query_builder
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/heynemann/motorengine/
+  license: MIT License
+  summary: 'MotorEngine is a port of the amazing MongoEngine Mapper. Instead of using pymongo, MotorEngine uses Motor.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

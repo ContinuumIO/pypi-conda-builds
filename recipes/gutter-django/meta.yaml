@@ -1,0 +1,70 @@
+package:
+  name: gutter-django
+  version: "0.1.13"
+
+source:
+  fn: gutter-django-0.1.13.tar.gz
+  url: https://pypi.python.org/packages/source/g/gutter-django/gutter-django-0.1.13.tar.gz
+  md5: 279b988210fe92ea130ad28a4c741da9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gutter-django = gutter-django:main
+    #
+    # Would create an entry point called gutter-django that calls gutter-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nexus >=0.3.0
+    - gutter >=0.1.1
+    - django
+    - ordereddict
+
+  run:
+    - python
+    - nexus >=0.3.0
+    - gutter >=0.1.1
+    - django
+    - ordereddict
+
+test:
+  # Python imports
+  imports:
+    - gutter
+    - gutter.django
+    - gutter.django.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/disqus/gutter-django
+  license: Apache License 2.0
+  summary: 'Web UI to administer Gutter switches.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

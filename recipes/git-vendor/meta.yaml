@@ -1,0 +1,74 @@
+package:
+  name: git-vendor
+  version: "0.0.3"
+
+source:
+  fn: git-vendor-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-vendor/git-vendor-0.0.3.tar.gz
+  md5: 46b80ad2dd626cc2f4ac846735278d71
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-vendor = git-vendor:main
+    #
+    # Would create an entry point called git-vendor that calls git-vendor.main()
+
+    - git-vendor = gitvendor.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython
+    - jinja2
+    - pyyaml
+    - path.py
+    - dirsync
+    - six
+
+  run:
+    - python
+    - gitpython
+    - jinja2
+    - pyyaml
+    - path.py
+    - dirsync
+    - six
+
+test:
+  # Python imports
+  imports:
+    - gitvendor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-vendor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/chuckbutler/git-vendor
+  license: MIT License
+  summary: 'Vendor tagged releases from git to $VCS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

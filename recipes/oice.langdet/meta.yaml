@@ -1,0 +1,71 @@
+package:
+  name: oice.langdet
+  version: "1.0dev-r781"
+
+source:
+  fn: oice.langdet-1.0dev-r781.tar.gz
+  url: https://pypi.python.org/packages/source/o/oice.langdet/oice.langdet-1.0dev-r781.tar.gz
+  md5: 9618f4888209e9686f8ad9beabd337cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oice.langdet = oice.langdet:main
+    #
+    # Would create an entry point called oice.langdet that calls oice.langdet.main()
+
+    - langdet=oice.langdet.langdet:main
+    - langdetvector=oice.langdet.langdet:vector
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - chardet
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - chardet
+
+test:
+  # Python imports
+  imports:
+    - oice
+    - oice.langdet
+    - oice.langdet.languages
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - langdet --help
+    - langdetvector --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.uci.cu/
+  license: GNU General Public License (GPL)
+  summary: 'Automatic Language Detector'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

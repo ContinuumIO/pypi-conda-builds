@@ -1,0 +1,84 @@
+package:
+  name: django-multilingual-news
+  version: "2.5.2"
+
+source:
+  fn: django-multilingual-news-2.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-multilingual-news/django-multilingual-news-2.5.2.tar.gz
+  md5: d524e5e40bad3d648ced192983a212a1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-multilingual-news = django-multilingual-news:main
+    #
+    # Would create an entry point called django-multilingual-news that calls django-multilingual-news.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.2
+    - django-hvad >=0.4
+    - djangocms-utils >=0.9.5
+    - django-filer >=0.9.4
+    - pillow >=2.4.0
+    - south
+    - django-document-library
+    - django-people
+    - django-multilingual-tags
+    - django-cms >=3.0
+
+  run:
+    - python
+    - django >=1.6.2
+    - django-hvad >=0.4
+    - djangocms-utils >=0.9.5
+    - django-filer >=0.9.4
+    - pillow >=2.4.0
+    - south
+    - django-document-library
+    - django-people
+    - django-multilingual-tags
+    - django-cms >=3.0
+
+test:
+  # Python imports
+  imports:
+    - multilingual_news
+    - multilingual_news.migrations
+    - multilingual_news.templatetags
+    - multilingual_news.tests
+    - multilingual_news.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-multilingual-news
+  license: The MIT License
+  summary: 'A reusable Django app for managing news/blog entries in different languages.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

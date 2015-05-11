@@ -1,0 +1,63 @@
+package:
+  name: ibm_db_sa
+  version: "0.3.2"
+
+source:
+  fn: ibm_db_sa-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/ibm_db_sa/ibm_db_sa-0.3.2.tar.gz
+  md5: bb165bac4de5ec2fd30f1d823875360a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ibm_db_sa = ibm_db_sa:main
+    #
+    # Would create an entry point called ibm_db_sa that calls ibm_db_sa.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.7.3
+
+  run:
+    - python
+    - setuptools
+    - sqlalchemy >=0.7.3
+
+test:
+  # Python imports
+  imports:
+    - ibm_db_sa
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/ibm_db_sa/
+  license: Apache License 2.0
+  summary: 'SQLAlchemy support for IBM Data Servers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-voter
+  version: "0.1.0"
+
+source:
+  fn: django-voter-0.1.0.zip
+  url: https://pypi.python.org/packages/source/d/django-voter/django-voter-0.1.0.zip
+  md5: dc0cea7c6530e9b54e6b957e48c1cefb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-voter = django-voter:main
+    #
+    # Would create an entry point called django-voter that calls django-voter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-misc
+
+  run:
+    - python
+    - django >=1.2
+    - django-misc
+
+test:
+  # Python imports
+  imports:
+    - ratings
+    - ratings.management
+    - ratings.management.commands
+    - ratings.migrations
+    - ratings.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ilblackdragon/django-voter.git
+  license: MIT
+  summary: 'Application for Django framework that contains generic rating\\vote system. Requires modifications in the model, that will be used for voting, to optimize number of database queries.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,159 @@
+package:
+  name: kotti
+  version: "1.1.0"
+
+source:
+  fn: Kotti-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/K/Kotti/Kotti-1.1.0.tar.gz
+  md5: dcb32972e37eff16637aa78e2167a7fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kotti = kotti:main
+    #
+    # Would create an entry point called kotti that calls kotti.main()
+
+    - kotti-migrate=kotti.migrate:kotti_migrate_command
+    - kotti-reset-workflow=kotti.workflow:reset_workflow_command
+    - kotti-migrate-storage=kotti.filedepot:migrate_storages_command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babel
+    - chameleon >=2.7.4
+    - pillow
+    - alembic
+    - bleach
+    - bleach-whitelist
+    - colander >=0.9.3
+    - deform >=2.0a1
+    - docopt
+    - filedepot
+    - formencode
+    - html2text
+    - js.angular
+    - js.bootstrap >=2.1.5
+    - js.deform >=2.0a2-2
+    - js.fineuploader
+    - js.html5shiv
+    - js.jquery
+    - js.jquery_form
+    - js.jquery_tablednd
+    - js.jquery_timepicker_addon
+    - js.jqueryui >=1.8.24
+    - js.jqueryui_tagit
+    - kotti_tinymce >=0.5dev
+    - lingua >=1.3
+    - plone.scale
+    - py_bcrypt
+    - pyramid >=1.5
+    - pyramid_beaker
+    - pyramid_chameleon
+    - pyramid_debugtoolbar
+    - pyramid_deform >=0.2a3
+    - pyramid_mailer
+    - pyramid_tm
+    - pyramid_zcml
+    - repoze.lru
+    - repoze.workflow
+    - sqlalchemy >=0.7.6
+    - transaction >=1.1.0
+    - unidecode
+    - usersettings
+    - waitress
+    - zope.deprecation
+    - zope.sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - babel
+    - chameleon >=2.7.4
+    - pillow
+    - alembic
+    - bleach
+    - bleach-whitelist
+    - colander >=0.9.3
+    - deform >=2.0a1
+    - docopt
+    - filedepot
+    - formencode
+    - html2text
+    - js.angular
+    - js.bootstrap >=2.1.5
+    - js.deform >=2.0a2-2
+    - js.fineuploader
+    - js.html5shiv
+    - js.jquery
+    - js.jquery_form
+    - js.jquery_tablednd
+    - js.jquery_timepicker_addon
+    - js.jqueryui >=1.8.24
+    - js.jqueryui_tagit
+    - kotti_tinymce >=0.5dev
+    - lingua >=1.3
+    - plone.scale
+    - py_bcrypt
+    - pyramid >=1.5
+    - pyramid_beaker
+    - pyramid_chameleon
+    - pyramid_debugtoolbar
+    - pyramid_deform >=0.2a3
+    - pyramid_mailer
+    - pyramid_tm
+    - pyramid_zcml
+    - repoze.lru
+    - repoze.workflow
+    - sqlalchemy >=0.7.6
+    - transaction >=1.1.0
+    - unidecode
+    - usersettings
+    - waitress
+    - zope.deprecation
+    - zope.sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - kotti
+    - kotti.scaffolds
+    - kotti.tests
+    - kotti.views
+    - kotti.views.edit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kotti-migrate --help
+    - kotti-reset-workflow --help
+    - kotti-migrate-storage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kotti.pylonsproject.org/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'A high-level, Pythonic web application framework based on Pyramid and SQLAlchemy.  It includes an extensible Content Management System called the Kotti CMS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

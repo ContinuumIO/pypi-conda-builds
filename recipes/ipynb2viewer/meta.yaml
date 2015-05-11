@@ -1,0 +1,68 @@
+package:
+  name: ipynb2viewer
+  version: "0.2.2"
+
+source:
+  fn: ipynb2viewer-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipynb2viewer/ipynb2viewer-0.2.2.tar.gz
+  md5: acd547ad50c9a692e7aa278e49484f89
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipynb2viewer = ipynb2viewer:main
+    #
+    # Would create an entry point called ipynb2viewer that calls ipynb2viewer.main()
+
+    - ipynb2viewer = ipynb2viewer.ipynb2viewer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==2.0.1
+    - docopt ==0.6.1
+    - simplejson
+
+  run:
+    - python
+    - requests ==2.0.1
+    - docopt ==0.6.1
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - ipynb2viewer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ipynb2viewer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kracekumar/ipynb2viewer
+  license: BSD License
+  summary: 'Post IPython notebook files to nbviewer. IPython notebook content will be posted to gist.github.com.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: frasco-redis
+  version: "0.1.1"
+
+source:
+  fn: frasco-redis-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/frasco-redis/frasco-redis-0.1.1.tar.gz
+  md5: a1be2b1ddc315e3fc892f1a2f3e38511
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - frasco-redis = frasco-redis:main
+    #
+    # Would create an entry point called frasco-redis that calls frasco-redis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - frasco
+    - redis >=2.10.1
+
+  run:
+    - python
+    - frasco
+    - redis >=2.10.1
+
+test:
+  # Python imports
+  imports:
+    - frasco_redis
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/frascoweb/frasco-redis
+  license: MIT
+  summary: 'Redis integration for Frasco'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

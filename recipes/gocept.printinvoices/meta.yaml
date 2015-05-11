@@ -1,0 +1,69 @@
+package:
+  name: gocept.printinvoices
+  version: "0.2"
+
+source:
+  fn: gocept.printinvoices-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.printinvoices/gocept.printinvoices-0.2.tar.gz
+  md5: 8264114eb191ec389ccc1e59279df255
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.printinvoices = gocept.printinvoices:main
+    #
+    # Would create an entry point called gocept.printinvoices that calls gocept.printinvoices.main()
+
+    - process-pdf=gocept.printinvoices.main:process_pdf
+    - process-ps=gocept.printinvoices.main:process_ps
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.printinvoices
+    - gocept.printinvoices.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - process-pdf --help
+    - process-ps --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.printinvoices
+  license: ZPL 2.1
+  summary: 'Print a batch of invoices from Collmex on paper from two trays.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

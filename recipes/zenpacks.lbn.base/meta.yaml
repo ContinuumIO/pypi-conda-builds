@@ -1,0 +1,65 @@
+package:
+  name: zenpacks.lbn.base
+  version: "4.0.3"
+
+source:
+  fn: ZenPacks.lbn.Base-4.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/Z/ZenPacks.lbn.Base/ZenPacks.lbn.Base-4.0.3.tar.gz
+  md5: 00ee8ac3f3d9bbdd8f0237adaea7539e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zenpacks.lbn.base = zenpacks.lbn.base:main
+    #
+    # Would create an entry point called zenpacks.lbn.base that calls zenpacks.lbn.base.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lbn.zenoss >=4.2.0
+
+  run:
+    - python
+    - setuptools
+    - lbn.zenoss >=4.2.0
+
+test:
+  # Python imports
+  imports:
+    - ZenPacks
+    - ZenPacks.lbn
+    - ZenPacks.lbn.Base
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://linux.last-bastion.net/LBN/up2date/monitor
+  license: Zope Public License
+  summary: 'Base wrappers to save real Zopistas from Zenoss cruft'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

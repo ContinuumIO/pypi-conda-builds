@@ -1,0 +1,79 @@
+package:
+  name: maskattack.lbp
+  version: "1.0.4"
+
+source:
+  fn: maskattack.lbp-1.0.4.zip
+  url: https://pypi.python.org/packages/source/m/maskattack.lbp/maskattack.lbp-1.0.4.zip
+  md5: a28b4ec88ad5956018e28427178fcd9e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - maskattack.lbp = maskattack.lbp:main
+    #
+    # Would create an entry point called maskattack.lbp that calls maskattack.lbp.main()
+
+    - calclbp.py = maskattack.lbp.script.calclbp:main
+    - cmphistmodels.py = maskattack.lbp.script.cmphistmodels:main
+    - ldatrain_lbp.py = maskattack.lbp.script.ldatrain_lbp:main
+    - svmtrain_lbp.py = maskattack.lbp.script.svmtrain_lbp:main
+    - barplot.py = maskattack.lbp.script.barplot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.2.0
+    - xbob.db.maskattack
+
+  run:
+    - python
+    - setuptools
+    - bob >=1.2.0
+    - xbob.db.maskattack
+
+test:
+  # Python imports
+  imports:
+    - maskattack
+    - maskattack.lbp
+    - maskattack.lbp.ml
+    - maskattack.lbp.script
+    - maskattack.lbp.spoof
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - calclbp.py --help
+    - cmphistmodels.py --help
+    - ldatrain_lbp.py --help
+    - svmtrain_lbp.py --help
+    - barplot.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/maskattack.lbp
+  license: GPLv3
+  summary: 'Texture (LBP) based counter-measures for the 3D MASK ATTACK database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

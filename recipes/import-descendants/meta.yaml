@@ -1,0 +1,63 @@
+package:
+  name: import-descendants
+  version: "1.0.0"
+
+source:
+  fn: import-descendants-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/import-descendants/import-descendants-1.0.0.tar.gz
+  md5: 301af73cec54fcc650662e061979cfb3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - import-descendants = import-descendants:main
+    #
+    # Would create an entry point called import-descendants that calls import-descendants.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - import_descendants
+    - import_descendants/test_example
+    - import_descendants/test_example/child_dir
+    - import_descendants/test_example/child_dir/grandchild_dir
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/brightinteractive/import-descendants/
+  license: BSD
+  summary: "Automatically import all of a module's descendants"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

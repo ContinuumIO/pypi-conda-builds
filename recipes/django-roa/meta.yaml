@@ -1,0 +1,68 @@
+package:
+  name: django-roa
+  version: "1.7"
+
+source:
+  fn: django-roa-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-roa/django-roa-1.7.tar.gz
+  md5: 238c331fccd9875aca356f5a4f309db1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-roa = django-roa:main
+    #
+    # Would create an entry point called django-roa that calls django-roa.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_roa
+    - django_roa.db
+    - django_roa.management
+    - django_roa.management.commands
+    - django_roa.remoteauth
+    - examples
+    - examples.django_roa_client
+    - examples.django_roa_server
+    - examples.twitter_roa
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.welldev.org/django-roa/wiki/Home
+  license: BSD License
+  summary: "Turn your models into remote resources that you can access through Django's ORM."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: ella-galleries
+  version: "1.0.2"
+
+source:
+  fn: Ella-Galleries-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/E/Ella-Galleries/Ella-Galleries-1.0.2.tar.gz
+  md5: 8244599e01093816347789d83cfb664e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ella-galleries = ella-galleries:main
+    #
+    # Would create an entry point called ella-galleries that calls ella-galleries.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6b1
+    - ella >=3.0.0
+    - anyjson
+
+  run:
+    - python
+    - setuptools >=0.6b1
+    - ella >=3.0.0
+    - anyjson
+
+test:
+  # Python imports
+  imports:
+    - ella_galleries
+    - ella_galleries.migrations
+    - ella_galleries.templatetags
+    - test_ella_galleries.settings
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ella.github.com/
+  license: BSD License
+  summary: 'Simple photo gallery plugin for Ella CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

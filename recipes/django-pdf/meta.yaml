@@ -1,0 +1,71 @@
+package:
+  name: django-pdf
+  version: "1.0.2"
+
+source:
+  fn: django-pdf-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pdf/django-pdf-1.0.2.tar.gz
+  md5: ffbc8f98573f5244bdffdf61f920b20e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pdf = django-pdf:main
+    #
+    # Would create an entry point called django-pdf that calls django-pdf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - celery
+    - boto
+    - simplejson
+    - ghettoq
+
+  run:
+    - python
+    - django
+    - celery
+    - boto
+    - simplejson
+    - ghettoq
+
+test:
+  # Python imports
+  imports:
+    - pdf
+    - sample
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/paltman/django-pdf/
+  license: MIT License
+  summary: 'A Django app for managing and processing PDF documents.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

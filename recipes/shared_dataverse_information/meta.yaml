@@ -1,0 +1,70 @@
+package:
+  name: shared_dataverse_information
+  version: "0.3.8"
+
+source:
+  fn: shared_dataverse_information-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/s/shared_dataverse_information/shared_dataverse_information-0.3.8.tar.gz
+  md5: b1c7baa05597a58d9a1f9d8e216362ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shared_dataverse_information = shared_dataverse_information:main
+    #
+    # Would create an entry point called shared_dataverse_information that calls shared_dataverse_information.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.7
+    - requests ==2.3.0
+
+  run:
+    - python
+    - django >=1.4,<1.7
+    - requests ==2.3.0
+
+test:
+  # Python imports
+  imports:
+    - shared_dataverse_information
+    - shared_dataverse_information.dataverse_info
+    - shared_dataverse_information.layer_classification
+    - shared_dataverse_information.map_layer_metadata
+    - shared_dataverse_information.shapefile_import
+    - shared_dataverse_information.shared_form_util
+    - shared_dataverse_information.worldmap_api_helper
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/IQSS/shared-dataverse-information
+  license: MIT License
+  summary: 'Shared code for the Dataverse and WorldMap connection.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

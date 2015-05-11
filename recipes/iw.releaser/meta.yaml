@@ -1,0 +1,85 @@
+package:
+  name: iw.releaser
+  version: "0.4.1"
+
+source:
+  fn: iw.releaser-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/iw.releaser/iw.releaser-0.4.1.tar.gz
+  md5: fd0993888e21d5a4c825e33f64f27a91
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iw.releaser = iw.releaser:main
+    #
+    # Would create an entry point called iw.releaser that calls iw.releaser.main()
+
+    - project_release = iw.releaser.project:make_release
+    - project_deploy = iw.releaser.project:deploy_release
+    - project_diff = iw.releaser.project:diff_releases
+    - project_copy_eggs = iw.releaser.project:copy_archives
+    - project_md5 = iw.releaser.project:console_build_md5
+    - project_eggs = iw.releaser.project:console_project_eggs
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - iw.dist
+    - zopeskel
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - iw.dist
+    - zopeskel
+
+test:
+  # Python imports
+  imports:
+    - iw
+    - iw.releaser
+    - iw.releaser.tests
+    - iw.releaser.tests.data
+    - iw.releaser.tests.data.buildout
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - project_release --help
+    - project_deploy --help
+    - project_diff --help
+    - project_copy_eggs --help
+    - project_md5 --help
+    - project_eggs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://ingeniweb.svn.sourceforge.net/svnroot/ingeniweb/iw.releaser
+  license: GPL
+  summary: 'Setuptools extension to release an egg'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

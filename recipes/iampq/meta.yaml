@@ -1,0 +1,71 @@
+package:
+  name: iampq
+  version: "0.0.dev6"
+
+source:
+  fn: iampq-0.0.dev6.tar.gz
+  url: https://pypi.python.org/packages/source/i/iampq/iampq-0.0.dev6.tar.gz
+  md5: 6353460c02dbff63c0340253a2e08e99
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iampq = iampq:main
+    #
+    # Would create an entry point called iampq that calls iampq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3.0
+    - pika >=0.9
+    - simplejson
+    - msgpack-python
+    - yieldpoints
+
+  run:
+    - python
+    - tornado >=3.0
+    - pika >=0.9
+    - simplejson
+    - msgpack-python
+    - yieldpoints
+
+test:
+  # Python imports
+  imports:
+    - iampq
+    - iampq.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/Rustem/iampq
+  license: MIT License
+  summary: 'A non-blocking thin pika wrapper that adapts logic of kombu.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

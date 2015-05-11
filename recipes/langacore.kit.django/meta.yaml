@@ -1,0 +1,78 @@
+package:
+  name: langacore.kit.django
+  version: "0.3.3"
+
+source:
+  fn: langacore.kit.django-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/langacore.kit.django/langacore.kit.django-0.3.3.tar.gz
+  md5: 70df8a2093e2d305a221e9ffa67afddb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - langacore.kit.django = langacore.kit.django:main
+    #
+    # Would create an entry point called langacore.kit.django that calls langacore.kit.django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - langacore.kit.common
+    - langacore.kit.i18n
+    - setuptools
+    - django >=1.2
+    - postmarkup
+
+  run:
+    - python
+    - langacore.kit.common
+    - langacore.kit.i18n
+    - setuptools
+    - django >=1.2
+    - postmarkup
+
+test:
+  # Python imports
+  imports:
+    - langacore
+    - langacore.kit
+    - langacore.kit.django
+    - langacore.kit.django.common
+    - langacore.kit.django.common.management
+    - langacore.kit.django.common.management.commands
+    - langacore.kit.django.common.templatetags
+    - langacore.kit.django.profile
+    - langacore.kit.django.tests
+    - langacore.kit.dummy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/langacore.kit.django/
+  license: GNU General Public License (GPL)
+  summary: 'Various common Django-related routines.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

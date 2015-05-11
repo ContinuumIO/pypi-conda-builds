@@ -1,0 +1,68 @@
+package:
+  name: django-banzai
+  version: "0.2"
+
+source:
+  fn: django-banzai-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-banzai/django-banzai-0.2.tar.gz
+  md5: f5dab2b5673a69b2fd57d58c5a3756c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-banzai = django-banzai:main
+    #
+    # Would create an entry point called django-banzai that calls django-banzai.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - lxml
+    - django
+
+  run:
+    - python
+    - requests
+    - lxml
+    - django
+
+test:
+  # Python imports
+  imports:
+    - banzai
+    - banzai.migrations
+    - test_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saippuakauppias/django-banzai
+  license: MIT
+  summary: 'Django API wrapper for mailing delivery service: http://get-n-post.ru/'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

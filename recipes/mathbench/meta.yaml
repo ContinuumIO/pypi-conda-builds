@@ -1,0 +1,67 @@
+package:
+  name: mathbench
+  version: "1.1.0"
+
+source:
+  fn: MathBench-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/M/MathBench/MathBench-1.1.0.tar.gz
+  md5: e1f8f626e43ab3c28c2bb1c2a8c77db5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mathbench = mathbench:main
+    #
+    # Would create an entry point called mathbench that calls mathbench.main()
+
+    - MathBench = mathbench.MathBench:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - yapsy >=1.7
+
+  run:
+    - python
+    - yapsy >=1.7
+
+test:
+  # Python imports
+  imports:
+    - mathbench
+    - mathbench.basement
+    - mathbench.ext
+    - mathbench.lab
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - MathBench --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mathbench.sourceforge.net
+  license: BSD License
+  summary: 'Not a whole lab, just a small bench...'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

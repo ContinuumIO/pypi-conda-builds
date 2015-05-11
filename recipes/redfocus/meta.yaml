@@ -1,0 +1,66 @@
+package:
+  name: redfocus
+  version: "0.5"
+
+source:
+  fn: redfocus-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/redfocus/redfocus-0.5.tar.gz
+  md5: 7ec00319e519cf36615bef85ff18cc87
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redfocus = redfocus:main
+    #
+    # Would create an entry point called redfocus that calls redfocus.main()
+
+    - redfocus = redfocus:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - appscript
+
+  run:
+    - python
+    - requests
+    - appscript
+
+test:
+  # Python imports
+  imports:
+    - redfocus
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - redfocus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Import Redmine issues into OmniFocus'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

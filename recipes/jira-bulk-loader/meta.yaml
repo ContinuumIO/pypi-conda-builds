@@ -1,0 +1,69 @@
+package:
+  name: jira-bulk-loader
+  version: "0.2.2"
+
+source:
+  fn: jira-bulk-loader-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jira-bulk-loader/jira-bulk-loader-0.2.2.tar.gz
+  md5: be38c53cbf7cc597be4dba5bedfae6a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jira-bulk-loader = jira-bulk-loader:main
+    #
+    # Would create an entry point called jira-bulk-loader that calls jira-bulk-loader.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson >=3.3.0
+    - requests >=0.13.1
+    - argparse >=1.2.1
+    - pytest >=2.3.5
+
+  run:
+    - python
+    - simplejson >=3.3.0
+    - requests >=0.13.1
+    - argparse >=1.2.1
+    - pytest >=2.3.5
+
+test:
+  # Python imports
+  imports:
+    - jirabulkloader
+    - jirabulkloader.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/oktopuz/jira-bulk-loader
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'An automation tool for creating tasks in Jira via RESTful API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

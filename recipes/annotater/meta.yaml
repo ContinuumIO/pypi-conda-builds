@@ -1,0 +1,73 @@
+package:
+  name: annotater
+  version: "0.2"
+
+source:
+  fn: annotater-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/annotater/annotater-0.2.tar.gz
+  md5: e1983aa530ead573e9adf3c175866993
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - annotater = annotater:main
+    #
+    # Would create an entry point called annotater that calls annotater.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.5
+    - formalchemy >=1.0
+    - paste >=1.0
+    - pastedeploy
+    - nose
+    - routes >=1.7
+
+  run:
+    - python
+    - sqlalchemy >=0.5
+    - formalchemy >=1.0
+    - paste >=1.0
+    - pastedeploy
+    - nose
+    - routes >=1.7
+
+test:
+  # Python imports
+  imports:
+    - annotater
+    - annotater.marginalia
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://p.knowledgeforge.net/shakespeare/svn/annotater/
+  license: MIT License
+  summary: 'Inline web annotation application and middleware using javascript and WSGI'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: django-sparkle-1.5
+  version: "0.2"
+
+source:
+  fn: django-sparkle-1.5-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sparkle-1.5/django-sparkle-1.5-0.2.tar.gz
+  md5: f59cfaded0f31f4005217a273312ad27
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sparkle-1.5 = django-sparkle-1.5:main
+    #
+    # Would create an entry point called django-sparkle-1.5 that calls django-sparkle-1.5.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-absolute
+    - markdown >2.1
+
+  run:
+    - python
+    - django-absolute
+    - markdown >2.1
+
+test:
+  # Python imports
+  imports:
+    - sparkle
+    - sparkle.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shezi/django-sparkle-1.5
+  license: BSD License
+  summary: 'Django-sparkle is a Django application to make it easy to publish updates for your mac application using sparkle (intended for Django >= 1.5)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,77 @@
+package:
+  name: eke.labcas
+  version: "0.0.2"
+
+source:
+  fn: eke.labcas-0.0.2.zip
+  url: https://pypi.python.org/packages/source/e/eke.labcas/eke.labcas-0.0.2.zip
+  md5: 9de7023c7b81164e73b82911c9405c5c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eke.labcas = eke.labcas:main
+    #
+    # Would create an entry point called eke.labcas that calls eke.labcas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - z3c.autoinclude
+    - rdflib
+    - plone.app.dexterity[grok]
+    - eke.knowledge
+    - pillow
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - z3c.autoinclude
+    - rdflib
+    - plone.app.dexterity[grok]
+    - eke.knowledge
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - eke
+    - eke.labcas
+    - eke.labcas.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EDRN/eke.labcas
+  license: Apache Software License
+  summary: 'Laboratory Catalog and Archive Service for the EDRN Knowledge Environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

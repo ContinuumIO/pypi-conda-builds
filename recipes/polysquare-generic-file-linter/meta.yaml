@@ -1,0 +1,69 @@
+package:
+  name: polysquare-generic-file-linter
+  version: "0.0.24"
+
+source:
+  fn: polysquare-generic-file-linter-0.0.24.tar.gz
+  url: https://pypi.python.org/packages/source/p/polysquare-generic-file-linter/polysquare-generic-file-linter-0.0.24.tar.gz
+  md5: 32d268eebbae31395f1d39a6855231f9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - polysquare-generic-file-linter = polysquare-generic-file-linter:main
+    #
+    # Would create an entry point called polysquare-generic-file-linter that calls polysquare-generic-file-linter.main()
+
+    - polysquare-generic-file-linter=polysquarelinter.linter:main
+    - spellcheck-linter=polysquarelinter.lint_spelling_only:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - parmap
+    - whoosh <=2.6
+
+  run:
+    - python
+    - parmap
+    - whoosh <=2.6
+
+test:
+  # Python imports
+  imports:
+    - polysquarelinter
+    - test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - polysquare-generic-file-linter --help
+    - spellcheck-linter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/polysquare/polysquare-generic-file-linter
+  license: MIT License
+  summary: 'Polysquare Style Guide Linter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

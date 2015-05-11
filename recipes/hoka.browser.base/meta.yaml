@@ -1,0 +1,70 @@
+package:
+  name: hoka.browser.base
+  version: "2.13.19.2"
+
+source:
+  fn: hoka.browser.base-2.13.19.2.zip
+  url: https://pypi.python.org/packages/source/h/hoka.browser.base/hoka.browser.base-2.13.19.2.zip
+  md5: 2583e47a3d0d0d04baadebd3734affde
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hoka.browser.base = hoka.browser.base:main
+    #
+    # Would create an entry point called hoka.browser.base that calls hoka.browser.base.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope2
+    - z3c.autoinclude
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope2
+    - z3c.autoinclude
+
+test:
+  # Python imports
+  imports:
+    - hoka
+    - hoka.browser
+    - hoka.browser.base
+    - hoka.browser.base.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hoka/hoka.browser.base
+  license: GNU General Public License (GPL)
+  summary: 'Reduce seperate importing of browser requirements'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

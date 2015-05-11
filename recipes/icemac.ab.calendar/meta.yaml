@@ -1,0 +1,85 @@
+package:
+  name: icemac.ab.calendar
+  version: "1.6.0"
+
+source:
+  fn: icemac.ab.calendar-1.6.0.zip
+  url: https://pypi.python.org/packages/source/i/icemac.ab.calendar/icemac.ab.calendar-1.6.0.zip
+  md5: 384b714cea04884a98a3310737187745
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - icemac.ab.calendar = icemac.ab.calendar:main
+    #
+    # Would create an entry point called icemac.ab.calendar that calls icemac.ab.calendar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyphen
+    - decorator
+    - gocept.month >=1.2
+    - grokcore.annotation
+    - icemac.addressbook >=2.5.0
+    - setuptools
+    - zope.cachedescriptors
+
+  run:
+    - python
+    - setuptools
+    - pyphen
+    - decorator
+    - gocept.month >=1.2
+    - grokcore.annotation
+    - icemac.addressbook >=2.5.0
+    - setuptools
+    - zope.cachedescriptors
+
+test:
+  # Python imports
+  imports:
+    - icemac
+    - icemac.ab
+    - icemac.ab.calendar
+    - icemac.ab.calendar.browser
+    - icemac.ab.calendar.browser.renderer
+    - icemac.ab.calendar.browser.renderer.tests
+    - icemac.ab.calendar.browser.tests
+    - icemac.ab.calendar.generations
+    - icemac.ab.calendar.masterdata
+    - icemac.ab.calendar.masterdata.tests
+    - icemac.ab.calendar.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/icemac/icemac.ab.calendar
+  license: Zope Public License
+  summary: 'Calendar feature for icemac.addressbook'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

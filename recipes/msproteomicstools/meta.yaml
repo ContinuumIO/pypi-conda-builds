@@ -1,0 +1,87 @@
+package:
+  name: msproteomicstools
+  version: "0.3.2"
+
+source:
+  fn: msproteomicstools-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/msproteomicstools/msproteomicstools-0.3.2.tar.gz
+  md5: ff7fbbd8ce1cb1446038aa559ddd2a3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - msproteomicstools = msproteomicstools:main
+    #
+    # Would create an entry point called msproteomicstools that calls msproteomicstools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - numpy
+    - scipy
+    - cluster ==1.1.2
+    - pyteomics >=2.4.0
+    - xlsxwriter >=0.5.3
+    - xlwt
+    - scikits.datasmooth
+    - lxml
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - cluster ==1.1.2
+    - pyteomics >=2.4.0
+    - xlsxwriter >=0.5.3
+    - xlwt
+    - scikits.datasmooth
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - msproteomicstools
+    - msproteomicstoolslib
+    - msproteomicstoolslib.algorithms
+    - msproteomicstoolslib.algorithms.PADS
+    - msproteomicstoolslib.algorithms.alignment
+    - msproteomicstoolslib.algorithms.shared
+    - msproteomicstoolslib.data_structures
+    - msproteomicstoolslib.format
+    - msproteomicstoolslib.math
+    - msproteomicstoolslib.util
+    - openswathgui
+    - openswathgui.models
+    - openswathgui.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://code.google.com/p/msproteomicstools
+  license: BSD License
+  summary: 'Tools for MS-based proteomics'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

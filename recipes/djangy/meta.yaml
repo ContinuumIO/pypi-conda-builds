@@ -1,0 +1,63 @@
+package:
+  name: djangy
+  version: "0.14"
+
+source:
+  fn: Djangy-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/D/Djangy/Djangy-0.14.tar.gz
+  md5: 66839d59100806e65cc12c5d5c85262b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangy = djangy:main
+    #
+    # Would create an entry point called djangy that calls djangy.main()
+
+    - djangy = djangy:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djangy
+    - find_git_repository
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - djangy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.djangy.com
+  license: UNKNOWN
+  summary: 'Djangy.com client application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

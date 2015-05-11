@@ -1,0 +1,66 @@
+package:
+  name: mr.anderson
+  version: "1.1.1"
+
+source:
+  fn: mr.anderson-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mr.anderson/mr.anderson-1.1.1.tar.gz
+  md5: e79a867f19b9b0645f7ffb82b2e16b4b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.anderson = mr.anderson:main
+    #
+    # Would create an entry point called mr.anderson that calls mr.anderson.main()
+
+    - redpill=mr.anderson.builder:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.anderson
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - redpill --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/pumazi/mr.anderson
+  license: GPL
+  summary: 'Plone testing matrix builder utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

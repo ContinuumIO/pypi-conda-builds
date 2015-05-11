@@ -1,0 +1,90 @@
+package:
+  name: kittystore
+  version: "0.9.3"
+
+source:
+  fn: KittyStore-0.9.3.tar.gz
+  url: https://pypi.python.org/packages/source/K/KittyStore/KittyStore-0.9.3.tar.gz
+  md5: 497fe99b948308efbc0250d47c2821c9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kittystore = kittystore:main
+    #
+    # Would create an entry point called kittystore that calls kittystore.main()
+
+    - kittystore-import = kittystore.import:main
+    - kittystore-updatedb = kittystore.scripts:updatedb
+    - kittystore-download21 = kittystore.scripts:dl_archives
+    - kittystore-sync-mailman = kittystore.scripts:sync_mailman_cmd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mailman >=3.0.0b2
+    - zope.interface
+    - storm
+    - python-dateutil <2.0
+    - mock
+    - networkx
+    - whoosh
+    - dogpile.cache
+    - mailmanclient
+
+  run:
+    - python
+    - mailman >=3.0.0b2
+    - zope.interface
+    - storm
+    - python-dateutil <2.0
+    - mock
+    - networkx
+    - whoosh
+    - dogpile.cache
+    - mailmanclient
+
+test:
+  # Python imports
+  imports:
+    - kittystore
+    - kittystore.caching
+    - kittystore.storm
+    - kittystore.storm.schema
+    - kittystore.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kittystore-import --help
+    - kittystore-updatedb --help
+    - kittystore-download21 --help
+    - kittystore-sync-mailman --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://fedorahosted.org/hyperkitty/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A storage engine for GNU Mailman v3 archives'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

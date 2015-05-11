@@ -1,0 +1,69 @@
+package:
+  name: gocept.testdb
+  version: "1.2.1"
+
+source:
+  fn: gocept.testdb-1.2.1.zip
+  url: https://pypi.python.org/packages/source/g/gocept.testdb/gocept.testdb-1.2.1.zip
+  md5: 451ae1807182f3f875896980e0ae6bef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.testdb = gocept.testdb:main
+    #
+    # Would create an entry point called gocept.testdb that calls gocept.testdb.main()
+
+    - drop-all=gocept.testdb.cmdline:drop_all_entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - sqlalchemy >=0.5.6
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - sqlalchemy >=0.5.6
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.testdb
+    - gocept.testdb.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - drop-all --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gocept/gocept.testdb
+  license: Zope Public License
+  summary: 'Creates and drops temporary databases for testing purposes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

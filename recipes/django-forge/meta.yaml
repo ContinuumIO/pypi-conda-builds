@@ -1,0 +1,71 @@
+package:
+  name: django-forge
+  version: "0.6.0"
+
+source:
+  fn: django-forge-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-forge/django-forge-0.6.0.tar.gz
+  md5: 71a3f7148f4dc6eda229658c09c21875
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-forge = django-forge:main
+    #
+    # Would create an entry point called django-forge that calls django-forge.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - requests >=2
+    - semantic_version >=2.1.2
+
+  run:
+    - python
+    - django >=1.4
+    - requests >=2
+    - semantic_version >=2.1.2
+
+test:
+  # Python imports
+  imports:
+    - forge
+    - forge.management
+    - forge.management.commands
+    - forge.settings
+    - forge.tests
+    - forge.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jbronn/django-forge
+  license: Apache Software License
+  summary: 'A Django implementation of the Puppet Forge API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

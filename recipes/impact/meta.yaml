@@ -1,0 +1,63 @@
+package:
+  name: impact
+  version: "0.5.9"
+
+source:
+  fn: impact-0.5.9.tar.gz
+  url: https://pypi.python.org/packages/source/i/impact/impact-0.5.9.tar.gz
+  md5: 7be071283600fc2547d2d67021a66d35
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - impact = impact:main
+    #
+    # Would create an entry point called impact that calls impact.main()
+
+    - impact = impactlib.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - impact
+    - impactlib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - impact --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xogeny/impact
+  license: MIT
+  summary: 'Modelica package manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: ipodio
+  version: "0.1.0"
+
+source:
+  fn: ipodio-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipodio/ipodio-0.1.0.tar.gz
+  md5: 620fbaae40074ac057fc79b6dd5a4e50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipodio = ipodio:main
+    #
+    # Would create an entry point called ipodio that calls ipodio.main()
+
+    - ipodio = ipodio.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - mp3hash
+
+  run:
+    - python
+    - docopt
+    - mp3hash
+
+test:
+  # Python imports
+  imports:
+    - ipodio
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ipodio --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jvrsantacruz/ipodio
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'iPod command line managing tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

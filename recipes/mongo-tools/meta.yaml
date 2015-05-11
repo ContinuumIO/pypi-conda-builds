@@ -1,0 +1,72 @@
+package:
+  name: mongo-tools
+  version: "0.0.2"
+
+source:
+  fn: mongo-tools-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongo-tools/mongo-tools-0.0.2.tar.gz
+  md5: 216c3a4eebde1334ace60a4a58ff2fdb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongo-tools = mongo-tools:main
+    #
+    # Would create an entry point called mongo-tools that calls mongo-tools.main()
+
+    - mongo-info=mongo_tools:info
+    - mongo-profile=mongo_tools:profile
+    - mongo-files=mongo_tools:files
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - blessings
+    - pymongo
+
+  run:
+    - python
+    - docopt
+    - blessings
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - mongo_tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mongo-info --help
+    - mongo-profile --help
+    - mongo-files --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zweifisch/mongo-tools
+  license: UNKNOWN
+  summary: 'cli utility for mongodb'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

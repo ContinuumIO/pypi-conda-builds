@@ -1,0 +1,72 @@
+package:
+  name: hiverunner
+  version: "1.0.1"
+
+source:
+  fn: hiverunner-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hiverunner/hiverunner-1.0.1.tar.gz
+  md5: e71fc8a624cfabe8aab8315dba61dabb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hiverunner = hiverunner:main
+    #
+    # Would create an entry point called hiverunner that calls hiverunner.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-python ==1.2.4
+    - hiver ==0.2.1
+    - python-memcached ==1.53
+    - simplejson ==3.3.0
+    - thrift ==0.9.1
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - mysql-python ==1.2.4
+    - hiver ==0.2.1
+    - python-memcached ==1.53
+    - simplejson ==3.3.0
+    - thrift ==0.9.1
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - hiverunner
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bellycard/hiverunner
+  license: Apache License 2.0
+  summary: 'Hive Runner is a python script that pulls saved queries from Beeswax, runs the queries on Hive, and stores the results in Memcache.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

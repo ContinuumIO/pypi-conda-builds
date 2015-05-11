@@ -1,0 +1,68 @@
+package:
+  name: dynamic-dynamodb
+  version: "1.20.5"
+
+source:
+  fn: dynamic-dynamodb-1.20.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/dynamic-dynamodb/dynamic-dynamodb-1.20.5.tar.gz
+  md5: 9c88c81a0b0dc218e0eee833aa9ef6cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dynamic-dynamodb = dynamic-dynamodb:main
+    #
+    # Would create an entry point called dynamic-dynamodb that calls dynamic-dynamodb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.29.1
+    - requests >=0.14.1
+    - logutils >=0.3.3
+    - retrying >=1.3.3
+
+  run:
+    - python
+    - boto >=2.29.1
+    - requests >=0.14.1
+    - logutils >=0.3.3
+    - retrying >=1.3.3
+
+test:
+  # Python imports
+  imports:
+    - dynamic_dynamodb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sebdah.github.com/dynamic-dynamodb/
+  license: Apache Software License
+  summary: 'Automatic provisioning for AWS DynamoDB tables'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

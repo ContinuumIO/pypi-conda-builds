@@ -1,0 +1,71 @@
+package:
+  name: fbconsole
+  version: "0.4"
+
+source:
+  fn: fbconsole-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/fbconsole/fbconsole-0.4.tar.gz
+  md5: bf4839a15157aa4608ca112d653a7a3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fbconsole = fbconsole:main
+    #
+    # Would create an entry point called fbconsole that calls fbconsole.main()
+
+    - fbconsole=fbconsole:shell
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - anyjson
+    - poster
+    - mechanize
+
+  run:
+    - python
+    - setuptools
+    - six
+    - anyjson
+    - poster
+    - mechanize
+
+test:
+  # Python imports
+  imports:
+    - fbconsole
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fbconsole --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fbsamples/fbconsole
+  license: Apache Software License
+  summary: 'A simple facebook api client for writing command line scripts.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

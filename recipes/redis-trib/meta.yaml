@@ -1,0 +1,66 @@
+package:
+  name: redis-trib
+  version: "0.3.5"
+
+source:
+  fn: redis-trib-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/redis-trib/redis-trib-0.3.5.tar.gz
+  md5: abcf79a6701f9dca10739d42ffb0946c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redis-trib = redis-trib:main
+    #
+    # Would create an entry point called redis-trib that calls redis-trib.main()
+
+    - redis-trib.py=redistrib.console:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hiredis
+    - retrying
+
+  run:
+    - python
+    - hiredis
+    - retrying
+
+test:
+  # Python imports
+  imports:
+    - redistrib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - redis-trib.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/HunanTV/redis-trib.py
+  license: MIT
+  summary: 'Redis Cluster tools in Python2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

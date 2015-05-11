@@ -1,0 +1,69 @@
+package:
+  name: feincms-blogs
+  version: "0.0.7"
+
+source:
+  fn: FeinCMS-Blogs-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/F/FeinCMS-Blogs/FeinCMS-Blogs-0.0.7.tar.gz
+  md5: f442860bd609d1ab1b4c83b3d6b981bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - feincms-blogs = feincms-blogs:main
+    #
+    # Would create an entry point called feincms-blogs that calls feincms-blogs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - feincms
+    - feincms-template-content
+    - djapps
+
+  run:
+    - python
+    - django
+    - feincms
+    - feincms-template-content
+    - djapps
+
+test:
+  # Python imports
+  imports:
+    - blogs
+    - blogs.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fah-designs/feincms-blogs
+  license: BSD
+  summary: 'Multiple blog/article app for Django/FeinCMS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: android-debian-builder
+  version: "1.0"
+
+source:
+  fn: android-debian-builder-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/android-debian-builder/android-debian-builder-1.0.tar.gz
+  md5: 0605345940524dc0af87461545d85b29
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - android-debian-builder = android-debian-builder:main
+    #
+    # Would create an entry point called android-debian-builder that calls android-debian-builder.main()
+
+    - android-debian-builder=android_debian_builder.script:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.7
+
+  run:
+    - python
+    - jinja2 >=2.7
+
+test:
+  # Python imports
+  imports:
+    - android_debian_builder
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - android-debian-builder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/fk/android-debian-builder
+  license: MIT License
+  summary: 'Bootstrap a Debian system in a file, mostly for deploying to Android.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

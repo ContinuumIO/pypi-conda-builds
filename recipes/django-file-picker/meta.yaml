@@ -1,0 +1,65 @@
+package:
+  name: django-file-picker
+  version: "0.5.0"
+
+source:
+  fn: django-file-picker-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-file-picker/django-file-picker-0.5.0.tar.gz
+  md5: c8a7568adba15fd98dbd0c88a8079ab4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-file-picker = django-file-picker:main
+    #
+    # Would create an entry point called django-file-picker that calls django-file-picker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sorl-thumbnail ==3.2.5
+
+  run:
+    - python
+    - sorl-thumbnail ==3.2.5
+
+test:
+  # Python imports
+  imports:
+    - file_picker
+    - file_picker.uploads
+    - file_picker.wymeditor
+    - sample_project.article
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-file-picker.readthedocs.org/
+  license: BSD License
+  summary: 'Pluggable file picker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

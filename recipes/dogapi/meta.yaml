@@ -1,0 +1,71 @@
+package:
+  name: dogapi
+  version: "1.11.1"
+
+source:
+  fn: dogapi-1.11.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dogapi/dogapi-1.11.1.tar.gz
+  md5: d91cca2e045b1836dd1f26622f1e2b92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dogapi = dogapi:main
+    #
+    # Would create an entry point called dogapi that calls dogapi.main()
+
+    - dog = dogshell:main
+    - dogwrap = dogshell.wrap:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator >=3.3.2
+    - simplejson >=2.0.9
+
+  run:
+    - python
+    - decorator >=3.3.2
+    - simplejson >=2.0.9
+
+test:
+  # Python imports
+  imports:
+    - dogapi
+    - dogapi.http
+    - dogapi.stats
+    - dogshell
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dog --help
+    - dogwrap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.datadoghq.com
+  license: BSD
+  summary: "Python bindings to Datadog's API and a user-facing command line tool."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: hamper
+  version: "0.1"
+
+source:
+  fn: hamper-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hamper/hamper-0.1.tar.gz
+  md5: 59f8f8ae088a2fa2cf7b33334331c612
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hamper = hamper:main
+    #
+    # Would create an entry point called hamper that calls hamper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - twisted
+
+  run:
+    - python
+    - pyyaml
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - bravo
+    - exocet
+    - exocet.test
+    - exocet.test.testpackage
+    - exocet.test.testpackage_circular
+    - exocet.test.testpackage_localimports
+    - hamper
+    - hamper.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.github.com/hamperbot/hamper
+  license: UNKNOWN
+  summary: 'Yet another IRC bot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

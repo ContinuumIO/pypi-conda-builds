@@ -1,0 +1,81 @@
+package:
+  name: m01.remote
+  version: "0.6.0"
+
+source:
+  fn: m01.remote-0.6.0.zip
+  url: https://pypi.python.org/packages/source/m/m01.remote/m01.remote-0.6.0.zip
+  md5: df3872822756b3778402605dbc2e745d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m01.remote = m01.remote:main
+    #
+    # Would create an entry point called m01.remote that calls m01.remote.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m01.mongo
+    - z3c.form
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.publisher
+    - zope.schema >=3.5.4
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - m01.mongo
+    - z3c.form
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.lifecycleevent
+    - zope.publisher
+    - zope.schema >=3.5.4
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - m01
+    - m01.remote
+    - m01.remote.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/m01.remote
+  license: Zope Public License
+  summary: 'Remote processing queue for Zope3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

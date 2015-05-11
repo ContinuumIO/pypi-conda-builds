@@ -1,0 +1,82 @@
+package:
+  name: irc3
+  version: "0.8.0"
+
+source:
+  fn: irc3-0.8.0.zip
+  url: https://pypi.python.org/packages/source/i/irc3/irc3-0.8.0.zip
+  md5: 09eca7e00fba7a8b3ba8cea3d947d03b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - irc3 = irc3:main
+    #
+    # Would create an entry point called irc3 that calls irc3.main()
+
+    - irc3=irc3:run
+    - irc3d=irc3d:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - venusian >=1.0a8
+    - docopt
+    - trollius
+    - futures
+    - ipaddress
+    - configparser
+
+  run:
+    - python
+    - setuptools
+    - venusian >=1.0a8
+    - docopt
+    - trollius
+    - futures
+    - ipaddress
+    - configparser
+
+test:
+  # Python imports
+  imports:
+    - irc3
+    - irc3.dcc
+    - irc3.plugins
+    - irc3.template
+    - irc3d
+    - irc3d.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - irc3 --help
+    - irc3d --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gawel/irc3/
+  license: MIT License
+  summary: 'plugable irc client library based on asyncio'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

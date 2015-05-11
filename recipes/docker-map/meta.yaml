@@ -1,0 +1,67 @@
+package:
+  name: docker-map
+  version: "0.3.3"
+
+source:
+  fn: docker-map-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-map/docker-map-0.3.3.tar.gz
+  md5: 8026ec51d56a480d53ead555498d0448
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-map = docker-map:main
+    #
+    # Would create an entry point called docker-map that calls docker-map.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - docker-py >=0.5.0
+
+  run:
+    - python
+    - six
+    - docker-py >=0.5.0
+
+test:
+  # Python imports
+  imports:
+    - dockermap
+    - dockermap.build
+    - dockermap.map
+    - dockermap.map.policy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/merll/docker-map
+  license: MIT License
+  summary: 'Utilities for building and managing Docker images and containers in Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

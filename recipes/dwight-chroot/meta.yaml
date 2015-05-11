@@ -1,0 +1,63 @@
+package:
+  name: dwight-chroot
+  version: "0.0.2"
+
+source:
+  fn: dwight-chroot-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dwight-chroot/dwight-chroot-0.0.2.tar.gz
+  md5: bd9e4edfbc6f52e16a8ed944822004ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dwight-chroot = dwight-chroot:main
+    #
+    # Would create an entry point called dwight-chroot that calls dwight-chroot.main()
+
+    - dwight  = dwight_chroot.scripts.dwight:main_entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dwight_chroot
+    - dwight_chroot.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dwight --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'Utility for creating and managing Linux based isolated development environments, using chroot'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

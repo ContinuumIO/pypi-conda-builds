@@ -1,0 +1,79 @@
+package:
+  name: mekk.calibre
+  version: "1.4.0"
+
+source:
+  fn: mekk.calibre-1.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mekk.calibre/mekk.calibre-1.4.0.tar.gz
+  md5: d18d364715d4318830af8072e8cfae73
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mekk.calibre = mekk.calibre:main
+    #
+    # Would create an entry point called mekk.calibre that calls mekk.calibre.main()
+
+    - calibre_find_books_missing_in_database=mekk.calibre.scripts.find_books_missing_in_database:run
+    - calibre_guess_and_add_isbn=mekk.calibre.scripts.guess_and_add_isbn:run
+    - calibre_convert_docs_to_rtf=mekk.calibre.scripts.convert_docs_to_rtf:run
+    - calibre_add_if_missing=mekk.calibre.scripts.add_if_missing:run
+    - calibre_report_duplicates=mekk.calibre.scripts.report_duplicates:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - six
+    - simhash
+
+  run:
+    - python
+    - setuptools
+    - lxml
+    - six
+    - simhash
+
+test:
+  # Python imports
+  imports:
+    - mekk
+    - mekk.calibre
+    - mekk.calibre.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - calibre_find_books_missing_in_database --help
+    - calibre_guess_and_add_isbn --help
+    - calibre_convert_docs_to_rtf --help
+    - calibre_add_if_missing --help
+    - calibre_report_duplicates --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mekk.waw.pl/
+  license: BSD
+  summary: 'Calibre helper scripts (ISBN guessing, RTF to DOC conversion,hanging books detection, ...).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

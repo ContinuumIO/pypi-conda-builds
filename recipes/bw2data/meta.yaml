@@ -1,0 +1,92 @@
+package:
+  name: bw2data
+  version: "1.5"
+
+source:
+  fn: bw2data-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/bw2data/bw2data-1.5.tar.gz
+  md5: 487f9468b5df3ead49ba976b689f6bc2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bw2data = bw2data:main
+    #
+    # Would create an entry point called bw2data that calls bw2data.main()
+
+    - bw2-uptodate = bw2data.bin.bw2_uptodate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama
+    - docopt
+    - lxml
+    - numpy
+    - progressbar-ipython
+    - requests >=1.1.0
+    - scipy
+    - stats_arrays
+    - unicodecsv
+    - unidecode
+    - voluptuous
+
+  run:
+    - python
+    - colorama
+    - docopt
+    - lxml
+    - numpy
+    - progressbar-ipython
+    - requests >=1.1.0
+    - scipy
+    - stats_arrays
+    - unicodecsv
+    - unidecode
+    - voluptuous
+
+test:
+  # Python imports
+  imports:
+    - bw2data
+    - bw2data.backends
+    - bw2data.backends.default
+    - bw2data.backends.json
+    - bw2data.bin
+    - bw2data.io
+    - bw2data.proxies
+    - bw2data.tests
+    - bw2data.tests.fixtures
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bw2-uptodate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/cmutel/brightway2-data
+  license: BSD License
+  summary: 'Tools for the management of inventory databases and impact assessment methods. Part of the Brightway2 LCA Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

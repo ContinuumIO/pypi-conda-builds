@@ -1,0 +1,62 @@
+package:
+  name: zpgdb
+  version: "0.1"
+
+source:
+  fn: zpgdb-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zpgdb/zpgdb-0.1.tar.gz
+  md5: 3ffa4e6d7838a296bcdfa19eb9fa0485
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zpgdb = zpgdb:main
+    #
+    # Would create an entry point called zpgdb that calls zpgdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2 ==2.5.4
+
+  run:
+    - python
+    - psycopg2 ==2.5.4
+
+test:
+  # Python imports
+  imports:
+    - zpgdb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zanardo/zpgdb
+  license: BSD License
+  summary: 'Library for simple PostgreSQL connection and transaction management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

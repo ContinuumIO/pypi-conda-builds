@@ -1,0 +1,72 @@
+package:
+  name: sflf2t
+  version: "0.1"
+
+source:
+  fn: SFLF2T-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/S/SFLF2T/SFLF2T-0.1.tar.gz
+  md5: a7bfbc189761a0742e8ccb347e88f00e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sflf2t = sflf2t:main
+    #
+    # Would create an entry point called sflf2t that calls sflf2t.main()
+
+    - sflf2t=sflf2t:main
+    - sflf2t_old=sflf2t.old:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vobject
+    - requests
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - vobject
+    - requests
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - sflf2t
+    - sflf2t.old
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sflf2t --help
+    - sflf2t_old --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: UNKNOWN
+  summary: 'SFL - Outil de gestion des feuilles de temps - Private'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

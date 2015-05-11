@@ -1,0 +1,107 @@
+package:
+  name: braubuddy
+  version: "0.4.2"
+
+source:
+  fn: braubuddy-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/braubuddy/braubuddy-0.4.2.tar.gz
+  md5: dd1f8c04be5aa5d7725348329034f7aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - braubuddy = braubuddy:main
+    #
+    # Would create an entry point called braubuddy that calls braubuddy.main()
+
+    - braubuddy = braubuddy.runserver:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tosr0x >=0.2.0,<0.3.0
+    - pyserial >=2.0,<3.0
+    - temperusb >=1.2.3,<1.3
+    - ds18b20 >=0.01.03
+    - cherrypy >=3.2.2,<4.0
+    - pyxdg >=0.25
+    - jinja2 >=2.7.0
+    - mock >=1.0,<2.0
+    - alabaster >=0.6.0
+    - graphitesend >=0.3.4,<0.4
+    - librato-metrics >=0.4.12,<0.5
+    - twitter >=1.15,<2
+    - pygal >=1.5.1,<2
+    - cairosvg >=1.0.9,<2
+    - tinycss >=0.3,<0.4
+    - cssselect >=0.9.1,<0.10
+    - lxml >=3.4,<4
+    - dweepy >=0.0.1,<0.0.2
+
+  run:
+    - python
+    - tosr0x >=0.2.0,<0.3.0
+    - pyserial >=2.0,<3.0
+    - temperusb >=1.2.3,<1.3
+    - ds18b20 >=0.01.03
+    - cherrypy >=3.2.2,<4.0
+    - pyxdg >=0.25
+    - jinja2 >=2.7.0
+    - mock >=1.0,<2.0
+    - alabaster >=0.6.0
+    - graphitesend >=0.3.4,<0.4
+    - librato-metrics >=0.4.12,<0.5
+    - twitter >=1.15,<2
+    - pygal >=1.5.1,<2
+    - cairosvg >=1.0.9,<2
+    - tinycss >=0.3,<0.4
+    - cssselect >=0.9.1,<0.10
+    - lxml >=3.4,<4
+    - dweepy >=0.0.1,<0.0.2
+
+test:
+  # Python imports
+  imports:
+    - braubuddy
+    - braubuddy.envcontroller
+    - braubuddy.output
+    - braubuddy.tests
+    - braubuddy.tests.envcontroller
+    - braubuddy.tests.output
+    - braubuddy.tests.thermometer
+    - braubuddy.tests.thermostat
+    - braubuddy.thermometer
+    - braubuddy.thermostat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - braubuddy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://braubuddy.org/
+  license: BSD License
+  summary: 'An extensile temperature management framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

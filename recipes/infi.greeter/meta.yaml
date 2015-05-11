@@ -1,0 +1,72 @@
+package:
+  name: infi.greeter
+  version: "0.0.7"
+
+source:
+  fn: infi.greeter-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.greeter/infi.greeter-0.0.7.tar.gz
+  md5: 80935a316bf1cbb77ac6cda347395ce5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.greeter = infi.greeter:main
+    #
+    # Would create an entry point called infi.greeter that calls infi.greeter.main()
+
+    - greeter = infi.greeter.scripts:greet
+    - install_greeter = infi.greeter.scripts:install
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - npyscreen
+    - click
+    - infi.traceback
+
+  run:
+    - python
+    - setuptools
+    - npyscreen
+    - click
+    - infi.traceback
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.greeter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - greeter --help
+    - install_greeter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.greeter
+  license: Python Software Foundation License
+  summary: 'Linux greeter to wrap around /bin/login'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

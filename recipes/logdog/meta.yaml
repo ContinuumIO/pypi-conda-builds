@@ -1,0 +1,82 @@
+package:
+  name: logdog
+  version: "0.2.9"
+
+source:
+  fn: logdog-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/l/logdog/logdog-0.2.9.tar.gz
+  md5: 6b134db2bf656bd92e42979ef3e5f706
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logdog = logdog:main
+    #
+    # Would create an entry point called logdog that calls logdog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq >=14.5.0
+    - tornado >=4.1
+    - u-msgpack-python >=2.0
+    - docopt >=0.6.2
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - pyzmq >=14.5.0
+    - tornado >=4.1
+    - u-msgpack-python >=2.0
+    - docopt >=0.6.2
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - logdog
+    - logdog.core
+    - logdog.roles
+    - logdog.roles.collectors
+    - logdog.roles.connectors
+    - logdog.roles.formatters
+    - logdog.roles.forwarders
+    - logdog.roles.parsers
+    - logdog.roles.pipes
+    - logdog.roles.pollers
+    - logdog.roles.processors
+    - logdog.roles.viewers
+    - logdog.roles.viewers.webui
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/miphreal/python-logdog/
+  license: UNKNOWN
+  summary: 'logs watching + webui'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: darth
+  version: "0.0.6"
+
+source:
+  fn: darth-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/darth/darth-0.0.6.tar.gz
+  md5: 87dacb3b3b05f070e02913ff4405c02c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - darth = darth:main
+    #
+    # Would create an entry point called darth that calls darth.main()
+
+    - darth-bootstrap=darth_bootstrap:bootstrap
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - darth
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - darth-bootstrap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jonparrott/Darth-Vendor
+  license: Apache Software License
+  summary: 'Third-party vendoring helper for Google App Engine and other sandboxed python environments.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

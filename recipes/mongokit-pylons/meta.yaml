@@ -1,0 +1,63 @@
+package:
+  name: mongokit-pylons
+  version: "0.2.0"
+
+source:
+  fn: mongokit-pylons-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongokit-pylons/mongokit-pylons-0.2.0.tar.gz
+  md5: 4ed112b2d602315b2f7f39b85a543f14
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongokit-pylons = mongokit-pylons:main
+    #
+    # Would create an entry point called mongokit-pylons that calls mongokit-pylons.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=0.11
+
+  run:
+    - python
+    - pymongo >=0.11
+
+test:
+  # Python imports
+  imports:
+    - mongokit
+    - mongokit.pylons
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/bwmcadams/mongokit-pylons/
+  license: BSD License
+  summary: 'MongoDB interface for ORM-like object mapping (w/ Pylons support)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

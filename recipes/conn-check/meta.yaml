@@ -1,0 +1,84 @@
+package:
+  name: conn-check
+  version: "1.0.18"
+
+source:
+  fn: conn-check-1.0.18.tar.gz
+  url: https://pypi.python.org/packages/source/c/conn-check/conn-check-1.0.18.tar.gz
+  md5: c64898329ed1051c514c51f3f4a7917e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - conn-check = conn-check:main
+    #
+    # Would create an entry point called conn-check that calls conn-check.main()
+
+    - conn-check = conn_check.main:run
+    - conn-check-django = conn_check.config_generators.django:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - characteristic >=14.0
+    - cryptography >=0.5
+    - ndg-httpsclient
+    - pyasn1
+    - pyopenssl
+    - service_identity
+    - requests
+    - twisted
+    - txrequests >=0.9
+    - pyyaml
+
+  run:
+    - python
+    - characteristic >=14.0
+    - cryptography >=0.5
+    - ndg-httpsclient
+    - pyasn1
+    - pyopenssl
+    - service_identity
+    - requests
+    - twisted
+    - txrequests >=0.9
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - conn_check
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - conn-check --help
+    - conn-check-django --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/conn-check
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Utility/library for checking connectivity between services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

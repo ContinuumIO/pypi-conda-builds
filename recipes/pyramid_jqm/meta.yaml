@@ -1,0 +1,64 @@
+package:
+  name: pyramid_jqm
+  version: "0.3"
+
+source:
+  fn: pyramid_jqm-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_jqm/pyramid_jqm-0.3.tar.gz
+  md5: bd9825e38274fb5a7aa52aa6a31d0377
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyramid_jqm = pyramid_jqm:main
+    #
+    # Would create an entry point called pyramid_jqm that calls pyramid_jqm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid >=1.1.3
+
+  run:
+    - python
+    - setuptools
+    - pyramid >=1.1.3
+
+test:
+  # Python imports
+  imports:
+    - pyramid_jqm
+    - pyramid_jqm.scaffolds
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.pylonsproject.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'a package which provides "starter" scaffolding for creating a jQuery Mobile Pyramid application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,95 @@
+package:
+  name: apasvo
+  version: "0.0.3"
+
+source:
+  fn: APASVO-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/A/APASVO/APASVO-0.0.3.tar.gz
+  md5: d9781f256fc3aa84d90c02576f1340a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apasvo = apasvo:main
+    #
+    # Would create an entry point called apasvo that calls apasvo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyside ==1.2.2
+    - argparse ==1.2.1
+    - backports.ssl-match-hostname ==3.4.0.2
+    - matplotlib ==1.3.1
+    - nose ==1.3.1
+    - numpy ==1.8.1
+    - pyparsing ==2.0.2
+    - python-dateutil ==2.2
+    - scipy ==0.13.3
+    - six ==1.6.1
+    - tornado ==3.2
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - pyside ==1.2.2
+    - argparse ==1.2.1
+    - backports.ssl-match-hostname ==3.4.0.2
+    - matplotlib ==1.3.1
+    - nose ==1.3.1
+    - numpy ==1.8.1
+    - pyparsing ==2.0.2
+    - python-dateutil ==2.2
+    - scipy ==0.13.3
+    - six ==1.6.1
+    - tornado ==3.2
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - apasvo
+    - apasvo.gui
+    - apasvo.gui.delegates
+    - apasvo.gui.models
+    - apasvo.gui.views
+    - apasvo.gui.views.generated
+    - apasvo.picking
+    - apasvo.utils
+    - apasvo.utils.formats
+    - hooks
+    - installer
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jemromerol/apasvo
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A graphical tool to perform event detection/picking in seismic traces.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

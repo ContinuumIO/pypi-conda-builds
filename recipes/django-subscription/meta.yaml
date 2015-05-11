@@ -1,0 +1,64 @@
+package:
+  name: django-subscription
+  version: "0.6"
+
+source:
+  fn: django-subscription-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-subscription/django-subscription-0.6.tar.gz
+  md5: a5f88102232ea5373362deaf1dcd0def
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-subscription = django-subscription:main
+    #
+    # Would create an entry point called django-subscription that calls django-subscription.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - subscription
+    - subscription.management
+    - subscription.management.commands
+    - subscription.migrations
+    - subscription.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/yeago/django-subscription
+  license: UNKNOWN
+  summary: 'Managing subscriptions in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-user-accounts
+  version: "1.0.2"
+
+source:
+  fn: django-user-accounts-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-user-accounts/django-user-accounts-1.0.2.tar.gz
+  md5: e241f00e64fc5c72c7f7d55e7b47c2e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-user-accounts = django-user-accounts:main
+    #
+    # Would create an entry point called django-user-accounts that calls django-user-accounts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-appconf >=0.6
+    - pytz >=2013.9
+
+  run:
+    - python
+    - django-appconf >=0.6
+    - pytz >=2013.9
+
+test:
+  # Python imports
+  imports:
+    - account
+    - account.management
+    - account.management.commands
+    - account.templatetags
+    - account.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pinax/django-user-accounts
+  license: MIT License
+  summary: 'a Django user account app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

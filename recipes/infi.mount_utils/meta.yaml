@@ -1,0 +1,80 @@
+package:
+  name: infi.mount_utils
+  version: "0.0.3"
+
+source:
+  fn: infi.mount_utils-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.mount_utils/infi.mount_utils-0.0.3.tar.gz
+  md5: 87037ba4896949731ca74e7457501e3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.mount_utils = infi.mount_utils:main
+    #
+    # Would create an entry point called infi.mount_utils that calls infi.mount_utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - brownie
+    - infi.exceptools
+    - infi.execute
+    - infi.os_info
+    - infi.pyutils
+    - munch
+    - setuptools
+
+  run:
+    - python
+    - brownie
+    - infi.exceptools
+    - infi.execute
+    - infi.os_info
+    - infi.pyutils
+    - munch
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.mount_utils
+    - infi.mount_utils.base
+    - infi.mount_utils.base.mount
+    - infi.mount_utils.linux
+    - infi.mount_utils.linux.mount
+    - infi.mount_utils.solaris
+    - infi.mount_utils.solaris.mount
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://git.infinidat.com/host-opensource/infi.mount_utils
+  license: Python Software Foundation License
+  summary: 'Python bindings/wrappers for mounting devices'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: django-bob
+  version: "1.12.0"
+
+source:
+  fn: django-bob-1.12.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bob/django-bob-1.12.0.tar.gz
+  md5: 3f376a8ea8a9234d05d010dd7aee9ebf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bob = django-bob:main
+    #
+    # Would create an entry point called django-bob that calls django-bob.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - django
+
+  run:
+    - python
+    - distribute
+    - django
+
+test:
+  # Python imports
+  imports:
+    - bob
+    - bob.djid
+    - bob.djid.column
+    - bob.djid.templatetags
+    - bob.forms
+    - bob.templatetags
+    - bob.test_djid
+    - bob.test_djid.tests
+    - bob.tests
+    - bob.tests.unit
+    - bob.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bob.readthedocs.org/
+  license: Apache Software License
+  summary: 'A set of helper tags and templates for using bootstrap in django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

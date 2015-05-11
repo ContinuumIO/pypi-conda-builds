@@ -1,0 +1,66 @@
+package:
+  name: porc
+  version: "0.5.1"
+
+source:
+  fn: porc-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/porc/porc-0.5.1.tar.gz
+  md5: 69fc540706c7156f6c68c1c7f147d19f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - porc = porc:main
+    #
+    # Would create an entry point called porc that calls porc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests-futures ==0.9.4
+    - vcrpy ==1.1.0
+    - lucene-querybuilder ==0.2
+
+  run:
+    - python
+    - requests-futures ==0.9.4
+    - vcrpy ==1.1.0
+    - lucene-querybuilder ==0.2
+
+test:
+  # Python imports
+  imports:
+    - porc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/orchestrate-io/porc
+  license: Apache Software License
+  summary: 'Asynchronous Orchestrate.io Interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: gocept.jasmine
+  version: "0.5.1"
+
+source:
+  fn: gocept.jasmine-0.5.1.zip
+  url: https://pypi.python.org/packages/source/g/gocept.jasmine/gocept.jasmine-0.5.1.zip
+  md5: c918b9189780765e26ab0c3ce26c606d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.jasmine = gocept.jasmine:main
+    #
+    # Would create an entry point called gocept.jasmine that calls gocept.jasmine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fanstatic
+    - gocept.selenium >=2.0.0b4
+    - jasmine-core
+    - plone.testing
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - fanstatic
+    - gocept.selenium >=2.0.0b4
+    - jasmine-core
+    - plone.testing
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.jasmine
+    - gocept.jasmine.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gocept/gocept.jasmine/
+  license: Zope Public License
+  summary: 'Jasmine integration for selenium.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

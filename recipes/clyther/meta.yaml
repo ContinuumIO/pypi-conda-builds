@@ -1,0 +1,71 @@
+package:
+  name: clyther
+  version: "0.4-beta"
+
+source:
+  fn: Clyther-0.4-beta.tar.gz
+  url: https://pypi.python.org/packages/source/C/Clyther/Clyther-0.4-beta.tar.gz
+  md5: 6eb6e124e0e145da9b79b3898631da19
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clyther = clyther:main
+    #
+    # Would create an entry point called clyther that calls clyther.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - meta
+    - opencl-for-python
+
+  run:
+    - python
+    - meta
+    - opencl-for-python
+
+test:
+  # Python imports
+  imports:
+    - clyther
+    - clyther.array
+    - clyther.clast
+    - clyther.clast.mutators
+    - clyther.clast.visitors
+    - clyther.scripts
+    - clyther.test
+    - clyther.test.clast
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://srossross.github.com/Clyther/
+  license: BSD License
+  summary: 'OpenCL Python integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

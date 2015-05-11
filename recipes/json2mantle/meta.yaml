@@ -1,0 +1,62 @@
+package:
+  name: json2mantle
+  version: "0.0.8"
+
+source:
+  fn: JSON2Mantle-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/J/JSON2Mantle/JSON2Mantle-0.0.8.tar.gz
+  md5: 39a7f1458c7ea9582126b8af59c982fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - json2mantle = json2mantle:main
+    #
+    # Would create an entry point called json2mantle that calls json2mantle.main()
+
+    - json2mantle = json2mantle.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - json2mantle
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - json2mantle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sutar/JSON2Mantle
+  license: MIT License
+  summary: 'Generate Mantle models using JSON files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

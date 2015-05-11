@@ -1,0 +1,62 @@
+package:
+  name: medieval
+  version: "0.0.1"
+
+source:
+  fn: medieval-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/medieval/medieval-0.0.1.tar.gz
+  md5: 4363c90e67ba009a652f7f4d36d2b788
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - medieval = medieval:main
+    #
+    # Would create an entry point called medieval that calls medieval.main()
+
+    - medieval = medieval.bin:medieval
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - medieval
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - medieval --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.bitbucket.org/johannestaas/medieval
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Strategy war game, right from the terminal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

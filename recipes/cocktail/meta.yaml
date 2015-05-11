@@ -1,0 +1,93 @@
+package:
+  name: cocktail
+  version: "0.6"
+
+source:
+  fn: cocktail-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/cocktail/cocktail-0.6.tar.gz
+  md5: 09fab02505221677d32c47e34928d66c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cocktail = cocktail:main
+    #
+    # Would create an entry point called cocktail that calls cocktail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - zodb3 >=3.10
+    - zodbupdate
+    - zope.index >=3.6.1
+    - cherrypy ==3.1.2
+    - buffet >=1.0
+    - nose
+    - selenium
+    - pyexcelerator
+    - beaker
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+    - zodb3 >=3.10
+    - zodbupdate
+    - zope.index >=3.6.1
+    - cherrypy ==3.1.2
+    - buffet >=1.0
+    - nose
+    - selenium
+    - pyexcelerator
+    - beaker
+
+test:
+  # Python imports
+  imports:
+    - cocktail
+    - cocktail.controllers
+    - cocktail.html
+    - cocktail.html.templates
+    - cocktail.persistence
+    - cocktail.schema
+    - cocktail.tests
+    - cocktail.tests.controllers
+    - cocktail.tests.html
+    - cocktail.tests.persistence
+    - cocktail.tests.schema
+    - cocktail.tests.translations
+    - cocktail.translations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU Affero General Public License v3
+  summary: 'A tasty mix of python web development utilities.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

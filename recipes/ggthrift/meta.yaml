@@ -1,0 +1,73 @@
+package:
+  name: ggthrift
+  version: "19.1.2"
+
+source:
+  fn: ggthrift-19.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/ggthrift/ggthrift-19.1.2.tar.gz
+  md5: 334f99eec3a6f4a1ba7fc07cfb040334
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ggthrift = ggthrift:main
+    #
+    # Would create an entry point called ggthrift that calls ggthrift.main()
+
+    - gunicorn_thrift=gunicorn_thrift.app.thriftapp:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gunicorn >=19.1.1
+    - gevent ==1.0.1
+    - thrift >=0.9.1
+
+  run:
+    - python
+    - setuptools
+    - gunicorn >=19.1.1
+    - gevent ==1.0.1
+    - thrift >=0.9.1
+
+test:
+  # Python imports
+  imports:
+    - ggthrift
+    - gunicorn_thrift
+    - gunicorn_thrift.app
+    - gunicorn_thrift.thrift
+    - gunicorn_thrift.workers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gunicorn_thrift --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/wmttom/gunicorn_thrift
+  license: MIT
+  summary: 'python thrift server plugin for gunicorn.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

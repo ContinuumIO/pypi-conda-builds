@@ -1,0 +1,80 @@
+package:
+  name: landsat-util
+  version: "0.6.3"
+
+source:
+  fn: landsat-util-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/landsat-util/landsat-util-0.6.3.tar.gz
+  md5: c6958e3a54612d5afd9a36f9e27bbfee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - landsat-util = landsat-util:main
+    #
+    # Would create an entry point called landsat-util that calls landsat-util.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==2.5.3
+    - python-dateutil >=2.4.2
+    - numpy >=1.9.2
+    - termcolor >=1.1.0
+    - rasterio >=0.21.0
+    - six ==1.9.0
+    - scipy >=0.15.1
+    - scikit-image >=0.11.3
+    - homura >=0.1.1
+    - boto >=2.38.0
+
+  run:
+    - python
+    - requests ==2.5.3
+    - python-dateutil >=2.4.2
+    - numpy >=1.9.2
+    - termcolor >=1.1.0
+    - rasterio >=0.21.0
+    - six ==1.9.0
+    - scipy >=0.15.1
+    - scikit-image >=0.11.3
+    - homura >=0.1.1
+    - boto >=2.38.0
+
+test:
+  # Python imports
+  imports:
+    - landsat
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/developmentseed/landsat-util
+  license: CCO
+  summary: 'A utility to search, download and process Landsat 8 satellite imagery'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

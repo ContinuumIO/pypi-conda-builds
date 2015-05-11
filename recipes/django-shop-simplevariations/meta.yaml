@@ -1,0 +1,67 @@
+package:
+  name: django-shop-simplevariations
+  version: "0.0.4"
+
+source:
+  fn: django-shop-simplevariations-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shop-simplevariations/django-shop-simplevariations-0.0.4.tar.gz
+  md5: b41adfe4fa69791f66d01bc94957050c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shop-simplevariations = django-shop-simplevariations:main
+    #
+    # Would create an entry point called django-shop-simplevariations that calls django-shop-simplevariations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-shop >=0.0.9
+
+  run:
+    - python
+    - django >=1.2
+    - django-shop >=0.0.9
+
+test:
+  # Python imports
+  imports:
+    - shop_simplevariations
+    - shop_simplevariations.migrations
+    - shop_simplevariations.templatetags
+    - shop_simplevariations.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.django-shop.org/
+  license: BSD License
+  summary: 'A simple to use product variations module for django SHOP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

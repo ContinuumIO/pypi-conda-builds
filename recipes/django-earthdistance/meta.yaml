@@ -1,0 +1,65 @@
+package:
+  name: django-earthdistance
+  version: "0.6"
+
+source:
+  fn: django-earthdistance-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-earthdistance/django-earthdistance-0.6.tar.gz
+  md5: 54c54e75ba7777c160cd9c9538017648
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-earthdistance = django-earthdistance:main
+    #
+    # Would create an entry point called django-earthdistance that calls django-earthdistance.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - djorm-ext-core >=0.7
+    - djorm-ext-expressions >=0.5
+
+  run:
+    - python
+    - djorm-ext-core >=0.7
+    - djorm-ext-expressions >=0.5
+
+test:
+  # Python imports
+  imports:
+    - django_earthdistance
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jneight/django-earthdistance
+  license: Apache Software License
+  summary: 'Add support for PostgreSQL earthdistance extension to Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

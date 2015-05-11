@@ -1,0 +1,74 @@
+package:
+  name: bootlegger
+  version: "1.1.1"
+
+source:
+  fn: bootlegger-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bootlegger/bootlegger-1.1.1.tar.gz
+  md5: bac1c773b50c0161a98ed9359e98d96c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bootlegger = bootlegger:main
+    #
+    # Would create an entry point called bootlegger that calls bootlegger.main()
+
+    - bootlegger = bootlegger.cli:main
+    - bl = bootlegger.cli:main
+    - blencrypt = bootlegger.cli:blencrypt
+    - bldecrypt = bootlegger.cli:bldecrypt
+    - blgenaeskey = bootlegger.cli:blgenaeskey
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+    - requests
+
+  run:
+    - python
+    - pycrypto
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - bootlegger
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bootlegger --help
+    - bl --help
+    - blencrypt --help
+    - bldecrypt --help
+    - blgenaeskey --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Command Line Interface to Speakeasy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

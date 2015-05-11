@@ -1,0 +1,68 @@
+package:
+  name: habits
+  version: "0.0.20"
+
+source:
+  fn: habits-0.0.20.tar.gz
+  url: https://pypi.python.org/packages/source/h/habits/habits-0.0.20.tar.gz
+  md5: 564760d4afa225e552d51176d932774b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - habits = habits:main
+    #
+    # Would create an entry point called habits that calls habits.main()
+
+    - habits=habits:production
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - flask-restful
+    - dataset
+
+  run:
+    - python
+    - flask
+    - flask-restful
+    - dataset
+
+test:
+  # Python imports
+  imports:
+    - habits
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - habits --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/csu/habits
+  license: GPL v3
+  summary: 'A lightweight habit tracker with a simple REST API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

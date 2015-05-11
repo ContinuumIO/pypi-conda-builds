@@ -1,0 +1,64 @@
+package:
+  name: pulp-or
+  version: "1.4.6"
+
+source:
+  fn: pulp-or-1.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pulp-or/pulp-or-1.4.6.tar.gz
+  md5: 9a07517498d2f8da79434d5fb305ab34
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pulp-or = pulp-or:main
+    #
+    # Would create an entry point called pulp-or that calls pulp-or.main()
+
+    - pulptest=pulp:pulpTestAll
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - pulp
+    - pulp.solverdir
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pulptest --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pulp-or.googlecode.com/
+  license: BSD License
+  summary: '\nPuLP is an LP modeler written in python. PuLP can generate MPS or LP files\nand call GLPK, COIN CLP/CBC, CPLEX, and GUROBI to solve linear\nproblems.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

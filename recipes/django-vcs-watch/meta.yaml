@@ -1,0 +1,73 @@
+package:
+  name: django-vcs-watch
+  version: "0.2.2"
+
+source:
+  fn: django-vcs-watch-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-vcs-watch/django-vcs-watch-0.2.2.tar.gz
+  md5: 68516d803b55b14039644b5d36687d3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-vcs-watch = django-vcs-watch:main
+    #
+    # Would create an entry point called django-vcs-watch that calls django-vcs-watch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-globals
+    - django-fields
+    - python-dateutil
+
+  run:
+    - python
+    - django-globals
+    - django-fields
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - django_vcs_watch
+    - django_vcs_watch.backends
+    - django_vcs_watch.jobs
+    - django_vcs_watch.jobs.daily
+    - django_vcs_watch.jobs.hourly
+    - django_vcs_watch.jobs.monthly
+    - django_vcs_watch.jobs.weekly
+    - django_vcs_watch.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/svetlyak40wt/django-vcs-watch/
+  license: BSD License
+  summary: 'RSS proxy for different VCS/DVCS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

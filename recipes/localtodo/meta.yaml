@@ -1,0 +1,65 @@
+package:
+  name: localtodo
+  version: "1.0"
+
+source:
+  fn: localtodo-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/localtodo/localtodo-1.0.tar.gz
+  md5: 5876f087f2c7a002ec773d32b0f2b628
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - localtodo = localtodo:main
+    #
+    # Would create an entry point called localtodo that calls localtodo.main()
+
+    - localtodo=localtodo:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt ==0.4.1
+
+  run:
+    - python
+    - setuptools
+    - docopt ==0.4.1
+
+test:
+  # Python imports
+  imports:
+    - localtodo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - localtodo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/miracle2k/localtodo
+  license: BSD License
+  summary: '.gitignore local todo files, but sync them through Dropbox.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

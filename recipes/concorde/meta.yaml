@@ -1,0 +1,70 @@
+package:
+  name: concorde
+  version: "0.1.1"
+
+source:
+  fn: concorde-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/concorde/concorde-0.1.1.tar.gz
+  md5: 501b2f4c6fff3527250897340c54fa57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - concorde = concorde:main
+    #
+    # Would create an entry point called concorde that calls concorde.main()
+
+    - concorde=concorde.command_line:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - markdown
+    - jinja2 >=2.7
+    - pyrss2gen
+    - python-dateutil
+
+  run:
+    - python
+    - markdown
+    - jinja2 >=2.7
+    - pyrss2gen
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - concorde
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - concorde --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/drcraig/concorde
+  license: MIT License
+  summary: 'Static site generator using Markdown and Jinja'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

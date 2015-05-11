@@ -1,0 +1,80 @@
+package:
+  name: genmod
+  version: "2.0.5"
+
+source:
+  fn: genmod-2.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/genmod/genmod-2.0.5.tar.gz
+  md5: ff1c87738fa9c47544860aed5ae8b109
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - genmod = genmod:main
+    #
+    # Would create an entry point called genmod that calls genmod.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ped_parser >=1.2.3
+    - vcf_parser ==1.1.7
+    - pytabix
+    - pytest
+    - interval_tree
+    - click
+    - configparser
+    - logbook
+
+  run:
+    - python
+    - ped_parser >=1.2.3
+    - vcf_parser ==1.1.7
+    - pytabix
+    - pytest
+    - interval_tree
+    - click
+    - configparser
+    - logbook
+
+test:
+  # Python imports
+  imports:
+    - genmod
+    - genmod/commands
+    - genmod/errors
+    - genmod/models
+    - genmod/utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/moonso/genmod
+  license: MIT License
+  summary: 'Annotate genetic inheritance models in variant files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,85 @@
+package:
+  name: django-twemoir
+  version: "0.2.1"
+
+source:
+  fn: django-twemoir-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-twemoir/django-twemoir-0.2.1.tar.gz
+  md5: 0769755e66328caf21e75a6e86750336
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-twemoir = django-twemoir:main
+    #
+    # Would create an entry point called django-twemoir that calls django-twemoir.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oauth2
+    - python-twitter
+    - twitter-text-python
+    - django
+    - django-delegate
+    - django-docfield-couchdb
+    - django-appconf
+    - django-tagging
+
+  run:
+    - python
+    - oauth2
+    - python-twitter
+    - twitter-text-python
+    - django
+    - django-delegate
+    - django-docfield-couchdb
+    - django-appconf
+    - django-tagging
+
+test:
+  # Python imports
+  imports:
+    - twemoir
+    - twemoir.lib
+    - twemoir.lib.adminfields
+    - twemoir.lib.adminfields.templatetags
+    - twemoir.lib.states2
+    - twemoir.lib.states2.management
+    - twemoir.lib.states2.management.commands
+    - twemoir.lib.states2.templatetags
+    - twemoir.management
+    - twemoir.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fish2000/django-twemoir/
+  license: MIT License
+  summary: 'Twitter data models'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

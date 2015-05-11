@@ -1,0 +1,80 @@
+package:
+  name: merlyn
+  version: "0.0.9"
+
+source:
+  fn: merlyn-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/m/merlyn/merlyn-0.0.9.tar.gz
+  md5: b001c333d21131fd78b046291c70b747
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - merlyn = merlyn:main
+    #
+    # Would create an entry point called merlyn that calls merlyn.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clarent ==0.1.0
+    - twisted >=13.2.0
+    - pyopenssl >=0.13.1
+    - txampext >=0.0.10
+    - pycrypto
+    - pyasn1
+    - epsilon
+    - axiom >=0.7.0
+    - maxims >=0.0.2
+
+  run:
+    - python
+    - clarent ==0.1.0
+    - twisted >=13.2.0
+    - pyopenssl >=0.13.1
+    - txampext >=0.0.10
+    - pycrypto
+    - pyasn1
+    - epsilon
+    - axiom >=0.7.0
+    - maxims >=0.0.2
+
+test:
+  # Python imports
+  imports:
+    - merlyn
+    - merlyn.test
+    - twisted.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/crypto101/merlyn
+  license: ISC License (ISCL)
+  summary: 'A server backend for interactive online exercises.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

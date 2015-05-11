@@ -1,0 +1,72 @@
+package:
+  name: zetalibrary
+  version: "0.5.93"
+
+source:
+  fn: zetalibrary-0.5.93.tar.gz
+  url: https://pypi.python.org/packages/source/z/zetalibrary/zetalibrary-0.5.93.tar.gz
+  md5: 9b6198f1b466dfa673809a17fbd5ebec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zetalibrary = zetalibrary:main
+    #
+    # Would create an entry point called zetalibrary that calls zetalibrary.main()
+
+    - zeta = zetalibrary.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cssmin
+    - jsmin
+    - watchdog
+    - argh
+
+  run:
+    - python
+    - cssmin
+    - jsmin
+    - watchdog
+    - argh
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - zetalibrary
+    - zetalibrary.scss
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zeta --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home:  http://github.com/klen/zeta-library
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Zeta library is css, js framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

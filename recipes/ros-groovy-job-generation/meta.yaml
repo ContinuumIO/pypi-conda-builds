@@ -1,0 +1,66 @@
+package:
+  name: ros-groovy-job-generation
+  version: "0.2.9"
+
+source:
+  fn: ros-groovy-job-generation-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/r/ros-groovy-job-generation/ros-groovy-job-generation-0.2.9.tar.gz
+  md5: bf3d93878e27ef1d6741b36395012ea4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ros-groovy-job-generation = ros-groovy-job-generation:main
+    #
+    # Would create an entry point called ros-groovy-job-generation that calls ros-groovy-job-generation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-jenkins
+    - rospkg
+    - rosdep
+
+  run:
+    - python
+    - python-jenkins
+    - rospkg
+    - rosdep
+
+test:
+  # Python imports
+  imports:
+    - job_generation_groovy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ros.org/wiki/job_generation
+  license: BSD License
+  summary: 'build farm job generation for dry jobs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

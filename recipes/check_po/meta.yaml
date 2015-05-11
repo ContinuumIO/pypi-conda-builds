@@ -1,0 +1,69 @@
+package:
+  name: check_po
+  version: "0.6"
+
+source:
+  fn: check_po-0.6.zip
+  url: https://pypi.python.org/packages/source/c/check_po/check_po-0.6.zip
+  md5: 0a25919a0aa362f6a68057ce98bb7598
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - check_po = check_po:main
+    #
+    # Would create an entry point called check_po that calls check_po.main()
+
+    - check_po = check_po.pochecker:main
+    - podiff = check_po.podiff:main
+    - check_urls = check_po.check_urls:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - polib
+
+  run:
+    - python
+    - setuptools
+    - polib
+
+test:
+  # Python imports
+  imports:
+    - check_po
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - check_po --help
+    - podiff --help
+    - check_urls --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/novagile/check_po
+  license: WTFPL
+  summary: 'Check_po to verify if everything is translated\n                       and that no fuzzy are still here.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

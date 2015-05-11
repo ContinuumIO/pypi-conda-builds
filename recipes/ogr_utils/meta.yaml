@@ -1,0 +1,66 @@
+package:
+  name: ogr_utils
+  version: "1.2"
+
+source:
+  fn: ogr_utils-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/o/ogr_utils/ogr_utils-1.2.tar.gz
+  md5: 6210295065af14771577895d7a0f8d62
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ogr_utils = ogr_utils:main
+    #
+    # Would create an entry point called ogr_utils that calls ogr_utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - specloud ==0.4.5
+    - shapely ==1.2.14
+
+  run:
+    - python
+    - setuptools
+    - specloud ==0.4.5
+    - shapely ==1.2.14
+
+test:
+  # Python imports
+  imports:
+    - ogr_utils
+    - ogr_utils.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.and.com/
+  license: UNKNOWN
+  summary: 'conveniance utilities for ogr'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

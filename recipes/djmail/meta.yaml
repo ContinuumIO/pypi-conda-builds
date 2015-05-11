@@ -1,0 +1,65 @@
+package:
+  name: djmail
+  version: "0.10.0"
+
+source:
+  fn: djmail-0.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/djmail/djmail-0.10.0.tar.gz
+  md5: df23dcc757aedc4dfb758166297ca474
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djmail = djmail:main
+    #
+    # Would create an entry point called djmail that calls djmail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djmail
+    - djmail.backends
+    - djmail.management
+    - djmail.management.commands
+    - djmail.migrations
+    - djmail.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/niwibe/djmail
+  license: BSD License
+  summary: 'Simple, powerful and non-obstructive django email middleware.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

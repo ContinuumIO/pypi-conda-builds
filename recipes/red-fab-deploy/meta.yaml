@@ -1,0 +1,68 @@
+package:
+  name: red-fab-deploy
+  version: "0.0.8"
+
+source:
+  fn: red-fab-deploy-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/r/red-fab-deploy/red-fab-deploy-0.0.8.tar.gz
+  md5: 0de9ec67103e853d9b0d27324b184bea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - red-fab-deploy = red-fab-deploy:main
+    #
+    # Would create an entry point called red-fab-deploy that calls red-fab-deploy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - fabric
+    - smartdc
+    - boto
+
+  run:
+    - python
+    - fabric
+    - smartdc
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - fab_deploy
+    - fab_deploy.amazon
+    - fab_deploy.joyent
+    - fab_deploy.local
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/ff0000/red-fab-deploy/
+  license: MIT License
+  summary: ' Code deployment tool '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

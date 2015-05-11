@@ -1,0 +1,64 @@
+package:
+  name: ianitor
+  version: "0.0.2"
+
+source:
+  fn: ianitor-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/ianitor/ianitor-0.0.2.tar.gz
+  md5: 11f7f6f0a8ecad6055039ec1ea09e82e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ianitor = ianitor:main
+    #
+    # Would create an entry point called ianitor that calls ianitor.main()
+
+    - ianitor = ianitor.script:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-consul
+
+  run:
+    - python
+    - python-consul
+
+test:
+  # Python imports
+  imports:
+    - ianitor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ianitor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ClearcodeHQ/ianitor
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'Doorkeeper for consul discovered services.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

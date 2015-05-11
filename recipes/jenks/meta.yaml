@@ -1,0 +1,74 @@
+package:
+  name: jenks
+  version: "0.2.3"
+
+source:
+  fn: jenks-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/j/jenks/jenks-0.2.3.tar.gz
+  md5: 52b4e0e19a6c73d56ed7f460488fd7c2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jenks = jenks:main
+    #
+    # Would create an entry point called jenks that calls jenks.main()
+
+    - jenks = jenks:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.2.0
+    - docopt >=0.6.1
+    - jenkinsapi >=0.2.18
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - requests >=2.2.0
+    - docopt >=0.6.1
+    - jenkinsapi >=0.2.18
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - jenks
+    - jenks.full_tests
+    - jenks.subcommand
+    - jenks.subcommand.tests
+    - jenks.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jenks --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://toumorokoshi.github.io/jenks
+  license: MIT License
+  summary: 'a jenkins command-line tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

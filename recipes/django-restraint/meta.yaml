@@ -1,0 +1,68 @@
+package:
+  name: django-restraint
+  version: "0.3.0"
+
+source:
+  fn: django-restraint-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-restraint/django-restraint-0.3.0.tar.gz
+  md5: 520b37ae64b5d05957427dc3c1d8708a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-restraint = django-restraint:main
+    #
+    # Would create an entry point called django-restraint that calls django-restraint.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - django-manager-utils >=0.8.2
+
+  run:
+    - python
+    - django >=1.7
+    - django-manager-utils >=0.8.2
+
+test:
+  # Python imports
+  imports:
+    - restraint
+    - restraint.management
+    - restraint.management.commands
+    - restraint.migrations
+    - restraint.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ambitioninc/django-restraint
+  license: MIT License
+  summary: 'A dynamic object-level permission system for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

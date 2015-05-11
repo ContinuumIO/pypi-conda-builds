@@ -1,0 +1,70 @@
+package:
+  name: django-datatable-view
+  version: "0.8.1"
+
+source:
+  fn: django-datatable-view-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-datatable-view/django-datatable-view-0.8.1.tar.gz
+  md5: 0e5c94e2002b7934b637c28da8a81cee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-datatable-view = django-datatable-view:main
+    #
+    # Would create an entry point called django-datatable-view that calls django-datatable-view.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - python-dateutil >=2.1
+
+  run:
+    - python
+    - django >=1.2
+    - python-dateutil >=2.1
+
+test:
+  # Python imports
+  imports:
+    - datatableview
+    - datatableview.tests
+    - datatableview.tests.example_project
+    - datatableview.tests.example_project.example_project
+    - datatableview.tests.example_project.example_project.example_app
+    - datatableview.tests.example_project.example_project.example_app.templatetags
+    - datatableview.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pivotal-energy-solutions/django-datatable-view
+  license: Apache Software License
+  summary: 'This package is used in conjunction with the jQuery plugin (http://http://datatables.net/), and supports state-saving detection with (http://datatables.net/plug-ins/api).  The package consists of a class-based view, and a small collection of utilities for rendering table data from models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

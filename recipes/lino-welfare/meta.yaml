@@ -1,0 +1,136 @@
+package:
+  name: lino-welfare
+  version: "1.1.20"
+
+source:
+  fn: lino-welfare-1.1.20.tar.gz
+  url: https://pypi.python.org/packages/source/l/lino-welfare/lino-welfare-1.1.20.tar.gz
+  md5: c57bbfd11562553e7558017dec025d3a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lino-welfare = lino-welfare:main
+    #
+    # Would create an entry point called lino-welfare that calls lino-welfare.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lino
+    - suds
+    - vobject
+    - django-iban
+    - xlwt
+
+  run:
+    - python
+    - lino
+    - suds
+    - vobject
+    - django-iban
+    - xlwt
+
+test:
+  # Python imports
+  imports:
+    - lino_welfare
+    - lino_welfare.fixtures
+    - lino_welfare.management
+    - lino_welfare.management.commands
+    - lino_welfare.modlib
+    - lino_welfare.modlib.active_job_search
+    - lino_welfare.modlib.active_job_search.fixtures
+    - lino_welfare.modlib.aids
+    - lino_welfare.modlib.aids.fixtures
+    - lino_welfare.modlib.badges
+    - lino_welfare.modlib.cal
+    - lino_welfare.modlib.cal.fixtures
+    - lino_welfare.modlib.cbss
+    - lino_welfare.modlib.cbss.fixtures
+    - lino_welfare.modlib.cbss.management
+    - lino_welfare.modlib.cbss.management.commands
+    - lino_welfare.modlib.cbss.tests
+    - lino_welfare.modlib.contacts
+    - lino_welfare.modlib.contacts.fixtures
+    - lino_welfare.modlib.courses
+    - lino_welfare.modlib.courses.fixtures
+    - lino_welfare.modlib.cv
+    - lino_welfare.modlib.cv.fixtures
+    - lino_welfare.modlib.debts
+    - lino_welfare.modlib.debts.fixtures
+    - lino_welfare.modlib.households
+    - lino_welfare.modlib.households.fixtures
+    - lino_welfare.modlib.integ
+    - lino_welfare.modlib.integ.fixtures
+    - lino_welfare.modlib.isip
+    - lino_welfare.modlib.jobs
+    - lino_welfare.modlib.jobs.fixtures
+    - lino_welfare.modlib.newcomers
+    - lino_welfare.modlib.newcomers.fixtures
+    - lino_welfare.modlib.notes
+    - lino_welfare.modlib.notes.fixtures
+    - lino_welfare.modlib.pcsw
+    - lino_welfare.modlib.pcsw.fixtures
+    - lino_welfare.modlib.polls
+    - lino_welfare.modlib.polls.fixtures
+    - lino_welfare.modlib.projects
+    - lino_welfare.modlib.reception
+    - lino_welfare.modlib.sales
+    - lino_welfare.modlib.sepa
+    - lino_welfare.modlib.sepa.fixtures
+    - lino_welfare.modlib.system
+    - lino_welfare.modlib.system.fixtures
+    - lino_welfare.modlib.uploads
+    - lino_welfare.modlib.users
+    - lino_welfare.modlib.users.fixtures
+    - lino_welfare.projects
+    - lino_welfare.projects.chatelet
+    - lino_welfare.projects.chatelet.modlib
+    - lino_welfare.projects.chatelet.modlib.courses
+    - lino_welfare.projects.chatelet.modlib.courses.fixtures
+    - lino_welfare.projects.chatelet.modlib.cv
+    - lino_welfare.projects.chatelet.modlib.cv.fixtures
+    - lino_welfare.projects.chatelet.modlib.isip
+    - lino_welfare.projects.chatelet.modlib.pcsw
+    - lino_welfare.projects.chatelet.settings
+    - lino_welfare.projects.docs
+    - lino_welfare.projects.docs.settings
+    - lino_welfare.projects.eupen
+    - lino_welfare.projects.eupen.modlib
+    - lino_welfare.projects.eupen.modlib.pcsw
+    - lino_welfare.projects.eupen.settings
+    - lino_welfare.scripts
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://welfare.lino-framework.org
+  license: BSD License
+  summary: u'A Lino application for Belgian Centres for Public Welfare'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: django-datebook
+  version: "0.9.5"
+
+source:
+  fn: django-datebook-0.9.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-datebook/django-datebook-0.9.5.tar.gz
+  md5: 132cec178a6e5c23fd8d8e3d6cc28f65
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-datebook = django-datebook:main
+    #
+    # Would create an entry point called django-datebook that calls django-datebook.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - autobreadcrumbs >=1.0
+    - django-braces >=1.2.0,<1.4
+    - crispy-forms-foundation >=0.3.5
+    - arrow
+
+  run:
+    - python
+    - autobreadcrumbs >=1.0
+    - django-braces >=1.2.0,<1.4
+    - crispy-forms-foundation >=0.3.5
+    - arrow
+
+test:
+  # Python imports
+  imports:
+    - datebook
+    - datebook.forms
+    - datebook.migrations
+    - datebook.templatetags
+    - datebook.utils
+    - datebook.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-datebook
+  license: MIT License
+  summary: '\nA Django application to manage user Datebook\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

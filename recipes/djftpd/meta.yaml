@@ -1,0 +1,67 @@
+package:
+  name: djftpd
+  version: "0.3.0"
+
+source:
+  fn: djftpd-0.3.0.zip
+  url: https://pypi.python.org/packages/source/d/djftpd/djftpd-0.3.0.zip
+  md5: 98cf9cabe3d755681da52cd4faf067de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djftpd = djftpd:main
+    #
+    # Would create an entry point called djftpd that calls djftpd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyftpdlib
+    - django
+
+  run:
+    - python
+    - pyftpdlib
+    - django
+
+test:
+  # Python imports
+  imports:
+    - djftpd
+    - djftpd.management
+    - djftpd.management.commands
+    - djftpdtests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/weholt/djftpd
+  license: GPL v3.0
+  summary: 'FTP-server authenticating against django user database.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

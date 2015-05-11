@@ -1,0 +1,64 @@
+package:
+  name: mt940parser
+  version: "0.0.2"
+
+source:
+  fn: mt940parser-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mt940parser/mt940parser-0.0.2.tar.gz
+  md5: 26c2a523f90b10bc5be103bfa5f128b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mt940parser = mt940parser:main
+    #
+    # Would create an entry point called mt940parser that calls mt940parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply
+
+  run:
+    - python
+    - ply
+
+test:
+  # Python imports
+  imports:
+    - mt940
+    - mt940_tests
+    - mt940parser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/salimfadhley/mt940
+  license: MIT License
+  summary: 'MT940 / MT942 message parser implemented as a context-free grammar in PLY.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

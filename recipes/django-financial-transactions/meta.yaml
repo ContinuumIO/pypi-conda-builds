@@ -1,0 +1,70 @@
+package:
+  name: django-financial-transactions
+  version: "0.2"
+
+source:
+  fn: django-financial-transactions-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-financial-transactions/django-financial-transactions-0.2.tar.gz
+  md5: 2cb18609e475f3f6b1833774e84838eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-financial-transactions = django-financial-transactions:main
+    #
+    # Would create an entry point called django-financial-transactions that calls django-financial-transactions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-categories >=1.1.4
+    - south >=0.7.6
+
+  run:
+    - python
+    - django-categories >=1.1.4
+    - south >=0.7.6
+
+test:
+  # Python imports
+  imports:
+    - financial_transactions
+    - financial_transactions.forms
+    - financial_transactions.management
+    - financial_transactions.management.commands
+    - financial_transactions.migrations
+    - financial_transactions.tests
+    - financial_transactions.tests.transaction_forms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/absoludity/django-financial-transactions
+  license: BSD License
+  summary: 'A Django app to import and categorise financial transactions.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

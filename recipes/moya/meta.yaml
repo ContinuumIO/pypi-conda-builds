@@ -1,0 +1,141 @@
+package:
+  name: moya
+  version: "0.5.12"
+
+source:
+  fn: moya-0.5.12.tar.gz
+  url: https://pypi.python.org/packages/source/m/moya/moya-0.5.12.tar.gz
+  md5: adc7c53128648b7bcf970a4b2917e882
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moya = moya:main
+    #
+    # Would create an entry point called moya that calls moya.main()
+
+    - moya = moya.command.app:main
+    - moya-pm = moya.command.moyapi:main
+    - moya-srv = moya.command.moyasrv:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyparsing
+    - webob
+    - sqlalchemy
+    - pytz
+    - pygments
+    - fs >=0.5.1
+    - iso8601
+    - babel
+    - postmarkup
+    - polib
+    - pillow
+    - pymysql
+    - passlib
+    - commonmark
+    - requests
+    - lxml
+    - colorama
+
+  run:
+    - python
+    - pyparsing
+    - webob
+    - sqlalchemy
+    - pytz
+    - pygments
+    - fs >=0.5.1
+    - iso8601
+    - babel
+    - postmarkup
+    - polib
+    - pillow
+    - pymysql
+    - passlib
+    - commonmark
+    - requests
+    - lxml
+    - colorama
+
+test:
+  # Python imports
+  imports:
+    - moya
+    - moya.cache
+    - moya.command
+    - moya.command.doc_project
+    - moya.command.sub
+    - moya.command.sub.project_serve
+    - moya.context
+    - moya.demo
+    - moya.docgen
+    - moya.elements
+    - moya.libs
+    - moya.libs.admin
+    - moya.libs.auth
+    - moya.libs.auth.py
+    - moya.libs.blog
+    - moya.libs.bootstrap
+    - moya.libs.comments
+    - moya.libs.debug
+    - moya.libs.faq
+    - moya.libs.favicon
+    - moya.libs.feedback
+    - moya.libs.forms
+    - moya.libs.forms.py
+    - moya.libs.i18n
+    - moya.libs.jsonrpc
+    - moya.libs.jsonrpc.py
+    - moya.libs.links
+    - moya.libs.pages
+    - moya.libs.recaptcha
+    - moya.libs.session
+    - moya.libs.signup
+    - moya.libs.static
+    - moya.libs.static.py
+    - moya.libs.tables
+    - moya.libs.tables.py
+    - moya.libs.thumbnail
+    - moya.libs.welcome
+    - moya.libs.widgets
+    - moya.libs.wysihtml5
+    - moya.tags
+    - moya.template
+    - moya.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - moya --help
+    - moya-pm --help
+    - moya-srv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.moyaproject.com
+  license: MIT
+  summary: 'web development platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

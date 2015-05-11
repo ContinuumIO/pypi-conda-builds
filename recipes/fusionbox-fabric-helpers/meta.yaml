@@ -1,0 +1,70 @@
+package:
+  name: fusionbox-fabric-helpers
+  version: "0.5.1-0107cd02"
+
+source:
+  fn: fusionbox-fabric-helpers-0.5.1-0107cd02.tar.gz
+  url: https://pypi.python.org/packages/source/f/fusionbox-fabric-helpers/fusionbox-fabric-helpers-0.5.1-0107cd02.tar.gz
+  md5: 02e47bb5f745bb7fb01b1ab0eb931305
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fusionbox-fabric-helpers = fusionbox-fabric-helpers:main
+    #
+    # Would create an entry point called fusionbox-fabric-helpers that calls fusionbox-fabric-helpers.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric >=1.4
+    - termcolor >=1.1.0
+    - django-backupdb >=0.4.3
+
+  run:
+    - python
+    - fabric >=1.4
+    - termcolor >=1.1.0
+    - django-backupdb >=0.4.3
+
+test:
+  # Python imports
+  imports:
+    - fusionbox
+    - fusionbox.fabric
+    - fusionbox.fabric.django
+    - fusionbox.fabric.fborm
+    - fusionbox.fabric.static
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fusionbox/fusionbox-fabric-helpers
+  license: BSD
+  summary: 'Fabric Helpers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

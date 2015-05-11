@@ -1,0 +1,87 @@
+package:
+  name: helga
+  version: "1.7.1"
+
+source:
+  fn: helga-1.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/helga/helga-1.7.1.tar.gz
+  md5: 3292a220a87cafa7fee4470e382af4d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - helga = helga:main
+    #
+    # Would create an entry point called helga that calls helga.main()
+
+    - helga = helga.bin.helga:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator ==3.4.0
+    - pymongo ==2.5.2
+    - pyopenssl ==0.13
+    - pystache ==0.5.4
+    - smokesignal ==0.5
+    - twisted ==13.1.0
+
+  run:
+    - python
+    - setuptools
+    - decorator ==3.4.0
+    - pymongo ==2.5.2
+    - pyopenssl ==0.13
+    - pystache ==0.5.4
+    - smokesignal ==0.5
+    - twisted ==13.1.0
+
+test:
+  # Python imports
+  imports:
+    - helga
+    - helga.bin
+    - helga.comm
+    - helga.plugins
+    - helga.tests
+    - helga.tests.bin
+    - helga.tests.comm
+    - helga.tests.plugins
+    - helga.tests.util
+    - helga.tests.webhooks
+    - helga.util
+    - helga.webhooks
+    - helga.webhooks.logger
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - helga --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shaunduncan/helga
+  license: GNU General Public License v3 (GPLv3) or MIT License
+  summary: 'A full-featured chat bot for Python 2.6/2.7 with plugin support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

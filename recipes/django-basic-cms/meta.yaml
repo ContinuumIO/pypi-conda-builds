@@ -1,0 +1,84 @@
+package:
+  name: django-basic-cms
+  version: "0.2.6.2"
+
+source:
+  fn: django-basic-cms-0.2.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-basic-cms/django-basic-cms-0.2.6.2.tar.gz
+  md5: fb08b177b5301b4ebe6e01132951a225
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-basic-cms = django-basic-cms:main
+    #
+    # Would create an entry point called django-basic-cms that calls django-basic-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+    - django-mptt >=0.4.1
+    - html5lib ==1.0b3
+    - lxml >=3.4.2
+    - djangorestframework ==2.3.14
+    - sphinxcontrib-aafig
+    - django-taggit >=0.11.1
+    - django-authority >=0.8
+
+  run:
+    - python
+    - django >=1.4.2
+    - django-mptt >=0.4.1
+    - html5lib ==1.0b3
+    - lxml >=3.4.2
+    - djangorestframework ==2.3.14
+    - sphinxcontrib-aafig
+    - django-taggit >=0.11.1
+    - django-authority >=0.8
+
+test:
+  # Python imports
+  imports:
+    - basic_cms
+    - basic_cms.admin
+    - basic_cms.management
+    - basic_cms.management.commands
+    - basic_cms.migrations
+    - basic_cms.templatetags
+    - basic_cms.testproj
+    - basic_cms.testproj.documents
+    - basic_cms.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/YD-Technology/django-basic-cms
+  license: BSD License
+  summary: 'A tree based Django Basic CMS application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

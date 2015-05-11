@@ -1,0 +1,64 @@
+package:
+  name: irclogger
+  version: "0.0.2"
+
+source:
+  fn: irclogger-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/irclogger/irclogger-0.0.2.tar.gz
+  md5: 312eb24dbdec288f8880202411b7d25c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - irclogger = irclogger:main
+    #
+    # Would create an entry point called irclogger that calls irclogger.main()
+
+    - irclogger=irclogger.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - circuits
+
+  run:
+    - python
+    - circuits
+
+test:
+  # Python imports
+  imports:
+    - irclogger
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - irclogger --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/prologic/irclogger
+  license: MIT
+  summary: 'Python IRC Logger Daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

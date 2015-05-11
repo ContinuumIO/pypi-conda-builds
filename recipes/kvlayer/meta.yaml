@@ -1,0 +1,80 @@
+package:
+  name: kvlayer
+  version: "0.5.6.dev1"
+
+source:
+  fn: kvlayer-0.5.6.dev1.tar.gz
+  url: https://pypi.python.org/packages/source/k/kvlayer/kvlayer-0.5.6.dev1.tar.gz
+  md5: eebce2756eabaebf3052051fa1911e76
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kvlayer = kvlayer:main
+    #
+    # Would create an entry point called kvlayer that calls kvlayer.main()
+
+    - kvlayer = kvlayer._client:main
+    - kvlayer_test = kvlayer.tests.run:main
+    - kvlayer_performance = kvlayer.tests.performance:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - yakonfig >=0.6.0
+    - pycassa >=1.10
+    - pyaccumulo >=1.5.0.5
+    - pyyaml
+    - cql
+    - redis
+
+  run:
+    - python
+    - yakonfig >=0.6.0
+    - pycassa >=1.10
+    - pyaccumulo >=1.5.0.5
+    - pyyaml
+    - cql
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - kvlayer
+    - kvlayer.encoders
+    - kvlayer.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kvlayer --help
+    - kvlayer_test --help
+    - kvlayer_performance --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://diffeo.com
+  license: MIT License
+  summary: 'table-oriented abstraction layer over key-value stores'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

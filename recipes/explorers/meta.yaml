@@ -1,0 +1,67 @@
+package:
+  name: explorers
+  version: "1.0.2"
+
+source:
+  fn: explorers-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/explorers/explorers-1.0.2.tar.gz
+  md5: a07edc4dedec20eca2ebbdde0aa56d07
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - explorers = explorers:main
+    #
+    # Would create an entry point called explorers that calls explorers.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - forest
+    - learners
+
+  run:
+    - python
+    - forest
+    - learners
+
+test:
+  # Python imports
+  imports:
+    - explorers
+    - explorers.algorithms
+    - explorers.algorithms.im
+    - explorers.algorithms.reuse
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: flowers.inria.fr
+  license: Open Science (see fabien.benureau.com/openscience.html
+  summary: 'Framework for autonomous exploration algorithms in sensorimotor spaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

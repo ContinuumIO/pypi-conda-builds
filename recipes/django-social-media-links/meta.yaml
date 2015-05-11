@@ -1,0 +1,70 @@
+package:
+  name: django-social-media-links
+  version: "0.2"
+
+source:
+  fn: django-social-media-links-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-social-media-links/django-social-media-links-0.2.tar.gz
+  md5: 485a76a5900ba4a86955a363316a02dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-social-media-links = django-social-media-links:main
+    #
+    # Would create an entry point called django-social-media-links that calls django-social-media-links.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django_libs
+    - pillow
+
+  run:
+    - python
+    - django
+    - django_libs
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - social_media_links
+    - social_media_links.migrations
+    - social_media_links.templatetags
+    - social_media_links.tests
+    - social_media_links.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-social-media-links
+  license: The MIT License
+  summary: 'A reusable Django app that renders a set of social media links, i.e. for your website footer.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

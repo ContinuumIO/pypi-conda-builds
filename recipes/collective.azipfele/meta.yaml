@@ -1,0 +1,76 @@
+package:
+  name: collective.azipfele
+  version: "1.1.2"
+
+source:
+  fn: collective.azipfele-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.azipfele/collective.azipfele-1.1.2.tar.gz
+  md5: 3c75d25b20661ed6353455be227fc86d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.azipfele = collective.azipfele:main
+    #
+    # Would create an entry point called collective.azipfele that calls collective.azipfele.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.zamqp
+    - plone
+    - plone.api
+    - plone.app.contenttypes
+    - python-memcached
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - collective.zamqp
+    - plone
+    - plone.api
+    - plone.app.contenttypes
+    - python-memcached
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.azipfele
+    - collective.azipfele.browser
+    - collective.azipfele.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bluedynamics.com
+  license: GNU General Public License (GPL)
+  summary: 'Creates Zip files from Plone or other content asynchronous'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

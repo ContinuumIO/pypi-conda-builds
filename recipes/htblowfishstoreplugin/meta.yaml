@@ -1,0 +1,66 @@
+package:
+  name: htblowfishstoreplugin
+  version: "0.1"
+
+source:
+  fn: HtBlowfishStorePlugin-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/H/HtBlowfishStorePlugin/HtBlowfishStorePlugin-0.1.tar.gz
+  md5: 51434b4a64c1e5f353891a30ebe3eb06
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htblowfishstoreplugin = htblowfishstoreplugin:main
+    #
+    # Would create an entry point called htblowfishstoreplugin that calls htblowfishstoreplugin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tracaccountmanager
+    - bcrypt
+
+  run:
+    - python
+    - setuptools
+    - tracaccountmanager
+    - bcrypt
+
+test:
+  # Python imports
+  imports:
+    - htblowfishstore
+    - htblowfishstoreplugin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mitar.tnode.com/
+  license: GPLv3
+  summary: "HtPasswdStore for Trac's AccountManager with Blowfish support."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

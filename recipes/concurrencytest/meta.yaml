@@ -1,0 +1,64 @@
+package:
+  name: concurrencytest
+  version: "0.1.2"
+
+source:
+  fn: concurrencytest-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/concurrencytest/concurrencytest-0.1.2.tar.gz
+  md5: 773d9a8be83fc043a32a25b6665bf59b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - concurrencytest = concurrencytest:main
+    #
+    # Would create an entry point called concurrencytest that calls concurrencytest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-subunit
+    - testtools
+
+  run:
+    - python
+    - python-subunit
+    - testtools
+
+test:
+  # Python imports
+  imports:
+    - concurrencytest
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cgoldberg/concurrencytest
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'testtools extension for running unittest suites concurrently'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

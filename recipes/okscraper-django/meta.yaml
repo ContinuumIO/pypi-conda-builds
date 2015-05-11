@@ -1,0 +1,66 @@
+package:
+  name: okscraper-django
+  version: "0.0.8"
+
+source:
+  fn: okscraper-django-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/o/okscraper-django/okscraper-django-0.0.8.tar.gz
+  md5: e9c2eefa200eac86c799478eac9c09a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - okscraper-django = okscraper-django:main
+    #
+    # Would create an entry point called okscraper-django that calls okscraper-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - okscraper ==0.0.4
+
+  run:
+    - python
+    - okscraper ==0.0.4
+
+test:
+  # Python imports
+  imports:
+    - okscraper_django
+    - okscraper_django.management
+    - okscraper_django.management.commands
+    - okscraper_django.migrations
+    - okscraper_django.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/orihoch/okscraper-django
+  license: GPLv3
+  summary: 'okscraper django integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

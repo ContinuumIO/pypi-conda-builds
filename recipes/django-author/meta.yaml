@@ -1,0 +1,68 @@
+package:
+  name: django-author
+  version: "0.2.0"
+
+source:
+  fn: django-author-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-author/django-author-0.2.0.tar.gz
+  md5: 0ea70573bca9779c7f67b1bdff5d7f94
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-author = django-author:main
+    #
+    # Would create an entry point called django-author that calls django-author.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - setuptools-git
+
+  run:
+    - python
+    - distribute
+    - setuptools-git
+
+test:
+  # Python imports
+  imports:
+    - author
+    - tests
+    - tests.autocmd
+    - tests.blog
+    - tests.blog.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lambdalisue/django-author
+  license: MIT License
+  summary: 'Add special User ForeignKey fields which update automatically'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

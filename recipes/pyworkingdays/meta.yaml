@@ -1,0 +1,64 @@
+package:
+  name: pyworkingdays
+  version: "0.1"
+
+source:
+  fn: pyworkingdays-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyworkingdays/pyworkingdays-0.1.tar.gz
+  md5: e51942499692e61578e56deaa29dab55
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyworkingdays = pyworkingdays:main
+    #
+    # Would create an entry point called pyworkingdays that calls pyworkingdays.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+
+  run:
+    - python
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - pyworkingdays
+    - workingdays
+    - workingdays.l10n
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/baxeico/pyworkingdays
+  license: UNKNOWN
+  summary: 'Utility functions to deal with working days in date operations. With builtin localization support.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

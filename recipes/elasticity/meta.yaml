@@ -1,0 +1,64 @@
+package:
+  name: elasticity
+  version: "0.4"
+
+source:
+  fn: elasticity-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/e/elasticity/elasticity-0.4.tar.gz
+  md5: 2ae4d749b4cafa1d578f936da2a3c42f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elasticity = elasticity:main
+    #
+    # Would create an entry point called elasticity that calls elasticity.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elasticsearch >=1.4.0
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - elasticsearch >=1.4.0
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - elasticity
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Cheers-Dev/elasticity
+  license: UNKNOWN
+  summary: 'Python based command line tool for managing ElasticSearch clusters.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

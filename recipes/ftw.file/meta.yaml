@@ -1,0 +1,87 @@
+package:
+  name: ftw.file
+  version: "1.10.0"
+
+source:
+  fn: ftw.file-1.10.0.zip
+  url: https://pypi.python.org/packages/source/f/ftw.file/ftw.file-1.10.0.zip
+  md5: 7270655b2d4dcb18311bb07a5e48e61b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.file = ftw.file:main
+    #
+    # Would create an entry point called ftw.file that calls ftw.file.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - ftw.journal
+    - plone.app.registry
+    - ftw.upgrade >=1.4.0
+    - ftw.calendarwidget
+    - ftw.profilehook
+    - pillow
+    - ftw.colorbox
+    - plone.api
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - ftw.journal
+    - plone.app.registry
+    - ftw.upgrade >=1.4.0
+    - ftw.calendarwidget
+    - ftw.profilehook
+    - pillow
+    - ftw.colorbox
+    - plone.api
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.file
+    - ftw.file.browser
+    - ftw.file.content
+    - ftw.file.events
+    - ftw.file.rules
+    - ftw.file.tests
+    - ftw.file.upgrades
+    - ftw.file.viewlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.file
+  license: GPL2
+  summary: 'A file content type for gov usecases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

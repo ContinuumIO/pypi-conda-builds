@@ -1,0 +1,79 @@
+package:
+  name: django-postal
+  version: "0.96"
+
+source:
+  fn: django-postal-0.96.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-postal/django-postal-0.96.tar.gz
+  md5: 6bce9338efcfd5e111b84f6bc725a928
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-postal = django-postal:main
+    #
+    # Would create an entry point called django-postal that calls django-postal.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-countries
+
+  run:
+    - python
+    - setuptools
+    - django-countries
+
+test:
+  # Python imports
+  imports:
+    - postal
+    - postal.api
+    - postal.forms
+    - postal.forms.ar
+    - postal.forms.co
+    - postal.forms.cz
+    - postal.forms.de
+    - postal.forms.gb
+    - postal.forms.ie
+    - postal.forms.it
+    - postal.forms.mx
+    - postal.forms.nl
+    - postal.forms.pl
+    - postal.forms.ru
+    - postal.forms.us
+    - postal.templatetags
+    - postal.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mthornhill/django-postal
+  license: BSD License
+  summary: 'A Django app for l10n of postal addresses.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

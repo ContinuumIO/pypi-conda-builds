@@ -1,0 +1,65 @@
+package:
+  name: ebs-deploy
+  version: "1.9.3"
+
+source:
+  fn: ebs-deploy-1.9.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/ebs-deploy/ebs-deploy-1.9.3.tar.gz
+  md5: 0574450158f3d886883a2f27ae4f52d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ebs-deploy = ebs-deploy:main
+    #
+    # Would create an entry point called ebs-deploy that calls ebs-deploy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.32.0
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - boto >=2.32.0
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - ebs_deploy
+    - ebs_deploy.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/briandilley/ebs-deploy
+  license: UNKNOWN
+  summary: 'Python based command line tools for managing Amazon Elastic Beanstalk applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

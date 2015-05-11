@@ -1,0 +1,92 @@
+package:
+  name: django-rblog
+  version: "0.0.56"
+
+source:
+  fn: django-rblog-0.0.56.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rblog/django-rblog-0.0.56.tar.gz
+  md5: d75f3ccb2729b7d59af7e155a119348b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rblog = django-rblog:main
+    #
+    # Would create an entry point called django-rblog that calls django-rblog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django <1.5
+    - pygments
+    - beautifulsoup
+    - south ==0.8.1
+    - pil ==1.1.7
+    - django-braces ==1.4.0
+    - django-tinymce >=1.5.1
+    - django-filebrowser-no-grappelli ==3.1.1
+    - django-tagging ==0.3.1
+    - django-compressor ==1.3
+    - sorl-thumbnail ==11.12
+    - elementtree ==1.2.7-20070827-preview
+    - disqus-python ==0.4.2
+    - django-disqus ==0.4.1
+
+  run:
+    - python
+    - django <1.5
+    - pygments
+    - beautifulsoup
+    - south ==0.8.1
+    - pil ==1.1.7
+    - django-braces ==1.4.0
+    - django-tinymce >=1.5.1
+    - django-filebrowser-no-grappelli ==3.1.1
+    - django-tagging ==0.3.1
+    - django-compressor ==1.3
+    - sorl-thumbnail ==11.12
+    - elementtree ==1.2.7-20070827-preview
+    - disqus-python ==0.4.2
+    - django-disqus ==0.4.1
+
+test:
+  # Python imports
+  imports:
+    - rblog
+    - rblog.management
+    - rblog.management.commands
+    - rblog.migrations
+    - rblog.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/r0sk/django-rblog
+  license: BSD License
+  summary: 'Yet another Django Blog App'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,109 @@
+package:
+  name: isbntools
+  version: "4.2.4"
+
+source:
+  fn: isbntools-4.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/isbntools/isbntools-4.2.4.tar.gz
+  md5: 3bee22a3b30d247ca51a5bfadfe5a42d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isbntools = isbntools:main
+    #
+    # Would create an entry point called isbntools that calls isbntools.main()
+
+    - isbn_conf=isbntools.bin.confc:main
+    - isbn_doi=isbntools.bin.doi:main
+    - isbn_doi2tex=isbntools.bin.doi2tex:main
+    - isbn_EAN13=isbntools.bin.EAN13:main
+    - isbn_editions=isbntools.bin.editions:main
+    - isbn_from_words=isbntools.bin.from_words:main
+    - isbn_goom=isbntools.bin.goom:main
+    - isbn_info=isbntools.bin.info:main
+    - isbn_mask=isbntools.bin.mask:main
+    - isbn_meta=isbntools.bin.meta:main
+    - isbn_ren=isbntools.bin.ren:main
+    - to_isbn10=isbntools.bin.to_isbn10:main
+    - to_isbn13=isbntools.bin.to_isbn13:main
+    - isbn_validate=isbntools.bin.validate:main
+    - isbn_stdin_validate=isbntools.bin.validate:do_pipe
+    - isbntools=isbntools.bin.version:main
+    - isbn_repl=isbntools.bin.repl:main
+    - isbn_cover=isbntools.bin.cover:main
+    - isbn_desc=isbntools.bin.desc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - isbnlib >=3.5.4,<3.6.1
+
+  run:
+    - python
+    - isbnlib >=3.5.4,<3.6.1
+
+test:
+  # Python imports
+  imports:
+    - isbntools
+    - isbntools.bin
+    - isbntools.contrib
+    - isbntools.contrib.apps
+    - isbntools.contrib.formatters
+    - isbntools.contrib.modules
+    - isbntools.contrib.modules.rename
+    - isbntools.contrib.modules.report
+    - isbntools.contrib.modules.uxcolors
+    - isbntools.contrib.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - isbn_conf --help
+    - isbn_doi --help
+    - isbn_doi2tex --help
+    - isbn_EAN13 --help
+    - isbn_editions --help
+    - isbn_from_words --help
+    - isbn_goom --help
+    - isbn_info --help
+    - isbn_mask --help
+    - isbn_meta --help
+    - isbn_ren --help
+    - to_isbn10 --help
+    - to_isbn13 --help
+    - isbn_validate --help
+    - isbn_stdin_validate --help
+    - isbntools --help
+    - isbn_repl --help
+    - isbn_cover --help
+    - isbn_desc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xlcnd/isbntools
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: "app and framework for 'all things ISBN' (International Standard Book Number) including metadata, descriptions, covers... ."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

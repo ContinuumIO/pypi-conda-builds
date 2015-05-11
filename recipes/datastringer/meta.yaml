@@ -1,0 +1,63 @@
+package:
+  name: datastringer
+  version: "0.1.5"
+
+source:
+  fn: datastringer-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/datastringer/datastringer-0.1.5.tar.gz
+  md5: 64d47f6113e4c983c0a7ea0fe6a41004
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datastringer = datastringer:main
+    #
+    # Would create an entry point called datastringer that calls datastringer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.2
+
+  run:
+    - python
+    - setuptools
+    - requests >=1.2
+
+test:
+  # Python imports
+  imports:
+    - datastringer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pudo/datastringer
+  license: AGPLv3
+  summary: 'Client for datawi.re, submits data to the data wire service.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

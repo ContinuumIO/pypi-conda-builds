@@ -1,0 +1,81 @@
+package:
+  name: clusto-ec2
+  version: "0.6.1"
+
+source:
+  fn: clusto-ec2-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/clusto-ec2/clusto-ec2-0.6.1.tar.gz
+  md5: e2280463801607301d0a662f429cc20f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clusto-ec2 = clusto-ec2:main
+    #
+    # Would create an entry point called clusto-ec2 that calls clusto-ec2.main()
+
+    - clusto-ec2 = clustoec2.commands.ec2:main
+    - clusto-vpc = clustoec2.commands.vpc:main
+    - clusto-ec2-bootstrap = clustoec2.commands.bootstrap:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clusto >0.6
+    - boto >=2.0
+    - mako
+
+  run:
+    - python
+    - clusto >0.6
+    - boto >=2.0
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - clustoec2
+    - clustoec2.commands
+    - clustoec2.drivers
+    - clustoec2.drivers.categories
+    - clustoec2.drivers.devices
+    - clustoec2.drivers.devices.servers
+    - clustoec2.drivers.locations
+    - clustoec2.drivers.locations.datacenters
+    - clustoec2.drivers.locations.zones
+    - clustoec2.drivers.resourcemanagers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clusto-ec2 --help
+    - clusto-vpc --help
+    - clusto-ec2-bootstrap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Amazon EC2 extension for clusto'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

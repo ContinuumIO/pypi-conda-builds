@@ -1,0 +1,73 @@
+package:
+  name: gocept.objectquery
+  version: "0.1b1"
+
+source:
+  fn: gocept.objectquery-0.1b1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.objectquery/gocept.objectquery-0.1b1.tar.gz
+  md5: e9e7593b6e28c4e43784265507946c41
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.objectquery = gocept.objectquery:main
+    #
+    # Would create an entry point called gocept.objectquery that calls gocept.objectquery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simpleparse
+    - zope.interface
+    - zope.component
+    - zodb3
+    - sw.objectinspection
+
+  run:
+    - python
+    - setuptools
+    - simpleparse
+    - zope.interface
+    - zope.component
+    - zodb3
+    - sw.objectinspection
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.objectquery
+    - gocept.objectquery.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://intra.gocept.com/projects/projects/show/objectquery
+  license: Zope Public License
+  summary: 'A framework for indexing and querying the ZODB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

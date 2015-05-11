@@ -1,0 +1,78 @@
+package:
+  name: messy2sql
+  version: "0.1.0a10"
+
+source:
+  fn: messy2sql-0.1.0a10.tar.gz
+  url: https://pypi.python.org/packages/source/m/messy2sql/messy2sql-0.1.0a10.tar.gz
+  md5: 6e108e3cb4bfcb15f24f8064c8921187
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - messy2sql = messy2sql:main
+    #
+    # Would create an entry point called messy2sql that calls messy2sql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - xlrd >=0.8.0
+    - python-magic ==0.4.3
+    - chardet ==2.1.1
+    - python-dateutil >=1.5.0,<2.0.0
+    - json-table-schema
+    - lxml >=3.2
+    - pdftables >=0.0.3
+    - messytables
+
+  run:
+    - python
+    - setuptools
+    - xlrd >=0.8.0
+    - python-magic ==0.4.3
+    - chardet ==2.1.1
+    - python-dateutil >=1.5.0,<2.0.0
+    - json-table-schema
+    - lxml >=3.2
+    - pdftables >=0.0.3
+    - messytables
+
+test:
+  # Python imports
+  imports:
+    - messy2sql
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://publicfragments.org
+  license: MIT License
+  summary: 'Convert messytables types to SQL create/insert statements'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

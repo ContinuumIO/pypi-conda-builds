@@ -1,0 +1,69 @@
+package:
+  name: datadeck
+  version: "0.4.0"
+
+source:
+  fn: datadeck-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/datadeck/datadeck-0.4.0.tar.gz
+  md5: 364a125f7889e14ba0b03678bdada83b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datadeck = datadeck:main
+    #
+    # Would create an entry point called datadeck that calls datadeck.main()
+
+    - datadeck = datadeck.main:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c
+    - wxpython >2.8.9.1
+
+  run:
+    - python
+    - setuptools >=0.6c
+    - wxpython >2.8.9.1
+
+test:
+  # Python imports
+  imports:
+    - datadeck
+    - datadeck.gui
+    - datadeck.gui.util
+    - datadeck.res
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - datadeck --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://task3.cc/projects/datadeck
+  license: Simplified BSD License
+  summary: 'DataDeck (dpm GUI): wxPython GUI for dpm: data packaging system and utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

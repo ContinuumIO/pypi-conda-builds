@@ -1,0 +1,64 @@
+package:
+  name: datasource
+  version: "0.2.0"
+
+source:
+  fn: datasource-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/datasource/datasource-0.2.0.tar.gz
+  md5: 5f3745077aff22c122b17deeb5e39c15
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datasource = datasource:main
+    #
+    # Would create an entry point called datasource that calls datasource.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >1.2,<2.4.0
+
+  run:
+    - python
+    - requests >1.2,<2.4.0
+
+test:
+  # Python imports
+  imports:
+    - datasource
+    - datasource.impl
+    - datasource.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/YAmikep/datasource
+  license: MIT License
+  summary: 'DataSource is a simple wrapper for fetching data with a uniform API regardless how the data should be fetched.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

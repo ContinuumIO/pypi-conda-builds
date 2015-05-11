@@ -1,0 +1,72 @@
+package:
+  name: hurry.jquerytools
+  version: "1.2.5.1"
+
+source:
+  fn: hurry.jquerytools-1.2.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.jquerytools/hurry.jquerytools-1.2.5.1.tar.gz
+  md5: 7cc99be6744517a88199a6238f926b18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.jquerytools = hurry.jquerytools:main
+    #
+    # Would create an entry point called hurry.jquerytools that calls hurry.jquerytools.main()
+
+    - jquerytoolsprepare = hurry.jquerytools.prepare:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - py
+    - hurry.jquery
+    - hurry.resource
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - py
+    - hurry.jquery
+    - hurry.resource
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.jquerytools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jquerytoolsprepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/hurry.jquerytools
+  license: ZPL 2.1
+  summary: 'hurry.resource style resources for jquerytools.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

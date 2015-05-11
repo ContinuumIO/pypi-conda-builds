@@ -1,0 +1,76 @@
+package:
+  name: github-pr-stats
+  version: "0.6.0"
+
+source:
+  fn: github-pr-stats-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/github-pr-stats/github-pr-stats-0.6.0.tar.gz
+  md5: b72f446a9e8d5cf3ed591c57bd0d5dbb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github-pr-stats = github-pr-stats:main
+    #
+    # Would create an entry point called github-pr-stats that calls github-pr-stats.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - ascii-graph >=0.2.0
+    - docopt >=0.6,<0.7
+    - envoy >=0.0.2
+    - github3.py >=0.8,<0.9
+    - importlib >=1.0
+    - numpy >=1.7,<1.8
+    - ordereddict
+    - python-dateutil >=2.2,<2.3
+
+  run:
+    - python
+    - ascii-graph >=0.2.0
+    - docopt >=0.6,<0.7
+    - envoy >=0.0.2
+    - github3.py >=0.8,<0.9
+    - importlib >=1.0
+    - numpy >=1.7,<1.8
+    - ordereddict
+    - python-dateutil >=2.2,<2.3
+
+test:
+  # Python imports
+  imports:
+    - github_pr_stats
+    - github_pr_stats.example_plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xiongchiamiov/github-pr-stats
+  license: WTFPL
+  summary: 'Various statistics on the pull requests in your repo.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

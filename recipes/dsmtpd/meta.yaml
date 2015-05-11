@@ -1,0 +1,65 @@
+package:
+  name: dsmtpd
+  version: "0.2.2"
+
+source:
+  fn: dsmtpd-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dsmtpd/dsmtpd-0.2.2.tar.gz
+  md5: dc6c92138f7950f213f5b06fa5f7ba2d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dsmtpd = dsmtpd:main
+    #
+    # Would create an entry point called dsmtpd that calls dsmtpd.main()
+
+    - dsmtpd=dsmtpd._dsmtpd:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+
+  run:
+    - python
+    - setuptools
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - dsmtpd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dsmtpd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/matrixise/dsmtpd
+  license: BSD License
+  summary: 'Simple SMTP Server for debugging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

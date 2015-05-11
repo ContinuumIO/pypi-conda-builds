@@ -1,0 +1,70 @@
+package:
+  name: dateutils
+  version: "0.6.6"
+
+source:
+  fn: dateutils-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/dateutils/dateutils-0.6.6.tar.gz
+  md5: 2ba7fcac03635f1f1cad0d94d785001b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dateutils = dateutils:main
+    #
+    # Would create an entry point called dateutils that calls dateutils.main()
+
+    - dateadd = dateutils.dateadd:main
+    - datediff = dateutils.datediff:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - python-dateutil
+    - pytz
+
+  run:
+    - python
+    - argparse
+    - python-dateutil
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - dateutils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dateadd --help
+    - datediff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Various utilities for working with date and datetime objects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

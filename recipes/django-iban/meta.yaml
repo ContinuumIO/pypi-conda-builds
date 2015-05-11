@@ -1,0 +1,64 @@
+package:
+  name: django-iban
+  version: "0.3.1"
+
+source:
+  fn: django-iban-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-iban/django-iban-0.3.1.tar.gz
+  md5: 0aad4236e47165c7066b60381b68b615
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-iban = django-iban:main
+    #
+    # Would create an entry point called django-iban that calls django-iban.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-countries >=1.5
+
+  run:
+    - python
+    - django >=1.4
+    - django-countries >=1.5
+
+test:
+  # Python imports
+  imports:
+    - django_iban
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/benkonrath/django-iban
+  license: BSD License
+  summary: 'A validated IBAN field for Django models'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

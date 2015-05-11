@@ -1,0 +1,66 @@
+package:
+  name: mr.parker
+  version: "1.0"
+
+source:
+  fn: mr.parker-1.0.zip
+  url: https://pypi.python.org/packages/source/m/mr.parker/mr.parker-1.0.zip
+  md5: 6cbc8cbf8db2f802aa1f1013544f028a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.parker = mr.parker:main
+    #
+    # Would create an entry point called mr.parker that calls mr.parker.main()
+
+    - parker=mr.parker:commandline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+
+  run:
+    - python
+    - setuptools
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.parker
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - parker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dev.plone.org/collective/browser/mr.parker
+  license: BSD License
+  summary: 'Ensures that the PyPI bus factor for a package is above a certain threshold.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

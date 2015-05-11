@@ -1,0 +1,64 @@
+package:
+  name: polysquare-cmake-linter
+  version: "0.0.6"
+
+source:
+  fn: polysquare-cmake-linter-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/polysquare-cmake-linter/polysquare-cmake-linter-0.0.6.tar.gz
+  md5: f988d9709ea4bc9f10078c59ed389013
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - polysquare-cmake-linter = polysquare-cmake-linter:main
+    #
+    # Would create an entry point called polysquare-cmake-linter that calls polysquare-cmake-linter.main()
+
+    - polysquare-cmake-linter=polysquarecmakelinter.linter:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cmakeast >=0.0.7
+
+  run:
+    - python
+    - cmakeast >=0.0.7
+
+test:
+  # Python imports
+  imports:
+    - polysquarecmakelinter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - polysquare-cmake-linter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/polysquare/polysquare-cmake-linter
+  license: MIT License
+  summary: 'Polysquare CMake Linter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

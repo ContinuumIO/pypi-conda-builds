@@ -1,0 +1,68 @@
+package:
+  name: django-djembe
+  version: "0.2.0"
+
+source:
+  fn: django-djembe-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-djembe/django-djembe-0.2.0.tar.gz
+  md5: 0443b2533084da97769df43342de9c01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-djembe = django-djembe:main
+    #
+    # Would create an entry point called django-djembe that calls django-djembe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - m2crypto
+    - south
+
+  run:
+    - python
+    - django >=1.6
+    - m2crypto
+    - south
+
+test:
+  # Python imports
+  imports:
+    - djembe
+    - djembe.migrations
+    - djembe.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cabincode/django-djembe
+  license: UNKNOWN
+  summary: '\nA Django email backend that encrypts outgoing mail with S/MIME.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

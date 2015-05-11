@@ -1,0 +1,87 @@
+package:
+  name: pysapp
+  version: "0.2"
+
+source:
+  fn: pysapp-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pysapp/pysapp-0.2.tar.gz
+  md5: dbfabaeeffa8ab4edd81160d077563ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pysapp = pysapp:main
+    #
+    # Would create an entry point called pysapp that calls pysapp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elixir >=0.6.1
+    - pysmvt >=0.2
+    - pysform >=0.2
+    - sqlitefktg4sa >=0.1.1
+    - python-dateutil >=1.4.1
+
+  run:
+    - python
+    - setuptools
+    - elixir >=0.6.1
+    - pysmvt >=0.2
+    - pysform >=0.2
+    - sqlitefktg4sa >=0.1.1
+    - python-dateutil >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - pysapp
+    - pysapp.lib
+    - pysapp.modules
+    - pysapp.modules.apputil
+    - pysapp.modules.apputil.tasks
+    - pysapp.modules.apputil.tests
+    - pysapp.modules.audit
+    - pysapp.modules.audit.model
+    - pysapp.modules.audit.tasks
+    - pysapp.modules.datagrid
+    - pysapp.modules.datagrid.tests
+    - pysapp.modules.users
+    - pysapp.modules.users.model
+    - pysapp.modules.users.tasks
+    - pysapp.modules.users.tests
+    - pysapp.tasks
+    - pysapp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/pysapp/
+  license: BSD License
+  summary: 'A pysmvt supporting application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: gocept.thermosnake
+  version: "0.7"
+
+source:
+  fn: gocept.thermosnake-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.thermosnake/gocept.thermosnake-0.7.tar.gz
+  md5: e48a178b576eaa216023cf87e8793ea1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.thermosnake = gocept.thermosnake:main
+    #
+    # Would create an entry point called gocept.thermosnake that calls gocept.thermosnake.main()
+
+    - check_temp_ts = gocept.thermosnake.check_temp_ts:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nagiosplugin
+
+  run:
+    - python
+    - setuptools
+    - nagiosplugin
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.thermosnake
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - check_temp_ts --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gocept.com
+  license: GPL
+  summary: 'Nagios check script for temperature monitoring using thermosnake hardware'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

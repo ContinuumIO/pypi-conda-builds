@@ -1,0 +1,67 @@
+package:
+  name: ktcal2
+  version: "0.1.5"
+
+source:
+  fn: ktcal2-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/k/ktcal2/ktcal2-0.1.5.tar.gz
+  md5: d61646342af8abb3e4d5eed5b4c5a46c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ktcal2 = ktcal2:main
+    #
+    # Would create an entry point called ktcal2 that calls ktcal2.main()
+
+    - kt-cal2 = ktcal2.kt_cal2:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+    - asyncssh ==0.8.1
+
+  run:
+    - python
+    - pycrypto
+    - asyncssh ==0.8.1
+
+test:
+  # Python imports
+  imports:
+    - ktcal2
+    - ktcal2.lib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kt-cal2 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cr0hn/ktcal2
+  license: BSD License
+  summary: 'SSH brute forcer tool and library, using AsyncIO of Python 3.4'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

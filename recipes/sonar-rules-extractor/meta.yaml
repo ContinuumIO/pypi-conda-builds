@@ -1,0 +1,63 @@
+package:
+  name: sonar-rules-extractor
+  version: "1.1"
+
+source:
+  fn: sonar-rules-extractor-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/sonar-rules-extractor/sonar-rules-extractor-1.1.tar.gz
+  md5: ed6894d0a530b82f33403fef5e6c8bf5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sonar-rules-extractor = sonar-rules-extractor:main
+    #
+    # Would create an entry point called sonar-rules-extractor that calls sonar-rules-extractor.main()
+
+    - sonar-rules-extractor = sonar_rules_extractor.cmdline:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sonar_rules_extractor
+    - sonar_rules_extractor.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sonar-rules-extractor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/sonar-rules-extractor
+  license: MIT License
+  summary: 'Coding rules extractor into the Sonar format.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

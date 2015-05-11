@@ -1,0 +1,74 @@
+package:
+  name: fxa-python-client
+  version: "1.3.0"
+
+source:
+  fn: fxa-python-client-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fxa-python-client/fxa-python-client-1.3.0.tar.gz
+  md5: 9d1406a97caae3a38d1999d9075325c9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fxa-python-client = fxa-python-client:main
+    #
+    # Would create an entry point called fxa-python-client that calls fxa-python-client.main()
+
+    - fxa-client = fxa_client.fxa_client:main
+    - fxa-vectors = fxa_client.fxa_vectors:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cryptography
+    - requests
+    - pybrowserid
+    - pyhawk
+    - six
+
+  run:
+    - python
+    - cryptography
+    - requests
+    - pybrowserid
+    - pyhawk
+    - six
+
+test:
+  # Python imports
+  imports:
+    - fxa_client
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fxa-client --help
+    - fxa-vectors --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla/fxa-python-client
+  license: UNKNOWN
+  summary: 'python sample code to access Firefox Account (FxA) APIs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

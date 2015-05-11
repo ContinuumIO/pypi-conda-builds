@@ -1,0 +1,69 @@
+package:
+  name: lazr.jobrunner
+  version: "0.11"
+
+source:
+  fn: lazr.jobrunner-0.11.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazr.jobrunner/lazr.jobrunner-0.11.tar.gz
+  md5: 195b1e0bdad6c005b75c786bc25437c7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazr.jobrunner = lazr.jobrunner:main
+    #
+    # Would create an entry point called lazr.jobrunner that calls lazr.jobrunner.main()
+
+    - jobrunnerctl=lazr.jobrunner.bin.jobrunnerctl:main
+    - clear-queues=lazr.jobrunner.bin.clear_queues:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery
+
+  run:
+    - python
+    - celery
+
+test:
+  # Python imports
+  imports:
+    - lazr
+    - lazr.jobrunner
+    - lazr.jobrunner.bin
+    - lazr.jobrunner.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jobrunnerctl --help
+    - clear-queues --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lazr.jobrunner
+  license: GPL v3
+  summary: 'A Celery based job runner'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

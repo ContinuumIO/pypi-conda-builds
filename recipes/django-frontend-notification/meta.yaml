@@ -1,0 +1,65 @@
+package:
+  name: django-frontend-notification
+  version: "0.3.0"
+
+source:
+  fn: django-frontend-notification-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-frontend-notification/django-frontend-notification-0.3.0.tar.gz
+  md5: 6cbb7cab8ad4b334510ca478b5decc87
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-frontend-notification = django-frontend-notification:main
+    #
+    # Would create an entry point called django-frontend-notification that calls django-frontend-notification.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-lets-go >=2.8.5
+    - linaro-django-pagination ==2.0.2
+
+  run:
+    - python
+    - django-lets-go >=2.8.5
+    - linaro-django-pagination ==2.0.2
+
+test:
+  # Python imports
+  imports:
+    - frontend_notification
+    - frontend_notification.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/areski/django-frontend-notification
+  license: MIT License
+  summary: 'django application to display list of notifications, run basic actions such as view all notifications and delete notifications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

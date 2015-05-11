@@ -1,0 +1,64 @@
+package:
+  name: fuzzify
+  version: "0.0.1"
+
+source:
+  fn: fuzzify-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fuzzify/fuzzify-0.0.1.tar.gz
+  md5: b64a375c706a89f107f12c3016971a7b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fuzzify = fuzzify:main
+    #
+    # Would create an entry point called fuzzify that calls fuzzify.main()
+
+    - fuzzify = fuzzify:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - path.py
+
+  run:
+    - python
+    - path.py
+
+test:
+  # Python imports
+  imports:
+    - fuzzify
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fuzzify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/whardier/fuzzify
+  license: MIT License
+  summary: 'rSync fuzzy file pool creation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

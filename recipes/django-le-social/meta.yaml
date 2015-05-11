@@ -1,0 +1,68 @@
+package:
+  name: django-le-social
+  version: "0.8"
+
+source:
+  fn: django-le-social-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-le-social/django-le-social-0.8.tar.gz
+  md5: 8c979073f850da55f3e3dce8d4887bf7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-le-social = django-le-social:main
+    #
+    # Would create an entry point called django-le-social that calls django-le-social.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - le_social
+    - le_social.openid
+    - le_social.openid.tests
+    - le_social.registration
+    - le_social.registration.tests
+    - le_social.twitter
+    - le_social.twitter.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brutasse/django-le-social
+  license: BSD License
+  summary: 'External registration / authentication for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

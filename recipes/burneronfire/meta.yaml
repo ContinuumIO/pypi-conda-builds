@@ -1,0 +1,65 @@
+package:
+  name: burneronfire
+  version: "0.1"
+
+source:
+  fn: BurnerOnFire-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/B/BurnerOnFire/BurnerOnFire-0.1.tar.gz
+  md5: d4c11465357c5cb5d2338a81c61b98d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - burneronfire = burneronfire:main
+    #
+    # Would create an entry point called burneronfire that calls burneronfire.main()
+
+    - burneronfire=burneronfire:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - minihallib
+
+  run:
+    - python
+    - setuptools
+    - minihallib
+
+test:
+  # Python imports
+  imports:
+    - burneronfire
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - burneronfire --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.kiberpipa.org/burneronfire/
+  license: BSD License
+  summary: 'BurnerOnFire is multi-threaded program that can write same content (iso files for now) to multiple CD/DVD burners simultaneously.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

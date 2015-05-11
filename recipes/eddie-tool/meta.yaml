@@ -1,0 +1,75 @@
+package:
+  name: eddie-tool
+  version: "1.0.0"
+
+source:
+  fn: EDDIE-Tool-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/E/EDDIE-Tool/EDDIE-Tool-1.0.0.tar.gz
+  md5: 61e36a881bd3341ee00d331c5c70feef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eddie-tool = eddie-tool:main
+    #
+    # Would create an entry point called eddie-tool that calls eddie-tool.main()
+
+    - eddie-agent = eddietool.commands:agent
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - eddietool
+    - eddietool.arch
+    - eddietool.arch.Darwin
+    - eddietool.arch.FreeBSD
+    - eddietool.arch.HP_UX
+    - eddietool.arch.Linux
+    - eddietool.arch.Linux.linux_diskio
+    - eddietool.arch.OpenBSD
+    - eddietool.arch.SunOS
+    - eddietool.arch.Windows
+    - eddietool.common
+    - eddietool.common.Directives
+    - eddietool.common.Extra
+    - eddietool.common.Extra.pysnmp
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eddie-agent --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eddie-tool.psychofx.com/
+  license: GNU General Public License (GPL)
+  summary: 'The EDDIE Tool is a system and network monitoring, security, and performance analysis agent developed entirely in threaded Python. Its key features are portability, extendibility, and powerful configuration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

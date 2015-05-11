@@ -1,0 +1,68 @@
+package:
+  name: mr.igor
+  version: "1.4"
+
+source:
+  fn: mr.igor-1.4.zip
+  url: https://pypi.python.org/packages/source/m/mr.igor/mr.igor-1.4.zip
+  md5: ac3c2d0767769fc87ad76d4b8cf1d8fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.igor = mr.igor:main
+    #
+    # Would create an entry point called mr.igor that calls mr.igor.main()
+
+    - igor=mr.igor:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pyflakes >=0.5
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pyflakes >=0.5
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.igor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - igor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/davisagli/mr.igor
+  license: MIT License
+  summary: 'Mr. Igor provides the parts you need to build your Frankenprogram.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

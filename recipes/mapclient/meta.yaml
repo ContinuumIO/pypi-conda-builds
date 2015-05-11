@@ -1,0 +1,84 @@
+package:
+  name: mapclient
+  version: "0.11.2"
+
+source:
+  fn: mapclient-0.11.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mapclient/mapclient-0.11.2.tar.gz
+  md5: d968628dbe276a5b005402a77545e248
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mapclient = mapclient:main
+    #
+    # Would create an entry point called mapclient that calls mapclient.main()
+
+    - mapclient=mapclient.application:winmain
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rdflib
+    - pmr2.wfctrl
+    - pmr2.client
+    - pyside
+
+  run:
+    - python
+    - rdflib
+    - pmr2.wfctrl
+    - pmr2.client
+    - pyside
+
+test:
+  # Python imports
+  imports:
+    - mapclient
+    - mapclient.core
+    - mapclient.mountpoints
+    - mapclient.settings
+    - mapclient.tools
+    - mapclient.tools.annotation
+    - mapclient.tools.osxapp
+    - mapclient.tools.pluginwizard
+    - mapclient.tools.pmr
+    - mapclient.widgets
+    - mapclientplugins
+    - mapclientplugins.imagesourcestep
+    - mapclientplugins.imagesourcestep.widgets
+    - mapclientplugins.pointcloudserializerstep
+    - mapclientplugins.pointcloudserializerstep.widgets
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mapclient --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/mapclient
+  license: UNKNOWN
+  summary: 'A framework for managing and sharing workflows.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

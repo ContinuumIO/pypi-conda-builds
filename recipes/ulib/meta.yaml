@@ -1,0 +1,66 @@
+package:
+  name: ulib
+  version: "0.26"
+
+source:
+  fn: ulib-0.26.tar.gz
+  url: https://pypi.python.org/packages/source/u/ulib/ulib-0.26.tar.gz
+  md5: 6c3a86248968068551250121bb2da2f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ulib = ulib:main
+    #
+    # Would create an entry point called ulib that calls ulib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ulib
+    - ulib/network
+    - ulib/system
+    - ulib/tests
+    - ulib/tools
+    - ulib/ui
+    - ulib/validators
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mdevaev/ulib
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Useful python library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

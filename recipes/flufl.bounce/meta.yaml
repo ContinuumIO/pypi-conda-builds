@@ -1,0 +1,70 @@
+package:
+  name: flufl.bounce
+  version: "2.3"
+
+source:
+  fn: flufl.bounce-2.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flufl.bounce/flufl.bounce-2.3.tar.gz
+  md5: 6a782aa7a508e8126105411935249139
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flufl.bounce = flufl.bounce:main
+    #
+    # Would create an entry point called flufl.bounce that calls flufl.bounce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - enum34
+
+  run:
+    - python
+    - zope.interface
+    - enum34
+
+test:
+  # Python imports
+  imports:
+    - flufl
+    - flufl.bounce
+    - flufl.bounce._detectors
+    - flufl.bounce._detectors.tests
+    - flufl.bounce.docs
+    - flufl.bounce.tests
+    - flufl.bounce.tests.data
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/flufl.bounce
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'Email bounce detectors.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

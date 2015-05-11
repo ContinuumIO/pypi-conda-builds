@@ -1,0 +1,74 @@
+package:
+  name: hurry.query
+  version: "1.1.1"
+
+source:
+  fn: hurry.query-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.query/hurry.query-1.1.1.tar.gz
+  md5: be22c3a1b5247a3536355d084c080a62
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.query = hurry.query:main
+    #
+    # Would create an entry point called hurry.query that calls hurry.query.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.catalog
+    - zodb3
+    - zope.catalog
+    - zope.component
+    - zope.interface
+    - zope.intid
+
+  run:
+    - python
+    - setuptools
+    - zc.catalog
+    - zodb3
+    - zope.catalog
+    - zope.component
+    - zope.interface
+    - zope.intid
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.query
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/hurry.query
+  license: Zope Public License
+  summary: 'Higher level query system for the zope.catalog'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

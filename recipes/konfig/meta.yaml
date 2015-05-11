@@ -1,0 +1,65 @@
+package:
+  name: konfig
+  version: "0.9"
+
+source:
+  fn: konfig-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/k/konfig/konfig-0.9.tar.gz
+  md5: dabc925653161ffaa8bf477488dc6b3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - konfig = konfig:main
+    #
+    # Would create an entry point called konfig that calls konfig.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configparser
+    - argparse
+
+  run:
+    - python
+    - configparser
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - konfig
+    - konfig.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla-services/konfig
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Yet Another Config Parser.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

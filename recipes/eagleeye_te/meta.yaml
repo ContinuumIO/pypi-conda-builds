@@ -1,0 +1,71 @@
+package:
+  name: eagleeye_te
+  version: "0.1.2"
+
+source:
+  fn: eagleeye_te-0.1.2.zip
+  url: https://pypi.python.org/packages/source/e/eagleeye_te/eagleeye_te-0.1.2.zip
+  md5: 6b0e0fc1c4888abe7ab9d9727ff22920
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eagleeye_te = eagleeye_te:main
+    #
+    # Would create an entry point called eagleeye_te that calls eagleeye_te.main()
+
+    - eagleeye = eagleeye.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tasa
+    - selenium
+    - pyvirtualdisplay
+    - requests
+
+  run:
+    - python
+    - tasa
+    - selenium
+    - pyvirtualdisplay
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - eagleeye
+    - eagleeye_te
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eagleeye --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PaulMcMillan/eagleeye
+  license: BSD License
+  summary: 'Distributed tool for screenshotting webpages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

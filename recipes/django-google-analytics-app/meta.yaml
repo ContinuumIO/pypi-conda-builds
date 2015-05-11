@@ -1,0 +1,67 @@
+package:
+  name: django-google-analytics-app
+  version: "2.0.3"
+
+source:
+  fn: django-google-analytics-app-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-google-analytics-app/django-google-analytics-app-2.0.3.tar.gz
+  md5: 869d469150f144bb48e303c9d20da75a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-google-analytics-app = django-google-analytics-app:main
+    #
+    # Would create an entry point called django-google-analytics-app that calls django-google-analytics-app.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-celery
+    - httplib2
+
+  run:
+    - python
+    - django
+    - django-celery
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - google_analytics
+    - google_analytics.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/django-google-analytics
+  license: BSD License
+  summary: 'Django Google Analytics app allowing for server side/non-js tracking.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: infi.mountoolinux
+  version: "0.1.17"
+
+source:
+  fn: infi.mountoolinux-0.1.17.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.mountoolinux/infi.mountoolinux-0.1.17.tar.gz
+  md5: 6e4802d8c4c468494bae804de84e7401
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.mountoolinux = infi.mountoolinux:main
+    #
+    # Would create an entry point called infi.mountoolinux that calls infi.mountoolinux.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - brownie
+    - infi.exceptools
+    - infi.execute
+    - infi.pyutils
+    - munch
+    - setuptools
+
+  run:
+    - python
+    - brownie
+    - infi.exceptools
+    - infi.execute
+    - infi.pyutils
+    - munch
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.mountoolinux
+    - infi.mountoolinux.mount
+    - infi.mountoolinux.mount.errors
+    - infi.mountoolinux.mount.manager
+    - infi.mountoolinux.mount.manager.mounter
+    - infi.mountoolinux.mount.manager.mounter.tests
+    - infi.mountoolinux.mount.manager.show_mounts
+    - infi.mountoolinux.mount.manager.show_mounts.tests
+    - infi.mountoolinux.mount.manager.supported_file_systems
+    - infi.mountoolinux.mount.manager.supported_file_systems.tests
+    - infi.mountoolinux.mount.manager.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.mountoolinux
+  license: Python Software Foundation License
+  summary: 'Python library for handling POSIX mounts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: confluent_server
+  version: "1.0"
+
+source:
+  fn: confluent_server-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/confluent_server/confluent_server-1.0.tar.gz
+  md5: ed847d415cfed3453761af87c3ac11ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - confluent_server = confluent_server:main
+    #
+    # Would create an entry point called confluent_server that calls confluent_server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto >=2.6
+    - confluent_client >=0.1.0
+    - eventlet
+    - pyghmi >=0.6.5
+
+  run:
+    - python
+    - pycrypto >=2.6
+    - confluent_client >=0.1.0
+    - eventlet
+    - pyghmi >=0.6.5
+
+test:
+  # Python imports
+  imports:
+    - confluent
+    - confluent/config
+    - confluent/interface
+    - confluent/plugins/configuration/
+    - confluent/plugins/hardwaremanagement/
+    - confluent_server
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://xcat.sf.net/
+  license: UNKNOWN
+  summary: 'confluent systems management server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

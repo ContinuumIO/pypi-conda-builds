@@ -1,0 +1,63 @@
+package:
+  name: logtopg
+  version: "0.1.0"
+
+source:
+  fn: LogToPG-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/L/LogToPG/LogToPG-0.1.0.tar.gz
+  md5: 1ad89459ad5c767a402f866f1b739453
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logtopg = logtopg:main
+    #
+    # Would create an entry point called logtopg that calls logtopg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2
+
+  run:
+    - python
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - logtopg
+    - logtopg.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/216software/logtopg/
+  license: BSD License
+  summary: 'Python logging handler that stores logs in postgresql'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

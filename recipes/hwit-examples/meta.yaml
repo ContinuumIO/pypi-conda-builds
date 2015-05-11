@@ -1,0 +1,64 @@
+package:
+  name: hwit-examples
+  version: "0.01-r00018"
+
+source:
+  fn: hwit-examples-0.01-r00018.tar.gz
+  url: https://pypi.python.org/packages/source/h/hwit-examples/hwit-examples-0.01-r00018.tar.gz
+  md5: a2e1e6111d4ea8ca0513f15913012ca7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hwit-examples = hwit-examples:main
+    #
+    # Would create an entry point called hwit-examples that calls hwit-examples.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - hwit
+    - hwit.examples
+    - hwit.examples.common
+    - hwit.examples.doc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hwit.org
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Examples for use with HWIT'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: django-unslashed
+  version: "0.3.0"
+
+source:
+  fn: django-unslashed-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-unslashed/django-unslashed-0.3.0.tar.gz
+  md5: f09ff77fe9f65bb23cfe2f8506cf727e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-unslashed = django-unslashed:main
+    #
+    # Would create an entry point called django-unslashed that calls django-unslashed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+
+  run:
+    - python
+    - django >=1.5
+
+test:
+  # Python imports
+  imports:
+    - unslashed
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dghubble/django-unslashed
+  license: MIT License
+  summary: 'Django Middleware that can automatically remove trailing URL slashes and 301 redirect to the non-slash-terminated URL.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

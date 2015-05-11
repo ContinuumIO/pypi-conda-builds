@@ -1,0 +1,66 @@
+package:
+  name: pyeurofx
+  version: "0.4.4"
+
+source:
+  fn: pyeurofx-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyeurofx/pyeurofx-0.4.4.tar.gz
+  md5: ced824ec0cc257a8ae6dfca98eec73de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyeurofx = pyeurofx:main
+    #
+    # Would create an entry point called pyeurofx that calls pyeurofx.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - lxml
+    - requests
+    - pandas
+
+  run:
+    - python
+    - lxml
+    - requests
+    - pandas
+
+test:
+  # Python imports
+  imports:
+    - eurofx
+    - pyeurofx
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/supercoderz/pyeurofx
+  license: UNKNOWN
+  summary: 'Python module to get and parse daily and historical FX rates from ECB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

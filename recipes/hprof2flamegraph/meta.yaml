@@ -1,0 +1,64 @@
+package:
+  name: hprof2flamegraph
+  version: "0.0.2"
+
+source:
+  fn: hprof2flamegraph-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hprof2flamegraph/hprof2flamegraph-0.0.2.tar.gz
+  md5: c3ef78fab69e34a84ed43a2873f136ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hprof2flamegraph = hprof2flamegraph:main
+    #
+    # Would create an entry point called hprof2flamegraph that calls hprof2flamegraph.main()
+
+    - stackcollapse-hprof = stackcollapse_hprof:main
+    - stackcollapse-hpl = stackcollapse_hpl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hprof2flamegraph
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - stackcollapse-hprof --help
+    - stackcollapse-hpl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cykl/hprof2flamegraph
+  license: License :: OSI Approved :: BSD License
+  summary: 'Flame graphs for Java'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

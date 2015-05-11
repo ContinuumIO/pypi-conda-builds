@@ -1,0 +1,69 @@
+package:
+  name: flask-alembic
+  version: "1.1.1"
+
+source:
+  fn: Flask-Alembic-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Alembic/Flask-Alembic-1.1.1.tar.gz
+  md5: e640d3f7be95bc5e865909eb5e8f7c40
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-alembic = flask-alembic:main
+    #
+    # Would create an entry point called flask-alembic that calls flask-alembic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - alembic >=0.7
+    - flask >=0.10
+    - flask-sqlalchemy >=2
+    - sqlalchemy >=0.9
+
+  run:
+    - python
+    - alembic >=0.7
+    - flask >=0.10
+    - flask-sqlalchemy >=2
+    - sqlalchemy >=0.9
+
+test:
+  # Python imports
+  imports:
+    - flask_alembic
+    - flask_alembic.cli
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/davidism/flask-alembic
+  license: BSD License
+  summary: 'Flask extension to integrate Alembic migrations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: latex2dnd
+  version: "0.9.6"
+
+source:
+  fn: latex2dnd-0.9.6.tar.gz
+  url: https://pypi.python.org/packages/source/l/latex2dnd/latex2dnd-0.9.6.tar.gz
+  md5: a67dabddaa61f0d87d6125acc166dee2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - latex2dnd = latex2dnd:main
+    #
+    # Would create an entry point called latex2dnd that calls latex2dnd.main()
+
+    - latex2dnd = latex2dnd.main:CommandLine
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - path.py
+
+  run:
+    - python
+    - lxml
+    - path.py
+
+test:
+  # Python imports
+  imports:
+    - latex2dnd
+    - latex2dnd.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - latex2dnd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/latex2dnd/
+  license: LICENSE.txt
+  summary: 'Generate edX drag-and-drop problems using compilation from latex'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

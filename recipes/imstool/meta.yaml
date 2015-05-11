@@ -1,0 +1,69 @@
+package:
+  name: imstool
+  version: "0.2"
+
+source:
+  fn: imstool-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/imstool/imstool-0.2.tar.gz
+  md5: 583e08f66d38ae33b5d27ba9ae08c696
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - imstool = imstool:main
+    #
+    # Would create an entry point called imstool that calls imstool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - imstool
+    - imstool.bb
+    - imstool.imscc
+    - imstool.imscp
+    - imstool.mitocw
+    - imstool.moodle
+    - imstool.qti
+    - imstool.webct
+    - imstool.webctvista
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU General Public License (GPL)
+  summary: 'A python library for reading and writing content packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

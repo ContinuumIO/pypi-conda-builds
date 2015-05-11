@@ -1,0 +1,63 @@
+package:
+  name: django-proxy-storage
+  version: "0.1.1"
+
+source:
+  fn: django-proxy-storage-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-proxy-storage/django-proxy-storage-0.1.1.tar.gz
+  md5: f44d941924689fcb316f338c087f9dd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-proxy-storage = django-proxy-storage:main
+    #
+    # Would create an entry point called django-proxy-storage that calls django-proxy-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - proxy_storage
+    - proxy_storage/db
+    - proxy_storage/meta_backends
+    - proxy_storage/storages
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/chibisov/django-proxy-storage
+  license: BSD License
+  summary: 'Proxy storage for any Django storage'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

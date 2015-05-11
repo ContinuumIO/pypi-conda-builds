@@ -1,0 +1,71 @@
+package:
+  name: marcxml2mods
+  version: "0.2.0"
+
+source:
+  fn: marcxml2mods-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/marcxml2mods/marcxml2mods-0.2.0.tar.gz
+  md5: 3c6e1062ae27688cb7833771f90782e2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marcxml2mods = marcxml2mods:main
+    #
+    # Would create an entry point called marcxml2mods that calls marcxml2mods.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - xmltodict
+    - pydhtmlparser >=2.0.9
+    - marcxml_parser
+    - remove_hairs
+
+  run:
+    - python
+    - lxml
+    - xmltodict
+    - pydhtmlparser >=2.0.9
+    - marcxml_parser
+    - remove_hairs
+
+test:
+  # Python imports
+  imports:
+    - marcxml2mods
+    - marcxml2mods.mods_postprocessor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edeposit/marcxml2mods
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Module for conversion from MARC XML / OAI to MODS used in NK CZ.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

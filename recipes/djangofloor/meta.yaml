@@ -1,0 +1,103 @@
+package:
+  name: djangofloor
+  version: "0.9.6"
+
+source:
+  fn: djangofloor-0.9.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangofloor/djangofloor-0.9.6.tar.gz
+  md5: f89ae46b6e950a4685c9d49386678486
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangofloor = djangofloor:main
+    #
+    # Would create an entry point called djangofloor that calls djangofloor.main()
+
+    - djangofloor-manage = djangofloor.scripts:manage
+    - djangofloor-gunicorn = djangofloor.scripts:gunicorn
+    - djangofloor-celery = djangofloor.scripts:celery
+    - djangofloor-uswgi = djangofloor.scripts:uswgi
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.8
+    - django-allauth
+    - gunicorn
+    - django-bootstrap3
+    - jsmin
+    - django-debug-toolbar
+    - rcssmin
+    - django-admin-bootstrapped
+    - django-pipeline
+    - celery
+    - django-redis
+    - django-redis-sessions-fork
+    - django-redis-cache
+    - pathlib
+    - funcsigs
+
+  run:
+    - python
+    - django >=1.8
+    - django-allauth
+    - gunicorn
+    - django-bootstrap3
+    - jsmin
+    - django-debug-toolbar
+    - rcssmin
+    - django-admin-bootstrapped
+    - django-pipeline
+    - celery
+    - django-redis
+    - django-redis-sessions-fork
+    - django-redis-cache
+    - pathlib
+    - funcsigs
+
+test:
+  # Python imports
+  imports:
+    - djangofloor
+    - djangofloor.management
+    - djangofloor.management.commands
+    - djangofloor.migrations
+    - djangofloor.templatetags
+    - djangofloor.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - djangofloor-manage --help
+    - djangofloor-gunicorn --help
+    - djangofloor-celery --help
+    - djangofloor-uswgi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: CeCILL-b
+  summary: u'No description yet.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

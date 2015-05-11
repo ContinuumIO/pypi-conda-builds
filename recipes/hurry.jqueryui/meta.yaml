@@ -1,0 +1,70 @@
+package:
+  name: hurry.jqueryui
+  version: "1.8.5.1"
+
+source:
+  fn: hurry.jqueryui-1.8.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.jqueryui/hurry.jqueryui-1.8.5.1.tar.gz
+  md5: a539410cde4a268ea77781d89f7935d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.jqueryui = hurry.jqueryui:main
+    #
+    # Would create an entry point called hurry.jqueryui that calls hurry.jqueryui.main()
+
+    - jqueryuiprepare = hurry.jqueryui.prepare:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.resource >=0.10
+    - hurry.jquery >=1.4.2.3
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.resource >=0.10
+    - hurry.jquery >=1.4.2.3
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.jqueryui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jqueryuiprepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'hurry.resource style resources for jQuery UI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

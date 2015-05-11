@@ -1,0 +1,69 @@
+package:
+  name: poppy-creature
+  version: "1.5.3"
+
+source:
+  fn: poppy-creature-1.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/poppy-creature/poppy-creature-1.5.3.tar.gz
+  md5: 16c70d92e5b6ac513b4392c556420983
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - poppy-creature = poppy-creature:main
+    #
+    # Would create an entry point called poppy-creature that calls poppy-creature.main()
+
+    - poppy-shell=poppy.creatures.poppy_sim:main
+    - poppy-snap=poppy.creatures.snap_launcher:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pypot[http-server] >=2.2
+    - bottle
+
+  run:
+    - python
+    - pypot[http-server] >=2.2
+    - bottle
+
+test:
+  # Python imports
+  imports:
+    - poppy
+    - poppy.creatures
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - poppy-shell --help
+    - poppy-snap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/poppy-project/poppy-creature
+  license: GNU GENERAL PUBLIC LICENSE Version 3
+  summary: 'Abstract Poppy Creature Software Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

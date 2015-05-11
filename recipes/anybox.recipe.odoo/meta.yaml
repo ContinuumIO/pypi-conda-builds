@@ -1,0 +1,76 @@
+package:
+  name: anybox.recipe.odoo
+  version: "1.9.1"
+
+source:
+  fn: anybox.recipe.odoo-1.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/anybox.recipe.odoo/anybox.recipe.odoo-1.9.1.tar.gz
+  md5: 3292682b5ece409b53e798bd87f7f28a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anybox.recipe.odoo = anybox.recipe.odoo:main
+    #
+    # Would create an entry point called anybox.recipe.odoo that calls anybox.recipe.odoo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.recipe.egg
+    - zc.buildout >=2.2.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.recipe.egg
+    - zc.buildout >=2.2.0
+
+test:
+  # Python imports
+  imports:
+    - anybox
+    - anybox.recipe
+    - anybox.recipe.odoo
+    - anybox.recipe.odoo.runtime
+    - anybox.recipe.odoo.runtime.backports
+    - anybox.recipe.odoo.runtime.backports.cli
+    - anybox.recipe.odoo.runtime.tests
+    - anybox.recipe.odoo.tests
+    - anybox.recipe.odoo.vcs
+    - anybox.recipe.odoo.vcs.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/anybox/anybox.recipe.odoo
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'A buildout recipe to install and configure OpenERP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

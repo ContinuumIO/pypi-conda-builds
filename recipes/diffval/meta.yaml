@@ -1,0 +1,63 @@
+package:
+  name: diffval
+  version: "0.14"
+
+source:
+  fn: diffval-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/d/diffval/diffval-0.14.tar.gz
+  md5: 9325848210743898d0776c1df1478a22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - diffval = diffval:main
+    #
+    # Would create an entry point called diffval that calls diffval.main()
+
+    - diffval=diffval.interface:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - diffval
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - diffval --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://efw.ssl.berkeley.edu/packages/diffval
+  license: Apache Software License
+  summary: 'Validates tests by comparing real output against expected output'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

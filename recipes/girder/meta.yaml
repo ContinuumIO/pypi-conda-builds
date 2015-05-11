@@ -1,0 +1,85 @@
+package:
+  name: girder
+  version: "1.2.4"
+
+source:
+  fn: girder-1.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/girder/girder-1.2.4.tar.gz
+  md5: 45f63db747a8d5bba04d62008e7220c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - girder = girder:main
+    #
+    # Would create an entry point called girder that calls girder.main()
+
+    - girder-server = girder.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cffi ==0.8.6
+    - cherrypy ==3.3.0
+    - pymongo ==2.8
+    - bcrypt ==1.1.1
+    - boto ==2.29.1
+    - mako ==1.0.0
+    - pyyaml ==3.11
+    - requests ==2.3.0
+    - psutil ==2.1.3
+
+  run:
+    - python
+    - cffi ==0.8.6
+    - cherrypy ==3.3.0
+    - pymongo ==2.8
+    - bcrypt ==1.1.1
+    - boto ==2.29.1
+    - mako ==1.0.0
+    - pyyaml ==3.11
+    - requests ==2.3.0
+    - psutil ==2.1.3
+
+test:
+  # Python imports
+  imports:
+    - girder
+    - girder.api
+    - girder.api.v1
+    - girder.external
+    - girder.models
+    - girder.utility
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - girder-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://girder.readthedocs.org
+  license: Apache Software License
+  summary: 'High-performance data management platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

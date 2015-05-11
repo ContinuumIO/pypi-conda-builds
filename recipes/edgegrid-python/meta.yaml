@@ -1,0 +1,64 @@
+package:
+  name: edgegrid-python
+  version: "1.0.6"
+
+source:
+  fn: edgegrid-python-1.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/e/edgegrid-python/edgegrid-python-1.0.6.tar.gz
+  md5: 09780dc5cbd0214f82901a6a9e80fa13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edgegrid-python = edgegrid-python:main
+    #
+    # Would create an entry point called edgegrid-python that calls edgegrid-python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.2.2
+
+  run:
+    - python
+    - requests >=1.2.2
+
+test:
+  # Python imports
+  imports:
+    - akamai
+    - akamai.edgegrid
+    - akamai.edgegrid.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/akamai-open/AkamaiOPEN-edgegrid-python
+  license: LICENSE.txt
+  summary: '{OPEN} client authentication protocol for python-requests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

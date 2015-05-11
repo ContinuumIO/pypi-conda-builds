@@ -1,0 +1,68 @@
+package:
+  name: goesdownloader
+  version: "0.0.5"
+
+source:
+  fn: goesdownloader-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/goesdownloader/goesdownloader-0.0.5.tar.gz
+  md5: 5682b0c4041e1ed77b943ef9d607c8bf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - goesdownloader = goesdownloader:main
+    #
+    # Would create an entry point called goesdownloader that calls goesdownloader.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - noaaclass ==0.0.14
+    - pytz ==2014.4
+    - goescalibration ==0.0.6
+    - netcdf ==0.0.32
+
+  run:
+    - python
+    - noaaclass ==0.0.14
+    - pytz ==2014.4
+    - goescalibration ==0.0.6
+    - netcdf ==0.0.32
+
+test:
+  # Python imports
+  imports:
+    - goesdownloader
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gersolar/goesdownloader
+  license: MIT
+  summary: 'A python library that allow to download the netcdf images of the NOAA CLASS (Comprehensive Large Array-Data Stewardship System).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

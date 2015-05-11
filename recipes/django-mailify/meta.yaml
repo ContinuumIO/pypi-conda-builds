@@ -1,0 +1,62 @@
+package:
+  name: django-mailify
+  version: "0.1.0alpha2"
+
+source:
+  fn: django-mailify-0.1.0alpha2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mailify/django-mailify-0.1.0alpha2.tar.gz
+  md5: d4ae3b4870969e13f61c439f9b9fa773
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mailify = django-mailify:main
+    #
+    # Would create an entry point called django-mailify that calls django-mailify.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mailify
+    - mailify.management
+    - mailify.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://keithio.github.com/django-mailify
+  license: MIT License
+  summary: 'Enhance the builtin Django mail functionality to include task queueing or deferment.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

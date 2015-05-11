@@ -1,0 +1,78 @@
+package:
+  name: li-repo
+  version: "1.1.22"
+
+source:
+  fn: li-repo-1.1.22.tar.gz
+  url: https://pypi.python.org/packages/source/l/li-repo/li-repo-1.1.22.tar.gz
+  md5: 621c52a277f312f6d36d0c20ddb57379
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - li-repo = li-repo:main
+    #
+    # Would create an entry point called li-repo that calls li-repo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - django ==1.6.7
+    - jsonfield >=0.9.20
+    - psycopg2
+    - django-mptt
+
+  run:
+    - python
+    - distribute
+    - django ==1.6.7
+    - jsonfield >=0.9.20
+    - psycopg2
+    - django-mptt
+
+test:
+  # Python imports
+  imports:
+    - repositories
+    - repositories.catalogo
+    - repositories.cliente
+    - repositories.cobranca
+    - repositories.configuracao
+    - repositories.faturamento
+    - repositories.marketplace
+    - repositories.pedido
+    - repositories.plataforma
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lojaintegrada/LI-Repo
+  license: MIT License
+  summary: "Loja Integrada's models for Django ORM."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

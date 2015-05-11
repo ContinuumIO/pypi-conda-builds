@@ -1,0 +1,63 @@
+package:
+  name: android-resource-remover
+  version: "0.1.0"
+
+source:
+  fn: android-resource-remover-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/android-resource-remover/android-resource-remover-0.1.0.tar.gz
+  md5: ca4e7857b2b4ba3376d2f10d21e474ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - android-resource-remover = android-resource-remover:main
+    #
+    # Would create an entry point called android-resource-remover that calls android-resource-remover.main()
+
+    - android-resource-remover = android_clean_app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml >=3.3.3
+
+  run:
+    - python
+    - lxml >=3.3.3
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - android-resource-remover --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/KeepSafe/android-resource-remover/
+  license: BSD License
+  summary: 'Android resource remover'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

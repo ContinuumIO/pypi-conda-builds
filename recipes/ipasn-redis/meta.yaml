@@ -1,0 +1,63 @@
+package:
+  name: ipasn-redis
+  version: "1.0"
+
+source:
+  fn: ipasn-redis-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipasn-redis/ipasn-redis-1.0.tar.gz
+  md5: 5d7d9a1c93afd0d9051beb7ced761aec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipasn-redis = ipasn-redis:main
+    #
+    # Would create an entry point called ipasn-redis that calls ipasn-redis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+
+  run:
+    - python
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - ipasn
+    - ipasn.redis
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CIRCL/IP-ASN-history
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'API to access an IP-ASN-history instance via Redis.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

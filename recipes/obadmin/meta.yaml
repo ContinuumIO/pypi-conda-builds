@@ -1,0 +1,74 @@
+package:
+  name: obadmin
+  version: "1.2"
+
+source:
+  fn: obadmin-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/o/obadmin/obadmin-1.2.tar.gz
+  md5: 68a526dc1a4fd2aac273b52c43995d5a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - obadmin = obadmin:main
+    #
+    # Would create an entry point called obadmin that calls obadmin.main()
+
+    - oblock=obadmin.pavement:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ebpub >=1.2
+    - ebdata >=1.2
+    - pastescript
+    - paver
+    - django-background-task
+
+  run:
+    - python
+    - setuptools
+    - ebpub >=1.2
+    - ebdata >=1.2
+    - pastescript
+    - paver
+    - django-background-task
+
+test:
+  # Python imports
+  imports:
+    - obadmin
+    - obadmin.admin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - oblock --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://openblockproject.org/docs
+  license: GNU General Public License (GPL)
+  summary: 'Setup and administrative tools for OpenBlock (hyperlocal news for Django)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

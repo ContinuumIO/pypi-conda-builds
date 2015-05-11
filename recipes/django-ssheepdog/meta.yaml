@@ -1,0 +1,72 @@
+package:
+  name: django-ssheepdog
+  version: "0.2.0"
+
+source:
+  fn: django-ssheepdog-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ssheepdog/django-ssheepdog-0.2.0.tar.gz
+  md5: f4a9e24511fe876625f4384c8f865405
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ssheepdog = django-ssheepdog:main
+    #
+    # Would create an entry point called django-ssheepdog that calls django-ssheepdog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-celery
+    - django-kombu
+    - south
+    - ssh
+
+  run:
+    - python
+    - django-celery
+    - django-kombu
+    - south
+    - ssh
+
+test:
+  # Python imports
+  imports:
+    - src
+    - ssheepdog
+    - ssheepdog.management
+    - ssheepdog.management.commands
+    - ssheepdog.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SheepDogInc/django-ssheepdog
+  license: UNKNOWN
+  summary: 'django-ssheepdog is a public ssh key management tool for teams of programmers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

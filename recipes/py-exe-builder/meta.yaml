@@ -1,0 +1,62 @@
+package:
+  name: py-exe-builder
+  version: "0.1"
+
+source:
+  fn: py-exe-builder-0.1.zip
+  url: https://pypi.python.org/packages/source/p/py-exe-builder/py-exe-builder-0.1.zip
+  md5: 85bc42cf9a982bd1d9b87eacc4d597b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - py-exe-builder = py-exe-builder:main
+    #
+    # Would create an entry point called py-exe-builder that calls py-exe-builder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py2exe
+
+  run:
+    - python
+    - py2exe
+
+test:
+  # Python imports
+  imports:
+    - pyexebuilder
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.j5int.com/
+  license: Apache Software License
+  summary: 'Uses py2exe to create small exe stubs that leverage a full python installation, rather than packing the required pyc files in to the executable.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

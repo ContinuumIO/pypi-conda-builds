@@ -1,0 +1,73 @@
+package:
+  name: winsible
+  version: "0.1.0"
+
+source:
+  fn: winsible-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/w/winsible/winsible-0.1.0.tar.gz
+  md5: ab8f35cdaf9fc7998f52e31e2d3bcd4d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - winsible = winsible:main
+    #
+    # Would create an entry point called winsible that calls winsible.main()
+
+    - winsible = winsible:winsible
+    - winsible-playbook = winsible:winsible_playbook
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - ansible >=1.8.4
+    - importing >=1.10
+    - cachetools >=1.0
+    - paramiko >=1.15.2
+    - setuptools
+
+  run:
+    - python
+    - ansible >=1.8.4
+    - importing >=1.10
+    - cachetools >=1.0
+    - paramiko >=1.15.2
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - winsible
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - winsible --help
+    - winsible-playbook --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pjeby/winsible
+  license: MIT
+  summary: 'A faster `ansible` For The (cyg)Win (and other platforms)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

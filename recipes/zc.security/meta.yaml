@@ -1,0 +1,77 @@
+package:
+  name: zc.security
+  version: "4.2.0"
+
+source:
+  fn: zc.security-4.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.security/zc.security-4.2.0.tar.gz
+  md5: 79fa5259ff5834d6cc1b9ac79236e3b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.security = zc.security:main
+    #
+    # Would create an entry point called zc.security that calls zc.security.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.authentication
+    - zope.app.component
+    - zope.app.security
+    - zope.component
+    - zope.interface
+    - zope.security
+    - zope.testing
+
+  run:
+    - python
+    - setuptools
+    - zope.app.authentication
+    - zope.app.component
+    - zope.app.security
+    - zope.component
+    - zope.interface
+    - zope.security
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.security
+    - zc.security.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.zope.org/zc.sharing
+  license: Zope Public License
+  summary: 'Principal-searching UI for Zope 3 Pluggable Authentication'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

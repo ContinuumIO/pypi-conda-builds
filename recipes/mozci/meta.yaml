@@ -1,0 +1,72 @@
+package:
+  name: mozci
+  version: "0.5.0"
+
+source:
+  fn: mozci-0.5.0.zip
+  url: https://pypi.python.org/packages/source/m/mozci/mozci-0.5.0.zip
+  md5: 2c1df6a13438748648b9ddf5cdc40b36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozci = mozci:main
+    #
+    # Would create an entry point called mozci that calls mozci.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.2
+    - bugsy ==0.4.0
+    - progressbar ==2.3
+    - requests ==2.5.1
+    - keyring ==5.3
+
+  run:
+    - python
+    - beautifulsoup4 ==4.3.2
+    - bugsy ==0.4.0
+    - progressbar ==2.3
+    - requests ==2.5.1
+    - keyring ==5.3
+
+test:
+  # Python imports
+  imports:
+    - mozci
+    - mozci.sources
+    - mozci.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/armenzg/mozilla_ci_tools
+  license: MPL
+  summary: 'It helps us dealing with the CI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

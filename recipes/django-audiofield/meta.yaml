@@ -1,0 +1,65 @@
+package:
+  name: django-audiofield
+  version: "0.6.4"
+
+source:
+  fn: django-audiofield-0.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-audiofield/django-audiofield-0.6.4.tar.gz
+  md5: 930ee3b93c7fab199f11a44949c308bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-audiofield = django-audiofield:main
+    #
+    # Would create an entry point called django-audiofield that calls django-audiofield.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.1.7
+    - django-celery >=3.1.1
+
+  run:
+    - python
+    - celery >=3.1.7
+    - django-celery >=3.1.1
+
+test:
+  # Python imports
+  imports:
+    - audiofield
+    - audiofield.middleware
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Star2Billing/django-audiofield
+  license: MIT License
+  summary: 'Django application which allows audio file upload and conversion to mp3, wav and ogg format'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

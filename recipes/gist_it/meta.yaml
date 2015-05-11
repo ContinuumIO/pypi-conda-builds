@@ -1,0 +1,67 @@
+package:
+  name: gist_it
+  version: "1.0.5"
+
+source:
+  fn: gist_it-1.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/gist_it/gist_it-1.0.5.tar.gz
+  md5: d8bbe3b9a0ef8e27894812f3a2f11072
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gist_it = gist_it:main
+    #
+    # Would create an entry point called gist_it that calls gist_it.main()
+
+    - gist_it = main.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - docopt
+
+  run:
+    - python
+    - requests
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - gist_it
+    - main
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gist_it --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gk024kfd/gist_it
+  license: MIT
+  summary: 'Gist_it can send gist'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

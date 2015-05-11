@@ -1,0 +1,74 @@
+package:
+  name: django-social-auth
+  version: "0.7.28"
+
+source:
+  fn: django-social-auth-0.7.28.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-social-auth/django-social-auth-0.7.28.tar.gz
+  md5: 50fb14cc829fc28d6021e711e206f228
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-social-auth = django-social-auth:main
+    #
+    # Would create an entry point called django-social-auth that calls django-social-auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2.5
+    - oauth2 >=1.5.167
+    - python-openid >=2.2
+
+  run:
+    - python
+    - django >=1.2.5
+    - oauth2 >=1.5.167
+    - python-openid >=2.2
+
+test:
+  # Python imports
+  imports:
+    - social_auth
+    - social_auth.backends
+    - social_auth.backends.contrib
+    - social_auth.backends.pipeline
+    - social_auth.db
+    - social_auth.management
+    - social_auth.management.commands
+    - social_auth.migrations
+    - social_auth.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/omab/django-social-auth
+  license: BSD License
+  summary: 'Django social authentication made simple.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

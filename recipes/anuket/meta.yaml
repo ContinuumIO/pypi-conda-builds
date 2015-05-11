@@ -1,0 +1,102 @@
+package:
+  name: anuket
+  version: "0.5.2"
+
+source:
+  fn: anuket-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/anuket/anuket-0.5.2.tar.gz
+  md5: 695c4b2b8b1ae6677f909bfbac86b71c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anuket = anuket:main
+    #
+    # Would create an entry point called anuket that calls anuket.main()
+
+    - backup_anuket_db=anuket.scripts.backupdb:main
+    - initialize_anuket_db=anuket.scripts.initializedb:main
+    - upgrade_anuket_db=anuket.scripts.upgradedb:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - sqlalchemy
+    - transaction
+    - pyramid_beaker
+    - pyramid_debugtoolbar
+    - pyramid_exclog
+    - pyramid_simpleform
+    - pyramid_tm
+    - zope.sqlalchemy
+    - waitress
+    - alembic
+    - babel
+    - cryptacular
+    - formencode
+    - cracklib
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - sqlalchemy
+    - transaction
+    - pyramid_beaker
+    - pyramid_debugtoolbar
+    - pyramid_exclog
+    - pyramid_simpleform
+    - pyramid_tm
+    - zope.sqlalchemy
+    - waitress
+    - alembic
+    - babel
+    - cryptacular
+    - formencode
+    - cracklib
+
+test:
+  # Python imports
+  imports:
+    - anuket
+    - anuket.lib
+    - anuket.models
+    - anuket.scripts
+    - anuket.tests
+    - anuket.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - backup_anuket_db --help
+    - initialize_anuket_db --help
+    - upgrade_anuket_db --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lazaret/anuket
+  license: Expat licence (or MIT licence)
+  summary: 'Anuket web application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

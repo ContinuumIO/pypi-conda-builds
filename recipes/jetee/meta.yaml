@@ -1,0 +1,81 @@
+package:
+  name: jetee
+  version: "0.7.4"
+
+source:
+  fn: jetee-0.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/j/jetee/jetee-0.7.4.tar.gz
+  md5: d44743c9ae5dd57b48a059a275a196ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jetee = jetee:main
+    #
+    # Would create an entry point called jetee that calls jetee.main()
+
+    - jetee = jetee.runtime.app:dispatcher.run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ecdsa
+    - pyyaml
+    - paramiko
+
+  run:
+    - python
+    - ecdsa
+    - pyyaml
+    - paramiko
+
+test:
+  # Python imports
+  imports:
+    - jetee
+    - jetee.base
+    - jetee.base.tests
+    - jetee.common
+    - jetee.common.config_factories
+    - jetee.common.config_factories.os
+    - jetee.common.config_factories.project
+    - jetee.common.config_factories.service
+    - jetee.common.config_factories.service.tests
+    - jetee.processes
+    - jetee.project
+    - jetee.runtime
+    - jetee.service
+    - jetee.service.services
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jetee --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WhackoJacko/Jetee.git
+  license: UNKNOWN
+  summary: 'Lightweight deployment tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

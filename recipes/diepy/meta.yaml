@@ -1,0 +1,71 @@
+package:
+  name: diepy
+  version: "0.7.3"
+
+source:
+  fn: diepy-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/diepy/diepy-0.7.3.tar.gz
+  md5: d90f2992a11944830116371790e8603b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - diepy = diepy:main
+    #
+    # Would create an entry point called diepy that calls diepy.main()
+
+    - diepy = diepy.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - python-dateutil
+    - cliff
+    - openpyxl
+
+  run:
+    - python
+    - setuptools
+    - sqlalchemy
+    - python-dateutil
+    - cliff
+    - openpyxl
+
+test:
+  # Python imports
+  imports:
+    - diepy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - diepy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/3nth/diepy
+  license: MIT License
+  summary: 'database import export utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

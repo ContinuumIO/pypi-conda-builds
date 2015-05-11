@@ -1,0 +1,68 @@
+package:
+  name: django-multilingual-tags
+  version: "0.8.7"
+
+source:
+  fn: django-multilingual-tags-0.8.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-multilingual-tags/django-multilingual-tags-0.8.7.tar.gz
+  md5: 1b10907adf93cd643bd276d728988c05
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-multilingual-tags = django-multilingual-tags:main
+    #
+    # Would create an entry point called django-multilingual-tags that calls django-multilingual-tags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - south
+
+  run:
+    - python
+    - django
+    - south
+
+test:
+  # Python imports
+  imports:
+    - multilingual_tags
+    - multilingual_tags.forms
+    - multilingual_tags.migrations
+    - multilingual_tags.tests
+    - multilingual_tags.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-multilingual-tags
+  license: The MIT License
+  summary: 'A reusable Django app that allows you to add translatable tags to any other model.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

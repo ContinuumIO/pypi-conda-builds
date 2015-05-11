@@ -1,0 +1,100 @@
+package:
+  name: allmydata-tahoe
+  version: "1.10.0"
+
+source:
+  fn: allmydata-tahoe-1.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/allmydata-tahoe/allmydata-tahoe-1.10.0.tar.gz
+  md5: cbc2660b9aad2b2941da57445f5dc3f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - allmydata-tahoe = allmydata-tahoe:main
+    #
+    # Would create an entry point called allmydata-tahoe that calls allmydata-tahoe.main()
+
+    - tahoe = allmydata.scripts.runner:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c6
+    - zfec >=1.1.0
+    - simplejson >=1.4
+    - zope.interface ==3.6.0,==3.6.1,==3.6.2,>=3.6.5
+    - twisted >=11.0.0
+    - foolscap >=0.6.3
+    - pyopenssl
+    - nevow >=0.6.0
+    - pycrypto ==2.1.0,==2.3,>=2.4.1
+    - pyasn1 >=0.0.8a
+    - mock >=0.8.0
+    - pycryptopp >=0.6.0
+
+  run:
+    - python
+    - setuptools >=0.6c6
+    - zfec >=1.1.0
+    - simplejson >=1.4
+    - zope.interface ==3.6.0,==3.6.1,==3.6.2,>=3.6.5
+    - twisted >=11.0.0
+    - foolscap >=0.6.3
+    - pyopenssl
+    - nevow >=0.6.0
+    - pycrypto ==2.1.0,==2.3,>=2.4.1
+    - pyasn1 >=0.0.8a
+    - mock >=0.8.0
+    - pycryptopp >=0.6.0
+
+test:
+  # Python imports
+  imports:
+    - allmydata
+    - allmydata.frontends
+    - allmydata.immutable
+    - allmydata.immutable.downloader
+    - allmydata.introducer
+    - allmydata.mutable
+    - allmydata.scripts
+    - allmydata.storage
+    - allmydata.test
+    - allmydata.util
+    - allmydata.web
+    - allmydata.web.static
+    - allmydata.web.static.css
+    - allmydata.windows
+    - buildtest
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tahoe --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://tahoe-lafs.org/
+  license: GNU General Public License (GPL)
+  summary: 'secure, decentralized, fault-tolerant filesystem'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

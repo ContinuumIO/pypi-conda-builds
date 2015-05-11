@@ -1,0 +1,72 @@
+package:
+  name: il2ds-middleware
+  version: "0.10.3"
+
+source:
+  fn: il2ds-middleware-0.10.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/il2ds-middleware/il2ds-middleware-0.10.3.tar.gz
+  md5: 2c3c3446c9fbcfd651e30a47739ce597
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - il2ds-middleware = il2ds-middleware:main
+    #
+    # Would create an entry point called il2ds-middleware that calls il2ds-middleware.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - il2ds-log-parser >=0.10.1
+    - twisted >=13.2.0
+    - tx-logging >=1.0.0
+    - zope.interface ==4.0.5
+
+  run:
+    - python
+    - il2ds-log-parser >=0.10.1
+    - twisted >=13.2.0
+    - tx-logging >=1.0.0
+    - zope.interface ==4.0.5
+
+test:
+  # Python imports
+  imports:
+    - il2ds_middleware
+    - il2ds_middleware.ds_emulator
+    - il2ds_middleware.ds_emulator.tests
+    - il2ds_middleware.interface
+    - il2ds_middleware.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/IL2HorusTeam/il2ds-middleware
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'High-level access to IL-2 FB Dedicated Server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

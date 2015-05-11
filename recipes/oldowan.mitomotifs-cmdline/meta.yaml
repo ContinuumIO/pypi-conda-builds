@@ -1,0 +1,69 @@
+package:
+  name: oldowan.mitomotifs-cmdline
+  version: "1.0.0"
+
+source:
+  fn: oldowan.mitomotifs-cmdline-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/oldowan.mitomotifs-cmdline/oldowan.mitomotifs-cmdline-1.0.0.tar.gz
+  md5: 4b5e4a2da14da5992ed6ff782dd89671
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oldowan.mitomotifs-cmdline = oldowan.mitomotifs-cmdline:main
+    #
+    # Would create an entry point called oldowan.mitomotifs-cmdline that calls oldowan.mitomotifs-cmdline.main()
+
+    - seq2sites = oldowan.mitomotifs_cmdline.seq2sites:run_command
+    - sites2seq = oldowan.mitomotifs_cmdline.sites2seq:run_command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oldowan.fasta >=1.0.0
+    - oldowan.mitomotifs >=1.0.0
+
+  run:
+    - python
+    - oldowan.fasta >=1.0.0
+    - oldowan.mitomotifs >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - oldowan
+    - oldowan.mitomotifs_cmdline
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - seq2sites --help
+    - sites2seq --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mitomotifs.raaum.org
+  license: MIT License
+  summary: 'Command line scripts for the oldowan.mitomotifs package.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

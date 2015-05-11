@@ -1,0 +1,68 @@
+package:
+  name: eventlogging
+  version: "0.8"
+
+source:
+  fn: eventlogging-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/e/eventlogging/eventlogging-0.8.tar.gz
+  md5: 864f0af7b78da039ae0ebc2de7b4a04a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eventlogging = eventlogging:main
+    #
+    # Would create an entry point called eventlogging that calls eventlogging.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonschema >=0.7
+    - pygments >=1.5
+    - pyzmq >=2.1
+    - sqlalchemy >=0.7
+
+  run:
+    - python
+    - jsonschema >=0.7
+    - pygments >=1.5
+    - pyzmq >=2.1
+    - sqlalchemy >=0.7
+
+test:
+  # Python imports
+  imports:
+    - eventlogging
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.mediawiki.org/wiki/Extension:EventLogging
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Server-side component of EventLogging MediaWiki extension.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

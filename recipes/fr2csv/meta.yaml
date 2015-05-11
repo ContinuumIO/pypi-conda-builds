@@ -1,0 +1,64 @@
+package:
+  name: fr2csv
+  version: "1.0.1"
+
+source:
+  fn: fr2csv-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fr2csv/fr2csv-1.0.1.tar.gz
+  md5: 05deef6f81ea5e2bce7478a331d7692a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fr2csv = fr2csv:main
+    #
+    # Would create an entry point called fr2csv that calls fr2csv.main()
+
+    - fr2csv=fr2csv:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  # Python imports
+  imports:
+    - fr2csv
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fr2csv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ewjoachim/fr2csv
+  license: MIT License
+  summary: u'Reads French localized AND normal CSVs, ouputs normal CSVs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

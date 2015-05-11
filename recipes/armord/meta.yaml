@@ -1,0 +1,72 @@
+package:
+  name: armord
+  version: "0.1.6"
+
+source:
+  fn: armord-0.1.6.zip
+  url: https://pypi.python.org/packages/source/a/armord/armord-0.1.6.zip
+  md5: 6bc7e2560ddc2069feceb68a0f397ee8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - armord = armord:main
+    #
+    # Would create an entry point called armord that calls armord.main()
+
+    - armord = armord.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appier
+    - appier_extras
+    - jinja2
+    - pymongo
+
+  run:
+    - python
+    - appier
+    - appier_extras
+    - jinja2
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - armord
+    - armord.controllers
+    - armord.models
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - armord --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://scudum.hive.pt
+  license: GNU General Public License (GPL)
+  summary: 'Armor Daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

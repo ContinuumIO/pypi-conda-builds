@@ -1,0 +1,68 @@
+package:
+  name: merchant-gateways
+  version: "0.0.1"
+
+source:
+  fn: merchant-gateways-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/merchant-gateways/merchant-gateways-0.0.1.tar.gz
+  md5: 33c3d6223defe50ccb2395e886036bbb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - merchant-gateways = merchant-gateways:main
+    #
+    # Would create an entry point called merchant-gateways that calls merchant-gateways.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+
+  run:
+    - python
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - merchant_gateways
+    - merchant_gateways.billing
+    - merchant_gateways.billing.gateways
+    - merchant_gateways.lib
+    - merchant_gateways.tests
+    - merchant_gateways.tests.billing
+    - merchant_gateways.tests.billing.gateways
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cuker/merchant-gateways/
+  license: MIT License
+  summary: 'Unifying the diversity of gateways into a common interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

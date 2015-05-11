@@ -1,0 +1,65 @@
+package:
+  name: kmltrack
+  version: "0.0.6"
+
+source:
+  fn: kmltrack-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/k/kmltrack/kmltrack-0.0.6.tar.gz
+  md5: 1e8a505b3ce96112248b9030b8e6d1b0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kmltrack = kmltrack:main
+    #
+    # Would create an entry point called kmltrack that calls kmltrack.main()
+
+    - kmltrack=kmltrack.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+
+  run:
+    - python
+    - setuptools
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - kmltrack
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kmltrack --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SkyTruth/kmltrack
+  license: GPL
+  summary: 'kmltrack converts a track (a series of lat/lon/timestamp and optional measurement values) into a kml file.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

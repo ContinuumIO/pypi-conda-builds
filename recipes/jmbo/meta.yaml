@@ -1,0 +1,94 @@
+package:
+  name: jmbo
+  version: "1.2.1"
+
+source:
+  fn: jmbo-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo/jmbo-1.2.1.tar.gz
+  md5: 303678361550f0400206b5a7d1f89cef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo = jmbo:main
+    #
+    # Would create an entry point called jmbo that calls jmbo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow
+    - pytz
+    - django >=1.4,<1.5
+    - django-atlas <0.1
+    - django-category >=0.0.5
+    - django-likes >=0.0.8
+    - django-photologue-praekelt
+    - django-preferences
+    - django-publisher
+    - django-sites-groups
+    - south
+    - django-tastypie <0.10
+    - django-celery
+
+  run:
+    - python
+    - pillow
+    - pytz
+    - django >=1.4,<1.5
+    - django-atlas <0.1
+    - django-category >=0.0.5
+    - django-likes >=0.0.8
+    - django-photologue-praekelt
+    - django-preferences
+    - django-publisher
+    - django-sites-groups
+    - south
+    - django-tastypie <0.10
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - jmbo
+    - jmbo.generic
+    - jmbo.management
+    - jmbo.management.commands
+    - jmbo.migrations
+    - jmbo.templatetags
+    - jmbo.tests
+    - jmbo.utils
+    - jmbo.view_modifiers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.jmbo.org
+  license: BSD License
+  summary: 'The Jmbo base product introduces a content type and various tools required to build Jmbo products.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

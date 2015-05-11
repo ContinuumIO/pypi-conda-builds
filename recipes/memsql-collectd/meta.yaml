@@ -1,0 +1,66 @@
+package:
+  name: memsql-collectd
+  version: "0.2.6"
+
+source:
+  fn: memsql-collectd-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/memsql-collectd/memsql-collectd-0.2.6.tar.gz
+  md5: 3d0c42acae0c4b8265a5957837851d49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - memsql-collectd = memsql-collectd:main
+    #
+    # Would create an entry point called memsql-collectd that calls memsql-collectd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wraptor ==0.5.0
+    - netifaces ==0.8
+    - memsql ==2.11.0
+
+  run:
+    - python
+    - wraptor ==0.5.0
+    - netifaces ==0.8
+    - memsql ==2.11.0
+
+test:
+  # Python imports
+  imports:
+    - memsql_collectd
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/memsql/memsql-collectd
+  license: MIT License
+  summary: 'The official MemSQL collectd plugin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

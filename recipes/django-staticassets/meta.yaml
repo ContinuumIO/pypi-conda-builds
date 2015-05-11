@@ -1,0 +1,67 @@
+package:
+  name: django-staticassets
+  version: "0.2.1"
+
+source:
+  fn: django-staticassets-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-staticassets/django-staticassets-0.2.1.tar.gz
+  md5: 8befb0e1198a08fab24096ad610c28f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-staticassets = django-staticassets:main
+    #
+    # Would create an entry point called django-staticassets that calls django-staticassets.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - staticassets
+    - staticassets.assets
+    - staticassets.compilers
+    - staticassets.compressors
+    - staticassets.management
+    - staticassets.management.commands
+    - staticassets.processors
+    - staticassets.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/davidelias/django-staticassets
+  license: MIT License
+  summary: "Compiles and bundles static assets. Uses a directive processor similiar to Ruby's Sprockets"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

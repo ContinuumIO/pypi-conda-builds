@@ -1,0 +1,73 @@
+package:
+  name: ipopo
+  version: "0.6.1"
+
+source:
+  fn: iPOPO-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/iPOPO/iPOPO-0.6.1.tar.gz
+  md5: d1364ebf514e5edcd7608c6b33054287
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipopo = ipopo:main
+    #
+    # Would create an entry point called ipopo that calls ipopo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonrpclib-pelix
+
+  run:
+    - python
+    - jsonrpclib-pelix
+
+test:
+  # Python imports
+  imports:
+    - ipopo
+    - pelix
+    - pelix.http
+    - pelix.internals
+    - pelix.ipopo
+    - pelix.ipopo.handlers
+    - pelix.misc
+    - pelix.remote
+    - pelix.remote.discovery
+    - pelix.remote.transport
+    - pelix.services
+    - pelix.shell
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://ipopo.coderxpress.net/
+  license: Apache Software License
+  summary: 'A service-oriented component model framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

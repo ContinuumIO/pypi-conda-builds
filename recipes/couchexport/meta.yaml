@@ -1,0 +1,75 @@
+package:
+  name: couchexport
+  version: "0.0.2"
+
+source:
+  fn: couchexport-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/couchexport/couchexport-0.0.2.tar.gz
+  md5: 1b42e0b1e5c067efe2604b18bc2dcdee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - couchexport = couchexport:main
+    #
+    # Would create an entry point called couchexport that calls couchexport.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - jsonobject-couchdbkit
+    - dimagi-utils
+    - django-soil
+    - openpyxl
+    - xlwt
+
+  run:
+    - python
+    - django
+    - jsonobject-couchdbkit
+    - dimagi-utils
+    - django-soil
+    - openpyxl
+    - xlwt
+
+test:
+  # Python imports
+  imports:
+    - couchexport
+    - couchexport.management
+    - couchexport.management.commands
+    - couchexport.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.dimagi.com/
+  license: UNKNOWN
+  summary: 'Dimagi Couch Exporter for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

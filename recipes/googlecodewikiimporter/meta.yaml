@@ -1,0 +1,64 @@
+package:
+  name: googlecodewikiimporter
+  version: "0.5.1"
+
+source:
+  fn: GoogleCodeWikiImporter-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/G/GoogleCodeWikiImporter/GoogleCodeWikiImporter-0.5.1.tar.gz
+  md5: f9db3d4230211d90aed3de884a7d4447
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - googlecodewikiimporter = googlecodewikiimporter:main
+    #
+    # Would create an entry point called googlecodewikiimporter that calls googlecodewikiimporter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - html2text
+
+  run:
+    - python
+    - setuptools
+    - html2text
+
+test:
+  # Python imports
+  imports:
+    - googlecodewikiimporter
+    - googlecodewikiimporter.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sf.net/p/googlecodewikiimporter
+  license: GPLv3
+  summary: 'Google Code Wiki Importer plugin for the Allura platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

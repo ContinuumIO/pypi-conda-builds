@@ -1,0 +1,97 @@
+package:
+  name: ginsfsm
+  version: "0.7.1"
+
+source:
+  fn: ginsfsm-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/ginsfsm/ginsfsm-0.7.1.tar.gz
+  md5: aeef26b25d3addcb3e09ab0e8a35f3fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ginsfsm = ginsfsm:main
+    #
+    # Would create an entry point called ginsfsm that calls ginsfsm.main()
+
+    - ginsfsm-help=ginsfsm.scripts.help:main
+    - gcreate=ginsfsm.scripts.gcreate:main
+    - gserve=ginsfsm.scripts.gserve:main
+    - gconsole=ginsfsm.scripts.gconsole:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pastedeploy >=1.5.0
+    - pyramid >=1.4
+
+  run:
+    - python
+    - setuptools
+    - pastedeploy >=1.5.0
+    - pyramid >=1.4
+
+test:
+  # Python imports
+  imports:
+    - ginsfsm
+    - ginsfsm.examples
+    - ginsfsm.examples.essential_gobjs
+    - ginsfsm.examples.http
+    - ginsfsm.examples.inter_event
+    - ginsfsm.examples.router
+    - ginsfsm.examples.sockjs
+    - ginsfsm.examples.sockjs.test_sockjs_apps
+    - ginsfsm.examples.websocket_mixin
+    - ginsfsm.examples.wsgi
+    - ginsfsm.fsmdraw
+    - ginsfsm.protocols
+    - ginsfsm.protocols.http
+    - ginsfsm.protocols.http.client
+    - ginsfsm.protocols.http.common
+    - ginsfsm.protocols.http.server
+    - ginsfsm.protocols.sockjs
+    - ginsfsm.protocols.sockjs.server
+    - ginsfsm.protocols.wsgi
+    - ginsfsm.protocols.wsgi.common
+    - ginsfsm.protocols.wsgi.server
+    - ginsfsm.protocols.wsgi.webob
+    - ginsfsm.scaffolds
+    - ginsfsm.scripts
+    - ginsfsm.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ginsfsm-help --help
+    - gcreate --help
+    - gserve --help
+    - gconsole --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ginsfsm.org
+  license: MIT License
+  summary: "GinsFSM, a library to develop systems based in finite-state machines. It's a communication framework, including a full asynchronous http/wsgi/winsocket/sockjs server. Ideal for working with Pyramid using traversal dispatch."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

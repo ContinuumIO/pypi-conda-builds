@@ -1,0 +1,64 @@
+package:
+  name: locustauto
+  version: "0.1.0"
+
+source:
+  fn: locustauto-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/locustauto/locustauto-0.1.0.tar.gz
+  md5: 040a0e0aca96dd869c6e542d024e69e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - locustauto = locustauto:main
+    #
+    # Would create an entry point called locustauto that calls locustauto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml ==3.11
+    - locustio ==0.7.2
+
+  run:
+    - python
+    - pyyaml ==3.11
+    - locustio ==0.7.2
+
+test:
+  # Python imports
+  imports:
+    - locustauto
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/BenjiLee/locustauto
+  license: Apache2
+  summary: 'Automatically Test with Locust.io'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: db2rest
+  version: "0.1.7"
+
+source:
+  fn: db2rest-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/db2rest/db2rest-0.1.7.tar.gz
+  md5: 93c373dd6a23be54a00d291c285a9404
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - db2rest = db2rest:main
+    #
+    # Would create an entry point called db2rest that calls db2rest.main()
+
+    - db2rest-run = db2rest.app:start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - mysql-python
+    - werkzeug
+    - simplejson
+    - jinja2
+    - python-ldap
+    - sphinx
+    - sphinx-pypi-upload
+
+  run:
+    - python
+    - sqlalchemy
+    - mysql-python
+    - werkzeug
+    - simplejson
+    - jinja2
+    - python-ldap
+    - sphinx
+    - sphinx-pypi-upload
+
+test:
+  # Python imports
+  imports:
+    - db2rest
+    - db2rest.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - db2rest-run --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/nikpalumbo/db2rest
+  license: MIT License
+  summary: 'A HTTP REST API for relational databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

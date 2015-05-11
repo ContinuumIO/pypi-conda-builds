@@ -1,0 +1,68 @@
+package:
+  name: zerorpc
+  version: "0.4.4"
+
+source:
+  fn: zerorpc-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/z/zerorpc/zerorpc-0.4.4.tar.gz
+  md5: cb54bfbc3c3068dab482e95c543c6e03
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zerorpc = zerorpc:main
+    #
+    # Would create an entry point called zerorpc that calls zerorpc.main()
+
+    - zerorpc = zerorpc.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - msgpack-python
+    - pyzmq ==13.1.0
+
+  run:
+    - python
+    - gevent
+    - msgpack-python
+    - pyzmq ==13.1.0
+
+test:
+  # Python imports
+  imports:
+    - zerorpc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zerorpc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dotcloud/zerorpc-python
+  license: MIT License
+  summary: 'zerorpc is a flexible RPC based on zeromq.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

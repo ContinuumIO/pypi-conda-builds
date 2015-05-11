@@ -1,0 +1,66 @@
+package:
+  name: django-role-permissions
+  version: "0.4.2"
+
+source:
+  fn: django-role-permissions-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-role-permissions/django-role-permissions-0.4.2.tar.gz
+  md5: 982981bab5c4c9753e681ac99e055b4c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-role-permissions = django-role-permissions:main
+    #
+    # Would create an entry point called django-role-permissions that calls django-role-permissions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5.4
+    - django-discover-runner ==1.0
+
+  run:
+    - python
+    - django >=1.5.4
+    - django-discover-runner ==1.0
+
+test:
+  # Python imports
+  imports:
+    - rolepermissions
+    - rolepermissions/templatetags
+    - rolepermissions/tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/vintasoftware/django-role-permissions
+  license: MIT
+  summary: 'A django app for role based permissions.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

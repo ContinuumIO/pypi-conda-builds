@@ -1,0 +1,85 @@
+package:
+  name: antispoofing.optflow
+  version: "1.0.5"
+
+source:
+  fn: antispoofing.optflow-1.0.5.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.optflow/antispoofing.optflow-1.0.5.zip
+  md5: e8dea224d74953692ad55d1c4e08d777
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.optflow = antispoofing.optflow:main
+    #
+    # Would create an entry point called antispoofing.optflow that calls antispoofing.optflow.main()
+
+    - optflow_estimate.py = antispoofing.optflow.script.liu:main
+    - optflow_histocomp.py = antispoofing.optflow.script.histocomp:main
+    - optflow_kollreider.py = antispoofing.optflow.script.kollreider:main
+    - optflow_bao.py = antispoofing.optflow.script.bao:main
+    - score_analysis.py = antispoofing.optflow.script.score_analysis:main
+    - optflow_kollreider_annotate.py = antispoofing.optflow.script.kollreider_annotate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+    - xbob.optflow.liu >=1.1.0
+    - antispoofing.utils <2
+    - antispoofing.motion <2
+
+  run:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+    - xbob.optflow.liu >=1.1.0
+    - antispoofing.utils <2
+    - antispoofing.motion <2
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.optflow
+    - antispoofing.optflow.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - optflow_estimate.py --help
+    - optflow_histocomp.py --help
+    - optflow_kollreider.py --help
+    - optflow_bao.py --help
+    - score_analysis.py --help
+    - optflow_kollreider_annotate.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.optflow
+  license: GPLv3
+  summary: 'Optical Flow counter-measures for the REPLAY-ATTACK database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

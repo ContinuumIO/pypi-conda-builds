@@ -1,0 +1,72 @@
+package:
+  name: lava-test
+  version: "0.14"
+
+source:
+  fn: lava-test-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-test/lava-test-0.14.tar.gz
+  md5: 7adee4ecdede509c6203107d5e8a6f96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-test = lava-test:main
+    #
+    # Would create an entry point called lava-test that calls lava-test.main()
+
+    - lava-test=lava_test.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lava-tool >=0.2
+    - versiontools >=1.4
+    - linaro_dashboard_bundle
+
+  run:
+    - python
+    - setuptools
+    - lava-tool >=0.2
+    - versiontools >=1.4
+    - linaro_dashboard_bundle
+
+test:
+  # Python imports
+  imports:
+    - lava_test
+    - lava_test.api
+    - lava_test.core
+    - lava_test.test_definitions
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lava-test --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lava-test
+  license: GNU General Public License (GPL)
+  summary: 'LAVA test execution framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

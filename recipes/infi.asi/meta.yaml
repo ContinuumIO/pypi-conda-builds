@@ -1,0 +1,77 @@
+package:
+  name: infi.asi
+  version: "0.4.1"
+
+source:
+  fn: infi.asi-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.asi/infi.asi-0.4.1.tar.gz
+  md5: fe4a1ef6822e2cf1df43898fb7fc90fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.asi = infi.asi:main
+    #
+    # Would create an entry point called infi.asi that calls infi.asi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.exceptools >=0.2.1
+    - infi.instruct >=0.6.25
+    - infi.os_info
+    - infi.pyutils
+    - setuptools
+
+  run:
+    - python
+    - infi.exceptools >=0.2.1
+    - infi.instruct >=0.6.25
+    - infi.os_info
+    - infi.pyutils
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.asi
+    - infi.asi.cdb
+    - infi.asi.cdb.diagnostic
+    - infi.asi.cdb.diagnostic.ses_pages
+    - infi.asi.cdb.inquiry
+    - infi.asi.cdb.inquiry.vpd_pages
+    - infi.asi.coroutines
+    - infi.asi.sense
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.asi
+  license: Python Software Foundation License
+  summary: 'asynchronous SCSI interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

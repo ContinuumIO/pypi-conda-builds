@@ -1,0 +1,71 @@
+package:
+  name: mezzanine-events
+  version: "0.1.4"
+
+source:
+  fn: mezzanine-events-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-events/mezzanine-events-0.1.4.tar.gz
+  md5: 6a3f20d50d5085224c2015c9e732abdf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-events = mezzanine-events:main
+    #
+    # Would create an entry point called mezzanine-events that calls mezzanine-events.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mezzanine
+    - icalendar ==3.0.1b2
+    - geopy ==0.95.1
+    - pytz
+
+  run:
+    - python
+    - mezzanine
+    - icalendar ==3.0.1b2
+    - geopy ==0.95.1
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - mezzanine_events
+    - mezzanine_events.migrations
+    - mezzanine_events.templatetags
+    - test_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stbarnabas/mezzanine-events
+  license: MIT License
+  summary: 'Event pages for the Mezzanine CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

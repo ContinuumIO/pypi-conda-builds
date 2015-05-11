@@ -1,0 +1,73 @@
+package:
+  name: products.gloworm
+  version: "1.1"
+
+source:
+  fn: Products.Gloworm-1.1.zip
+  url: https://pypi.python.org/packages/source/P/Products.Gloworm/Products.Gloworm-1.1.zip
+  md5: f55f1a0717a9cb7b06a7d24ef973d86f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.gloworm = products.gloworm:main
+    #
+    # Would create an entry point called products.gloworm that calls products.gloworm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.customerize >=1.1.2
+    - archetypes.kss >=1.4.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.customerize >=1.1.2
+    - archetypes.kss >=1.4.2
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.Gloworm
+    - Products.Gloworm.Extensions
+    - Products.Gloworm.browser
+    - Products.Gloworm.browser.3rd_party
+    - Products.Gloworm.tests
+    - Products.Gloworm.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://weblion.psu.edu/svn/weblion/weblion/Products.Gloworm/
+  license: UNKNOWN
+  summary: 'A Firebug-like inspection tool for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

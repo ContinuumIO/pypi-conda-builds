@@ -1,0 +1,62 @@
+package:
+  name: amqp-storm
+  version: "1.1.9"
+
+source:
+  fn: AMQP-Storm-1.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/A/AMQP-Storm/AMQP-Storm-1.1.9.tar.gz
+  md5: 7a3a3609e549c5da5b44cbac206bd378
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amqp-storm = amqp-storm:main
+    #
+    # Would create an entry point called amqp-storm that calls amqp-storm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pamqp >=1.6.1,<2.0
+
+  run:
+    - python
+    - pamqp >=1.6.1,<2.0
+
+test:
+  # Python imports
+  imports:
+    - amqpstorm
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/eandersson/amqp-storm
+  license: MIT License
+  summary: 'Thread-safe Python AMQP Client Library based on pamqp.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

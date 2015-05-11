@@ -1,0 +1,69 @@
+package:
+  name: django-package-skeleton
+  version: "0.1-2-gf7bf"
+
+source:
+  fn: django-package-skeleton-0.1-2-gf7bf.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-package-skeleton/django-package-skeleton-0.1-2-gf7bf.tar.gz
+  md5: a0fbcdd67923c50a658a184cb27b299c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-package-skeleton = django-package-skeleton:main
+    #
+    # Would create an entry point called django-package-skeleton that calls django-package-skeleton.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - setuptools-git
+
+  run:
+    - python
+    - distribute
+    - setuptools-git
+
+test:
+  # Python imports
+  imports:
+    - package
+    - package.tests
+    - packageutils
+    - tests
+    - tests.blogs
+    - tests.blogs.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lambdalisue/django-observer
+  license: MIT License
+  summary: 'Skeleton package of Django App Package'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

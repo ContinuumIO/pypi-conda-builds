@@ -1,0 +1,80 @@
+package:
+  name: djinn_contenttypes
+  version: "1.4.3"
+
+source:
+  fn: djinn_contenttypes-1.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/djinn_contenttypes/djinn_contenttypes-1.4.3.tar.gz
+  md5: 1ab0ce207220ea5af1c2d91fd580d208
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djinn_contenttypes = djinn_contenttypes:main
+    #
+    # Would create an entry point called djinn_contenttypes that calls djinn_contenttypes.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests
+    - djinn_core
+    - django-bootstrap-form
+    - djinn_forms >=1.2.3
+    - djinn_workflow
+
+  run:
+    - python
+    - setuptools
+    - django
+    - requests
+    - djinn_core
+    - django-bootstrap-form
+    - djinn_forms >=1.2.3
+    - djinn_workflow
+
+test:
+  # Python imports
+  imports:
+    - djinn_contenttypes
+    - djinn_contenttypes.forms
+    - djinn_contenttypes.management
+    - djinn_contenttypes.management.commands
+    - djinn_contenttypes.models
+    - djinn_contenttypes.templatetags
+    - djinn_contenttypes.tests
+    - djinn_contenttypes.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PythonUnited/djinn-contenttypes
+  license: beer-ware
+  summary: 'Djinn Intranet Contenttypes framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

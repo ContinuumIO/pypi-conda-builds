@@ -1,0 +1,73 @@
+package:
+  name: megacron
+  version: "0.4"
+
+source:
+  fn: Megacron-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/M/Megacron/Megacron-0.4.tar.gz
+  md5: 013f3b025417cac415bf6361415e089e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megacron = megacron:main
+    #
+    # Would create an entry point called megacron that calls megacron.main()
+
+    - megacrond = megacron.daemon.main:main
+    - megacrontab = megacron.edit:main
+    - megacron-status = megacron.status:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - croniter
+    - python-daemon
+    - lockfile
+
+  run:
+    - python
+    - croniter
+    - python-daemon
+    - lockfile
+
+test:
+  # Python imports
+  imports:
+    - megacron
+    - megacron.daemon
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - megacrond --help
+    - megacrontab --help
+    - megacron-status --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.mediawiki.org/wiki/Facebook_Open_Academy/Cron
+  license: Creative Commons Attribution-Noncommercial-Share Alike license
+  summary: 'Distributed Cron Replacement'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

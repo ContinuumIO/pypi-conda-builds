@@ -1,0 +1,74 @@
+package:
+  name: keas.googlemap
+  version: "0.6.0"
+
+source:
+  fn: keas.googlemap-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/k/keas.googlemap/keas.googlemap-0.6.0.tar.gz
+  md5: 785ef49fc8c5b136a35deafdedba17de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - keas.googlemap = keas.googlemap:main
+    #
+    # Would create an entry point called keas.googlemap that calls keas.googlemap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson >=1.7.3
+    - zope.container
+    - zope.interface
+    - zope.schema
+    - zope.viewlet
+
+  run:
+    - python
+    - setuptools
+    - simplejson >=1.7.3
+    - zope.container
+    - zope.interface
+    - zope.schema
+    - zope.viewlet
+
+test:
+  # Python imports
+  imports:
+    - keas
+    - keas.googlemap
+    - keas.googlemap.browser
+    - keas.googlemap.demo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/keas.googlemap
+  license: Zope Public License
+  summary: 'Integration of Google Maps with Zope 3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

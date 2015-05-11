@@ -1,0 +1,72 @@
+package:
+  name: gcs-oauth2-boto-plugin
+  version: "1.9"
+
+source:
+  fn: gcs-oauth2-boto-plugin-1.9.tar.gz
+  url: https://pypi.python.org/packages/source/g/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.9.tar.gz
+  md5: 30ce54681c83a23c93f1692c618f3b55
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gcs-oauth2-boto-plugin = gcs-oauth2-boto-plugin:main
+    #
+    # Would create an entry point called gcs-oauth2-boto-plugin that calls gcs-oauth2-boto-plugin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.29.1
+    - httplib2 >=0.8
+    - google-api-python-client >=1.1
+    - pyopenssl >=0.13
+    - socksipy-branch ==1.01
+    - retry_decorator >=1.0.0
+
+  run:
+    - python
+    - boto >=2.29.1
+    - httplib2 >=0.8
+    - google-api-python-client >=1.1
+    - pyopenssl >=0.13
+    - socksipy-branch ==1.01
+    - retry_decorator >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - gcs_oauth2_boto_plugin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://developers.google.com/storage/docs/gspythonlibrary
+  license: Apache 2.0
+  summary: 'Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

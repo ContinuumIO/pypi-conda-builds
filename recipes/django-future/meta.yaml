@@ -1,0 +1,64 @@
+package:
+  name: django-future
+  version: "0.2.3"
+
+source:
+  fn: django-future-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-future/django-future-0.2.3.tar.gz
+  md5: 75b09c4f08f46995f22a8061a217a4ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-future = django-future:main
+    #
+    # Would create an entry point called django-future that calls django-future.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-picklefield
+
+  run:
+    - python
+    - django-picklefield
+
+test:
+  # Python imports
+  imports:
+    - django_future
+    - django_future.management
+    - django_future.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shrubberysoft/django-future
+  license: MIT License
+  summary: 'Scheduled jobs in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: flask-boost
+  version: "0.4.8"
+
+source:
+  fn: Flask-Boost-0.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Boost/Flask-Boost-0.4.8.tar.gz
+  md5: 690192c4337e2a985c25cfb1671c24a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-boost = flask-boost:main
+    #
+    # Would create an entry point called flask-boost that calls flask-boost.main()
+
+    - boost = flask_boost.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt ==0.6.2
+
+  run:
+    - python
+    - docopt ==0.6.2
+
+test:
+  # Python imports
+  imports:
+    - flask_boost
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - boost --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hustlzp/Flask-Boost
+  license: MIT License
+  summary: 'Flask application generator for boosting your development.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

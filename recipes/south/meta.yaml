@@ -1,0 +1,90 @@
+package:
+  name: south
+  version: "1.0.2"
+
+source:
+  fn: South-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/S/South/South-1.0.2.tar.gz
+  md5: c76a9758b2011bc3b6c39f881bba2f66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - south = south:main
+    #
+    # Would create an entry point called south that calls south.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - south
+    - south.creator
+    - south.db
+    - south.db.sql_server
+    - south.hacks
+    - south.introspection_plugins
+    - south.management
+    - south.management.commands
+    - south.migration
+    - south.tests
+    - south.tests.brokenapp
+    - south.tests.brokenapp.migrations
+    - south.tests.circular_a
+    - south.tests.circular_a.migrations
+    - south.tests.circular_b
+    - south.tests.circular_b.migrations
+    - south.tests.deps_a
+    - south.tests.deps_a.migrations
+    - south.tests.deps_b
+    - south.tests.deps_b.migrations
+    - south.tests.deps_c
+    - south.tests.deps_c.migrations
+    - south.tests.emptyapp
+    - south.tests.emptyapp.migrations
+    - south.tests.fakeapp
+    - south.tests.fakeapp.migrations
+    - south.tests.non_managed
+    - south.tests.non_managed.migrations
+    - south.tests.otherfakeapp
+    - south.tests.otherfakeapp.migrations
+    - south.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://south.aeracode.org/
+  license: Apache Software License
+  summary: 'South: Migrations for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

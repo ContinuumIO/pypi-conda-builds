@@ -1,0 +1,66 @@
+package:
+  name: lazr.json
+  version: "0.2"
+
+source:
+  fn: lazr.json-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazr.json/lazr.json-0.2.tar.gz
+  md5: 3a8c5c51b3d83480d12731d4fe683f36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazr.json = lazr.json:main
+    #
+    # Would create an entry point called lazr.json that calls lazr.json.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lazr.enum >=1.1.4
+
+  run:
+    - python
+    - setuptools
+    - lazr.enum >=1.1.4
+
+test:
+  # Python imports
+  imports:
+    - lazr
+    - lazr.json
+    - lazr.json.docs
+    - lazr.json.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lazr.json
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'JSON serialisation utilities.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

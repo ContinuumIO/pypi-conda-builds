@@ -1,0 +1,76 @@
+package:
+  name: birdhousebuilder.recipe.pywps
+  version: "0.2.2"
+
+source:
+  fn: birdhousebuilder.recipe.pywps-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/birdhousebuilder.recipe.pywps/birdhousebuilder.recipe.pywps-0.2.2.tar.gz
+  md5: 892d597b6b3d2cb9f8d627b7f0a4077d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - birdhousebuilder.recipe.pywps = birdhousebuilder.recipe.pywps:main
+    #
+    # Would create an entry point called birdhousebuilder.recipe.pywps that calls birdhousebuilder.recipe.pywps.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - mako
+    - birdhousebuilder.recipe.conda
+    - birdhousebuilder.recipe.supervisor
+    - birdhousebuilder.recipe.nginx
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - mako
+    - birdhousebuilder.recipe.conda
+    - birdhousebuilder.recipe.supervisor
+    - birdhousebuilder.recipe.nginx
+
+test:
+  # Python imports
+  imports:
+    - birdhousebuilder
+    - birdhousebuilder.recipe
+    - birdhousebuilder.recipe.pywps
+    - birdhousebuilder.recipe.pywps.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bird-house/birdhousebuilder.recipe.pywps
+  license: BSD License
+  summary: 'A Buildout recipe to install and configure PyWPS Web Processing Service with Anaconda.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

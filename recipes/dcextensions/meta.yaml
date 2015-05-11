@@ -1,0 +1,64 @@
+package:
+  name: dcextensions
+  version: "0.0.1"
+
+source:
+  fn: dcextensions-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dcextensions/dcextensions-0.0.1.tar.gz
+  md5: c2830d0a0947f0515afad73c4f7ade32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dcextensions = dcextensions:main
+    #
+    # Would create an entry point called dcextensions that calls dcextensions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dogpile.cache
+
+  run:
+    - python
+    - setuptools
+    - dogpile.cache
+
+test:
+  # Python imports
+  imports:
+    - dcextensions
+    - dcextensions.backends
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/OnroerendErfgoed/dcextensions
+  license: BSD License
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

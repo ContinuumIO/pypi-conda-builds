@@ -1,0 +1,70 @@
+package:
+  name: hurry.slimbox
+  version: "2.03"
+
+source:
+  fn: hurry.slimbox-2.03.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.slimbox/hurry.slimbox-2.03.tar.gz
+  md5: da025129f87e8500d656f8af39be914b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.slimbox = hurry.slimbox:main
+    #
+    # Would create an entry point called hurry.slimbox that calls hurry.slimbox.main()
+
+    - slimboxprepare = hurry.slimbox.prepare:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.jquery
+    - hurry.resource >=0.4.1
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.jquery
+    - hurry.resource >=0.4.1
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.slimbox
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - slimboxprepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'hurry.resource style resources for Slimbox.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

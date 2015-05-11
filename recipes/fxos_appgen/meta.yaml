@@ -1,0 +1,67 @@
+package:
+  name: fxos_appgen
+  version: "0.13"
+
+source:
+  fn: fxos_appgen-0.13.tar.gz
+  url: https://pypi.python.org/packages/source/f/fxos_appgen/fxos_appgen-0.13.tar.gz
+  md5: 416d7ee065495489af83c731ae91ae9c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fxos_appgen = fxos_appgen:main
+    #
+    # Would create an entry point called fxos_appgen that calls fxos_appgen.main()
+
+    - fxos_appgen=fxos_appgen.generator:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - marionette_client >=0.7.1
+    - mozdevice >=0.33
+
+  run:
+    - python
+    - setuptools
+    - marionette_client >=0.7.1
+    - mozdevice >=0.33
+
+test:
+  # Python imports
+  imports:
+    - fxos_appgen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fxos_appgen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla-b2g/fxos-certsuite
+  license: MPL
+  summary: 'Generates and installs FxOS apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

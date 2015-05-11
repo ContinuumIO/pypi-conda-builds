@@ -1,0 +1,66 @@
+package:
+  name: youtube_dl_server
+  version: "0.1.2"
+
+source:
+  fn: youtube_dl_server-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/y/youtube_dl_server/youtube_dl_server-0.1.2.tar.gz
+  md5: 5f9d9f9c41bb8b4ecf4c1b9b4f88f82f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - youtube_dl_server = youtube_dl_server:main
+    #
+    # Would create an entry point called youtube_dl_server that calls youtube_dl_server.main()
+
+    - youtube-dl-server = youtube_dl_server.server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - youtube_dl >=2015.01.02
+
+  run:
+    - python
+    - flask
+    - youtube_dl >=2015.01.02
+
+test:
+  # Python imports
+  imports:
+    - youtube_dl_server
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - youtube-dl-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jaimeMF/youtube-dl-api-server
+  license: UNKNOWN
+  summary: 'An API server based on youtube_dl'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

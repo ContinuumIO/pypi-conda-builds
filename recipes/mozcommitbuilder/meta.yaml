@@ -1,0 +1,73 @@
+package:
+  name: mozcommitbuilder
+  version: "0.4.11"
+
+source:
+  fn: mozcommitbuilder-0.4.11.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozcommitbuilder/mozcommitbuilder-0.4.11.tar.gz
+  md5: ff2d33d81e9b078d3f503e0f690440f7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozcommitbuilder = mozcommitbuilder:main
+    #
+    # Would create an entry point called mozcommitbuilder that calls mozcommitbuilder.main()
+
+    - mozcommitbuilder=mozcommitbuilder:buildercli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pulsebuildmonitor >=0.6
+    - mozrunner >=2.5.4
+    - httplib2 >=0.6.0
+    - simplejson
+    - beautifulsoup
+
+  run:
+    - python
+    - setuptools
+    - pulsebuildmonitor >=0.6
+    - mozrunner >=2.5.4
+    - httplib2 >=0.6.0
+    - simplejson
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - mozcommitbuilder
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozcommitbuilder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla/mozcommitbuilder
+  license: MPL 1.1/GPL 2.0/LGPL 2.1
+  summary: 'Regression finder using Mozilla central repo'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

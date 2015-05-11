@@ -1,0 +1,74 @@
+package:
+  name: django-salesforce
+  version: "0.5"
+
+source:
+  fn: django-salesforce-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-salesforce/django-salesforce-0.5.tar.gz
+  md5: 80e54fbec38aca540b50ea08a0df904a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-salesforce = django-salesforce:main
+    #
+    # Would create an entry point called django-salesforce that calls django-salesforce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+    - simplejson >=2.5.0
+    - pytz >=2012c
+    - requests >=2.0.0
+
+  run:
+    - python
+    - django >=1.4.2
+    - simplejson >=2.5.0
+    - pytz >=2012c
+    - requests >=2.0.0
+
+test:
+  # Python imports
+  imports:
+    - salesforce
+    - salesforce.backend
+    - salesforce.management
+    - salesforce.management.commands
+    - salesforce.testrunner
+    - salesforce.testrunner.example
+    - salesforce.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/freelancersunion/django-salesforce
+  license: MIT
+  summary: "a Salesforce backend for Django's ORM"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

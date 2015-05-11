@@ -1,0 +1,63 @@
+package:
+  name: gocept.testing
+  version: "1.10.1"
+
+source:
+  fn: gocept.testing-1.10.1.zip
+  url: https://pypi.python.org/packages/source/g/gocept.testing/gocept.testing-1.10.1.zip
+  md5: d13ab633b6be40f251a7c11f69797a74
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.testing = gocept.testing:main
+    #
+    # Would create an entry point called gocept.testing that calls gocept.testing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.testing
+    - gocept.testing.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://code.gocept.com/hg/public/gocept.testing
+  license: Zope Public License
+  summary: 'A collection of test helpers, additional assertions, and the like.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

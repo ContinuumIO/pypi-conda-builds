@@ -1,0 +1,66 @@
+package:
+  name: flask-simon
+  version: "0.3.0"
+
+source:
+  fn: Flask-Simon-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Simon/Flask-Simon-0.3.0.tar.gz
+  md5: 03a4fb5087cb2ddc5f01f1e814329f71
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-simon = flask-simon:main
+    #
+    # Would create an entry point called flask-simon that calls flask-simon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.8
+    - pymongo >=2.1
+    - simon >=0.7
+
+  run:
+    - python
+    - flask >=0.8
+    - pymongo >=2.1
+    - simon >=0.7
+
+test:
+  # Python imports
+  imports:
+    - flask_simon
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dirn/Flask-Simon
+  license: BSD License
+  summary: 'Simple MongoDB Models for Flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

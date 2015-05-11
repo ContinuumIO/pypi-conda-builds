@@ -1,0 +1,61 @@
+package:
+  name: doctestpdbhacks
+  version: "0.1"
+
+source:
+  fn: doctestpdbhacks-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/doctestpdbhacks/doctestpdbhacks-0.1.tar.gz
+  md5: 25c65a4dcdcd286030c8908a67c842fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - doctestpdbhacks = doctestpdbhacks:main
+    #
+    # Would create an entry point called doctestpdbhacks that calls doctestpdbhacks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - doctestpdbhacks
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://scryent.com
+  license: UNKNOWN
+  summary: "pdb doesn't play nice with doctests..  this is a quick hack to fix that."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

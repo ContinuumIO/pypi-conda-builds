@@ -1,0 +1,67 @@
+package:
+  name: materialgirl
+  version: "0.5.3"
+
+source:
+  fn: materialgirl-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/materialgirl/materialgirl-0.5.3.tar.gz
+  md5: 6de5cbc61aa00338b8e4068b97e6f966
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - materialgirl = materialgirl:main
+    #
+    # Would create an entry point called materialgirl that calls materialgirl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+    - msgpack-python
+
+  run:
+    - python
+    - redis
+    - msgpack-python
+
+test:
+  # Python imports
+  imports:
+    - materialgirl
+    - materialgirl.storage
+    - tests
+    - tests.storage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://materialgirllib.com
+  license: MIT License
+  summary: 'MaterialGirl is a library to keep materialized views and consolidations up-to-date.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

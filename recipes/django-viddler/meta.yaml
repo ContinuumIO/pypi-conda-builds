@@ -1,0 +1,71 @@
+package:
+  name: django-viddler
+  version: "1.3"
+
+source:
+  fn: django-viddler-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-viddler/django-viddler-1.3.tar.gz
+  md5: 596ebbcde88e8e732684188197d1799f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-viddler = django-viddler:main
+    #
+    # Would create an entry point called django-viddler that calls django-viddler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyviddler
+    - django-dirtyfields ==0.3b1
+    - django-durationfield
+
+  run:
+    - python
+    - pyviddler
+    - django-dirtyfields ==0.3b1
+    - django-durationfield
+
+test:
+  # Python imports
+  imports:
+    - example
+    - example.simpleapp
+    - viddler
+    - viddler.management
+    - viddler.management.commands
+    - viddler.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/natgeoed/django-viddler
+  license: UNKNOWN
+  summary: 'viddler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

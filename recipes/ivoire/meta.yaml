@@ -1,0 +1,66 @@
+package:
+  name: ivoire
+  version: "0.2"
+
+source:
+  fn: ivoire-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/ivoire/ivoire-0.2.tar.gz
+  md5: 6902d3bfebad2f04717872437efbac79
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ivoire = ivoire:main
+    #
+    # Would create an entry point called ivoire that calls ivoire.main()
+
+    - ivoire = ivoire.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - examples
+    - ivoire
+    - ivoire.spec
+    - ivoire.spec.unit
+    - ivoire.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ivoire --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Julian/Ivoire
+  license: MIT License
+  summary: 'A simple RSpec-like testing framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

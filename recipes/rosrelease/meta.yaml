@@ -1,0 +1,68 @@
+package:
+  name: rosrelease
+  version: "0.2.12"
+
+source:
+  fn: rosrelease-0.2.12.tar.gz
+  url: https://pypi.python.org/packages/source/r/rosrelease/rosrelease-0.2.12.tar.gz
+  md5: f7e37a2d25610e7a5a6f038832d44369
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rosrelease = rosrelease:main
+    #
+    # Would create an entry point called rosrelease that calls rosrelease.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-jenkins
+    - rospkg
+    - vcstools
+    - rosdep
+
+  run:
+    - python
+    - python-jenkins
+    - rospkg
+    - vcstools
+    - rosdep
+
+test:
+  # Python imports
+  imports:
+    - rosrelease
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://wiki.ros.org/rosrelease
+  license: BSD License
+  summary: 'ROS stack release support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

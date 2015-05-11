@@ -1,0 +1,73 @@
+package:
+  name: django-shopify
+  version: "0.4.8"
+
+source:
+  fn: django-shopify-0.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shopify/django-shopify-0.4.8.tar.gz
+  md5: 2f91f405eda6c3d1f1e398384de9951c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shopify = django-shopify:main
+    #
+    # Would create an entry point called django-shopify that calls django-shopify.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - django_conventions
+    - requests
+
+  run:
+    - python
+    - simplejson
+    - django_conventions
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - shopify_app
+    - shopify_app.management
+    - shopify_app.management.commands
+    - shopify_app.management.commands.lib
+    - shopify_app.services
+    - shopify_app.tests
+    - shopify_app.utils
+    - shopify_app.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SocalProofit/django-shopify
+  license: UNKNOWN
+  summary: 'Django-Shopify generic app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

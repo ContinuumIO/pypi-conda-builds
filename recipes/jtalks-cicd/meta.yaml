@@ -1,0 +1,83 @@
+package:
+  name: jtalks-cicd
+  version: "2.0.13"
+
+source:
+  fn: jtalks-cicd-2.0.13.tar.gz
+  url: https://pypi.python.org/packages/source/j/jtalks-cicd/jtalks-cicd-2.0.13.tar.gz
+  md5: 49d1dbe226268276f99317dd43f38afa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jtalks-cicd = jtalks-cicd:main
+    #
+    # Would create an entry point called jtalks-cicd that calls jtalks-cicd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute ==0.7.3
+    - requests
+    - gitpython
+    - paramiko
+    - mock
+    - configparser
+    - mysql-python
+    - mysql-connector-python
+
+  run:
+    - python
+    - distribute ==0.7.3
+    - requests
+    - gitpython
+    - paramiko
+    - mock
+    - configparser
+    - mysql-python
+    - mysql-connector-python
+
+test:
+  # Python imports
+  imports:
+    - jtalks
+    - jtalks.backup
+    - jtalks.db
+    - jtalks.parser
+    - jtalks.sanity
+    - jtalks.util
+    - tests
+    - tests.backup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jtalks-org/jtalks-cicd
+  license: UNKNOWN
+  summary: 'Installs JTalks apps like jcommune and poulpe configuring them. Usually used by CI to implement CD (continuous delivery)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

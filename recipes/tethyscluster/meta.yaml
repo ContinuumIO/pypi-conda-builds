@@ -1,0 +1,89 @@
+package:
+  name: tethyscluster
+  version: "0.0.0"
+
+source:
+  fn: TethysCluster-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/T/TethysCluster/TethysCluster-0.0.0.tar.gz
+  md5: 1e616c99daf06c5af10ce13ff5df6c62
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tethyscluster = tethyscluster:main
+    #
+    # Would create an entry point called tethyscluster that calls tethyscluster.main()
+
+    - tethyscluster = tethyscluster.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paramiko >=1.15.2
+    - boto >=2.23.0
+    - workerpool >=0.9.2
+    - jinja2 >=2.7
+    - decorator >=3.4.0
+    - iptools >=0.6.1
+    - optcomplete >=1.2-devel
+    - pycrypto >=2.5
+    - scp >=0.7.1
+    - iso8601 >=0.1.8
+
+  run:
+    - python
+    - paramiko >=1.15.2
+    - boto >=2.23.0
+    - workerpool >=0.9.2
+    - jinja2 >=2.7
+    - decorator >=3.4.0
+    - iptools >=0.6.1
+    - optcomplete >=1.2-devel
+    - pycrypto >=2.5
+    - scp >=0.7.1
+    - iso8601 >=0.1.8
+
+test:
+  # Python imports
+  imports:
+    - tethyscluster
+    - tethyscluster.balancers
+    - tethyscluster.balancers.sge
+    - tethyscluster.commands
+    - tethyscluster.plugins
+    - tethyscluster.templates
+    - tethyscluster.tests
+    - tethyscluster.tests.templates
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tethyscluster --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: "TethysCluster is an adaptation of StarCluster, a utility for creating and managing computing clusters hosted on Amazon's Elastic Compute Cloud (EC2)."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

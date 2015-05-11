@@ -1,0 +1,105 @@
+package:
+  name: django-realestate
+  version: "1.4.0"
+
+source:
+  fn: django-realestate-1.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-realestate/django-realestate-1.4.0.tar.gz
+  md5: 6af83ff75eecc9b5f54f851dd9618193
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-realestate = django-realestate:main
+    #
+    # Would create an entry point called django-realestate that calls django-realestate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5.1
+    - pillow
+    - south
+    - django-extensions
+    - six
+    - sorl-thumbnail
+    - djangorestframework
+    - django-braces ==1.4.0
+    - django-money ==0.4.1
+    - django-discover-runner ==1.0
+    - django-discoverage ==1.0.0
+    - redis
+    - django-constance
+    - factory_boy
+    - django-widget-tweaks
+    - django-haystack
+    - elasticsearch
+
+  run:
+    - python
+    - django >=1.5.1
+    - pillow
+    - south
+    - django-extensions
+    - six
+    - sorl-thumbnail
+    - djangorestframework
+    - django-braces ==1.4.0
+    - django-money ==0.4.1
+    - django-discover-runner ==1.0
+    - django-discoverage ==1.0.0
+    - redis
+    - django-constance
+    - factory_boy
+    - django-widget-tweaks
+    - django-haystack
+    - elasticsearch
+
+test:
+  # Python imports
+  imports:
+    - realestate
+    - realestate.admin
+    - realestate.api
+    - realestate.home
+    - realestate.home.templatetags
+    - realestate.listing
+    - realestate.listing.migrations
+    - realestate.listing.templatetags
+    - realestate.templatetags
+    - testproject
+    - testproject.localsite
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wm3ndez/realestate
+  license: BSD License
+  summary: 'Real Estate app built on Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

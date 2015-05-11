@@ -1,0 +1,65 @@
+package:
+  name: healthy
+  version: "0.1.2"
+
+source:
+  fn: healthy-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/healthy/healthy-0.1.2.tar.gz
+  md5: 251374205a2dbd132220e6e356fe0877
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - healthy = healthy:main
+    #
+    # Would create an entry point called healthy that calls healthy.main()
+
+    - healthy = healthy:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blessings ==1.5
+
+  run:
+    - python
+    - blessings ==1.5
+
+test:
+  # Python imports
+  imports:
+    - healthy
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - healthy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dustinmm80/healthy
+  license: MIT License
+  summary: 'healthy checks the health of a Python package from its pypi listing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

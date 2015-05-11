@@ -1,0 +1,64 @@
+package:
+  name: homefiles
+  version: "2.0.6"
+
+source:
+  fn: homefiles-2.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/h/homefiles/homefiles-2.0.6.tar.gz
+  md5: a7eae8f6597f899f55d2f5cf6590822c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - homefiles = homefiles:main
+    #
+    # Would create an entry point called homefiles that calls homefiles.main()
+
+    - homefiles = homefiles.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - homefiles
+    - tests
+    - tests.unit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - homefiles --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rconradharris/homefiles
+  license: Apache Software License
+  summary: 'Your files, anywhere.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

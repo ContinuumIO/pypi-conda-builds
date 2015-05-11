@@ -1,0 +1,70 @@
+package:
+  name: futuregrid.cloud.metric
+  version: "2.1.5"
+
+source:
+  fn: futuregrid.cloud.metric-2.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/f/futuregrid.cloud.metric/futuregrid.cloud.metric-2.1.5.tar.gz
+  md5: 8c83812daf04f610a4a5ec1f08f9e943
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - futuregrid.cloud.metric = futuregrid.cloud.metric:main
+    #
+    # Would create an entry point called futuregrid.cloud.metric that calls futuregrid.cloud.metric.main()
+
+    - fg-cleanup-db = futuregrid.cloud.metric.FGEucaMetricsDB:command_clean_database
+    - fg-euca-gather-log-files = futuregrid.cloud.metric.FGEucaGatherLogFiles:main
+    - fg-parser = futuregrid.cloud.metric.FGParser:main
+    - fg-metric = futuregrid.cloud.metric.FGAnalyzer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - futuregrid
+    - futuregrid.cloud
+    - futuregrid.cloud.metric
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fg-cleanup-db --help
+    - fg-euca-gather-log-files --help
+    - fg-parser --help
+    - fg-metric --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/futuregrid/futuregrid-cloud-metrics
+  license: Apache 2.0
+  summary: 'FutureGrid: Cloud Metrics'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

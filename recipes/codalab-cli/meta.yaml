@@ -1,0 +1,72 @@
+package:
+  name: codalab-cli
+  version: "0.1.9"
+
+source:
+  fn: codalab-cli-0.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/c/codalab-cli/codalab-cli-0.1.9.tar.gz
+  md5: 4b86357c07deabae44e2a94406d007a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codalab-cli = codalab-cli:main
+    #
+    # Would create an entry point called codalab-cli that calls codalab-cli.main()
+
+    - codalab = bin.codalab_client.py:main
+    - codalab_worker = bin.codalab_server.py:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - sqlalchemy >=0.8.3
+
+  run:
+    - python
+    - sqlalchemy >=0.8.3
+
+test:
+  # Python imports
+  imports:
+    - codalab
+    - codalab.bundles
+    - codalab.client
+    - codalab.config
+    - codalab.lib
+    - codalab.model
+    - codalab.objects
+    - codalab.server
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - codalab --help
+    - codalab_worker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/codalab/
+  license: LICENSE.txt
+  summary: 'Codalab CLI is a command-line tool for interacting with Codalab. See http://codalab.org/'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

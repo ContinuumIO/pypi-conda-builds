@@ -1,0 +1,72 @@
+package:
+  name: gtwpy
+  version: "1.3.10"
+
+source:
+  fn: gtwpy-1.3.10.tar.gz
+  url: https://pypi.python.org/packages/source/g/gtwpy/gtwpy-1.3.10.tar.gz
+  md5: 1fd4bd04813eca4744724aaae80bc30c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gtwpy = gtwpy:main
+    #
+    # Would create an entry point called gtwpy that calls gtwpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sanetime >=4,<5
+    - utilspy >=0,<1
+    - giftwrap >=1,<2
+    - gevent <2
+    - requests >=0.10.0,<0.11
+
+  run:
+    - python
+    - sanetime >=4,<5
+    - utilspy >=0,<1
+    - giftwrap >=1,<2
+    - gevent <2
+    - requests >=0.10.0,<0.11
+
+test:
+  # Python imports
+  imports:
+    - gtw
+    - gtw.test
+    - gtwpy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/HubSpot/gtwpy
+  license: LICENSE.txt
+  summary: 'A kickass wrapper around the Citrix GoToWebinar REST API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: compare_man_pages_from_two_folders
+  version: "1.0.0.dev1"
+
+source:
+  fn: compare_man_pages_from_two_folders-1.0.0.dev1.zip
+  url: https://pypi.python.org/packages/source/c/compare_man_pages_from_two_folders/compare_man_pages_from_two_folders-1.0.0.dev1.zip
+  md5: 78f8fe858db9a107927ee793f6ae8de3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - compare_man_pages_from_two_folders = compare_man_pages_from_two_folders:main
+    #
+    # Would create an entry point called compare_man_pages_from_two_folders that calls compare_man_pages_from_two_folders.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyxb
+
+  run:
+    - python
+    - pyxb
+
+test:
+  # Python imports
+  imports:
+    - bin
+    - compare_man_pages_from_two_folders
+    - compare_man_pages_from_two_folders.man_page_PyXB
+    - compare_man_pages_from_two_folders.man_page_PyXB.com
+    - compare_man_pages_from_two_folders.man_page_PyXB.com.nokia
+    - compare_man_pages_from_two_folders.man_page_PyXB.com.nokia.oss
+    - compare_man_pages_from_two_folders.man_page_PyXB.com.nokia.oss.fm
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/storborg/compare_man_pages_from_two_folders
+  license: MIT
+  summary: 'A tool used to compare man pages with same name from separate folders'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

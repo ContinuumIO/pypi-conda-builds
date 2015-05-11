@@ -1,0 +1,69 @@
+package:
+  name: cmdbot-evented
+  version: "0.1.0dev"
+
+source:
+  fn: cmdbot-evented-0.1.0dev.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmdbot-evented/cmdbot-evented-0.1.0dev.tar.gz
+  md5: b2e7074a93e75fca1ffa24792377eb88
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmdbot-evented = cmdbot-evented:main
+    #
+    # Would create an entry point called cmdbot-evented that calls cmdbot-evented.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - nose
+    - ipdb
+    - gevent
+
+  run:
+    - python
+    - setuptools
+    - argparse
+    - nose
+    - ipdb
+    - gevent
+
+test:
+  # Python imports
+  imports:
+    - cmdbot_evented
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kyleterry/cmdbot-evented/
+  license: Public Domain (WTFPL)
+  summary: 'An IRC Bot with a `cmd` attitude'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

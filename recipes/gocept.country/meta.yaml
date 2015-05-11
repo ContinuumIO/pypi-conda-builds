@@ -1,0 +1,70 @@
+package:
+  name: gocept.country
+  version: "0.6.4"
+
+source:
+  fn: gocept.country-0.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.country/gocept.country-0.6.4.tar.gz
+  md5: e31234a78406b9a2bf36db675e8b877b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.country = gocept.country:main
+    #
+    # Would create an entry point called gocept.country that calls gocept.country.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycountry
+    - zope.i18nmessageid
+    - zc.sourcefactory >=0.3.3
+    - zope.deferredimport
+
+  run:
+    - python
+    - setuptools
+    - pycountry
+    - zope.i18nmessageid
+    - zc.sourcefactory >=0.3.3
+    - zope.deferredimport
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.country
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.country/
+  license: Zope Public License
+  summary: 'Zope 3 sources for pycountry databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

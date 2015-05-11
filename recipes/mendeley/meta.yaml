@@ -1,0 +1,74 @@
+package:
+  name: mendeley
+  version: "0.3.2"
+
+source:
+  fn: mendeley-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mendeley/mendeley-0.3.2.tar.gz
+  md5: 254dd4ee43e8a2c532127fe9c6496308
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mendeley = mendeley:main
+    #
+    # Would create an entry point called mendeley that calls mendeley.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - arrow ==0.5.0
+    - future ==0.14.3
+    - memoized-property ==1.0.2
+    - requests ==2.5.1
+    - requests-oauthlib ==0.4.2
+    - oauthlib ==0.7.2
+
+  run:
+    - python
+    - arrow ==0.5.0
+    - future ==0.14.3
+    - memoized-property ==1.0.2
+    - requests ==2.5.1
+    - requests-oauthlib ==0.4.2
+    - oauthlib ==0.7.2
+
+test:
+  # Python imports
+  imports:
+    - mendeley
+    - mendeley.models
+    - mendeley.resources
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dev.mendeley.com
+  license: Apache Software License
+  summary: 'Python SDK for the Mendeley API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: sharq
+  version: "0.3.0"
+
+source:
+  fn: SharQ-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/S/SharQ/SharQ-0.3.0.tar.gz
+  md5: 9d8dc2ca04e6d98683f615ba456e4789
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sharq = sharq:main
+    #
+    # Would create an entry point called sharq that calls sharq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis ==2.10.1
+    - msgpack-python ==0.4.2
+
+  run:
+    - python
+    - redis ==2.10.1
+    - msgpack-python ==0.4.2
+
+test:
+  # Python imports
+  imports:
+    - sharq
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plivo/sharq
+  license: MIT License
+  summary: 'An API queueing system built at Plivo.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

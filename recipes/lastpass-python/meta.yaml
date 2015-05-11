@@ -1,0 +1,64 @@
+package:
+  name: lastpass-python
+  version: "0.1.0"
+
+source:
+  fn: lastpass-python-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/lastpass-python/lastpass-python-0.1.0.tar.gz
+  md5: c2829c9e9468f5098fe4df7088bb30c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lastpass-python = lastpass-python:main
+    #
+    # Would create an entry point called lastpass-python that calls lastpass-python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.2.1,<=3.0.0
+    - pycrypto >=2.6.1
+
+  run:
+    - python
+    - requests >=1.2.1,<=3.0.0
+    - pycrypto >=2.6.1
+
+test:
+  # Python imports
+  imports:
+    - lastpass
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/konomae/lastpass-python
+  license: MIT License
+  summary: 'LastPass Python API (unofficial)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

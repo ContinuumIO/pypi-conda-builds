@@ -1,0 +1,69 @@
+package:
+  name: django-rpy2
+  version: "0.6.6"
+
+source:
+  fn: django-rpy2-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rpy2/django-rpy2-0.6.6.tar.gz
+  md5: 94c773b830765ae18bc2ea237b32f7e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rpy2 = django-rpy2:main
+    #
+    # Would create an entry point called django-rpy2 that calls django-rpy2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7.4
+    - django-object-actions >=0.5.1
+    - rpy2 >=2.5.6
+
+  run:
+    - python
+    - django >=1.7.4
+    - django-object-actions >=0.5.1
+    - rpy2 >=2.5.6
+
+test:
+  # Python imports
+  imports:
+    - django_rpy2
+    - django_rpy2.management
+    - django_rpy2.management.commands
+    - django_rpy2.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.net/charts
+  license: AGPLv3
+  summary: 'Allow django to create R scripts and generate charts and other data output from those scripts.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

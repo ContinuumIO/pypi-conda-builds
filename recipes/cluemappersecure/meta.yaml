@@ -1,0 +1,73 @@
+package:
+  name: cluemappersecure
+  version: "0.6.3"
+
+source:
+  fn: ClueMapperSecure-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/C/ClueMapperSecure/ClueMapperSecure-0.6.3.tar.gz
+  md5: c94b43de815aed7fb204c00cde72f0c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cluemappersecure = cluemappersecure:main
+    #
+    # Would create an entry point called cluemappersecure that calls cluemappersecure.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste >=1.7,<=1.7.9999
+    - repoze.who >=1.0.1,<=1.0.9999
+    - tracusermanagerplugin
+    - tracaccountmanager
+    - traccustomfieldadmin
+
+  run:
+    - python
+    - setuptools
+    - paste >=1.7,<=1.7.9999
+    - repoze.who >=1.0.1,<=1.0.9999
+    - tracusermanagerplugin
+    - tracaccountmanager
+    - traccustomfieldadmin
+
+test:
+  # Python imports
+  imports:
+    - clue
+    - clue.secure
+    - cluemappersecure
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://projects.serverzen.com/pm/p/cluemapper
+  license: BSD
+  summary: 'Security component for ClueMapper.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

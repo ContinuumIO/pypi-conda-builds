@@ -1,0 +1,95 @@
+package:
+  name: zeam.form.base
+  version: "1.3.1"
+
+source:
+  fn: zeam.form.base-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zeam.form.base/zeam.form.base-1.3.1.tar.gz
+  md5: 5363c4339fbe9fd5474b26605fcdc3d2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zeam.form.base = zeam.form.base:main
+    #
+    # Would create an entry point called zeam.form.base that calls zeam.form.base.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - grokcore.component >=2.5
+    - grokcore.security
+    - grokcore.view >=2.7
+    - martian
+    - grokcore.chameleon >=1.0.3
+    - megrok.pagetemplate >=0.7
+    - setuptools
+    - zope.component
+    - zope.cachedescriptors
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.pagetemplate
+    - zope.publisher
+    - zope.testing
+
+  run:
+    - python
+    - grokcore.component >=2.5
+    - grokcore.security
+    - grokcore.view >=2.7
+    - martian
+    - grokcore.chameleon >=1.0.3
+    - megrok.pagetemplate >=0.7
+    - setuptools
+    - zope.component
+    - zope.cachedescriptors
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.pagetemplate
+    - zope.publisher
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - zeam
+    - zeam.form
+    - zeam.form.base
+    - zeam.form.base.ftests
+    - zeam.form.base.ftests.forms
+    - zeam.form.base.ftests.widgets
+    - zeam.form.base.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zeam.form.base
+  license: BSD
+  summary: 'Grok based form framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

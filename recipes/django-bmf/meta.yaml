@@ -1,0 +1,136 @@
+package:
+  name: django-bmf
+  version: "0.2.3a2"
+
+source:
+  fn: django-bmf-0.2.3a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bmf/django-bmf-0.2.3a2.tar.gz
+  md5: 67c48393e186c481f35b419e861caafa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bmf = django-bmf:main
+    #
+    # Would create an entry point called django-bmf that calls django-bmf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - pytz
+    - requests
+    - django-sekizai
+    - django-mptt
+    - djangorestframework >=3.1
+    - markdown
+
+  run:
+    - python
+    - django >=1.7
+    - pytz
+    - requests
+    - django-sekizai
+    - django-mptt
+    - djangorestframework >=3.1
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - djangobmf
+    - djangobmf.account
+    - djangobmf.contrib
+    - djangobmf.contrib.accounting
+    - djangobmf.contrib.accounting.migrations
+    - djangobmf.contrib.address
+    - djangobmf.contrib.address.migrations
+    - djangobmf.contrib.customer
+    - djangobmf.contrib.customer.migrations
+    - djangobmf.contrib.employee
+    - djangobmf.contrib.employee.migrations
+    - djangobmf.contrib.invoice
+    - djangobmf.contrib.invoice.migrations
+    - djangobmf.contrib.position
+    - djangobmf.contrib.position.migrations
+    - djangobmf.contrib.product
+    - djangobmf.contrib.product.migrations
+    - djangobmf.contrib.project
+    - djangobmf.contrib.project.migrations
+    - djangobmf.contrib.quotation
+    - djangobmf.contrib.quotation.migrations
+    - djangobmf.contrib.task
+    - djangobmf.contrib.task.migrations
+    - djangobmf.contrib.taxing
+    - djangobmf.contrib.taxing.migrations
+    - djangobmf.contrib.team
+    - djangobmf.contrib.team.migrations
+    - djangobmf.contrib.timesheet
+    - djangobmf.contrib.timesheet.migrations
+    - djangobmf.core
+    - djangobmf.currency
+    - djangobmf.currency.EUR
+    - djangobmf.currency.EUR.migrations
+    - djangobmf.currency.USD
+    - djangobmf.currency.USD.migrations
+    - djangobmf.document
+    - djangobmf.fields
+    - djangobmf.migrations
+    - djangobmf.models
+    - djangobmf.notification
+    - djangobmf.numbering
+    - djangobmf.report
+    - djangobmf.report.xhtml2pdf
+    - djangobmf.report.xhtml2pdf.migrations
+    - djangobmf.templatetags
+    - djangobmf.utils
+    - djangobmf.utils.markdown
+    - djangobmf.views
+    - djangobmf.wizard
+    - tests.account
+    - tests.activity
+    - tests.appapis
+    - tests.configuration
+    - tests.core
+    - tests.currency
+    - tests.dashboard
+    - tests.document
+    - tests.formapi
+    - tests.model_meta
+    - tests.report
+    - tests.urls
+    - tests.utils
+    - tests.workflow
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.django-bmf.org/
+  license: BSD License
+  summary: 'Business Management Framework with integrated ERP solution written for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

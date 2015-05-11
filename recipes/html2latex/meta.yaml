@@ -1,0 +1,90 @@
+package:
+  name: html2latex
+  version: "0.0.25"
+
+source:
+  fn: html2latex-0.0.25.tar.gz
+  url: https://pypi.python.org/packages/source/h/html2latex/html2latex-0.0.25.tar.gz
+  md5: 46bc1f3b5a695b4a4de12e8bbe518040
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - html2latex = html2latex:main
+    #
+    # Would create an entry point called html2latex that calls html2latex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - pillow ==2.6.1
+    - argparse ==1.2.1
+    - html2text ==2014.12.24
+    - lxml ==3.4.1
+    - mmh3 ==2.3
+    - pyenchant ==1.6.6
+    - redis ==2.9.1
+    - repoze.lru ==0.6
+    - selenium ==2.44.0
+    - splinter ==0.7.0
+    - xamcheck-utils ==0.0.11
+
+  run:
+    - python
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - pillow ==2.6.1
+    - argparse ==1.2.1
+    - html2text ==2014.12.24
+    - lxml ==3.4.1
+    - mmh3 ==2.3
+    - pyenchant ==1.6.6
+    - redis ==2.9.1
+    - repoze.lru ==0.6
+    - selenium ==2.44.0
+    - splinter ==0.7.0
+    - xamcheck-utils ==0.0.11
+
+test:
+  # Python imports
+  imports:
+    - html2latex
+    - html2latex.tests
+    - html2latex.tests.utils
+    - html2latex.tests.utils.images
+    - html2latex.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/psjinx/html2latex
+  license: BSD License
+  summary: 'Convert HTML to latex.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,85 @@
+package:
+  name: floraconcierge-client
+  version: "0.7.22"
+
+source:
+  fn: floraconcierge-client-0.7.22.tar.gz
+  url: https://pypi.python.org/packages/source/f/floraconcierge-client/floraconcierge-client-0.7.22.tar.gz
+  md5: d93c03b75618938af3e40e781df1f25b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - floraconcierge-client = floraconcierge-client:main
+    #
+    # Would create an entry point called floraconcierge-client that calls floraconcierge-client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+    - ordered_set
+
+  run:
+    - python
+    - pytz
+    - ordered_set
+
+test:
+  # Python imports
+  imports:
+    - floraconcierge
+    - floraconcierge.apiauth
+    - floraconcierge.apiauth.migrations
+    - floraconcierge.client
+    - floraconcierge.mapping
+    - floraconcierge.mapping.api
+    - floraconcierge.mapping.api.result
+    - floraconcierge.mapping.api.result.order
+    - floraconcierge.mapping.api.validation
+    - floraconcierge.mapping.mixins
+    - floraconcierge.mapping.mixins.model
+    - floraconcierge.mapping.mixins.model.shop
+    - floraconcierge.mapping.model
+    - floraconcierge.mapping.model.geo
+    - floraconcierge.mapping.model.shop
+    - floraconcierge.mapping.model.shop.order
+    - floraconcierge.mapping.model.shop.order.reasons
+    - floraconcierge.mapping.model.shop.product
+    - floraconcierge.mapping.model.shop.promo
+    - floraconcierge.mapping.model.user
+    - floraconcierge.mapping.model.user.social
+    - floraconcierge.shortcuts
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.floraexpress.ru/
+  license: BSD License
+  summary: 'FloraExpress API python client library. www.floraexpress.ru'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

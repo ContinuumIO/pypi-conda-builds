@@ -1,0 +1,70 @@
+package:
+  name: pyexchange
+  version: "0.6"
+
+source:
+  fn: pyexchange-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyexchange/pyexchange-0.6.tar.gz
+  md5: 009a9b2071a49d88cb64d0ad22953bbd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyexchange = pyexchange:main
+    #
+    # Would create an entry point called pyexchange that calls pyexchange.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - pytz
+    - requests
+    - requests-ntlm
+
+  run:
+    - python
+    - lxml
+    - pytz
+    - requests
+    - requests-ntlm
+
+test:
+  # Python imports
+  imports:
+    - pyexchange
+    - pyexchange.base
+    - pyexchange.exchange2010
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/linkedin/pyexchange
+  license: Apache Software License
+  summary: 'A simple library to talk to Microsoft Exchange'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

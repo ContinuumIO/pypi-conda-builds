@@ -1,0 +1,76 @@
+package:
+  name: hdf5-django
+  version: "0.1.2"
+
+source:
+  fn: hdf5-django-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hdf5-django/hdf5-django-0.1.2.tar.gz
+  md5: 6c078ca911474fe4af61b38c25943269
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hdf5-django = hdf5-django:main
+    #
+    # Would create an entry point called hdf5-django that calls hdf5-django.main()
+
+    - h5dj-test = tests.runtests:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - h5py
+    - django
+    - pil
+    - imread
+    - requests
+
+  run:
+    - python
+    - numpy
+    - h5py
+    - django
+    - pil
+    - imread
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - h5dj
+    - tests
+    - tests.h5dj_tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - h5dj-test --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fish2000/h5dj/
+  license: BSD License
+  summary: 'HDF5 interfaces for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

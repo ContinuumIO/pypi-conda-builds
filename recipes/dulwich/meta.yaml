@@ -1,0 +1,63 @@
+package:
+  name: dulwich
+  version: "0.10.1a"
+
+source:
+  fn: dulwich-0.10.1a.tar.gz
+  url: https://pypi.python.org/packages/source/d/dulwich/dulwich-0.10.1a.tar.gz
+  md5: 93a5facd51f3d7de7224a1a832f3a3a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dulwich = dulwich:main
+    #
+    # Would create an entry point called dulwich that calls dulwich.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dulwich
+    - dulwich.contrib
+    - dulwich.tests
+    - dulwich.tests.compat
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://samba.org/~jelmer/dulwich
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Python Git Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

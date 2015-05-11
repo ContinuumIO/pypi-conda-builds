@@ -1,0 +1,86 @@
+package:
+  name: sharqserver
+  version: "0.2.0"
+
+source:
+  fn: SharQServer-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/S/SharQServer/SharQServer-0.2.0.tar.gz
+  md5: 420ebb2695917488b134d68bcd2660d2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sharqserver = sharqserver:main
+    #
+    # Would create an entry point called sharqserver that calls sharqserver.main()
+
+    - sharq-server=runner:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sharq ==0.3.0
+    - flask ==0.10.1
+    - jinja2 ==2.7.2
+    - markupsafe ==0.23
+    - werkzeug ==0.9.4
+    - gevent ==1.0.1
+    - greenlet ==0.4.2
+    - itsdangerous ==0.24
+    - wsgiref ==0.1.2
+    - gunicorn ==19.0
+    - ujson ==1.33
+
+  run:
+    - python
+    - setuptools
+    - sharq ==0.3.0
+    - flask ==0.10.1
+    - jinja2 ==2.7.2
+    - markupsafe ==0.23
+    - werkzeug ==0.9.4
+    - gevent ==1.0.1
+    - greenlet ==0.4.2
+    - itsdangerous ==0.24
+    - wsgiref ==0.1.2
+    - gunicorn ==19.0
+    - ujson ==1.33
+
+test:
+  # Python imports
+  imports:
+    - sharq_server
+    - sharqserver
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sharq-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plivo/sharq-server
+  license: MIT License
+  summary: 'An API queuing server based on the SharQ library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

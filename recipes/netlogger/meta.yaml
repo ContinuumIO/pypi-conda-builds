@@ -1,0 +1,78 @@
+package:
+  name: netlogger
+  version: "4.3.1"
+
+source:
+  fn: netlogger-4.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/netlogger/netlogger-4.3.1.tar.gz
+  md5: 5fdf9df16b424c64cb4354ab64ec3bae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - netlogger = netlogger:main
+    #
+    # Would create an entry point called netlogger that calls netlogger.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - magicdate >=0.1.2
+
+  run:
+    - python
+    - magicdate >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - netlogger
+    - netlogger.actions
+    - netlogger.amqp
+    - netlogger.analysis
+    - netlogger.analysis.datamining
+    - netlogger.analysis.modules
+    - netlogger.analysis.schema
+    - netlogger.analysis.workflow
+    - netlogger.parsers
+    - netlogger.parsers.modules
+    - netlogger.pegasus
+    - netlogger.tests
+    - netlogger.tests.component
+    - netlogger.tests.data
+    - netlogger.tests.stress
+    - netlogger.tests.system
+    - netlogger.tests.unit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://acs.lbl.gov/NetLoggerWiki/
+  license: LBNL. See http://acs.lbl.gov/NetLoggerWiki/index.php/NetLogger_License
+  summary: 'NetLogger Toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

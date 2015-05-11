@@ -1,0 +1,89 @@
+package:
+  name: github2fedmsg
+  version: "0.3.6"
+
+source:
+  fn: github2fedmsg-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/github2fedmsg/github2fedmsg-0.3.6.tar.gz
+  md5: e47f6be5b9d12cc77039a53b259b3181
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github2fedmsg = github2fedmsg:main
+    #
+    # Would create an entry point called github2fedmsg that calls github2fedmsg.main()
+
+    - initialize_github2fedmsg_db=github2fedmsg.scripts.initializedb:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fedmsg
+    - pyramid
+    - sqlalchemy
+    - transaction
+    - pyramid_tm
+    - pyramid_mako
+    - zope.sqlalchemy
+    - weberror
+    - velruse
+    - tw2.core
+
+  run:
+    - python
+    - setuptools
+    - fedmsg
+    - pyramid
+    - sqlalchemy
+    - transaction
+    - pyramid_tm
+    - pyramid_mako
+    - zope.sqlalchemy
+    - weberror
+    - velruse
+    - tw2.core
+
+test:
+  # Python imports
+  imports:
+    - github2fedmsg
+    - github2fedmsg.models
+    - github2fedmsg.scripts
+    - github2fedmsg.templates
+    - github2fedmsg.views
+    - github2fedmsg.widgets
+    - github2fedmsg.widgets.templates
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - initialize_github2fedmsg_db --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fedora-infra/github2fedmsg
+  license: UNKNOWN
+  summary: 'Pubsubhubbub app that rebroadcasts GH events over fedmsg'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

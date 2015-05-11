@@ -1,0 +1,82 @@
+package:
+  name: archelond
+  version: "0.5.0"
+
+source:
+  fn: archelond-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/archelond/archelond-0.5.0.tar.gz
+  md5: 1eb5be22cd797152afd5df2df19eb8a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archelond = archelond:main
+    #
+    # Would create an entry point called archelond that calls archelond.main()
+
+    - archelond = archelond.web:run_server
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - uwsgi
+    - passlib
+    - itsdangerous
+    - pytz
+    - elasticsearch
+    - flask-assets
+    - cssmin
+    - jsmin
+
+  run:
+    - python
+    - flask
+    - uwsgi
+    - passlib
+    - itsdangerous
+    - pytz
+    - elasticsearch
+    - flask-assets
+    - cssmin
+    - jsmin
+
+test:
+  # Python imports
+  imports:
+    - archelond
+    - archelond.data
+    - archelond.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - archelond --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/carsongee/archelon
+  license: GNU Affero General Public License v3
+  summary: 'Web server for Web shell history'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

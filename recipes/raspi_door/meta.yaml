@@ -1,0 +1,88 @@
+package:
+  name: raspi_door
+  version: "0.4.0"
+
+source:
+  fn: raspi_door-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/raspi_door/raspi_door-0.4.0.tar.gz
+  md5: 061610e8d6ef5cd37f3bcb1deacfd747
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - raspi_door = raspi_door:main
+    #
+    # Would create an entry point called raspi_door that calls raspi_door.main()
+
+    - raspi-door         = raspi_door:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6.24
+    - smoke >=0.2.0
+    - picamera >=0.8
+    - rpi.gpio >=0.5.5
+    - six >=1.8.0
+    - aadict >=0.2.1
+    - morph >=0.1.1
+    - asset >=0.6
+    - pygame >=1.9.1
+    - pgu >=0.18
+    - pytz >=2014.4
+    - requests >=2.3.0
+    - protobuf >=2.5.0
+
+  run:
+    - python
+    - distribute >=0.6.24
+    - smoke >=0.2.0
+    - picamera >=0.8
+    - rpi.gpio >=0.5.5
+    - six >=1.8.0
+    - aadict >=0.2.1
+    - morph >=0.1.1
+    - asset >=0.6
+    - pygame >=1.9.1
+    - pgu >=0.18
+    - pytz >=2014.4
+    - requests >=2.3.0
+    - protobuf >=2.5.0
+
+test:
+  # Python imports
+  imports:
+    - raspi_door
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - raspi-door --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/metagriffin/raspi-door
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Raspberry Pi Smart-ish Door'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

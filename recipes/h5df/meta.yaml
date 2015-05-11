@@ -1,0 +1,70 @@
+package:
+  name: h5df
+  version: "0.0.7"
+
+source:
+  fn: h5df-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/h/h5df/h5df-0.0.7.tar.gz
+  md5: b1896d1d3c2568c7c316b13dd4adfc30
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - h5df = h5df:main
+    #
+    # Would create an entry point called h5df that calls h5df.main()
+
+    - h5df = h5df:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pandas
+    - h5py
+    - click
+
+  run:
+    - python
+    - numpy
+    - pandas
+    - h5py
+    - click
+
+test:
+  # Python imports
+  imports:
+    - h5df
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - h5df --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gilesc/h5df
+  license: GPLv3
+  summary: 'Library and CLI for storing numeric data frames in HDF5'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

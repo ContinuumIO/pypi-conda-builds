@@ -1,0 +1,68 @@
+package:
+  name: hip2slack-emoji
+  version: "0.1.7"
+
+source:
+  fn: hip2slack-emoji-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/h/hip2slack-emoji/hip2slack-emoji-0.1.7.tar.gz
+  md5: d9679331d680b91f5e5c9827846a8d84
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hip2slack-emoji = hip2slack-emoji:main
+    #
+    # Would create an entry point called hip2slack-emoji that calls hip2slack-emoji.main()
+
+    - catchemall=hip2slack_emoji.problem:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - splinter ==0.7.2
+    - requests ==2.6.2
+    - beautifulsoup4 ==4.3.2
+
+  run:
+    - python
+    - splinter ==0.7.2
+    - requests ==2.6.2
+    - beautifulsoup4 ==4.3.2
+
+test:
+  # Python imports
+  imports:
+    - hip2slack_emoji
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - catchemall --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ivancrneto/hip2slack-emoji/
+  license: MIT License
+  summary: 'Importer of Hipchat emojis to Slack'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

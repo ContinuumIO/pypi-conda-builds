@@ -1,0 +1,67 @@
+package:
+  name: carpenter
+  version: "1.0.2"
+
+source:
+  fn: Carpenter-1.0.2.zip
+  url: https://pypi.python.org/packages/source/C/Carpenter/Carpenter-1.0.2.zip
+  md5: f4a5dc6d3491580c0a7c284791cfc6fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - carpenter = carpenter:main
+    #
+    # Would create an entry point called carpenter that calls carpenter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - allset <2.0.0
+    - pydatawrap >=1.2.4,<2.0.0
+
+  run:
+    - python
+    - allset <2.0.0
+    - pydatawrap >=1.2.4,<2.0.0
+
+test:
+  # Python imports
+  imports:
+    - carpenter
+    - carpenter.blocks
+    - carpenter.regex
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/OpenGov/carpenter
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'A utility library which repairs and analyzes tablular data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: fowler.switchboard
+  version: "0.1dev"
+
+source:
+  fn: fowler.switchboard-0.1dev.tar.gz
+  url: https://pypi.python.org/packages/source/f/fowler.switchboard/fowler.switchboard-0.1dev.tar.gz
+  md5: 6a2b9d88de2cf59907b924a6db5adfdd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fowler.switchboard = fowler.switchboard:main
+    #
+    # Would create an entry point called fowler.switchboard that calls fowler.switchboard.main()
+
+    - sw = fowler.switchboard.main:dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - cython >=0.13
+    - nltk
+    - opster
+    - pandas
+    - python-dateutil
+    - pyyaml
+    - scikit-learn
+    - scipy
+    - setuptools
+    - tables
+
+  run:
+    - python
+    - cython >=0.13
+    - nltk
+    - opster
+    - pandas
+    - python-dateutil
+    - pyyaml
+    - scikit-learn
+    - scipy
+    - setuptools
+    - tables
+
+test:
+  # Python imports
+  imports:
+    - fowler
+    - fowler.switchboard
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sw --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.eecs.qmul.ac.uk/~dm303/
+  license: MIT License
+  summary: "A wrapper around Christopher Potts' swda.py"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

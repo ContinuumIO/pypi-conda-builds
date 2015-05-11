@@ -1,0 +1,68 @@
+package:
+  name: backlash
+  version: "0.0.8"
+
+source:
+  fn: backlash-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/b/backlash/backlash-0.0.8.tar.gz
+  md5: 7090cdd56ae9628c9f5bb5cffacd463c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - backlash = backlash:main
+    #
+    # Would create an entry point called backlash that calls backlash.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+
+  run:
+    - python
+    - setuptools
+    - webob
+
+test:
+  # Python imports
+  imports:
+    - backlash
+    - backlash.trace_errors
+    - backlash.tracing
+    - backlash.tracing.errors
+    - backlash.tracing.reporters
+    - backlash.tracing.slowrequests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/TurboGears/backlash
+  license: MIT License
+  summary: 'Standalone WebOb port of the Werkzeug Debugger with Python3 support meant to replace WebError in future TurboGears2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: infi.gevent_utils
+  version: "0.2.1"
+
+source:
+  fn: infi.gevent_utils-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.gevent_utils/infi.gevent_utils-0.2.1.tar.gz
+  md5: 372ba5bc29d486ac344793ec43cf190c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.gevent_utils = infi.gevent_utils:main
+    #
+    # Would create an entry point called infi.gevent_utils that calls infi.gevent_utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - gevent
+    - infi.pyutils
+    - infi.traceback
+    - logbook
+    - python-cjson
+    - setuptools
+
+  run:
+    - python
+    - gevent
+    - infi.pyutils
+    - infi.traceback
+    - logbook
+    - python-cjson
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.gevent_utils
+    - infi.gevent_utils.os
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.gevent_utils
+  license: Python Software Foundation License
+  summary: 'gevent-utils'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

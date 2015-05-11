@@ -1,0 +1,65 @@
+package:
+  name: django-social-share-settings
+  version: "0.2"
+
+source:
+  fn: django-social-share-settings-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-social-share-settings/django-social-share-settings-0.2.tar.gz
+  md5: e246b8453afc96fc436a2d59be24ae6e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-social-share-settings = django-social-share-settings:main
+    #
+    # Would create an entry point called django-social-share-settings that calls django-social-share-settings.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - setuptools
+    - django
+
+test:
+  # Python imports
+  imports:
+    - django_social_share_settings
+    - django_social_share_settings.migrations
+    - django_social_share_settings.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ninapavlich/django-social-share-settings
+  license: BSD
+  summary: 'Model and front end library for choosing and integrating social media share widgets.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

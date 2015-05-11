@@ -1,0 +1,75 @@
+package:
+  name: kuaipandriver
+  version: "0.5"
+
+source:
+  fn: kuaipandriver-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/k/kuaipandriver/kuaipandriver-0.5.tar.gz
+  md5: 34f732266cd43b53cfdc7a871e81364a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kuaipandriver = kuaipandriver:main
+    #
+    # Would create an entry point called kuaipandriver that calls kuaipandriver.main()
+
+    - mount.kuaipan=kuaipandriver.kuaipanfuse:main
+    - test.apidaylimit=kuaipandriver.kuaipanapi:test_api_limit
+    - test.docconvert=kuaipandriver.kuaipanapi:test_doc_convert
+    - test.fileupload=kuaipandriver.kuaipanapi:test_file_upload
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.3.0
+    - fusepy >=2.0.2
+    - lxml >=3.3.5
+
+  run:
+    - python
+    - setuptools
+    - requests >=2.3.0
+    - fusepy >=2.0.2
+    - lxml >=3.3.5
+
+test:
+  # Python imports
+  imports:
+    - kuaipandriver
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mount.kuaipan --help
+    - test.apidaylimit --help
+    - test.docconvert --help
+    - test.fileupload --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alex8224/fuse_for_kuaipan
+  license: MIT License
+  summary: "A network driver's fuse Implementation base on kingsoft's kuaipan api"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

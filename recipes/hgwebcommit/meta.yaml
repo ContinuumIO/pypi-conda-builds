@@ -1,0 +1,73 @@
+package:
+  name: hgwebcommit
+  version: "0.2"
+
+source:
+  fn: hgwebcommit-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hgwebcommit/hgwebcommit-0.2.tar.gz
+  md5: 8a89fc5f9981b6b8f08b44b29a9f219f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hgwebcommit = hgwebcommit:main
+    #
+    # Would create an entry point called hgwebcommit that calls hgwebcommit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.6.1
+    - flask-babel >=0.6
+    - flask-wtf >=0.5.2
+    - simplejson >=2.1.0
+    - mercurial >=1.7
+
+  run:
+    - python
+    - flask >=0.6.1
+    - flask-babel >=0.6
+    - flask-wtf >=0.5.2
+    - simplejson >=2.1.0
+    - mercurial >=1.7
+
+test:
+  # Python imports
+  imports:
+    - hgwebcommit
+    - hgwebcommit.actions
+    - hgwebcommit.repository
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/tokibito/flask-hgwebcommit/
+  license: BSD License
+  summary: 'web based commit tool for mercurial'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

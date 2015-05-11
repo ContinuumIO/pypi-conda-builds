@@ -1,0 +1,67 @@
+package:
+  name: imgserve
+  version: "0.2"
+
+source:
+  fn: imgserve-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/imgserve/imgserve-0.2.tar.gz
+  md5: e87a12cdfe6131e45dd40e0e4654e0db
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - imgserve = imgserve:main
+    #
+    # Would create an entry point called imgserve that calls imgserve.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-daemon
+    - simplejson
+    - cogen >=0.2.1
+
+  run:
+    - python
+    - setuptools
+    - python-daemon
+    - simplejson
+    - cogen >=0.2.1
+
+test:
+  # Python imports
+  imports:
+    - imgserve
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/wuzhe/imgserve
+  license: GNU General Public License (GPL)
+  summary: 'Imgserve is a daemon program to provide common image processing service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

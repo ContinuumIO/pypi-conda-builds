@@ -1,0 +1,84 @@
+package:
+  name: ga4gh
+  version: "0.1.0b1"
+
+source:
+  fn: ga4gh-0.1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/g/ga4gh/ga4gh-0.1.0b1.tar.gz
+  md5: 5f5952c046fa850a6e903c457df15e32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ga4gh = ga4gh:main
+    #
+    # Would create an entry point called ga4gh that calls ga4gh.main()
+
+    - ga4gh_client=ga4gh.cli:client_main
+    - ga4gh_server=ga4gh.cli:server_main
+    - ga2vcf=ga4gh.cli:ga2vcf_main
+    - ga2sam=ga4gh.cli:ga2sam_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - avro
+    - flask-api
+    - flask-cors
+    - flask
+    - humanize
+    - pysam >=0.8.2
+    - requests
+
+  run:
+    - python
+    - avro
+    - flask-api
+    - flask-cors
+    - flask
+    - humanize
+    - pysam >=0.8.2
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - ga4gh
+    - ga4gh.datamodel
+    - ga4gh.templates
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ga4gh_client --help
+    - ga4gh_server --help
+    - ga2vcf --help
+    - ga2sam --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ga4gh/server
+  license: Apache Software License
+  summary: 'A reference implementation of the ga4gh API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

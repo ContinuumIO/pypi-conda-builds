@@ -1,0 +1,65 @@
+package:
+  name: esmond_client
+  version: "1.3"
+
+source:
+  fn: esmond_client-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/esmond_client/esmond_client-1.3.tar.gz
+  md5: 2cf23011332b5aa168283b0ffcc2d971
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - esmond_client = esmond_client:main
+    #
+    # Would create an entry point called esmond_client that calls esmond_client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - python-dateutil
+
+  run:
+    - python
+    - requests
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - esmond_client
+    - esmond_client.perfsonar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://software.es.net/esmond/
+  license: BSD License
+  summary: 'API client libraries and command line tools for the ESnet Monitoring Daemon (esmond).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

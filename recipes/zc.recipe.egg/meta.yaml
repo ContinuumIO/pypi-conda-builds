@@ -1,0 +1,67 @@
+package:
+  name: zc.recipe.egg
+  version: "2.0.1"
+
+source:
+  fn: zc.recipe.egg-2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.recipe.egg/zc.recipe.egg-2.0.1.tar.gz
+  md5: 5e81e9d4cc6200f5b1abcf7c653dd9e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.recipe.egg = zc.recipe.egg:main
+    #
+    # Would create an entry point called zc.recipe.egg that calls zc.recipe.egg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout >=1.2.0
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout >=1.2.0
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.recipe
+    - zc.recipe.egg
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/zc.recipe.egg
+  license: Zope Public License
+  summary: 'Recipe for installing Python package distributions as eggs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: chessproblem.ui
+  version: "1.1.0rc3"
+
+source:
+  fn: chessproblem.ui-1.1.0rc3.tar.gz
+  url: https://pypi.python.org/packages/source/c/chessproblem.ui/chessproblem.ui-1.1.0rc3.tar.gz
+  md5: be1eac22c7781b62e627a0bff1aac120
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chessproblem.ui = chessproblem.ui:main
+    #
+    # Would create an entry point called chessproblem.ui that calls chessproblem.ui.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy ==0.9.8
+    - pygments ==1.6
+    - pillow ==2.7.0
+
+  run:
+    - python
+    - setuptools
+    - sqlalchemy ==0.9.8
+    - pygments ==1.6
+    - pillow ==2.7.0
+
+test:
+  # Python imports
+  imports:
+    - chessproblem
+    - chessproblem.board_drawing
+    - chessproblem.config
+    - chessproblem.image_files
+    - chessproblem.io
+    - chessproblem.kph
+    - chessproblem.model
+    - chessproblem.tools
+    - chessproblem.tools.ffen
+    - chessproblem.tools.images
+    - chessproblem.tools.import_from_latex
+    - chessproblem.tools.latex
+    - chessproblem.tools.popeye
+    - chessproblem.ui
+    - chessproblem.ui.database
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/chessproblemed/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'The user interface to edit chessproblems for tex files using the chess-problem-diagrams latex style.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

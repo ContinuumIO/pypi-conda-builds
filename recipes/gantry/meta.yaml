@@ -1,0 +1,66 @@
+package:
+  name: gantry
+  version: "0.0.12"
+
+source:
+  fn: gantry-0.0.12.tar.gz
+  url: https://pypi.python.org/packages/source/g/gantry/gantry-0.0.12.tar.gz
+  md5: 76800fc3181def1b8294fa9b25662f59
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gantry = gantry:main
+    #
+    # Would create an entry point called gantry that calls gantry.main()
+
+    - gantry=gantry.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argh ==0.23.2
+    - docker-py ==0.1.5
+
+  run:
+    - python
+    - argh ==0.23.2
+    - docker-py ==0.1.5
+
+test:
+  # Python imports
+  imports:
+    - gantry
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gantry --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alphagov/gantry
+  license: MIT
+  summary: 'Gantry: deployment automation for Docker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

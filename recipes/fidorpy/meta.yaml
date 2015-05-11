@@ -1,0 +1,72 @@
+package:
+  name: fidorpy
+  version: "0.1.0"
+
+source:
+  fn: fidorpy-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fidorpy/fidorpy-0.1.0.tar.gz
+  md5: 96820c2edfcd75c368a49d1daaa77612
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fidorpy = fidorpy:main
+    #
+    # Would create an entry point called fidorpy that calls fidorpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.5.1
+    - certifi
+    - simplejson >=3.6.5
+    - uritemplate >=0.6
+    - six >=1.9.0
+
+  run:
+    - python
+    - requests >=2.5.1
+    - certifi
+    - simplejson >=3.6.5
+    - uritemplate >=0.6
+    - six >=1.9.0
+
+test:
+  # Python imports
+  imports:
+    - fidor
+    - fidor.schemas
+    - fidorpy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.fidorpy.org/
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: u'Fidor Bank API client for Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

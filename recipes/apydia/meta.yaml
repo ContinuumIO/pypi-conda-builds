@@ -1,0 +1,77 @@
+package:
+  name: apydia
+  version: "0.0.2"
+
+source:
+  fn: Apydia-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/A/Apydia/Apydia-0.0.2.tar.gz
+  md5: ec870db03ba2edb7ce34f1db08107f88
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apydia = apydia:main
+    #
+    # Would create an entry point called apydia that calls apydia.main()
+
+    - apydia=apydia.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c7
+    - genshi >=0.4.4
+    - pygments >=0.9
+    - beautifulsoup >=3.0.4
+
+  run:
+    - python
+    - setuptools
+    - setuptools >=0.6c7
+    - genshi >=0.4.4
+    - pygments >=0.9
+    - beautifulsoup >=3.0.4
+
+test:
+  # Python imports
+  imports:
+    - apydia
+    - apydia.hooks
+    - apydia.renderers
+    - apydia.themes
+    - apydia.themes.apydia
+    - apydia.themes.default
+    - apydia.themes.elixir
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - apydia --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://apydia.ematia.de
+  license: MIT License
+  summary: 'API Reference Documentation Generator for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

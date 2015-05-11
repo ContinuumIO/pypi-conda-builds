@@ -1,0 +1,72 @@
+package:
+  name: meow
+  version: "0.4.2"
+
+source:
+  fn: meow-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/meow/meow-0.4.2.tar.gz
+  md5: 6d99289593c817d0f61725b4793bd4da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - meow = meow:main
+    #
+    # Would create an entry point called meow that calls meow.main()
+
+    - meow = meow.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils
+    - bottle
+    - pygments
+    - docopt
+    - cherrypy
+
+  run:
+    - python
+    - docutils
+    - bottle
+    - pygments
+    - docopt
+    - cherrypy
+
+test:
+  # Python imports
+  imports:
+    - meow
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - meow --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hhatto/meow
+  license: MIT License
+  summary: 'meow is an editor-agnostic markdown/reST live preview server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

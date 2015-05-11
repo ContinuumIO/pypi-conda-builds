@@ -1,0 +1,67 @@
+package:
+  name: ofxstatement
+  version: "0.5.0"
+
+source:
+  fn: ofxstatement-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/ofxstatement/ofxstatement-0.5.0.tar.gz
+  md5: 2bfc0b217738d080166651d30a50311f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ofxstatement = ofxstatement:main
+    #
+    # Would create an entry point called ofxstatement that calls ofxstatement.main()
+
+    - ofxstatement = ofxstatement.tool:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs
+
+  run:
+    - python
+    - setuptools
+    - appdirs
+
+test:
+  # Python imports
+  imports:
+    - ofxstatement
+    - ofxstatement.plugins
+    - ofxstatement.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ofxstatement --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kedder/ofxstatement
+  license: GNU Affero General Public License v3
+  summary: 'Tool to convert proprietary bank statement to OFX format, suitable for importing to GnuCash'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

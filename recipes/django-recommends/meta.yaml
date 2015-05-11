@@ -1,0 +1,72 @@
+package:
+  name: django-recommends
+  version: "0.0.22"
+
+source:
+  fn: django-recommends-0.0.22.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-recommends/django-recommends-0.0.22.tar.gz
+  md5: 63cb5518b740abdf111ce3377b16a7fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-recommends = django-recommends:main
+    #
+    # Would create an entry point called django-recommends that calls django-recommends.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - recommends
+    - recommends.algorithms
+    - recommends.management
+    - recommends.management.commands
+    - recommends.providers
+    - recommends.storages
+    - recommends.storages.djangoorm
+    - recommends.storages.djangoorm.migrations
+    - recommends.storages.djangoorm.south_migrations
+    - recommends.storages.mongodb
+    - recommends.storages.redis
+    - recommends.templatetags
+    - recommends.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/python-recsys/django-recommends
+  license: MIT License
+  summary: 'A django app that builds item-based suggestions for users'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

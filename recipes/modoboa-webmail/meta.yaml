@@ -1,0 +1,70 @@
+package:
+  name: modoboa-webmail
+  version: "1.0.1"
+
+source:
+  fn: modoboa-webmail-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/modoboa-webmail/modoboa-webmail-1.0.1.tar.gz
+  md5: 133e14b8e3c8bbcecbe415eb72113a4e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - modoboa-webmail = modoboa-webmail:main
+    #
+    # Would create an entry point called modoboa-webmail that calls modoboa-webmail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - modoboa-admin
+    - chardet
+    - lxml
+    - rfc6266
+
+  run:
+    - python
+    - modoboa-admin
+    - chardet
+    - lxml
+    - rfc6266
+
+test:
+  # Python imports
+  imports:
+    - modoboa_webmail
+    - modoboa_webmail.lib
+    - modoboa_webmail.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://modoboa.org/
+  license: MIT License
+  summary: 'The webmail of Modoboa'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

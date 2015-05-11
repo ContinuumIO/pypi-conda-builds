@@ -1,0 +1,77 @@
+package:
+  name: django-otp
+  version: "0.3.1"
+
+source:
+  fn: django-otp-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-otp/django-otp-0.3.1.tar.gz
+  md5: a06e507336eae967347cbc47ede98bfa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-otp = django-otp:main
+    #
+    # Would create an entry point called django-otp that calls django-otp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+
+  run:
+    - python
+    - django >=1.4.2
+
+test:
+  # Python imports
+  imports:
+    - django_otp
+    - django_otp.plugins
+    - django_otp.plugins.otp_email
+    - django_otp.plugins.otp_email.migrations
+    - django_otp.plugins.otp_email.south_migrations
+    - django_otp.plugins.otp_hotp
+    - django_otp.plugins.otp_hotp.migrations
+    - django_otp.plugins.otp_hotp.south_migrations
+    - django_otp.plugins.otp_static
+    - django_otp.plugins.otp_static.management
+    - django_otp.plugins.otp_static.management.commands
+    - django_otp.plugins.otp_static.migrations
+    - django_otp.plugins.otp_static.south_migrations
+    - django_otp.plugins.otp_totp
+    - django_otp.plugins.otp_totp.migrations
+    - django_otp.plugins.otp_totp.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/psagers/django-otp
+  license: BSD License
+  summary: 'A pluggable framework for adding two-factor authentication to Django using one-time passwords.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: dwload_server
+  version: "0.4.0"
+
+source:
+  fn: dwload_server-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dwload_server/dwload_server-0.4.0.tar.gz
+  md5: e9e0bf7b0b0fce1004a0f8a359fafa97
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dwload_server = dwload_server:main
+    #
+    # Would create an entry point called dwload_server that calls dwload_server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dragonlib
+    - pyserial
+
+  run:
+    - python
+    - dragonlib
+    - pyserial
+
+test:
+  # Python imports
+  imports:
+    - bootstrap
+    - dwload_server
+    - dwload_server.hooks
+    - dwload_server.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/DWLOAD/DwLoadServer
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'DWLOAD server implemented in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

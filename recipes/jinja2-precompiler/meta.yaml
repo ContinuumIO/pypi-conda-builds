@@ -1,0 +1,63 @@
+package:
+  name: jinja2-precompiler
+  version: "0.2"
+
+source:
+  fn: jinja2-precompiler-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jinja2-precompiler/jinja2-precompiler-0.2.tar.gz
+  md5: 88e72825cfba21b8b2fa8d7a300b80b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jinja2-precompiler = jinja2-precompiler:main
+    #
+    # Would create an entry point called jinja2-precompiler that calls jinja2-precompiler.main()
+
+    - jinja2precompiler = jinja2precompiler:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+
+  run:
+    - python
+    - jinja2
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jinja2precompiler --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/MiCHiLU/jinja2-precompiler
+  license: BSD License
+  summary: 'Pre-compile Jinja2 templates to Python byte code'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

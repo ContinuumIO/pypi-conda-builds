@@ -1,0 +1,75 @@
+package:
+  name: django-twitter-api
+  version: "0.2.6"
+
+source:
+  fn: django-twitter-api-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-twitter-api/django-twitter-api-0.2.6.tar.gz
+  md5: c50a1259f0bbb1cdaf445d6c3ff5de2c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-twitter-api = django-twitter-api:main
+    #
+    # Would create an entry point called django-twitter-api that calls django-twitter-api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-annoying
+    - django-picklefield
+    - django-m2m-history
+    - django-oauth-tokens >=0.5.1
+    - django-m2m-history >=0.2.0
+    - tweepy
+
+  run:
+    - python
+    - django
+    - django-annoying
+    - django-picklefield
+    - django-m2m-history
+    - django-oauth-tokens >=0.5.1
+    - django-m2m-history >=0.2.0
+    - tweepy
+
+test:
+  # Python imports
+  imports:
+    - twitter_api
+    - twitter_api.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-twitter-api
+  license: BSD License
+  summary: 'Django implementation for Twitter API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

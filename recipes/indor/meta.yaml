@@ -1,0 +1,76 @@
+package:
+  name: indor
+  version: "0.2"
+
+source:
+  fn: indor-0.2.zip
+  url: https://pypi.python.org/packages/source/i/indor/indor-0.2.zip
+  md5: ebe2c04a691a2f891562b771fc37388f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - indor = indor:main
+    #
+    # Would create an entry point called indor that calls indor.main()
+
+    - indor = indor.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pyparsing
+    - mock
+    - nose
+    - nose-cov
+    - junit-xml
+    - termcolor
+
+  run:
+    - python
+    - requests
+    - pyparsing
+    - mock
+    - nose
+    - nose-cov
+    - junit-xml
+    - termcolor
+
+test:
+  # Python imports
+  imports:
+    - indor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - indor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nokia-wroclaw/innovativeproject-resttest
+  license: UNKNOWN
+  summary: 'Tool for running rest-api tests written in plain language.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

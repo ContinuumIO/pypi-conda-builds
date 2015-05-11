@@ -1,0 +1,72 @@
+package:
+  name: po-projects-client
+  version: "0.1.2.1"
+
+source:
+  fn: PO-Projects-client-0.1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/PO-Projects-client/PO-Projects-client-0.1.2.1.tar.gz
+  md5: 20b99d272cebf87a39009136eecfe0ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - po-projects-client = po-projects-client:main
+    #
+    # Would create an entry point called po-projects-client that calls po-projects-client.main()
+
+    - po_projects = po_projects_client.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nap >=1.0.0
+    - pkginfo >=1.2b1
+    - argparse ==1.2.1
+    - argcomplete ==0.8.0
+    - argh ==0.24.1
+
+  run:
+    - python
+    - nap >=1.0.0
+    - pkginfo >=1.2b1
+    - argparse ==1.2.1
+    - argcomplete ==0.8.0
+    - argh ==0.24.1
+
+test:
+  # Python imports
+  imports:
+    - po_projects_client
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - po_projects --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/PO-Projects-client
+  license: MIT License
+  summary: 'REST client to retrieve and push data on a PO-Projects service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

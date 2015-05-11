@@ -1,0 +1,67 @@
+package:
+  name: zeek
+  version: "0.1.5"
+
+source:
+  fn: zeek-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/z/zeek/zeek-0.1.5.tar.gz
+  md5: a63ebead65899c350577a70aa87c0331
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zeek = zeek:main
+    #
+    # Would create an entry point called zeek that calls zeek.main()
+
+    - zeek=zeek:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - kazoo
+
+  run:
+    - python
+    - setuptools
+    - click
+    - kazoo
+
+test:
+  # Python imports
+  imports:
+    - zeek
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zeek --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/krockode/zeek
+  license: Apache Software License
+  summary: 'ZooKeeper CLI for caged animals'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

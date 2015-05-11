@@ -1,0 +1,65 @@
+package:
+  name: geeneus
+  version: "0.1.8"
+
+source:
+  fn: Geeneus-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/G/Geeneus/Geeneus-0.1.8.tar.gz
+  md5: 5b94c7dbec6594787d69b69b88fcbccd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geeneus = geeneus:main
+    #
+    # Would create an entry point called geeneus that calls geeneus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - biopython >=1.60
+    - requests >=0.14.2
+
+  run:
+    - python
+    - biopython >=1.60
+    - requests >=0.14.2
+
+test:
+  # Python imports
+  imports:
+    - geeneus
+    - geeneus.backend
+    - geeneus.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://alexholehouse.github.com/Geeneus/
+  license: LICENSE.txt
+  summary: 'Simple API for NCBI database access'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

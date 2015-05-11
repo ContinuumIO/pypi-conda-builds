@@ -1,0 +1,70 @@
+package:
+  name: gtfsni
+  version: "0.0.4"
+
+source:
+  fn: gtfsni-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gtfsni/gtfsni-0.0.4.tar.gz
+  md5: 0fca9a1bb263112f32e4d3a88288fc57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gtfsni = gtfsni:main
+    #
+    # Would create an entry point called gtfsni that calls gtfsni.main()
+
+    - gtfs_generate = gtfsni.gtfs_feed_generator:main
+    - gtfs_validate = gtfsni.gtfs_feed_validator:main
+    - gtfs_view = gtfsni.gtfs_schedule_viewer:main
+    - gtfs_to_kml = gtfsni.kmlwriter:main
+    - generate_metro_stops = gtfsni.generate_metro_stops:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - gtfsni
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gtfs_generate --help
+    - gtfs_validate --help
+    - gtfs_view --help
+    - gtfs_to_kml --help
+    - generate_metro_stops --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/devopsni/gtfsni
+  license: UNKNOWN
+  summary: 'Unofficial Google Transit Feed Generator for Northern Ireland.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

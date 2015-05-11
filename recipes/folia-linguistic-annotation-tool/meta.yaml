@@ -1,0 +1,73 @@
+package:
+  name: folia-linguistic-annotation-tool
+  version: "0.3.5"
+
+source:
+  fn: FoLiA-Linguistic-Annotation-Tool-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/F/FoLiA-Linguistic-Annotation-Tool/FoLiA-Linguistic-Annotation-Tool-0.3.5.tar.gz
+  md5: 271394b8fda551843cb93eac8b51abb3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - folia-linguistic-annotation-tool = folia-linguistic-annotation-tool:main
+    #
+    # Would create an entry point called folia-linguistic-annotation-tool that calls folia-linguistic-annotation-tool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pynlpl >=0.7.2
+    - foliadocserve >=0.3.0
+    - django >=1.5
+    - pycurl
+
+  run:
+    - python
+    - pynlpl >=0.7.2
+    - foliadocserve >=0.3.0
+    - django >=1.5
+    - pycurl
+
+test:
+  # Python imports
+  imports:
+    - flat
+    - flat.modes
+    - flat.modes.editor
+    - flat.modes.structureeditor
+    - flat.modes.viewer
+    - flat.users
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/proycon/flat
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'FLAT is a web-based linguistic annotation environment based around the FoLiA format (http://proycon.github.io/folia), a rich XML-based format for linguistic annotation. Flat allows users to view annotated FoLiA documents and enrich these documents with new annotations, a wide variety of linguistic annotation types is supported through the FoLiA paradigm.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

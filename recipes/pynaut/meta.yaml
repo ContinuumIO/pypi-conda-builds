@@ -1,0 +1,64 @@
+package:
+  name: pynaut
+  version: "0.2.13"
+
+source:
+  fn: pynaut-0.2.13.zip
+  url: https://pypi.python.org/packages/source/p/pynaut/pynaut-0.2.13.zip
+  md5: 19ab02756011899e7163ed59442fe1e7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pynaut = pynaut:main
+    #
+    # Would create an entry point called pynaut that calls pynaut.main()
+
+    - pynaut = pynaut.ui.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - pynaut
+    - pynaut.ui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pynaut --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stnbu/pynaut
+  license: MIT License
+  summary: 'A tool for recursively exploring arbitrary python objects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

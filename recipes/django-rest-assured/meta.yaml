@@ -1,0 +1,66 @@
+package:
+  name: django-rest-assured
+  version: "0.1"
+
+source:
+  fn: django-rest-assured-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rest-assured/django-rest-assured-0.1.tar.gz
+  md5: d042f46adf7aeab58aaec2852a2e4fd2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rest-assured = django-rest-assured:main
+    #
+    # Would create an entry point called django-rest-assured that calls django-rest-assured.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - djangorestframework >=2.4.3
+
+  run:
+    - python
+    - django >=1.6
+    - djangorestframework >=2.4.3
+
+test:
+  # Python imports
+  imports:
+    - rest_assured
+    - rest_assured.contrib
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ydaniv/django-rest-assured
+  license: BSD License
+  summary: 'Django REST Assured instantly test-covers your Django REST Framework based API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

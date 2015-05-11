@@ -1,0 +1,70 @@
+package:
+  name: ftp2http
+  version: "0.3.2"
+
+source:
+  fn: ftp2http-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/ftp2http/ftp2http-0.3.2.tar.gz
+  md5: 6fe0760f2f2d6d78f1813a59c0a37663
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftp2http = ftp2http:main
+    #
+    # Would create an entry point called ftp2http that calls ftp2http.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - pyftpdlib
+    - pyopenssl
+    - py-bcrypt
+    - python-swiftclient ==1.9.0
+
+  run:
+    - python
+    - argparse
+    - pyftpdlib
+    - pyopenssl
+    - py-bcrypt
+    - python-swiftclient ==1.9.0
+
+test:
+  # Python imports
+  imports:
+    - ftp2http
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/apn-online/ftp2http
+  license: MIT
+  summary: 'FTP to HTTP server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

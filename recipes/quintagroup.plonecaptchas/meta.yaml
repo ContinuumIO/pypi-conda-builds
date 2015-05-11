@@ -1,0 +1,75 @@
+package:
+  name: quintagroup.plonecaptchas
+  version: "4.2"
+
+source:
+  fn: quintagroup.plonecaptchas-4.2.zip
+  url: https://pypi.python.org/packages/source/q/quintagroup.plonecaptchas/quintagroup.plonecaptchas-4.2.zip
+  md5: 61cf26aa065469c9ea6f94ea6ca36e66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - quintagroup.plonecaptchas = quintagroup.plonecaptchas:main
+    #
+    # Would create an entry point called quintagroup.plonecaptchas that calls quintagroup.plonecaptchas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone >=4.0dev
+    - quintagroup.captcha.core >=0.2
+    - quintagroup.formlib.captcha
+    - quintagroup.z3cform.captcha
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone >=4.0dev
+    - quintagroup.captcha.core >=0.2
+    - quintagroup.formlib.captcha
+    - quintagroup.z3cform.captcha
+
+test:
+  # Python imports
+  imports:
+    - quintagroup
+    - quintagroup.plonecaptchas
+    - quintagroup.plonecaptchas.Extensions
+    - quintagroup.plonecaptchas.browser
+    - quintagroup.plonecaptchas.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.quintagroup.com/products/quintagroup.plonecaptchas
+  license: GPL
+  summary: 'quintagroup.plonecaptchas is simple captchas implementation for Plone, designed for validating human input in insecure forms.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

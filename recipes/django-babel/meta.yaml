@@ -1,0 +1,68 @@
+package:
+  name: django-babel
+  version: "0.4.0"
+
+source:
+  fn: django-babel-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-babel/django-babel-0.4.0.tar.gz
+  md5: 8832073a6b6fe98b72b99bfead0801db
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-babel = django-babel:main
+    #
+    # Would create an entry point called django-babel that calls django-babel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.9
+    - babel >=1.3
+
+  run:
+    - python
+    - setuptools
+    - django >=1.4,<1.9
+    - babel >=1.3
+
+test:
+  # Python imports
+  imports:
+    - django_babel
+    - django_babel.management
+    - django_babel.management.commands
+    - django_babel.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/graingert/django-babel/
+  license: BSD License
+  summary: 'Utilities for using Babel in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

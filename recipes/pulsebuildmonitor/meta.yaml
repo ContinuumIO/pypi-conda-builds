@@ -1,0 +1,64 @@
+package:
+  name: pulsebuildmonitor
+  version: "0.90"
+
+source:
+  fn: pulsebuildmonitor-0.90.tar.gz
+  url: https://pypi.python.org/packages/source/p/pulsebuildmonitor/pulsebuildmonitor-0.90.tar.gz
+  md5: 2252c662e4ef642dbaafe1bb365780cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pulsebuildmonitor = pulsebuildmonitor:main
+    #
+    # Would create an entry point called pulsebuildmonitor that calls pulsebuildmonitor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil ==1.5
+    - mozillapulse >=1.0
+
+  run:
+    - python
+    - python-dateutil ==1.5
+    - mozillapulse >=1.0
+
+test:
+  # Python imports
+  imports:
+    - pulsebuildmonitor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg.mozilla.org/automation/pulsebuildmonitor
+  license: MPL
+  summary: 'monitor mozilla tinderbox builds via pulse'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-dtpanel-htmltidy
+  version: "0.1.1"
+
+source:
+  fn: django-dtpanel-htmltidy-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dtpanel-htmltidy/django-dtpanel-htmltidy-0.1.1.tar.gz
+  md5: e6fbff7da4bc7ba849f2502ea44ac830
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dtpanel-htmltidy = django-dtpanel-htmltidy:main
+    #
+    # Would create an entry point called django-dtpanel-htmltidy that calls django-dtpanel-htmltidy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytidylib
+
+  run:
+    - python
+    - pytidylib
+
+test:
+  # Python imports
+  imports:
+    - debug_toolbar_htmltidy
+    - debug_toolbar_htmltidy.tests
+    - example_htmltidy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/joymax/django-dtpanel-htmltidy
+  license: BSD License
+  summary: 'Custom panel form Django Debug Toolbar which display HTML Validation errors and warnings'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

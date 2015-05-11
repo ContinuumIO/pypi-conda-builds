@@ -1,0 +1,66 @@
+package:
+  name: bottle-memcache-decorator
+  version: "0.0.1"
+
+source:
+  fn: bottle-memcache-decorator-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bottle-memcache-decorator/bottle-memcache-decorator-0.0.1.tar.gz
+  md5: bec96aa1ce7e7313705a4ebb5919b928
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bottle-memcache-decorator = bottle-memcache-decorator:main
+    #
+    # Would create an entry point called bottle-memcache-decorator that calls bottle-memcache-decorator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle >=0.11
+    - bottle-extras
+    - bottle_memcache
+
+  run:
+    - python
+    - bottle >=0.11
+    - bottle-extras
+    - bottle_memcache
+
+test:
+  # Python imports
+  imports:
+    - bottle_memcache_decorator
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ziogaschr/bottle-memcache-decorator
+  license: MIT License
+  summary: 'Adds a memcache decorator in your Bottle application.         It automatically stores the route result to memcache for routes         where the bottle-memcache plugin is enabled.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: pigments
+  version: "1.6"
+
+source:
+  fn: Pigments-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/P/Pigments/Pigments-1.6.tar.gz
+  md5: a05a1d77dbac0ba9c165a6781df12ecd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pigments = pigments:main
+    #
+    # Would create an entry point called pigments that calls pigments.main()
+
+    - pygmentize = pygments.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pigments
+    - pygments
+    - pygments.filters
+    - pygments.formatters
+    - pygments.lexers
+    - pygments.styles
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pygmentize --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pygments.org/
+  license: BSD License
+  summary: 'Pigments clone of Pygments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

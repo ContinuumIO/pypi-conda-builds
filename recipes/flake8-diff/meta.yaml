@@ -1,0 +1,71 @@
+package:
+  name: flake8-diff
+  version: "0.1.2"
+
+source:
+  fn: flake8-diff-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/flake8-diff/flake8-diff-0.1.2.tar.gz
+  md5: 3c12742ca3070b2809a76e88771c6dd5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flake8-diff = flake8-diff:main
+    #
+    # Would create an entry point called flake8-diff that calls flake8-diff.main()
+
+    - flake8-diff = flake8diff.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flake8
+    - argparse
+    - blessings
+    - six
+
+  run:
+    - python
+    - flake8
+    - argparse
+    - blessings
+    - six
+
+test:
+  # Python imports
+  imports:
+    - flake8diff
+    - flake8diff.vcs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flake8-diff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dealertrack.github.io
+  license: UNKNOWN
+  summary: 'Run flake8 across a set of changed files and filter out violations occurring only on the lines that were changed.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

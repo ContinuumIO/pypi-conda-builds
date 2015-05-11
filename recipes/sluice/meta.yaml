@@ -1,0 +1,70 @@
+package:
+  name: sluice
+  version: "0.3.0"
+
+source:
+  fn: sluice-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sluice/sluice-0.3.0.tar.gz
+  md5: 4032ad72e3f67d7c9f737fba4d7e8645
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sluice = sluice:main
+    #
+    # Would create an entry point called sluice that calls sluice.main()
+
+    - zfs-autosnapshot = sluice.autosnapshot:main
+    - zfs-copy = sluice.copy:main
+    - zfs-cull = sluice.cull:main
+    - zfs-sync = sluice.sync:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - weir ==0.3.0
+
+  run:
+    - python
+    - weir ==0.3.0
+
+test:
+  # Python imports
+  imports:
+    - sluice
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zfs-autosnapshot --help
+    - zfs-copy --help
+    - zfs-cull --help
+    - zfs-sync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/sjdrake/sluice
+  license: Common Development and Distribution License (CDDL)
+  summary: 'Tools for managing zfs snapshots'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

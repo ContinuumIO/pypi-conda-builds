@@ -1,0 +1,66 @@
+package:
+  name: django-dynamic-manipulation
+  version: "0.0.8"
+
+source:
+  fn: django-dynamic-manipulation-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dynamic-manipulation/django-dynamic-manipulation-0.0.8.tar.gz
+  md5: 5d3a7ea4b3b8b31bc3d866c581a9496e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dynamic-manipulation = django-dynamic-manipulation:main
+    #
+    # Would create an entry point called django-dynamic-manipulation that calls django-dynamic-manipulation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-dynamic-rules >=0.2.0
+
+  run:
+    - python
+    - django
+    - django-dynamic-rules >=0.2.0
+
+test:
+  # Python imports
+  imports:
+    - dynamic_manipulation
+    - dynamic_manipulation.migrations
+    - dynamic_manipulation.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/imtapps/django-dynamic-manipulation
+  license: BSD License
+  summary: 'Record rule based dynamic manipulations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

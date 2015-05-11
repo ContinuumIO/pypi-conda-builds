@@ -1,0 +1,64 @@
+package:
+  name: astronomer
+  version: "0.0.0"
+
+source:
+  fn: astronomer-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/astronomer/astronomer-0.0.0.tar.gz
+  md5: 4e567744447fa5cb1b3a51be8fb6a716
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - astronomer = astronomer:main
+    #
+    # Would create an entry point called astronomer that calls astronomer.main()
+
+    - astronomer = astronomer.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - astronomer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - astronomer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jsvine/astronomer/
+  license: MIT License
+  summary: "Fetch information about the users who've starred a given GitHub repository."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,78 @@
+package:
+  name: fsd.core
+  version: "1.0a1"
+
+source:
+  fn: fsd.core-1.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fsd.core/fsd.core-1.0a1.tar.gz
+  md5: 569c0a4cdc511f2ac4a420ef9f958b0c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fsd.core = fsd.core:main
+    #
+    # Would create an entry point called fsd.core that calls fsd.core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone >=4.1
+    - plone.app.dexterity
+    - z3c.relationfield
+    - plone.formwidget.contenttree
+    - plone.app.registry
+    - plone.app.referenceablebehavior
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone >=4.1
+    - plone.app.dexterity
+    - z3c.relationfield
+    - plone.formwidget.contenttree
+    - plone.app.registry
+    - plone.app.referenceablebehavior
+
+test:
+  # Python imports
+  imports:
+    - fsd
+    - fsd.core
+    - fsd.core.tests
+    - fsd.core.widgets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPL
+  summary: 'Faculty Staff Directory: Core'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

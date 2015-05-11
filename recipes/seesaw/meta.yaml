@@ -1,0 +1,65 @@
+package:
+  name: seesaw
+  version: "0.9"
+
+source:
+  fn: seesaw-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/s/seesaw/seesaw-0.9.tar.gz
+  md5: f250f131b5179e18fcb8fc123c921a0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - seesaw = seesaw:main
+    #
+    # Would create an entry point called seesaw that calls seesaw.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3
+    - sockjs-tornado
+
+  run:
+    - python
+    - tornado >=3
+    - sockjs-tornado
+
+test:
+  # Python imports
+  imports:
+    - seesaw
+    - seesaw.script
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.archiveteam.org/
+  license: UNKNOWN
+  summary: 'ArchiveTeam seesaw kit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-debug-toolbar-template-profiler
+  version: "1.0.1"
+
+source:
+  fn: django-debug-toolbar-template-profiler-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-debug-toolbar-template-profiler/django-debug-toolbar-template-profiler-1.0.1.tar.gz
+  md5: 2336e0ff75c3e24ce072d6fa4aecf6e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-debug-toolbar-template-profiler = django-debug-toolbar-template-profiler:main
+    #
+    # Would create an entry point called django-debug-toolbar-template-profiler that calls django-debug-toolbar-template-profiler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-debug-toolbar >=1.0
+
+  run:
+    - python
+    - django-debug-toolbar >=1.0
+
+test:
+  # Python imports
+  imports:
+    - template_profiler_panel
+    - template_profiler_panel.panels
+    - template_profiler_panel.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/node13h/django-debug-toolbartemplate-profiler
+  license: BSD License
+  summary: 'Displays template rendering time on the timeline'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

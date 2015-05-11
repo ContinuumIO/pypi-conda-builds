@@ -1,0 +1,69 @@
+package:
+  name: msp2plone
+  version: "0.9b"
+
+source:
+  fn: msp2plone-0.9b.tar.gz
+  url: https://pypi.python.org/packages/source/m/msp2plone/msp2plone-0.9b.tar.gz
+  md5: 4f1f5fdc244dd885872f5cd4ef09f465
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - msp2plone = msp2plone:main
+    #
+    # Would create an entry point called msp2plone that calls msp2plone.main()
+
+    - msp2plone = inquant.msp2plone:msp2plone
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - wsapi4plone.client
+
+  run:
+    - python
+    - setuptools
+    - lxml
+    - wsapi4plone.client
+
+test:
+  # Python imports
+  imports:
+    - inquant
+    - inquant.msp2plone
+    - msp2plone
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - msp2plone --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://msp2plone.googlecode.com/svn/tags/0.9b
+  license: GPL
+  summary: "An M$ Project XML to Plone 'eXtreme Management' importer."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

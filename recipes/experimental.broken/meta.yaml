@@ -1,0 +1,68 @@
+package:
+  name: experimental.broken
+  version: "0.5"
+
+source:
+  fn: experimental.broken-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/e/experimental.broken/experimental.broken-0.5.tar.gz
+  md5: fe84e3880aa9379f75371b4971d7914a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - experimental.broken = experimental.broken:main
+    #
+    # Would create an entry point called experimental.broken that calls experimental.broken.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - experimental
+    - experimental.broken
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rpatterson/experimental.broken
+  license: ZPL
+  summary: 'Better ZODB handling of broken interfaces and components'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,92 @@
+package:
+  name: anarcho
+  version: "0.5.3"
+
+source:
+  fn: anarcho-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/anarcho/anarcho-0.5.3.tar.gz
+  md5: 3543b44116985281bfc21d9e852146d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anarcho = anarcho:main
+    #
+    # Would create an entry point called anarcho that calls anarcho.main()
+
+    - anarcho = scripts.anarcho_manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - flask-cors ==1.3.1
+    - flask-sqlalchemy ==1.0
+    - flask-script ==2.0.5
+    - passlib ==1.6.2
+    - cherrypy ==3.2.3
+    - docopt ==0.6.1
+    - daemonize ==2.3.1
+    - pyipa ==1.0.0
+    - pyopenssl ==0.14
+
+  run:
+    - python
+    - flask ==0.10.1
+    - flask-cors ==1.3.1
+    - flask-sqlalchemy ==1.0
+    - flask-script ==2.0.5
+    - passlib ==1.6.2
+    - cherrypy ==3.2.3
+    - docopt ==0.6.1
+    - daemonize ==2.3.1
+    - pyipa ==1.0.0
+    - pyopenssl ==0.14
+
+test:
+  # Python imports
+  imports:
+    - anarcho
+    - anarcho.models
+    - anarcho.routes
+    - anarcho.serializer
+    - anarcho.storage_workers
+    - androguard
+    - androguard.core
+    - androguard.core.bytecodes
+    - api_tests
+    - config_module
+    - scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - anarcho --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nrudenko/anarcho
+  license: MIT
+  summary: 'Android artifact hosting service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: django-blakey-utils
+  version: "0.0.11-pre-alpha"
+
+source:
+  fn: django-blakey-utils-0.0.11-pre-alpha.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-blakey-utils/django-blakey-utils-0.0.11-pre-alpha.tar.gz
+  md5: ab2028afe753acf24901a0cdfdb3c40a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-blakey-utils = django-blakey-utils:main
+    #
+    # Would create an entry point called django-blakey-utils that calls django-blakey-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.4.1
+    - django-tastypie ==0.9.11
+    - simplejson >=2.2.1
+
+  run:
+    - python
+    - django ==1.4.1
+    - django-tastypie ==0.9.11
+    - simplejson >=2.2.1
+
+test:
+  # Python imports
+  imports:
+    - django_blakey_utils
+    - django_blakey_utils.assert_utils
+    - django_blakey_utils.md_utils
+    - django_blakey_utils.re_utils
+    - django_blakey_utils.string_utils
+    - django_blakey_utils.test_utils
+    - django_blakey_utils.url_utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tangentlabs/django-blakey-utils
+  license: BSD License
+  summary: 'Common utilities for Blakey project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

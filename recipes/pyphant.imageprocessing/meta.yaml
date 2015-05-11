@@ -1,0 +1,70 @@
+package:
+  name: pyphant.imageprocessing
+  version: "1.0b3"
+
+source:
+  fn: pyphant.imageprocessing-1.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyphant.imageprocessing/pyphant.imageprocessing-1.0b3.tar.gz
+  md5: 5b33d89960aa2be5a623222a3afbf6a8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyphant.imageprocessing = pyphant.imageprocessing:main
+    #
+    # Would create an entry point called pyphant.imageprocessing that calls pyphant.imageprocessing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyphant >=1.0b3
+    - pil
+    - numpy
+    - scipy
+
+  run:
+    - python
+    - setuptools
+    - pyphant >=1.0b3
+    - pil
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - ImageProcessing
+    - ImageProcessing.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: '\nPyphant ImageProcessing toolbox\nThis is the ImageProcessing toolbox, that serves as an example off a\ntoolbox for the Pyphant framework. In order to use it you must have\nthe Pyphant framework installed first. Visit\nhttp://pyphant.sourceforge.net for more information.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

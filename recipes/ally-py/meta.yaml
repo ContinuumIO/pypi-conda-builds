@@ -1,0 +1,231 @@
+package:
+  name: ally-py
+  version: "0.9.0"
+
+source:
+  fn: ally-py-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/ally-py/ally-py-0.9.0.tar.gz
+  md5: 44f4d68c292463dfcfd04d51a4339665
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ally-py = ally-py:main
+    #
+    # Would create an entry point called ally-py that calls ally-py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babel >=1.0
+    - pytz
+    - httplib2 >=0.7
+    - mysql-connector-python >=0.3
+    - pyyaml >=3.0
+    - sqlalchemy >=0.7
+
+  run:
+    - python
+    - babel >=1.0
+    - pytz
+    - httplib2 >=0.7
+    - mysql-connector-python >=0.3
+    - pyyaml >=3.0
+    - sqlalchemy >=0.7
+
+test:
+  # Python imports
+  imports:
+    - __deploy__
+    - __deploy__.ally
+    - __deploy__.ally_http_mongrel2_server
+    - __deploy__.ally_plugin
+    - __plugin__
+    - __plugin__.acl
+    - __plugin__.administration
+    - __plugin__.administration.gui-resources
+    - __plugin__.administration.gui-resources.scripts
+    - __plugin__.administration.gui-resources.scripts.js
+    - __plugin__.administration.gui-resources.templates
+    - __plugin__.ally_plugin
+    - __plugin__.captcha
+    - __plugin__.cdm
+    - __plugin__.gateway
+    - __plugin__.gui_action
+    - __plugin__.gui_core
+    - __plugin__.gui_core.gui-resources
+    - __plugin__.gui_core.gui-resources.scripts
+    - __plugin__.gui_core.gui-resources.scripts.js
+    - __plugin__.gui_core.gui-resources.styles
+    - __plugin__.gui_core.gui-resources.styles.css
+    - __plugin__.gui_core.gui-resources.styles.less
+    - __plugin__.internationalization
+    - __plugin__.plugin
+    - __plugin__.security
+    - __plugin__.security_rbac
+    - __plugin__.sql_alchemy
+    - __setup__
+    - __setup__.ally
+    - __setup__.ally_api
+    - __setup__.ally_cdm
+    - __setup__.ally_core
+    - __setup__.ally_core_http
+    - __setup__.ally_core_sqlalchemy
+    - __setup__.ally_gateway
+    - __setup__.ally_gateway_recaptcha
+    - __setup__.ally_http
+    - __setup__.ally_http_asyncore_server
+    - __setup__.ally_http_mongrel2_server
+    - __setup__.ally_plugin
+    - __unit_test__
+    - __unit_test__.ally
+    - __unit_test__.ally.api
+    - __unit_test__.ally.api.config
+    - __unit_test__.ally.cdm
+    - __unit_test__.ally.cdm.impl
+    - __unit_test__.ally.container
+    - __unit_test__.ally.container.impl
+    - __unit_test__.ally.core
+    - __unit_test__.ally.core.http
+    - __unit_test__.ally.core.http.impl
+    - __unit_test__.ally.core.http.impl.processor
+    - __unit_test__.ally.core.impl
+    - __unit_test__.ally.core.impl.processor
+    - __unit_test__.ally.core.spec
+    - __unit_test__.ally.design
+    - __unit_test__.ally.support
+    - __unit_test__.ally.support.sqlalchemy
+    - __unit_test__.ally.support.sqlalchemy.samples
+    - __unit_test__.ally.support.sqlalchemy.samples.api
+    - __unit_test__.ally.support.sqlalchemy.samples.impl
+    - __unit_test__.ally.support.sqlalchemy.samples.meta
+    - __unit_test__.internationalization
+    - __unit_test__.internationalization.core
+    - __unit_test__.internationalization.core.impl
+    - acl
+    - acl.api
+    - acl.core
+    - acl.core.impl
+    - acl.core.impl.processor
+    - acl.support
+    - acl.support.core
+    - admin
+    - admin.api
+    - admin.introspection
+    - admin.introspection.api
+    - admin.introspection.impl
+    - ally
+    - ally.api
+    - ally.api.operator
+    - ally.cdm
+    - ally.cdm.impl
+    - ally.container
+    - ally.container._impl
+    - ally.container.impl
+    - ally.core
+    - ally.core.cdm
+    - ally.core.cdm.processor
+    - ally.core.http
+    - ally.core.http.impl
+    - ally.core.http.impl.processor
+    - ally.core.http.impl.processor.headers
+    - ally.core.http.impl.processor.parser
+    - ally.core.http.spec
+    - ally.core.http.spec.transform
+    - ally.core.impl
+    - ally.core.impl.processor
+    - ally.core.impl.processor.parser
+    - ally.core.impl.processor.render
+    - ally.core.spec
+    - ally.core.spec.transform
+    - ally.core.sqlalchemy
+    - ally.core.sqlalchemy.processor
+    - ally.design
+    - ally.design.processor
+    - ally.gateway
+    - ally.gateway.http
+    - ally.gateway.http.impl
+    - ally.gateway.http.impl.processor
+    - ally.gateway.http.spec
+    - ally.http
+    - ally.http.impl
+    - ally.http.impl.processor
+    - ally.http.impl.processor.headers
+    - ally.http.server
+    - ally.http.spec
+    - ally.http.support
+    - ally.support
+    - ally.support.api
+    - ally.support.core
+    - ally.support.sqlalchemy
+    - ally.xml
+    - ally.zip
+    - gateway
+    - gateway.api
+    - gateway.captcha
+    - gateway.captcha.api
+    - gateway.captcha.impl
+    - gateway.core
+    - gateway.core.impl
+    - gateway.core.impl.processor
+    - gateway.impl
+    - gui
+    - gui.action
+    - gui.action.api
+    - gui.action.impl
+    - gui.api
+    - internationalization
+    - internationalization.api
+    - internationalization.core
+    - internationalization.core.impl
+    - internationalization.impl
+    - internationalization.meta
+    - internationalization.support
+    - internationalization.support.babel
+    - resources
+    - security
+    - security.api
+    - security.impl
+    - security.meta
+    - security.rbac
+    - security.rbac.api
+    - security.rbac.core
+    - security.rbac.core.impl
+    - security.rbac.core.impl.processor
+    - security.rbac.impl
+    - security.rbac.meta
+    - sql_alchemy
+    - sql_alchemy.impl
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sourcefabric.org/en/superdesk/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Ally-Py'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

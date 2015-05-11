@@ -1,0 +1,68 @@
+package:
+  name: old-appengine-sdk
+  version: "1.9.15"
+
+source:
+  fn: old-appengine-sdk-1.9.15.tar.gz
+  url: https://pypi.python.org/packages/source/o/old-appengine-sdk/old-appengine-sdk-1.9.15.tar.gz
+  md5: c8bcc728b1e23f2e5956df352d5e8c4c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - old-appengine-sdk = old-appengine-sdk:main
+    #
+    # Would create an entry point called old-appengine-sdk that calls old-appengine-sdk.main()
+
+    - remote_api_shell = appengine_sdk.commands:remote_api_shell
+    - appcfg = appengine_sdk.commands:appcfg
+    - dev_appserver = appengine_sdk.commands:dev_appserver
+    - old_dev_appserver = appengine_sdk.commands:old_dev_appserver
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - appengine_sdk
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - remote_api_shell --help
+    - appcfg --help
+    - dev_appserver --help
+    - old_dev_appserver --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/old-appengine-sdk
+  license: MIT License
+  summary: 'Un-official (old) `pip install`-able AppEngine SDK.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,87 @@
+package:
+  name: antispoofing.crossdatabase
+  version: "1.0.1"
+
+source:
+  fn: antispoofing.crossdatabase-1.0.1.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.crossdatabase/antispoofing.crossdatabase-1.0.1.zip
+  md5: 833ac2b35a9aa29fcc1d03a8b02beab8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.crossdatabase = antispoofing.crossdatabase:main
+    #
+    # Would create an entry point called antispoofing.crossdatabase that calls antispoofing.crossdatabase.main()
+
+    - crossdb_result_analysis.py= antispoofing.crossdatabase.script.crossdb_result_analysis:main
+    - crossdb_fusion_framework.py = antispoofing.crossdatabase.script.crossdb_fusion_framework:main
+    - crossdb_computeQStatistic.py = antispoofing.crossdatabase.script.crossdb_computeQStatistic:main
+    - check_common_errors.py = antispoofing.crossdatabase.script.check_common_errors:main
+    - fusion_faceverif.py = antispoofing.crossdatabase.script.fusion_faceverif:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - gridtk
+    - xbob.db.replay
+    - xbob.db.casia_fasd
+    - antispoofing.lbptop
+    - antispoofing.utils
+    - antispoofing.fusion
+
+  run:
+    - python
+    - bob >=1.1.0
+    - gridtk
+    - xbob.db.replay
+    - xbob.db.casia_fasd
+    - antispoofing.lbptop
+    - antispoofing.utils
+    - antispoofing.fusion
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.crossdatabase
+    - antispoofing.crossdatabase.helpers
+    - antispoofing.crossdatabase.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - crossdb_result_analysis.py --help
+    - crossdb_fusion_framework.py --help
+    - crossdb_computeQStatistic.py --help
+    - check_common_errors.py --help
+    - fusion_faceverif.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.crossdatabase
+  license: GPLv3
+  summary: 'Antispoofing cross database testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

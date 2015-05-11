@@ -1,0 +1,92 @@
+package:
+  name: job-runner
+  version: "3.5.2"
+
+source:
+  fn: job-runner-3.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/job-runner/job-runner-3.5.2.tar.gz
+  md5: 6809b675217d42b2b46793d5c0f87762
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - job-runner = job-runner:main
+    #
+    # Would create an entry point called job-runner that calls job-runner.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.4.2
+    - django-grappelli
+    - django_compressor
+    - django-smart-selects
+    - django-tastypie ==0.9.14
+    - south
+    - pytz
+    - pyzmq
+    - mimeparse ==0.1.3
+    - python-dateutil ==1.5
+
+  run:
+    - python
+    - django ==1.4.2
+    - django-grappelli
+    - django_compressor
+    - django-smart-selects
+    - django-tastypie ==0.9.14
+    - south
+    - pytz
+    - pyzmq
+    - mimeparse ==0.1.3
+    - python-dateutil ==1.5
+
+test:
+  # Python imports
+  imports:
+    - job_runner
+    - job_runner.apps
+    - job_runner.apps.job_runner
+    - job_runner.apps.job_runner.management
+    - job_runner.apps.job_runner.management.commands
+    - job_runner.apps.job_runner.migrations
+    - job_runner.apps.job_runner.tests
+    - job_runner.apps.job_runner.tests.functional
+    - job_runner.apps.job_runner.tests.functional.management
+    - job_runner.apps.job_runner.tests.functional.management.commands
+    - job_runner.apps.job_runner.tests.unit
+    - job_runner.settings
+    - job_runner.settings.env
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/spilgames/job-runner
+  license: BSD
+  summary: 'Tool for scheduling jobs and realtime monitoring'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

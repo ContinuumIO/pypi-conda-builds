@@ -1,0 +1,68 @@
+package:
+  name: dukaan
+  version: "0.1.8"
+
+source:
+  fn: dukaan-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/dukaan/dukaan-0.1.8.tar.gz
+  md5: 8fdbc374f03f0d651ef0da40ee62b8f0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dukaan = dukaan:main
+    #
+    # Would create an entry point called dukaan that calls dukaan.main()
+
+    - dukaan = dukaan.dukaan:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clint >=0.3.1
+    - iso8601 >=0.1.4
+    - requests >=0.14.2
+
+  run:
+    - python
+    - clint >=0.3.1
+    - iso8601 >=0.1.4
+    - requests >=0.14.2
+
+test:
+  # Python imports
+  imports:
+    - dukaan
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dukaan --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WindowsAzure/azure-resource-provider-sdk/tree/master/tools/dukaan
+  license: LICENSE.txt
+  summary: 'Local testing tool for Windows Azure Store resource providers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

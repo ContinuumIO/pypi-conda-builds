@@ -1,0 +1,70 @@
+package:
+  name: madame
+  version: "0.1.2.a"
+
+source:
+  fn: madame-0.1.2.a.tar.gz
+  url: https://pypi.python.org/packages/source/m/madame/madame-0.1.2.a.tar.gz
+  md5: 99e6748da1422ee4556c9ddea87152ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - madame = madame:main
+    #
+    # Would create an entry point called madame that calls madame.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - flask-pymongo
+    - simplejson
+    - validictory
+
+  run:
+    - python
+    - flask
+    - flask-pymongo
+    - simplejson
+    - validictory
+
+test:
+  # Python imports
+  imports:
+    - madame
+    - madame.handler
+    - madame.response
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/asdine/madame
+  license: MIT License
+  summary: 'RESTful API for MongoDB built on Flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

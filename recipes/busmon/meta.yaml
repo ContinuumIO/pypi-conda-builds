@@ -1,0 +1,91 @@
+package:
+  name: busmon
+  version: "0.4.6"
+
+source:
+  fn: busmon-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/b/busmon/busmon-0.4.6.tar.gz
+  md5: 039cc03eb56170defbb0659b3f168385
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - busmon = busmon:main
+    #
+    # Would create an entry point called busmon that calls busmon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons <=1.0
+    - webob <=1.1.1
+    - turbogears2
+    - pastedeploy
+    - mako
+    - repoze.tm2 ==1.0a4
+    - tw2.d3 >=0.0.5
+    - moksha.wsgi
+    - tg.devtools
+    - tw2.core
+    - tw2.forms
+    - python-memcached
+
+  run:
+    - python
+    - setuptools
+    - pylons <=1.0
+    - webob <=1.1.1
+    - turbogears2
+    - pastedeploy
+    - mako
+    - repoze.tm2 ==1.0a4
+    - tw2.d3 >=0.0.5
+    - moksha.wsgi
+    - tg.devtools
+    - tw2.core
+    - tw2.forms
+    - python-memcached
+
+test:
+  # Python imports
+  imports:
+    - busmon
+    - busmon.config
+    - busmon.controllers
+    - busmon.lib
+    - busmon.templates
+    - migration
+    - migration.versions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ralphbean/busmon
+  license: GPLv2+
+  summary: 'A webapp for visualizing activity on the Fedora Message Bus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: django-grapevine
+  version: "0.3.2"
+
+source:
+  fn: django-grapevine-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-grapevine/django-grapevine-0.3.2.tar.gz
+  md5: 064a16ba28d2f006e3bc74d06717e01a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-grapevine = django-grapevine:main
+    #
+    # Would create an entry point called django-grapevine that calls django-grapevine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tablets ==0.4.3
+    - html2text
+    - requests
+
+  run:
+    - python
+    - tablets ==0.4.3
+    - html2text
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - grapevine
+    - grapevine/admin
+    - grapevine/emails
+    - grapevine/emails/backends
+    - grapevine/emails/migrations
+    - grapevine/emails/south_migrations
+    - grapevine/management
+    - grapevine/management/commands
+    - grapevine/migrations
+    - grapevine/models
+    - grapevine/south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/craiglabenz/django-grapevine
+  license: MIT
+  summary: 'A comprehensive email tool for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

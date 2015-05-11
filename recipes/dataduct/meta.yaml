@@ -1,0 +1,89 @@
+package:
+  name: dataduct
+  version: "0.2.0"
+
+source:
+  fn: dataduct-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dataduct/dataduct-0.2.0.tar.gz
+  md5: 73abfe5d981ec122b40d7c6ba73d3b0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dataduct = dataduct:main
+    #
+    # Would create an entry point called dataduct that calls dataduct.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.34
+    - pyyaml
+    - pandas
+    - psycopg2
+    - pytimeparse
+    - mysql-python
+    - pyparsing
+    - testfixtures
+    - sphinx_rtd_theme
+
+  run:
+    - python
+    - boto >=2.34
+    - pyyaml
+    - pandas
+    - psycopg2
+    - pytimeparse
+    - mysql-python
+    - pyparsing
+    - testfixtures
+    - sphinx_rtd_theme
+
+test:
+  # Python imports
+  imports:
+    - dataduct
+    - dataduct.config
+    - dataduct.data_access
+    - dataduct.database
+    - dataduct.database.parsers
+    - dataduct.database.sql
+    - dataduct.etl
+    - dataduct.pipeline
+    - dataduct.qa
+    - dataduct.s3
+    - dataduct.steps
+    - dataduct.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/coursera/dataduct
+  license: Apache Software License
+  summary: 'DataPipeline for Humans'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

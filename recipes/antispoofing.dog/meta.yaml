@@ -1,0 +1,82 @@
+package:
+  name: antispoofing.dog
+  version: "1.0.2"
+
+source:
+  fn: antispoofing.dog-1.0.2.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.dog/antispoofing.dog-1.0.2.zip
+  md5: 95715cf969542b547624d46c276680f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.dog = antispoofing.dog:main
+    #
+    # Would create an entry point called antispoofing.dog that calls antispoofing.dog.main()
+
+    - dog_parameters.py = antispoofing.dog.script.parameters:main
+    - dog_ldatrain.py = antispoofing.dog.script.ldatrain:main
+    - dog_make_scores.py = antispoofing.dog.script.make_scores:main
+    - dog_result_analysis.py = antispoofing.dog.script.result_analysis:main
+    - dog_svmtrain.py = antispoofing.dog.script.svmtrain:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+    - xbob.db.casia_fasd
+    - antispoofing.utils
+
+  run:
+    - python
+    - bob >=1.1.0
+    - xbob.db.replay
+    - xbob.db.casia_fasd
+    - antispoofing.utils
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.dog
+    - antispoofing.dog.helpers
+    - antispoofing.dog.script
+    - antispoofing.dog.spoof
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dog_parameters.py --help
+    - dog_ldatrain.py --help
+    - dog_make_scores.py --help
+    - dog_result_analysis.py --help
+    - dog_svmtrain.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.dog
+  license: GNU General Public License v3 (GPLv3)
+  summary: "Idiap's implementation for the paper: A face Antispoofing Database with Diverse Attacks"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

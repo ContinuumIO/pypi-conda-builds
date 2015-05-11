@@ -1,0 +1,71 @@
+package:
+  name: mopidy-podcast
+  version: "1.1.1"
+
+source:
+  fn: Mopidy-Podcast-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/M/Mopidy-Podcast/Mopidy-Podcast-1.1.1.tar.gz
+  md5: 48d3e685d5fc0a0fe0bdd12ef432cd39
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mopidy-podcast = mopidy-podcast:main
+    #
+    # Would create an entry point called mopidy-podcast that calls mopidy-podcast.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - mopidy >=0.19
+    - pykka >=1.1.0
+    - cachetools >=0.7.0
+    - uritools >=0.8.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - mopidy >=0.19
+    - pykka >=1.1.0
+    - cachetools >=0.7.0
+    - uritools >=0.8.0
+
+test:
+  # Python imports
+  imports:
+    - mopidy_podcast
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tkem/mopidy-podcast
+  license: Apache Software License
+  summary: u'Mopidy extension for searching and browsing podcasts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

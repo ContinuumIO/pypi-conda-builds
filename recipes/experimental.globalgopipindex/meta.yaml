@@ -1,0 +1,71 @@
+package:
+  name: experimental.globalgopipindex
+  version: "1.0.0"
+
+source:
+  fn: experimental.globalgopipindex-1.0.0.zip
+  url: https://pypi.python.org/packages/source/e/experimental.globalgopipindex/experimental.globalgopipindex-1.0.0.zip
+  md5: fe02656645f24b7ba280dd09f1ec8ff0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - experimental.globalgopipindex = experimental.globalgopipindex:main
+    #
+    # Would create an entry point called experimental.globalgopipindex that calls experimental.globalgopipindex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - plone.uuid
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - plone.uuid
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - experimental
+    - experimental.globalgopipindex
+    - experimental.globalgopipindex.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datakurre/experimental.globalgopipindex
+  license: GPL
+  summary: 'Patch Plone GopipIndex to sort objects by "global" position'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

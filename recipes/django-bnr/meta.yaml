@@ -1,0 +1,66 @@
+package:
+  name: django-bnr
+  version: "0.2"
+
+source:
+  fn: django-bnr-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bnr/django-bnr-0.2.tar.gz
+  md5: 29c4bcbf2217ece273f0fc5f476f9fd6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bnr = django-bnr:main
+    #
+    # Would create an entry point called django-bnr that calls django-bnr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - django_bnr
+    - django_bnr.management
+    - django_bnr.management.commands
+    - django_bnr.migrations
+    - django_bnr.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PressLabs/django-bnr
+  license: The MIT License
+  summary: 'BNR exchange rates for django apps.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

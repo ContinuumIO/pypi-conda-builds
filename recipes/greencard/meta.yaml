@@ -1,0 +1,64 @@
+package:
+  name: greencard
+  version: "0.2.5"
+
+source:
+  fn: greencard-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/greencard/greencard-0.2.5.tar.gz
+  md5: 5e0874b667b991d486a96a610a572855
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - greencard = greencard:main
+    #
+    # Would create an entry point called greencard that calls greencard.main()
+
+    - greencard = greencard.greencard:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - librarian >=0.2.6
+
+  run:
+    - python
+    - librarian >=0.2.6
+
+test:
+  # Python imports
+  imports:
+    - greencard
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - greencard --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Nekroze/greencard
+  license: MIT License
+  summary: 'A unittest framework and runner for librarian card databases.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,87 @@
+package:
+  name: mist.io
+  version: "0.9.8"
+
+source:
+  fn: mist.io-0.9.8.zip
+  url: https://pypi.python.org/packages/source/m/mist.io/mist.io-0.9.8.zip
+  md5: a6da13c5ca59d8fcd7287571ce189ecc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mist.io = mist.io:main
+    #
+    # Would create an entry point called mist.io that calls mist.io.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - apache-libcloud
+    - pastescript
+    - paramiko
+    - pyyaml
+    - pycrypto
+    - requests
+    - nose
+    - behaving
+    - sphinxcontrib-httpdomain
+    - sphinx-bootstrap-theme
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - apache-libcloud
+    - pastescript
+    - paramiko
+    - pyyaml
+    - pycrypto
+    - requests
+    - nose
+    - behaving
+    - sphinxcontrib-httpdomain
+    - sphinx-bootstrap-theme
+
+test:
+  # Python imports
+  imports:
+    - mist
+    - mist.io
+    - mist.io.tests
+    - mist.io.tests.features
+    - mist.io.tests.features.steps
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://mist.io
+  license: GNU Affero General Public License v3
+  summary: 'server management, monitoring & automation across clouds from any web device'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

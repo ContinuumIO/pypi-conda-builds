@@ -1,0 +1,62 @@
+package:
+  name: logpurge
+  version: "0.2"
+
+source:
+  fn: logpurge-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/logpurge/logpurge-0.2.tar.gz
+  md5: 2cdd6bdddbd227e685825675f6a66b6f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logpurge = logpurge:main
+    #
+    # Would create an entry point called logpurge that calls logpurge.main()
+
+    - logpurge = logpurge:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - logpurge
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - logpurge --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/nijotz/logpurge
+  license: UNKNOWN
+  summary: 'Logarithmically purge data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

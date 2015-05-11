@@ -1,0 +1,66 @@
+package:
+  name: gitifyhg
+  version: "0.8.4"
+
+source:
+  fn: gitifyhg-0.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitifyhg/gitifyhg-0.8.4.tar.gz
+  md5: f8580e1358c794793cf223157fbcec61
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitifyhg = gitifyhg:main
+    #
+    # Would create an entry point called gitifyhg that calls gitifyhg.main()
+
+    - git-remote-gitifyhg = gitifyhg.gitifyhg:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - path.py >=2.5
+    - mercurial >=1.9.1
+
+  run:
+    - python
+    - path.py >=2.5
+    - mercurial >=1.9.1
+
+test:
+  # Python imports
+  imports:
+    - gitifyhg
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-remote-gitifyhg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/buchuki/gitifyhg
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Use git as client for hg repos'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

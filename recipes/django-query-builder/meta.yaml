@@ -1,0 +1,70 @@
+package:
+  name: django-query-builder
+  version: "0.8.0"
+
+source:
+  fn: django-query-builder-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-query-builder/django-query-builder-0.8.0.tar.gz
+  md5: 5538a386d473894b3322307b5d209d4b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-query-builder = django-query-builder:main
+    #
+    # Would create an entry point called django-query-builder that calls django-query-builder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - pytz >=2012h
+    - fleming >=0.3
+    - six
+
+  run:
+    - python
+    - django >=1.7
+    - pytz >=2012h
+    - fleming >=0.3
+    - six
+
+test:
+  # Python imports
+  imports:
+    - querybuilder
+    - querybuilder.tests
+    - querybuilder.tests.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ambitioninc/django-query-builder
+  license: MIT License
+  summary: 'Build complex nested queries'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

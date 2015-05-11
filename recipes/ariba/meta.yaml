@@ -1,0 +1,71 @@
+package:
+  name: ariba
+  version: "0.3.0"
+
+source:
+  fn: ariba-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/ariba/ariba-0.3.0.tar.gz
+  md5: ec54d8d5939f205e757d8abaf584d441
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ariba = ariba:main
+    #
+    # Would create an entry point called ariba that calls ariba.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose >=1.3
+    - openpyxl
+    - pyfastaq >=3.0.1
+    - pysam >=0.8.1
+    - pymummer >=0.0.2
+
+  run:
+    - python
+    - nose >=1.3
+    - openpyxl
+    - pyfastaq >=3.0.1
+    - pysam >=0.8.1
+    - pymummer >=0.0.2
+
+test:
+  # Python imports
+  imports:
+    - ariba
+    - ariba.tasks
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sanger-pathogens/ariba
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'ARIBA: Antibiotic Resistance Identification By Assembly'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

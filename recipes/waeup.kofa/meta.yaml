@@ -1,0 +1,163 @@
+package:
+  name: waeup.kofa
+  version: "1.3.1"
+
+source:
+  fn: waeup.kofa-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/w/waeup.kofa/waeup.kofa-1.3.1.tar.gz
+  md5: 9c2dfd4b12de7b9d0b456d69500a6b17
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - waeup.kofa = waeup.kofa:main
+    #
+    # Would create an entry point called waeup.kofa that calls waeup.kofa.main()
+
+    - kofa-debug=grokcore.startup:interactive_debug_prompt
+    - kofactl=grokcore.startup:zdaemon_controller
+    - analyze=waeup.kofa.maintenance:db_analyze
+    - fsdiff=waeup.kofa.maintenance:db_diff
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - grok
+    - grokcore.startup
+    - grokui.admin
+    - hurry.query
+    - hurry.jquery
+    - hurry.jqueryui
+    - hurry.workflow >=0.11
+    - docutils
+    - zope.xmlpickle
+    - hurry.file
+    - hurry.zoperesource
+    - zc.sourcefactory
+    - megrok.layout
+    - reportlab
+    - pillow
+    - psutil
+    - unicodecsv
+    - zope.app.authentication
+    - zope.app.file
+    - zope.app.testing
+    - zope.app.undo
+    - zope.file
+    - zope.interface >=3.6.0
+    - zope.testbrowser
+    - zope.i18n
+    - zope.mimetype
+    - zope.errorview
+    - zope.schema >=3.8.0
+    - zope.sendmail
+    - ulif.loghandlers
+    - zc.async[z3]
+    - z3c.evalexception
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - grok
+    - grokcore.startup
+    - grokui.admin
+    - hurry.query
+    - hurry.jquery
+    - hurry.jqueryui
+    - hurry.workflow >=0.11
+    - docutils
+    - zope.xmlpickle
+    - hurry.file
+    - hurry.zoperesource
+    - zc.sourcefactory
+    - megrok.layout
+    - reportlab
+    - pillow
+    - psutil
+    - unicodecsv
+    - zope.app.authentication
+    - zope.app.file
+    - zope.app.testing
+    - zope.app.undo
+    - zope.file
+    - zope.interface >=3.6.0
+    - zope.testbrowser
+    - zope.i18n
+    - zope.mimetype
+    - zope.errorview
+    - zope.schema >=3.8.0
+    - zope.sendmail
+    - ulif.loghandlers
+    - zc.async[z3]
+    - z3c.evalexception
+
+test:
+  # Python imports
+  imports:
+    - waeup
+    - waeup.kofa
+    - waeup.kofa.accesscodes
+    - waeup.kofa.accesscodes.tests
+    - waeup.kofa.applicants
+    - waeup.kofa.applicants.tests
+    - waeup.kofa.browser
+    - waeup.kofa.browser.tests
+    - waeup.kofa.documents
+    - waeup.kofa.documents.tests
+    - waeup.kofa.hostels
+    - waeup.kofa.image
+    - waeup.kofa.image.browser
+    - waeup.kofa.image.browser.tests
+    - waeup.kofa.mandates
+    - waeup.kofa.payments
+    - waeup.kofa.schema
+    - waeup.kofa.schema.tests
+    - waeup.kofa.students
+    - waeup.kofa.students.reports
+    - waeup.kofa.students.reports.tests
+    - waeup.kofa.students.tests
+    - waeup.kofa.tests
+    - waeup.kofa.university
+    - waeup.kofa.university.tests
+    - waeup.kofa.utils
+    - waeup.kofa.utils.tests
+    - waeup.kofa.widgets
+    - waeup.kofa.widgets.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kofa-debug --help
+    - kofactl --help
+    - analyze --help
+    - fsdiff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.waeup.org/
+  license: GNU General Public License (GPL)
+  summary: 'A student online information and  registration portal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

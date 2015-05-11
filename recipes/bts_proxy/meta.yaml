@@ -1,0 +1,64 @@
+package:
+  name: bts_proxy
+  version: "0.1"
+
+source:
+  fn: bts_proxy-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bts_proxy/bts_proxy-0.1.tar.gz
+  md5: d7b3f1f3becfae76b8200b2ac29e8c96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bts_proxy = bts_proxy:main
+    #
+    # Would create an entry point called bts_proxy that calls bts_proxy.main()
+
+    - bts-proxy = bts_proxy.proxy:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - bts_proxy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bts-proxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wackou/bts_proxy
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'BitShares RPC proxy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: zendesk_django_auth
+  version: "0.0.3"
+
+source:
+  fn: zendesk_django_auth-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zendesk_django_auth/zendesk_django_auth-0.0.3.tar.gz
+  md5: b5c833cda5f9d21df390858952dd8602
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zendesk_django_auth = zendesk_django_auth:main
+    #
+    # Would create an entry point called zendesk_django_auth that calls zendesk_django_auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - pyjwt ==0.1.5
+
+  run:
+    - python
+    - django >=1.5
+    - pyjwt ==0.1.5
+
+test:
+  # Python imports
+  imports:
+    - zendesk_auth
+    - zendesk_django_auth
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/madisona/zendesk_django_auth
+  license: BSD License
+  summary: 'Use your django app as an auth platform for Zendesk.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

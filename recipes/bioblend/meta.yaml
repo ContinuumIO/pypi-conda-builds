@@ -1,0 +1,94 @@
+package:
+  name: bioblend
+  version: "0.5.3"
+
+source:
+  fn: bioblend-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/bioblend/bioblend-0.5.3.tar.gz
+  md5: 03cf695c2c64bcc24e52c755edcc13ee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bioblend = bioblend:main
+    #
+    # Would create an entry point called bioblend that calls bioblend.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - poster
+    - boto >=2.9.7
+    - pyyaml
+
+  run:
+    - python
+    - requests >=1.1.0
+    - poster
+    - boto >=2.9.7
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - bioblend
+    - bioblend.cloudman
+    - bioblend.galaxy
+    - bioblend.galaxy.config
+    - bioblend.galaxy.dataset_collections
+    - bioblend.galaxy.datasets
+    - bioblend.galaxy.datatypes
+    - bioblend.galaxy.folders
+    - bioblend.galaxy.forms
+    - bioblend.galaxy.ftpfiles
+    - bioblend.galaxy.genomes
+    - bioblend.galaxy.groups
+    - bioblend.galaxy.histories
+    - bioblend.galaxy.jobs
+    - bioblend.galaxy.libraries
+    - bioblend.galaxy.objects
+    - bioblend.galaxy.quotas
+    - bioblend.galaxy.roles
+    - bioblend.galaxy.tool_data
+    - bioblend.galaxy.tools
+    - bioblend.galaxy.toolshed
+    - bioblend.galaxy.users
+    - bioblend.galaxy.visual
+    - bioblend.galaxy.workflows
+    - bioblend.toolshed
+    - bioblend.toolshed.repositories
+    - bioblend.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bioblend.readthedocs.org/
+  license: MIT License
+  summary: 'CloudMan and Galaxy API library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

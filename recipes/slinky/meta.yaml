@@ -1,0 +1,74 @@
+package:
+  name: slinky
+  version: "0.1.2"
+
+source:
+  fn: slinky-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/slinky/slinky-0.1.2.tar.gz
+  md5: 8a2873be50584bdc68d4ead42b1a671b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slinky = slinky:main
+    #
+    # Would create an entry point called slinky that calls slinky.main()
+
+    - slinky=slinky:slinky
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wheel ==0.23.0
+    - boto ==2.32.1
+    - wsgiref ==0.1.2
+    - boto ==2.32.1
+    - click ==3.3
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - wheel ==0.23.0
+    - boto ==2.32.1
+    - wsgiref ==0.1.2
+    - boto ==2.32.1
+    - click ==3.3
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - slinky
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - slinky --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bwghughes/slinky
+  license: BSD License
+  summary: 'Quick command to create signed links on S3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

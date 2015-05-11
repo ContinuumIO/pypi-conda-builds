@@ -1,0 +1,67 @@
+package:
+  name: dsgrid
+  version: "0.1.6"
+
+source:
+  fn: dsgrid-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/dsgrid/dsgrid-0.1.6.tar.gz
+  md5: 1d89dd29f8dd5ddae97e53affa96b993
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dsgrid = dsgrid:main
+    #
+    # Would create an entry point called dsgrid that calls dsgrid.main()
+
+    - dsgrid = dsgrid.shell:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-py
+    - mock
+
+  run:
+    - python
+    - docker-py
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - dsgrid
+    - dsgrid.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dsgrid --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brady-vitrano/dsgrid
+  license: Apache
+  summary: 'Build and Manage a Selenium Grid using Docker.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

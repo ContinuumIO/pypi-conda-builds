@@ -1,0 +1,87 @@
+package:
+  name: antispoofing.lbp
+  version: "2.0.2"
+
+source:
+  fn: antispoofing.lbp-2.0.2.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.lbp/antispoofing.lbp-2.0.2.zip
+  md5: b1615065024e4be312edc0423381c1f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.lbp = antispoofing.lbp:main
+    #
+    # Would create an entry point called antispoofing.lbp that calls antispoofing.lbp.main()
+
+    - calclbp.py = antispoofing.lbp.script.calclbp:main
+    - calcframelbp.py = antispoofing.lbp.script.calcframelbp:main
+    - mkhistmodel.py = antispoofing.lbp.script.mkhistmodel:main
+    - cmphistmodels.py = antispoofing.lbp.script.cmphistmodels:main
+    - ldatrain_lbp.py = antispoofing.lbp.script.ldatrain_lbp:main
+    - svmtrain_lbp.py = antispoofing.lbp.script.svmtrain_lbp:main
+    - svmeval_lbp.py = antispoofing.lbp.script.svmeval_lbp:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob.db.base
+    - bob.db.replay
+    - bob.db.casia_fasd
+    - antispoofing.utils
+
+  run:
+    - python
+    - setuptools
+    - bob.db.base
+    - bob.db.replay
+    - bob.db.casia_fasd
+    - antispoofing.utils
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.lbp
+    - antispoofing.lbp.helpers
+    - antispoofing.lbp.script
+    - antispoofing.lbp.spoof
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - calclbp.py --help
+    - calcframelbp.py --help
+    - mkhistmodel.py --help
+    - cmphistmodels.py --help
+    - ldatrain_lbp.py --help
+    - svmtrain_lbp.py --help
+    - svmeval_lbp.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.lbp
+  license: GPLv3
+  summary: 'Texture (LBP) based counter-measures for the REPLAY-ATTACK database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: pypi2pkgsys
+  version: "0.1.0"
+
+source:
+  fn: pypi2pkgsys-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pypi2pkgsys/pypi2pkgsys-0.1.0.tar.gz
+  md5: 3064c8b4a86f0b6b41dd975b7eeb296b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pypi2pkgsys = pypi2pkgsys:main
+    #
+    # Would create an entry point called pypi2pkgsys that calls pypi2pkgsys.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c8
+
+  run:
+    - python
+    - setuptools
+    - setuptools >=0.6c8
+
+test:
+  # Python imports
+  imports:
+    - pypi2pkgsys
+    - pypi2pkgsys.portage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/pypi2pkgsys/
+  license: BSD License
+  summary: 'Generate package files(gentoo ebuild) from PyPI index.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

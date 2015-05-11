@@ -1,0 +1,67 @@
+package:
+  name: demakein
+  version: "0.16"
+
+source:
+  fn: demakein-0.16.tar.gz
+  url: https://pypi.python.org/packages/source/d/demakein/demakein-0.16.tar.gz
+  md5: 6b71aa366396cfe7e4e6e41b98e6a42e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - demakein = demakein:main
+    #
+    # Would create an entry point called demakein that calls demakein.main()
+
+    - demakein = demakein:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nesoni
+    - cffi
+
+  run:
+    - python
+    - nesoni
+    - cffi
+
+test:
+  # Python imports
+  imports:
+    - demakein
+    - demakein.raphs_curves
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - demakein --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.logarithmic.net/pfh/design
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Design woodwind instruments and make them with a 3D printer or CNC mill.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

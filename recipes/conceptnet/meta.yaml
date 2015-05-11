@@ -1,0 +1,88 @@
+package:
+  name: conceptnet
+  version: "5.3.0"
+
+source:
+  fn: ConceptNet-5.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/C/ConceptNet/ConceptNet-5.3.0.tar.gz
+  md5: 4aa5efc6b0491ebf7cbb9185265cd83b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - conceptnet = conceptnet:main
+    #
+    # Would create an entry point called conceptnet that calls conceptnet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nltk >=3.0b1
+    - xmltodict
+    - pyyaml
+    - requests
+    - flask
+    - flask-cors
+    - flask-limiter
+    - grako >3
+    - ftfy
+    - msgpack-python
+
+  run:
+    - python
+    - nltk >=3.0b1
+    - xmltodict
+    - pyyaml
+    - requests
+    - flask
+    - flask-cors
+    - flask-limiter
+    - grako >3
+    - ftfy
+    - msgpack-python
+
+test:
+  # Python imports
+  imports:
+    - conceptnet
+    - conceptnet5
+    - conceptnet5.builders
+    - conceptnet5.formats
+    - conceptnet5.language
+    - conceptnet5.readers
+    - conceptnet5.util
+    - conceptnet5.web_interface
+    - conceptnet5.wiktparse
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPLv3
+  summary: 'A semantic network of general knowledge'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

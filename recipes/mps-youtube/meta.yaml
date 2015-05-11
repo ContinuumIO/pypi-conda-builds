@@ -1,0 +1,64 @@
+package:
+  name: mps-youtube
+  version: "0.2.3"
+
+source:
+  fn: mps-youtube-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mps-youtube/mps-youtube-0.2.3.tar.gz
+  md5: 1859befe6a30e6aa834f1cb3cb352e49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mps-youtube = mps-youtube:main
+    #
+    # Would create an entry point called mps-youtube that calls mps-youtube.main()
+
+    - mpsyt = mps_youtube:main.main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pafy >=0.3.72
+
+  run:
+    - python
+    - pafy >=0.3.72
+
+test:
+  # Python imports
+  imports:
+    - mps_youtube
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mpsyt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/np1/mps-youtube
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Terminal based YouTube player and downloader'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

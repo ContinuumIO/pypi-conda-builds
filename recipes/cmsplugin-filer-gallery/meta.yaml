@@ -1,0 +1,66 @@
+package:
+  name: cmsplugin-filer-gallery
+  version: "1.0.1.pre-alpha"
+
+source:
+  fn: cmsplugin-filer-gallery-1.0.1.pre-alpha.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-filer-gallery/cmsplugin-filer-gallery-1.0.1.pre-alpha.tar.gz
+  md5: d1bb184c724f787b6fc3ae4703db199e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-filer-gallery = cmsplugin-filer-gallery:main
+    #
+    # Would create an entry point called cmsplugin-filer-gallery that calls cmsplugin-filer-gallery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms
+    - django-filer-gallery
+
+  run:
+    - python
+    - django-cms
+    - django-filer-gallery
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_filer_gallery
+    - cmsplugin_filer_gallery.test
+    - cmsplugin_filer_gallery.test.testapp
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fivethreeo/cmsplugin-filer-gallery.git
+  license: BSD License
+  summary: 'Django CMS plugin for django-filer-gallery'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

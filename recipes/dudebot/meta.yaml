@@ -1,0 +1,69 @@
+package:
+  name: dudebot
+  version: "0.0.8"
+
+source:
+  fn: dudebot-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/dudebot/dudebot-0.0.8.tar.gz
+  md5: 7b3bc6096ab6605c53a766aa4be0d71c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dudebot = dudebot:main
+    #
+    # Would create an entry point called dudebot that calls dudebot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt ==0.6.1
+    - feedparser ==5.1.3
+    - jabberbot ==0.15
+    - xmpppy ==0.5.0rc1
+
+  run:
+    - python
+    - docopt ==0.6.1
+    - feedparser ==5.1.3
+    - jabberbot ==0.15
+    - xmpppy ==0.5.0rc1
+
+test:
+  # Python imports
+  imports:
+    - dudebot
+    - dudebot.examples
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sujaymansingh/dudebot
+  license: LICENSE.txt
+  summary: 'A really simple framework for chatroom bots'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

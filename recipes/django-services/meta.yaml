@@ -1,0 +1,65 @@
+package:
+  name: django-services
+  version: "0.0.8"
+
+source:
+  fn: django-services-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-services/django-services-0.0.8.tar.gz
+  md5: ccac5303eb731421e353c5619556b5aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-services = django-services:main
+    #
+    # Would create an entry point called django-services that calls django-services.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_services
+    - django_services.admin
+    - django_services.api
+    - django_services.runtests
+    - django_services.service
+    - django_services.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/snbuback/django-services
+  license: Apache Software License
+  summary: 'Django Services Pattern Support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

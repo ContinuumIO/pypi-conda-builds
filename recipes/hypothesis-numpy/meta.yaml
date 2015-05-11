@@ -1,0 +1,65 @@
+package:
+  name: hypothesis-numpy
+  version: "0.1.1"
+
+source:
+  fn: hypothesis-numpy-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hypothesis-numpy/hypothesis-numpy-0.1.1.tar.gz
+  md5: 2df76a492b2e5aa49217424404c41cb5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hypothesis-numpy = hypothesis-numpy:main
+    #
+    # Would create an entry point called hypothesis-numpy that calls hypothesis-numpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hypothesis >=1.3,<1.3.99
+    - numpy >=1.9.0,<1.9.99
+
+  run:
+    - python
+    - setuptools
+    - hypothesis >=1.3,<1.3.99
+    - numpy >=1.9.0,<1.9.99
+
+test:
+  # Python imports
+  imports:
+    - hypothesisnumpy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/DRMacIver/hypothesis
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Adds support for generating datetime to Hypothesis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: bae_log
+  version: "1.0.0"
+
+source:
+  fn: bae_log-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bae_log/bae_log-1.0.0.tar.gz
+  md5: e3913f9a97ab34bd0ef6157b6291d8ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bae_log = bae_log:main
+    #
+    # Would create an entry point called bae_log that calls bae_log.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - thrift >=0.9.0
+
+  run:
+    - python
+    - thrift >=0.9.0
+
+test:
+  # Python imports
+  imports:
+    - bae_log
+    - bae_log.lib
+    - bae_log.lib.logchain
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://developer.baidu.com
+  license: UNKNOWN
+  summary: 'BAE Log SDK for V3.0'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: django-easy-reports
+  version: "0.3.2"
+
+source:
+  fn: django-easy-reports-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-easy-reports/django-easy-reports-0.3.2.tar.gz
+  md5: c2ddc0117d3e98f7b245925a9cdbc9f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-easy-reports = django-easy-reports:main
+    #
+    # Would create an entry point called django-easy-reports that calls django-easy-reports.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six ==1.7.3
+    - xlwt ==0.7.5
+    - south ==1.0
+    - django >=1.4.5
+
+  run:
+    - python
+    - six ==1.7.3
+    - xlwt ==0.7.5
+    - south ==1.0
+    - django >=1.4.5
+
+test:
+  # Python imports
+  imports:
+    - __ereports
+    - __ereports.templatetags
+    - __ereports.tests
+    - ereports
+    - ereports.engine
+    - ereports.management
+    - ereports.management.commands
+    - ereports.migrations
+    - ereports.templatetags
+    - ereports.tests
+    - ereports.tests.app
+    - ereports.tests.engine
+    - ereports.tests.templatetags
+    - ereports.tests.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saxix/django-easy-reports
+  license: BSD License
+  summary: 'Django reporting library '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,86 @@
+package:
+  name: fwunit
+  version: "1.2.0"
+
+source:
+  fn: fwunit-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fwunit/fwunit-1.2.0.tar.gz
+  md5: f146cddde9fbe487f8bbc5f54db9887c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fwunit = fwunit:main
+    #
+    # Would create an entry point called fwunit that calls fwunit.main()
+
+    - fwunit = fwunit.scripts:main
+    - fwunit-query = fwunit.scripts:query
+    - fwunit-diff = fwunit.scripts:diff
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipy
+    - nose
+    - blessings
+    - pyyaml
+    - mock
+
+  run:
+    - python
+    - setuptools
+    - ipy
+    - nose
+    - blessings
+    - pyyaml
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - fwunit
+    - fwunit.analysis
+    - fwunit.aws
+    - fwunit.combine
+    - fwunit.query
+    - fwunit.srx
+    - fwunit.test
+    - fwunit.test.integration
+    - fwunit.test.unit
+    - fwunit.test.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fwunit --help
+    - fwunit-query --help
+    - fwunit-diff --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla/build-fwunit
+  license: MPL2
+  summary: 'Unit tests for firewall rules'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

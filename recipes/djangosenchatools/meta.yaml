@@ -1,0 +1,65 @@
+package:
+  name: djangosenchatools
+  version: "1.0.5"
+
+source:
+  fn: djangosenchatools-1.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangosenchatools/djangosenchatools-1.0.5.tar.gz
+  md5: fad5a5667fb8912e9319c6f7453ffd44
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangosenchatools = djangosenchatools:main
+    #
+    # Would create an entry point called djangosenchatools that calls djangosenchatools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - setuptools
+    - django
+
+test:
+  # Python imports
+  imports:
+    - djangosenchatools
+    - djangosenchatools.management
+    - djangosenchatools.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/espenak/djangosenchatools
+  license: BSD License
+  summary: 'Django management command to simplify building extjs and sencha touch apps with Sencha tools.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

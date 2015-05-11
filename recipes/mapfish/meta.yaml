@@ -1,0 +1,75 @@
+package:
+  name: mapfish
+  version: "1.2.5"
+
+source:
+  fn: mapfish-1.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/mapfish/mapfish-1.2.5.tar.gz
+  md5: 3cf17f963174933fc0cca516c5a721ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mapfish = mapfish:main
+    #
+    # Would create an entry point called mapfish that calls mapfish.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.5.0
+    - pylons >=0.9.7
+    - geojson >=1.0
+    - shapely >=1.0.7
+    - psycopg2 >=2.0.10
+
+  run:
+    - python
+    - setuptools
+    - sqlalchemy >=0.5.0
+    - pylons >=0.9.7
+    - geojson >=1.0
+    - shapely >=1.0.7
+    - psycopg2 >=2.0.10
+
+test:
+  # Python imports
+  imports:
+    - mapfish
+    - mapfish.controllers
+    - mapfish.lib
+    - mapfish.lib.filters
+    - mapfish.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.mapfish.org
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'The MapFish web-mapping framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

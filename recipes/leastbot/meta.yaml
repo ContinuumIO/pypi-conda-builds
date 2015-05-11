@@ -1,0 +1,72 @@
+package:
+  name: leastbot
+  version: "0.2.1"
+
+source:
+  fn: leastbot-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/leastbot/leastbot-0.2.1.tar.gz
+  md5: 0e09d3973b3d88550782f3464d88b7f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - leastbot = leastbot:main
+    #
+    # Would create an entry point called leastbot that calls leastbot.main()
+
+    - leastbot = leastbot.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=13.1
+    - mock >=1.0.1
+    - pyopenssl >=0.13.1
+    - functable >=0.2.dev1
+
+  run:
+    - python
+    - twisted >=13.1
+    - mock >=1.0.1
+    - pyopenssl >=0.13.1
+    - functable >=0.2.dev1
+
+test:
+  # Python imports
+  imports:
+    - leastbot
+    - leastbot.github
+    - leastbot.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - leastbot --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/leastauthority/leastbot
+  license: GPLv3
+  summary: 'leastbot - Least Authority ircbot / webhook thingy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

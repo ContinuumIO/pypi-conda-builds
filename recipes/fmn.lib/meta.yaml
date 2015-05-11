@@ -1,0 +1,73 @@
+package:
+  name: fmn.lib
+  version: "0.6.2"
+
+source:
+  fn: fmn.lib-0.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/fmn.lib/fmn.lib-0.6.2.tar.gz
+  md5: fc1de46a2c7f3fc510c8f5cea0c29351
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fmn.lib = fmn.lib:main
+    #
+    # Would create an entry point called fmn.lib that calls fmn.lib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.8
+    - beautifulsoup4
+    - fmn.rules
+    - docutils
+    - markupsafe
+    - decorator
+
+  run:
+    - python
+    - sqlalchemy >=0.8
+    - beautifulsoup4
+    - fmn.rules
+    - docutils
+    - markupsafe
+    - decorator
+
+test:
+  # Python imports
+  imports:
+    - fmn
+    - fmn.lib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fedora-infra/fmn.lib
+  license: LGPLv2+
+  summary: 'Internal API components and model for Fedora Notifications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: m01.searcher
+  version: "0.5.1"
+
+source:
+  fn: m01.searcher-0.5.1.zip
+  url: https://pypi.python.org/packages/source/m/m01.searcher/m01.searcher-0.5.1.zip
+  md5: d1575f39a17edd44e7441da3476a410b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m01.searcher = m01.searcher:main
+    #
+    # Would create an entry point called m01.searcher that calls m01.searcher.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m01.mongo
+    - p01.session
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.location
+    - zope.schema
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - m01.mongo
+    - p01.session
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.location
+    - zope.schema
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - m01
+    - m01.searcher
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/m01.searcher
+  license: Zope Public License
+  summary: 'MongoDB searcher search filter implementation for Zope3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

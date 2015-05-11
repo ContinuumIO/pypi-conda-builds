@@ -1,0 +1,68 @@
+package:
+  name: mashdown
+  version: "0.1.0"
+
+source:
+  fn: mashdown-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mashdown/mashdown-0.1.0.tar.gz
+  md5: 776e00669960ad5cbcc0f3678653b497
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mashdown = mashdown:main
+    #
+    # Would create an entry point called mashdown that calls mashdown.main()
+
+    - mashdown=mashdown.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pydub
+    - pafy
+    - mutagen
+
+  run:
+    - python
+    - pydub
+    - pafy
+    - mutagen
+
+test:
+  # Python imports
+  imports:
+    - mashdown
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mashdown --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: u'Download and split a youtube mashup video in a list of tagged audio files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

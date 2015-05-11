@@ -1,0 +1,77 @@
+package:
+  name: django_sql_dashboards
+  version: "0.3.1"
+
+source:
+  fn: django_sql_dashboards-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_sql_dashboards/django_sql_dashboards-0.3.1.tar.gz
+  md5: d1bc5638682e2212ff4d9fe716c5d23b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_sql_dashboards = django_sql_dashboards:main
+    #
+    # Would create an entry point called django_sql_dashboards that calls django_sql_dashboards.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-bootstrap3 >=2.3.0
+    - mysql-python
+    - south
+    - django-filter
+    - django-picklefield
+    - python-dateutil
+    - django-pagination
+
+  run:
+    - python
+    - django-bootstrap3 >=2.3.0
+    - mysql-python
+    - south
+    - django-filter
+    - django-picklefield
+    - python-dateutil
+    - django-pagination
+
+test:
+  # Python imports
+  imports:
+    - django_sql_dashboards
+    - django_sql_dashboards.templates
+    - django_sql_dashboards.templates.django_sql_dashboards
+    - django_sql_dashboards.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

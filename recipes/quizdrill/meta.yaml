@@ -1,0 +1,64 @@
+package:
+  name: quizdrill
+  version: "0.2.0"
+
+source:
+  fn: quizdrill-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/q/quizdrill/quizdrill-0.2.0.tar.gz
+  md5: b2a67dae57e25486b78fd74a4c5c025a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - quizdrill = quizdrill:main
+    #
+    # Would create an entry point called quizdrill that calls quizdrill.main()
+
+    - quiz_builder = quizdrill.builder:build
+    - quizdrill = quizdrill.quizdrill:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - quizdrill
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - quiz_builder --help
+    - quizdrill --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://quizdrill.berlios.de/
+  license: GNU General Public License (GPL)
+  summary: 'A learning-by-testing to excess program.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

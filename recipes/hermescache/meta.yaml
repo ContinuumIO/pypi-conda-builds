@@ -1,0 +1,63 @@
+package:
+  name: hermescache
+  version: "0.5.1"
+
+source:
+  fn: HermesCache-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/H/HermesCache/HermesCache-0.5.1.tar.gz
+  md5: fb08cfca1122eb8b3eda75baefc375a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hermescache = hermescache:main
+    #
+    # Would create an entry point called hermescache that calls hermescache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hermes
+    - hermes.backend
+    - hermes.test
+    - hermescache
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/saaj/hermes
+  license: LGPL-2.1+
+  summary: 'Python caching library with tag-based invalidation and dogpile effect prevention'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: flask-swagger-codegen
+  version: "0.0.6"
+
+source:
+  fn: Flask-Swagger-Codegen-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Swagger-Codegen/Flask-Swagger-Codegen-0.0.6.tar.gz
+  md5: 8b8a6fadcdf4c0405d00d1eacfd84ea9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-swagger-codegen = flask-swagger-codegen:main
+    #
+    # Would create an entry point called flask-swagger-codegen that calls flask-swagger-codegen.main()
+
+    - flask_swagger_codegen=flask_swagger_codegen:codegen
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - jinja2
+
+  run:
+    - python
+    - click
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - flask_swagger_codegen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flask_swagger_codegen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rejown/flask-swagger-codegen
+  license: MIT License
+  summary: 'Generate Flask code from Swagger docs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

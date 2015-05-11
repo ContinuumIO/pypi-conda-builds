@@ -1,0 +1,110 @@
+package:
+  name: ice.control
+  version: "0.4.0"
+
+source:
+  fn: ice.control-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ice.control/ice.control-0.4.0.tar.gz
+  md5: c42cd617650bfed3768c662ecf4275ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ice.control = ice.control:main
+    #
+    # Would create an entry point called ice.control that calls ice.control.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.testbrowser
+    - zope.viewlet
+    - zope.app.testing
+    - zope.app.zcmlfiles
+    - zope.app.apidoc
+    - zc.resourcelibrary
+    - z3c.testsetup
+    - z3c.configurator
+    - z3c.layer.pagelet
+    - z3c.template
+    - z3c.formui
+    - z3c.zrtresource
+    - z3c.contents
+
+  run:
+    - python
+    - setuptools
+    - zope.testbrowser
+    - zope.viewlet
+    - zope.app.testing
+    - zope.app.zcmlfiles
+    - zope.app.apidoc
+    - zc.resourcelibrary
+    - z3c.testsetup
+    - z3c.configurator
+    - z3c.layer.pagelet
+    - z3c.template
+    - z3c.formui
+    - z3c.zrtresource
+    - z3c.contents
+
+test:
+  # Python imports
+  imports:
+    - ice
+    - ice.control
+    - ice.control.browser
+    - ice.control.controls
+    - ice.control.controls.details
+    - ice.control.controls.details.base
+    - ice.control.controls.details.configurator
+    - ice.control.controls.details.contents
+    - ice.control.controls.details.dublincore
+    - ice.control.controls.details.error
+    - ice.control.controls.details.introspector
+    - ice.control.controls.details.localregistry
+    - ice.control.controls.generations
+    - ice.control.controls.tree
+    - ice.control.controls.tree.resources
+    - ice.control.controls.zodbpack
+    - ice.control.repl
+    - ice.control.repl.browser
+    - ice.control.skin
+    - ice.control.skin.authentication
+    - ice.control.skin.frontpage
+    - ice.control.skin.resources
+    - ice.control.tests
+    - ice.control.zcml
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/ice.control
+  license: GNU General Public License (GPL)
+  summary: 'System Administration and Site Management for BlueBream'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

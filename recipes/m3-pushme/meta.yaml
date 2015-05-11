@@ -1,0 +1,66 @@
+package:
+  name: m3-pushme
+  version: "0.1.5"
+
+source:
+  fn: m3-pushme-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/m3-pushme/m3-pushme-0.1.5.tar.gz
+  md5: 0fe09d78fcaa8b63a9e763a0c01f6dbf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m3-pushme = m3-pushme:main
+    #
+    # Would create an entry point called m3-pushme that calls m3-pushme.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sockjs-tornado
+    - snakemq
+
+  run:
+    - python
+    - sockjs-tornado
+    - snakemq
+
+test:
+  # Python imports
+  imports:
+    - pushme
+    - pushme.demo
+    - pushme.mq
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/barsgroup/pushme
+  license: MIT License
+  summary: '\xd0\x9f\xd0\xbe\xd0\xb4\xd1\x81\xd0\xb8\xd1\x81\xd1\x82\xd0\xb5\xd0\xbc\xd0\xb0 \xd0\xb4\xd0\xbe\xd1\x81\xd1\x82\xd0\xb0\xd0\xb2\xd0\xba\xd0\xb8 \xd1\x81\xd0\xbe\xd0\xbe\xd0\xb1\xd1\x89\xd0\xb5\xd0\xbd\xd0\xb8\xd0\xb9 \xd0\xbe\xd1\x82 \xd1\x81\xd0\xb5\xd1\x80\xd0\xb2\xd0\xb5\xd1\x80\xd0\xb0 \xd0\xb1\xd1\x80\xd0\xb0\xd1\x83\xd0\xb7\xd0\xb5\xd1\x80\xd1\x83'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

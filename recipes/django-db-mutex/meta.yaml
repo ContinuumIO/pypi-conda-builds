@@ -1,0 +1,64 @@
+package:
+  name: django-db-mutex
+  version: "0.2.2"
+
+source:
+  fn: django-db-mutex-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-db-mutex/django-db-mutex-0.2.2.tar.gz
+  md5: bc8a8b7d9a9a1d3048b8489577025877
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-db-mutex = django-db-mutex:main
+    #
+    # Would create an entry point called django-db-mutex that calls django-db-mutex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+
+  run:
+    - python
+    - django >=1.7
+
+test:
+  # Python imports
+  imports:
+    - db_mutex
+    - db_mutex.migrations
+    - db_mutex.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ambitioninc/django-db-mutex/
+  license: MIT License
+  summary: 'Acquire a mutex via the DB in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

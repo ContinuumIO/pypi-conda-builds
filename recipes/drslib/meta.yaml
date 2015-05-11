@@ -1,0 +1,71 @@
+package:
+  name: drslib
+  version: "0.3.1p3"
+
+source:
+  fn: drslib-0.3.1p3.tar.gz
+  url: https://pypi.python.org/packages/source/d/drslib/drslib-0.3.1p3.tar.gz
+  md5: b9f8f247ec86ce799c61bb1d19d70e01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drslib = drslib:main
+    #
+    # Would create an entry point called drslib that calls drslib.main()
+
+    - translate_cmip3 = drslib.translate_cmip3:main
+    - drs_tool = drslib.drs_command:main
+    - drs_checkthredds = drslib.thredds:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - metaconfig
+    - xlrd
+
+  run:
+    - python
+    - metaconfig
+    - xlrd
+
+test:
+  # Python imports
+  imports:
+    - drslib
+    - drslib.p_cmip5
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - translate_cmip3 --help
+    - drs_tool --help
+    - drs_checkthredds --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://esgf.org/esgf-drslib-site/
+  license: BSD
+  summary: 'A library for processing the CMIP5 Data Reference Syntax'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

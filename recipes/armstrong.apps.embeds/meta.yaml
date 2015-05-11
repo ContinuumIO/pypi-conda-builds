@@ -1,0 +1,72 @@
+package:
+  name: armstrong.apps.embeds
+  version: "0.9"
+
+source:
+  fn: armstrong.apps.embeds-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/a/armstrong.apps.embeds/armstrong.apps.embeds-0.9.tar.gz
+  md5: 0cc5b6c85db19031eae2a794746b19b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - armstrong.apps.embeds = armstrong.apps.embeds:main
+    #
+    # Would create an entry point called armstrong.apps.embeds that calls armstrong.apps.embeds.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-extensions >=1.0.3
+    - django-model-utils >=1.1.0
+    - embedly >=0.5.0
+
+  run:
+    - python
+    - django-extensions >=1.0.3
+    - django-model-utils >=1.1.0
+    - embedly >=0.5.0
+
+test:
+  # Python imports
+  imports:
+    - armstrong
+    - armstrong.apps
+    - armstrong.apps.embeds
+    - armstrong.apps.embeds.backends
+    - armstrong.apps.embeds.migrations
+    - armstrong.apps.embeds.south_migrations
+    - armstrong.apps.embeds.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/armstrong/armstrong.apps.embeds/
+  license: Apache Software License
+  summary: u'Provides a way to store, relate to, extract metadata and embed content from external URLs via a modular backend system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

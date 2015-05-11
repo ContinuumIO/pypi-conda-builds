@@ -1,0 +1,78 @@
+package:
+  name: geobricksproj4toepsg
+  version: "0.0.15"
+
+source:
+  fn: GeobricksProj4ToEPSG-0.0.15.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksProj4ToEPSG/GeobricksProj4ToEPSG-0.0.15.tar.gz
+  md5: 345985da8a9e5e3ff628e65a6b62ab28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksproj4toepsg = geobricksproj4toepsg:main
+    #
+    # Would create an entry point called geobricksproj4toepsg that calls geobricksproj4toepsg.main()
+
+    - proj4epsg = geobricks_proj4_to_epsg.cli.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - flask
+    - flask-cors
+    - argh
+
+  run:
+    - python
+    - watchdog
+    - flask
+    - flask-cors
+    - argh
+
+test:
+  # Python imports
+  imports:
+    - geobricks_proj4_to_epsg
+    - geobricks_proj4_to_epsg.cli
+    - geobricks_proj4_to_epsg.config
+    - geobricks_proj4_to_epsg.core
+    - geobricks_proj4_to_epsg.rest
+    - geobricks_proj4_to_epsg.utils
+    - geobricks_proj4_to_epsg_test
+    - geobricks_proj4_to_epsg_test.test_suite
+    - geobricksproj4toepsg
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - proj4epsg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksProj4ToEPSG/
+  license: LICENSE.txt
+  summary: 'Geobricks Proj4 to EPSG code convert library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

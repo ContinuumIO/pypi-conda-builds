@@ -1,0 +1,72 @@
+package:
+  name: git-up
+  version: "1.3.0"
+
+source:
+  fn: git-up-1.3.0.zip
+  url: https://pypi.python.org/packages/source/g/git-up/git-up-1.3.0.zip
+  md5: efd9b71f2789c80d59bf17623ae0756c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-up = git-up:main
+    #
+    # Would create an entry point called git-up that calls git-up.main()
+
+    - git-up = gitup:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython ==1.0.0
+    - colorama ==0.3.3
+    - termcolor ==1.1.0
+    - docopt ==0.6.2
+    - six ==1.9.0
+
+  run:
+    - python
+    - gitpython ==1.0.0
+    - colorama ==0.3.3
+    - termcolor ==1.1.0
+    - docopt ==0.6.2
+    - six ==1.9.0
+
+test:
+  # Python imports
+  imports:
+    - PyGitUp
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-up --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/msiemens/PyGitUp
+  license: MIT License
+  summary: "A python implementation of 'git up'"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

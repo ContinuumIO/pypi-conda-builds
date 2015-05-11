@@ -1,0 +1,67 @@
+package:
+  name: djed.static
+  version: "0.3"
+
+source:
+  fn: djed.static-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/djed.static/djed.static-0.3.tar.gz
+  md5: 3f23004e403e23a5c2e7b1235cd0936b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djed.static = djed.static:main
+    #
+    # Would create an entry point called djed.static that calls djed.static.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bowerstatic
+    - pyramid
+    - zope.interface
+
+  run:
+    - python
+    - bowerstatic
+    - pyramid
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - djed
+    - djed.static
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/djedproject/djed.static
+  license: ISC License (ISCL)
+  summary: 'Integration of BowerStatic into Pyramid for managing static resources with Bower'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: createcloudmap
+  version: "0.6.1"
+
+source:
+  fn: CreateCloudMap-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/C/CreateCloudMap/CreateCloudMap-0.6.1.tar.gz
+  md5: a59af939c0e8b750ab8e9338287cf83b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - createcloudmap = createcloudmap:main
+    #
+    # Would create an entry point called createcloudmap that calls createcloudmap.main()
+
+    - create_map = cloudmap.create_map:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyresample
+    - numpy
+    - scipy
+    - requests
+    - datetime
+    - pillowfight
+    - setuptools >=0.7.2
+    - configparser
+
+  run:
+    - python
+    - pyresample
+    - numpy
+    - scipy
+    - requests
+    - datetime
+    - pillowfight
+    - setuptools >=0.7.2
+    - configparser
+
+test:
+  # Python imports
+  imports:
+    - cloudmap
+    - createcloudmap
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - create_map --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jmozmoz/cloudmap
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Create a cloud map for xplanet using satellite images from the Dundee Satellite Receiving Station'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: zeam.form.plone
+  version: "1.0"
+
+source:
+  fn: zeam.form.plone-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zeam.form.plone/zeam.form.plone-1.0.tar.gz
+  md5: 2a5554d4a1da20893cbbb8c79cd74918
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zeam.form.plone = zeam.form.plone:main
+    #
+    # Would create an entry point called zeam.form.plone that calls zeam.form.plone.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - products.statusmessages
+    - five.grok
+    - martian
+    - megrok.pagetemplate
+    - setuptools
+    - zeam.form.base
+    - zeam.form.ztk
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+
+  run:
+    - python
+    - products.statusmessages
+    - five.grok
+    - martian
+    - megrok.pagetemplate
+    - setuptools
+    - zeam.form.base
+    - zeam.form.ztk
+    - zope.i18n
+    - zope.i18nmessageid
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - zeam
+    - zeam.form
+    - zeam.form.plone
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zeam.form.plone
+  license: BSD License
+  summary: 'Plone integration for Zeam Form'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

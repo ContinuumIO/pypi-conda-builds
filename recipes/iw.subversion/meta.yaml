@@ -1,0 +1,67 @@
+package:
+  name: iw.subversion
+  version: "0.1.0"
+
+source:
+  fn: iw.subversion-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/iw.subversion/iw.subversion-0.1.0.tar.gz
+  md5: e70a3e722ccec6fa98745d09df7273fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iw.subversion = iw.subversion:main
+    #
+    # Would create an entry point called iw.subversion that calls iw.subversion.main()
+
+    - svn_check_source = iw.subversion.svn_check_source:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.testing
+
+  run:
+    - python
+    - setuptools
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - iw
+    - iw.subversion
+    - iw.subversion.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - svn_check_source --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://ingeniweb.svn.sourceforge.net/svnroot/ingeniweb/iw.subversion
+  license: GPL
+  summary: 'Contains hooks and utilities for Subversion'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: macaddresslink
+  version: "0.0.1"
+
+source:
+  fn: macaddresslink-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/macaddresslink/macaddresslink-0.0.1.tar.gz
+  md5: b9dfb2ef3c0891e4ab3e35f6d95ec6f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - macaddresslink = macaddresslink:main
+    #
+    # Would create an entry point called macaddresslink that calls macaddresslink.main()
+
+    - macaddresslink = macaddresslink:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - netifaces
+
+  run:
+    - python
+    - requests
+    - netifaces
+
+test:
+  # Python imports
+  imports:
+    - macaddresslink
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - macaddresslink --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/MacAddressLink/macaddresslink.py
+  license: MIT License
+  summary: 'macaddress.link client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

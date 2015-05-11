@@ -1,0 +1,72 @@
+package:
+  name: hieroglyph
+  version: "0.7.1"
+
+source:
+  fn: hieroglyph-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hieroglyph/hieroglyph-0.7.1.tar.gz
+  md5: a994d8e5b1cfe730ecc2e01e5475ca7c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hieroglyph = hieroglyph:main
+    #
+    # Would create an entry point called hieroglyph that calls hieroglyph.main()
+
+    - hieroglyph=hieroglyph.quickstart:main
+    - hieroglyph-quickstart=hieroglyph.quickstart:quickstart
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - sphinx >=1.2
+    - six
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - sphinx >=1.2
+    - six
+
+test:
+  # Python imports
+  imports:
+    - hieroglyph
+    - hieroglyph.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hieroglyph --help
+    - hieroglyph-quickstart --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nyergler/hieroglyph
+  license: BSD License
+  summary: 'Generate HTML presentations from plain text sources with all the power of Sphinx.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

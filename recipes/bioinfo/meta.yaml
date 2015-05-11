@@ -1,0 +1,64 @@
+package:
+  name: bioinfo
+  version: "0.1.8"
+
+source:
+  fn: bioinfo-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/b/bioinfo/bioinfo-0.1.8.tar.gz
+  md5: 503262dd8356d1578f0d953bd600975e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bioinfo = bioinfo:main
+    #
+    # Would create an entry point called bioinfo that calls bioinfo.main()
+
+    - bioinfo = bioinfo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+
+  run:
+    - python
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - bioinfo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bioinfo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/luizirber/bioinfo
+  license: BSD License
+  summary: 'Bioinformatics scripts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

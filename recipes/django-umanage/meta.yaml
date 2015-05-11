@@ -1,0 +1,71 @@
+package:
+  name: django-umanage
+  version: "1.1.0"
+
+source:
+  fn: django-umanage-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-umanage/django-umanage-1.1.0.tar.gz
+  md5: 02a434fa9d449d0c55a3855f00448f1f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-umanage = django-umanage:main
+    #
+    # Would create an entry point called django-umanage that calls django-umanage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - umanage
+    - umanage.accounts
+    - umanage.activate_account
+    - umanage.auth
+    - umanage.change_email
+    - umanage.change_password
+    - umanage.forgot_password
+    - umanage.forgot_username
+    - umanage.migrations
+    - umanage.mixins
+    - umanage.templatetags
+    - umanage.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/infoagetech/django-umanage
+  license: MIT License
+  summary: u'Django user management app for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

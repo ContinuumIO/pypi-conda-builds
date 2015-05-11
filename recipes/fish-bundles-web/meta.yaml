@@ -1,0 +1,94 @@
+package:
+  name: fish-bundles-web
+  version: "0.1.8"
+
+source:
+  fn: fish-bundles-web-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/f/fish-bundles-web/fish-bundles-web-0.1.8.tar.gz
+  md5: c83247b91565d909788dc6eabf77a5c5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fish-bundles-web = fish-bundles-web:main
+    #
+    # Would create an entry point called fish-bundles-web that calls fish-bundles-web.main()
+
+    - fish-bundles-web=fish_bundles_web.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - alembic ==0.6.6
+    - mysql-python ==1.2.5
+    - github-flask ==1.1.1
+    - flask-sqlalchemy ==1.0
+    - flask-coffee ==0.3
+    - flask-compass ==0.2
+    - flask-assets ==0.10
+    - jsmin ==2.0.11
+    - cssmin ==0.2.0
+    - ujson ==1.33
+    - awesome-slugify ==1.6
+    - markdown ==2.4.1
+    - semantic_version ==2.3.0
+    - derpconf ==0.7.2
+
+  run:
+    - python
+    - flask ==0.10.1
+    - alembic ==0.6.6
+    - mysql-python ==1.2.5
+    - github-flask ==1.1.1
+    - flask-sqlalchemy ==1.0
+    - flask-coffee ==0.3
+    - flask-compass ==0.2
+    - flask-assets ==0.10
+    - jsmin ==2.0.11
+    - cssmin ==0.2.0
+    - ujson ==1.33
+    - awesome-slugify ==1.6
+    - markdown ==2.4.1
+    - semantic_version ==2.3.0
+    - derpconf ==0.7.2
+
+test:
+  # Python imports
+  imports:
+    - fish_bundles_web
+    - fish_bundles_web.config
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fish-bundles-web --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fish-bundles/fish-bundles-web
+  license: MIT License
+  summary: 'fish-bundles-web is the website for fish-bundles'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: hurry.explorer
+  version: "0.2"
+
+source:
+  fn: hurry.explorer-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.explorer/hurry.explorer-0.2.tar.gz
+  md5: 8685230a7d96e50466cf90d220e52c21
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.explorer = hurry.explorer:main
+    #
+    # Would create an entry point called hurry.explorer that calls hurry.explorer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hurry.resource >0.2
+    - hurry.yui
+
+  run:
+    - python
+    - setuptools
+    - hurry.resource >0.2
+    - hurry.yui
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.explorer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'A (object) filesystem explorer UI built with YUI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

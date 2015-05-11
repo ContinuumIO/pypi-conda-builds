@@ -1,0 +1,65 @@
+package:
+  name: amqpctl
+  version: "0.2"
+
+source:
+  fn: amqpctl-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/amqpctl/amqpctl-0.2.tar.gz
+  md5: 6f7eafc7a8380e674faa5b7711326a04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amqpctl = amqpctl:main
+    #
+    # Would create an entry point called amqpctl that calls amqpctl.main()
+
+    - amqpctl=amqpctl.command:amqpctl
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - amqplib
+
+  run:
+    - python
+    - setuptools
+    - amqplib
+
+test:
+  # Python imports
+  imports:
+    - amqpctl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - amqpctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/amqpctl
+  license: GPL
+  summary: 'AMQP Control Command Line Utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

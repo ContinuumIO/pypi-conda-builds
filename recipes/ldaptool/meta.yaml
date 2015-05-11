@@ -1,0 +1,63 @@
+package:
+  name: ldaptool
+  version: "0.1"
+
+source:
+  fn: ldaptool-0.1.tar.bz2
+  url: https://pypi.python.org/packages/source/l/ldaptool/ldaptool-0.1.tar.bz2
+  md5: f8846a23c37a5329d3a5e5e9499f73c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ldaptool = ldaptool:main
+    #
+    # Would create an entry point called ldaptool that calls ldaptool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ldaptool
+    - ldaptool.commands
+    - ldaptool.util
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ox9.org/projects/ldaptool/
+  license: GNU General Public License (GPL)
+  summary: 'Tool for manipulating LDAP databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

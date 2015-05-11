@@ -1,0 +1,87 @@
+package:
+  name: antispoofing.evaluation
+  version: "2.0.1"
+
+source:
+  fn: antispoofing.evaluation-2.0.1.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.evaluation/antispoofing.evaluation-2.0.1.zip
+  md5: 702ed94902779da94e4fbecd244b860f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.evaluation = antispoofing.evaluation:main
+    #
+    # Would create an entry point called antispoofing.evaluation that calls antispoofing.evaluation.main()
+
+    - score_distr_generator.py = antispoofing.evaluation.script.score_distr_generator:main
+    - plot_on_demand.py = antispoofing.evaluation.script.plot_on_demand:main
+    - plot_epsc_on_demand.py = antispoofing.evaluation.script.plot_epsc_on_demand:main
+    - epsc_vs_non_epsc.py = antispoofing.evaluation.script.epsc_vs_non_epsc:main
+    - plot_faceverif_comparison.py = antispoofing.evaluation.script.plot_faceverif_comparison:main
+    - plot_fusionmethods_comparison.py = antispoofing.evaluation.script.plot_fusionmethods_comparison:main
+    - plot_countermeasures_comparison.py = antispoofing.evaluation.script.plot_countermeasures_comparison:main
+    - cmp_systems_epsc.py = antispoofing.evaluation.script.cmp_systems_epsc:main
+    - calc_aue_value.py = antispoofing.evaluation.script.calc_aue_value:main
+    - apply_threshold.py = bob.measure.script.apply_threshold:main
+    - eval_threshold.py = bob.measure.script.eval_threshold:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.evaluation
+    - antispoofing.evaluation.script
+    - antispoofing.evaluation.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - score_distr_generator.py --help
+    - plot_on_demand.py --help
+    - plot_epsc_on_demand.py --help
+    - epsc_vs_non_epsc.py --help
+    - plot_faceverif_comparison.py --help
+    - plot_fusionmethods_comparison.py --help
+    - plot_countermeasures_comparison.py --help
+    - cmp_systems_epsc.py --help
+    - calc_aue_value.py --help
+    - apply_threshold.py --help
+    - eval_threshold.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/antispoofing.evaluation
+  license: LICENSE.txt
+  summary: 'Evaluation tools for verification systems under spoofing attacks: examples in face verification'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

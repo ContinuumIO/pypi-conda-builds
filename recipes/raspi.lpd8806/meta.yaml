@@ -1,0 +1,76 @@
+package:
+  name: raspi.lpd8806
+  version: "0.2"
+
+source:
+  fn: raspi.lpd8806-0.2.zip
+  url: https://pypi.python.org/packages/source/r/raspi.lpd8806/raspi.lpd8806-0.2.zip
+  md5: 60285e7f32079958363010f861189681
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - raspi.lpd8806 = raspi.lpd8806:main
+    #
+    # Would create an entry point called raspi.lpd8806 that calls raspi.lpd8806.main()
+
+    - led_webserver = raspi.lpd8806.led:main
+    - led_queue_worker = raspi.lpd8806.led_queue_worker:entry
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - haigha ==0.5.9
+    - mushroom ==0.3.3
+    - requests ==1.1.0
+    - gevent ==0.13.8
+    - gevent-websocket ==0.3.6
+
+  run:
+    - python
+    - setuptools
+    - haigha ==0.5.9
+    - mushroom ==0.3.3
+    - requests ==1.1.0
+    - gevent ==0.13.8
+    - gevent-websocket ==0.3.6
+
+test:
+  # Python imports
+  imports:
+    - raspi
+    - raspi.lpd8806
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - led_webserver --help
+    - led_queue_worker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gocept.com
+  license: BSD
+  summary: 'Servers for playing predefined sequences on a LPD8806 based LED strip connected to a RaspberryPi.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

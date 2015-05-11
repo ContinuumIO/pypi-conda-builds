@@ -1,0 +1,66 @@
+package:
+  name: minecraft-mods-downloader
+  version: "0.6.1"
+
+source:
+  fn: minecraft-mods-downloader-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/minecraft-mods-downloader/minecraft-mods-downloader-0.6.1.tar.gz
+  md5: 35bb4045e3be509f30063e71c8688566
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minecraft-mods-downloader = minecraft-mods-downloader:main
+    #
+    # Would create an entry point called minecraft-mods-downloader that calls minecraft-mods-downloader.main()
+
+    - mine_mods=mine_mods:install_mods
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=3.3
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - setuptools
+    - click >=3.3
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mine_mods --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/arruda/minecraft-mods-downloader
+  license: MIT
+  summary: 'Control minecraft mods download easily with this tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

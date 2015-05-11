@@ -1,0 +1,77 @@
+package:
+  name: antispoofing.eyeblink
+  version: "1.0.4"
+
+source:
+  fn: antispoofing.eyeblink-1.0.4.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.eyeblink/antispoofing.eyeblink-1.0.4.zip
+  md5: 26edfa62160d5d5e1f7140d4d7e19910
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.eyeblink = antispoofing.eyeblink:main
+    #
+    # Would create an entry point called antispoofing.eyeblink that calls antispoofing.eyeblink.main()
+
+    - framediff.py = antispoofing.eyeblink.script.framediff:main
+    - make_scores.py = antispoofing.eyeblink.script.make_scores:main
+    - count_blinks.py = antispoofing.eyeblink.script.count_blinks:main
+    - merge_scores.py = antispoofing.eyeblink.script.merge_scores:main
+    - make_movie.py = antispoofing.eyeblink.script.make_movie:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+
+  run:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.eyeblink
+    - antispoofing.eyeblink.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - framediff.py --help
+    - make_scores.py --help
+    - count_blinks.py --help
+    - merge_scores.py --help
+    - make_movie.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.eyeblink
+  license: GPLv3
+  summary: 'Eye-blinking counter-measures for the REPLAY-ATTACK database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

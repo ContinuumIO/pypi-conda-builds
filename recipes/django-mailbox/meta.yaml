@@ -1,0 +1,68 @@
+package:
+  name: django-mailbox
+  version: "4.3.4"
+
+source:
+  fn: django-mailbox-4.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mailbox/django-mailbox-4.3.4.tar.gz
+  md5: 9e5125ec400ab8642d3d430e7fa2a411
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mailbox = django-mailbox:main
+    #
+    # Would create an entry point called django-mailbox that calls django-mailbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.6.1
+
+  run:
+    - python
+    - six >=1.6.1
+
+test:
+  # Python imports
+  imports:
+    - django_mailbox
+    - django_mailbox.management
+    - django_mailbox.management.commands
+    - django_mailbox.migrations
+    - django_mailbox.south_migrations
+    - django_mailbox.tests
+    - django_mailbox.transports
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/coddingtonbear/django-mailbox/
+  license: MIT License
+  summary: 'Import mail from POP3, IMAP, local mailboxes or directly from Postfix or Exim4 into your Django application automatically.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

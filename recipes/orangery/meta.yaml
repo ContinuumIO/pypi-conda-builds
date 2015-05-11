@@ -1,0 +1,71 @@
+package:
+  name: orangery
+  version: "0.3.0"
+
+source:
+  fn: orangery-0.3.0.zip
+  url: https://pypi.python.org/packages/source/o/orangery/orangery-0.3.0.zip
+  md5: 4d591b79224b46704a3b7eec1192f7d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - orangery = orangery:main
+    #
+    # Would create an entry point called orangery that calls orangery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pandas
+    - matplotlib
+    - shapely
+
+  run:
+    - python
+    - numpy
+    - pandas
+    - matplotlib
+    - shapely
+
+test:
+  # Python imports
+  imports:
+    - orangery
+    - orangery.core
+    - orangery.ops
+    - orangery.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mrahnis/orangery
+  license: BSD License
+  summary: 'Python library to support analysis of topographic cross-sections'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

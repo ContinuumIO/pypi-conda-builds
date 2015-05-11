@@ -1,0 +1,72 @@
+package:
+  name: flowlib
+  version: "0.6.6.9b"
+
+source:
+  fn: flowlib-0.6.6.9b.tar.gz
+  url: https://pypi.python.org/packages/source/f/flowlib/flowlib-0.6.6.9b.tar.gz
+  md5: 331fcfb2f1b0c1e54e1f5e0144c0ff94
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flowlib = flowlib:main
+    #
+    # Would create an entry point called flowlib that calls flowlib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - configobj
+    - docopt
+    - sh
+
+  run:
+    - python
+    - fabric
+    - configobj
+    - docopt
+    - sh
+
+test:
+  # Python imports
+  imports:
+    - flib
+    - flib.flows
+    - flib.test
+    - flowlib
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/isnok/py-flowlib
+  license: UNKNOWN
+  summary: 'Build your own git flow!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

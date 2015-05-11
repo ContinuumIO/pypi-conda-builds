@@ -1,0 +1,98 @@
+package:
+  name: casexml
+  version: "1.0.0"
+
+source:
+  fn: casexml-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/casexml/casexml-1.0.0.tar.gz
+  md5: 5198916bdb6cac33c12d1ba439e31214
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - casexml = casexml:main
+    #
+    # Would create an entry point called casexml that calls casexml.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery
+    - couchdbkit
+    - couchforms >=1.0.0
+    - couchexport
+    - decorator
+    - dimagi-utils >=1.0.0
+    - django
+    - django-digest
+    - lxml
+    - receiver >=1.0.0
+    - requests
+    - restkit
+    - python-digest
+    - pytz
+    - simplejson
+
+  run:
+    - python
+    - celery
+    - couchdbkit
+    - couchforms >=1.0.0
+    - couchexport
+    - decorator
+    - dimagi-utils >=1.0.0
+    - django
+    - django-digest
+    - lxml
+    - receiver >=1.0.0
+    - requests
+    - restkit
+    - python-digest
+    - pytz
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - casexml
+    - casexml.apps
+    - casexml.apps.case
+    - casexml.apps.case.templatetags
+    - casexml.apps.case.tests
+    - casexml.apps.case.xml
+    - casexml.apps.phone
+    - casexml.apps.phone.templatetags
+    - casexml.apps.phone.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.dimagi.com/
+  license: UNKNOWN
+  summary: 'Dimagi CaseXML for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

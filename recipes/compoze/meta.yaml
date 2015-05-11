@@ -1,0 +1,68 @@
+package:
+  name: compoze
+  version: "1.0"
+
+source:
+  fn: compoze-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/compoze/compoze-1.0.tar.gz
+  md5: 208ba397281fb1235ea138462086594f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - compoze = compoze:main
+    #
+    # Would create an entry point called compoze that calls compoze.main()
+
+    - compoze = compoze.compozer:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6c7
+    - pkginfo
+
+  run:
+    - python
+    - setuptools
+    - setuptools >=0.6c7
+    - pkginfo
+
+test:
+  # Python imports
+  imports:
+    - compoze
+    - compoze.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - compoze --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.repoze.org/compoze
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'Build package indexes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

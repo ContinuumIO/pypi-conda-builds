@@ -1,0 +1,74 @@
+package:
+  name: edeposit.amqp.aleph
+  version: "1.8.6"
+
+source:
+  fn: edeposit.amqp.aleph-1.8.6.tar.gz
+  url: https://pypi.python.org/packages/source/e/edeposit.amqp.aleph/edeposit.amqp.aleph-1.8.6.tar.gz
+  md5: f0888909dfa5bac22727da6ba8d2d9d4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edeposit.amqp.aleph = edeposit.amqp.aleph:main
+    #
+    # Would create an entry point called edeposit.amqp.aleph that calls edeposit.amqp.aleph.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pydhtmlparser >=2.0.7
+    - httpkie >=1.1.0,<2.0.0
+    - isbn_validator
+    - remove_hairs
+    - marcxml_parser
+
+  run:
+    - python
+    - setuptools
+    - pydhtmlparser >=2.0.7
+    - httpkie >=1.1.0,<2.0.0
+    - isbn_validator
+    - remove_hairs
+    - marcxml_parser
+
+test:
+  # Python imports
+  imports:
+    - edeposit
+    - edeposit.amqp
+    - edeposit.amqp.aleph
+    - edeposit.amqp.aleph.datastructures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edeposit/edeposit.amqp.aleph
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'E-Deposit AMQP module providing communication with Aleph'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

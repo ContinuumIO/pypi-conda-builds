@@ -1,0 +1,67 @@
+package:
+  name: django-avatar
+  version: "2.0"
+
+source:
+  fn: django-avatar-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-avatar/django-avatar-2.0.tar.gz
+  md5: d4602f6cf09c13ceb4554e8533375317
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-avatar = django-avatar:main
+    #
+    # Would create an entry point called django-avatar that calls django-avatar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow >=2.0
+    - django-appconf >=0.6
+
+  run:
+    - python
+    - pillow >=2.0
+    - django-appconf >=0.6
+
+test:
+  # Python imports
+  imports:
+    - avatar
+    - avatar.management
+    - avatar.management.commands
+    - avatar.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jezdez/django-avatar/
+  license: BSD License
+  summary: 'A Django app for handling user avatars'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: itzodmon
+  version: "0.2"
+
+source:
+  fn: itzodmon-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/itzodmon/itzodmon-0.2.tar.gz
+  md5: 62100714ce8dc2a719287992c0cb9709
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - itzodmon = itzodmon:main
+    #
+    # Would create an entry point called itzodmon that calls itzodmon.main()
+
+    - itzodmon = itzodmon.web:start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.1
+    - bottle >=0.10
+    - requests >=1.2
+    - whisper >=0.9
+
+  run:
+    - python
+    - argparse >=1.1
+    - bottle >=0.10
+    - requests >=1.2
+    - whisper >=0.9
+
+test:
+  # Python imports
+  imports:
+    - itzodmon
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - itzodmon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shendo/itzodmon
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'pool.itzod.ru bitcoin mining pool monitor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

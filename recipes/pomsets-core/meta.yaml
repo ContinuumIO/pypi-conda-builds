@@ -1,0 +1,71 @@
+package:
+  name: pomsets-core
+  version: "1.0.9"
+
+source:
+  fn: pomsets-core-1.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/p/pomsets-core/pomsets-core-1.0.9.tar.gz
+  md5: 4a2fc9bed6a9d0804b062834f804ba57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pomsets-core = pomsets-core:main
+    #
+    # Would create an entry point called pomsets-core that calls pomsets-core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cloudpool >=0.1.3
+    - pypatterns >=0.1.3
+    - reaction >=0.2.2
+    - simplejson >=2.0.9
+
+  run:
+    - python
+    - cloudpool >=0.1.3
+    - pypatterns >=0.1.3
+    - reaction >=0.2.2
+    - simplejson >=2.0.9
+
+test:
+  # Python imports
+  imports:
+    - pomsets
+    - pomsets.graph
+    - pomsets.picloud
+    - pomsets.python
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pomsets.org
+  license: GPL (personal use) or commercial
+  summary: 'workflow management for the cloud'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

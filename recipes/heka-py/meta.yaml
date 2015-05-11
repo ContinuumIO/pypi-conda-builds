@@ -1,0 +1,69 @@
+package:
+  name: heka-py
+  version: "0.30.3"
+
+source:
+  fn: heka-py-0.30.3.tar.gz
+  url: https://pypi.python.org/packages/source/h/heka-py/heka-py-0.30.3.tar.gz
+  md5: 57e1798b5920b582c5be26baf1b6cdb7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - heka-py = heka-py:main
+    #
+    # Would create an entry point called heka-py that calls heka-py.main()
+
+    - mb = heka.command:mb
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - protobuf
+
+  run:
+    - python
+    - docopt
+    - protobuf
+
+test:
+  # Python imports
+  imports:
+    - heka
+    - heka.decorators
+    - heka.streams
+    - heka.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla-services/heka-py
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Metrics Logging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

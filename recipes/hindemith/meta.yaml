@@ -1,0 +1,81 @@
+package:
+  name: hindemith
+  version: "0.1.1"
+
+source:
+  fn: hindemith-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hindemith/hindemith-0.1.1.tar.gz
+  md5: 619ec27d419f8ddacd04ea51620541db
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hindemith = hindemith:main
+    #
+    # Would create an entry point called hindemith that calls hindemith.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ctree
+    - pycl
+    - numpy
+
+  run:
+    - python
+    - ctree
+    - pycl
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - dev-examples
+    - dev-examples.optical_flow
+    - dev-examples.optical_flow.riscv-demo
+    - examples-copy
+    - examples-copy.optical_flow
+    - examples-copy.optical_flow.riscv-demo
+    - examples-riscv
+    - examples-riscv.optical_flow
+    - examples-riscv.optical_flow.riscv-demo
+    - hindemith
+    - hindemith.meta
+    - hindemith.operations
+    - hindemith.types
+    - tests.test_meta
+    - tests.test_operations
+    - tests.test_types
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ucb-sejits/hindemith
+  license: UNKNOWN
+  summary: 'Package containing a suite of high performance pattern specializers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: marcup
+  version: "0.5"
+
+source:
+  fn: marcup-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/marcup/marcup-0.5.tar.gz
+  md5: 7b6b2a9a1da49b26f582cecb163a6f77
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marcup = marcup:main
+    #
+    # Would create an entry point called marcup that calls marcup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymarc
+    - bsddb3
+
+  run:
+    - python
+    - pymarc
+    - bsddb3
+
+test:
+  # Python imports
+  imports:
+    - marcup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/marcup
+  license: http://creativecommons.org/licenses/publicdomain/
+  summary: 'manage create/update/deletes marc feeds'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: dudac
+  version: "0.26"
+
+source:
+  fn: dudac-0.26.tar.gz
+  url: https://pypi.python.org/packages/source/d/dudac/dudac-0.26.tar.gz
+  md5: 6605d3d5d9f64f844e66f48b5ea98392
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dudac = dudac:main
+    #
+    # Would create an entry point called dudac that calls dudac.main()
+
+    - dudac = dudaclient.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dudac
+    - dudaclient
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dudac --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://duda.io
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'DudaC is a command line interface for Duda I/O web services framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

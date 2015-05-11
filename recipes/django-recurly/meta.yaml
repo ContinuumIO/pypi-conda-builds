@@ -1,0 +1,69 @@
+package:
+  name: django-recurly
+  version: "1.0.3"
+
+source:
+  fn: django-recurly-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-recurly/django-recurly-1.0.3.tar.gz
+  md5: 3ecabb75b640ddb61ad5a0a8d02a4190
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-recurly = django-recurly:main
+    #
+    # Would create an entry point called django-recurly that calls django-recurly.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - iso8601
+    - django-timezones
+
+  run:
+    - python
+    - iso8601
+    - django-timezones
+
+test:
+  # Python imports
+  imports:
+    - django_recurly
+    - django_recurly.helpers
+    - django_recurly.migrations
+    - django_recurly.templatetags
+    - django_recurly.tests
+    - django_recurly.tests.helpers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/adamcharnock/django-recurly
+  license: BSD
+  summary: 'Django integration for Recurly, a subscription billing service.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

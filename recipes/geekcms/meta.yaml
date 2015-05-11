@@ -1,0 +1,67 @@
+package:
+  name: geekcms
+  version: "0.3"
+
+source:
+  fn: geekcms-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/geekcms/geekcms-0.3.tar.gz
+  md5: 2f62db2bf043cbb98cd912d366e4cf14
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geekcms = geekcms:main
+    #
+    # Would create an entry point called geekcms that calls geekcms.main()
+
+    - geekcms = geekcms.interface:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply >=3.4
+    - docopt
+
+  run:
+    - python
+    - ply >=3.4
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - geekcms
+    - geekcms.parser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - geekcms --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/haoxun/GeekCMS
+  license: MIT License
+  summary: 'a lightweight framework for static site development.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,93 @@
+package:
+  name: eve-srp
+  version: "0.10.5.1"
+
+source:
+  fn: EVE-SRP-0.10.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/E/EVE-SRP/EVE-SRP-0.10.5.1.tar.gz
+  md5: 0f7fac92a7aa967cf69e358c49d21b22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eve-srp = eve-srp:main
+    #
+    # Would create an entry point called eve-srp that calls eve-srp.main()
+
+    - evesrp = evesrp.util.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.1
+    - flask-login >=0.2.11
+    - flask-migrate >=1.2.0
+    - flask-script ==2.0.5
+    - flask-sqlalchemy ==2.0
+    - flask-wtf ==0.10.2
+    - sqlalchemy >=0.9.7
+    - werkzeug >=0.9.4
+    - wtforms >=2.0.0
+    - alembic >=0.6.5
+    - requests ==2.2.1
+    - six ==1.7.3
+    - iso8601 >=0.1.5
+
+  run:
+    - python
+    - flask >=0.10.1
+    - flask-login >=0.2.11
+    - flask-migrate >=1.2.0
+    - flask-script ==2.0.5
+    - flask-sqlalchemy ==2.0
+    - flask-wtf ==0.10.2
+    - sqlalchemy >=0.9.7
+    - werkzeug >=0.9.4
+    - wtforms >=2.0.0
+    - alembic >=0.6.5
+    - requests ==2.2.1
+    - six ==1.7.3
+    - iso8601 >=0.1.5
+
+test:
+  # Python imports
+  imports:
+    - evesrp
+    - evesrp.auth
+    - evesrp.migrate
+    - evesrp.migrate.versions
+    - evesrp.util
+    - evesrp.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - evesrp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paxswill/evesrp
+  license: BSD License
+  summary: u'EVE Ship Replacement Program Helper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

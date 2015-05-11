@@ -1,0 +1,64 @@
+package:
+  name: halonadm
+  version: "1.0.0"
+
+source:
+  fn: halonadm-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/halonadm/halonadm-1.0.0.tar.gz
+  md5: 83179ea10baca9e3315a4b1e34f2c934
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - halonadm = halonadm:main
+    #
+    # Would create an entry point called halonadm that calls halonadm.main()
+
+    - halonadm = halonadm.halonadm:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - suds
+
+  run:
+    - python
+    - suds
+
+test:
+  # Python imports
+  imports:
+    - halonadm
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - halonadm --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/loxley/halonadm.git/
+  license: GPLv2
+  summary: 'Manage Halon SP servers easily'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

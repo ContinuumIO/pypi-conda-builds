@@ -1,0 +1,67 @@
+package:
+  name: eboshi
+  version: "0.0.6"
+
+source:
+  fn: eboshi-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/e/eboshi/eboshi-0.0.6.tar.gz
+  md5: 3466adc86b696f839ebc70156e7915ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eboshi = eboshi:main
+    #
+    # Would create an entry point called eboshi that calls eboshi.main()
+
+    - eboshi = eboshi.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - cliff
+
+  run:
+    - python
+    - setuptools
+    - requests
+    - cliff
+
+test:
+  # Python imports
+  imports:
+    - eboshi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eboshi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wyukawa/eboshi
+  license: MIT License
+  summary: 'Azkaban CLI tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

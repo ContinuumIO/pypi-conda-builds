@@ -1,0 +1,95 @@
+package:
+  name: django-sentry
+  version: "1.13.5"
+
+source:
+  fn: django-sentry-1.13.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sentry/django-sentry-1.13.5.tar.gz
+  md5: 47d0103d9b657e442bad4599d4ca3387
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sentry = django-sentry:main
+    #
+    # Would create an entry point called django-sentry that calls django-sentry.main()
+
+    - sentry = sentry.scripts.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-paging >=0.2.4
+    - django-indexer >=0.3.0
+    - django-templatetag-sugar >=0.1.0
+    - raven
+    - python-daemon >=1.6
+    - eventlet >=0.9.15
+    - south
+
+  run:
+    - python
+    - django >=1.2
+    - django-paging >=0.2.4
+    - django-indexer >=0.3.0
+    - django-templatetag-sugar >=0.1.0
+    - raven
+    - python-daemon >=1.6
+    - eventlet >=0.9.15
+    - south
+
+test:
+  # Python imports
+  imports:
+    - sentry
+    - sentry.client
+    - sentry.client.celery
+    - sentry.client.log
+    - sentry.conf
+    - sentry.migrations
+    - sentry.plugins
+    - sentry.plugins.sentry_redmine
+    - sentry.plugins.sentry_redmine.migrations
+    - sentry.plugins.sentry_redmine.tests
+    - sentry.plugins.sentry_servers
+    - sentry.plugins.sentry_sites
+    - sentry.plugins.sentry_urls
+    - sentry.scripts
+    - sentry.templatetags
+    - sentry.utils
+    - sentry.utils.compat
+    - sentry.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sentry --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dcramer/django-sentry
+  license: UNKNOWN
+  summary: 'Exception Logging to a Database in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

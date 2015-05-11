@@ -1,0 +1,64 @@
+package:
+  name: hadoop_mock
+  version: "0.1"
+
+source:
+  fn: hadoop_mock-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hadoop_mock/hadoop_mock-0.1.tar.gz
+  md5: 47c1dec2f421941febe6bd2349cbcd98
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hadoop_mock = hadoop_mock:main
+    #
+    # Would create an entry point called hadoop_mock that calls hadoop_mock.main()
+
+    - hadoop_mock = hadoop_mock.hadoop_mock:cli
+    - hadoop_ssh = hadoop_mock.hadoop_ssh:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hadoop_mock
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hadoop_mock --help
+    - hadoop_ssh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/andreifyodorov/hadoop_mock
+  license: PSF
+  summary: 'Utility to mock hadoop command-line interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

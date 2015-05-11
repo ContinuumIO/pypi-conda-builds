@@ -1,0 +1,70 @@
+package:
+  name: django-pseudo-cms
+  version: "0.1.0"
+
+source:
+  fn: django-pseudo-cms-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pseudo-cms/django-pseudo-cms-0.1.0.tar.gz
+  md5: 10ed3660684066865acf4cdd61548d4b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pseudo-cms = django-pseudo-cms:main
+    #
+    # Would create an entry point called django-pseudo-cms that calls django-pseudo-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.8,<1.9
+    - django-image-helper >=0.1.1
+    - docutils ==0.12
+
+  run:
+    - python
+    - django >=1.8,<1.9
+    - django-image-helper >=0.1.1
+    - docutils ==0.12
+
+test:
+  # Python imports
+  imports:
+    - pseudo_cms
+    - pseudo_cms.migrations
+    - pseudo_cms.south_migrations
+    - pseudo_cms.templatetags
+    - pseudo_cms.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/madisona/django-pseudo-cms
+  license: BSD License
+  summary: 'A Simple application to help add dynamic content to pages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

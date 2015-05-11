@@ -1,0 +1,71 @@
+package:
+  name: ikazuchi
+  version: "0.5.4"
+
+source:
+  fn: ikazuchi-0.5.4.tar.bz2
+  url: https://pypi.python.org/packages/source/i/ikazuchi/ikazuchi-0.5.4.tar.bz2
+  md5: 4e254b8a3258ef55a84b1db15eed3aad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ikazuchi = ikazuchi:main
+    #
+    # Would create an entry point called ikazuchi that calls ikazuchi.main()
+
+    - ikazuchi = ikazuchi.ikazuchi:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+
+  run:
+    - python
+    - setuptools
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - ikazuchi
+    - ikazuchi.core
+    - ikazuchi.core.handler
+    - ikazuchi.core.translator
+    - ikazuchi.locale
+    - ikazuchi.plugins
+    - ikazuchi.vim
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ikazuchi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://t2y.bitbucket.org/ikazuchi/build/html/index.html
+  license: Apache Software License
+  summary: 'ikazuchi helps to translate document using web translate APIs efficiently'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

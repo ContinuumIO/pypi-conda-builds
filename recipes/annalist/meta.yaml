@@ -1,0 +1,89 @@
+package:
+  name: annalist
+  version: "0.1.12"
+
+source:
+  fn: Annalist-0.1.12.tar.gz
+  url: https://pypi.python.org/packages/source/A/Annalist/Annalist-0.1.12.tar.gz
+  md5: 64867dafd4c6243b432696419139ecc3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - annalist = annalist:main
+    #
+    # Would create an entry point called annalist that calls annalist.main()
+
+    - annalist-manager = annalist_root.annalist_manager.am_main:runMain
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.7
+    - wsgiref ==0.1.2
+    - oauth2client ==1.2
+    - httplib2 ==0.9
+    - pyparsing ==2.0.2
+    - markdown ==2.5.2
+    - beautifulsoup4
+
+  run:
+    - python
+    - django ==1.7
+    - wsgiref ==0.1.2
+    - oauth2client ==1.2
+    - httplib2 ==0.9
+    - pyparsing ==2.0.2
+    - markdown ==2.5.2
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - annalist
+    - annalist_root
+    - annalist_root.annalist
+    - annalist_root.annalist.models
+    - annalist_root.annalist.tests
+    - annalist_root.annalist.views
+    - annalist_root.annalist.views.fields
+    - annalist_root.annalist.views.form_utils
+    - annalist_root.annalist_manager
+    - annalist_root.annalist_site
+    - annalist_root.annalist_site.settings
+    - annalist_root.miscutils
+    - annalist_root.oauth2
+    - annalist_root.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - annalist-manager --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gklyne/annalist
+  license: MIT License
+  summary: 'Annalist linked data notebook'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

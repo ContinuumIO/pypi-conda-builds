@@ -1,0 +1,70 @@
+package:
+  name: cocaine
+  version: "0.11.1.12"
+
+source:
+  fn: cocaine-0.11.1.12.tar.gz
+  url: https://pypi.python.org/packages/source/c/cocaine/cocaine-0.11.1.12.tar.gz
+  md5: 25f21dbbf1f3e16819472bfab88b7702
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cocaine = cocaine:main
+    #
+    # Would create an entry point called cocaine that calls cocaine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - msgpack_python
+    - tornado >=3.0
+
+  run:
+    - python
+    - msgpack_python
+    - tornado >=3.0
+
+test:
+  # Python imports
+  imports:
+    - cocaine
+    - cocaine.asio
+    - cocaine.decorators
+    - cocaine.futures
+    - cocaine.logging
+    - cocaine.services
+    - cocaine.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cocaine/cocaine-framework-python
+  license: LGPLv3+
+  summary: 'Cocaine Python Framework for Cocaine Application Cloud.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

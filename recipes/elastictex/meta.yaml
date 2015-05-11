@@ -1,0 +1,72 @@
+package:
+  name: elastictex
+  version: "0.1.6"
+
+source:
+  fn: elastictex-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/e/elastictex/elastictex-0.1.6.tar.gz
+  md5: 2bd09c7b738d81e7f076ae88a8e41130
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elastictex = elastictex:main
+    #
+    # Would create an entry point called elastictex that calls elastictex.main()
+
+    - elastictex = elastictex.server:main
+    - elastictex_crawl = elastictex.crawl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elasticsearch
+    - flask
+    - beautifulsoup4
+
+  run:
+    - python
+    - elasticsearch
+    - flask
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - elastictex
+    - mongo_connector
+    - mongo_connector.doc_managers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - elastictex --help
+    - elastictex_crawl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/xmasotto/elastictex
+  license: UNKNOWN
+  summary: 'Search with Latex'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

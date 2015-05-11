@@ -1,0 +1,66 @@
+package:
+  name: django-ghostdown
+  version: "0.5"
+
+source:
+  fn: django-ghostdown-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ghostdown/django-ghostdown-0.5.tar.gz
+  md5: ba228347787056cda32e238c570782f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ghostdown = django-ghostdown:main
+    #
+    # Would create an entry point called django-ghostdown that calls django-ghostdown.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - django-appconf
+
+  run:
+    - python
+    - django >=1.6
+    - django-appconf
+
+test:
+  # Python imports
+  imports:
+    - ghostdown
+    - ghostdown.forms
+    - ghostdown.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/uranusjr/django-ghostdown
+  license: MIT License
+  summary: u'Ghost-like markdown editor as a Django form widget.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

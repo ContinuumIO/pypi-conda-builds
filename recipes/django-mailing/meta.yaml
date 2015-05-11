@@ -1,0 +1,67 @@
+package:
+  name: django-mailing
+  version: "0.1.2"
+
+source:
+  fn: django-mailing-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mailing/django-mailing-0.1.2.tar.gz
+  md5: 1f159ec5fc4c293d0803950e0450c687
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mailing = django-mailing:main
+    #
+    # Would create an entry point called django-mailing that calls django-mailing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.4.1
+    - redis >=2.4.10
+    - celery
+    - django-celery
+
+  run:
+    - python
+    - django >=1.4.1
+    - redis >=2.4.10
+    - celery
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - mailing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/JeromeParadis/django-mailing
+  license: MIT License
+  summary: 'A flexible Django app for templated mailings with support for celery queuing, SendGrid and more.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

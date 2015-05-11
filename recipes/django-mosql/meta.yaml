@@ -1,0 +1,65 @@
+package:
+  name: django-mosql
+  version: "0.5"
+
+source:
+  fn: django-mosql-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mosql/django-mosql-0.5.tar.gz
+  md5: dd02628f49cb3b253b4707d94a4670d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mosql = django-mosql:main
+    #
+    # Would create an entry point called django-mosql that calls django-mosql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - mosql >=0.8.1,<0.9.1
+
+  run:
+    - python
+    - django >=1.6
+    - mosql >=0.8.1,<0.9.1
+
+test:
+  # Python imports
+  imports:
+    - djangomosql
+    - djangomosql.db
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/uranusjr/django-mosql
+  license: BSD License
+  summary: 'Django model integration for MoSQL.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

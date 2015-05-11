@@ -1,0 +1,68 @@
+package:
+  name: flickr_download
+  version: "0.2.9"
+
+source:
+  fn: flickr_download-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/f/flickr_download/flickr_download-0.2.9.tar.gz
+  md5: fe5139c2fa11e53a85d947cea650ad26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flickr_download = flickr_download:main
+    #
+    # Would create an entry point called flickr_download that calls flickr_download.main()
+
+    - flickr_download=flickr_download.flick_download:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flickr_api ==0.5
+    - python-dateutil ==1.5
+    - pyyaml ==3.11
+
+  run:
+    - python
+    - flickr_api ==0.5
+    - python-dateutil ==1.5
+    - pyyaml ==3.11
+
+test:
+  # Python imports
+  imports:
+    - flickr_download
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flickr_download --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/beaufour/flickr-download.git
+  license: Apache
+  summary: 'Download a Flickr set'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

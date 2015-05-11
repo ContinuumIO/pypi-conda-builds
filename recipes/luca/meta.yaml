@@ -1,0 +1,83 @@
+package:
+  name: luca
+  version: "1.0"
+
+source:
+  fn: luca-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/luca/luca-1.0.tar.gz
+  md5: 6643ba733b8a4feedd9ff3caf67a4403
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - luca = luca:main
+    #
+    # Would create an entry point called luca that calls luca.main()
+
+    - luca = luca.commandline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blessings
+    - docopt
+    - fdfgen
+    - pyyaml
+    - reportlab
+    - requests
+    - pypdf
+
+  run:
+    - python
+    - blessings
+    - docopt
+    - fdfgen
+    - pyyaml
+    - reportlab
+    - requests
+    - pypdf
+
+test:
+  # Python imports
+  imports:
+    - luca
+    - luca.forms
+    - luca.forms.us
+    - luca.forms.us_ga
+    - luca.forms.us_oh
+    - luca.importer
+    - luca.ofx
+    - luca.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - luca --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brandon-rhodes/luca
+  license: MIT License
+  summary: 'Do accounting with YAML, fill out tax forms with JSON'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

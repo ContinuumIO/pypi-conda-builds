@@ -1,0 +1,62 @@
+package:
+  name: texclean
+  version: "1.0.0"
+
+source:
+  fn: texclean-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/texclean/texclean-1.0.0.tar.gz
+  md5: 977c26e266c4c79033041cba32e96911
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - texclean = texclean:main
+    #
+    # Would create an entry point called texclean that calls texclean.main()
+
+    - texclean=texclean:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - texclean
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - texclean --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://gist.github.com/JonasGroeger/8897946
+  license: MIT License
+  summary: 'Ein Skript zum l\xc3\xb6schen von tempor\xc3\xa4ren Daten in TeX-Projekten.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

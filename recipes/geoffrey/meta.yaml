@@ -1,0 +1,74 @@
+package:
+  name: geoffrey
+  version: "0.1.2"
+
+source:
+  fn: geoffrey-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/geoffrey/geoffrey-0.1.2.tar.gz
+  md5: 10afa0796782ff69d8e86c96997fabaf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geoffrey = geoffrey:main
+    #
+    # Would create an entry point called geoffrey that calls geoffrey.main()
+
+    - geoffrey = geoffrey.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aiohttp ==0.6.4
+    - bottle ==0.12.5
+    - jinja2 ==2.7.2
+    - websockets ==2.1
+
+  run:
+    - python
+    - aiohttp ==0.6.4
+    - bottle ==0.12.5
+    - jinja2 ==2.7.2
+    - websockets ==2.1
+
+test:
+  # Python imports
+  imports:
+    - geoffrey
+    - geoffrey.deps
+    - geoffrey.deps.aiobottle
+    - geoffrey.deps.straight
+    - geoffrey.deps.straight.plugin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - geoffrey --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nilp0inter/geoffrey
+  license: LGPLv3
+  summary: u'Geoffrey: Real Time Continuous Integration Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

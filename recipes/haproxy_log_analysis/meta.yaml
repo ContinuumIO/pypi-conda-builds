@@ -1,0 +1,65 @@
+package:
+  name: haproxy_log_analysis
+  version: "1.1"
+
+source:
+  fn: haproxy_log_analysis-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/haproxy_log_analysis/haproxy_log_analysis-1.1.tar.gz
+  md5: 78106c5d947f2528487f62cd0781290b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - haproxy_log_analysis = haproxy_log_analysis:main
+    #
+    # Would create an entry point called haproxy_log_analysis that calls haproxy_log_analysis.main()
+
+    - haproxy_log_analysis = haproxy.main:console_script
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - haproxy
+    - haproxy.tests
+    - haproxy_log_analysis
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - haproxy_log_analysis --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gforcada/haproxy_log_analysis
+  license: GPL v3
+  summary: "Haproxy log analyzer that tries to gives an insight of what's going on"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: red-fab-deploy2
+  version: "0.2.4"
+
+source:
+  fn: red-fab-deploy2-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/red-fab-deploy2/red-fab-deploy2-0.2.4.tar.gz
+  md5: ab0b32d227ef519a052071ac2bf9d326
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - red-fab-deploy2 = red-fab-deploy2:main
+    #
+    # Would create an entry point called red-fab-deploy2 that calls red-fab-deploy2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - fabric
+    - jinja2
+    - smartdc
+    - boto
+
+  run:
+    - python
+    - fabric
+    - jinja2
+    - smartdc
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - fab_deploy2
+    - fab_deploy2.amazon
+    - fab_deploy2.amazon.redhat
+    - fab_deploy2.amazon.ubuntu
+    - fab_deploy2.base
+    - fab_deploy2.joyent
+    - fab_deploy2.joyent.smartos
+    - fab_deploy2.joyent.ubuntu
+    - fab_deploy2.local
+    - fab_deploy2.operating_systems
+    - fab_deploy2.operating_systems.redhat
+    - fab_deploy2.operating_systems.smartos
+    - fab_deploy2.operating_systems.ubuntu
+    - fab_deploy2.rackspace
+    - fab_deploy2.rackspace.redhat
+    - fab_deploy2.rackspace.ubuntu
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/ff0000/red-fab-deploy2/
+  license: MIT License
+  summary: ' Code deployment tool '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

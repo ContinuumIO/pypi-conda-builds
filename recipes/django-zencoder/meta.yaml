@@ -1,0 +1,72 @@
+package:
+  name: django-zencoder
+  version: "0.2.4"
+
+source:
+  fn: django-zencoder-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-zencoder/django-zencoder-0.2.4.tar.gz
+  md5: f6f6ed5f365193c5683752f628f454f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-zencoder = django-zencoder:main
+    #
+    # Would create an entry point called django-zencoder that calls django-zencoder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - requests ==2.2.1
+    - django-json-field ==0.5.5
+    - six ==1.5.2
+    - south
+
+  run:
+    - python
+    - django >=1.5
+    - requests ==2.2.1
+    - django-json-field ==0.5.5
+    - six ==1.5.2
+    - south
+
+test:
+  # Python imports
+  imports:
+    - zencoder
+    - zencoder/conf
+    - zencoder/migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/theonion/django-zencoder
+  license: MIT
+  summary: 'A Django app that allows the upload and encoding of videos with Zencoder'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

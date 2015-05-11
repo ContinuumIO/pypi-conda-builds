@@ -1,0 +1,120 @@
+package:
+  name: fowler.corpora
+  version: "0.1"
+
+source:
+  fn: fowler.corpora-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fowler.corpora/fowler.corpora-0.1.tar.gz
+  md5: 456dc77a6b3794a19e7afb629fb54ba1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fowler.corpora = fowler.corpora:main
+    #
+    # Would create an entry point called fowler.corpora that calls fowler.corpora.main()
+
+    - corpora = fowler.corpora.main:dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - fowler.switchboard
+    - google-ngram-downloader
+    - ipython
+    - jinja2
+    - joblib
+    - matplotlib
+    - more-itertools
+    - nltk
+    - numexpr
+    - numpy
+    - openpyxl <1.9999
+    - opster
+    - pandas
+    - progress
+    - py
+    - raven
+    - scikit-learn
+    - scipy
+    - seaborn
+    - setuptools
+    - six
+    - tables
+    - tornado
+    - xlwt-future
+    - zope.cachedescriptors
+
+  run:
+    - python
+    - fowler.switchboard
+    - google-ngram-downloader
+    - ipython
+    - jinja2
+    - joblib
+    - matplotlib
+    - more-itertools
+    - nltk
+    - numexpr
+    - numpy
+    - openpyxl <1.9999
+    - opster
+    - pandas
+    - progress
+    - py
+    - raven
+    - scikit-learn
+    - scipy
+    - seaborn
+    - setuptools
+    - six
+    - tables
+    - tornado
+    - xlwt-future
+    - zope.cachedescriptors
+
+test:
+  # Python imports
+  imports:
+    - fowler
+    - fowler.corpora
+    - fowler.corpora.bnc
+    - fowler.corpora.dictionary
+    - fowler.corpora.google_ngrams
+    - fowler.corpora.ms_paraphrase
+    - fowler.corpora.serafin03
+    - fowler.corpora.space
+    - fowler.corpora.wordsim353
+    - fowler.corpora.wsd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - corpora --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dimazest/fowler.corpora/
+  license: MIT License
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

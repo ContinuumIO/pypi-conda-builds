@@ -1,0 +1,64 @@
+package:
+  name: django-debug-toolbar-line-profiler
+  version: "0.4.0"
+
+source:
+  fn: django-debug-toolbar-line-profiler-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-debug-toolbar-line-profiler/django-debug-toolbar-line-profiler-0.4.0.tar.gz
+  md5: b587729e5326725d57e6fc9bb1838c44
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-debug-toolbar-line-profiler = django-debug-toolbar-line-profiler:main
+    #
+    # Would create an entry point called django-debug-toolbar-line-profiler that calls django-debug-toolbar-line-profiler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-debug-toolbar >=1.0
+    - line_profiler >=1.0b3
+
+  run:
+    - python
+    - django-debug-toolbar >=1.0
+    - line_profiler >=1.0b3
+
+test:
+  # Python imports
+  imports:
+    - debug_toolbar_line_profiler
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dmclain/django-debug-toolbar-line-profiler
+  license: BSD License
+  summary: 'A panel for django-debug-toolbar that integrates information from line_profiler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

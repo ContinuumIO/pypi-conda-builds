@@ -1,0 +1,74 @@
+package:
+  name: redid_tools
+  version: "0.2"
+
+source:
+  fn: redid_tools-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/redid_tools/redid_tools-0.2.tar.gz
+  md5: be5442034efc1b9a11127c6b6f29ca39
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redid_tools = redid_tools:main
+    #
+    # Would create an entry point called redid_tools that calls redid_tools.main()
+
+    - redid = redid_tools.main:main
+    - redid-sync = redid_tools.sync:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pyyaml
+    - shelljob
+    - tabulate
+    - python-dateutil
+
+  run:
+    - python
+    - requests
+    - pyyaml
+    - shelljob
+    - tabulate
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - redid_tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - redid --help
+    - redid-sync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/redid_tools
+  license: MIT License
+  summary: 'Redid media distribituion network tools. Redid provides a media distribution network offering dynamic media transformations and signed resource access.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

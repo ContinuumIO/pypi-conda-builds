@@ -1,0 +1,83 @@
+package:
+  name: lbforum
+  version: "0.9.22"
+
+source:
+  fn: LBForum-0.9.22.zip
+  url: https://pypi.python.org/packages/source/L/LBForum/LBForum-0.9.22.zip
+  md5: cde691238dd71208211f5c27a01e9027
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lbforum = lbforum:main
+    #
+    # Would create an entry point called lbforum that calls lbforum.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.3
+    - django-helper >=0.8.1
+    - django-lb-attachments >=0.8
+    - django-onlineuser >=0.8
+    - django-simple-avatar >=0.8.1
+    - beautifulsoup
+    - postmarkup
+    - django-pagination
+    - pil
+    - south >=0.7.2
+
+  run:
+    - python
+    - django >=1.3
+    - django-helper >=0.8.1
+    - django-lb-attachments >=0.8
+    - django-onlineuser >=0.8
+    - django-simple-avatar >=0.8.1
+    - beautifulsoup
+    - postmarkup
+    - django-pagination
+    - pil
+    - south >=0.7.2
+
+test:
+  # Python imports
+  imports:
+    - lbforum
+    - lbforum.management
+    - lbforum.management.commands
+    - lbforum.migrations
+    - lbforum.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vicalloy/LBForum
+  license: BSD License
+  summary: 'LBForum is a quick and simple forum which uses the Django Framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

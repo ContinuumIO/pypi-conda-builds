@@ -1,0 +1,68 @@
+package:
+  name: ldtools
+  version: "0.8.0"
+
+source:
+  fn: Ldtools-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/L/Ldtools/Ldtools-0.8.0.tar.gz
+  md5: 229319d8fc8c31f89160852f0fcebcf3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ldtools = ldtools:main
+    #
+    # Would create an entry point called ldtools that calls ldtools.main()
+
+    - ldtools = ldtools.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rdflib
+    - argparse
+    - six
+
+  run:
+    - python
+    - rdflib
+    - argparse
+    - six
+
+test:
+  # Python imports
+  imports:
+    - ldtools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ldtools --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dmr/ldtools
+  license: BSD License
+  summary: 'A lightweight ORM for Linked Data: Consume Linked Data resources, modify the graph and write the changes back to their original source'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

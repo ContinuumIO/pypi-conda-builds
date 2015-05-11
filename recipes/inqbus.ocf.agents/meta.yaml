@@ -1,0 +1,78 @@
+package:
+  name: inqbus.ocf.agents
+  version: "0.11"
+
+source:
+  fn: inqbus.ocf.agents-0.11.tar.gz
+  url: https://pypi.python.org/packages/source/i/inqbus.ocf.agents/inqbus.ocf.agents-0.11.tar.gz
+  md5: f0786df1d7e7402d8606be482de949c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inqbus.ocf.agents = inqbus.ocf.agents:main
+    #
+    # Would create an entry point called inqbus.ocf.agents that calls inqbus.ocf.agents.main()
+
+    - install_agents=inqbus.ocf.agents.install_agents:main
+    - openvpn=inqbus.ocf.agents.openvpn:main
+    - pidagent=inqbus.ocf.agents.pidagent:main
+    - dummy_daemon=inqbus.ocf.agents.test.dummy_daemon:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - inqbus.ocf.generic
+    - python-daemon
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - inqbus.ocf.generic
+    - python-daemon
+
+test:
+  # Python imports
+  imports:
+    - inqbus
+    - inqbus.ocf
+    - inqbus.ocf.agents
+    - inqbus.ocf.agents.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - install_agents --help
+    - openvpn --help
+    - pidagent --help
+    - dummy_daemon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://inqbus.de
+  license: GPL
+  summary: 'OCF resource agents based on inqbus.ocf.generic'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

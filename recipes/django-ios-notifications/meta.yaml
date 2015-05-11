@@ -1,0 +1,69 @@
+package:
+  name: django-ios-notifications
+  version: "0.2.0"
+
+source:
+  fn: django-ios-notifications-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ios-notifications/django-ios-notifications-0.2.0.tar.gz
+  md5: 5f9c5dcc8c1280e2ef60c2792e762b8f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ios-notifications = django-ios-notifications:main
+    #
+    # Would create an entry point called django-ios-notifications that calls django-ios-notifications.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - pyopenssl >=0.10
+    - django-fields >=0.2.2
+
+  run:
+    - python
+    - django >=1.3
+    - pyopenssl >=0.10
+    - django-fields >=0.2.2
+
+test:
+  # Python imports
+  imports:
+    - ios_notifications
+    - ios_notifications.management
+    - ios_notifications.management.commands
+    - ios_notifications.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stephenmuss/django-ios-notifications
+  license: BSD License
+  summary: 'Django iOS Notifications makes it easy to send push notifications to iOS devices'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,139 @@
+package:
+  name: largeblue.pages
+  version: "0.3.1"
+
+source:
+  fn: largeblue.pages-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/largeblue.pages/largeblue.pages-0.3.1.tar.gz
+  md5: dddea8f710e59d88561dc17efc82b751
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - largeblue.pages = largeblue.pages:main
+    #
+    # Would create an entry point called largeblue.pages that calls largeblue.pages.main()
+
+    - largeblue-debug=largeblue.startup:interactive_debug_prompt
+    - largeblue-ctl=largeblue.startup:zdaemon_controller
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elementtree
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - z3c.dav
+    - z3c.davapp.zopeappfile
+    - z3c.davapp.zopelocking
+    - z3c.etree
+    - z3c.widget
+    - zc.resourcelibrary
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.authentication
+    - zope.app.catalog
+    - zope.app.dav
+    - zope.app.file
+    - zope.app.folder
+    - zope.app.tree
+    - zope.app.intid
+    - zope.app.keyreference
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.copypastemove
+    - zope.filerepresentation
+    - zope.formlib
+    - zope.i18n
+    - zope.locking
+    - zope.publisher
+    - zope.security
+    - zope.testing
+    - zope.traversing
+    - largeblue.order
+
+  run:
+    - python
+    - setuptools
+    - elementtree
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - z3c.dav
+    - z3c.davapp.zopeappfile
+    - z3c.davapp.zopelocking
+    - z3c.etree
+    - z3c.widget
+    - zc.resourcelibrary
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.authentication
+    - zope.app.catalog
+    - zope.app.dav
+    - zope.app.file
+    - zope.app.folder
+    - zope.app.tree
+    - zope.app.intid
+    - zope.app.keyreference
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.copypastemove
+    - zope.filerepresentation
+    - zope.formlib
+    - zope.i18n
+    - zope.locking
+    - zope.publisher
+    - zope.security
+    - zope.testing
+    - zope.traversing
+    - largeblue.order
+
+test:
+  # Python imports
+  imports:
+    - bebop
+    - bebop.webdav
+    - largeblue
+    - largeblue.pages
+    - largeblue.pages.browser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - largeblue-debug --help
+    - largeblue-ctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pesto.largeblue.net/trac/browser/largeblue/devel/largeblue.pages
+  license: Public Domain (note, vendor code contained within has own licenses)
+  summary: "A simple approach to making a zope website's pages content managable"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

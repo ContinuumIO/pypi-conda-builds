@@ -1,0 +1,64 @@
+package:
+  name: livechart
+  version: "0.0.7"
+
+source:
+  fn: livechart-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/l/livechart/livechart-0.0.7.tar.gz
+  md5: 43030d70efb9eff09c64035c9c1c77c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - livechart = livechart:main
+    #
+    # Would create an entry point called livechart that calls livechart.main()
+
+    - livechart=livechart.script:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - matplotlib ==1.4.3
+
+  run:
+    - python
+    - matplotlib ==1.4.3
+
+test:
+  # Python imports
+  imports:
+    - livechart
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - livechart --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sevko/livechart
+  license: MIT
+  summary: 'A CLI utility for charting data on the fly.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

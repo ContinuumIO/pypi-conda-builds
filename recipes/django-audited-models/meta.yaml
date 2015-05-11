@@ -1,0 +1,67 @@
+package:
+  name: django-audited-models
+  version: "0.4.alpha"
+
+source:
+  fn: django-audited-models-0.4.alpha.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-audited-models/django-audited-models-0.4.alpha.tar.gz
+  md5: 6fc5908b0b7dadfd94885adc89db64b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-audited-models = django-audited-models:main
+    #
+    # Would create an entry point called django-audited-models that calls django-audited-models.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.3
+    - django-extensions ==0.8
+    - django-threaded-multihost ==1.4-1
+
+  run:
+    - python
+    - django >=1.3
+    - django-extensions ==0.8
+    - django-threaded-multihost ==1.4-1
+
+test:
+  # Python imports
+  imports:
+    - audited_models
+    - test_project
+    - test_project.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrischambers/django-audited-models
+  license: BSD License
+  summary: 'An abstract base class providing automatic creator/editor/datetime_created/datetime_modified fields.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

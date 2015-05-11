@@ -1,0 +1,74 @@
+package:
+  name: django-djmongo
+  version: "0.5.9"
+
+source:
+  fn: django-djmongo-0.5.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-djmongo/django-djmongo-0.5.9.tar.gz
+  md5: c5214b5831b6bfdd2b53577957c5cd0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-djmongo = django-djmongo:main
+    #
+    # Would create an entry point called django-djmongo that calls django-djmongo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.1
+    - pymongo
+    - django-widget-tweaks
+    - django-bootstrap-form
+    - django-cors-headers
+
+  run:
+    - python
+    - django >=1.6.1
+    - pymongo
+    - django-widget-tweaks
+    - django-bootstrap-form
+    - django-cors-headers
+
+test:
+  # Python imports
+  imports:
+    - djmongo
+    - djmongo.console
+    - djmongo.console.management.commands
+    - djmongo.dataimport
+    - djmongo.search
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hhsidealab/django-djmongo
+  license: Public Domain
+  summary: 'A reusable Django application providing a web interface for MongoDB and RESTFul API Toolkit.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

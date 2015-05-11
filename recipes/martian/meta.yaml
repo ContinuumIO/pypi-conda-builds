@@ -1,0 +1,83 @@
+package:
+  name: martian
+  version: "0.15"
+
+source:
+  fn: martian-0.15.zip
+  url: https://pypi.python.org/packages/source/m/martian/martian-0.15.zip
+  md5: 6b6855d5cea2a4cf9ca126305c40cfaa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - martian = martian:main
+    #
+    # Would create an entry point called martian that calls martian.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zope.interface
+    - setuptools
+
+  run:
+    - python
+    - zope.interface
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - martian
+    - martian.tests
+    - martian.tests.scanforclasses
+    - martian.tests.stoneage
+    - martian.tests.stoneage.hunt
+    - martian.tests.stoneage.painting
+    - martian.tests.testpackage
+    - martian.tests.testpackage.alpha
+    - martian.tests.testpackage.beta
+    - martian.tests.with__main__
+    - martian.tests.withbogusmodules
+    - martian.tests.withbogusmodules.subpackage
+    - martian.tests.withpyconly
+    - martian.tests.withpyconly.subpackage
+    - martian.tests.withtestsmodules
+    - martian.tests.withtestsmodules.subpackage
+    - martian.tests.withtestspackages
+    - martian.tests.withtestspackages.ftests
+    - martian.tests.withtestspackages.subpackage
+    - martian.tests.withtestspackages.tests
+    - martian.tests.withtestspackages.tests.subpackage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL
+  summary: 'Martian is a library that allows the embedding of configuration\ninformation in Python code. Martian can then grok the system and\ndo the appropriate configuration registrations. One example of a system\nthat uses Martian is the system where it originated: Grok\n(http://grok.zope.org)\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

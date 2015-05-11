@@ -1,0 +1,95 @@
+package:
+  name: rootpy
+  version: "0.7.1"
+
+source:
+  fn: rootpy-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/rootpy/rootpy-0.7.1.tar.gz
+  md5: 534aa282697d0659b2ee34c6a0f26297
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rootpy = rootpy:main
+    #
+    # Would create an entry point called rootpy that calls rootpy.main()
+
+    - root2hdf5 = rootpy.root2hdf5:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - rootpy
+    - rootpy.batch
+    - rootpy.compiled
+    - rootpy.compiled.tests
+    - rootpy.data
+    - rootpy.extern
+    - rootpy.extern.byteplay
+    - rootpy.extern.hep
+    - rootpy.extern.lockfile
+    - rootpy.extern.progressbar
+    - rootpy.extern.tabulartext
+    - rootpy.extern.tests
+    - rootpy.interactive
+    - rootpy.io
+    - rootpy.io.tests
+    - rootpy.logger
+    - rootpy.logger.tests
+    - rootpy.math
+    - rootpy.math.linalg
+    - rootpy.math.physics
+    - rootpy.math.stats
+    - rootpy.memory
+    - rootpy.memory.tests
+    - rootpy.plotting
+    - rootpy.plotting.style
+    - rootpy.plotting.style.atlas
+    - rootpy.plotting.style.tests
+    - rootpy.plotting.tests
+    - rootpy.testdata
+    - rootpy.tests
+    - rootpy.tree
+    - rootpy.tree.tests
+    - rootpy.util
+    - rootpy.util.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - root2hdf5 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://rootpy.github.com/rootpy
+  license: GNU General Public License (GPL)
+  summary: "A pythonic layer on top of the ROOT framework's PyROOT bindings."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

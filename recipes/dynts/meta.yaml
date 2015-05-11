@@ -1,0 +1,82 @@
+package:
+  name: dynts
+  version: "0.4.1"
+
+source:
+  fn: dynts-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dynts/dynts-0.4.1.tar.gz
+  md5: 287a0333fe201108d052ba5bc6f32ded
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dynts = dynts:main
+    #
+    # Would create an entry point called dynts that calls dynts.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - ply >=3.3
+    - numpy >=1.6.0
+    - ccy >=0.5.0
+
+  run:
+    - python
+    - ply >=3.3
+    - numpy >=1.6.0
+    - ccy >=0.5.0
+
+test:
+  # Python imports
+  imports:
+    - dynts
+    - dynts.backends
+    - dynts.backends.operators
+    - dynts.data
+    - dynts.dsl
+    - dynts.dsl.ast
+    - dynts.dsl.functions
+    - dynts.formatters
+    - dynts.lib
+    - dynts.lib.fallback
+    - dynts.maths
+    - dynts.maths.data
+    - dynts.stats
+    - dynts.style
+    - dynts.style.themes
+    - dynts.test
+    - dynts.utils
+    - dynts.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/quantmind/dynts/
+  license: BSD License
+  summary: 'Quantitative financial timeseries analysis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

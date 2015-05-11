@@ -1,0 +1,113 @@
+package:
+  name: wafer
+  version: "0.2.1"
+
+source:
+  fn: wafer-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/w/wafer/wafer-0.2.1.tar.gz
+  md5: 83b1c87f2e2e804393fe4c3d2286a245
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - wafer = wafer:main
+    #
+    # Would create an entry point called wafer that calls wafer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - django-crispy-forms
+    - django-nose
+    - django-registration-redux
+    - pillow
+    - pylibravatar
+    - pytz
+    - requests
+    - django-medusa >=0.3.0
+    - pydns
+    - markdown <2.5
+    - django-markitup >=2.2.1
+
+  run:
+    - python
+    - django >=1.6
+    - django-crispy-forms
+    - django-nose
+    - django-registration-redux
+    - pillow
+    - pylibravatar
+    - pytz
+    - requests
+    - django-medusa >=0.3.0
+    - pydns
+    - markdown <2.5
+    - django-markitup >=2.2.1
+
+test:
+  # Python imports
+  imports:
+    - wafer
+    - wafer.management
+    - wafer.management.commands
+    - wafer.pages
+    - wafer.pages.migrations
+    - wafer.pages.south_migrations
+    - wafer.registration
+    - wafer.registration.migrations
+    - wafer.registration.templatetags
+    - wafer.schedule
+    - wafer.schedule.migrations
+    - wafer.schedule.south_migrations
+    - wafer.schedule.tests
+    - wafer.snippets
+    - wafer.sponsors
+    - wafer.sponsors.migrations
+    - wafer.sponsors.south_migrations
+    - wafer.talks
+    - wafer.talks.migrations
+    - wafer.talks.south_migrations
+    - wafer.talks.tests
+    - wafer.tests
+    - wafer.tickets
+    - wafer.tickets.management
+    - wafer.tickets.management.commands
+    - wafer.tickets.migrations
+    - wafer.tickets.south_migrations
+    - wafer.users
+    - wafer.users.migrations
+    - wafer.users.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/CTPUG/wafer
+  license: MIT License
+  summary: 'A wafer-thin Django library for running small conferences.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

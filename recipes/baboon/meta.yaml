@@ -1,0 +1,76 @@
+package:
+  name: baboon
+  version: "0.1.4"
+
+source:
+  fn: baboon-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/baboon/baboon-0.1.4.tar.gz
+  md5: f7496a69e05dbf89dc9fa7668539f18f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - baboon = baboon:main
+    #
+    # Would create an entry point called baboon that calls baboon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dnspython >=1.9.4
+    - watchdog >=0.6.0
+    - sleekxmpp ==1.1.11beta
+    - termcolor >=1.1.0
+
+  run:
+    - python
+    - dnspython >=1.9.4
+    - watchdog >=0.6.0
+    - sleekxmpp ==1.1.11beta
+    - termcolor >=1.1.0
+
+test:
+  # Python imports
+  imports:
+    - baboon
+    - baboon.baboon
+    - baboon.baboon.plugins
+    - baboon.baboon.plugins.git
+    - baboon.baboond
+    - baboon.common
+    - baboon.common.errors
+    - baboon.common.stanza
+    - baboon.common.thirdparty
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://baboon-project.org
+  license: MIT License
+  summary: 'Detect merge conflict in realtime.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

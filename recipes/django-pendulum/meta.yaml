@@ -1,0 +1,64 @@
+package:
+  name: django-pendulum
+  version: "0.1.6-pre4"
+
+source:
+  fn: django-pendulum-0.1.6-pre4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pendulum/django-pendulum-0.1.6-pre4.tar.gz
+  md5: 2a0e4af93a7de80fb97dfd8b9f386ddf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pendulum = django-pendulum:main
+    #
+    # Would create an entry point called django-pendulum that calls django-pendulum.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pendulum
+    - pendulum.management
+    - pendulum.management.commands
+    - pendulum.templatetags
+    - pendulum.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/codekoala/django-pendulum/
+  license: MIT License
+  summary: 'A simple timeclock/timecard application for use in Django-powered Web sites.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

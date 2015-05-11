@@ -1,0 +1,68 @@
+package:
+  name: mkpip
+  version: "0.5.0"
+
+source:
+  fn: mkpip-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mkpip/mkpip-0.5.0.tar.gz
+  md5: eac092334131c2843281df2c666ab208
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mkpip = mkpip:main
+    #
+    # Would create an entry point called mkpip that calls mkpip.main()
+
+    - mkpip = mkpip.bin:mkpip
+    - bumpy = mkpip.bumpy:main
+    - mkmod = mkpip.mkmod:main
+    - mkbin = mkpip.mkbin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mkpip
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mkpip --help
+    - bumpy --help
+    - mkmod --help
+    - mkbin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/johannestaas/mkpip
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'mkpip'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

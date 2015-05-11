@@ -1,0 +1,69 @@
+package:
+  name: jmbo-skeleton
+  version: "0.9"
+
+source:
+  fn: jmbo-skeleton-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo-skeleton/jmbo-skeleton-0.9.tar.gz
+  md5: 9086f4d1e4ccd085ff7d22e27fb8330c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo-skeleton = jmbo-skeleton:main
+    #
+    # Would create an entry point called jmbo-skeleton that calls jmbo-skeleton.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jmbo-foundry >=1.2.2.3
+    - raven <3.0.0
+    - django-celery
+
+  run:
+    - python
+    - jmbo-foundry >=1.2.2.3
+    - raven <3.0.0
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - skeleton
+    - skeleton.management
+    - skeleton.management.commands
+    - skeleton.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'Create a Jmbo project environment quickly. Includes a Jmbo demo application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

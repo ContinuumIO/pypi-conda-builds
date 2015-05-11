@@ -1,0 +1,65 @@
+package:
+  name: motmot.utils
+  version: "20090612"
+
+source:
+  fn: motmot.utils-20090612.tar.gz
+  url: https://pypi.python.org/packages/source/m/motmot.utils/motmot.utils-20090612.tar.gz
+  md5: 204949427e23bebb81cfe9e6225d3484
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - motmot.utils = motmot.utils:main
+    #
+    # Would create an entry point called motmot.utils that calls motmot.utils.main()
+
+    - motmot_test=motmot.utils.utils:test_motmot
+    - motmot_check_new_namespace=motmot.utils.check_new_namespace:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - motmot
+    - motmot.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - motmot_test --help
+    - motmot_check_new_namespace --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.astraw.com/projects/motmot
+  license: BSD
+  summary: 'miscellaneous utilities for the motmot camera packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,77 @@
+package:
+  name: ukgov_treasury_cra
+  version: "0.1"
+
+source:
+  fn: ukgov_treasury_cra-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/u/ukgov_treasury_cra/ukgov_treasury_cra-0.1.tar.gz
+  md5: f330a5ac1b73cddfb4fd429cf7a86219
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ukgov_treasury_cra = ukgov_treasury_cra:main
+    #
+    # Would create an entry point called ukgov_treasury_cra that calls ukgov_treasury_cra.main()
+
+    - cra2009=ukgov.hmt.cra:cra2009
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste
+    - setuptools
+    - ordf
+    - unstats_rdf
+    - eurostat_rdf
+
+  run:
+    - python
+    - setuptools
+    - paste
+    - setuptools
+    - ordf
+    - unstats_rdf
+    - eurostat_rdf
+
+test:
+  # Python imports
+  imports:
+    - ukgov
+    - ukgov.hmt
+    - ukgov.hmt.cra
+    - ukgov.reference
+    - ukgov_treasury_cra
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cra2009 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://purl.org/okfn/dataset/cra/2009
+  license: GNU Affero General Public License v3
+  summary: "HM Treasury's Country and Regional Analysis"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

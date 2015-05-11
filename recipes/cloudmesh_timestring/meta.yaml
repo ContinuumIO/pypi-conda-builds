@@ -1,0 +1,65 @@
+package:
+  name: cloudmesh_timestring
+  version: "1.6.2.1"
+
+source:
+  fn: cloudmesh_timestring-1.6.2.1.tar.bz2
+  url: https://pypi.python.org/packages/source/c/cloudmesh_timestring/cloudmesh_timestring-1.6.2.1.tar.bz2
+  md5: 960ee1d33193fb0bfc664650c4aac78b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudmesh_timestring = cloudmesh_timestring:main
+    #
+    # Would create an entry point called cloudmesh_timestring that calls cloudmesh_timestring.main()
+
+    - timestring=timestring:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz >=2015.2
+
+  run:
+    - python
+    - pytz >=2015.2
+
+test:
+  # Python imports
+  imports:
+    - cloudmesh_timestring
+    - timestring
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - timestring --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stevepeak/timestring
+  license: Apache Software License
+  summary: 'Human expressed time to Dates and Ranges. This is a modified version from the oriinal code with an Openstack compatiple pytz dependency.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: cydratwistedgit
+  version: "0.1"
+
+source:
+  fn: CydraTwistedGit-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/C/CydraTwistedGit/CydraTwistedGit-0.1.tar.gz
+  md5: 3566588d34f582e9346ce3e2bba320e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cydratwistedgit = cydratwistedgit:main
+    #
+    # Would create an entry point called cydratwistedgit that calls cydratwistedgit.main()
+
+    - cydra-twistedgit = cydraplugins.twistedgit:run_server
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cydra >=0.1
+    - twistedgit
+
+  run:
+    - python
+    - setuptools
+    - cydra >=0.1
+    - twistedgit
+
+test:
+  # Python imports
+  imports:
+    - cydraplugins
+    - cydraplugins.twistedgit
+    - cydratwistedgit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cydra-twistedgit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cydra.org
+  license: GPL
+  summary: 'Cydra plugin for ssh-based repository serving'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: compoundpi
+  version: "0.3"
+
+source:
+  fn: compoundpi-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/compoundpi/compoundpi-0.3.tar.gz
+  md5: 1cbfd14197cfa90c662babcf98c2f86c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - compoundpi = compoundpi:main
+    #
+    # Would create an entry point called compoundpi that calls compoundpi.main()
+
+    - cpid = compoundpi.server:main
+    - cpi = compoundpi.cli:main
+    - cpigui = compoundpi.gui:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipaddr
+
+  run:
+    - python
+    - ipaddr
+
+test:
+  # Python imports
+  imports:
+    - compoundpi
+    - compoundpi.windows
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cpid --help
+    - cpi --help
+    - cpigui --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://compoundpi.readthedocs.org/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: u'A project for controlling multiple Pi camera modules simultaneously'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

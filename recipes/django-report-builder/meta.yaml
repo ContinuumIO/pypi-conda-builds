@@ -1,0 +1,75 @@
+package:
+  name: django-report-builder
+  version: "3.1.6"
+
+source:
+  fn: django-report-builder-3.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-report-builder/django-report-builder-3.1.6.tar.gz
+  md5: c02cb4d38a13d9c45e0446f2b04ddd92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-report-builder = django-report-builder:main
+    #
+    # Would create an entry point called django-report-builder that calls django-report-builder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - openpyxl ==2.2.1
+    - python-dateutil
+    - django-report-utils ==0.3.4
+    - djangorestframework >=3.0.4
+
+  run:
+    - python
+    - django >=1.7
+    - openpyxl ==2.2.1
+    - python-dateutil
+    - django-report-utils ==0.3.4
+    - djangorestframework >=3.0.4
+
+test:
+  # Python imports
+  imports:
+    - report_builder
+    - report_builder.api
+    - report_builder.migrations
+    - report_builder_demo
+    - report_builder_demo.demo_models
+    - report_builder_demo.demo_models.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/burke-software/django-report-builder
+  license: BSD License
+  summary: 'Query and Report builder for Django ORM'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,96 @@
+package:
+  name: eloquent
+  version: "0.4"
+
+source:
+  fn: eloquent-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/e/eloquent/eloquent-0.4.tar.gz
+  md5: 9022a9477e97c330a25049fa13e0c1ac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eloquent = eloquent:main
+    #
+    # Would create an entry point called eloquent that calls eloquent.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - arrow
+    - inflection
+    - six
+
+  run:
+    - python
+    - simplejson
+    - arrow
+    - inflection
+    - six
+
+test:
+  # Python imports
+  imports:
+    - eloquent
+    - eloquent.connections
+    - eloquent.connectors
+    - eloquent.dbal
+    - eloquent.dbal.platforms
+    - eloquent.dbal.types
+    - eloquent.exceptions
+    - eloquent.orm
+    - eloquent.orm.mixins
+    - eloquent.orm.relations
+    - eloquent.orm.scopes
+    - eloquent.query
+    - eloquent.query.grammars
+    - eloquent.query.processors
+    - eloquent.schema
+    - eloquent.schema.grammars
+    - eloquent.support
+    - eloquent.utils
+    - tests
+    - tests.connections
+    - tests.orm
+    - tests.orm.mixins
+    - tests.orm.relations
+    - tests.orm.scopes
+    - tests.query
+    - tests.schema
+    - tests.schema.grammars
+    - tests.schema.integrations
+    - tests.support
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sdispater/eloquent
+  license: MIT
+  summary: 'The Eloquent ORM provides a simple yet beautiful ActiveRecord implementation.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

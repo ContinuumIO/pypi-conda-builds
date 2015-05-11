@@ -1,0 +1,63 @@
+package:
+  name: django_url_alias
+  version: "0.2.0"
+
+source:
+  fn: django_url_alias-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_url_alias/django_url_alias-0.2.0.tar.gz
+  md5: 364c8bd7ec94a35a90f7c03adce22e6c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_url_alias = django_url_alias:main
+    #
+    # Would create an entry point called django_url_alias that calls django_url_alias.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+
+  run:
+    - python
+    - django >=1.5
+
+test:
+  # Python imports
+  imports:
+    - django_url_alias
+    - django_url_alias.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ddanier/django_url_alias
+  license: BSD License
+  summary: 'Allow Django URLS to be completely rewritten (alias names for system URLs)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

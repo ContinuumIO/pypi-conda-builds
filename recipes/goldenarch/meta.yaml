@@ -1,0 +1,70 @@
+package:
+  name: goldenarch
+  version: "0.0.5"
+
+source:
+  fn: goldenarch-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/goldenarch/goldenarch-0.0.5.tar.gz
+  md5: 74cf26157dbd748c7444c82c2489a6c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - goldenarch = goldenarch:main
+    #
+    # Would create an entry point called goldenarch that calls goldenarch.main()
+
+    - goldenarch = goldenarch:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent >=0.13.6
+    - greenlet >=0.3.1
+    - gunicorn >=0.13.4
+    - static >=0.4
+
+  run:
+    - python
+    - gevent >=0.13.6
+    - greenlet >=0.3.1
+    - gunicorn >=0.13.4
+    - static >=0.4
+
+test:
+  # Python imports
+  imports:
+    - goldenarch
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - goldenarch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kennethreitz.com
+  license: MIT License
+  summary: 'Serves crap. faast.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

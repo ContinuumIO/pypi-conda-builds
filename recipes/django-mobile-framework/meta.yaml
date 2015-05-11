@@ -1,0 +1,75 @@
+package:
+  name: django-mobile-framework
+  version: "1.0.0-beta.4"
+
+source:
+  fn: django-mobile-framework-1.0.0-beta.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mobile-framework/django-mobile-framework-1.0.0-beta.4.tar.gz
+  md5: e6579ec89e5a9a6a50d5b11e991862b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mobile-framework = django-mobile-framework:main
+    #
+    # Would create an entry point called django-mobile-framework that calls django-mobile-framework.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - django-oauth-toolkit
+    - django-cors-headers
+    - djangorestframework >=3
+    - psycopg2
+
+  run:
+    - python
+    - django >=1.7
+    - django-oauth-toolkit
+    - django-cors-headers
+    - djangorestframework >=3
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - mobile_framework
+    - mobile_framework.core
+    - mobile_framework.device
+    - mobile_framework.tests
+    - mobile_framework.user
+    - mobile_framework.version
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mstarinteractive/django-mobile-framework
+  license: MIT
+  summary: 'Contains models to help developers create mobile application backends'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

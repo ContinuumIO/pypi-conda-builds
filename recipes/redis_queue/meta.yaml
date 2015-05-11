@@ -1,0 +1,63 @@
+package:
+  name: redis_queue
+  version: "0.5"
+
+source:
+  fn: redis_queue-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/redis_queue/redis_queue-0.5.tar.gz
+  md5: 786cc7999ba721c6c60b271b2dbec471
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redis_queue = redis_queue:main
+    #
+    # Would create an entry point called redis_queue that calls redis_queue.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=1.34.1
+
+  run:
+    - python
+    - redis >=1.34.1
+
+test:
+  # Python imports
+  imports:
+    - redis_queue
+    - redis_queue.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/npilon/redis_queue/
+  license: Apache Software License
+  summary: 'A persistent, (mostly) atomic queue (like deque or Queue) implemented with redis backing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

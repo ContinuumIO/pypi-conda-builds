@@ -1,0 +1,64 @@
+package:
+  name: django-statictemplate
+  version: "2.0"
+
+source:
+  fn: django-statictemplate-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-statictemplate/django-statictemplate-2.0.tar.gz
+  md5: 8b15e3866953b1ce0f822f5392625af7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-statictemplate = django-statictemplate:main
+    #
+    # Would create an entry point called django-statictemplate that calls django-statictemplate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+
+  run:
+    - python
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - statictemplate
+    - statictemplate.management
+    - statictemplate.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ojii/django-statictemplate
+  license: LICENSE
+  summary: 'This project aims at providing a compromise between dynamic error pages for Django (that use template tags etc and therefore potentially error too) and having to write static error pages by hand.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

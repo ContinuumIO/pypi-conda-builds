@@ -1,0 +1,71 @@
+package:
+  name: zc.recipe.testrunner
+  version: "2.0.0"
+
+source:
+  fn: zc.recipe.testrunner-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.recipe.testrunner/zc.recipe.testrunner-2.0.0.tar.gz
+  md5: 13aba3a677ae42c0dcc420e63e65fcc1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.recipe.testrunner = zc.recipe.testrunner:main
+    #
+    # Would create an entry point called zc.recipe.testrunner that calls zc.recipe.testrunner.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout >=1.2.0
+    - zope.testrunner
+    - setuptools
+    - zc.recipe.egg >=1.2.0
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout >=1.2.0
+    - zope.testrunner
+    - setuptools
+    - zc.recipe.egg >=1.2.0
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.recipe
+    - zc.recipe.testrunner
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.zope.org/zc.buildout
+  license: Zope Public License
+  summary: 'ZC Buildout recipe for creating test runners'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

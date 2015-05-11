@@ -1,0 +1,75 @@
+package:
+  name: plone.theme
+  version: "2.1.4"
+
+source:
+  fn: plone.theme-2.1.4.zip
+  url: https://pypi.python.org/packages/source/p/plone.theme/plone.theme-2.1.4.zip
+  md5: d91c0245ce2f981fe511ed28fc35729b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.theme = plone.theme:main
+    #
+    # Would create an entry point called plone.theme that calls plone.theme.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope.traversing
+    - products.cmfcore
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope.traversing
+    - products.cmfcore
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.theme
+    - plone.theme.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.theme
+  license: GNU General Public License (GPL)
+  summary: 'Tools for managing themes in CMF and Plone sites'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

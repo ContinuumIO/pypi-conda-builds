@@ -1,0 +1,63 @@
+package:
+  name: indexedredis
+  version: "2.0.3"
+
+source:
+  fn: indexedredis-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/indexedredis/indexedredis-2.0.3.tar.gz
+  md5: d80beba0ff17e5934ba229b8e49c841f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - indexedredis = indexedredis:main
+    #
+    # Would create an entry point called indexedredis that calls indexedredis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+
+  run:
+    - python
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - IndexedRedis
+    - indexedredis
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'redis-backed very very fast ORM-style framework that supports indexes (similar to SQL), and complete atomic replacement of datasets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

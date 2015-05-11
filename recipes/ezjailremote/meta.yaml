@@ -1,0 +1,68 @@
+package:
+  name: ezjailremote
+  version: "0.2.2"
+
+source:
+  fn: ezjailremote-0.2.2.zip
+  url: https://pypi.python.org/packages/source/e/ezjailremote/ezjailremote-0.2.2.zip
+  md5: dad16a7a77d10f1533c3438fd3f7ca92
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ezjailremote = ezjailremote:main
+    #
+    # Would create an entry point called ezjailremote that calls ezjailremote.main()
+
+    - ezjail-remote=ezjailremote:commandline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+
+  run:
+    - python
+    - setuptools
+    - fabric
+
+test:
+  # Python imports
+  imports:
+    - ezjailremote
+    - ezjailremote.flavours
+    - ezjailremote.flavours.basic
+    - ezjailremote.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ezjail-remote --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tomster/ezjail-remote
+  license: BSD License
+  summary: 'a remote control and convenience wrapper for ezjail'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

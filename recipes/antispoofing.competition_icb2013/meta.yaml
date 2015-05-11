@@ -1,0 +1,96 @@
+package:
+  name: antispoofing.competition_icb2013
+  version: "1.1.0"
+
+source:
+  fn: antispoofing.competition_icb2013-1.1.0.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.competition_icb2013/antispoofing.competition_icb2013-1.1.0.zip
+  md5: 70d0e67e4154d2143e73fc7ad4580b58
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.competition_icb2013 = antispoofing.competition_icb2013:main
+    #
+    # Would create an entry point called antispoofing.competition_icb2013 that calls antispoofing.competition_icb2013.main()
+
+    - calcglcm.py = antispoofing.competition_icb2013.script.calcglcm:main
+    - crop_faces.py = antispoofing.competition_icb2013.script.crop_faces:main
+    - ldatrain.py = antispoofing.competition_icb2013.script.ldatrain:main
+    - svmtrain.py = antispoofing.competition_icb2013.script.svmtrain:main
+    - icb2013_qstatistic.py = antispoofing.competition_icb2013.script.icb2013_qstatistic:main
+    - icb2013_facebb_countermeasure.py = antispoofing.competition_icb2013.script.icb2013_facebb_countermeasure:main
+    - apply_threshold.py = bob.measure.script.apply_threshold:main
+    - eval_threshold.py = bob.measure.script.eval_threshold:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+    - xbob.db.casia_fasd
+    - antispoofing.utils
+    - antispoofing.fusion
+    - antispoofing.lbptop
+    - antispoofing.lbp
+    - antispoofing.motion
+
+  run:
+    - python
+    - setuptools
+    - bob >=1.1.0
+    - xbob.db.replay
+    - xbob.db.casia_fasd
+    - antispoofing.utils
+    - antispoofing.fusion
+    - antispoofing.lbptop
+    - antispoofing.lbp
+    - antispoofing.motion
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.competition_icb2013
+    - antispoofing.competition_icb2013.helpers
+    - antispoofing.competition_icb2013.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - calcglcm.py --help
+    - crop_faces.py --help
+    - ldatrain.py --help
+    - svmtrain.py --help
+    - icb2013_qstatistic.py --help
+    - icb2013_facebb_countermeasure.py --help
+    - apply_threshold.py --help
+    - eval_threshold.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.competition_icb2013
+  license: GPLv3
+  summary: 'Fusion of spoofing counter measures for the REPLAY-ATTACK database (competition entry for 2nd competition on counter measures to 2D facial spoofing attacks, ICB 2013)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

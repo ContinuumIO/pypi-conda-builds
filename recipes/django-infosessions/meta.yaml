@@ -1,0 +1,66 @@
+package:
+  name: django-infosessions
+  version: "0.4"
+
+source:
+  fn: django-infosessions-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-infosessions/django-infosessions-0.4.tar.gz
+  md5: 6a8bd6be2b068c9b1f1b9a4ca0f95a7d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-infosessions = django-infosessions:main
+    #
+    # Would create an entry point called django-infosessions that calls django-infosessions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - django-redis >=3.8.3
+    - hiredis >=0.1.4
+
+  run:
+    - python
+    - django >=1.6
+    - django-redis >=3.8.3
+    - hiredis >=0.1.4
+
+test:
+  # Python imports
+  imports:
+    - infosessions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'A simple Django app to capture session information'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

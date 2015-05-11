@@ -1,0 +1,64 @@
+package:
+  name: htsql-django
+  version: "2.3.3"
+
+source:
+  fn: HTSQL-DJANGO-2.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/H/HTSQL-DJANGO/HTSQL-DJANGO-2.3.3.tar.gz
+  md5: c420e12658fd03ea96731456d96e3e1d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htsql-django = htsql-django:main
+    #
+    # Would create an entry point called htsql-django that calls htsql-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - htsql
+    - django
+
+  run:
+    - python
+    - htsql
+    - django
+
+test:
+  # Python imports
+  imports:
+    - htsql_django
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://htsql.org/
+  license: AGPLv3 or Permissive for use with Open Source databases
+  summary: 'A Database Query Language (Django gateway)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

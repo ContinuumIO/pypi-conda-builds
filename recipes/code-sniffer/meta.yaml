@@ -1,0 +1,65 @@
+package:
+  name: code-sniffer
+  version: "0.9.8"
+
+source:
+  fn: code-sniffer-0.9.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/code-sniffer/code-sniffer-0.9.8.tar.gz
+  md5: 40577ce451334370208be54f67710034
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - code-sniffer = code-sniffer:main
+    #
+    # Would create an entry point called code-sniffer that calls code-sniffer.main()
+
+    - code-sniffer=sniffer.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pdfminer
+
+  run:
+    - python
+    - setuptools
+    - pdfminer
+
+test:
+  # Python imports
+  imports:
+    - sniffer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - code-sniffer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://dilawar.github.io/sniffer
+  license: LGPL
+  summary: 'A command-line tool to check plagiarim in text and pdf'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

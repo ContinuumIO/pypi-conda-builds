@@ -1,0 +1,63 @@
+package:
+  name: django-settings
+  version: "1.3.12"
+
+source:
+  fn: django-settings-1.3.12.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-settings/django-settings-1.3.12.tar.gz
+  md5: 44083b05464de9f6ab1b12505da1bb69
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-settings = django-settings:main
+    #
+    # Would create an entry point called django-settings that calls django-settings.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_settings
+    - django_settings.management
+    - django_settings.management.commands
+    - django_settings.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jqb/django-settings
+  license: BSD License
+  summary: 'Simple django reusable application for storing project settings in database.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

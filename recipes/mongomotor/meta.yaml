@@ -1,0 +1,73 @@
+package:
+  name: mongomotor
+  version: "0.3.1"
+
+source:
+  fn: mongomotor-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongomotor/mongomotor-0.3.1.tar.gz
+  md5: c5e6d7bc1d1ea98784d1c8916dbf0245
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongomotor = mongomotor:main
+    #
+    # Would create an entry point called mongomotor that calls mongomotor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mongoengine >=0.9
+    - motor >=0.3
+    - blinker >=1.3
+
+  run:
+    - python
+    - mongoengine >=0.9
+    - motor >=0.3
+    - blinker >=1.3
+
+test:
+  # Python imports
+  imports:
+    - mongoengine
+    - mongoengine.base
+    - mongoengine.django
+    - mongoengine.django.mongo_auth
+    - mongoengine.queryset
+    - mongomotor
+    - mongomotor.base
+    - mongomotor.queryset
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mongomotor.poraodojuca.net/en/
+  license: GNU General Public License (GPL)
+  summary: '\nMongoMotor: An async document-object mapper for MongoDB\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-rocket-engine
+  version: "0.0.11"
+
+source:
+  fn: django-rocket-engine-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rocket-engine/django-rocket-engine-0.0.11.tar.gz
+  md5: 49800fdd4cdbc7bb8ca292e1c972d632
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rocket-engine = django-rocket-engine:main
+    #
+    # Would create an entry point called django-rocket-engine that calls django-rocket-engine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenv >=1.7.1.2
+
+  run:
+    - python
+    - virtualenv >=1.7.1.2
+
+test:
+  # Python imports
+  imports:
+    - rocket_engine
+    - rocket_engine.db
+    - rocket_engine.db.backends
+    - rocket_engine.db.backends.cloudsql
+    - rocket_engine.management
+    - rocket_engine.management.commands
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://readthedocs.org/projects/django-rocket-engine/
+  license: BSD License
+  summary: 'Django on Google AppEngine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

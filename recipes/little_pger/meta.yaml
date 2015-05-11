@@ -1,0 +1,62 @@
+package:
+  name: little_pger
+  version: "0.5"
+
+source:
+  fn: little_pger-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/l/little_pger/little_pger-0.5.tar.gz
+  md5: a91c824708d5820228ba19771143cd20
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - little_pger = little_pger:main
+    #
+    # Would create an entry point called little_pger that calls little_pger.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2
+
+  run:
+    - python
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - little_pger
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cjauvin/little_pger
+  license: BSD License
+  summary: "A thin layer just a tad above SQL, for use with PostgreSQL and psycopg2, when you want to wrap queries in a convenient way, using plain data structures (but you don't feel like using an ORM, for some reason)."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

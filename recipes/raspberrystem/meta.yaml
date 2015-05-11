@@ -1,0 +1,68 @@
+package:
+  name: raspberrystem
+  version: "0.0.7"
+
+source:
+  fn: raspberrystem-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/r/raspberrystem/raspberrystem-0.0.7.tar.gz
+  md5: 9b7f368477597940b59b78bb9bb1270e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - raspberrystem = raspberrystem:main
+    #
+    # Would create an entry point called raspberrystem that calls raspberrystem.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pygame
+
+  run:
+    - python
+    - numpy
+    - pygame
+
+test:
+  # Python imports
+  imports:
+    - raspberrystem
+    - rstem
+    - rstem.gpio
+    - rstem.led_matrix
+    - rstem.speaker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://raspberrystem.com
+  license: Apache Software License
+  summary: 'RaspberrySTEM Educational and Hobbyist Development Kit based on the Raspberry Pi.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: django-thummer
+  version: "2.0.6"
+
+source:
+  fn: django-thummer-2.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-thummer/django-thummer-2.0.6.tar.gz
+  md5: 8b5c8d49866de4e2cc9b589817c9aabd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-thummer = django-thummer:main
+    #
+    # Would create an entry point called django-thummer that calls django-thummer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - python-dateutil >=2.0
+    - pyvirtualdisplay >=0.1.0
+    - selenium >=2.20.0
+    - sorl-thumbnail >=11.12
+
+  run:
+    - python
+    - django
+    - python-dateutil >=2.0
+    - pyvirtualdisplay >=0.1.0
+    - selenium >=2.20.0
+    - sorl-thumbnail >=11.12
+
+test:
+  # Python imports
+  imports:
+    - thummer
+    - thummer.migrations
+    - thummer.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/MattAustin/django-thummer
+  license: BSD License
+  summary: 'A website screenshot and thumbnailing app for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

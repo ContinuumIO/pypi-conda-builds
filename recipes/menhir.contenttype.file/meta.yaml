@@ -1,0 +1,81 @@
+package:
+  name: menhir.contenttype.file
+  version: "0.3"
+
+source:
+  fn: menhir.contenttype.file-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/menhir.contenttype.file/menhir.contenttype.file-0.3.tar.gz
+  md5: d0e023b36acbd5cd170a2b16f6ee9de4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - menhir.contenttype.file = menhir.contenttype.file:main
+    #
+    # Would create an entry point called menhir.contenttype.file that calls menhir.contenttype.file.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dolmen.app.content >=1.0b1
+    - dolmen.app.security
+    - dolmen.blob
+    - dolmen.content >=0.7
+    - dolmen.file
+    - setuptools
+    - zope.i18n
+    - zope.component
+    - zope.i18nmessageid
+
+  run:
+    - python
+    - setuptools
+    - dolmen.app.content >=1.0b1
+    - dolmen.app.security
+    - dolmen.blob
+    - dolmen.content >=0.7
+    - dolmen.file
+    - setuptools
+    - zope.i18n
+    - zope.component
+    - zope.i18nmessageid
+
+test:
+  # Python imports
+  imports:
+    - menhir
+    - menhir.contenttype
+    - menhir.contenttype.file
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/menhir.contenttype.file
+  license: GPL
+  summary: 'File content type for Grok and Dolmen applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

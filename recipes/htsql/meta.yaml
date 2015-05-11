@@ -1,0 +1,102 @@
+package:
+  name: htsql
+  version: "2.3.3"
+
+source:
+  fn: HTSQL-2.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/H/HTSQL/HTSQL-2.3.3.tar.gz
+  md5: 34fabf3f4dbc578abba27540491185de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htsql = htsql:main
+    #
+    # Would create an entry point called htsql that calls htsql.main()
+
+    - htsql-ctl = htsql.ctl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - htsql
+    - htsql.core
+    - htsql.core.cmd
+    - htsql.core.fmt
+    - htsql.core.syn
+    - htsql.core.tr
+    - htsql.core.tr.fn
+    - htsql.ctl
+    - htsql.tweak
+    - htsql.tweak.autolimit
+    - htsql.tweak.cors
+    - htsql.tweak.csrf
+    - htsql.tweak.django
+    - htsql.tweak.etl
+    - htsql.tweak.etl.cmd
+    - htsql.tweak.etl.tr
+    - htsql.tweak.filedb
+    - htsql.tweak.gateway
+    - htsql.tweak.hello
+    - htsql.tweak.inet
+    - htsql.tweak.meta
+    - htsql.tweak.meta.slave
+    - htsql.tweak.override
+    - htsql.tweak.pool
+    - htsql.tweak.resource
+    - htsql.tweak.shell
+    - htsql.tweak.shell.default
+    - htsql.tweak.sqlalchemy
+    - htsql.tweak.system
+    - htsql.tweak.timeout
+    - htsql_sqlite
+    - htsql_sqlite.core
+    - htsql_sqlite.core.tr
+    - sphinxcontrib
+    - sphinxcontrib.htsqldoc
+    - sphinxcontrib.texdiag
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - htsql-ctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://htsql.org/
+  license: GNU Affero General Public License v3
+  summary: 'A Database Query Language (core & SQLite backend)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

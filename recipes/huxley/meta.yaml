@@ -1,0 +1,70 @@
+package:
+  name: huxley
+  version: "0.5"
+
+source:
+  fn: Huxley-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/H/Huxley/Huxley-0.5.tar.gz
+  md5: 64f9d8da68aa6fb81fa98065db6b58e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - huxley = huxley:main
+    #
+    # Would create an entry point called huxley that calls huxley.main()
+
+    - huxley=huxley.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - selenium ==2.35.0
+    - plac ==0.9.1
+    - pillow ==2.2.1
+    - jsonpickle ==0.4.0
+
+  run:
+    - python
+    - selenium ==2.35.0
+    - plac ==0.9.1
+    - pillow ==2.2.1
+    - jsonpickle ==0.4.0
+
+test:
+  # Python imports
+  imports:
+    - huxley
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - huxley --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/facebook/huxley
+  license: Apache 2
+  summary: 'Watches you browse, takes screenshots, tells you when they change.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

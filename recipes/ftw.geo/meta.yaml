@@ -1,0 +1,82 @@
+package:
+  name: ftw.geo
+  version: "1.3.2"
+
+source:
+  fn: ftw.geo-1.3.2.zip
+  url: https://pypi.python.org/packages/source/f/ftw.geo/ftw.geo-1.3.2.zip
+  md5: 73e1b5477fca17f047f59f5d2c08c382
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.geo = ftw.geo:main
+    #
+    # Would create an entry point called ftw.geo that calls ftw.geo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - geopy
+    - collective.geo.settings
+    - collective.geo.openlayers
+    - collective.geo.geographer
+    - collective.geo.contentlocations
+    - collective.geo.kml
+    - plone.app.dexterity
+    - ftw.upgrade
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - geopy
+    - collective.geo.settings
+    - collective.geo.openlayers
+    - collective.geo.geographer
+    - collective.geo.contentlocations
+    - collective.geo.kml
+    - plone.app.dexterity
+    - ftw.upgrade
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.geo
+    - ftw.geo.tests
+    - ftw.geo.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.geo
+  license: GNU General Public License (GPL)
+  summary: 'Integration package for collective.geo.* packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

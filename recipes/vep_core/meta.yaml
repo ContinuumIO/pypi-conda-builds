@@ -1,0 +1,93 @@
+package:
+  name: vep_core
+  version: "1.01"
+
+source:
+  fn: VEP_Core-1.01.zip
+  url: https://pypi.python.org/packages/source/V/VEP_Core/VEP_Core-1.01.zip
+  md5: 1f2f985cd69085e33f7b0e6057c12b46
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vep_core = vep_core:main
+    #
+    # Would create an entry point called vep_core that calls vep_core.main()
+
+    - serendip = vep_core:main
+    - vep_tmbuilder = vep_core.Apps.SaliencyTopicModelerApp:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - webassets
+    - numpy
+    - scipy
+
+  run:
+    - python
+    - flask
+    - webassets
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - vep_core
+    - vep_core.Apps
+    - vep_core.Ity
+    - vep_core.Ity.Couriers
+    - vep_core.Ity.Formatters
+    - vep_core.Ity.Formatters.HTMLFormatter
+    - vep_core.Ity.Formatters.LineGraphFormatter
+    - vep_core.Ity.Formatters.MalletLineGraphFormatter
+    - vep_core.Ity.Formatters.SaliencyFormatter
+    - vep_core.Ity.Formatters.StaticHTMLFormatter
+    - vep_core.Ity.Importers
+    - vep_core.Ity.Taggers
+    - vep_core.Ity.Taggers.DocuscopeTagger
+    - vep_core.Ity.Taggers.TopicModelTagger
+    - vep_core.Ity.Tokenizers
+    - vep_core.Ity.Tokenizers.WordTokenizer
+    - vep_core.Ity.Utilities
+    - vep_core.Serendip
+    - vep_core.Support
+    - vep_core.Support.Flask_gzip
+    - vep_core.Support.flask_util_js
+    - vep_core.Support.jinja2_htmlcompress
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - serendip --help
+    - vep_tmbuilder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'VEP Core contains the Serendip corpus exploration tool.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

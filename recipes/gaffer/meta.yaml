@@ -1,0 +1,87 @@
+package:
+  name: gaffer
+  version: "0.5.2"
+
+source:
+  fn: gaffer-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gaffer/gaffer-0.5.2.tar.gz
+  md5: 3753f416ab3b30bac17202e8507b44cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gaffer = gaffer:main
+    #
+    # Would create an entry point called gaffer that calls gaffer.main()
+
+    - gafferd=gaffer.gafferd.main:run
+    - gaffer=gaffer.cli.main:main
+    - gaffer_lookupd=gaffer.lookupd.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyuv >=0.8.3
+    - six
+    - psutil
+    - tornado ==2.4.1
+    - colorama
+    - setproctitle
+
+  run:
+    - python
+    - setuptools
+    - pyuv >=0.8.3
+    - six
+    - psutil
+    - tornado ==2.4.1
+    - colorama
+    - setproctitle
+
+test:
+  # Python imports
+  imports:
+    - gaffer
+    - gaffer.cli
+    - gaffer.cli.commands
+    - gaffer.gafferd
+    - gaffer.gafferd.http_handlers
+    - gaffer.httpclient
+    - gaffer.lookupd
+    - gaffer.sockjs
+    - gaffer.sockjs.transports
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gafferd --help
+    - gaffer --help
+    - gaffer_lookupd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/benoitc/gaffer
+  license: MIT License
+  summary: 'simple system process manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

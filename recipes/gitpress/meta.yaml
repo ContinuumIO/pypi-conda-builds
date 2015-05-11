@@ -1,0 +1,70 @@
+package:
+  name: gitpress
+  version: "0.3"
+
+source:
+  fn: gitpress-0.3.zip
+  url: https://pypi.python.org/packages/source/g/gitpress/gitpress-0.3.zip
+  md5: 8961cecc29632288cf9be2db834f56ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitpress = gitpress:main
+    #
+    # Would create an entry point called gitpress that calls gitpress.main()
+
+    - gitpress = gitpress.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - path-and-address >=0.1
+    - docopt >=0.5
+    - markdown2 >=2.1.0
+    - flask >=0.8
+
+  run:
+    - python
+    - path-and-address >=0.1
+    - docopt >=0.5
+    - markdown2 >=2.1.0
+    - flask >=0.8
+
+test:
+  # Python imports
+  imports:
+    - gitpress
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gitpress --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/joeyespo/gitpress
+  license: MIT
+  summary: 'Blissful blogging for hackers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

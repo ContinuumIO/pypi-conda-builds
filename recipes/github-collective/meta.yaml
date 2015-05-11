@@ -1,0 +1,67 @@
+package:
+  name: github-collective
+  version: "0.4"
+
+source:
+  fn: github-collective-0.4.zip
+  url: https://pypi.python.org/packages/source/g/github-collective/github-collective-0.4.zip
+  md5: 79a99297df35a5085df36844306bb8df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github-collective = github-collective:main
+    #
+    # Would create an entry point called github-collective that calls github-collective.main()
+
+    - github-collective=githubcollective:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - requests ==0.13.1
+
+  run:
+    - python
+    - setuptools
+    - argparse
+    - requests ==0.13.1
+
+test:
+  # Python imports
+  imports:
+    - githubcollective
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - github-collective --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/github-collective
+  license: BSD License
+  summary: 'Script to manage GitHub organizations in a collective manner'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

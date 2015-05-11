@@ -1,0 +1,84 @@
+package:
+  name: shakespeare
+  version: "0.6"
+
+source:
+  fn: shakespeare-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/shakespeare/shakespeare-0.6.tar.gz
+  md5: 3cc70be7fd85b4e1521f52782ddd4fdf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shakespeare = shakespeare:main
+    #
+    # Would create an entry point called shakespeare that calls shakespeare.main()
+
+    - shakespeare-admin=shakespeare.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons >=0.9.6.1
+    - sqlobject >=0.6
+    - genshi >=0.3
+    - pygooglechart >=0.2,<0.3
+
+  run:
+    - python
+    - setuptools
+    - pylons >=0.9.6.1
+    - sqlobject >=0.6
+    - genshi >=0.3
+    - pygooglechart >=0.2,<0.3
+
+test:
+  # Python imports
+  imports:
+    - shakespeare
+    - shakespeare.config
+    - shakespeare.controllers
+    - shakespeare.lib
+    - shakespeare.model
+    - shakespeare.src
+    - shakespeare.templates
+    - shakespeare.templates.search
+    - shakespeare.templates.stats
+    - shakespeare.templates.text
+    - shakespeare.tests
+    - shakespeare.tests.functional
+    - shksprdata
+    - shksprdata.getdata
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - shakespeare-admin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openshakespeare.org/
+  license: MIT License
+  summary: "A full open set of Shakespeare's works along with anciallary material, a variety of tools and a python api"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

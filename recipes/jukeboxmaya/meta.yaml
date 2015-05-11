@@ -1,0 +1,73 @@
+package:
+  name: jukeboxmaya
+  version: "3.2.2"
+
+source:
+  fn: jukeboxmaya-3.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jukeboxmaya/jukeboxmaya-3.2.2.tar.gz
+  md5: 18e630e6297ef4ead462f7765e079956
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jukeboxmaya = jukeboxmaya:main
+    #
+    # Would create an entry point called jukeboxmaya that calls jukeboxmaya.main()
+
+    - jukeboxmayapy = jukeboxmaya.mayapylauncher:mayapy_launcher
+    - jukeboxmayapyw = jukeboxmaya.mayapylauncher:mayapy_launcher
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jukebox-core >=3.0.0
+
+  run:
+    - python
+    - jukebox-core >=3.0.0
+
+test:
+  # Python imports
+  imports:
+    - jukeboxmaya
+    - jukeboxmaya.addons
+    - jukeboxmaya.addons.mayaconfiger
+    - jukeboxmaya.addons.mayagenesis
+    - jukeboxmaya.addons.mayamgmt
+    - jukeboxmaya.gui
+    - jukeboxmaya.mayaplugins
+    - jukeboxmaya.reftrack
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jukeboxmayapy --help
+    - jukeboxmayapyw --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/JukeboxPipeline/jukeboxmaya
+  license: BSD License
+  summary: 'Jukebox Pipeline for Maya'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

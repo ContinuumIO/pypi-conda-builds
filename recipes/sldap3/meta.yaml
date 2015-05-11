@@ -1,0 +1,70 @@
+package:
+  name: sldap3
+  version: "0.0.4a0"
+
+source:
+  fn: sldap3-0.0.4a0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sldap3/sldap3-0.0.4a0.tar.gz
+  md5: 35d35cc9f35959f36cc738284348b16b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sldap3 = sldap3:main
+    #
+    # Would create an entry point called sldap3 that calls sldap3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyasn1 >=0.1.7
+    - ldap3 >=0.9.8.2
+
+  run:
+    - python
+    - pyasn1 >=0.1.7
+    - ldap3 >=0.9.8.2
+
+test:
+  # Python imports
+  imports:
+    - sldap3
+    - sldap3.backend
+    - sldap3.backend.user
+    - sldap3.core
+    - sldap3.operation
+    - sldap3.protocol
+    - sldap3.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cannatag/sldap3
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A strictly RFC 4511 conforming LDAP V3 pure Python server. Same codebase for Python 2, Python3, PyPy and PyPy 3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

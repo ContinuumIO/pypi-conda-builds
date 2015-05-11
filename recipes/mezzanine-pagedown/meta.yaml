@@ -1,0 +1,71 @@
+package:
+  name: mezzanine-pagedown
+  version: "0.8"
+
+source:
+  fn: mezzanine-pagedown-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-pagedown/mezzanine-pagedown-0.8.tar.gz
+  md5: 481de2150e5dde671644d6c3078700fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-pagedown = mezzanine-pagedown:main
+    #
+    # Would create an entry point called mezzanine-pagedown that calls mezzanine-pagedown.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - filebrowser_safe >=0.2.13
+    - mezzanine >=1.3.0
+    - markdown
+    - bleach
+
+  run:
+    - python
+    - setuptools
+    - filebrowser_safe >=0.2.13
+    - mezzanine >=1.3.0
+    - markdown
+    - bleach
+
+test:
+  # Python imports
+  imports:
+    - mezzanine_pagedown
+    - mezzanine_pagedown.management
+    - mezzanine_pagedown.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/akhayyat/mezzanine-pagedown
+  license: BSD License
+  summary: 'PageDown rich text widget for Mezzanine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

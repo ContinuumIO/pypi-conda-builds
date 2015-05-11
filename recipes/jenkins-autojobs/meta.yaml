@@ -1,0 +1,72 @@
+package:
+  name: jenkins-autojobs
+  version: "0.15.1"
+
+source:
+  fn: jenkins-autojobs-0.15.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jenkins-autojobs/jenkins-autojobs-0.15.1.tar.gz
+  md5: 263e0ec4887921bdcb7dfe3390faf7a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jenkins-autojobs = jenkins-autojobs:main
+    #
+    # Would create an entry point called jenkins-autojobs that calls jenkins-autojobs.main()
+
+    - jenkins-makejobs-git = jenkins_autojobs.git:main
+    - jenkins-makejobs-svn = jenkins_autojobs.svn:main
+    - jenkins-makejobs-hg  = jenkins_autojobs.hg:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jenkins-webapi >=0.3.2
+    - lxml >=3.2.3
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - jenkins-webapi >=0.3.2
+    - lxml >=3.2.3
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - jenkins_autojobs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jenkins-makejobs-git --help
+    - jenkins-makejobs-svn --help
+    - jenkins-makejobs-hg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gvalkov/jenkins-autojobs
+  license: BSD License
+  summary: 'Scripts for automatically creating Jenkins jobs from scm branches'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

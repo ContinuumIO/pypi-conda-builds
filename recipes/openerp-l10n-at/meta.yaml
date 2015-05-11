@@ -1,0 +1,64 @@
+package:
+  name: openerp-l10n-at
+  version: "7.0.406"
+
+source:
+  fn: openerp-l10n-at-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-l10n-at/openerp-l10n-at-7.0.406.tar.gz
+  md5: d8e2193aa5b022ea7769ce60f21df972
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-l10n-at = openerp-l10n-at:main
+    #
+    # Would create an entry point called openerp-l10n-at that calls openerp-l10n-at.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-account-chart
+    - openerp-base-vat
+
+  run:
+    - python
+    - openerp-account-chart
+    - openerp-base-vat
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.l10n_at
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.conexus.at
+  license: GNU Affero General Public License v3
+  summary: 'Austria - Accounting'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

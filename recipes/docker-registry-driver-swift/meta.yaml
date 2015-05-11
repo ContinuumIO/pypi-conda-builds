@@ -1,0 +1,67 @@
+package:
+  name: docker-registry-driver-swift
+  version: "0.2.1"
+
+source:
+  fn: docker-registry-driver-swift-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-registry-driver-swift/docker-registry-driver-swift-0.2.1.tar.gz
+  md5: b5fb7d74a7f00db444396208385df722
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-registry-driver-swift = docker-registry-driver-swift:main
+    #
+    # Would create an entry point called docker-registry-driver-swift that calls docker-registry-driver-swift.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-registry-core >=2,<3
+    - python-keystoneclient ==0.10.0
+    - python-swiftclient ==2.2.0
+
+  run:
+    - python
+    - docker-registry-core >=2,<3
+    - python-keystoneclient ==0.10.0
+    - python-swiftclient ==2.2.0
+
+test:
+  # Python imports
+  imports:
+    - docker_registry
+    - docker_registry.drivers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bacongobbler/docker-registry-driver-swift
+  license: Apache Software License
+  summary: 'Docker registry swift driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

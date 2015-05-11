@@ -1,0 +1,69 @@
+package:
+  name: django-skwissh
+  version: "0.0.8"
+
+source:
+  fn: django-skwissh-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-skwissh/django-skwissh-0.0.8.tar.gz
+  md5: c97f316c006ac4e769bbe7699c20ebda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-skwissh = django-skwissh:main
+    #
+    # Would create an entry point called django-skwissh that calls django-skwissh.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric ==1.4.3
+    - django-extra-views ==0.2.5
+    - django-kronos ==0.3
+
+  run:
+    - python
+    - fabric ==1.4.3
+    - django-extra-views ==0.2.5
+    - django-kronos ==0.3
+
+test:
+  # Python imports
+  imports:
+    - skwissh
+    - skwissh.migrations
+    - skwissh.templatetags
+    - testproject
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://skwissh.com/
+  license: GNU General Public License (GPL)
+  summary: 'SSH monitoring Django application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

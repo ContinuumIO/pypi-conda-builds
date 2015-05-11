@@ -1,0 +1,70 @@
+package:
+  name: django-sshkey
+  version: "2.3.2"
+
+source:
+  fn: django-sshkey-2.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sshkey/django-sshkey-2.3.2.tar.gz
+  md5: 0ae6800cebfe9cd2c39fc2baa4084dec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sshkey = django-sshkey:main
+    #
+    # Would create an entry point called django-sshkey that calls django-sshkey.main()
+
+    - django-sshkey-pylookup = django_sshkey.util:lookup_main
+    - django-sshkey-pylookup-all = django_sshkey.util:lookup_all_main
+    - django-sshkey-pylookup-by-username = django_sshkey.util:lookup_by_username_main
+    - django-sshkey-pylookup-by-fingerprint = django_sshkey.util:lookup_by_fingerprint_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyasn1
+
+  run:
+    - python
+    - pyasn1
+
+test:
+  # Python imports
+  imports:
+    - django_sshkey
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - django-sshkey-pylookup --help
+    - django-sshkey-pylookup-all --help
+    - django-sshkey-pylookup-by-username --help
+    - django-sshkey-pylookup-by-fingerprint --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ClemsonSoCUnix/django-sshkey
+  license: BSD License
+  summary: 'Associates multiple SSH public keys with Django user accounts.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

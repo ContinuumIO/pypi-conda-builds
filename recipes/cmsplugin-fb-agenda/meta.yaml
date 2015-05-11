@@ -1,0 +1,66 @@
+package:
+  name: cmsplugin-fb-agenda
+  version: "0.2"
+
+source:
+  fn: cmsplugin-fb-agenda-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-fb-agenda/cmsplugin-fb-agenda-0.2.tar.gz
+  md5: ebf04be1447c4b43f4470063462cbb60
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-fb-agenda = cmsplugin-fb-agenda:main
+    #
+    # Would create an entry point called cmsplugin-fb-agenda that calls cmsplugin-fb-agenda.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms
+    - facebook-sdk
+
+  run:
+    - python
+    - setuptools
+    - django-cms
+    - facebook-sdk
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_fb_agenda
+    - cmsplugin_fb_agenda.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lagunak.gisa-elkartea.org/projects/cmplugin-fb-agenda
+  license: GPL
+  summary: 'django-cms plugin: display the agenda of a facebook user'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: flask_tryton
+  version: "0.3"
+
+source:
+  fn: flask_tryton-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask_tryton/flask_tryton-0.3.tar.gz
+  md5: 7d6219522eaa847365d2a4f63bb51817
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask_tryton = flask_tryton:main
+    #
+    # Would create an entry point called flask_tryton that calls flask_tryton.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.8
+    - werkzeug
+    - trytond >=3.0
+
+  run:
+    - python
+    - flask >=0.8
+    - werkzeug
+    - trytond >=3.0
+
+test:
+  # Python imports
+  imports:
+    - flask_tryton
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/flask-tryton/
+  license: GNU General Public License (GPL)
+  summary: 'Adds Tryton support to Flask application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

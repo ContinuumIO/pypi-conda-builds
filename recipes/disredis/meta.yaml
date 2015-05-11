@@ -1,0 +1,66 @@
+package:
+  name: disredis
+  version: "1.0"
+
+source:
+  fn: disredis-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/disredis/disredis-1.0.tar.gz
+  md5: d94efa723073e12893c395bf829f7d9e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - disredis = disredis:main
+    #
+    # Would create an entry point called disredis that calls disredis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.1
+    - redis >=2.7.6
+
+  run:
+    - python
+    - django >=1.4.1
+    - redis >=2.7.6
+
+test:
+  # Python imports
+  imports:
+    - disredis
+    - disredis.disredis_client
+    - disredis.disredis_sessions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SawdustSoftware/disredis
+  license: LICENSE.txt
+  summary: 'Distributed Redis Client (dis-redis) to enable real-time failover of redis masters to paired slaves'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

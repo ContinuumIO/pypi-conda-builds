@@ -1,0 +1,66 @@
+package:
+  name: jenkins_client
+  version: "0.2.2"
+
+source:
+  fn: jenkins_client-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jenkins_client/jenkins_client-0.2.2.tar.gz
+  md5: 7bf79d8b7a4897d360c239e839b3b7b5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jenkins_client = jenkins_client:main
+    #
+    # Would create an entry point called jenkins_client that calls jenkins_client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jenkinsapi
+    - sc_pylibs >=0.1.2
+
+  run:
+    - python
+    - jenkinsapi
+    - sc_pylibs >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - ci
+    - ci.test
+    - jenkins_client
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi?r6_commit
+  license: Be Real
+  summary: 'Jenkins client wrapper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

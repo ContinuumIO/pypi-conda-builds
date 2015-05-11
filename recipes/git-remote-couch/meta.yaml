@@ -1,0 +1,64 @@
+package:
+  name: git-remote-couch
+  version: "0.1a2"
+
+source:
+  fn: git-remote-couch-0.1a2.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-remote-couch/git-remote-couch-0.1a2.tar.gz
+  md5: 7901c05dde0bb649e3f03c3218930f38
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-remote-couch = git-remote-couch:main
+    #
+    # Would create an entry point called git-remote-couch that calls git-remote-couch.main()
+
+    - git-remote-http+couch = git_remote_couch:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - couchdb ==0.7
+
+  run:
+    - python
+    - couchdb ==0.7
+
+test:
+  # Python imports
+  imports:
+    - git_remote_couch
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-remote-http+couch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/peritus/git-remote-couch
+  license: Beerware
+  summary: 'a git-remote-helper that allows you to push source code into a CouchDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

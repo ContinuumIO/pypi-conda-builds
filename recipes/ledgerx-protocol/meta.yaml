@@ -1,0 +1,71 @@
+package:
+  name: ledgerx-protocol
+  version: "0.4.0"
+
+source:
+  fn: ledgerx-protocol-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/ledgerx-protocol/ledgerx-protocol-0.4.0.tar.gz
+  md5: 69eb29c9e37b1918825e6a3c78176228
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ledgerx-protocol = ledgerx-protocol:main
+    #
+    # Would create an entry point called ledgerx-protocol that calls ledgerx-protocol.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - msgpack-python ==0.4.2
+    - pyzmq ==14.5.0
+    - semantic-version ==2.3.1
+    - simplejson ==3.6.5
+
+  run:
+    - python
+    - msgpack-python ==0.4.2
+    - pyzmq ==14.5.0
+    - semantic-version ==2.3.1
+    - simplejson ==3.6.5
+
+test:
+  # Python imports
+  imports:
+    - ledgerx
+    - ledgerx.protocol
+    - ledgerx.protocol.detail
+    - ledgerx.protocol.system
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://ledgerx.com
+  license: UNKNOWN
+  summary: 'LedgerX Base Protocol Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

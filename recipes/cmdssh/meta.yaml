@@ -1,0 +1,62 @@
+package:
+  name: cmdssh
+  version: "26"
+
+source:
+  fn: cmdssh-26.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmdssh/cmdssh-26.tar.gz
+  md5: 75a676ae2ba0e63d2771c9a2a462177d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmdssh = cmdssh:main
+    #
+    # Would create an entry point called cmdssh that calls cmdssh.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paramiko
+
+  run:
+    - python
+    - paramiko
+
+test:
+  # Python imports
+  imports:
+    - cmdssh
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/erikdejonge/cmdssh
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Execute commands on local machine and on remote machine via ssh, and a wrapper for paramikos scp.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

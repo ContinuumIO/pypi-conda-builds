@@ -1,0 +1,103 @@
+package:
+  name: django-organice
+  version: "0.2"
+
+source:
+  fn: django-organice-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-organice/django-organice-0.2.tar.gz
+  md5: 33784582c301cf1d0fac63e79c65fcb0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-organice = django-organice:main
+    #
+    # Would create an entry point called django-organice that calls django-organice.main()
+
+    - organice-setup=organice.bin.organice_setup:startproject
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-apptemplates
+    - django-blog-zinnia ==0.13
+    - django-cms ==2.4.3-support
+    - django-mptt ==0.5.2
+    - django-media-tree
+    - django-organice-theme
+    - django-reversion ==1.8.0
+    - django-simple-links
+    - django-tinymce
+    - django-todo >=1.4.dev
+    - django-allauth
+    - django-analytical
+    - easy-thumbnails
+    - emencia.django.newsletter >=0.3.dev
+    - pillow
+    - solid_i18n
+    - cmsplugin-contact
+    - cmsplugin-zinnia ==0.5.1
+
+  run:
+    - python
+    - setuptools
+    - django-apptemplates
+    - django-blog-zinnia ==0.13
+    - django-cms ==2.4.3-support
+    - django-mptt ==0.5.2
+    - django-media-tree
+    - django-organice-theme
+    - django-reversion ==1.8.0
+    - django-simple-links
+    - django-tinymce
+    - django-todo >=1.4.dev
+    - django-allauth
+    - django-analytical
+    - easy-thumbnails
+    - emencia.django.newsletter >=0.3.dev
+    - pillow
+    - solid_i18n
+    - cmsplugin-contact
+    - cmsplugin-zinnia ==0.5.1
+
+test:
+  # Python imports
+  imports:
+    - organice
+    - organice.bin
+    - organice.management
+    - organice.migrations
+    - organice.migrations.zinnia
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - organice-setup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://organice.io/
+  license: Apache Software License
+  summary: 'All-in-one collaboration solution providing an intuitive, consistent user experience.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

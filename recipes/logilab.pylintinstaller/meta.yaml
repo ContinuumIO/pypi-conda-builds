@@ -1,0 +1,78 @@
+package:
+  name: logilab.pylintinstaller
+  version: "0.15.2"
+
+source:
+  fn: logilab.pylintinstaller-0.15.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/logilab.pylintinstaller/logilab.pylintinstaller-0.15.2.tar.gz
+  md5: 37c9eae9a37007d44d1137d284a12e3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logilab.pylintinstaller = logilab.pylintinstaller:main
+    #
+    # Would create an entry point called logilab.pylintinstaller that calls logilab.pylintinstaller.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pylint ==0.15.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pylint ==0.15.2
+
+test:
+  # Python imports
+  imports:
+    - logilab
+    - logilab.astng
+    - logilab.astng.test
+    - logilab.astng.test.data
+    - logilab.astng.test.data.SSL1
+    - logilab.astng.test.data.appl
+    - logilab.astng.test.data2
+    - logilab.common
+    - logilab.common.test
+    - logilab.common.test.data
+    - logilab.common.test.data.find_test
+    - logilab.common.ureports
+    - logilab.pylintinstaller
+    - logilab.pylintinstaller.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPL
+  summary: 'egg installer for Pylint'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

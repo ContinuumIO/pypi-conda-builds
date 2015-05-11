@@ -1,0 +1,79 @@
+package:
+  name: svenweb
+  version: "0.6"
+
+source:
+  fn: svenweb-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/svenweb/svenweb-0.6.tar.gz
+  md5: 908bbca8f238d82e0d75828b4e117376
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - svenweb = svenweb:main
+    #
+    # Would create an entry point called svenweb that calls svenweb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - paste
+    - pastescript
+    - tempita
+    - sven
+    - setuptools
+    - docutils
+
+  run:
+    - python
+    - setuptools
+    - webob
+    - paste
+    - pastescript
+    - tempita
+    - sven
+    - setuptools
+    - docutils
+
+test:
+  # Python imports
+  imports:
+    - svenweb
+    - svenweb.middleware
+    - svenweb.middleware.response
+    - svenweb.middleware.response.setter
+    - svenweb.read
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPLv3 or later
+  summary: 'web frontend to versioncontrolled document repository for read-write-index-history operations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

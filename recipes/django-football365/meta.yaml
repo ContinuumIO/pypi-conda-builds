@@ -1,0 +1,67 @@
+package:
+  name: django-football365
+  version: "0.2"
+
+source:
+  fn: django-football365-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-football365/django-football365-0.2.tar.gz
+  md5: 9772cd1effc9dff0109890245409cce4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-football365 = django-football365:main
+    #
+    # Would create an entry point called django-football365 that calls django-football365.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - south
+
+  run:
+    - python
+    - django
+    - south
+
+test:
+  # Python imports
+  imports:
+    - football365
+    - football365.management
+    - football365.management.commands
+    - football365.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/django-football365
+  license: BSD License
+  summary: 'Fetch logs, fixtures, results and live scores via the Football 365 API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

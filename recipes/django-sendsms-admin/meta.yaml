@@ -1,0 +1,63 @@
+package:
+  name: django-sendsms-admin
+  version: "0.1.0"
+
+source:
+  fn: django-sendsms-admin-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sendsms-admin/django-sendsms-admin-0.1.0.tar.gz
+  md5: 72f79103f8fa8e38154694d8f280d657
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sendsms-admin = django-sendsms-admin:main
+    #
+    # Would create an entry point called django-sendsms-admin that calls django-sendsms-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-sendsms
+
+  run:
+    - python
+    - django-sendsms
+
+test:
+  # Python imports
+  imports:
+    - sendsms_admin
+    - sendsms_admin.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stefanfoulis/django-sendsms-admin
+  license: BSD License
+  summary: 'A database delivery backend for django-sendsms (for debugging).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

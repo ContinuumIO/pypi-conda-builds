@@ -1,0 +1,73 @@
+package:
+  name: simpleflux
+  version: "2.1"
+
+source:
+  fn: simpleFlux-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/simpleFlux/simpleFlux-2.1.tar.gz
+  md5: 1f5b3102788a94a24582a72415e895cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - simpleflux = simpleflux:main
+    #
+    # Would create an entry point called simpleflux that calls simpleflux.main()
+
+    - simpleFlux = simpleFlux:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pythonflu >=9.1-SWIG
+
+  run:
+    - python
+    - pythonflu >=9.1-SWIG
+
+test:
+  # Python imports
+  imports:
+    - simpleFlux
+    - simpleFlux.r1_4_1_dev
+    - simpleFlux.r1_5
+    - simpleFlux.r1_6
+    - simpleFlux.r1_7_0
+    - simpleFlux.r1_7_1
+    - simpleFlux.r2_0_0
+    - simpleFlux.r2_1_0
+    - simpleFlux.r2_1_1
+    - simpleflux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - simpleFlux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the simpleFoam'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

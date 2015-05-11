@@ -1,0 +1,75 @@
+package:
+  name: noseapp
+  version: "1.1.4"
+
+source:
+  fn: noseapp-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/noseapp/noseapp-1.1.4.tar.gz
+  md5: 3dffe4d1b5353f7239c153d640947d75
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - noseapp = noseapp:main
+    #
+    # Would create an entry point called noseapp that calls noseapp.main()
+
+    - noseapp-manage = noseapp.manage:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose ==1.3.4
+
+  run:
+    - python
+    - nose ==1.3.4
+
+test:
+  # Python imports
+  imports:
+    - noseapp
+    - noseapp.app
+    - noseapp.case
+    - noseapp.core
+    - noseapp.core.collector
+    - noseapp.ext
+    - noseapp.plugins
+    - noseapp.runner
+    - noseapp.suite
+    - noseapp.suite.bases
+    - noseapp.utils
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - noseapp-manage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/trifonovmixail/noseapp
+  license: GNU LGPL
+  summary: 'Framework for test development'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

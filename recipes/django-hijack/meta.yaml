@@ -1,0 +1,67 @@
+package:
+  name: django-hijack
+  version: "1.0.7"
+
+source:
+  fn: django-hijack-1.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-hijack/django-hijack-1.0.7.tar.gz
+  md5: 9b9059cf88dfc820c2ca398ed6e47bbe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-hijack = django-hijack:main
+    #
+    # Would create an entry point called django-hijack that calls django-hijack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.9
+    - django-compat >=1.0.5
+
+  run:
+    - python
+    - django >=1.4,<1.9
+    - django-compat >=1.0.5
+
+test:
+  # Python imports
+  imports:
+    - hijack
+    - hijack.templatetags
+    - hijack.tests
+    - hijack.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/arteria/django-hijack
+  license: MIT License
+  summary: 'django-hijack allows superusers to hijack (=login as) and work on behalf of another user.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

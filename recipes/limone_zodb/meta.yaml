@@ -1,0 +1,65 @@
+package:
+  name: limone_zodb
+  version: "0.1a2"
+
+source:
+  fn: limone_zodb-0.1a2.tar.gz
+  url: https://pypi.python.org/packages/source/l/limone_zodb/limone_zodb-0.1a2.tar.gz
+  md5: 346a124450b4c7f09f9ad693bce65b85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - limone_zodb = limone_zodb:main
+    #
+    # Would create an entry point called limone_zodb that calls limone_zodb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - limone
+    - zodb3
+
+  run:
+    - python
+    - setuptools
+    - limone
+    - zodb3
+
+test:
+  # Python imports
+  imports:
+    - limone_zodb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pylonsproject.org
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'ZODB persistence for Limone content types.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

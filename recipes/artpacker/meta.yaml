@@ -1,0 +1,65 @@
+package:
+  name: artpacker
+  version: "1.0.1"
+
+source:
+  fn: artpacker-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/artpacker/artpacker-1.0.1.tar.gz
+  md5: 2e0dff6a54db049375153e2052af1912
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - artpacker = artpacker:main
+    #
+    # Would create an entry point called artpacker that calls artpacker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pil
+
+  run:
+    - python
+    - pil
+
+test:
+  # Python imports
+  imports:
+    - artpacker
+    - artpacker.metadata
+    - artpacker.packer
+    - artpacker.saver
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Miroff/art-packer
+  license: UNKNOWN
+  summary: 'Image resources packer to sprite sheets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

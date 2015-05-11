@@ -1,0 +1,74 @@
+package:
+  name: hoka.adapter.portal
+  version: "2.13.19.1"
+
+source:
+  fn: hoka.adapter.portal-2.13.19.1.zip
+  url: https://pypi.python.org/packages/source/h/hoka.adapter.portal/hoka.adapter.portal-2.13.19.1.zip
+  md5: b782ed395c8cece7e76c36e98e3d7089
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hoka.adapter.portal = hoka.adapter.portal:main
+    #
+    # Would create an entry point called hoka.adapter.portal that calls hoka.adapter.portal.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone
+    - z3c.autoinclude
+    - hoka.patches.get_adapter
+    - hoka.adapter.base
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone
+    - z3c.autoinclude
+    - hoka.patches.get_adapter
+    - hoka.adapter.base
+
+test:
+  # Python imports
+  imports:
+    - hoka
+    - hoka.adapter
+    - hoka.adapter.portal
+    - hoka.adapter.portal.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com//hoka/hoka.adapter.portal
+  license: GNU General Public License (GPL)
+  summary: 'Adapter to get the portal root of a plone site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

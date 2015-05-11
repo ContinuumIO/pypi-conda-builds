@@ -1,0 +1,64 @@
+package:
+  name: flask-errormail
+  version: "0.2.2"
+
+source:
+  fn: Flask-ErrorMail-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-ErrorMail/Flask-ErrorMail-0.2.2.tar.gz
+  md5: 4deaf797b70de3f45ce5a06270952b8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-errormail = flask-errormail:main
+    #
+    # Would create an entry point called flask-errormail that calls flask-errormail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - flask-mail
+
+  run:
+    - python
+    - flask
+    - flask-mail
+
+test:
+  # Python imports
+  imports:
+    - flask_errormail
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jasonwyatt/Flask-ErrorMail
+  license: MIT License
+  summary: 'Flask extension for sending administrators e-mails with stacktraces when internal server errors occur.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

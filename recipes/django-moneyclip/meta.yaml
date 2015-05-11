@@ -1,0 +1,63 @@
+package:
+  name: django-moneyclip
+  version: "1.0"
+
+source:
+  fn: django-moneyclip-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-moneyclip/django-moneyclip-1.0.tar.gz
+  md5: 2c05890a26066d968f787ccb92b97641
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-moneyclip = django-moneyclip:main
+    #
+    # Would create an entry point called django-moneyclip that calls django-moneyclip.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django ==1.6.2
+    - django-redis-cache ==0.10.2
+
+  run:
+    - python
+    - django ==1.6.2
+    - django-redis-cache ==0.10.2
+
+test:
+  # Python imports
+  imports:
+    - moneyclip
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shanez/MoneyClip
+  license: UNKNOWN
+  summary: 'Django library that allows for effortless caching and invalidation of models and functions based on signals.  Depedent on Redis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

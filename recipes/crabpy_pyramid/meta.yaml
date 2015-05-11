@@ -1,0 +1,68 @@
+package:
+  name: crabpy_pyramid
+  version: "0.2.0"
+
+source:
+  fn: crabpy_pyramid-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/crabpy_pyramid/crabpy_pyramid-0.2.0.tar.gz
+  md5: c38f2d436af6808b280b5c09e21136f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crabpy_pyramid = crabpy_pyramid:main
+    #
+    # Would create an entry point called crabpy_pyramid that calls crabpy_pyramid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - crabpy >=0.4.1
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - crabpy >=0.4.1
+
+test:
+  # Python imports
+  imports:
+    - crabpy_pyramid
+    - crabpy_pyramid.renderers
+    - crabpy_pyramid.routes
+    - crabpy_pyramid.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/OnroerendErfgoed/crabpy_pyramid
+  license: MIT License
+  summary: 'crabpy_pyramid'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

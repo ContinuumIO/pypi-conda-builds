@@ -1,0 +1,93 @@
+package:
+  name: bespin
+  version: "0.5.2.8"
+
+source:
+  fn: bespin-0.5.2.8.tar.gz
+  url: https://pypi.python.org/packages/source/b/bespin/bespin-0.5.2.8.tar.gz
+  md5: 1e69ebb2b7a5e77418ed7d0a366e85a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bespin = bespin:main
+    #
+    # Would create an entry point called bespin that calls bespin.main()
+
+    - bespin = bespin.executor:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - delfick_error ==1.6.1
+    - option_merge ==0.9.3
+    - input_algorithms ==0.4.4.1
+    - six
+    - pytz
+    - humanize
+    - argparse
+    - requests
+    - paramiko
+    - radssh ==1.0.1
+    - boto ==2.36.0
+    - pyyaml ==3.10
+    - rainbow_logging_handler ==2.2.2
+    - filechunkio ==1.6
+
+  run:
+    - python
+    - delfick_error ==1.6.1
+    - option_merge ==0.9.3
+    - input_algorithms ==0.4.4.1
+    - six
+    - pytz
+    - humanize
+    - argparse
+    - requests
+    - paramiko
+    - radssh ==1.0.1
+    - boto ==2.36.0
+    - pyyaml ==3.10
+    - rainbow_logging_handler ==2.2.2
+    - filechunkio ==1.6
+
+test:
+  # Python imports
+  imports:
+    - bespin
+    - bespin.actions
+    - bespin.amazon
+    - bespin.option_spec
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bespin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/realestate-com-au/bespin
+  license: MIT
+  summary: 'Opinionated wrapper around boto that reads yaml'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

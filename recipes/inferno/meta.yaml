@@ -1,0 +1,77 @@
+package:
+  name: inferno
+  version: "0.1.29"
+
+source:
+  fn: inferno-0.1.29.tar.gz
+  url: https://pypi.python.org/packages/source/i/inferno/inferno-0.1.29.tar.gz
+  md5: 76ad1acd1af3d9331d6a1527178635e2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inferno = inferno:main
+    #
+    # Would create an entry point called inferno that calls inferno.main()
+
+    - inferno=inferno.bin.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - pyyaml
+    - setproctitle
+    - tornado
+    - ujson
+
+  run:
+    - python
+    - setuptools
+    - argparse
+    - pyyaml
+    - setproctitle
+    - tornado
+    - ujson
+
+test:
+  # Python imports
+  imports:
+    - inferno
+    - inferno.bin
+    - inferno.config
+    - inferno.example_rules
+    - inferno.lib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - inferno --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://chango.com
+  license: MIT License
+  summary: 'Inferno: a python map/reduce platform powered by disco.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

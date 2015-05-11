@@ -1,0 +1,66 @@
+package:
+  name: okapi
+  version: "0.12.0"
+
+source:
+  fn: okapi-0.12.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/okapi/okapi-0.12.0.tar.gz
+  md5: d7c992dec78cef06999189fa79c37e44
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - okapi = okapi:main
+    #
+    # Would create an entry point called okapi that calls okapi.main()
+
+    - okapi=okapi:mongo
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+    - requests
+
+  run:
+    - python
+    - pymongo
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - okapi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - okapi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: "Okapi\n=====\n\nPython Library to send API info to Storage Server\n\n\nOkapi setup \n===========\nIn an existing project you should at least modify the following files:\n\n\nrequirements/base.txt\n---------------------\nAdd the following requirement to the project's settings. It won't be needed to\nadd ``requests`` if the project is already using it.\n``requests`` version should be >= 2.2.11:\n\n.. code-block:: python\n\n    okapi==X.Y.Z\n\n\nsettings.py\n-----------\nAdd the following configuration to the project's settings:\n\n.. code-block:: python    \n\n    ########## OKAPI CONFIGURATION\n    OKAPI_PROJECT = 'your-project-name'\n\n    OKAPI_URI = None\n    if settings.has_section('okapi'):\n        OKAPI_URI = 'mongodb://{0},{1},{2}/{3}?replicaSet={4}'.format(\n\n            settings.get('okapi', 'host0'),\n            settings.get('okapi', 'host1'),\n            settings.get('okapi', 'host2'),\n            settings.get('okapi', 'name'),\n            settings.get('okapi', 'replica'),\n        )\n\n    ########## END OKAPI CONFIGURATION\n\nNote that if the project is already using *MongoDB*, you shouldn't store Okapi's\ndata into the same database. Okapi creates collections dynamically and could\nconflict with your the  project's.\n\n\nInitialization\n--------------\nInitialize Okapi in the ``models.py`` file of a basic application of the project.\nThis way Okapi will be imported at startup time:\n\n.. code-block:: python\n\n    import requests    \n    from django.conf import settings    \n\n    from okapi.api import Api\n\n    project_name = getattr(settings, 'OKAPI_PROJECT')\n    mongodb_uri = getattr(settings, 'MONGODB_URI')\n    okapi_client = Api(project_name, requests, mongodb_uri)\n\n\nUsage\n-----\nOnce initialized you can use Okapi wherever you use ``requests`` library.\nThink of Okapi as if you were using ``requests`` because they both have the same\nAPI.\n\nRequests documentation: http://docs.python-requests.org/en/latest/\n\n\nActivating/deactivating okapi in your project\n---------------------------------------------\nIn the file ``settings/base.py`` under the ``OKAPI CONFIGURATION`` section, you \ncan add a boolean setting in order to enable/disable okapi for your project. It \ncould be interesting to have it enabled in QA or staging environment and after\nit has been properly tested, activate it also in production.\n\nYou can have a section into ``your-project-name/settings/dev.py``: \n\n.. code-block:: python\n\n    ########## OKAPI CONFIGURATION\n    OKAPI_ENABLED = True\n    ########## END OKAPI CONFIGURATION\n\nAnother one into ``your-project-name/settings/production.py``: \n\n.. code-block:: python    \n\n    ########## OKAPI CONFIGURATION\n    OKAPI_ENABLED = False\n    ########## END OKAPI CONFIGURATION\n\nAnd so on. Note that ``get_custom_setting`` is a wrapper around ``getattr``. \nThen you could initialize it conditionally as shown below:\n\n.. code-block:: python\n\n    http_lib = requests\n    if (get_custom_setting('OKAPI_ENABLED') and okapi_uri is not None):\n        project_name = get_custom_setting('OKAPI_PROJECT', required=True)\n        okapi_uri = get_custom_setting('OKAPI_URI', required=True)\n        okapi_client = Api(project_name, requests, okapi_uri)\n        http_lib = okapi_client\n\n\n\n0.12.0 (2015-04-01)\n-------------------\n- New Features:\n\n  - Method `get_mongodb_client` to get a MongoDB connection client.\n\n- Bugfixes:\n\n  - None\n\n- Incompatible changes:\n\n  - `Okapi.__init__` has changed to have a new mandatory `db` parameter.\n   Parameters `mongodb_uri` and `connect_timeout_ms` have been removed.\n\n0.11.0 (2014-12-29)\n-------------------\n- New Features:\n\n  - Changed blank space to a T letter as indicator of the beginning of the time \n    element to be more iso-friendly:\n    http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15\n\n0.10.0 (2014-11-11)\n-------------------\n- New Features:\n\n  - Don't hardcode the name of the database but expect it to be in\n    the mongodb_uri parameter.\n\n0.9.0 (2014-10-16)\n------------------\n- New Features:\n\n  - Decouple okapi from requests so that any library following requests \n    interface can be used. This introduces a backward incompatible change\n    because now the __init__ method for okapi Api class requires a new\n    argument\n\n0.8.0 (2014-09-26)\n------------------\n- New features:\n\n  - Use one collection per project instead of saving all projects in the same collection\n  - Add a time_bucket attribute to make time based queries faster\n\n0.7.1 (2014-07-28)\n----------------\n- Bug Fixes:\n\n\t-Make sure to raise the exception if an error occurs so the user know \n\texactly what is happening instead of code crashing\n"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

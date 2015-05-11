@@ -1,0 +1,63 @@
+package:
+  name: redisq-py
+  version: "1.0.0"
+
+source:
+  fn: redisq-py-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/redisq-py/redisq-py-1.0.0.tar.gz
+  md5: 79019bc5b201c3965642b35a71839a11
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redisq-py = redisq-py:main
+    #
+    # Would create an entry point called redisq-py that calls redisq-py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis
+
+  run:
+    - python
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - redisq
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/joshuakarjala/redisq-py/
+  license: MIT License
+  summary: 'A python client for redisq (Fast message processing queue backed up by redis and nodejs.)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

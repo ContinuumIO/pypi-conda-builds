@@ -1,0 +1,67 @@
+package:
+  name: mongosuite
+  version: "0.2.2"
+
+source:
+  fn: mongoSuite-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongoSuite/mongoSuite-0.2.2.tar.gz
+  md5: 64148d61bac62e6aa8aaa2df8c660f34
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongosuite = mongosuite:main
+    #
+    # Would create an entry point called mongosuite that calls mongosuite.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paramiko
+    - docopt
+    - pymongo
+
+  run:
+    - python
+    - paramiko
+    - docopt
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - mongoSuite
+    - mongosuite
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/william-p/mongoSuite
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: u'Manage multiple instances of MongoDB on multiple hosts with one command line tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

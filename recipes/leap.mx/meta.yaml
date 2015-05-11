@@ -1,0 +1,74 @@
+package:
+  name: leap.mx
+  version: "0.6.1"
+
+source:
+  fn: leap.mx-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/leap.mx/leap.mx-0.6.1.tar.gz
+  md5: 429e54d32c0720e4aef0d048bf712665
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - leap.mx = leap.mx:main
+    #
+    # Would create an entry point called leap.mx that calls leap.mx.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=12.0.2
+    - paisley >=0.3.1
+    - couchdb
+    - leap.common >=0.3.5
+    - leap.soledad.common >=0.4.5
+    - leap.keymanager >=0.3.4
+
+  run:
+    - python
+    - twisted >=12.0.2
+    - paisley >=0.3.1
+    - couchdb
+    - leap.common >=0.3.5
+    - leap.soledad.common >=0.4.5
+    - leap.keymanager >=0.3.4
+
+test:
+  # Python imports
+  imports:
+    - leap
+    - leap.mx
+    - leap.mx.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/leapcode/leap_mx
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'An asynchronous, transparently-encrypting remailer for the LEAP platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

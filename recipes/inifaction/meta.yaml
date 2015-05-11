@@ -1,0 +1,66 @@
+package:
+  name: inifaction
+  version: "0.1"
+
+source:
+  fn: inifaction-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/inifaction/inifaction-0.1.tar.gz
+  md5: 0089601e1b117b851b34fc7c826cc02c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inifaction = inifaction:main
+    #
+    # Would create an entry point called inifaction that calls inifaction.main()
+
+    - inifaction = inifaction.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - xmlrpclib
+    - configobj
+
+  run:
+    - python
+    - xmlrpclib
+    - configobj
+
+test:
+  # Python imports
+  imports:
+    - inifaction
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - inifaction --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://lagunak.gisa-elkartea.org/projects/inifaction/
+  license: GNU General Public License (GPL)
+  summary: 'Manage your Webfaction settings in a per project basis from an INI style file.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

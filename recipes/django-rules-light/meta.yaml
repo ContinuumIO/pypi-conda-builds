@@ -1,0 +1,67 @@
+package:
+  name: django-rules-light
+  version: "0.2.0"
+
+source:
+  fn: django-rules-light-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rules-light/django-rules-light-0.2.0.tar.gz
+  md5: c454e4ea5886d21922ce5b5ea777cb9f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rules-light = django-rules-light:main
+    #
+    # Would create an entry point called django-rules-light that calls django-rules-light.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - django-classy-tags
+
+  run:
+    - python
+    - six
+    - django-classy-tags
+
+test:
+  # Python imports
+  imports:
+    - rules_light
+    - rules_light.templatetags
+    - rules_light.tests
+    - rules_light.tests.fixtures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/yourlabs/django-rules-light
+  license: MIT License
+  summary: 'Rule registry for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

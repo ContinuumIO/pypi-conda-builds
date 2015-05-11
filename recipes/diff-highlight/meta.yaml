@@ -1,0 +1,63 @@
+package:
+  name: diff-highlight
+  version: "1.0.3"
+
+source:
+  fn: diff-highlight-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/diff-highlight/diff-highlight-1.0.3.tar.gz
+  md5: c44ef402ad28eb4f8d02812b444f96e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - diff-highlight = diff-highlight:main
+    #
+    # Would create an entry point called diff-highlight that calls diff-highlight.main()
+
+    - diff-highlight=highlights.command:highlight_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - highlights
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - diff-highlight --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/tk0miya/diff-highlight
+  license: Apache Software License
+  summary: 'pretty diff highlighter; emphasis changed words in diff'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

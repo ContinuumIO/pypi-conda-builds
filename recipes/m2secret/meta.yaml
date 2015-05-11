@@ -1,0 +1,64 @@
+package:
+  name: m2secret
+  version: "0.1.1"
+
+source:
+  fn: m2secret-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/m2secret/m2secret-0.1.1.tar.gz
+  md5: e08bccfcf82b9f3d175d6f3b6dcd6ca6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m2secret = m2secret:main
+    #
+    # Would create an entry point called m2secret that calls m2secret.main()
+
+    - m2secret = m2secret:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m2crypto >=0.18
+
+  run:
+    - python
+    - m2crypto >=0.18
+
+test:
+  # Python imports
+  imports:
+    - m2secret
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - m2secret --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.heikkitoivonen.net/m2secret
+  license: Apache Software License
+  summary: 'Encryption and decryption module and CLI utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

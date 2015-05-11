@@ -1,0 +1,94 @@
+package:
+  name: ironic-discoverd
+  version: "1.1.0"
+
+source:
+  fn: ironic-discoverd-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ironic-discoverd/ironic-discoverd-1.1.0.tar.gz
+  md5: 8991faa384e4ef4b8e38b0e0296e0fa6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ironic-discoverd = ironic-discoverd:main
+    #
+    # Would create an entry point called ironic-discoverd that calls ironic-discoverd.main()
+
+    - ironic-discoverd = ironic_discoverd.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babel
+    - cliff
+    - eventlet
+    - flask
+    - keystonemiddleware
+    - python-ironicclient
+    - python-keystoneclient
+    - python-openstackclient
+    - requests
+    - oslo.config
+    - oslo.i18n
+    - oslo.utils
+    - six
+    - stevedore
+
+  run:
+    - python
+    - setuptools
+    - babel
+    - cliff
+    - eventlet
+    - flask
+    - keystonemiddleware
+    - python-ironicclient
+    - python-keystoneclient
+    - python-openstackclient
+    - requests
+    - oslo.config
+    - oslo.i18n
+    - oslo.utils
+    - six
+    - stevedore
+
+test:
+  # Python imports
+  imports:
+    - ironic_discoverd
+    - ironic_discoverd.common
+    - ironic_discoverd.plugins
+    - ironic_discoverd.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ironic-discoverd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/ironic-discoverd
+  license: Apache Software License
+  summary: 'Hardware introspection for OpenStack Ironic'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

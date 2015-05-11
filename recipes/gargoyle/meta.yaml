@@ -1,0 +1,70 @@
+package:
+  name: gargoyle
+  version: "0.11.0"
+
+source:
+  fn: gargoyle-0.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gargoyle/gargoyle-0.11.0.tar.gz
+  md5: 957d02b741514ca1a0e2e75f66995a31
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gargoyle = gargoyle:main
+    #
+    # Would create an entry point called gargoyle that calls gargoyle.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-modeldict >=1.2.0
+    - nexus >=0.2.3
+    - django-jsonfield >=0.9.2,<0.9.13
+
+  run:
+    - python
+    - django-modeldict >=1.2.0
+    - nexus >=0.2.3
+    - django-jsonfield >=0.9.2,<0.9.13
+
+test:
+  # Python imports
+  imports:
+    - gargoyle
+    - gargoyle.management
+    - gargoyle.management.commands
+    - gargoyle.migrations
+    - gargoyle.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/disqus/gargoyle
+  license: Apache License 2.0
+  summary: 'Gargoyle is a platform built on top of Django which allows you to switch functionality of your application on and off based on conditions.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: django-search-statistic
+  version: "0.0.2"
+
+source:
+  fn: django-search-statistic-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-search-statistic/django-search-statistic-0.0.2.tar.gz
+  md5: a3ab3ade89fad7c2216e1cefc4148316
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-search-statistic = django-search-statistic:main
+    #
+    # Would create an entry point called django-search-statistic that calls django-search-statistic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.5
+
+  run:
+    - python
+    - django >=1.4.5
+
+test:
+  # Python imports
+  imports:
+    - search_statistic
+    - search_statistic.migrations
+    - search_statistic.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-search-statistic.beslave.net/
+  license: BSD License
+  summary: 'Provide search statistic for Django framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

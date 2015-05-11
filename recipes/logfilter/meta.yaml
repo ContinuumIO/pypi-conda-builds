@@ -1,0 +1,62 @@
+package:
+  name: logfilter
+  version: "0.8.0dev"
+
+source:
+  fn: logfilter-0.8.0dev.tar.gz
+  url: https://pypi.python.org/packages/source/l/logfilter/logfilter-0.8.0dev.tar.gz
+  md5: c1b1f1fa15c73e25f5fa4db37c137bf5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logfilter = logfilter:main
+    #
+    # Would create an entry point called logfilter that calls logfilter.main()
+
+    - logfilter = logfilter.logfilter:_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - logfilter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - logfilter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/iamFIREcracker/logfilter
+  license: BSD License
+  summary: 'Poll log files for updates and highlight words based on regexp filters'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

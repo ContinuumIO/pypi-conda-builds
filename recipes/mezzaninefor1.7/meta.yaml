@@ -1,0 +1,130 @@
+package:
+  name: mezzaninefor1.7
+  version: "3.1.10"
+
+source:
+  fn: MezzanineFor1.7-3.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/M/MezzanineFor1.7/MezzanineFor1.7-3.1.10.tar.gz
+  md5: e7a24b440f4a1c5f7f4c92365763bd96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzaninefor1.7 = mezzaninefor1.7:main
+    #
+    # Would create an entry point called mezzaninefor1.7 that calls mezzaninefor1.7.main()
+
+    - mezzanine-project=mezzanine.bin.mezzanine_project:create_project
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-contrib-comments
+    - django >1.6.0
+    - filebrowser_safe >=0.3.4
+    - grappelli_safe >=0.3.12
+    - tzlocal >=1.0
+    - bleach >=1.4
+    - beautifulsoup4 >=4.1.3
+    - requests >=2.1.0
+    - requests-oauthlib >=0.4
+    - future >=0.9.0
+    - pillow
+    - chardet
+
+  run:
+    - python
+    - setuptools
+    - django-contrib-comments
+    - django >1.6.0
+    - filebrowser_safe >=0.3.4
+    - grappelli_safe >=0.3.12
+    - tzlocal >=1.0
+    - bleach >=1.4
+    - beautifulsoup4 >=4.1.3
+    - requests >=2.1.0
+    - requests-oauthlib >=0.4
+    - future >=0.9.0
+    - pillow
+    - chardet
+
+test:
+  # Python imports
+  imports:
+    - mezzanine
+    - mezzanine.accounts
+    - mezzanine.accounts.templatetags
+    - mezzanine.bin
+    - mezzanine.blog
+    - mezzanine.blog.management
+    - mezzanine.blog.management.commands
+    - mezzanine.blog.migrations
+    - mezzanine.blog.migrations.south
+    - mezzanine.blog.templatetags
+    - mezzanine.boot
+    - mezzanine.conf
+    - mezzanine.conf.migrations
+    - mezzanine.conf.migrations.south
+    - mezzanine.core
+    - mezzanine.core.management
+    - mezzanine.core.management.commands
+    - mezzanine.core.migrations
+    - mezzanine.core.migrations.south
+    - mezzanine.core.templatetags
+    - mezzanine.forms
+    - mezzanine.forms.migrations
+    - mezzanine.forms.migrations.south
+    - mezzanine.galleries
+    - mezzanine.galleries.migrations
+    - mezzanine.galleries.migrations.south
+    - mezzanine.generic
+    - mezzanine.generic.migrations
+    - mezzanine.generic.migrations.south
+    - mezzanine.generic.templatetags
+    - mezzanine.mobile
+    - mezzanine.pages
+    - mezzanine.pages.migrations
+    - mezzanine.pages.migrations.south
+    - mezzanine.pages.templatetags
+    - mezzanine.project_template
+    - mezzanine.template
+    - mezzanine.twitter
+    - mezzanine.twitter.management
+    - mezzanine.twitter.management.commands
+    - mezzanine.twitter.migrations
+    - mezzanine.twitter.migrations.south
+    - mezzanine.twitter.templatetags
+    - mezzanine.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mezzanine-project --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mezzanine.jupo.org/
+  license: BSD License
+  summary: 'An open source content management platform built using the Django framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

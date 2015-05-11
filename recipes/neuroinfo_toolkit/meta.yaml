@@ -1,0 +1,74 @@
+package:
+  name: neuroinfo_toolkit
+  version: "1.5.1"
+
+source:
+  fn: neuroinfo_toolkit-1.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/neuroinfo_toolkit/neuroinfo_toolkit-1.5.1.tar.gz
+  md5: d8eaa4c3ca62198eaf4bb770640b5e38
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - neuroinfo_toolkit = neuroinfo_toolkit:main
+    #
+    # Would create an entry point called neuroinfo_toolkit that calls neuroinfo_toolkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2 >=0.6
+    - lxml >=2.2.6
+
+  run:
+    - python
+    - httplib2 >=0.6
+    - lxml >=2.2.6
+
+test:
+  # Python imports
+  imports:
+    - neuro
+    - neuro.algorithms
+    - neuro.algorithms.cpu
+    - neuro.algorithms.gpu
+    - neuro.apps
+    - neuro.classifiers
+    - neuro.contrib
+    - neuro.models
+    - neuro.net
+    - neuro.psych
+    - neuroinfo_toolkit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://neuroinfotoolkit.googlecode.com
+  license: GPLv3
+  summary: 'Neuroinfo Toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: m3-report-generator
+  version: "2.1.3.1"
+
+source:
+  fn: m3-report-generator-2.1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/m3-report-generator/m3-report-generator-2.1.3.1.tar.gz
+  md5: ad5b32e781f24576823ae83cdb262468
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m3-report-generator = m3-report-generator:main
+    #
+    # Would create an entry point called m3-report-generator that calls m3-report-generator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - report_generator
+    - report_generator.api
+    - report_generator.core
+    - report_generator.query_builder
+    - report_generator.query_builder.migrations
+    - report_generator.report_builder
+    - report_generator.report_builder.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/barsgroup/report-generator
+  license: MIT License
+  summary: u'\u041a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 \u043e\u0442\u0447\u0435\u0442\u043e\u0432'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

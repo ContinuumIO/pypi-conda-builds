@@ -1,0 +1,71 @@
+package:
+  name: docker-rpm-builder
+  version: "1.14"
+
+source:
+  fn: docker-rpm-builder-1.14.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-rpm-builder/docker-rpm-builder-1.14.tar.gz
+  md5: b33702e096fbea35b253316c8872440d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-rpm-builder = docker-rpm-builder:main
+    #
+    # Would create an entry point called docker-rpm-builder that calls docker-rpm-builder.main()
+
+    - docker-rpm-builder=drb.cmdline:cmdline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click ==3.3
+    - unittest2 ==0.8.0
+    - setuptools ==12.0.5
+
+  run:
+    - python
+    - setuptools
+    - click ==3.3
+    - unittest2 ==0.8.0
+    - setuptools ==12.0.5
+
+test:
+  # Python imports
+  imports:
+    - drb
+    - drb.commands
+    - drb.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - docker-rpm-builder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alanfranz/docker-rpm-builder
+  license: Apache-2.0
+  summary: 'Fast native RPM building from any distro, for any distro, via docker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

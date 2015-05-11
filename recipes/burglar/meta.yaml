@@ -1,0 +1,64 @@
+package:
+  name: burglar
+  version: "0.3"
+
+source:
+  fn: burglar-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/burglar/burglar-0.3.tar.gz
+  md5: cd415f78de0018f3fa3c90d1828ef0cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - burglar = burglar:main
+    #
+    # Would create an entry point called burglar that calls burglar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - lxml
+
+  run:
+    - python
+    - requests
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - burglar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lepture/burglar
+  license: BSD License
+  summary: 'Publish weixin, zhihu daily, zhihu zhuanlan into feeds.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

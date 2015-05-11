@@ -1,0 +1,70 @@
+package:
+  name: django-storelocator
+  version: "0.1"
+
+source:
+  fn: django-storelocator-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-storelocator/django-storelocator-0.1.tar.gz
+  md5: af454bf8ff58210a62597d7971b60e2c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-storelocator = django-storelocator:main
+    #
+    # Would create an entry point called django-storelocator that calls django-storelocator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - geopy >=0.95.1
+    - requests >=1.1.0
+
+  run:
+    - python
+    - geopy >=0.95.1
+    - requests >=1.1.0
+
+test:
+  # Python imports
+  imports:
+    - storelocator
+    - storelocator.importers
+    - storelocator.management
+    - storelocator.management.commands
+    - storelocator.migrations
+    - storelocator.tests
+    - storelocator.updaters
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/moccu
+  license: MIT License
+  summary: 'Django Storelocator is a Django App for locating stores near a geographical location.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

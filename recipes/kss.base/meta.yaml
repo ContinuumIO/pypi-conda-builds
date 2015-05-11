@@ -1,0 +1,68 @@
+package:
+  name: kss.base
+  version: "0.3"
+
+source:
+  fn: kss.base-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/k/kss.base/kss.base-0.3.tar.gz
+  md5: b7df69c40b5e0978f0e0cf14ee4dec36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kss.base = kss.base:main
+    #
+    # Would create an entry point called kss.base that calls kss.base.main()
+
+    - ksspackage=kss.base.utils:ksspackage
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - kss
+    - kss.base
+    - kss.base.compression
+    - kss.base.compression.thirdparty
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ksspackage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kssproject.org
+  license: GNU General Public License (GPL)
+  summary: 'KSS (Kinetic Style Sheets) framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: makina.recipe.postgres
+  version: "0.1"
+
+source:
+  fn: makina.recipe.postgres-0.1.zip
+  url: https://pypi.python.org/packages/source/m/makina.recipe.postgres/makina.recipe.postgres-0.1.zip
+  md5: 8c7d8b6b52c0345be625e6e038afc3b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - makina.recipe.postgres = makina.recipe.postgres:main
+    #
+    # Would create an entry point called makina.recipe.postgres that calls makina.recipe.postgres.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - makina
+    - makina.recipe
+    - makina.recipe.postgres
+    - makina.recipe.postgres.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.makina-corpus.org
+  license: GPL
+  summary: "init a postgresql's database for the project"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

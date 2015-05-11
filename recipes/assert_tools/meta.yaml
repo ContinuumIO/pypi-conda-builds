@@ -1,0 +1,68 @@
+package:
+  name: assert_tools
+  version: "0.0.2"
+
+source:
+  fn: assert_tools-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/assert_tools/assert_tools-0.0.2.tar.gz
+  md5: 4b2cfe8f6715492c76df19d39fcd9cc1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - assert_tools = assert_tools:main
+    #
+    # Would create an entry point called assert_tools that calls assert_tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unittest2
+    - requests
+    - httplib2
+
+  run:
+    - python
+    - unittest2
+    - requests
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - assert_tools
+    - assert_tools.rest
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mideo.github.io/assert_tools/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A Python Unit/Functional test library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

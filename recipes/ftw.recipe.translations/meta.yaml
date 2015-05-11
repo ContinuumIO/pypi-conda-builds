@@ -1,0 +1,88 @@
+package:
+  name: ftw.recipe.translations
+  version: "1.2.3"
+
+source:
+  fn: ftw.recipe.translations-1.2.3.zip
+  url: https://pypi.python.org/packages/source/f/ftw.recipe.translations/ftw.recipe.translations-1.2.3.zip
+  md5: c5624da7b85eac7b32bbb0a52b8286ee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.recipe.translations = ftw.recipe.translations:main
+    #
+    # Would create an entry point called ftw.recipe.translations that calls ftw.recipe.translations.main()
+
+    - masstranslate = ftw.recipe.translations.masstranslate.command:main
+    - i18n-build = ftw.recipe.translations.i18nbuild.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - gspread
+    - i18ndude
+    - keyring
+    - path.py
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - oauth2client <=1.3
+
+  run:
+    - python
+    - setuptools
+    - argparse
+    - gspread
+    - i18ndude
+    - keyring
+    - path.py
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - oauth2client <=1.3
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.recipe
+    - ftw.recipe.translations
+    - ftw.recipe.translations.i18nbuild
+    - ftw.recipe.translations.masstranslate
+    - ftw.recipe.translations.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - masstranslate --help
+    - i18n-build --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.recipe.translations
+  license: GPL2
+  summary: 'Mass export / import of translations into Google Docs Spreadsheets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

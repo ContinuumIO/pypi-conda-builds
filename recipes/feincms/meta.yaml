@@ -1,0 +1,101 @@
+package:
+  name: feincms
+  version: "1.11.0"
+
+source:
+  fn: FeinCMS-1.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/FeinCMS/FeinCMS-1.11.0.tar.gz
+  md5: 8fe901ac8a5f8d4543a507570ff789cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - feincms = feincms:main
+    #
+    # Would create an entry point called feincms that calls feincms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - django-mptt >=0.7.1
+    - pillow >=2.0.0
+    - feedparser >=5.0.0
+    - pytz >=2014.10
+
+  run:
+    - python
+    - django >=1.6
+    - django-mptt >=0.7.1
+    - pillow >=2.0.0
+    - feedparser >=5.0.0
+    - pytz >=2014.10
+
+test:
+  # Python imports
+  imports:
+    - feincms
+    - feincms.admin
+    - feincms.content
+    - feincms.content.application
+    - feincms.content.comments
+    - feincms.content.contactform
+    - feincms.content.file
+    - feincms.content.image
+    - feincms.content.medialibrary
+    - feincms.content.raw
+    - feincms.content.richtext
+    - feincms.content.rss
+    - feincms.content.section
+    - feincms.content.template
+    - feincms.content.video
+    - feincms.contrib
+    - feincms.contrib.preview
+    - feincms.management
+    - feincms.management.commands
+    - feincms.module
+    - feincms.module.blog
+    - feincms.module.blog.extensions
+    - feincms.module.extensions
+    - feincms.module.medialibrary
+    - feincms.module.page
+    - feincms.module.page.extensions
+    - feincms.module.page.templatetags
+    - feincms.templatetags
+    - feincms.utils
+    - feincms.utils.html
+    - feincms.views
+    - feincms.views.cbv
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/feincms/feincms/
+  license: BSD License
+  summary: 'Django-based Page CMS and CMS building toolkit.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

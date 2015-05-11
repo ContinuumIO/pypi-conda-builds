@@ -1,0 +1,74 @@
+package:
+  name: hovercraft
+  version: "2.0b1"
+
+source:
+  fn: hovercraft-2.0b1.zip
+  url: https://pypi.python.org/packages/source/h/hovercraft/hovercraft-2.0b1.zip
+  md5: 990d733d3e4f34ea20e445f6b42c179b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hovercraft = hovercraft:main
+    #
+    # Would create an entry point called hovercraft that calls hovercraft.main()
+
+    - hovercraft = hovercraft:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils >=0.9
+    - lxml >=3.1.0
+    - svg.path
+    - pygments
+    - watchdog
+
+  run:
+    - python
+    - docutils >=0.9
+    - lxml >=3.1.0
+    - svg.path
+    - pygments
+    - watchdog
+
+test:
+  # Python imports
+  imports:
+    - hovercraft
+    - hovercraft.tests
+    - hovercraft.tests.test_data
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hovercraft --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/regebro/hovercraft
+  license: MIT License
+  summary: 'Makes impress.js presentations from reStructuredText'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

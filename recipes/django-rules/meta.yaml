@@ -1,0 +1,63 @@
+package:
+  name: django-rules
+  version: "0.2"
+
+source:
+  fn: django-rules-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rules/django-rules-0.2.tar.gz
+  md5: 11ff5214f631abe2c8f5e7e3d2ce6ff3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rules = django-rules:main
+    #
+    # Would create an entry point called django-rules that calls django-rules.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_rules
+    - django_rules.management
+    - django_rules.management.commands
+    - django_rules.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/maraujop/django-rules
+  license: BSD License
+  summary: 'Flexible per-object authorization backend for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: mapillary
+  version: "0.0.2"
+
+source:
+  fn: mapillary-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mapillary/mapillary-0.0.2.tar.gz
+  md5: 39f1eabb6f06e2b8a46d46e23297e134
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mapillary = mapillary:main
+    #
+    # Would create an entry point called mapillary that calls mapillary.main()
+
+    - mapillary=mapillary.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=2.6.4
+    - requests >=2.5.1
+    - exifread >=2.0.0
+    - gpxpy >=0.9.8
+    - python-dateutil >=2.4.0
+
+  run:
+    - python
+    - setuptools
+    - pytest >=2.6.4
+    - requests >=2.5.1
+    - exifread >=2.0.0
+    - gpxpy >=0.9.8
+    - python-dateutil >=2.4.0
+
+test:
+  # Python imports
+  imports:
+    - mapillary
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mapillary --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mapillary/mapillary_tools
+  license: MIT License
+  summary: 'Useful tools and scripts related to Mapillary'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

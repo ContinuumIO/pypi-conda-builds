@@ -1,0 +1,65 @@
+package:
+  name: diff_py
+  version: "0.0.11"
+
+source:
+  fn: diff_py-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/diff_py/diff_py-0.0.11.tar.gz
+  md5: 81e2470f4696a46456b3de1cbf959840
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - diff_py = diff_py:main
+    #
+    # Would create an entry point called diff_py that calls diff_py.main()
+
+    - diff_py=diff_py.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py >=1.4.20
+
+  run:
+    - python
+    - setuptools
+    - py >=1.4.20
+
+test:
+  # Python imports
+  imports:
+    - diff_py
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - diff_py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/askeing/diff_py
+  license: MPL
+  summary: 'The simple diff tool which is written by Python. The diff result can be printed in console or to html file.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

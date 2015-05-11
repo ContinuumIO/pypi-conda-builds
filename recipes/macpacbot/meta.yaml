@@ -1,0 +1,67 @@
+package:
+  name: macpacbot
+  version: "1.0.9"
+
+source:
+  fn: MacPacbot-1.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/M/MacPacbot/MacPacbot-1.0.9.tar.gz
+  md5: 0b13634fea45ec5198d7a83df7588afb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - macpacbot = macpacbot:main
+    #
+    # Would create an entry point called macpacbot that calls macpacbot.main()
+
+    - pacbot = MacPacbot.pacbot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - mako
+
+  run:
+    - python
+    - pyyaml
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - MacPacbot
+    - macpacbot
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pacbot --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dexteryy.github.com/MacPacbot
+  license: MIT License
+  summary: 'MacPacbot is a Python toolkit of PAC(auto proxy configuration) for Mac OS X'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

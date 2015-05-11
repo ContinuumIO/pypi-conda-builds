@@ -1,0 +1,62 @@
+package:
+  name: kiji-bento-cluster
+  version: "2.0.10"
+
+source:
+  fn: kiji-bento-cluster-2.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/k/kiji-bento-cluster/kiji-bento-cluster-2.0.10.tar.gz
+  md5: f331377f4686f359985089c8c7ad2c7d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kiji-bento-cluster = kiji-bento-cluster:main
+    #
+    # Would create an entry point called kiji-bento-cluster that calls kiji-bento-cluster.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-py ==0.6.0
+
+  run:
+    - python
+    - docker-py ==0.6.0
+
+test:
+  # Python imports
+  imports:
+    - bento
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.kiji.org/
+  license: Apache License 2.0
+  summary: 'CDH and Datastax Enterprise docker single-node development cluster.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

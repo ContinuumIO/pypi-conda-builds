@@ -1,0 +1,76 @@
+package:
+  name: itc.cli
+  version: "0.4.11"
+
+source:
+  fn: itc.cli-0.4.11.tar.gz
+  url: https://pypi.python.org/packages/source/i/itc.cli/itc.cli-0.4.11.tar.gz
+  md5: 5bc71330a1a0656b6e24ac2ef8b7d656
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - itc.cli = itc.cli:main
+    #
+    # Would create an entry point called itc.cli that calls itc.cli.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==0.14.2
+    - lxml
+    - html5lib
+    - docopt ==0.6.1
+    - beautifulsoup4 ==4.2.1
+    - keyring ==3.3
+
+  run:
+    - python
+    - requests ==0.14.2
+    - lxml
+    - html5lib
+    - docopt ==0.6.1
+    - beautifulsoup4 ==4.2.1
+    - keyring ==3.3
+
+test:
+  # Python imports
+  imports:
+    - itc
+    - itc.conf
+    - itc.core
+    - itc.parsers
+    - itc.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kovpas/itc.cli
+  license: MIT License
+  summary: 'iTunesConnect command line interface.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,98 @@
+package:
+  name: gocept.selenium
+  version: "2.4.0"
+
+source:
+  fn: gocept.selenium-2.4.0.zip
+  url: https://pypi.python.org/packages/source/g/gocept.selenium/gocept.selenium-2.4.0.zip
+  md5: 3f7620ca2dd5a8d1a412d401ff0973af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.selenium = gocept.selenium:main
+    #
+    # Would create an entry point called gocept.selenium that calls gocept.selenium.main()
+
+    - converthtmltests = gocept.selenium.scripts.converthtmltests:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - gocept.httpserverlayer >1.2
+    - httpagentparser
+    - plone.testing
+    - selenium >=2.28
+    - pillow
+    - setuptools
+
+  run:
+    - python
+    - gocept.httpserverlayer >1.2
+    - httpagentparser
+    - plone.testing
+    - selenium >=2.28
+    - pillow
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.selenium
+    - gocept.selenium.grok
+    - gocept.selenium.plone
+    - gocept.selenium.plone.tests
+    - gocept.selenium.plone.tests.plone3
+    - gocept.selenium.plone.tests.plone4
+    - gocept.selenium.plonetesting
+    - gocept.selenium.plonetesting.tests
+    - gocept.selenium.plonetesting.tests.plone3
+    - gocept.selenium.plonetesting.tests.plone4
+    - gocept.selenium.plonetesting.tests.zope2
+    - gocept.selenium.scripts
+    - gocept.selenium.scripts.tests
+    - gocept.selenium.static
+    - gocept.selenium.tests
+    - gocept.selenium.tests.fixture
+    - gocept.selenium.tests.isolation
+    - gocept.selenium.tests.screenshot_directory
+    - gocept.selenium.wsgi
+    - gocept.selenium.zope2
+    - gocept.selenium.zope2.tests
+    - gocept.selenium.zope2.tests.zope210
+    - gocept.selenium.zope2.tests.zope212
+    - gocept.selenium.ztk
+    - gocept.selenium.ztk.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - converthtmltests --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://goceptselenium.readthedocs.org/
+  license: Zope Public License
+  summary: 'Test-friendly Python API for Selenium and integration with web application frameworks.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

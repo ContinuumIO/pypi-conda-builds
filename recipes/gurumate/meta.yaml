@@ -1,0 +1,67 @@
+package:
+  name: gurumate
+  version: "2.8.6"
+
+source:
+  fn: gurumate-2.8.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/gurumate/gurumate-2.8.6.tar.gz
+  md5: e45fa61c07fcfa513e5fc9bfbc5149ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gurumate = gurumate:main
+    #
+    # Would create an entry point called gurumate that calls gurumate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psutil >=0.3.0
+    - mysql-python
+
+  run:
+    - python
+    - psutil >=0.3.0
+    - mysql-python
+
+test:
+  # Python imports
+  imports:
+    - gurumate
+    - gurumate.exceptions
+    - gurumate.linux2
+    - gurumate.win32
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://confluence.cloud9ers.com/display/TGILA/Gurumate+SDK
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A library of platform-independent tools that ease gathering information about the system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: look-at
+  version: "1.1"
+
+source:
+  fn: look-at-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/look-at/look-at-1.1.tar.gz
+  md5: fb0949d14b77aa73c689268bc88858ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - look-at = look-at:main
+    #
+    # Would create an entry point called look-at that calls look-at.main()
+
+    - look-at = look_at.scripts.look_at:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - look_at
+    - look_at.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - look-at --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Command line window focus switcher'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

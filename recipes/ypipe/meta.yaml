@@ -1,0 +1,63 @@
+package:
+  name: ypipe
+  version: "0.8"
+
+source:
+  fn: ypipe-0.8.tar.gz
+  url: https://ypipe.googlecode.com/files/ypipe-0.8.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ypipe = ypipe:main
+    #
+    # Would create an entry point called ypipe that calls ypipe.main()
+
+    - ypipe = ypipe.ypipe_cmd:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - ypipe
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ypipe --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/ypipe/
+  license: GPL v2
+  summary: 'Splits stdin to several command lines. Compare with xargs which converts stdin to arguments of command lines.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

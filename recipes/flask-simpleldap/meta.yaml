@@ -1,0 +1,64 @@
+package:
+  name: flask-simpleldap
+  version: "0.3.0"
+
+source:
+  fn: Flask-SimpleLDAP-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-SimpleLDAP/Flask-SimpleLDAP-0.3.0.tar.gz
+  md5: 9bd468ccd6468ace030bb6d3a04288d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-simpleldap = flask-simpleldap:main
+    #
+    # Would create an entry point called flask-simpleldap that calls flask-simpleldap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.9
+    - python-ldap
+
+  run:
+    - python
+    - flask >=0.9
+    - python-ldap
+
+test:
+  # Python imports
+  imports:
+    - flask_simpleldap
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/admiralobvious/flask-simpleldap
+  license: MIT License
+  summary: 'LDAP authentication extension for Flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

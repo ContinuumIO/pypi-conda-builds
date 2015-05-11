@@ -1,0 +1,75 @@
+package:
+  name: dumblr
+  version: "1.0"
+
+source:
+  fn: dumblr-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dumblr/dumblr-1.0.tar.gz
+  md5: c959f7e1e36fdd474c3c71cadf99747e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dumblr = dumblr:main
+    #
+    # Would create an entry point called dumblr that calls dumblr.main()
+
+    - dumblr=dumblr.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - pyyaml
+    - pytumblr
+    - requests
+    - requests_oauthlib
+    - unidecode
+
+  run:
+    - python
+    - setuptools
+    - click
+    - pyyaml
+    - pytumblr
+    - requests
+    - requests_oauthlib
+    - unidecode
+
+test:
+  # Python imports
+  imports:
+    - dumblr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dumblr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/devty1023/dumblr
+  license: MIT
+  summary: 'tumblr for devs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

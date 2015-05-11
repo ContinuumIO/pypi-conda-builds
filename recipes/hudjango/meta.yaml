@@ -1,0 +1,75 @@
+package:
+  name: hudjango
+  version: "0.95p1"
+
+source:
+  fn: huDjango-0.95p1.tar.gz
+  url: https://pypi.python.org/packages/source/h/huDjango/huDjango-0.95p1.tar.gz
+  md5: ff78427cfd82721f5abf7ccc172dbca2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hudjango = hudjango:main
+    #
+    # Would create an entry point called hudjango that calls hudjango.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hudjango
+    - hudjango.auth
+    - hudjango.fields
+    - hudjango.forms
+    - hudjango.management
+    - hudjango.management.commands
+    - hudjango.middleware
+    - hudjango.storage
+    - hudjango.templateloaders
+    - hudjango.templatetags
+    - tests
+    - tests.regressiontests
+    - tests.regressiontests.auth_backends
+    - tests.regressiontests.auth_decorators
+    - tests.regressiontests.logger
+    - tests.regressiontests.serializers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/hudora/huDjango
+  license: BSD License
+  summary: 'various snippets for use with Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

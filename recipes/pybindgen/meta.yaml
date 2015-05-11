@@ -1,0 +1,61 @@
+package:
+  name: pybindgen
+  version: "0.17.0"
+
+source:
+  fn: PyBindGen-0.17.0.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-0.17.0.tar.gz
+  md5: 7d8fe2b3b4646c3c1d9e5342b1645f6a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pybindgen = pybindgen:main
+    #
+    # Would create an entry point called pybindgen that calls pybindgen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pybindgen
+    - pybindgen.typehandlers
+    - pybindgen.typehandlers.ctypeparser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/pybindgen
+  license: UNKNOWN
+  summary: 'Python Bindings Generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

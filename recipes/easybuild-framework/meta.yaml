@@ -1,0 +1,77 @@
+package:
+  name: easybuild-framework
+  version: "2.1.0"
+
+source:
+  fn: easybuild-framework-2.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/easybuild-framework/easybuild-framework-2.1.0.tar.gz
+  md5: e18f1367b25d2b24aa7a331972d98482
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easybuild-framework = easybuild-framework:main
+    #
+    # Would create an entry point called easybuild-framework that calls easybuild-framework.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vsc-base >=2.2.0
+
+  run:
+    - python
+    - vsc-base >=2.2.0
+
+test:
+  # Python imports
+  imports:
+    - easybuild
+    - easybuild.framework
+    - easybuild.framework.easyconfig
+    - easybuild.framework.easyconfig.format
+    - easybuild.toolchains
+    - easybuild.toolchains.compiler
+    - easybuild.toolchains.fft
+    - easybuild.toolchains.linalg
+    - easybuild.toolchains.mpi
+    - easybuild.tools
+    - easybuild.tools.deprecated
+    - easybuild.tools.module_naming_scheme
+    - easybuild.tools.repository
+    - easybuild.tools.toolchain
+    - test
+    - test.framework
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hpcugent.github.com/easybuild
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'The EasyBuild framework supports the creation of custom easyblocks that implement support for installing particular (groups of) software packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

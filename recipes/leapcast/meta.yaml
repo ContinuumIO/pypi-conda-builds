@@ -1,0 +1,69 @@
+package:
+  name: leapcast
+  version: "0.1.3"
+
+source:
+  fn: Leapcast-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/L/Leapcast/Leapcast-0.1.3.tar.gz
+  md5: 6ee1f29363ad971f94606b7ac77c30bb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - leapcast = leapcast:main
+    #
+    # Would create an entry point called leapcast that calls leapcast.main()
+
+    - leapcast = leapcast.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - tornado
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - leapcast
+    - leapcast.apps
+    - leapcast.services
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - leapcast --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.mopidy.com/
+  license: MIT License
+  summary: 'ChromeCast functionality for any device'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

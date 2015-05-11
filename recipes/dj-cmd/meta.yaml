@@ -1,0 +1,62 @@
+package:
+  name: dj-cmd
+  version: "0.5"
+
+source:
+  fn: dj-cmd-0.5.zip
+  url: https://pypi.python.org/packages/source/d/dj-cmd/dj-cmd-0.5.zip
+  md5: 999aef605a004b8be17bcd30a33b9e22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dj-cmd = dj-cmd:main
+    #
+    # Would create an entry point called dj-cmd that calls dj-cmd.main()
+
+    - dj = dj_cmd.dj:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dj_cmd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dj --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nigma/dj-cmd
+  license: BSD License
+  summary: "`dj cmd` is a shortcut for Django's `python manage.py` commands."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

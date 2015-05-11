@@ -1,0 +1,60 @@
+package:
+  name: junit-xml-output
+  version: "1.0.3"
+
+source:
+  fn: junit-xml-output-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/j/junit-xml-output/junit-xml-output-1.0.3.tar.gz
+  md5: 5d15d58d200c994a5b6e8d69582c328e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - junit-xml-output = junit-xml-output:main
+    #
+    # Would create an entry point called junit-xml-output that calls junit-xml-output.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - junit_xml_output
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/db_atlass/python-junit-xml-output-module
+  license: MIT
+  summary: 'Create junit test xml output from python!\n\n## Example Usage\n\n    import junit_xml_output\n    test_cases = []\n    test_cases.append(junit_xml_output.TestCase("first", "eg_contents",\n        "failure"))\n    junit_xml = junit_xml_output.JunitXml("example_usage", test_cases)\n    print (junit_xml.dump())\n\n\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

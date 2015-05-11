@@ -1,0 +1,175 @@
+package:
+  name: ebpub
+  version: "1.2"
+
+source:
+  fn: ebpub-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/ebpub/ebpub-1.2.tar.gz
+  md5: 198927493b5db807fb4ac092f6b411eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ebpub = ebpub:main
+    #
+    # Would create an entry point called ebpub that calls ebpub.main()
+
+    - send_alerts = ebpub.alerts.sending:main
+    - activate_schema = ebpub.db.bin.activate_schema:main
+    - add_location = ebpub.db.bin.add_location:main
+    - alphabetize_locations = ebpub.db.bin.alphabetize_locations:main
+    - export_schema = ebpub.db.bin.export_schema:main
+    - geocode_newsitems = ebpub.db.bin.geocode_newsitems:main
+    - import_locations = ebpub.db.bin.import_locations:main
+    - import_neighborhoods = ebpub.db.bin.import_hoods:main
+    - import_zips_tiger = ebpub.db.bin.import_zips:main
+    - update_aggregates = ebpub.db.bin.update_aggregates:main
+    - populate_streets = ebpub.streets.bin.populate_streets:main
+    - populate_suburbs = ebpub.streets.bin.populate_suburbs:main
+    - fix_block_numbers = ebpub.streets.bin.fix_block_numbers:main
+    - update_block_pretty_names = ebpub.streets.bin.update_block_pretty_names:update_block_pretty_names
+    - delete_blocks_outside_city = ebpub.streets.bin.delete_blocks_outside_city:delete_blocks_outside_city
+    - import_blocks_tiger = ebpub.streets.blockimport.tiger.import_blocks:main
+    - import_blocks_esri = ebpub.streets.blockimport.esri.importers.blocks:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3.1
+    - django-static
+    - gdal
+    - pyyaml
+    - psycopg2 >=2.0,<2.4.2
+    - slimmer
+    - pyrfc3339
+    - recaptcha-client
+    - south
+    - mock >=0.8.0
+    - django-olwidget >=0.49
+    - setuptools-git
+    - python-dateutil <2.0
+    - django-jsonfield >=0.6
+    - easy-thumbnails
+    - pil
+    - pytz
+    - shapely
+
+  run:
+    - python
+    - django >=1.3.1
+    - django-static
+    - gdal
+    - pyyaml
+    - psycopg2 >=2.0,<2.4.2
+    - slimmer
+    - pyrfc3339
+    - recaptcha-client
+    - south
+    - mock >=0.8.0
+    - django-olwidget >=0.49
+    - setuptools-git
+    - python-dateutil <2.0
+    - django-jsonfield >=0.6
+    - easy-thumbnails
+    - pil
+    - pytz
+    - shapely
+
+test:
+  # Python imports
+  imports:
+    - ebpub
+    - ebpub.accounts
+    - ebpub.accounts.management
+    - ebpub.accounts.management.commands
+    - ebpub.accounts.migrations
+    - ebpub.alerts
+    - ebpub.alerts.migrations
+    - ebpub.db
+    - ebpub.db.bin
+    - ebpub.db.management
+    - ebpub.db.management.commands
+    - ebpub.db.migrations
+    - ebpub.db.templatetags
+    - ebpub.db.tests
+    - ebpub.geocoder
+    - ebpub.geocoder.migrations
+    - ebpub.geocoder.parser
+    - ebpub.geocoder.tests
+    - ebpub.metros
+    - ebpub.metros.migrations
+    - ebpub.moderation
+    - ebpub.moderation.migrations
+    - ebpub.neighbornews
+    - ebpub.neighbornews.migrations
+    - ebpub.openblockapi
+    - ebpub.openblockapi.apikey
+    - ebpub.openblockapi.apikey.migrations
+    - ebpub.petitions
+    - ebpub.petitions.migrations
+    - ebpub.preferences
+    - ebpub.preferences.migrations
+    - ebpub.richmaps
+    - ebpub.savedplaces
+    - ebpub.savedplaces.migrations
+    - ebpub.streets
+    - ebpub.streets.bin
+    - ebpub.streets.blockimport
+    - ebpub.streets.blockimport.esri
+    - ebpub.streets.blockimport.esri.importers
+    - ebpub.streets.blockimport.esri.management
+    - ebpub.streets.blockimport.esri.management.commands
+    - ebpub.streets.blockimport.tiger
+    - ebpub.streets.migrations
+    - ebpub.utils
+    - ebpub.widgets
+    - ebpub.widgets.migrations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - send_alerts --help
+    - activate_schema --help
+    - add_location --help
+    - alphabetize_locations --help
+    - export_schema --help
+    - geocode_newsitems --help
+    - import_locations --help
+    - import_neighborhoods --help
+    - import_zips_tiger --help
+    - update_aggregates --help
+    - populate_streets --help
+    - populate_suburbs --help
+    - fix_block_numbers --help
+    - update_block_pretty_names --help
+    - delete_blocks_outside_city --help
+    - import_blocks_tiger --help
+    - import_blocks_esri --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://openblockproject.org/docs
+  license: GNU General Public License (GPL)
+  summary: 'Core models and views for OpenBlock (hyperlocal news for Django)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

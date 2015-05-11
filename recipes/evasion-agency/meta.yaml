@@ -1,0 +1,72 @@
+package:
+  name: evasion-agency
+  version: "1.1.5"
+
+source:
+  fn: evasion-agency-1.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/e/evasion-agency/evasion-agency-1.1.5.tar.gz
+  md5: a1743f40f70c36875ca13b898aa94936
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - evasion-agency = evasion-agency:main
+    #
+    # Would create an entry point called evasion-agency that calls evasion-agency.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mako
+    - configobj
+    - pydispatcher
+
+  run:
+    - python
+    - mako
+    - configobj
+    - pydispatcher
+
+test:
+  # Python imports
+  imports:
+    - evasion
+    - evasion.agency
+    - evasion.agency.agents
+    - evasion.agency.agents.base
+    - evasion.agency.agents.testing
+    - evasion.agency.agents.tests
+    - evasion.agency.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/oisinmulvihill/evasion-agency/tarball/master#egg=evasion_agency
+  license: Evasion Project CDDL License
+  summary: 'This provides the hardware abstraction layer communicated with via the event system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

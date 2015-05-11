@@ -1,0 +1,68 @@
+package:
+  name: kindlepush
+  version: "0.3.1"
+
+source:
+  fn: kindlepush-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/k/kindlepush/kindlepush-0.3.1.tar.gz
+  md5: 37ae5c3f682a82a3511493a14ce339d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kindlepush = kindlepush:main
+    #
+    # Would create an entry point called kindlepush that calls kindlepush.main()
+
+    - kindlepush=kindlepush.kindlepush:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - beautifulsoup4
+    - terminal
+
+  run:
+    - python
+    - requests
+    - beautifulsoup4
+    - terminal
+
+test:
+  # Python imports
+  imports:
+    - kindlepush
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kindlepush --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lord63/kindledxpush
+  license: MIT License
+  summary: 'Automatically send your doc to your kindle without clicking the deliver button for 3G device'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

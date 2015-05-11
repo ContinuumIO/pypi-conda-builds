@@ -1,0 +1,69 @@
+package:
+  name: mr.developer
+  version: "1.31"
+
+source:
+  fn: mr.developer-1.31.zip
+  url: https://pypi.python.org/packages/source/m/mr.developer/mr.developer-1.31.zip
+  md5: e6897b7c3bd03b4655e540a6751dc93c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.developer = mr.developer:main
+    #
+    # Would create an entry point called mr.developer that calls mr.developer.main()
+
+    - develop=mr.developer.develop:develop
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.developer
+    - mr.developer.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - develop --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fschulze/mr.developer
+  license: BSD
+  summary: 'A zc.buildout extension to ease the development of large projects with lots of packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

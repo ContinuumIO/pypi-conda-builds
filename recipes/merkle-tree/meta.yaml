@@ -1,0 +1,66 @@
+package:
+  name: merkle-tree
+  version: "0.2"
+
+source:
+  fn: merkle-tree-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/merkle-tree/merkle-tree-0.2.tar.gz
+  md5: a480d1d6c3fa6f5e35cc6af164aeca5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - merkle-tree = merkle-tree:main
+    #
+    # Would create an entry point called merkle-tree that calls merkle-tree.main()
+
+    - merkle=merkle_tree:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - botocore
+    - click
+
+  run:
+    - python
+    - setuptools
+    - botocore
+    - click
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - merkle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quiver/merkle_tree
+  license: Apache Software License
+  summary: 'CLI to calculate Merkle Tree based on botocore implementation.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

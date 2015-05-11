@@ -1,0 +1,68 @@
+package:
+  name: envrunner
+  version: "0.1.8"
+
+source:
+  fn: envRunner-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/e/envRunner/envRunner-0.1.8.tar.gz
+  md5: d2837943aab11c6aca0a6fc7d97a371a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - envrunner = envrunner:main
+    #
+    # Would create an entry point called envrunner that calls envrunner.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - requests
+    - pyyaml
+    - wsgiref
+
+  run:
+    - python
+    - docopt
+    - requests
+    - pyyaml
+    - wsgiref
+
+test:
+  # Python imports
+  imports:
+    - envrunner
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/HeqetLabs/envRunner
+  license: Apache Software License
+  summary: 'Run a command with environment variables set from a url or file'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

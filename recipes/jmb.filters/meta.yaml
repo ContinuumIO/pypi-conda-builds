@@ -1,0 +1,64 @@
+package:
+  name: jmb.filters
+  version: "0.1.7"
+
+source:
+  fn: jmb.filters-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmb.filters/jmb.filters-0.1.7.tar.gz
+  md5: 7168ea049ea18d290984e55af3263180
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmb.filters = jmb.filters:main
+    #
+    # Would create an entry point called jmb.filters that calls jmb.filters.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_filters
+    - jmb
+    - jmb.filters
+    - jmb.filters.admin
+    - jmb.filters.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.thux.it/jmb.filters
+  license: BSD License
+  summary: 'jmb.filters is a reusable Django application for allowing users to filter querysets dynamically.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

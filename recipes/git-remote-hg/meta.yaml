@@ -1,0 +1,62 @@
+package:
+  name: git-remote-hg
+  version: "0.1.1"
+
+source:
+  fn: git-remote-hg-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-remote-hg/git-remote-hg-0.1.1.tar.gz
+  md5: b13d96a93010566dc002e3f33e90c1ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-remote-hg = git-remote-hg:main
+    #
+    # Would create an entry point called git-remote-hg that calls git-remote-hg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hg-git
+
+  run:
+    - python
+    - hg-git
+
+test:
+  # Python imports
+  imports:
+    - git_remote_hg
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rfk/git-remote-hg
+  license: MIT License
+  summary: 'access hg repositories as git remotes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

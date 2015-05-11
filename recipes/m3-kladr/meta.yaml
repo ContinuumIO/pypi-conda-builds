@@ -1,0 +1,71 @@
+package:
+  name: m3-kladr
+  version: "2.0.3.1"
+
+source:
+  fn: m3-kladr-2.0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/m3-kladr/m3-kladr-2.0.3.1.tar.gz
+  md5: 6fc24946d7a3eebd8e145c29c2b62122
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m3-kladr = m3-kladr:main
+    #
+    # Would create an entry point called m3-kladr that calls m3-kladr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m3-dbfpy ==2.2.5
+    - m3-core >=2.0
+    - m3-ui >=2.0
+
+  run:
+    - python
+    - m3-dbfpy ==2.2.5
+    - m3-core >=2.0
+    - m3-ui >=2.0
+
+test:
+  # Python imports
+  imports:
+    - kladr
+    - kladr.management
+    - kladr.management.commands
+    - kladr.migrations
+    - tests
+    - tests.core
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/barsgroup/m3-kladr
+  license: MIT License
+  summary: u'\u041a\u043b\u0430\u0441\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0430\u0434\u0440\u0435\u0441\u043e\u0432 \u0420\u043e\u0441\u0441\u0438\u0439\u0441\u043a\u043e\u0439 \u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u0438'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

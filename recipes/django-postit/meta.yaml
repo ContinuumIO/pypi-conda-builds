@@ -1,0 +1,63 @@
+package:
+  name: django-postit
+  version: "0.3"
+
+source:
+  fn: django-postit-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-postit/django-postit-0.3.tar.gz
+  md5: 0c8c552e763624f0a8c1ee435a01ab6e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-postit = django-postit:main
+    #
+    # Would create an entry point called django-postit that calls django-postit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - postit
+    - postit.colors
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/0xPr0xy/django-postit
+  license: BSD License
+  summary: 'django-postit is a scrumboard application for django projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: github-social-graph
+  version: "0.1.1"
+
+source:
+  fn: github-social-graph-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/github-social-graph/github-social-graph-0.1.1.tar.gz
+  md5: d9b5336b6ec778390214b2bf949001c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github-social-graph = github-social-graph:main
+    #
+    # Would create an entry point called github-social-graph that calls github-social-graph.main()
+
+    - github-social-graph = github_social_graph:main
+    - gsg = github_social_graph:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygithub33 >=0.6.2
+    - pygraphviz >=1.3rc2
+    - pillow >=2.4.0
+    - six
+
+  run:
+    - python
+    - pygithub33 >=0.6.2
+    - pygraphviz >=1.3rc2
+    - pillow >=2.4.0
+    - six
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - github-social-graph --help
+    - gsg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Kagami/github-social-graph
+  license: CC0
+  summary: 'Build simple social graphs for GitHub'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

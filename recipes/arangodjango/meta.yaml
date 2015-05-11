@@ -1,0 +1,71 @@
+package:
+  name: arangodjango
+  version: "0.0.25"
+
+source:
+  fn: ArangoDjango-0.0.25.tar.gz
+  url: https://pypi.python.org/packages/source/A/ArangoDjango/ArangoDjango-0.0.25.tar.gz
+  md5: aea8e558cbf9c141b5efa091dcc9a2e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arangodjango = arangodjango:main
+    #
+    # Would create an entry point called arangodjango that calls arangodjango.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - arangodjango
+    - djara
+    - djara.django
+    - djara.django.auth
+    - djara.django.contrib
+    - djara.django.contrib.admin
+    - djara.django.forms
+    - djara.django.mail
+    - djara.django.menus
+    - djara.django.menus.templatetags
+    - djara.django.models
+    - djara.django.restframework
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saeschdivara/ArangoDjango
+  license: MIT
+  summary: 'Bridge between the django and the arangodb world'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

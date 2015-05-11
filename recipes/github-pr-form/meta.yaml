@@ -1,0 +1,72 @@
+package:
+  name: github-pr-form
+  version: "0.1.1"
+
+source:
+  fn: github-pr-form-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/github-pr-form/github-pr-form-0.1.1.tar.gz
+  md5: e2c809397869f6088ed8ad1ac4587cc3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github-pr-form = github-pr-form:main
+    #
+    # Would create an entry point called github-pr-form that calls github-pr-form.main()
+
+    - ghform = ghform.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - github3.py ==0.9.3
+    - sh ==1.09
+    - click ==3.3
+    - markdown2 ==2.3.0
+    - selenium ==2.44.0
+
+  run:
+    - python
+    - github3.py ==0.9.3
+    - sh ==1.09
+    - click ==3.3
+    - markdown2 ==2.3.0
+    - selenium ==2.44.0
+
+test:
+  # Python imports
+  imports:
+    - ghform
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ghform --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aaron0browne/github-pr-form
+  license: MIT License
+  summary: 'A small python utility for generating forms from the command line and adding them to GitHub pull requests or issues, while tracking them in a secondary github repo.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

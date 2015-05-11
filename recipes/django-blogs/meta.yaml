@@ -1,0 +1,72 @@
+package:
+  name: django-blogs
+  version: "0.2.0"
+
+source:
+  fn: django-blogs-0.2.0.zip
+  url: https://pypi.python.org/packages/source/d/django-blogs/django-blogs-0.2.0.zip
+  md5: b95e897db1dc0784f058d47bbed70bc9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-blogs = django-blogs:main
+    #
+    # Would create an entry point called django-blogs that calls django-blogs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-misc
+    - django-pagination
+    - django-tagging
+    - django-voter
+
+  run:
+    - python
+    - django >=1.2
+    - django-misc
+    - django-pagination
+    - django-tagging
+    - django-voter
+
+test:
+  # Python imports
+  imports:
+    - blog
+    - blog.migrations
+    - blog.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ilblackdragon/django-blogs.git
+  license: MIT
+  summary: 'Django blogs - module that provide blogs to your django application.\n- One user blog\n- Multi blogging system\n- Blog per user\n- Safe html in posts\n- System to manage permissions to read\\write\\moderate blogs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

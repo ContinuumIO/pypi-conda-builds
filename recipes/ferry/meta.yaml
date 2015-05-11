@@ -1,0 +1,107 @@
+package:
+  name: ferry
+  version: "0.3.3.4"
+
+source:
+  fn: ferry-0.3.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/ferry/ferry-0.3.3.4.tar.gz
+  md5: 49737fd038475e75fe271cddaf37e938
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ferry = ferry:main
+    #
+    # Would create an entry point called ferry that calls ferry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.32.1
+    - flask >=0.10.1
+    - pyyaml >=3.10
+    - pymongo >=2.6.3
+    - python-novaclient ==2.18.1
+    - python-neutronclient ==2.3.5
+    - python-heatclient ==0.2.10
+    - requests >=1.2.3
+    - sh >=1.09
+    - six >=1.7.0
+    - sphinx >=1.2.1
+    - sphinxcontrib-httpdomain >=1.2.0
+    - termcolor ==1.1.0
+    - threading2 ==0.3.1
+    - tornado >=4.0.2
+
+  run:
+    - python
+    - boto >=2.32.1
+    - flask >=0.10.1
+    - pyyaml >=3.10
+    - pymongo >=2.6.3
+    - python-novaclient ==2.18.1
+    - python-neutronclient ==2.3.5
+    - python-heatclient ==0.2.10
+    - requests >=1.2.3
+    - sh >=1.09
+    - six >=1.7.0
+    - sphinx >=1.2.1
+    - sphinxcontrib-httpdomain >=1.2.0
+    - termcolor ==1.1.0
+    - threading2 ==0.3.1
+    - tornado >=4.0.2
+
+test:
+  # Python imports
+  imports:
+    - ferry
+    - ferry.cli
+    - ferry.config
+    - ferry.config.cassandra
+    - ferry.config.gluster
+    - ferry.config.hadoop
+    - ferry.config.mongo
+    - ferry.config.openmpi
+    - ferry.config.spark
+    - ferry.config.system
+    - ferry.config.titan
+    - ferry.docker
+    - ferry.fabric
+    - ferry.fabric.aws
+    - ferry.fabric.openstack
+    - ferry.http
+    - ferry.ip
+    - ferry.table
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ferry.opencore.io
+  license: Apache License 2.0
+  summary: u'Big data development environments using Docker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

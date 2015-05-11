@@ -1,0 +1,66 @@
+package:
+  name: latexpages
+  version: "0.3"
+
+source:
+  fn: latexpages-0.3.zip
+  url: https://pypi.python.org/packages/source/l/latexpages/latexpages-0.3.zip
+  md5: 9f2c6f45c693916c999d03255dd3d5b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - latexpages = latexpages:main
+    #
+    # Would create an entry point called latexpages that calls latexpages.main()
+
+    - latexpages=latexpages.__main__:main
+    - latexpages-paginate=latexpages.__main__:main_paginate
+    - latexpages-clean=latexpages.__main__:main_clean
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - latexpages
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - latexpages --help
+    - latexpages-paginate --help
+    - latexpages-clean --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/xflr6/latexpages
+  license: MIT License
+  summary: 'Combine LaTeX docs into a single PDF'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

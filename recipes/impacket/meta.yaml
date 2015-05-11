@@ -1,0 +1,64 @@
+package:
+  name: impacket
+  version: "0.9.13"
+
+source:
+  fn: impacket-0.9.13.tar.gz
+  url: https://pypi.python.org/packages/source/i/impacket/impacket-0.9.13.tar.gz
+  md5: db305aff0dae6a3c09f873a2da248387
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - impacket = impacket:main
+    #
+    # Would create an entry point called impacket that calls impacket.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - impacket
+    - impacket.dcerpc
+    - impacket.dcerpc.v5
+    - impacket.dcerpc.v5.dcom
+    - impacket.examples
+    - impacket.krb5
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://corelabs.coresecurity.com/index.php?module=Wiki&action=view&type=tool&name=Impacket
+  license: Apache modified
+  summary: 'Network protocols Constructors and Dissectors'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: lobbyists
+  version: "0.10"
+
+source:
+  fn: lobbyists-0.10.tar.gz
+  url: https://pypi.python.org/packages/source/l/lobbyists/lobbyists-0.10.tar.gz
+  md5: 968d7a38ec6e0d299d129ace229dfce6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lobbyists = lobbyists:main
+    #
+    # Would create an entry point called lobbyists that calls lobbyists.main()
+
+    - lobbyists-load = lobbyists.util:load_main
+    - lobbyists-benchmark = lobbyists.benchmark:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - lobbyists
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lobbyists-load --help
+    - lobbyists-benchmark --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dhess/lobbyists/
+  license: GNU General Public License (GPL)
+  summary: 'Parse Senate LD-1/LD-2 lobbying disclosure XML documents'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: cltk
+  version: "0.0.1.16"
+
+source:
+  fn: cltk-0.0.1.16.tar.gz
+  url: https://pypi.python.org/packages/source/c/cltk/cltk-0.0.1.16.tar.gz
+  md5: 219f6ef7430baa6ef8c840983253ce3b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cltk = cltk:main
+    #
+    # Would create an entry point called cltk that calls cltk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nltk
+    - gitpython
+
+  run:
+    - python
+    - nltk
+    - gitpython
+
+test:
+  # Python imports
+  imports:
+    - cltk
+    - cltk.corpus
+    - cltk.corpus.chinese
+    - cltk.corpus.coptic
+    - cltk.corpus.greek
+    - cltk.corpus.latin
+    - cltk.corpus.multilingual
+    - cltk.corpus.pali
+    - cltk.corpus.tibetan
+    - cltk.corpus.utils
+    - cltk.stem
+    - cltk.stem.latin
+    - cltk.stop
+    - cltk.stop.greek
+    - cltk.stop.latin
+    - cltk.tag
+    - cltk.tokenize
+    - cltk.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kylepjohnson/cltk
+  license: MIT License
+  summary: 'NLP support for Classical languages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

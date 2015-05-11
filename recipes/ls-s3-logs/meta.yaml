@@ -1,0 +1,65 @@
+package:
+  name: ls-s3-logs
+  version: "0.1.2"
+
+source:
+  fn: ls-s3-logs-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/ls-s3-logs/ls-s3-logs-0.1.2.tar.gz
+  md5: 2fd50464bc0c29eed1a65f9e44f4c81d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ls-s3-logs = ls-s3-logs:main
+    #
+    # Would create an entry point called ls-s3-logs that calls ls-s3-logs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.8.0
+    - python-dateutil
+
+  run:
+    - python
+    - boto ==2.8.0
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - lss3logs
+    - lss3logs.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/liquid-state/ls-s3-logs
+  license: BSD
+  summary: u'A library to parse S3 log files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

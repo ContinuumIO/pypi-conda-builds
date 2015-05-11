@@ -1,0 +1,63 @@
+package:
+  name: setuptools_trial
+  version: "0.5.12"
+
+source:
+  fn: setuptools_trial-0.5.12.tar.gz
+  url: https://pypi.python.org/packages/source/s/setuptools_trial/setuptools_trial-0.5.12.tar.gz
+  md5: f16f4237c9ee483a0cd13208849d96ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - setuptools_trial = setuptools_trial:main
+    #
+    # Would create an entry point called setuptools_trial that calls setuptools_trial.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=2.4.0
+
+  run:
+    - python
+    - setuptools
+    - twisted >=2.4.0
+
+test:
+  # Python imports
+  imports:
+    - setuptools_trial
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://allmydata.org/trac/setuptools_trial
+  license: BSD License
+  summary: 'Setuptools plugin that makes unit tests execute with trial instead of pyunit.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

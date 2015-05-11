@@ -1,0 +1,64 @@
+package:
+  name: django-fluent-utils
+  version: "1.2.1"
+
+source:
+  fn: django-fluent-utils-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fluent-utils/django-fluent-utils-1.2.1.tar.gz
+  md5: b7f58630cc0de7e576e98f2882b29647
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fluent-utils = django-fluent-utils:main
+    #
+    # Would create an entry point called django-fluent-utils that calls django-fluent-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - fluent_utils
+    - fluent_utils.django_compat
+    - fluent_utils.django_compat.moves
+    - fluent_utils.dry
+    - fluent_utils.softdeps
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edoburu/django-fluent-utils
+  license: Apache Software License
+  summary: 'Internal utilities for code sharing between django-fluent modules'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,87 @@
+package:
+  name: menhir.contenttype.document
+  version: "0.2"
+
+source:
+  fn: menhir.contenttype.document-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/menhir.contenttype.document/menhir.contenttype.document-0.2.tar.gz
+  md5: 212fcddfb83386654c0f5d947fae4ee5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - menhir.contenttype.document = menhir.contenttype.document:main
+    #
+    # Would create an entry point called menhir.contenttype.document that calls menhir.contenttype.document.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - dolmen.app.layout
+    - dolmen.app.security
+    - dolmen.app.content >=1.0b1
+    - dolmen.content >=0.7
+    - dolmen.forms.crud >=1.0b2
+    - dolmen.widget.tinymce
+    - grok
+    - html2text
+    - setuptools
+    - zope.i18nmessageid
+    - zope.index
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - dolmen.app.layout
+    - dolmen.app.security
+    - dolmen.app.content >=1.0b1
+    - dolmen.content >=0.7
+    - dolmen.forms.crud >=1.0b2
+    - dolmen.widget.tinymce
+    - grok
+    - html2text
+    - setuptools
+    - zope.i18nmessageid
+    - zope.index
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - menhir
+    - menhir.contenttype
+    - menhir.contenttype.document
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gitweb.dolmen-project.org/
+  license: GNU General Public License (GPL)
+  summary: 'Dolmen contenttype extension : document'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

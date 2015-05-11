@@ -1,0 +1,68 @@
+package:
+  name: daflsim
+  version: "1.0.0.dev1"
+
+source:
+  fn: daflsim-1.0.0.dev1.tar.gz
+  url: https://pypi.python.org/packages/source/d/daflsim/daflsim-1.0.0.dev1.tar.gz
+  md5: 687fcc53efa770f2a1553b7c8408cd9c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - daflsim = daflsim:main
+    #
+    # Would create an entry point called daflsim that calls daflsim.main()
+
+    - daflsim=daflsim.daflsim:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - graphviz
+    - networkx
+    - simpy >=3
+
+  run:
+    - python
+    - graphviz
+    - networkx
+    - simpy >=3
+
+test:
+  # Python imports
+  imports:
+    - daflsim
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - daflsim --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pothiers/daflsim
+  license: MIT License
+  summary: 'Simulate a data-flow described by a graphviz diagram'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

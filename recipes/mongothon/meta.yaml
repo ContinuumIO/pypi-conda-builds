@@ -1,0 +1,66 @@
+package:
+  name: mongothon
+  version: "0.7.19"
+
+source:
+  fn: Mongothon-0.7.19.tar.gz
+  url: https://pypi.python.org/packages/source/M/Mongothon/Mongothon-0.7.19.tar.gz
+  md5: 4e7f285d1b5a8bc53ca035ae00c8ddca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongothon = mongothon:main
+    #
+    # Would create an entry point called mongothon that calls mongothon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=2.5.0
+    - inflection ==0.2.0
+    - schemer >=0.2.0,<0.3.0
+
+  run:
+    - python
+    - pymongo >=2.5.0
+    - inflection ==0.2.0
+    - schemer >=0.2.0,<0.3.0
+
+test:
+  # Python imports
+  imports:
+    - mongothon
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/gamechanger/mongothon
+  license: BSD
+  summary: 'A MongoDB object-document mapping layer for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

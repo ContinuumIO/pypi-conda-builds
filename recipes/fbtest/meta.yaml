@@ -1,0 +1,80 @@
+package:
+  name: fbtest
+  version: "1.0"
+
+source:
+  fn: fbtest-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fbtest/fbtest-1.0.tar.gz
+  md5: 49a2b8f0412466c5b5afe4bf28aef02c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fbtest = fbtest:main
+    #
+    # Would create an entry point called fbtest that calls fbtest.main()
+
+    - fbt_run = fbtest:run_tests
+    - fbt_server = fbtest:run_server
+    - fbt_analyze = fbtest:run_analyze
+    - fbt_update = fbtest:run_update
+    - fbt_view = fbtest:run_view
+    - fbt_archive = fbtest:run_archive
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - fdb >=1.0
+    - mako >=0.7.0
+    - rpyc >=3.2
+
+  run:
+    - python
+    - distribute
+    - fdb >=1.0
+    - mako >=0.7.0
+    - rpyc >=3.2
+
+test:
+  # Python imports
+  imports:
+    - fbtest
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fbt_run --help
+    - fbt_server --help
+    - fbt_analyze --help
+    - fbt_update --help
+    - fbt_view --help
+    - fbt_archive --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.firebirdsql.org/en/quality-assurance-status/
+  license: BSD License
+  summary: 'Firebird QA tools.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

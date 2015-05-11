@@ -1,0 +1,76 @@
+package:
+  name: allegrordf
+  version: "1.0.1"
+
+source:
+  fn: allegrordf-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/allegrordf/allegrordf-1.0.1.tar.gz
+  md5: 3a17478140adb08da2dd854c980b7983
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - allegrordf = allegrordf:main
+    #
+    # Would create an entry point called allegrordf that calls allegrordf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycurl
+    - python-cjson
+
+  run:
+    - python
+    - pycurl
+    - python-cjson
+
+test:
+  # Python imports
+  imports:
+    - allegrordf
+    - franz
+    - franz.miniclient
+    - franz.openrdf
+    - franz.openrdf.model
+    - franz.openrdf.query
+    - franz.openrdf.repository
+    - franz.openrdf.rio
+    - franz.openrdf.sail
+    - franz.openrdf.tests
+    - franz.openrdf.util
+    - franz.openrdf.vocabulary
+    - rdfliba
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://alcidesfonseca.com/
+  license: BSD License
+  summary: 'RDFLIB Allegro bindings'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

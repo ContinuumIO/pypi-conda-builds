@@ -1,0 +1,66 @@
+package:
+  name: anyconfig
+  version: "0.0.7"
+
+source:
+  fn: anyconfig-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/anyconfig/anyconfig-0.0.7.tar.gz
+  md5: fd67ec42ecf59788d7bcf813ee60f3d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anyconfig = anyconfig:main
+    #
+    # Would create an entry point called anyconfig that calls anyconfig.main()
+
+    - anyconfig_cli=anyconfig.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - anyconfig
+    - anyconfig.backend
+    - anyconfig.backend.tests
+    - anyconfig.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - anyconfig_cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ssato/python-anyconfig
+  license: MIT License
+  summary: 'Generic access to configuration files in some formats'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

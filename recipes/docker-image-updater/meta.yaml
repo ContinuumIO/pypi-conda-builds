@@ -1,0 +1,70 @@
+package:
+  name: docker-image-updater
+  version: "0.0.2"
+
+source:
+  fn: docker-image-updater-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-image-updater/docker-image-updater-0.0.2.tar.gz
+  md5: c833d283f2df8c40f18c56e7ae18e06a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-image-updater = docker-image-updater:main
+    #
+    # Would create an entry point called docker-image-updater that calls docker-image-updater.main()
+
+    - docker-image-updater=diu.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - attrs >=15.0.0a1
+    - colorlog
+    - docker-py
+    - pyyaml
+
+  run:
+    - python
+    - attrs >=15.0.0a1
+    - colorlog
+    - docker-py
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - diu
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - docker-image-updater --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zoni/docker-image-updater
+  license: MIT License
+  summary: 'Update docker images and trigger commands in response to updates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: httputil
+  version: "0.5.2"
+
+source:
+  fn: httputil-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/httputil/httputil-0.5.2.tar.gz
+  md5: 7c285b2cbac4af93edb7adb56b60cf3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - httputil = httputil:main
+    #
+    # Would create an entry point called httputil that calls httputil.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ujson
+    - tornado
+    - requests
+
+  run:
+    - python
+    - ujson
+    - tornado
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - httputil
+    - httputil.request_engines
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vovanec/httputil
+  license: MIT License
+  summary: 'Various utilities to deal with HTTP stuff.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

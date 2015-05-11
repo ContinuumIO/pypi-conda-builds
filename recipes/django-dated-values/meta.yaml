@@ -1,0 +1,71 @@
+package:
+  name: django-dated-values
+  version: "0.2"
+
+source:
+  fn: django-dated-values-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dated-values/django-dated-values-0.2.tar.gz
+  md5: cb2f7b8371d65cdfe46dbf86ffec9eda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dated-values = django-dated-values:main
+    #
+    # Would create an entry point called django-dated-values that calls django-dated-values.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - south
+    - django-hvad
+    - python-dateutil
+
+  run:
+    - python
+    - django
+    - south
+    - django-hvad
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - dated_values
+    - dated_values.migrations
+    - dated_values.tests
+    - dated_values.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-dated-values
+  license: The MIT License
+  summary: 'A reusable Django app that allows adding dated decimal values to any Django model\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

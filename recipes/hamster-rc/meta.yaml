@@ -1,0 +1,70 @@
+package:
+  name: hamster-rc
+  version: "0.1.1"
+
+source:
+  fn: hamster-rc-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hamster-rc/hamster-rc-0.1.1.tar.gz
+  md5: ce344c857869b0b93d2e5800282ce519
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hamster-rc = hamster-rc:main
+    #
+    # Would create an entry point called hamster-rc that calls hamster-rc.main()
+
+    - hamster-rc = hamster_rc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - mako
+    - routes
+    - webob
+
+  run:
+    - python
+    - distribute
+    - mako
+    - routes
+    - webob
+
+test:
+  # Python imports
+  imports:
+    - hamster_rc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hamster-rc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/lgs/hamster-rc/
+  license: GPL 3
+  summary: 'Hamster Remote Control'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

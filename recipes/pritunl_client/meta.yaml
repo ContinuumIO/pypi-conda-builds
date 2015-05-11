@@ -1,0 +1,64 @@
+package:
+  name: pritunl_client
+  version: "0.10.1"
+
+source:
+  fn: pritunl-client-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pritunl_client/pritunl-client-0.10.1.tar.gz
+  md5: 5c108b1716cac6361077942f86fb76f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pritunl_client = pritunl_client:main
+    #
+    # Would create an entry point called pritunl_client that calls pritunl_client.main()
+
+    - pritunl_client = pritunl_client.__main__:client
+    - pritunl_client_pk = pritunl_client.__main__:pk
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pritunl_client
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pritunl_client --help
+    - pritunl_client_pk --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pritunl/pritunl-client
+  license: GNU Affero General Public License v3
+  summary: 'Pritunl openvpn client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: flask-peewee
+  version: "0.6.6"
+
+source:
+  fn: flask-peewee-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-peewee/flask-peewee-0.6.6.tar.gz
+  md5: 823c81242bc1826a947f774a84788b1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-peewee = flask-peewee:main
+    #
+    # Would create an entry point called flask-peewee that calls flask-peewee.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - werkzeug
+    - jinja2
+    - peewee >2.0.6
+    - wtforms
+    - wtf-peewee
+
+  run:
+    - python
+    - flask
+    - werkzeug
+    - jinja2
+    - peewee >2.0.6
+    - wtforms
+    - wtf-peewee
+
+test:
+  # Python imports
+  imports:
+    - example
+    - flask_peewee
+    - flask_peewee.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/coleifer/flask-peewee/
+  license: BSD License
+  summary: 'Peewee integration for flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

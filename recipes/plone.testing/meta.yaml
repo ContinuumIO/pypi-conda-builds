@@ -1,0 +1,64 @@
+package:
+  name: plone.testing
+  version: "4.0.13"
+
+source:
+  fn: plone.testing-4.0.13.zip
+  url: https://pypi.python.org/packages/source/p/plone.testing/plone.testing-4.0.13.zip
+  md5: af61d63ad20749d394f0d87d998369fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - plone.testing = plone.testing:main
+    #
+    # Would create an entry point called plone.testing that calls plone.testing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.testing
+
+  run:
+    - python
+    - setuptools
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - plone
+    - plone.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/plone.testing
+  license: BSD License
+  summary: 'Testing infrastructure for Zope and Plone projects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

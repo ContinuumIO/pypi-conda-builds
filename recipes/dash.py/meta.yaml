@@ -1,0 +1,86 @@
+package:
+  name: dash.py
+  version: "0.2.1"
+
+source:
+  fn: dash.py-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dash.py/dash.py-0.2.1.tar.gz
+  md5: 6ca55d84b02b8971eca77197dcd35c8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dash.py = dash.py:main
+    #
+    # Would create an entry point called dash.py that calls dash.py.main()
+
+    - dash.py = dash_py.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.1.3
+    - doc2dash ==1.1.0
+    - docopt ==0.6.1
+    - docutils ==0.11
+    - jinja2 ==2.7.1
+    - lxml ==3.0.2
+    - markupsafe ==0.18
+    - parguments ==0.3.2
+    - pygments ==1.6
+    - pyyaml ==3.10
+    - requests ==2.0.1
+    - sphinx ==1.1.3
+
+  run:
+    - python
+    - beautifulsoup4 ==4.1.3
+    - doc2dash ==1.1.0
+    - docopt ==0.6.1
+    - docutils ==0.11
+    - jinja2 ==2.7.1
+    - lxml ==3.0.2
+    - markupsafe ==0.18
+    - parguments ==0.3.2
+    - pygments ==1.6
+    - pyyaml ==3.10
+    - requests ==2.0.1
+    - sphinx ==1.1.3
+
+test:
+  # Python imports
+  imports:
+    - dash_py
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dash.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/whtsky/Dash.py
+  license: MIT License
+  summary: 'Create python docs for dash easily.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

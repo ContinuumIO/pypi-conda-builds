@@ -1,0 +1,73 @@
+package:
+  name: ftw.datepicker
+  version: "1.0.4"
+
+source:
+  fn: ftw.datepicker-1.0.4.zip
+  url: https://pypi.python.org/packages/source/f/ftw.datepicker/ftw.datepicker-1.0.4.zip
+  md5: 60ed9866bcd267df8ea24e8ee8bda73d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.datepicker = ftw.datepicker:main
+    #
+    # Would create an entry point called ftw.datepicker that calls ftw.datepicker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - z3c.form
+    - setuptools
+    - plone.z3cform
+    - plone.app.z3cform >=0.5.0
+    - collective.js.jqueryui
+
+  run:
+    - python
+    - setuptools
+    - z3c.form
+    - setuptools
+    - plone.z3cform
+    - plone.app.z3cform >=0.5.0
+    - collective.js.jqueryui
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.datepicker
+    - ftw.datepicker.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.datepicker
+  license: GPL2
+  summary: 'A z3c.form datepicker widget (Maintainer Thomas Buchberger)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

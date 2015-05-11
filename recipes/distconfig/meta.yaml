@@ -1,0 +1,68 @@
+package:
+  name: distconfig
+  version: "0.1.0"
+
+source:
+  fn: distconfig-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/distconfig/distconfig-0.1.0.tar.gz
+  md5: f9a92c91cb21faa256af8de65e2db1d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - distconfig = distconfig:main
+    #
+    # Would create an entry point called distconfig that calls distconfig.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - ujson
+
+  run:
+    - python
+    - six
+    - ujson
+
+test:
+  # Python imports
+  imports:
+    - distconfig
+    - distconfig.backends
+    - distconfig.tests
+    - distconfig.tests.integration
+    - distconfig.tests.unit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/deliveryhero/distconfig/
+  license: Apache Software License
+  summary: u'Library to manage configuration using Zookeeper, Etcd, Consul'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

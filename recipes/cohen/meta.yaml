@@ -1,0 +1,92 @@
+package:
+  name: cohen
+  version: "0.7.0"
+
+source:
+  fn: Cohen-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cohen/Cohen-0.7.0.tar.gz
+  md5: 8f2f72e2eb4649b3e987e0052e94caa6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cohen = cohen:main
+    #
+    # Would create an entry point called cohen that calls cohen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configobj >=4.3
+    - twisted >=14.0
+    - zope.interface
+    - louie
+    - livestreamer
+    - lxml
+    - python-dateutil
+    - pyopenssl
+
+  run:
+    - python
+    - setuptools
+    - configobj >=4.3
+    - twisted >=14.0
+    - zope.interface
+    - louie
+    - livestreamer
+    - lxml
+    - python-dateutil
+    - pyopenssl
+
+test:
+  # Python imports
+  imports:
+    - cohen
+    - coherence
+    - coherence.backends
+    - coherence.extern
+    - coherence.extern.youtubedl
+    - coherence.upnp
+    - coherence.upnp.core
+    - coherence.upnp.devices
+    - coherence.upnp.services
+    - coherence.upnp.services.clients
+    - coherence.upnp.services.servers
+    - coherence.web
+    - tests
+    - tests.backends
+    - tests.upnp
+    - tests.upnp.core
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/unintended/Cohen
+  license: MIT License
+  summary: 'Cohen - DLNA/UPnP Media Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: django-sub-query
+  version: "0.1"
+
+source:
+  fn: django-sub-query-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sub-query/django-sub-query-0.1.tar.gz
+  md5: 3e71b565a88e9922cf799dcefc150802
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sub-query = django-sub-query:main
+    #
+    # Would create an entry point called django-sub-query that calls django-sub-query.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django
+    - setuptools
+
+  run:
+    - python
+    - django
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - sub_query
+    - sub_query.db
+    - sub_query.db.backends
+    - sub_query.db.backends.postgis
+    - sub_query.db.models
+    - sub_query.db.models.sql
+    - sub_query.tests
+    - sub_query.tests.db
+    - sub_query.tests.db.backends
+    - sub_query.tests.db.backends.postgis
+    - sub_query.tests.db.models
+    - sub_query.tests.db.models.sql
+    - test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/miki725/django-sub-query
+  license: MIT License
+  summary: u'Django app which uses SQL sub-queries to solve some ORM limitations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

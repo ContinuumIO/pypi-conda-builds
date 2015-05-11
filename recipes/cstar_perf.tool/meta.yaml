@@ -1,0 +1,69 @@
+package:
+  name: cstar_perf.tool
+  version: "1.0"
+
+source:
+  fn: cstar_perf.tool-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cstar_perf.tool/cstar_perf.tool-1.0.tar.gz
+  md5: 9012e3f6879c4153cb93b99548b2b1af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cstar_perf.tool = cstar_perf.tool:main
+    #
+    # Would create an entry point called cstar_perf.tool that calls cstar_perf.tool.main()
+
+    - cstar_perf_stress = cstar_perf.tool.stress_compare:main
+    - cstar_perf_bootstrap = cstar_perf.tool.bootstrap:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - pyyaml
+
+  run:
+    - python
+    - fabric
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - cstar_perf
+    - cstar_perf.tool
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cstar_perf_stress --help
+    - cstar_perf_bootstrap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datastax/cstar_perf
+  license: UNKNOWN
+  summary: 'Cassandra performance testing automation tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

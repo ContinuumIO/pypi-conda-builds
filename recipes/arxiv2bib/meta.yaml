@@ -1,0 +1,62 @@
+package:
+  name: arxiv2bib
+  version: "1.0.6"
+
+source:
+  fn: arxiv2bib-1.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/arxiv2bib/arxiv2bib-1.0.6.tar.gz
+  md5: adcb52d60281fac1cbd47b60ab77bcac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arxiv2bib = arxiv2bib:main
+    #
+    # Would create an entry point called arxiv2bib that calls arxiv2bib.main()
+
+    - arxiv2bib = arxiv2bib:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - arxiv2bib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - arxiv2bib --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://nathangrigg.github.io/arxiv2bib
+  license: BSD License
+  summary: 'Get arXiv.org metadata in BibTeX format'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

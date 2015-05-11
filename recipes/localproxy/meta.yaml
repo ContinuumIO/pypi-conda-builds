@@ -1,0 +1,69 @@
+package:
+  name: localproxy
+  version: "0.0.3"
+
+source:
+  fn: localproxy-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/localproxy/localproxy-0.0.3.tar.gz
+  md5: 9dbfb73cd45afae029aebb6c2a506879
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - localproxy = localproxy:main
+    #
+    # Would create an entry point called localproxy that calls localproxy.main()
+
+    - localproxy=localproxy.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted
+    - pyopenssl
+    - service_identity
+
+  run:
+    - python
+    - setuptools
+    - twisted
+    - pyopenssl
+    - service_identity
+
+test:
+  # Python imports
+  imports:
+    - localproxy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - localproxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/atsuoishimoto/localproxy
+  license: MIT License
+  summary: 'HTTP proxy server in twisted. If there is a directory with same name as target host (e.g.: www.example.com), contents of the directory are returned instead of making a request to the target host.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

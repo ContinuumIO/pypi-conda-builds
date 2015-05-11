@@ -1,0 +1,65 @@
+package:
+  name: guildwars2api
+  version: "0.1.0"
+
+source:
+  fn: guildwars2api-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/guildwars2api/guildwars2api-0.1.0.tar.gz
+  md5: 034287770508a9dce0ce3d6dc9f2b16f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - guildwars2api = guildwars2api:main
+    #
+    # Would create an entry point called guildwars2api that calls guildwars2api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - guildwars2api
+    - guildwars2api.v1
+    - guildwars2api.v2
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/menglewis/guildwars2api
+  license: BSD License
+  summary: 'A Python API Wrapper for the Guild Wars 2 API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: digue
+  version: "0.0.2"
+
+source:
+  fn: digue-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/digue/digue-0.0.2.tar.gz
+  md5: 5a4d8d0db319e7be795ff7b49686e726
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - digue = digue:main
+    #
+    # Would create an entry point called digue that calls digue.main()
+
+    - digue = digue.digue:main
+    - digue_gui = digue.gui:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs
+    - python-ly
+
+  run:
+    - python
+    - appdirs
+    - python-ly
+
+test:
+  # Python imports
+  imports:
+    - digue
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - digue --help
+    - digue_gui --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/digue/
+  license: GNU General Public License (GPL)
+  summary: 'Lilypond new score wizard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

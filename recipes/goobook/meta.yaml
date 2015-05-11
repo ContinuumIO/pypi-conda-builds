@@ -1,0 +1,68 @@
+package:
+  name: goobook
+  version: "1.6"
+
+source:
+  fn: goobook-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/goobook/goobook-1.6.tar.gz
+  md5: e9e3b874bb54a7805493c9e5a970bcb4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - goobook = goobook:main
+    #
+    # Would create an entry point called goobook that calls goobook.main()
+
+    - goobook = goobook.application:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.7
+    - gdata >=2.0.7
+    - simplejson >=2.1.0
+
+  run:
+    - python
+    - setuptools >=0.7
+    - gdata >=2.0.7
+    - simplejson >=2.1.0
+
+test:
+  # Python imports
+  imports:
+    - goobook
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - goobook --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://goobook.googlecode.com/
+  license: GNU General Public License (GPL)
+  summary: 'Search your google contacts from the command-line or mutt.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

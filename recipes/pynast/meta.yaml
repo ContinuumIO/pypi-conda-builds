@@ -1,0 +1,64 @@
+package:
+  name: pynast
+  version: "1.2.2"
+
+source:
+  fn: pynast-1.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pynast/pynast-1.2.2.tar.gz
+  md5: 6f1744d8d3f333eb2dbe81026d4dcb1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pynast = pynast:main
+    #
+    # Would create an entry point called pynast that calls pynast.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - numpy >=1.5.1
+    - cogent >=1.5.3
+
+  run:
+    - python
+    - numpy >=1.5.1
+    - cogent >=1.5.3
+
+test:
+  # Python imports
+  imports:
+    - pynast
+    - pynast/pycogent_backports
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://qiime.org/pynast
+  license: BSD License
+  summary: 'The Python Nearest Alignment Space Termination tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

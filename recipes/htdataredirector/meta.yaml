@@ -1,0 +1,69 @@
+package:
+  name: htdataredirector
+  version: "0.3.1"
+
+source:
+  fn: htdataredirector-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/htdataredirector/htdataredirector-0.3.1.tar.gz
+  md5: 309b50dac1ef1b20317dd9b00b3c3c54
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htdataredirector = htdataredirector:main
+    #
+    # Would create an entry point called htdataredirector that calls htdataredirector.main()
+
+    - htdataclient = htdataredirector.client:runner
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyserial >=2.6.7
+    - httplib2 >=0.7
+
+  run:
+    - python
+    - pyserial >=2.6.7
+    - httplib2 >=0.7
+
+test:
+  # Python imports
+  imports:
+    - htdataredirector
+    - htdataredirector.publishers
+    - htdataredirector.units
+    - htdataredirector.units.rfd21733
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - htdataclient --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lazerball/htdataredirector
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,83 @@
+package:
+  name: djangopypi2
+  version: "0.6.1"
+
+source:
+  fn: djangopypi2-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangopypi2/djangopypi2-0.6.1.tar.gz
+  md5: 947a5618a93a37b25018cf41f3c2317e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangopypi2 = djangopypi2:main
+    #
+    # Would create an entry point called djangopypi2 that calls djangopypi2.main()
+
+    - manage-pypi-site = djangopypi2.manage_pypi_site:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django ==1.5.1
+    - django-registration
+    - setuptools
+    - pkginfo
+    - docutils
+
+  run:
+    - python
+    - django ==1.5.1
+    - django-registration
+    - setuptools
+    - pkginfo
+    - docutils
+
+test:
+  # Python imports
+  imports:
+    - djangopypi2
+    - djangopypi2.apps
+    - djangopypi2.apps.pypi_frontend
+    - djangopypi2.apps.pypi_frontend.templatetags
+    - djangopypi2.apps.pypi_manage
+    - djangopypi2.apps.pypi_metadata
+    - djangopypi2.apps.pypi_packages
+    - djangopypi2.apps.pypi_packages.management
+    - djangopypi2.apps.pypi_packages.management.commands
+    - djangopypi2.apps.pypi_ui
+    - djangopypi2.apps.pypi_users
+    - djangopypi2.tests
+    - djangopypi2.website
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - manage-pypi-site --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/popen2/djangopypi2
+  license: BSD License
+  summary: 'A Django application that emulates the Python Package Index.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: orb-api
+  version: "4.4.12"
+
+source:
+  fn: orb-api-4.4.12.tar.gz
+  url: https://pypi.python.org/packages/source/o/orb-api/orb-api-4.4.12.tar.gz
+  md5: b950824f91945d782b04d966d2d2334e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - orb-api = orb-api:main
+    #
+    # Would create an entry point called orb-api that calls orb-api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - projex
+    - mako
+
+  run:
+    - python
+    - projex
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - orb
+    - orb.caching
+    - orb.caching.backends
+    - orb.core
+    - orb.core.backends
+    - orb.core.backends.nonsql
+    - orb.core.backends.sql
+    - orb.core.backends.sql.postgresql
+    - orb.core.backends.sql.postgresql.statements
+    - orb.core.backends.sql.shared
+    - orb.core.backends.web
+    - orb.core.backends.web.quickbase
+    - orb.data
+    - orb.data.converters
+    - orb.querying
+    - orb.schema
+    - orb.schema.meta
+    - orb.searching
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ProjexSoftware/orb
+  license: LGPL
+  summary: 'Database ORM and API builder.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

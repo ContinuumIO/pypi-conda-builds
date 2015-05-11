@@ -1,0 +1,66 @@
+package:
+  name: django-light-draft
+  version: "0.2a"
+
+source:
+  fn: django-light-draft-0.2a.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-light-draft/django-light-draft-0.2a.tar.gz
+  md5: 941e2d72c87d3e9b36b2787ee635bf83
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-light-draft = django-light-draft:main
+    #
+    # Would create an entry point called django-light-draft that calls django-light-draft.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - south ==1.0
+
+  run:
+    - python
+    - django >=1.6
+    - south ==1.0
+
+test:
+  # Python imports
+  imports:
+    - light_draft
+    - light_draft.management
+    - light_draft.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zerc/django-light-draft
+  license: MIT License
+  summary: 'Preview changes without saving the data into db.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

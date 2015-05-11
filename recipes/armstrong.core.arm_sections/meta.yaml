@@ -1,0 +1,69 @@
+package:
+  name: armstrong.core.arm_sections
+  version: "1.6.0"
+
+source:
+  fn: armstrong.core.arm_sections-1.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/armstrong.core.arm_sections/armstrong.core.arm_sections-1.6.0.tar.gz
+  md5: d6357f6dc4f9579ad5dbb07b5fd24a80
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - armstrong.core.arm_sections = armstrong.core.arm_sections:main
+    #
+    # Would create an entry point called armstrong.core.arm_sections that calls armstrong.core.arm_sections.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-mptt >=0.5.5
+    - armstrong.utils.backends >=1.0.0,<2.0
+
+  run:
+    - python
+    - django-mptt >=0.5.5
+    - armstrong.utils.backends >=1.0.0,<2.0
+
+test:
+  # Python imports
+  imports:
+    - armstrong
+    - armstrong.core
+    - armstrong.core.arm_sections
+    - armstrong.core.arm_sections.migrations
+    - armstrong.core.arm_sections.south_migrations
+    - armstrong.core.arm_sections.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/armstrong/armstrong.core.arm_sections/
+  license: Apache Software License
+  summary: u'Provides hierarchical taxonomy for content'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

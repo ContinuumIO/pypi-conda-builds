@@ -1,0 +1,74 @@
+package:
+  name: netgen
+  version: "0.2.0"
+
+source:
+  fn: netgen-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/netgen/netgen-0.2.0.tar.gz
+  md5: 8a169d00697cb042a95c2b2a0287eb09
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - netgen = netgen:main
+    #
+    # Would create an entry point called netgen that calls netgen.main()
+
+    - network-generator = netgen.main:main
+    - netgen = netgen.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - pyyaml
+    - voluptuous >=0.8.0
+    - ipaddress
+    - six
+
+  run:
+    - python
+    - jinja2
+    - pyyaml
+    - voluptuous >=0.8.0
+    - ipaddress
+    - six
+
+test:
+  # Python imports
+  imports:
+    - netgen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - network-generator --help
+    - netgen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nlm/netgen
+  license: GNU General Public License (GPL)
+  summary: 'a templated ip address plan generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

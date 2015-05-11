@@ -1,0 +1,80 @@
+package:
+  name: obfsproxy
+  version: "0.2.13"
+
+source:
+  fn: obfsproxy-0.2.13.tar.gz
+  url: https://pypi.python.org/packages/source/o/obfsproxy/obfsproxy-0.2.13.tar.gz
+  md5: f596aeeda7bf03cdf0e78e68e6e7ac9f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - obfsproxy = obfsproxy:main
+    #
+    # Would create an entry point called obfsproxy that calls obfsproxy.main()
+
+    - obfsproxy = obfsproxy.pyobfsproxy:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+    - twisted
+    - argparse
+    - pyptlib >=0.0.6
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - pycrypto
+    - twisted
+    - argparse
+    - pyptlib >=0.0.6
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - obfsproxy
+    - obfsproxy.common
+    - obfsproxy.managed
+    - obfsproxy.network
+    - obfsproxy.test
+    - obfsproxy.test.transports
+    - obfsproxy.transports
+    - obfsproxy.transports.scramblesuit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - obfsproxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'A pluggable transport proxy written in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

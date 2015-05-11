@@ -1,0 +1,72 @@
+package:
+  name: lrsignature
+  version: "0.1.15"
+
+source:
+  fn: LRSignature-0.1.15.tar.gz
+  url: https://pypi.python.org/packages/source/L/LRSignature/LRSignature-0.1.15.tar.gz
+  md5: d6b36cb17682d8d824de2d3df4d681b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lrsignature = lrsignature:main
+    #
+    # Would create an entry point called lrsignature that calls lrsignature.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - python-gnupg >=0.3.0
+    - nose ==1.2.0
+
+  run:
+    - python
+    - argparse
+    - python-gnupg >=0.3.0
+    - nose ==1.2.0
+
+test:
+  # Python imports
+  imports:
+    - LRSignature
+    - LRSignature.bencode
+    - LRSignature.sign
+    - LRSignature.tests
+    - LRSignature.util
+    - LRSignature.verify
+    - lrsignature
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/LearningRegistry/LRSignature
+  license: Apache 2.0 License
+  summary: 'Learning Registry resource data digital signature management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

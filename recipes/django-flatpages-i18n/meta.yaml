@@ -1,0 +1,70 @@
+package:
+  name: django-flatpages-i18n
+  version: "0.4.1"
+
+source:
+  fn: django-flatpages-i18n-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-flatpages-i18n/django-flatpages-i18n-0.4.1.tar.gz
+  md5: b82a02a758f5204cf51207cbfdaff781
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-flatpages-i18n = django-flatpages-i18n:main
+    #
+    # Would create an entry point called django-flatpages-i18n that calls django-flatpages-i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - south
+    - django_modeltranslation
+    - django
+    - django_mptt
+
+  run:
+    - python
+    - south
+    - django_modeltranslation
+    - django
+    - django_mptt
+
+test:
+  # Python imports
+  imports:
+    - flatpages_i18n
+    - flatpages_i18n.migrations
+    - flatpages_i18n.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PragmaticMates/django-flatpages-i18n
+  license: BSD License
+  summary: 'Translatable flatpages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

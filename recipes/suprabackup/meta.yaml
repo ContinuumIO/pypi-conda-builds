@@ -1,0 +1,83 @@
+package:
+  name: suprabackup
+  version: "0.2.9"
+
+source:
+  fn: suprabackup-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/s/suprabackup/suprabackup-0.2.9.tar.gz
+  md5: 632c56b2b358fd41068b7d7c7b408276
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - suprabackup = suprabackup:main
+    #
+    # Would create an entry point called suprabackup that calls suprabackup.main()
+
+    - suprabackup-send = suprabackup.scripts.send:main
+    - suprabackup-receive = suprabackup.scripts.receive:main
+    - suprabackup-verify = suprabackup.scripts.verify:main
+    - suprabackup-purge = suprabackup.scripts.purge:main
+    - suprashell = suprabackup.scripts.shell:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-python ==1.2.5
+    - sqlalchemy ==0.9.8
+    - pyaml ==14.11.3
+
+  run:
+    - python
+    - mysql-python ==1.2.5
+    - sqlalchemy ==0.9.8
+    - pyaml ==14.11.3
+
+test:
+  # Python imports
+  imports:
+    - suprabackup
+    - suprabackup.cli
+    - suprabackup.config
+    - suprabackup.db
+    - suprabackup.logging
+    - suprabackup.models
+    - suprabackup.scripts
+    - suprabackup.server
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - suprabackup-send --help
+    - suprabackup-receive --help
+    - suprabackup-verify --help
+    - suprabackup-purge --help
+    - suprashell --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quanta-computing/suprabackup
+  license: MIT License
+  summary: 'Suprabackup is a tool to automate xtrabackup database backups'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

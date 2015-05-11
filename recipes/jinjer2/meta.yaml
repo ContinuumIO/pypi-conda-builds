@@ -1,0 +1,68 @@
+package:
+  name: jinjer2
+  version: "0.1.2"
+
+source:
+  fn: Jinjer2-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/J/Jinjer2/Jinjer2-0.1.2.tar.gz
+  md5: 76db59ca4dff420e10f2c520cd445d48
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jinjer2 = jinjer2:main
+    #
+    # Would create an entry point called jinjer2 that calls jinjer2.main()
+
+    - jinjer2=jinjer2:main
+    - jj2=jinjer2:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.7.3
+    - pyaml >=15.3.1
+
+  run:
+    - python
+    - jinja2 >=2.7.3
+    - pyaml >=15.3.1
+
+test:
+  # Python imports
+  imports:
+    - jinjer2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jinjer2 --help
+    - jj2 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/val314159/jinjer2
+  license: MIT License
+  summary: 'Static Macro File Generator (cmd line generator using jinja2)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

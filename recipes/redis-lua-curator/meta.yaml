@@ -1,0 +1,64 @@
+package:
+  name: redis-lua-curator
+  version: "0.3.0"
+
+source:
+  fn: redis-lua-curator-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/redis-lua-curator/redis-lua-curator-0.3.0.tar.gz
+  md5: 73cf192a5632466d3471080e80c68eac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redis-lua-curator = redis-lua-curator:main
+    #
+    # Would create an entry point called redis-lua-curator that calls redis-lua-curator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=2.8.0,<=2.10.1
+    - jinja2 ==2.7.2
+
+  run:
+    - python
+    - redis >=2.8.0,<=2.10.1
+    - jinja2 ==2.7.2
+
+test:
+  # Python imports
+  imports:
+    - curator
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mhahn/curator/
+  license: UNKNOWN
+  summary: 'Helper for working with lua scripts.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

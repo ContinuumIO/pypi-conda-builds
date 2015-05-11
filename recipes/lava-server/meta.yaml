@@ -1,0 +1,98 @@
+package:
+  name: lava-server
+  version: "0.20"
+
+source:
+  fn: lava-server-0.20.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-server/lava-server-0.20.tar.gz
+  md5: 37e5d24dce32d041cd9cfee61574d7bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-server = lava-server:main
+    #
+    # Would create an entry point called lava-server that calls lava-server.main()
+
+    - lava-server=lava_server.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - django-debian >=0.10
+    - django-openid-auth >=0.2
+    - django-restricted-resource >=0.2.6
+    - django-staticfiles ==0.3.4
+    - django-tables2
+    - docutils >=0.6
+    - lava-tool >=0.2
+    - lava-utils-interface >=1.0
+    - linaro-django-xmlrpc >=0.4
+    - python-openid >=2.2.4
+    - south >=0.7.3
+    - versiontools >=1.8
+    - markdown >=2.0.3
+
+  run:
+    - python
+    - setuptools
+    - django >=1.3
+    - django-debian >=0.10
+    - django-openid-auth >=0.2
+    - django-restricted-resource >=0.2.6
+    - django-staticfiles ==0.3.4
+    - django-tables2
+    - docutils >=0.6
+    - lava-tool >=0.2
+    - lava-utils-interface >=1.0
+    - linaro-django-xmlrpc >=0.4
+    - python-openid >=2.2.4
+    - south >=0.7.3
+    - versiontools >=1.8
+    - markdown >=2.0.3
+
+test:
+  # Python imports
+  imports:
+    - lava
+    - lava.utils
+    - lava.utils.data_tables
+    - lava_markitup
+    - lava_projects
+    - lava_projects.migrations
+    - lava_server
+    - lava_server.settings
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lava-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lava-server
+  license: GNU Affero General Public License v3 or GNU Library or Lesser General Public License (LGPL)
+  summary: 'LAVA Server Application Container'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

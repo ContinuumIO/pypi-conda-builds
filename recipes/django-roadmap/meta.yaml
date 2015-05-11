@@ -1,0 +1,65 @@
+package:
+  name: django-roadmap
+  version: "0.2"
+
+source:
+  fn: django-roadmap-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-roadmap/django-roadmap-0.2.tar.gz
+  md5: 3fdc545b04df416957509c1a34dd0cb7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-roadmap = django-roadmap:main
+    #
+    # Would create an entry point called django-roadmap that calls django-roadmap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - roadmap
+    - roadmap.migrations
+    - roadmap.templatetags
+    - roadmap.tests
+    - roadmap.tests.integration_tests
+    - roadmap.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-roadmap
+  license: The MIT License
+  summary: 'A simple app to display a project roadmap with milestones and events.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

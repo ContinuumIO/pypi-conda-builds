@@ -1,0 +1,90 @@
+package:
+  name: cydra
+  version: "0.2"
+
+source:
+  fn: Cydra-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cydra/Cydra-0.2.tar.gz
+  md5: 2cfa76d18bf25b1538c4b5827d0aedde
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cydra = cydra:main
+    #
+    # Would create an entry point called cydra that calls cydra.main()
+
+    - cydra-admin=cydra.cli:main
+    - cydra-httpd=cydra.web:standalone_serve
+    - cydra-git-post-receive=cydra.repository.git:post_receive_hook
+    - cydra-hg-commit=cydra.repository.hg:commit_hook
+    - cydra-svn-commit=cydra.repository.svn:commit_hook
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6b1
+    - flask
+    - flask-csrf
+    - werkzeug
+    - pyyaml
+    - passlib
+
+  run:
+    - python
+    - setuptools
+    - setuptools >=0.6b1
+    - flask
+    - flask-csrf
+    - werkzeug
+    - pyyaml
+    - passlib
+
+test:
+  # Python imports
+  imports:
+    - cydra
+    - cydra.caching
+    - cydra.config
+    - cydra.datasource
+    - cydra.permission
+    - cydra.repository
+    - cydra.web
+    - cydra.web.frontend
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cydra-admin --help
+    - cydra-httpd --help
+    - cydra-git-post-receive --help
+    - cydra-hg-commit --help
+    - cydra-svn-commit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cydra.org
+  license: GNU General Public License (GPL)
+  summary: 'Code hosting platform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

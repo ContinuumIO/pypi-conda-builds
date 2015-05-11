@@ -1,0 +1,70 @@
+package:
+  name: django-seo-cascade
+  version: "0.5"
+
+source:
+  fn: django-seo-cascade-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-seo-cascade/django-seo-cascade-0.5.tar.gz
+  md5: 352b071c6a2ad2faa2cd8a1c157ac959
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-seo-cascade = django-seo-cascade:main
+    #
+    # Would create an entry point called django-seo-cascade that calls django-seo-cascade.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3.1
+    - lxml >=2.3.3
+    - ez_setup
+
+  run:
+    - python
+    - django >=1.3.1
+    - lxml >=2.3.3
+    - ez_setup
+
+test:
+  # Python imports
+  imports:
+    - seo_cascade
+    - seo_cascade.management
+    - seo_cascade.management.commands
+    - seo_cascade.migrations
+    - seo_cascade.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thisismess/django-seo-cascade
+  license: UNKNOWN
+  summary: 'Django SEO manager. Automatic sitemap generation, cascading meta tag blocks, and overrides via the django admin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

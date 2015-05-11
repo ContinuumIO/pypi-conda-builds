@@ -1,0 +1,67 @@
+package:
+  name: flunc
+  version: "0.8"
+
+source:
+  fn: flunc-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/f/flunc/flunc-0.8.tar.gz
+  md5: 82743b704555a6b44b45f24d0531bf69
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flunc = flunc:main
+    #
+    # Would create an entry point called flunc that calls flunc.main()
+
+    - flunc=flunc.flunc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twill
+    - lxml
+
+  run:
+    - python
+    - setuptools
+    - twill
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - flunc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flunc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.coactivate.org/projects/flunc
+  license: GNU General Public License (GPL)
+  summary: 'Functional test suite runner'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

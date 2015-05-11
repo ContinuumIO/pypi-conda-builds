@@ -1,0 +1,78 @@
+package:
+  name: ec2cluster
+  version: "0.28"
+
+source:
+  fn: ec2cluster-0.28.tar.gz
+  url: https://pypi.python.org/packages/source/e/ec2cluster/ec2cluster-0.28.tar.gz
+  md5: dba296ce1c361b433b90ea04a8f779d4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ec2cluster = ec2cluster:main
+    #
+    # Would create an entry point called ec2cluster that calls ec2cluster.main()
+
+    - ec2cluster = ec2cluster.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mock >=1.0.1
+    - python-dateutil >=2.1
+    - unittest2 >=0.5.1
+    - boto >=2.6.0
+    - dnspython >=1.10.0
+    - python-crontab >=1.2
+    - psycopg2 >=2.4.5
+    - argh >=0.23.1
+
+  run:
+    - python
+    - mock >=1.0.1
+    - python-dateutil >=2.1
+    - unittest2 >=0.5.1
+    - boto >=2.6.0
+    - dnspython >=1.10.0
+    - python-crontab >=1.2
+    - psycopg2 >=2.4.5
+    - argh >=0.23.1
+
+test:
+  # Python imports
+  imports:
+    - ec2cluster
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ec2cluster --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mikery/ec2cluster
+  license: BSD License
+  summary: 'Tools to work with clustered applications (PostgreSQL, Redis) on EC2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

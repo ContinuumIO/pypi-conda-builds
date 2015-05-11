@@ -1,0 +1,61 @@
+package:
+  name: passphrase
+  version: "0.1.3"
+
+source:
+  fn: passphrase-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/passphrase/passphrase-0.1.3.tar.gz
+  md5: 3c81af1d57675dfeb3226117ef9ee46d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - passphrase = passphrase:main
+    #
+    # Would create an entry point called passphrase that calls passphrase.main()
+
+    - passphrase = passphrase:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - passphrase
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - passphrase --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/passphrase/
+  license: LICENSE.txt
+  summary: 'List a series of words for selection of a secure and rememberable passphrase. Choose from many different languages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

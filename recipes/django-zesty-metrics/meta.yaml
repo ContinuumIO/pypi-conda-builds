@@ -1,0 +1,70 @@
+package:
+  name: django-zesty-metrics
+  version: "0.2"
+
+source:
+  fn: django-zesty-metrics-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-zesty-metrics/django-zesty-metrics-0.2.tar.gz
+  md5: 01b4ba38952c34ca2b01d6703646e0b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-zesty-metrics = django-zesty-metrics:main
+    #
+    # Would create an entry point called django-zesty-metrics that calls django-zesty-metrics.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - statsd ==2.1.2
+    - django >=1.4
+    - pyyaml ==3.11
+    - ua-parser ==0.3.5
+    - user-agents ==0.2.0
+
+  run:
+    - python
+    - statsd ==2.1.2
+    - django >=1.4
+    - pyyaml ==3.11
+    - ua-parser ==0.3.5
+    - user-agents ==0.2.0
+
+test:
+  # Python imports
+  imports:
+    - zesty_metrics
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Crossway/django-zesty-metrics
+  license: BSD License
+  summary: 'Zesty metrics collection and Statsd integration for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

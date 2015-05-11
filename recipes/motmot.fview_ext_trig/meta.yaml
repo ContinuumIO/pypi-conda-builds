@@ -1,0 +1,72 @@
+package:
+  name: motmot.fview_ext_trig
+  version: "0.4"
+
+source:
+  fn: motmot.fview_ext_trig-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/motmot.fview_ext_trig/motmot.fview_ext_trig-0.4.tar.gz
+  md5: 61931976cbef876167f8edde95c2686b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - motmot.fview_ext_trig = motmot.fview_ext_trig:main
+    #
+    # Would create an entry point called motmot.fview_ext_trig that calls motmot.fview_ext_trig.main()
+
+    - trigger_enter_dfu_mode = motmot.fview_ext_trig.ttrigger:enter_dfu_mode
+    - trigger_check_device = motmot.fview_ext_trig.ttrigger:check_device
+    - trigger_set_frequency = motmot.fview_ext_trig.ttrigger:set_frequency
+    - fview_ext_trig_json2h5 = motmot.fview_ext_trig.json2hfive:main
+    - fview_ext_trig_plot_h5 = motmot.fview_ext_trig.plot_h5:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - motmot
+    - motmot.fview_ext_trig
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - trigger_enter_dfu_mode --help
+    - trigger_check_device --help
+    - trigger_set_frequency --help
+    - fview_ext_trig_json2h5 --help
+    - fview_ext_trig_plot_h5 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.astraw.com/projects/motmot/camtrig/motmot.fview_ext_trig/API.html
+  license: UNKNOWN
+  summary: 'Camera trigger device with precise timing and analog input'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

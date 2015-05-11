@@ -1,0 +1,65 @@
+package:
+  name: pypi2rpm
+  version: "0.6.3"
+
+source:
+  fn: pypi2rpm-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pypi2rpm/pypi2rpm-0.6.3.tar.gz
+  md5: 752ba7926d2cf496ebd1059083f90554
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pypi2rpm = pypi2rpm:main
+    #
+    # Would create an entry point called pypi2rpm that calls pypi2rpm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distutils2 ==1.0a3
+    - argparse
+
+  run:
+    - python
+    - distutils2 ==1.0a3
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - pypi2rpm
+    - pypi2rpm.command
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/tarek/pypi2rpm
+  license: MPL
+  summary: 'Script that transforms a sdist archive into a rpm archive'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

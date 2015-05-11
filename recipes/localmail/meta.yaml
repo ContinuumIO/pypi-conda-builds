@@ -1,0 +1,63 @@
+package:
+  name: localmail
+  version: "0.3"
+
+source:
+  fn: localmail-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/localmail/localmail-0.3.tar.gz
+  md5: bea9731645cb7e28c0dae95afeab533f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - localmail = localmail:main
+    #
+    # Would create an entry point called localmail that calls localmail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=11.0.0
+
+  run:
+    - python
+    - twisted >=11.0.0
+
+test:
+  # Python imports
+  imports:
+    - localmail
+    - localmail.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/localmail
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Test SMTP/IMAP server for local integration testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

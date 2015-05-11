@@ -1,0 +1,78 @@
+package:
+  name: django-skylark
+  version: "0.4.6"
+
+source:
+  fn: django-skylark-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-skylark/django-skylark-0.4.6.tar.gz
+  md5: 4d36e707ab705a9c7697a1b8d7a059cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-skylark = django-skylark:main
+    #
+    # Would create an entry point called django-skylark that calls django-skylark.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml ==3.09
+    - pytidylib ==0.2.1
+
+  run:
+    - python
+    - pyyaml ==3.09
+    - pytidylib ==0.2.1
+
+test:
+  # Python imports
+  imports:
+    - skylark
+    - skylark.conf
+    - skylark.management
+    - skylark.management.commands
+    - skylark.plans
+    - skylark.processor
+    - skylark.renderer
+    - skylark.tests
+    - skylark.tests.dummyapp
+    - skylark.tests.dummyapp.templatetags
+    - skylark.tests.dynamicapp
+    - skylark.tests.planapp
+    - skylark.urls
+    - skylark.utils
+    - skylark.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://robmadole.com
+  license: BSD
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

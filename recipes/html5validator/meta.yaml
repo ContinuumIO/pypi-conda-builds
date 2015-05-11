@@ -1,0 +1,63 @@
+package:
+  name: html5validator
+  version: "0.1.13"
+
+source:
+  fn: html5validator-0.1.13.tar.gz
+  url: https://pypi.python.org/packages/source/h/html5validator/html5validator-0.1.13.tar.gz
+  md5: 1ead3e11339ae7c7e4b17755eeb69081
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - html5validator = html5validator:main
+    #
+    # Would create an entry point called html5validator that calls html5validator.main()
+
+    - html5validator = html5validator.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - html5validator
+    - vnujar
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - html5validator --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/svenkreiss/html5validator
+  license: MIT License
+  summary: 'Validate HTML5 files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

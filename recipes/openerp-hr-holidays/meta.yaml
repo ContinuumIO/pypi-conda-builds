@@ -1,0 +1,70 @@
+package:
+  name: openerp-hr-holidays
+  version: "7.0.406"
+
+source:
+  fn: openerp-hr-holidays-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-hr-holidays/openerp-hr-holidays-7.0.406.tar.gz
+  md5: c8ad2055c580988199a6da88b403801e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-hr-holidays = openerp-hr-holidays:main
+    #
+    # Would create an entry point called openerp-hr-holidays that calls openerp-hr-holidays.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-hr
+    - openerp-base-calendar
+    - openerp-process
+    - openerp-resource
+
+  run:
+    - python
+    - openerp-hr
+    - openerp-base-calendar
+    - openerp-process
+    - openerp-resource
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.hr_holidays
+    - openerp.addons.hr_holidays.report
+    - openerp.addons.hr_holidays.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Leave Management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: handbag
+  version: "0.1.8"
+
+source:
+  fn: handbag-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/h/handbag/handbag-0.1.8.tar.gz
+  md5: b071dc44ef2a75c7a40252c6cde08d32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - handbag = handbag:main
+    #
+    # Would create an entry point called handbag that calls handbag.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lmdb >=0.78
+    - pytz
+
+  run:
+    - python
+    - lmdb >=0.78
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - handbag
+    - handbag.dbm
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/elishacook/handbag
+  license: UNKNOWN
+  summary: 'An embedded database and data modeling library for python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

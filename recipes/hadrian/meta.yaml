@@ -1,0 +1,88 @@
+package:
+  name: hadrian
+  version: "1.1.5"
+
+source:
+  fn: hadrian-1.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/h/hadrian/hadrian-1.1.5.tar.gz
+  md5: e196d30b645169f1359fb0fbd678390a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hadrian = hadrian:main
+    #
+    # Would create an entry point called hadrian that calls hadrian.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric ==1.4.2
+    - werkzeug ==0.8.3
+    - django-extensions ==0.9
+
+  run:
+    - python
+    - fabric ==1.4.2
+    - werkzeug ==0.8.3
+    - django-extensions ==0.9
+
+test:
+  # Python imports
+  imports:
+    - hadrian
+    - hadrian.choices
+    - hadrian.conf
+    - hadrian.contrib
+    - hadrian.contrib.auth
+    - hadrian.contrib.auth.templatetags
+    - hadrian.contrib.forum
+    - hadrian.contrib.forum.migrations
+    - hadrian.contrib.google
+    - hadrian.contrib.gravatar
+    - hadrian.contrib.gravatar.templatetags
+    - hadrian.contrib.locations
+    - hadrian.contrib.locations.migrations
+    - hadrian.contrib.pomona
+    - hadrian.contrib.settings
+    - hadrian.dist
+    - hadrian.dist.tagging
+    - hadrian.dist.tagging.migrations
+    - hadrian.dist.tagging.templatetags
+    - hadrian.dist.tagging.tests
+    - hadrian.middleware
+    - hadrian.models
+    - hadrian.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dstegelman/hadrian
+  license: MIT License
+  summary: 'A Collection of Django packages and scripts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

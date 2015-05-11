@@ -1,0 +1,69 @@
+package:
+  name: mopidy-subsonic
+  version: "0.3.1"
+
+source:
+  fn: Mopidy-Subsonic-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/M/Mopidy-Subsonic/Mopidy-Subsonic-0.3.1.tar.gz
+  md5: 70cd4a5c554f63f1975a707de59a79cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mopidy-subsonic = mopidy-subsonic:main
+    #
+    # Would create an entry point called mopidy-subsonic that calls mopidy-subsonic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - mopidy >=0.18
+    - pykka >=1.1
+    - py-sonic
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - mopidy >=0.18
+    - pykka >=1.1
+    - py-sonic
+
+test:
+  # Python imports
+  imports:
+    - mopidy_subsonic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rattboi/mopidy-subsonic/
+  license: MIT License
+  summary: u'Subsonic extension for Mopidy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

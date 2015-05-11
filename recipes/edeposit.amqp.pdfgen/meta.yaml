@@ -1,0 +1,70 @@
+package:
+  name: edeposit.amqp.pdfgen
+  version: "0.4.8"
+
+source:
+  fn: edeposit.amqp.pdfgen-0.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/e/edeposit.amqp.pdfgen/edeposit.amqp.pdfgen-0.4.8.tar.gz
+  md5: 8badbf4b013ca1318034582397e1e68b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edeposit.amqp.pdfgen = edeposit.amqp.pdfgen:main
+    #
+    # Would create an entry point called edeposit.amqp.pdfgen that calls edeposit.amqp.pdfgen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rst2pdf
+    - pyqrcode
+    - pypng
+
+  run:
+    - python
+    - setuptools
+    - rst2pdf
+    - pyqrcode
+    - pypng
+
+test:
+  # Python imports
+  imports:
+    - edeposit
+    - edeposit.amqp
+    - edeposit.amqp.pdfgen
+    - edeposit.amqp.pdfgen.structures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edeposit/edeposit.amqp.pdfgen/
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: "E-Deposit's AMQP bindings to PDF generation libraries."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: gametex-django
+  version: "0.3.6"
+
+source:
+  fn: gametex-django-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/gametex-django/gametex-django-0.3.6.tar.gz
+  md5: 22abaefdd97b7a318d4b2b7a7fbf219b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gametex-django = gametex-django:main
+    #
+    # Would create an entry point called gametex-django that calls gametex-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - gametex
+    - gametex.management
+    - gametex.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ternus/gametex-django
+  license: Creative Commons Attribution-Noncommercial-Share Alike license
+  summary: 'Django integration for GameTeX'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: p7edt2ics
+  version: "0.1.2-alpha2"
+
+source:
+  fn: p7edt2ics-0.1.2-alpha2.tar.gz
+  url: https://pypi.python.org/packages/source/p/p7edt2ics/p7edt2ics-0.1.2-alpha2.tar.gz
+  md5: 89451a9e8b7e8076a81f2d278b989525
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - p7edt2ics = p7edt2ics:main
+    #
+    # Would create an entry point called p7edt2ics that calls p7edt2ics.main()
+
+    - edt2ics = edt2ics.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 >=4.3.2
+    - icalendar >=3.8.3
+    - lxml >=3.4.0
+    - argparse >=1.1
+
+  run:
+    - python
+    - beautifulsoup4 >=4.3.2
+    - icalendar >=3.8.3
+    - lxml >=3.4.0
+    - argparse >=1.1
+
+test:
+  # Python imports
+  imports:
+    - edt2ics
+    - p7edt2ics
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - edt2ics --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bfontaine/edt2ics
+  license: MIT License
+  summary: 'Paris Diderot CS dep. iCalendar schedule converter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

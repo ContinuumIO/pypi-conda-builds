@@ -1,0 +1,65 @@
+package:
+  name: buro
+  version: "0.1.27"
+
+source:
+  fn: Buro-0.1.27.tar.gz
+  url: https://pypi.python.org/packages/source/B/Buro/Buro-0.1.27.tar.gz
+  md5: f6e36856d137e05584633c230396900a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buro = buro:main
+    #
+    # Would create an entry point called buro that calls buro.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - jinja2 >=2.5
+    - werkzeug >=0.6.2
+    - setuptools
+
+  run:
+    - python
+    - jinja2 >=2.5
+    - werkzeug >=0.6.2
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - buro
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://buro.sourceinhabitants.com/
+  license: BSD License
+  summary: 'A very simple Python-powered open-source web framework inspired by Flask, but following different design decisions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

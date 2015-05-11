@@ -1,0 +1,70 @@
+package:
+  name: django-bakery
+  version: "0.7.3"
+
+source:
+  fn: django-bakery-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bakery/django-bakery-0.7.3.tar.gz
+  md5: 5ee6b8a5f5e42d70965f3419b7ea8721
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bakery = django-bakery:main
+    #
+    # Would create an entry point called django-bakery that calls django-bakery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.5.2
+    - boto >=2.28
+
+  run:
+    - python
+    - six >=1.5.2
+    - boto >=2.28
+
+test:
+  # Python imports
+  imports:
+    - bakery
+    - bakery.management
+    - bakery.management.commands
+    - bakery.tests
+    - bakery.tests.media
+    - bakery.tests.static
+    - bakery.tests.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/datadesk/django-bakery/
+  license: UNKNOWN
+  summary: 'A set of helpers for baking your Django site out as flat files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

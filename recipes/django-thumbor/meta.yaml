@@ -1,0 +1,65 @@
+package:
+  name: django-thumbor
+  version: "0.5"
+
+source:
+  fn: django-thumbor-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-thumbor/django-thumbor-0.5.tar.gz
+  md5: c8c16bfbed6a8c8af38fae43d468c069
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-thumbor = django-thumbor:main
+    #
+    # Would create an entry point called django-thumbor that calls django-thumbor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - libthumbor
+
+  run:
+    - python
+    - django >=1.4
+    - libthumbor
+
+test:
+  # Python imports
+  imports:
+    - django_thumbor
+    - django_thumbor.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ricobl/django-thumbor/
+  license: UNKNOWN
+  summary: 'A django application to resize images using the thumbor service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

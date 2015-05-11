@@ -1,0 +1,85 @@
+package:
+  name: django-ecl-tools
+  version: "0.1.1"
+
+source:
+  fn: django-ecl-tools-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ecl-tools/django-ecl-tools-0.1.1.tar.gz
+  md5: ca1c29a0ad46599936229d8f6e69c6e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ecl-tools = django-ecl-tools:main
+    #
+    # Would create an entry point called django-ecl-tools that calls django-ecl-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery
+    - requests
+    - django ==1.7.7
+    - boto
+
+  run:
+    - python
+    - celery
+    - requests
+    - django ==1.7.7
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - ecl_tools
+    - ecl_tools.bulkmail
+    - ecl_tools.bulkmail.mailers
+    - ecl_tools.bulkmail.management
+    - ecl_tools.bulkmail.management.commands
+    - ecl_tools.bulkmail.migrations
+    - ecl_tools.bulkmail.resolvers
+    - ecl_tools.config
+    - ecl_tools.config.middleware
+    - ecl_tools.config.templatetags
+    - ecl_tools.mail
+    - ecl_tools.mail.migrations
+    - ecl_tools.security
+    - ecl_tools.security.middleware
+    - ecl_tools.utils
+    - ecl_tools.utils.management
+    - ecl_tools.utils.management.commands
+    - ecl_tools.utils.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://EdgeCaseLabs.com
+  license: YMMV
+  summary: "EdgeCaseLabs' Django Tools"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: django-review
+  version: "1.9.2"
+
+source:
+  fn: django-review-1.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-review/django-review-1.9.2.tar.gz
+  md5: 593ca03e1f7cd7c2b4bada5fe0a8abad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-review = django-review:main
+    #
+    # Would create an entry point called django-review that calls django-review.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-user-media >=1.0
+    - django-generic-positions
+    - django-hvad >=0.4.1
+    - easy-thumbnails
+    - simplejson
+
+  run:
+    - python
+    - django
+    - django-user-media >=1.0
+    - django-generic-positions
+    - django-hvad >=0.4.1
+    - easy-thumbnails
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - review
+    - review.migrations
+    - review.templatetags
+    - review.tests
+    - review.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-review
+  license: The MIT License
+  summary: 'A reusable Django app that lets users write reviews for any model\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

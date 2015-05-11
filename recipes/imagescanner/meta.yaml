@@ -1,0 +1,79 @@
+package:
+  name: imagescanner
+  version: "0.9"
+
+source:
+  fn: imagescanner-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/i/imagescanner/imagescanner-0.9.tar.gz
+  md5: aff2ccaa59478070200e00cb84e7bc11
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - imagescanner = imagescanner:main
+    #
+    # Would create an entry point called imagescanner that calls imagescanner.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-cjson
+    - autoconnect
+    - importlib
+    - pil
+    - pysane
+
+  run:
+    - python
+    - python-cjson
+    - autoconnect
+    - importlib
+    - pil
+    - pysane
+
+test:
+  # Python imports
+  imports:
+    - imagescanner
+    - imagescanner.backends
+    - imagescanner.backends.base
+    - imagescanner.backends.net
+    - imagescanner.backends.sane
+    - imagescanner.backends.test
+    - imagescanner.backends.test.data
+    - imagescanner.backends.twain
+    - imagescanner.core
+    - imagescanner.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/imagescanner/
+  license: UNKNOWN
+  summary: 'Multi-platform Python library to access scanner devices.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

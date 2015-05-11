@@ -1,0 +1,62 @@
+package:
+  name: django-transactional-cleanup
+  version: "0.1.14"
+
+source:
+  fn: django-transactional-cleanup-0.1.14.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-transactional-cleanup/django-transactional-cleanup-0.1.14.tar.gz
+  md5: c45c3ee7322f7cb2e07f1df20027b4ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-transactional-cleanup = django-transactional-cleanup:main
+    #
+    # Would create an entry point called django-transactional-cleanup that calls django-transactional-cleanup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-transaction-hooks >=0.2
+
+  run:
+    - python
+    - django-transaction-hooks >=0.2
+
+test:
+  # Python imports
+  imports:
+    - django_transactional_cleanup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jespino/django-transactional-cleanup
+  license: MIT License
+  summary: 'Deletes old files on transaction commit.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

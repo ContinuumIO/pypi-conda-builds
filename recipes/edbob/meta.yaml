@@ -1,0 +1,89 @@
+package:
+  name: edbob
+  version: "0.1.2"
+
+source:
+  fn: edbob-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/edbob/edbob-0.1.2.tar.gz
+  md5: 864d143b928a37dd79f9db9943e8b7c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edbob = edbob:main
+    #
+    # Would create an entry point called edbob that calls edbob.main()
+
+    - edbob=edbob.commands:main
+    - edbobw=edbob.commands:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator
+    - lockfile
+    - progressbar
+    - pytz >=2013b
+
+  run:
+    - python
+    - setuptools
+    - decorator
+    - lockfile
+    - progressbar
+    - pytz >=2013b
+
+test:
+  # Python imports
+  imports:
+    - edbob
+    - edbob.db
+    - edbob.db.extensions
+    - edbob.db.extensions.auth
+    - edbob.db.extensions.contact
+    - edbob.filemon
+    - edbob.lib
+    - edbob.pyramid
+    - edbob.pyramid.forms
+    - edbob.pyramid.forms.formalchemy
+    - edbob.pyramid.grids
+    - edbob.pyramid.static
+    - edbob.pyramid.views
+    - edbob.pyramid.views.grids
+    - edbob.scaffolds
+    - edbob.tests
+    - edbob.wx
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - edbob --help
+    - edbobw --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://edbob.org/
+  license: GNU Affero General Public License v3
+  summary: 'Pythonic Software Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

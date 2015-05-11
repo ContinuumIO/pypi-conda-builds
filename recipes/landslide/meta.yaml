@@ -1,0 +1,72 @@
+package:
+  name: landslide
+  version: "1.1.3"
+
+source:
+  fn: landslide-1.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/landslide/landslide-1.1.3.tar.gz
+  md5: 81d0e79bbc748c2fca90d2cbd5f85d06
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - landslide = landslide:main
+    #
+    # Would create an entry point called landslide that calls landslide.main()
+
+    - landslide = landslide.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - markdown
+    - pygments
+    - docutils
+    - six
+
+  run:
+    - python
+    - jinja2
+    - markdown
+    - pygments
+    - docutils
+    - six
+
+test:
+  # Python imports
+  imports:
+    - landslide
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - landslide --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/adamzap/landslide
+  license: Apache Software License
+  summary: 'Lightweight markup language-based html5 slideshow generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

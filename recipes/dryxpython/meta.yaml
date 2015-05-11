@@ -1,0 +1,77 @@
+package:
+  name: dryxpython
+  version: "1.098"
+
+source:
+  fn: dryxPython-1.098.tar.gz
+  url: https://pypi.python.org/packages/source/d/dryxPython/dryxPython-1.098.tar.gz
+  md5: 2dd1717c687fabd8ac0be30a46badb55
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dryxpython = dryxpython:main
+    #
+    # Would create an entry point called dryxpython that calls dryxpython.main()
+
+    - py_get_help_for_python_module=dryxPython.command_line:get_help_for_python_module
+    - dft_print_fits_header=dryxPython.command_line:dft_print_fits_header
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - docopt
+    - numpy
+    - matplotlib
+
+  run:
+    - python
+    - pyyaml
+    - docopt
+    - numpy
+    - matplotlib
+
+test:
+  # Python imports
+  imports:
+    - dryxPython
+    - dryxPython.htmlframework
+    - dryxPython.kws
+    - dryxPython.mmd
+    - dryxPython.tests
+    - dryxpython
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - py_get_help_for_python_module --help
+    - dft_print_fits_header --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thespacedoctor/dryxPython
+  license: MIT License
+  summary: 'A collection of useful commonly used python modules'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

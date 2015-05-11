@@ -1,0 +1,65 @@
+package:
+  name: pygrid
+  version: "0.2.5"
+
+source:
+  fn: pyGRID-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyGRID/pyGRID-0.2.5.tar.gz
+  md5: 0f67f087cb833a09b3fa5149ea5ecc73
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pygrid = pygrid:main
+    #
+    # Would create an entry point called pygrid that calls pygrid.main()
+
+    - pyGRID = pyGRID:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.4.1
+
+  run:
+    - python
+    - numpy >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - pyGRID
+    - pygrid
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyGRID --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Python utilities to interface with SUN GRID ENNGINE and allow to run\n                    simulations that span a parameter space'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

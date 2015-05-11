@@ -1,0 +1,87 @@
+package:
+  name: infi.multipathtools
+  version: "0.1.30"
+
+source:
+  fn: infi.multipathtools-0.1.30.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.multipathtools/infi.multipathtools-0.1.30.tar.gz
+  md5: 9cf7b8c248895390d25b87758c9ef792
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.multipathtools = infi.multipathtools:main
+    #
+    # Would create an entry point called infi.multipathtools that calls infi.multipathtools.main()
+
+    - print_maps = infi.multipathtools.scripts:print_maps
+    - print_config = infi.multipathtools.scripts:print_config
+    - print_model_examples = infi.multipathtools.model.scripts:print_examples
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.exceptools
+    - infi.execute
+    - infi.instruct
+    - infi.pyutils
+    - munch
+    - setuptools
+
+  run:
+    - python
+    - infi.exceptools
+    - infi.execute
+    - infi.instruct
+    - infi.pyutils
+    - munch
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.multipathtools
+    - infi.multipathtools.client
+    - infi.multipathtools.config
+    - infi.multipathtools.connection
+    - infi.multipathtools.dtypes
+    - infi.multipathtools.errors
+    - infi.multipathtools.model
+    - infi.multipathtools.scripts
+    - infi.multipathtools.service
+    - infi.multipathtools.simulator
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - print_maps --help
+    - print_config --help
+    - print_model_examples --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.multipathtools
+  license: Python Software Foundation License
+  summary: 'python bindings to multipath-tools daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

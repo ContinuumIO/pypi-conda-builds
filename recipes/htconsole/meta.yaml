@@ -1,0 +1,78 @@
+package:
+  name: htconsole
+  version: "0.2"
+
+source:
+  fn: HTConsole-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/H/HTConsole/HTConsole-0.2.tar.gz
+  md5: 13fdce1d1920509a86590c4eee7a9209
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htconsole = htconsole:main
+    #
+    # Would create an entry point called htconsole that calls htconsole.main()
+
+    - htconsole=htconsole.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pastedeploy
+    - wareweb
+    - simplejson
+    - ruledispatch
+    - webhelpers
+    - paste
+    - cheetah >=2a
+
+  run:
+    - python
+    - setuptools
+    - pastedeploy
+    - wareweb
+    - simplejson
+    - ruledispatch
+    - webhelpers
+    - paste
+    - cheetah >=2a
+
+test:
+  # Python imports
+  imports:
+    - htconsole
+    - htconsole.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - htconsole --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'A web-based Python console'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

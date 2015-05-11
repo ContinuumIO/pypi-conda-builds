@@ -1,0 +1,74 @@
+package:
+  name: djangotransifex
+  version: "0.1.8"
+
+source:
+  fn: djangotransifex-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangotransifex/djangotransifex-0.1.8.tar.gz
+  md5: 4affa589225ad9a82117a6973617a038
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangotransifex = djangotransifex:main
+    #
+    # Would create an entry point called djangotransifex that calls djangotransifex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3,<1.6
+    - python-transifex ==0.1.7
+    - mock ==1.0.1
+    - pytest ==2.6.4
+    - pytest-django ==2.7
+
+  run:
+    - python
+    - django >=1.3,<1.6
+    - python-transifex ==0.1.7
+    - mock ==1.0.1
+    - pytest ==2.6.4
+    - pytest-django ==2.7
+
+test:
+  # Python imports
+  imports:
+    - djangotransifex
+    - djangotransifex.management
+    - djangotransifex.management.commands
+    - test_project
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jakul/django-transifex
+  license: BSD License
+  summary: 'A Django api to Transifex'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

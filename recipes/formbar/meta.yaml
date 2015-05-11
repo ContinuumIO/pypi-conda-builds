@@ -1,0 +1,71 @@
+package:
+  name: formbar
+  version: "0.9.7"
+
+source:
+  fn: formbar-0.9.7.tar.gz
+  url: https://pypi.python.org/packages/source/f/formbar/formbar-0.9.7.tar.gz
+  md5: 1df83442c1dbbb64e1656695fc3f6c37
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - formbar = formbar:main
+    #
+    # Would create an entry point called formbar that calls formbar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - brabbel >=0.2.6
+    - sqlalchemy
+    - babel
+    - python-dateutil
+    - mako
+
+  run:
+    - python
+    - setuptools
+    - brabbel >=0.2.6
+    - sqlalchemy
+    - babel
+    - python-dateutil
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - formbar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ti/formbar
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Python library to layout, render and validate HTML forms in web applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: bottle-boilerplate
+  version: "0.3"
+
+source:
+  fn: bottle-boilerplate-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/bottle-boilerplate/bottle-boilerplate-0.3.tar.gz
+  md5: afb4dc7c98ebc9f29b583352dc210c13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bottle-boilerplate = bottle-boilerplate:main
+    #
+    # Would create an entry point called bottle-boilerplate that calls bottle-boilerplate.main()
+
+    - bottle = bottle_boilerplate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cookiecutter
+    - click
+
+  run:
+    - python
+    - cookiecutter
+    - click
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bottle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/avelino/bottle-boilerplate
+  license: BSD License
+  summary: 'Boilerplate code for new Bottle projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

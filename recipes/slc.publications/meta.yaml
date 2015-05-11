@@ -1,0 +1,82 @@
+package:
+  name: slc.publications
+  version: "4.7.7"
+
+source:
+  fn: slc.publications-4.7.7.zip
+  url: https://pypi.python.org/packages/source/s/slc.publications/slc.publications-4.7.7.zip
+  md5: dd129db2aa5625ce8a688be887030c37
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slc.publications = slc.publications:main
+    #
+    # Would create an entry point called slc.publications that calls slc.publications.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - archetypes.schemaextender
+    - ordereddict
+    - p4a.common
+    - p4a.subtyper
+    - p4a.z2utils
+    - setuptools
+    - z3c.jbot
+
+  run:
+    - python
+    - setuptools
+    - archetypes.schemaextender
+    - ordereddict
+    - p4a.common
+    - p4a.subtyper
+    - p4a.z2utils
+    - setuptools
+    - z3c.jbot
+
+test:
+  # Python imports
+  imports:
+    - slc
+    - slc.publications
+    - slc.publications.adapter
+    - slc.publications.browser
+    - slc.publications.ini
+    - slc.publications.pdf
+    - slc.publications.subtypes
+    - slc.publications.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/slc.publications
+  license: GNU General Public License (GPL) or European Union Public Licence 1.1 (EUPL 1.1)
+  summary: 'A content type to store and parse pdf publications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

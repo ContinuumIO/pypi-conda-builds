@@ -1,0 +1,84 @@
+package:
+  name: magni
+  version: "1.3.0"
+
+source:
+  fn: magni-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/magni/magni-1.3.0.tar.gz
+  md5: e53a6007ffbc60866f2ddb2bbf2051fa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - magni = magni:main
+    #
+    # Would create an entry point called magni that calls magni.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.8
+    - scipy >=0.13
+    - tables >=3.1
+    - matplotlib >=1.3
+
+  run:
+    - python
+    - numpy >=1.8
+    - scipy >=0.13
+    - tables >=3.1
+    - matplotlib >=1.3
+
+test:
+  # Python imports
+  imports:
+    - magni
+    - magni.afm
+    - magni.afm.io
+    - magni.afm.types
+    - magni.cs
+    - magni.cs.phase_transition
+    - magni.cs.reconstruction
+    - magni.cs.reconstruction.iht
+    - magni.cs.reconstruction.it
+    - magni.cs.reconstruction.sl0
+    - magni.imaging
+    - magni.imaging.dictionaries
+    - magni.reproducibility
+    - magni.tests
+    - magni.utils
+    - magni.utils.multiprocessing
+    - magni.utils.validation
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SIP-AAU/Magni
+  license: BSD License
+  summary: 'A Python Package for Compressive Sampling and Reconstruction of Atomic Force Microscopy Images'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: ipython-cluster-helper
+  version: "0.4.3"
+
+source:
+  fn: ipython-cluster-helper-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython-cluster-helper/ipython-cluster-helper-0.4.3.tar.gz
+  md5: bf1670bf66737e4758b9a0659c22c627
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipython-cluster-helper = ipython-cluster-helper:main
+    #
+    # Would create an entry point called ipython-cluster-helper that calls ipython-cluster-helper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq >=2.1.11
+    - ipython >=1.1.0
+    - netifaces >=0.10.3
+
+  run:
+    - python
+    - pyzmq >=2.1.11
+    - ipython >=1.1.0
+    - netifaces >=0.10.3
+
+test:
+  # Python imports
+  imports:
+    - cluster_helper
+    - cluster_helper.log
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/roryk/ipython-cluster-helper
+  license: MIT
+  summary: 'Simplify IPython cluster start up and use for multiple schedulers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

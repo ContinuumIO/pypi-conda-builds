@@ -1,0 +1,62 @@
+package:
+  name: coil
+  version: "1.2.0"
+
+source:
+  fn: coil-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/coil/coil-1.2.0.tar.gz
+  md5: e3f17f70c1de9fc2365c128d0a4a8902
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coil = coil:main
+    #
+    # Would create an entry point called coil that calls coil.main()
+
+    - coil = coil.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - coil
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - coil --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/getnikola/coil
+  license: MIT
+  summary: 'A user-friendly CMS frontend for Nikola.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

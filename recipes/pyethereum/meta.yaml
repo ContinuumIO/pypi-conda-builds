@@ -1,0 +1,97 @@
+package:
+  name: pyethereum
+  version: "0.9.2"
+
+source:
+  fn: pyethereum-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyethereum/pyethereum-0.9.2.tar.gz
+  md5: 960aef4540f63ccca4667f0382ad2019
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyethereum = pyethereum:main
+    #
+    # Would create an entry point called pyethereum that calls pyethereum.main()
+
+    - pyeth=pyethereum.eth:main
+    - pyethclient=pyethereum.ethclient:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bitcoin
+    - bottle
+    - docopt
+    - ethereum-serpent
+    - leveldb
+    - miniupnpc
+    - pysha3
+    - pytest
+    - pytest-timeout
+    - repoze.lru
+    - requests
+    - rlp >=0.3.6
+    - waitress
+    - structlog >=15.0.0
+    - pyethash
+
+  run:
+    - python
+    - bitcoin
+    - bottle
+    - docopt
+    - ethereum-serpent
+    - leveldb
+    - miniupnpc
+    - pysha3
+    - pytest
+    - pytest-timeout
+    - repoze.lru
+    - requests
+    - rlp >=0.3.6
+    - waitress
+    - structlog >=15.0.0
+    - pyethash
+
+test:
+  # Python imports
+  imports:
+    - pyethereum
+    - pyethereum.dispatch
+    - tests
+    - tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyeth --help
+    - pyethclient --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ethereum/pyethereum/
+  license: UNKNOWN
+  summary: 'Next generation cryptocurrency network'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

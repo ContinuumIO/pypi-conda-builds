@@ -1,0 +1,73 @@
+package:
+  name: miniparse
+  version: "0.2.2"
+
+source:
+  fn: MiniParse-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/M/MiniParse/MiniParse-0.2.2.tar.gz
+  md5: c1321ee7a53b723c9a9d024cb009f42f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - miniparse = miniparse:main
+    #
+    # Would create an entry point called miniparse that calls miniparse.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - interactivecommandline
+
+  run:
+    - python
+    - interactivecommandline
+
+test:
+  # Python imports
+  imports:
+    - MiniParse
+    - MiniParse.Core
+    - MiniParse.Core.tests
+    - MiniParse.Examples
+    - MiniParse.Examples.StringArithmetic
+    - MiniParse.Meta
+    - MiniParse.Meta.Drawable
+    - MiniParse.Meta.Generable
+    - MiniParse.Meta.Grammars
+    - MiniParse.Meta.Grammars.HandWrittenEbnf
+    - MiniParse.Meta.Grammars.HandWrittenEbnf.tests
+    - miniparse
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://jacquev6.github.com/MiniParse
+  license: MIT License
+  summary: 'Minimal, hence simple, parsing library, with a focus on clear error messages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

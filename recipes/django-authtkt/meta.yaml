@@ -1,0 +1,64 @@
+package:
+  name: django-authtkt
+  version: "0.3"
+
+source:
+  fn: django-authtkt-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-authtkt/django-authtkt-0.3.tar.gz
+  md5: 4d77874c70b16ea38764b60367d20aec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-authtkt = django-authtkt:main
+    #
+    # Would create an entry point called django-authtkt that calls django-authtkt.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste
+
+  run:
+    - python
+    - setuptools
+    - paste
+
+test:
+  # Python imports
+  imports:
+    - authtkt
+    - authtkt.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bearstech/django-authtkt
+  license: GPL
+  summary: 'django-authtkt is used to share auth between more than one django site (a kind of SSO auth)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

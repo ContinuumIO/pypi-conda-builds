@@ -1,0 +1,87 @@
+package:
+  name: gocept.runner
+  version: "0.7.1"
+
+source:
+  fn: gocept.runner-0.7.1.zip
+  url: https://pypi.python.org/packages/source/g/gocept.runner/gocept.runner-0.7.1.zip
+  md5: edfe6e6b20ad72f2c896f49331ba3e58
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.runner = gocept.runner:main
+    #
+    # Would create an entry point called gocept.runner that calls gocept.runner.main()
+
+    - runexample = gocept.runner.example:example
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zodb3
+    - decorator
+    - setuptools
+    - transaction
+    - zope.app.appsetup >=3.6.0
+    - zope.app.component
+    - zope.app.server
+    - zope.app.wsgi
+    - zope.authentication
+    - zope.publisher
+    - zope.security
+    - zope.testing
+
+  run:
+    - python
+    - zodb3
+    - decorator
+    - setuptools
+    - transaction
+    - zope.app.appsetup >=3.6.0
+    - zope.app.component
+    - zope.app.server
+    - zope.app.wsgi
+    - zope.authentication
+    - zope.publisher
+    - zope.security
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.runner
+    - gocept.runner.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - runexample --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gocept/gocept.runner/
+  license: Zope Public License
+  summary: 'Create stand alone programs with full Zope3 runtime environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

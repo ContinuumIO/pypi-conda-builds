@@ -1,0 +1,63 @@
+package:
+  name: ecks
+  version: "0.10"
+
+source:
+  fn: Ecks-0.10.tar.gz
+  url: https://pypi.python.org/packages/source/E/Ecks/Ecks-0.10.tar.gz
+  md5: a45863bb9d919dead3fc1ee0919b1f66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ecks = ecks:main
+    #
+    # Would create an entry point called ecks that calls ecks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pysnmp >=4.2.2
+
+  run:
+    - python
+    - pysnmp >=4.2.2
+
+test:
+  # Python imports
+  imports:
+    - ecks
+    - ecks.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cread/ecks
+  license: Apache Software License
+  summary: 'Easy access to SNMP data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: django-db-geventpool
+  version: "1.20.1"
+
+source:
+  fn: django-db-geventpool-1.20.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-db-geventpool/django-db-geventpool-1.20.1.tar.gz
+  md5: db2f63b9f63d5eb7899ab8174e7e18b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-db-geventpool = django-db-geventpool:main
+    #
+    # Would create an entry point called django-db-geventpool that calls django-db-geventpool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - psycopg2 >=2.5.1
+    - psycogreen >=1.0
+
+  run:
+    - python
+    - django >=1.5
+    - psycopg2 >=2.5.1
+    - psycogreen >=1.0
+
+test:
+  # Python imports
+  imports:
+    - django_db_geventpool
+    - django_db_geventpool.backends
+    - django_db_geventpool.backends.postgis
+    - django_db_geventpool.backends.postgresql_psycopg2
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jneight/django-db-geventpool
+  license: Apache Software License
+  summary: 'Add a DB connection pool using gevent to django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

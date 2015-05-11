@@ -1,0 +1,64 @@
+package:
+  name: galaxyxml
+  version: "0.1.15"
+
+source:
+  fn: galaxyxml-0.1.15.tar.gz
+  url: https://pypi.python.org/packages/source/g/galaxyxml/galaxyxml-0.1.15.tar.gz
+  md5: 19d6541f245b26b4569bf7313cd14c64
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - galaxyxml = galaxyxml:main
+    #
+    # Would create an entry point called galaxyxml that calls galaxyxml.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+
+  run:
+    - python
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - galaxyxml
+    - galaxyxml.tool
+    - galaxyxml.tool.parameters
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache Software License
+  summary: 'Galaxy XML generation library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

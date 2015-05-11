@@ -1,0 +1,64 @@
+package:
+  name: flask-init
+  version: "0.2.3"
+
+source:
+  fn: flask-init-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-init/flask-init-0.2.3.tar.gz
+  md5: a7e02fe86ff5764232b48f252112d76d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-init = flask-init:main
+    #
+    # Would create an entry point called flask-init that calls flask-init.main()
+
+    - flask-init=flask_init.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  # Python imports
+  imports:
+    - flask_init
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flask-init --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Parkayun/flask-init
+  license: MIT License
+  summary: 'Generate Flask project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

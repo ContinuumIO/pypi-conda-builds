@@ -1,0 +1,66 @@
+package:
+  name: easydev
+  version: "0.8.3"
+
+source:
+  fn: easydev-0.8.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/easydev/easydev-0.8.3.tar.gz
+  md5: cb8972da5f8c0b96fa40ffab9c36f44f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easydev = easydev:main
+    #
+    # Would create an entry point called easydev that calls easydev.main()
+
+    - easydev_buildPackage=easydev.package:buildPackage
+    - multigit=easydev.multigit:main_func
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ordereddict
+
+  run:
+    - python
+    - ordereddict
+
+test:
+  # Python imports
+  imports:
+    - easydev
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - easydev_buildPackage --help
+    - multigit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: ['http://packages.python.org/easydev/']
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Common utilities to ease the development of Python packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: cs.plonepatches.resourceregistries
+  version: "1.0"
+
+source:
+  fn: cs.plonepatches.resourceregistries-1.0.zip
+  url: https://pypi.python.org/packages/source/c/cs.plonepatches.resourceregistries/cs.plonepatches.resourceregistries-1.0.zip
+  md5: 0ab308342c1050bb8fa51da0ed9850e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cs.plonepatches.resourceregistries = cs.plonepatches.resourceregistries:main
+    #
+    # Would create an entry point called cs.plonepatches.resourceregistries that calls cs.plonepatches.resourceregistries.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - plone >=4.2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - plone >=4.2
+
+test:
+  # Python imports
+  imports:
+    - cs
+    - cs.plonepatches
+    - cs.plonepatches.resourceregistries
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/codesyntax/cs.plonepatches.resourceregistries
+  license: GPL
+  summary: 'A patch for Resource Registries to create a single minified file. Two if the user is logged-in'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

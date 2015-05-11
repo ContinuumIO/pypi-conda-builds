@@ -1,0 +1,82 @@
+package:
+  name: full_stat
+  version: "0.1.2"
+
+source:
+  fn: full_stat-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/full_stat/full_stat-0.1.2.tar.gz
+  md5: 00102cecec518e5eb2d7c7eb7d949097
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - full_stat = full_stat:main
+    #
+    # Would create an entry point called full_stat that calls full_stat.main()
+
+    - full_stat = full_stat.main:main
+    - full_stat = full_stat.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyside
+    - scipy >=0.13
+    - numpy >=1.8
+    - pandas
+    - pyqtgraph
+
+  run:
+    - python
+    - pyside
+    - scipy >=0.13
+    - numpy >=1.8
+    - pandas
+    - pyqtgraph
+
+test:
+  # Python imports
+  imports:
+    - full_stat
+    - full_stat.gui
+    - full_stat.gui_pyside
+    - full_stat.io_data
+    - full_stat.stats
+    - full_stat.stats.corr
+    - full_stat.stats.mean
+    - full_stat.stats.misc
+    - full_stat.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - full_stat --help
+    - full_stat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yarnaid/full_stat
+  license: GPL v3
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

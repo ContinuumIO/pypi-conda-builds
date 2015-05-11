@@ -1,0 +1,85 @@
+package:
+  name: gugle.bot
+  version: "1.0dev-r629"
+
+source:
+  fn: gugle.bot-1.0dev-r629.tar.gz
+  url: https://pypi.python.org/packages/source/g/gugle.bot/gugle.bot-1.0dev-r629.tar.gz
+  md5: 7db2eff45d292347d93dd57acf9a11f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gugle.bot = gugle.bot:main
+    #
+    # Would create an entry point called gugle.bot that calls gugle.bot.main()
+
+    - guglebot=gugle.bot.utils.bot:main
+    - gbinspect=gugle.bot.utils.dbinspect:main
+    - gbshowentry=gugle.bot.utils.showentry:main
+    - gbfilter=gugle.bot.utils.filter:main
+    - gbrefetch=gugle.bot.utils.refetch:main
+    - gblist=gugle.bot.utils.list:main
+    - gbgraph=gugle.bot.utils.graph:main
+    - gbdomains=gugle.bot.utils.domains:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - gugle.storage
+    - beautifulsoup >=3.0.5
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - gugle.storage
+    - beautifulsoup >=3.0.5
+
+test:
+  # Python imports
+  imports:
+    - gugle
+    - gugle.bot
+    - gugle.bot.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - guglebot --help
+    - gbinspect --help
+    - gbshowentry --help
+    - gbfilter --help
+    - gbrefetch --help
+    - gblist --help
+    - gbgraph --help
+    - gbdomains --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://manuelonsoftware.wordpress.com/
+  license: GNU General Public License (GPL)
+  summary: 'Small and Dumb Spider'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

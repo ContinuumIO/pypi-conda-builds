@@ -1,0 +1,119 @@
+package:
+  name: largeblue.order
+  version: "0.2"
+
+source:
+  fn: largeblue.order-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/largeblue.order/largeblue.order-0.2.tar.gz
+  md5: 2b25728bf20bb77b647e879e0dde334f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - largeblue.order = largeblue.order:main
+    #
+    # Would create an entry point called largeblue.order that calls largeblue.order.main()
+
+    - largeblue-debug=largeblue.startup:interactive_debug_prompt
+    - largeblue-ctl=largeblue.startup:zdaemon_controller
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.authentication
+    - zope.app.catalog
+    - zope.app.tree
+    - zope.app.intid
+    - zope.app.keyreference
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.copypastemove
+    - zope.formlib
+    - zope.i18n
+    - zope.publisher
+    - zope.security
+    - zope.testing
+    - zope.traversing
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.authentication
+    - zope.app.catalog
+    - zope.app.tree
+    - zope.app.intid
+    - zope.app.keyreference
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.copypastemove
+    - zope.formlib
+    - zope.i18n
+    - zope.publisher
+    - zope.security
+    - zope.testing
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - bebop
+    - bebop.ordering
+    - bebop.ordering.browser
+    - bebop.protocol
+    - bebop.protocol.demo
+    - bebop.protocol.demo.hello
+    - bebop.protocol.demo.package
+    - bop
+    - largeblue
+    - largeblue.order
+    - largeblue.order.browser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - largeblue-debug --help
+    - largeblue-ctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pesto.largeblue.net/trac/browser/largeblue/devel/largeblue.order
+  license: Public Domain (note, vendor code contained within has own licenses)
+  summary: 'An adapter to make containers and their contents orderable'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

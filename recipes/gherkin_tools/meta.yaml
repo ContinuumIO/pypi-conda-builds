@@ -1,0 +1,64 @@
+package:
+  name: gherkin_tools
+  version: "0.1.17"
+
+source:
+  fn: gherkin_tools-0.1.17.tar.gz
+  url: https://pypi.python.org/packages/source/g/gherkin_tools/gherkin_tools-0.1.17.tar.gz
+  md5: 25904a2761bb75401119b024746c9476
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gherkin_tools = gherkin_tools:main
+    #
+    # Would create an entry point called gherkin_tools that calls gherkin_tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gus_client >=0.5.11
+
+  run:
+    - python
+    - gus_client >=0.5.11
+
+test:
+  # Python imports
+  imports:
+    - gherkin
+    - gherkin.test
+    - gherkin_tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Keep it real
+  summary: 'Parse Gherkin Files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

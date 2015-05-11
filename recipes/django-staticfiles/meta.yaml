@@ -1,0 +1,71 @@
+package:
+  name: django-staticfiles
+  version: "1.2.1"
+
+source:
+  fn: django-staticfiles-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-staticfiles/django-staticfiles-1.2.1.tar.gz
+  md5: e14681d34beb811c2976c9ce4c8fbd20
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-staticfiles = django-staticfiles:main
+    #
+    # Would create an entry point called django-staticfiles that calls django-staticfiles.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-appconf >=0.4
+
+  run:
+    - python
+    - django-appconf >=0.4
+
+test:
+  # Python imports
+  imports:
+    - staticfiles
+    - staticfiles.management
+    - staticfiles.management.commands
+    - staticfiles.templatetags
+    - staticfiles.tests
+    - staticfiles.tests.apps
+    - staticfiles.tests.apps.no_label
+    - staticfiles.tests.apps.skip
+    - staticfiles.tests.apps.test
+    - staticfiles.tests.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-staticfiles.readthedocs.org/
+  license: BSD License
+  summary: 'A Django app that provides helpers for serving static files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

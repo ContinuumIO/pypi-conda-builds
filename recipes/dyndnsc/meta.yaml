@@ -1,0 +1,83 @@
+package:
+  name: dyndnsc
+  version: "0.4.2"
+
+source:
+  fn: dyndnsc-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dyndnsc/dyndnsc-0.4.2.tar.gz
+  md5: 1a0c9aa48deb0e65f01e81d95e76f60c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dyndnsc = dyndnsc:main
+    #
+    # Would create an entry point called dyndnsc that calls dyndnsc.main()
+
+    - dyndnsc=dyndnsc.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.0.1
+    - setuptools
+    - ipy >=0.56
+    - argparse
+    - pyopenssl
+    - ndg-httpsclient
+    - pyasn1
+
+  run:
+    - python
+    - setuptools
+    - requests >=2.0.1
+    - setuptools
+    - ipy >=0.56
+    - argparse
+    - pyopenssl
+    - ndg-httpsclient
+    - pyasn1
+
+test:
+  # Python imports
+  imports:
+    - dyndnsc
+    - dyndnsc.common
+    - dyndnsc.detector
+    - dyndnsc.plugins
+    - dyndnsc.resources
+    - dyndnsc.tests
+    - dyndnsc.updater
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dyndnsc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/infothrill/python-dyndnsc
+  license: MIT License
+  summary: 'dynamic dns (dyndns) update client with support for multiple protocols'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

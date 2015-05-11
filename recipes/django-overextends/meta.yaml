@@ -1,0 +1,66 @@
+package:
+  name: django-overextends
+  version: "0.3.2"
+
+source:
+  fn: django-overextends-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-overextends/django-overextends-0.3.2.tar.gz
+  md5: 9844946d31083b5370035ac7e9afa076
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-overextends = django-overextends:main
+    #
+    # Would create an entry point called django-overextends that calls django-overextends.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx-me >=0.1.2
+    - django >=1.4
+
+  run:
+    - python
+    - sphinx-me >=0.1.2
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - overextends
+    - overextends.templatetags
+    - test_project
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stephenmcd/django-overextends
+  license: UNKNOWN
+  summary: 'A Django reusable app providing the ability to use circular template inheritance.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

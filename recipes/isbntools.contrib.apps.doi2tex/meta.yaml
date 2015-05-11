@@ -1,0 +1,66 @@
+package:
+  name: isbntools.contrib.apps.doi2tex
+  version: "0.0.5"
+
+source:
+  fn: isbntools.contrib.apps.doi2tex-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/i/isbntools.contrib.apps.doi2tex/isbntools.contrib.apps.doi2tex-0.0.5.tar.gz
+  md5: e535e8e3742ed0e83db415a6878a397a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isbntools.contrib.apps.doi2tex = isbntools.contrib.apps.doi2tex:main
+    #
+    # Would create an entry point called isbntools.contrib.apps.doi2tex that calls isbntools.contrib.apps.doi2tex.main()
+
+    - isbn_doi2tex=isbntools.contrib.apps.doi2tex:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - isbntools >=3.3.7
+    - isbnlib >=3.3.8
+
+  run:
+    - python
+    - isbntools >=3.3.7
+    - isbnlib >=3.3.8
+
+test:
+  # Python imports
+  imports:
+    - isbntools/contrib/apps
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - isbn_doi2tex --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xlcnd/isbntools
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'An add-in for isbntools that, given a DOI, returns a reference formated in BibTeX.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

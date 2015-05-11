@@ -1,0 +1,62 @@
+package:
+  name: ironpycompiler
+  version: "0.10.1"
+
+source:
+  fn: ironpycompiler-0.10.1.zip
+  url: https://pypi.python.org/packages/source/i/ironpycompiler/ironpycompiler-0.10.1.zip
+  md5: cbd998f9077f0aa3f798b5152edb85b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ironpycompiler = ironpycompiler:main
+    #
+    # Would create an entry point called ironpycompiler that calls ironpycompiler.main()
+
+    - ipy2asm = ironpycompiler.ipy2asm:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ironpycompiler
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ipy2asm --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hamukichi/ironpycompiler
+  license: MIT License
+  summary: 'Compile IronPython scripts into a stand-alone .NET assembly.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

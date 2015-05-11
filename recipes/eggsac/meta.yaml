@@ -1,0 +1,66 @@
+package:
+  name: eggsac
+  version: "0.1.0"
+
+source:
+  fn: Eggsac-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/E/Eggsac/Eggsac-0.1.0.tar.gz
+  md5: 618f8cfed2a06b524d5dc3b5485d4c1c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eggsac = eggsac:main
+    #
+    # Would create an entry point called eggsac that calls eggsac.main()
+
+    - eggsac = eggsac.eggsac:eggsac
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - virtualenv >=1.10
+
+  run:
+    - python
+    - argparse
+    - virtualenv >=1.10
+
+test:
+  # Python imports
+  imports:
+    - eggsac
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eggsac --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cozi/eggsac
+  license: MIT License
+  summary: 'Package Python applications in a virtualenv for deployment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

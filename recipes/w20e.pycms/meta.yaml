@@ -1,0 +1,89 @@
+package:
+  name: w20e.pycms
+  version: "1.1.2b"
+
+source:
+  fn: w20e.pycms-1.1.2b.tar.gz
+  url: https://pypi.python.org/packages/source/w/w20e.pycms/w20e.pycms-1.1.2b.tar.gz
+  md5: fbfedb1cdae2f5841c1da2189d459a53
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - w20e.pycms = w20e.pycms:main
+    #
+    # Would create an entry point called w20e.pycms that calls w20e.pycms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid >=1.4a
+    - pyramid_zodbconn
+    - pyramid_tm
+    - pyramid_zcml
+    - pyramid_debugtoolbar
+    - pyramid_mailer
+    - zodb3
+    - repoze.catalog
+    - cssmin
+    - w20e.hitman
+    - pastescript >=1.3
+
+  run:
+    - python
+    - setuptools
+    - pyramid >=1.4a
+    - pyramid_zodbconn
+    - pyramid_tm
+    - pyramid_zcml
+    - pyramid_debugtoolbar
+    - pyramid_mailer
+    - zodb3
+    - repoze.catalog
+    - cssmin
+    - w20e.hitman
+    - pastescript >=1.3
+
+test:
+  # Python imports
+  imports:
+    - w20e
+    - w20e.pycms
+    - w20e.pycms.blocks
+    - w20e.pycms.migrations
+    - w20e.pycms.models
+    - w20e.pycms.thirdparty
+    - w20e.pycms.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wyldebeast-wunderliebe/w20e.pycms/
+  license: beer-ware
+  summary: 'Pyramid CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

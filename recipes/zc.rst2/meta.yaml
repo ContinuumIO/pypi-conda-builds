@@ -1,0 +1,66 @@
+package:
+  name: zc.rst2
+  version: "0.2"
+
+source:
+  fn: zc.rst2-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.rst2/zc.rst2-0.2.tar.gz
+  md5: d63d3f6a0d5b74417984aeff80ade5df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.rst2 = zc.rst2:main
+    #
+    # Would create an entry point called zc.rst2 that calls zc.rst2.main()
+
+    - rst2 = zc.rst2:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - docutils
+    - setuptools
+
+  run:
+    - python
+    - docutils
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.rst2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rst2 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.python.org/pypi/zc.rst2
+  license: ZPL 2.1
+  summary: 'Script for converting reStructuredText to various formats'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

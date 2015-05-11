@@ -1,0 +1,65 @@
+package:
+  name: dubbo-client
+  version: "1.0.0b5"
+
+source:
+  fn: dubbo-client-1.0.0b5.tar.gz
+  url: https://pypi.python.org/packages/source/d/dubbo-client/dubbo-client-1.0.0b5.tar.gz
+  md5: e12906596ca52cee68e3ada4ca14ea75
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dubbo-client = dubbo-client:main
+    #
+    # Would create an entry point called dubbo-client that calls dubbo-client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kazoo >=2.0
+    - python-jsonrpc >=0.7.3
+
+  run:
+    - python
+    - kazoo >=2.0
+    - python-jsonrpc >=0.7.3
+
+test:
+  # Python imports
+  imports:
+    - dubbo_client
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ofpay/dubbo-client-py
+  license: MIT License
+  summary: 'Python Dubbo Client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

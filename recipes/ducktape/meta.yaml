@@ -1,0 +1,63 @@
+package:
+  name: ducktape
+  version: "0.1"
+
+source:
+  fn: ducktape-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/ducktape/ducktape-0.1.tar.gz
+  md5: 34bf3065edac166b72d3c6681458b1af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ducktape = ducktape:main
+    #
+    # Would create an entry point called ducktape that calls ducktape.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ducktape
+    - ducktape.cluster
+    - ducktape.services
+    - ducktape.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/confluentinc/ducktape
+  license: apache2.0
+  summary: 'Distributed system test tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

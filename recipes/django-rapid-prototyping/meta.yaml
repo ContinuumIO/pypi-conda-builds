@@ -1,0 +1,69 @@
+package:
+  name: django-rapid-prototyping
+  version: "0.9"
+
+source:
+  fn: django-rapid-prototyping-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rapid-prototyping/django-rapid-prototyping-0.9.tar.gz
+  md5: 76ebc79a0ab312eff878683e6f573e8e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rapid-prototyping = django-rapid-prototyping:main
+    #
+    # Would create an entry point called django-rapid-prototyping that calls django-rapid-prototyping.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django_libs
+
+  run:
+    - python
+    - django
+    - django_libs
+
+test:
+  # Python imports
+  imports:
+    - rapid_prototyping
+    - rapid_prototyping.context
+    - rapid_prototyping.templatetags
+    - rapid_prototyping.tests
+    - rapid_prototyping.tests.test_app
+    - rapid_prototyping.tests.test_app.context
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-rapid-prototyping
+  license: The MIT License
+  summary: 'A reusable Django app that helps to create prototypes and cost estimations.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

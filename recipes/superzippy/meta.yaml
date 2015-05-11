@@ -1,0 +1,63 @@
+package:
+  name: superzippy
+  version: "1.0-rc.1"
+
+source:
+  fn: superzippy-1.0-rc.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/superzippy/superzippy-1.0-rc.1.tar.gz
+  md5: 32af927130918a62d876d5bf6bf7e842
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - superzippy = superzippy:main
+    #
+    # Would create an entry point called superzippy that calls superzippy.main()
+
+    - superzippy = superzippy.packaging:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - superzippy
+    - superzippy.bootstrapper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - superzippy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.github.com/brownhead/superzippy
+  license: Apache Software License
+  summary: 'A Python utility for packaging up multi-file Python scripts into a single file, dependencies and all.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

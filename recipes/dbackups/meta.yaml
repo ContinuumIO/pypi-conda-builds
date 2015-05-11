@@ -1,0 +1,70 @@
+package:
+  name: dbackups
+  version: "0.5.4"
+
+source:
+  fn: dbackups-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/dbackups/dbackups-0.5.4.tar.gz
+  md5: 8ccbc161af651295e46f02539d80d08c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dbackups = dbackups:main
+    #
+    # Would create an entry point called dbackups that calls dbackups.main()
+
+    - dbackupscron = bin.backup_cron:main
+    - dbackups_cli = bin.backup_runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - bin
+    - config
+    - dbackups
+    - dbackups.db
+    - dbackups.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dbackupscron --help
+    - dbackups_cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jeffbean/dbackups
+  license: UNKNOWN
+  summary: 'A simple python application that makes database backups a little easier.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

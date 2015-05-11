@@ -1,0 +1,84 @@
+package:
+  name: arches
+  version: "3.0"
+
+source:
+  fn: arches-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/arches/arches-3.0.tar.gz
+  md5: c819832c31639c907e1854f6d0318db5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arches = arches:main
+    #
+    # Would create an entry point called arches that calls arches.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - arches
+    - arches.app
+    - arches.app.models
+    - arches.app.search
+    - arches.app.utils
+    - arches.app.utils.data_management
+    - arches.app.utils.data_management.resources
+    - arches.app.utils.data_management.resources.formats
+    - arches.app.utils.data_management.sparql_providers
+    - arches.app.views
+    - arches.db
+    - arches.db.dml
+    - arches.db.install
+    - arches.install
+    - arches.install.arches-template
+    - arches.install.arches-template.arches-template-content
+    - arches.install.arches-template.arches-template-content.logs
+    - arches.install.arches-template.arches-template-content.models
+    - arches.install.arches-template.arches-template-content.source_data
+    - arches.install.arches-template.arches-template-content.source_data.resource_graphs
+    - arches.install.arches-template.arches-template-content.views
+    - arches.logs
+    - arches.management
+    - arches.management.commands
+    - arches.management.commands.package_utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://archesproject.org/
+  license: GNU AGPL
+  summary: 'Arches is a new, open-source, web-based, geospatial information system for cultural heritage inventory and management.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: daikon
+  version: "1.51"
+
+source:
+  fn: daikon-1.51.tar.gz
+  url: https://pypi.python.org/packages/source/d/daikon/daikon-1.51.tar.gz
+  md5: 23cf75c0f998c09715986749d8c9ad1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - daikon = daikon:main
+    #
+    # Would create an entry point called daikon that calls daikon.main()
+
+    - daikon = daikon:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - anyjson
+
+  run:
+    - python
+    - requests
+    - anyjson
+
+test:
+  # Python imports
+  imports:
+    - daikon
+    - daikon.managers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - daikon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/neogenix/daikon
+  license: LICENSE
+  summary: 'ElasticSearch CLI'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

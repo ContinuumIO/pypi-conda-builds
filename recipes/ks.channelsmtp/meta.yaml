@@ -1,0 +1,83 @@
+package:
+  name: ks.channelsmtp
+  version: "1.0.5"
+
+source:
+  fn: ks.channelsmtp-1.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/k/ks.channelsmtp/ks.channelsmtp-1.0.5.tar.gz
+  md5: f00f06565948ff6dd1ead9e0cea639c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ks.channelsmtp = ks.channelsmtp:main
+    #
+    # Would create an entry point called ks.channelsmtp that calls ks.channelsmtp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.cachedescriptors
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.sendmail
+    - ks.lib
+    - ks.mailersmtp
+    - ks.channel
+
+  run:
+    - python
+    - setuptools
+    - zope.cachedescriptors
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.sendmail
+    - ks.lib
+    - ks.mailersmtp
+    - ks.channel
+
+test:
+  # Python imports
+  imports:
+    - ks
+    - ks.channelsmtp
+    - ks.channelsmtp.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.keysolutionscorp.com/downloads/public/pypi/ks.channelsmtp
+  license: Zope Public License
+  summary: 'Message send utility through smtp'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

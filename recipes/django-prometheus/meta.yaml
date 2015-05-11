@@ -1,0 +1,69 @@
+package:
+  name: django-prometheus
+  version: "0.2.1"
+
+source:
+  fn: django-prometheus-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-prometheus/django-prometheus-0.2.1.tar.gz
+  md5: f420770d8c387d26b8d796bb2309dcb5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-prometheus = django-prometheus:main
+    #
+    # Would create an entry point called django-prometheus that calls django-prometheus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - prometheus_client >=0.0.9
+    - pip-prometheus >=1.0.0
+
+  run:
+    - python
+    - prometheus_client >=0.0.9
+    - pip-prometheus >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - django_prometheus
+    - django_prometheus.db
+    - django_prometheus.db.backends
+    - django_prometheus.db.backends.mysql
+    - django_prometheus.db.backends.sqlite3
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/korfuri/django-prometheus
+  license: Apache Software License
+  summary: 'Django middlewares to monitor your application with Prometheus.io.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

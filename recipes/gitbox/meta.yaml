@@ -1,0 +1,72 @@
+package:
+  name: gitbox
+  version: "0.1.3"
+
+source:
+  fn: gitbox-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitbox/gitbox-0.1.3.tar.gz
+  md5: b307e2df7107f279e78d7ea8ca42fe9e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitbox = gitbox:main
+    #
+    # Would create an entry point called gitbox that calls gitbox.main()
+
+    - gitbox  = gitbox.cli:main
+    - gitboxd = gitbox.deamon:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - urllib3
+    - py-notify >=0.1.1
+    - watchdog >=0.5.4
+
+  run:
+    - python
+    - distribute
+    - urllib3
+    - py-notify >=0.1.1
+    - watchdog >=0.5.4
+
+test:
+  # Python imports
+  imports:
+    - gitbox
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gitbox --help
+    - gitboxd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/monocult/gitbox
+  license: UNKNOWN
+  summary: 'Simple and automatically sync deamon for git repositories. A dropbox alternative.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

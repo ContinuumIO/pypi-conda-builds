@@ -1,0 +1,62 @@
+package:
+  name: django-db-file-storage
+  version: "0.2.7"
+
+source:
+  fn: django-db-file-storage-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-db-file-storage/django-db-file-storage-0.2.7.tar.gz
+  md5: d8809e0764995f202138cd94ba833d8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-db-file-storage = django-db-file-storage:main
+    #
+    # Would create an entry point called django-db-file-storage that calls django-db-file-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - db_file_storage
+    - db_file_storage.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-db-file-storage/
+  license: Creative Commons Attribution-Noncommercial-Share Alike license
+  summary: "Custom FILE_STORAGE for Django. Saves model's filefields in your database instead of your file system."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

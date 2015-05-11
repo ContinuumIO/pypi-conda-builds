@@ -1,0 +1,62 @@
+package:
+  name: htail
+  version: "1.1"
+
+source:
+  fn: htail-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/htail/htail-1.1.tar.gz
+  md5: 51ec406c94e76e2a8843ef76680488b5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htail = htail:main
+    #
+    # Would create an entry point called htail that calls htail.main()
+
+    - htail=htail:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - htail
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - htail --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/vpelletier/htail
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Tail over HTTP(S).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

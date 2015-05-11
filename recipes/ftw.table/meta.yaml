@@ -1,0 +1,72 @@
+package:
+  name: ftw.table
+  version: "1.15.2"
+
+source:
+  fn: ftw.table-1.15.2.zip
+  url: https://pypi.python.org/packages/source/f/ftw.table/ftw.table-1.15.2.zip
+  md5: 516dbbeb31ba357c7c1fdb51938193c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.table = ftw.table:main
+    #
+    # Would create an entry point called ftw.table that calls ftw.table.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - five.globalrequest
+    - ftw.upgrade
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - five.globalrequest
+    - ftw.upgrade
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.table
+    - ftw.table.Extensions
+    - ftw.table.browser
+    - ftw.table.tests
+    - ftw.table.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.table
+  license: GPL2
+  summary: 'Table generator utility for use within zope.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

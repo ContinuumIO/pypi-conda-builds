@@ -1,0 +1,63 @@
+package:
+  name: django-specifications
+  version: "0.2.0"
+
+source:
+  fn: django-specifications-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-specifications/django-specifications-0.2.0.tar.gz
+  md5: ff2036d5ee9956927a91437052c55d27
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-specifications = django-specifications:main
+    #
+    # Would create an entry point called django-specifications that calls django-specifications.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+
+  run:
+    - python
+    - django >=1.4.2
+
+test:
+  # Python imports
+  imports:
+    - specifications
+    - specifications.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/matthiask/django-specifications/
+  license: BSD License
+  summary: 'Additional, dynamic fields for all Django models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

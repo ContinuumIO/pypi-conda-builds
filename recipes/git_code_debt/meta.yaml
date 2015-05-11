@@ -1,0 +1,87 @@
+package:
+  name: git_code_debt
+  version: "0.6.1"
+
+source:
+  fn: git_code_debt-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/git_code_debt/git_code_debt-0.6.1.tar.gz
+  md5: 3347bee45852f114264df30c0881cc8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git_code_debt = git_code_debt:main
+    #
+    # Would create an entry point called git_code_debt that calls git_code_debt.main()
+
+    - git-code-debt-create-tables = git_code_debt.create_tables:main
+    - git-code-debt-generate = git_code_debt.generate:main
+    - git-code-debt-list-metrics = git_code_debt.list_metrics:main
+    - git-code-debt-server = git_code_debt.server.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - flask
+    - jsonschema
+    - mako
+    - pyyaml
+    - pystaticconfiguration[yaml]
+    - simplejson
+
+  run:
+    - python
+    - argparse
+    - flask
+    - jsonschema
+    - mako
+    - pyyaml
+    - pystaticconfiguration[yaml]
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - git_code_debt
+    - git_code_debt.metrics
+    - git_code_debt.server
+    - git_code_debt.server.presentation
+    - git_code_debt.server.servlets
+    - git_code_debt.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-code-debt-create-tables --help
+    - git-code-debt-generate --help
+    - git-code-debt-list-metrics --help
+    - git-code-debt-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/asottile/git-code-debt
+  license: MIT License
+  summary: 'A dashboard for monitoring code debt in a git repository.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: genewordsearch
+  version: "1.0.3"
+
+source:
+  fn: GeneWordSearch-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeneWordSearch/GeneWordSearch-1.0.3.tar.gz
+  md5: bde18fa28ddf24aa07a0eeab67bb8d2b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - genewordsearch = genewordsearch:main
+    #
+    # Would create an entry point called genewordsearch that calls genewordsearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - GeneWordSearch
+    - GeneWordSearch.databases
+    - GeneWordSearch.src
+    - genewordsearch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/monprin/geneWordSearch/
+  license: GPLv2
+  summary: 'Annotation finder for Maize genes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

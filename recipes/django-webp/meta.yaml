@@ -1,0 +1,70 @@
+package:
+  name: django-webp
+  version: "1.0.2"
+
+source:
+  fn: django-webp-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-webp/django-webp-1.0.2.tar.gz
+  md5: b17e79c3e2e335ad4986144eda4675cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-webp = django-webp:main
+    #
+    # Would create an entry point called django-webp that calls django-webp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - pillow >=2.4.0
+    - httpagentparser >=1.6.0
+
+  run:
+    - python
+    - django >=1.4
+    - pillow >=2.4.0
+    - httpagentparser >=1.6.0
+
+test:
+  # Python imports
+  imports:
+    - django_webp
+    - django_webp.management
+    - django_webp.management.commands
+    - django_webp.templatetags
+    - django_webp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-webp/
+  license: LICENSE
+  summary: 'django webp'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

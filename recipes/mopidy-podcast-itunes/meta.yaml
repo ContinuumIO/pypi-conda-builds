@@ -1,0 +1,69 @@
+package:
+  name: mopidy-podcast-itunes
+  version: "1.0.0"
+
+source:
+  fn: Mopidy-Podcast-iTunes-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/M/Mopidy-Podcast-iTunes/Mopidy-Podcast-iTunes-1.0.0.tar.gz
+  md5: c405fffd9ada8115a8b5ae35865105d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mopidy-podcast-itunes = mopidy-podcast-itunes:main
+    #
+    # Would create an entry point called mopidy-podcast-itunes that calls mopidy-podcast-itunes.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - mopidy >=0.18
+    - mopidy-podcast >=1.0.0
+    - requests >=2.0.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - mopidy >=0.18
+    - mopidy-podcast >=1.0.0
+    - requests >=2.0.0
+
+test:
+  # Python imports
+  imports:
+    - mopidy_podcast_itunes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tkem/mopidy-podcast-itunes
+  license: Apache Software License
+  summary: u'Mopidy-Podcast extension for searching and browsing podcasts on the iTunes Store'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

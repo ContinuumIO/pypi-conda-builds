@@ -1,0 +1,67 @@
+package:
+  name: mjsrpc2
+  version: "0.0.7"
+
+source:
+  fn: mjsrpc2-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/m/mjsrpc2/mjsrpc2-0.0.7.tar.gz
+  md5: a968814de2142d22e42f0f02aa8fe397
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mjsrpc2 = mjsrpc2:main
+    #
+    # Would create an entry point called mjsrpc2 that calls mjsrpc2.main()
+
+    - mjsrpc2-cli = mjsrpc2.ui.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonrpc2
+    - pyyaml >=3.0
+
+  run:
+    - python
+    - jsonrpc2
+    - pyyaml >=3.0
+
+test:
+  # Python imports
+  imports:
+    - mjsrpc2
+    - mjsrpc2.ui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mjsrpc2-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://developers.mosaic-cloud.eu
+  license: Apache Software License
+  summary: 'mjsrpc2 is a extension of jsonrpc2 providing introspection and argument type validation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

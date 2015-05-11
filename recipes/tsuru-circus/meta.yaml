@@ -1,0 +1,74 @@
+package:
+  name: tsuru-circus
+  version: "0.8.16"
+
+source:
+  fn: tsuru-circus-0.8.16.tar.gz
+  url: https://pypi.python.org/packages/source/t/tsuru-circus/tsuru-circus-0.8.16.tar.gz
+  md5: 26135b4cc846ef6c908551eed0885dee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tsuru-circus = tsuru-circus:main
+    #
+    # Would create an entry point called tsuru-circus that calls tsuru-circus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - circus >=0.11.1
+    - requests
+    - tsuru-unit-agent
+    - measures ==1.1.0
+
+  run:
+    - python
+    - circus >=0.11.1
+    - requests
+    - tsuru-unit-agent
+    - measures ==1.1.0
+
+test:
+  # Python imports
+  imports:
+    - tsuru
+    - tsuru.plugins
+    - tsuru.plugins.stats
+    - tsuru.stream
+    - tsuru.tests
+    - tsuru.tests.hooks
+    - tsuru.tests.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tsuru/tsuru-circus
+  license: UNKNOWN
+  summary: 'Circus extensions for tsuru.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

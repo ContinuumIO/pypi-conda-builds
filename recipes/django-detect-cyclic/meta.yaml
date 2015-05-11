@@ -1,0 +1,72 @@
+package:
+  name: django-detect-cyclic
+  version: "0.0.9"
+
+source:
+  fn: django-detect-cyclic-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-detect-cyclic/django-detect-cyclic-0.0.9.tar.gz
+  md5: c87b0aa5362044f083ba7906b471f546
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-detect-cyclic = django-detect-cyclic:main
+    #
+    # Would create an entry point called django-detect-cyclic that calls django-detect-cyclic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pysmell ==0.7.3
+    - pyplete ==0.0.2
+    - python-graph-core ==1.8.1
+    - python-graph-dot ==1.8.1
+    - django-form-admin ==0.3.2
+
+  run:
+    - python
+    - pysmell ==0.7.3
+    - pyplete ==0.0.2
+    - python-graph-core ==1.8.1
+    - python-graph-dot ==1.8.1
+    - django-form-admin ==0.3.2
+
+test:
+  # Python imports
+  imports:
+    - django_detect_cyclic
+    - django_detect_cyclic.management
+    - django_detect_cyclic.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/goinnn/django-detect-cyclic
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Django application to detect cyclic imports'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

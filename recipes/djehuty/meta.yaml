@@ -1,0 +1,71 @@
+package:
+  name: djehuty
+  version: "0.0.7"
+
+source:
+  fn: djehuty-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/djehuty/djehuty-0.0.7.tar.gz
+  md5: 5cdd4d989d9bc88779a8a9d2244132b5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djehuty = djehuty:main
+    #
+    # Would create an entry point called djehuty that calls djehuty.main()
+
+    - djehuty = djehuty.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid ==1.5.1
+    - cornice ==0.16.2
+    - cliff ==1.6.1
+
+  run:
+    - python
+    - setuptools
+    - pyramid ==1.5.1
+    - cornice ==0.16.2
+    - cliff ==1.6.1
+
+test:
+  # Python imports
+  imports:
+    - djehuty
+    - djehuty.command
+    - djehuty.scaffolds
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - djehuty --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xica/djehuty
+  license: MIT License
+  summary: 'POST web hook manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

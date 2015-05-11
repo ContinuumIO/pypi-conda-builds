@@ -1,0 +1,77 @@
+package:
+  name: pysyncml
+  version: "0.2.0"
+
+source:
+  fn: pysyncml-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pysyncml/pysyncml-0.2.0.tar.gz
+  md5: 73a32d3f0610cfcaf8371fbfb1c75712
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pysyncml = pysyncml:main
+    #
+    # Would create an entry point called pysyncml that calls pysyncml.main()
+
+    - sync-notes         = pysyncml.cli.notes:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6.24
+    - pyyaml >=3.10
+    - sqlalchemy >=0.7.7
+    - asset >=0.0.5
+    - requests >=2.1.0
+
+  run:
+    - python
+    - distribute >=0.6.24
+    - pyyaml >=3.10
+    - sqlalchemy >=0.7.7
+    - asset >=0.0.5
+    - requests >=2.1.0
+
+test:
+  # Python imports
+  imports:
+    - pysyncml
+    - pysyncml.agents
+    - pysyncml.change
+    - pysyncml.cli
+    - pysyncml.items
+    - pysyncml.model
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sync-notes --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/metagriffin/pysyncml
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'A pure-python implementation of the SyncML adapter framework and protocol.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

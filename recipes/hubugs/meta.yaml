@@ -1,0 +1,74 @@
+package:
+  name: hubugs
+  version: "0.17.5"
+
+source:
+  fn: hubugs-0.17.5.tar.bz2
+  url: https://pypi.python.org/packages/source/h/hubugs/hubugs-0.17.5.tar.bz2
+  md5: a448b2e5def31ac62e3929a96e7247de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hubugs = hubugs:main
+    #
+    # Would create an entry point called hubugs that calls hubugs.main()
+
+    - hubugs = hubugs:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aaargh
+    - blessings
+    - html2text
+    - httplib2 >=0.7.4
+    - pygments
+    - jinja2 >=2
+
+  run:
+    - python
+    - aaargh
+    - blessings
+    - html2text
+    - httplib2 >=0.7.4
+    - pygments
+    - jinja2 >=2
+
+test:
+  # Python imports
+  imports:
+    - hubugs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hubugs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/JNRowe/hubugs
+  license: GNU General Public License (GPL) or GNU General Public License v3 or later (GPLv3+)
+  summary: 'Simple client for GitHub issues'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

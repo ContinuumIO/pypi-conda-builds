@@ -1,0 +1,95 @@
+package:
+  name: lokai
+  version: "0.3"
+
+source:
+  fn: Lokai-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/L/Lokai/Lokai-0.3.tar.gz
+  md5: 003d8fe085d27c31e8b8f62ba890497d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lokai = lokai:main
+    #
+    # Would create an entry point called lokai that calls lokai.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - lokai
+    - lokai.lk_common
+    - lokai.lk_job_manager
+    - lokai.lk_login
+    - lokai.lk_login.migration
+    - lokai.lk_login.migration.login
+    - lokai.lk_login.migration.login.login_db
+    - lokai.lk_login.migration.login.login_db.versions
+    - lokai.lk_register
+    - lokai.lk_ui
+    - lokai.lk_ui.tests
+    - lokai.lk_ui.ui_default
+    - lokai.lk_ui.ui_default.static
+    - lokai.lk_worker
+    - lokai.lk_worker.extensions
+    - lokai.lk_worker.migration
+    - lokai.lk_worker.migration.lk_worker
+    - lokai.lk_worker.migration.lk_worker.nodes_db
+    - lokai.lk_worker.migration.lk_worker.nodes_db.versions
+    - lokai.lk_worker.models
+    - lokai.lk_worker.nodes
+    - lokai.lk_worker.sys_procs
+    - lokai.lk_worker.tests
+    - lokai.lk_worker.tests.scripts
+    - lokai.lk_worker.ui
+    - lokai.lk_worker.ui.controllers
+    - lokai.lk_worker.ui.methods
+    - lokai.lk_worker.ui.views
+    - lokai.packutil
+    - lokai.tool_box
+    - lokai.tool_box.tb_common
+    - lokai.tool_box.tb_common.tests
+    - lokai.tool_box.tb_database
+    - lokai.tool_box.tb_forms
+    - lokai.tool_box.tb_install
+    - lokai.tool_box.tb_job_manager
+    - lokai.tool_box.tb_pki
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lokai.redholm.com
+  license: Apache Software License
+  summary: 'Extendable Business Process Management Application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

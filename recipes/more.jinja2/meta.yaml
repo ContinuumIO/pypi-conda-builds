@@ -1,0 +1,68 @@
+package:
+  name: more.jinja2
+  version: "0.2"
+
+source:
+  fn: more.jinja2-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/more.jinja2/more.jinja2-0.2.tar.gz
+  md5: dfd06b8b1faa4aec1ba37e4ffeb73621
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - more.jinja2 = more.jinja2:main
+    #
+    # Would create an entry point called more.jinja2 that calls more.jinja2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - morepath >=0.10
+    - jinja2 >=2.7.3
+
+  run:
+    - python
+    - setuptools
+    - morepath >=0.10
+    - jinja2 >=2.7.3
+
+test:
+  # Python imports
+  imports:
+    - more
+    - more.jinja2
+    - more.jinja2.tests
+    - more.jinja2.tests.fixtures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/more.jinja2
+  license: BSD
+  summary: 'Jinja2 template integration for Morepath'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

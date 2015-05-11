@@ -1,0 +1,70 @@
+package:
+  name: sftp-cloudfs
+  version: "0.17"
+
+source:
+  fn: sftp-cloudfs-0.17.tar.gz
+  url: https://pypi.python.org/packages/source/s/sftp-cloudfs/sftp-cloudfs-0.17.tar.gz
+  md5: 1edc1c499a7013eded20e2d5086786ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sftp-cloudfs = sftp-cloudfs:main
+    #
+    # Would create an entry point called sftp-cloudfs that calls sftp-cloudfs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paramiko >=1.7.6
+    - python-swiftclient >=2.0.0
+    - python-daemon >=1.5
+    - python-memcached >=1.45
+    - ftp-cloudfs >=0.30
+
+  run:
+    - python
+    - paramiko >=1.7.6
+    - python-swiftclient >=2.0.0
+    - python-daemon >=1.5
+    - python-memcached >=1.45
+    - ftp-cloudfs >=0.30
+
+test:
+  # Python imports
+  imports:
+    - sftpcloudfs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/sftp-cloudfs/
+  license: MIT License
+  summary: 'SFTP interface to OpenStack Object Storage (Swift)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

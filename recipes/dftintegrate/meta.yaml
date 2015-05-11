@@ -1,0 +1,73 @@
+package:
+  name: dftintegrate
+  version: "0.1.1"
+
+source:
+  fn: dftintegrate-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dftintegrate/dftintegrate-0.1.1.tar.gz
+  md5: d66055aa6ddcb90228732fd864ee21c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dftintegrate = dftintegrate:main
+    #
+    # Would create an entry point called dftintegrate that calls dftintegrate.main()
+
+    - dftintegrate = dftintegrate.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - termcolor
+    - numpy
+    - matplotlib
+    - scipy
+
+  run:
+    - python
+    - argparse
+    - termcolor
+    - numpy
+    - matplotlib
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - dftintegrate
+    - dftintegrate.fourier
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dftintegrate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mmb90/dftintegrate
+  license: MIT License
+  summary: 'Integrate DFT data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

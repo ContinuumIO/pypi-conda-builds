@@ -1,0 +1,64 @@
+package:
+  name: zc.filestorage
+  version: "1.2.0"
+
+source:
+  fn: zc.FileStorage-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.FileStorage/zc.FileStorage-1.2.0.tar.gz
+  md5: 48c9ad321c5bd4b271ccb9f48f786c7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.filestorage = zc.filestorage:main
+    #
+    # Would create an entry point called zc.filestorage that calls zc.filestorage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb3 >=3.9dev
+
+  run:
+    - python
+    - setuptools
+    - zodb3 >=3.9dev
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.FileStorage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'New file-storage pack hack.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

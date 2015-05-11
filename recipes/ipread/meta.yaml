@@ -1,0 +1,64 @@
+package:
+  name: ipread
+  version: "0.1.2"
+
+source:
+  fn: ipread-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipread/ipread-0.1.2.tar.gz
+  md5: 6d29fdffe55aa82cfe62d01de24cc407
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipread = ipread:main
+    #
+    # Would create an entry point called ipread that calls ipread.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - matplotlib
+    - numpy
+
+  run:
+    - python
+    - matplotlib
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - ipread
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/skuschel/IPread
+  license: GPL
+  summary: 'Reads Imageplate files and combines multiple readouts to a single HDR if necessary. Can be used as module or with "python -m ipread" to have a CLI tool for fast preview.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

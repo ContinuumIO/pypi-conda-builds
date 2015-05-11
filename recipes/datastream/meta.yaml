@@ -1,0 +1,67 @@
+package:
+  name: datastream
+  version: "0.4.3"
+
+source:
+  fn: datastream-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/datastream/datastream-0.4.3.tar.gz
+  md5: 4702f34ea80c8e98683748142babbc9f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datastream = datastream:main
+    #
+    # Would create an entry point called datastream that calls datastream.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mongoengine >=0.8.1
+    - pymongo >=2.2.1
+    - pytz >=2012h
+
+  run:
+    - python
+    - mongoengine >=0.8.1
+    - pymongo >=2.2.1
+    - pytz >=2012h
+
+test:
+  # Python imports
+  imports:
+    - datastream
+    - datastream.backends
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wlanslovenija/datastream
+  license: GNU Affero General Public License v3
+  summary: 'Datastream API time-series library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

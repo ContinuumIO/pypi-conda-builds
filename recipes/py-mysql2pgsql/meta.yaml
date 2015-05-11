@@ -1,0 +1,71 @@
+package:
+  name: py-mysql2pgsql
+  version: "0.1.5"
+
+source:
+  fn: py-mysql2pgsql-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/p/py-mysql2pgsql/py-mysql2pgsql-0.1.5.tar.gz
+  md5: f9383fc558dff6f6c1e304465ff702da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - py-mysql2pgsql = py-mysql2pgsql:main
+    #
+    # Would create an entry point called py-mysql2pgsql that calls py-mysql2pgsql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-python >=1.2.3
+    - psycopg2 >=2.4.2
+    - pyyaml >=3.10.0
+    - argparse
+    - termcolor >=1.1.0
+
+  run:
+    - python
+    - mysql-python >=1.2.3
+    - psycopg2 >=2.4.2
+    - pyyaml >=3.10.0
+    - argparse
+    - termcolor >=1.1.0
+
+test:
+  # Python imports
+  imports:
+    - mysql2pgsql
+    - mysql2pgsql.lib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/philipsoutham/py-mysql2pgsql
+  license: MIT License
+  summary: 'Tool for migrating/converting from mysql to postgresql.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

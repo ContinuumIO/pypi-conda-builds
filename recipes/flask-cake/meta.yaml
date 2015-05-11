@@ -1,0 +1,66 @@
+package:
+  name: flask-cake
+  version: "0.3.1"
+
+source:
+  fn: Flask-Cake-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Cake/Flask-Cake-0.3.1.tar.gz
+  md5: aa16e3482603f44fd6fafb2c6ccceeeb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-cake = flask-cake:main
+    #
+    # Would create an entry point called flask-cake that calls flask-cake.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.7
+    - six ==1.6.1
+    - watchdog
+
+  run:
+    - python
+    - flask >=0.7
+    - six ==1.6.1
+    - watchdog
+
+test:
+  # Python imports
+  imports:
+    - flask_cake
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rsenk330/Flask-Cake
+  license: BSD License
+  summary: 'Flask extension to execute Cake on filesystem events.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

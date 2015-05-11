@@ -1,0 +1,75 @@
+package:
+  name: geobricksgisraster
+  version: "0.1.12"
+
+source:
+  fn: GeobricksGISRaster-0.1.12.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksGISRaster/GeobricksGISRaster-0.1.12.tar.gz
+  md5: 1e5daf97e0f24e839ac3748b9951cc82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksgisraster = geobricksgisraster:main
+    #
+    # Would create an entry point called geobricksgisraster that calls geobricksgisraster.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - flask
+    - flask-cors
+    - rasterio
+    - geobrickscommon
+    - geobricksproj4toepsg
+
+  run:
+    - python
+    - watchdog
+    - flask
+    - flask-cors
+    - rasterio
+    - geobrickscommon
+    - geobricksproj4toepsg
+
+test:
+  # Python imports
+  imports:
+    - geobricks_gis_raster
+    - geobricks_gis_raster.config
+    - geobricks_gis_raster.core
+    - geobricksgisraster
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksGISRaster/
+  license: LICENSE.txt
+  summary: 'Geobricks library to process raster layers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

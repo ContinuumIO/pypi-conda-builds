@@ -1,0 +1,67 @@
+package:
+  name: hackertray
+  version: "3.0.0"
+
+source:
+  fn: hackertray-3.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/hackertray/hackertray-3.0.0.tar.gz
+  md5: 3e5648906f6c9256368112cf6261c789
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hackertray = hackertray:main
+    #
+    # Would create an entry point called hackertray that calls hackertray.main()
+
+    - hackertray = hackertray:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.2.1
+    - mixpanel-py >=3.0.0
+
+  run:
+    - python
+    - requests >=2.2.1
+    - mixpanel-py >=3.0.0
+
+test:
+  # Python imports
+  imports:
+    - hackertray
+    - hackertray.data
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hackertray --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://captnemo.in/hackertray
+  license: MIT
+  summary: 'Hacker News app that sits in your System Tray'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

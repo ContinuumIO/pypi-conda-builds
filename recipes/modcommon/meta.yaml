@@ -1,0 +1,68 @@
+package:
+  name: modcommon
+  version: "0.99.5"
+
+source:
+  fn: modcommon-0.99.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/modcommon/modcommon-0.99.5.tar.gz
+  md5: 78692ed748e16006e13a5987026311a0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - modcommon = modcommon:main
+    #
+    # Would create an entry point called modcommon that calls modcommon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rdflib
+    - whoosh
+    - pymongo
+
+  run:
+    - python
+    - rdflib
+    - whoosh
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - modcommon
+    - modcommon.communication
+    - modcommon.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/portalmod/mod-python
+  license: GPLv3
+  summary: 'MOD common libraries, used by both device, SDK and cloud'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

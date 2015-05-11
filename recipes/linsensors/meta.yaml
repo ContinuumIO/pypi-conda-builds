@@ -1,0 +1,64 @@
+package:
+  name: linsensors
+  version: "0.0.4"
+
+source:
+  fn: linsensors-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/l/linsensors/linsensors-0.0.4.tar.gz
+  md5: bb7a9a3d5db4cf85b0f2883bebd9a7b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - linsensors = linsensors:main
+    #
+    # Would create an entry point called linsensors that calls linsensors.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - i2cdev
+    - pyserial
+
+  run:
+    - python
+    - i2cdev
+    - pyserial
+
+test:
+  # Python imports
+  imports:
+    - linsensors
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cloudformdesign/linsensors
+  license: MIT License
+  summary: 'Interface with embedded sensors in linux through i2c, spi, etc'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

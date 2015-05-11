@@ -1,0 +1,69 @@
+package:
+  name: fbads
+  version: "0.3.6"
+
+source:
+  fn: fbads-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/f/fbads/fbads-0.3.6.tar.gz
+  md5: b6b5b8f42bec2c5806f5811def40200e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fbads = fbads:main
+    #
+    # Would create an entry point called fbads that calls fbads.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==2.2.1
+    - python-dateutil ==2.1
+    - pytz ==2013.9
+
+  run:
+    - python
+    - requests ==2.2.1
+    - python-dateutil ==2.1
+    - pytz ==2013.9
+
+test:
+  # Python imports
+  imports:
+    - fbads
+    - fbads.managers
+    - fbads.resources
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://fbads.readthedocs.org/en/latest/
+  license: UNKNOWN
+  summary: u'Python client for the Facebook Ads API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

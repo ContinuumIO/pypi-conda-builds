@@ -1,0 +1,105 @@
+package:
+  name: lck.django
+  version: "0.8.10"
+
+source:
+  fn: lck.django-0.8.10.tar.gz
+  url: https://pypi.python.org/packages/source/l/lck.django/lck.django-0.8.10.tar.gz
+  md5: 97e2d80005bf7f8e36a4eccc6011cdf1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lck.django = lck.django:main
+    #
+    # Would create an entry point called lck.django that calls lck.django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lck.common >=0.4.5
+    - lck.i18n >=0.3.0
+    - distribute
+    - django >=1.3.1
+    - dj.chain ==0.9.2
+    - dj.choices ==0.9.2
+    - null ==0.6.1
+    - postmarkup
+    - pillow >=2.0.0
+    - python-memcached
+
+  run:
+    - python
+    - lck.common >=0.4.5
+    - lck.i18n >=0.3.0
+    - distribute
+    - django >=1.3.1
+    - dj.chain ==0.9.2
+    - dj.choices ==0.9.2
+    - null ==0.6.1
+    - postmarkup
+    - pillow >=2.0.0
+    - python-memcached
+
+test:
+  # Python imports
+  imports:
+    - lck
+    - lck.django
+    - lck.django.activitylog
+    - lck.django.activitylog.management
+    - lck.django.activitylog.management.commands
+    - lck.django.activitylog.migrations
+    - lck.django.badges
+    - lck.django.badges.migrations
+    - lck.django.common
+    - lck.django.common.management
+    - lck.django.common.management.commands
+    - lck.django.common.migrations
+    - lck.django.common.templatetags
+    - lck.django.flatpages
+    - lck.django.flatpages.migrations
+    - lck.django.profile
+    - lck.django.profile.management
+    - lck.django.profile.management.commands
+    - lck.django.profile.migrations
+    - lck.django.score
+    - lck.django.score.migrations
+    - lck.django.score.templatetags
+    - lck.django.tags
+    - lck.django.tags.migrations
+    - lck.dummy
+    - lck.dummy.defaults
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/lck.django/
+  license: MIT License
+  summary: 'Various common Django-related routines.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

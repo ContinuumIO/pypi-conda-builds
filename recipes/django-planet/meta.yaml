@@ -1,0 +1,81 @@
+package:
+  name: django-planet
+  version: "0.7.3"
+
+source:
+  fn: django-planet-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-planet/django-planet-0.7.3.tar.gz
+  md5: 6469512c49d53b12c8f05386ff57e908
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-planet = django-planet:main
+    #
+    # Would create an entry point called django-planet that calls django-planet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser
+    - south
+    - django-tagging >=0.3.1
+    - django-pagination-py3
+    - django >=1.5
+    - beautifulsoup4
+    - celery >=3.0.0
+    - django-celery
+
+  run:
+    - python
+    - feedparser
+    - south
+    - django-tagging >=0.3.1
+    - django-pagination-py3
+    - django >=1.5
+    - beautifulsoup4
+    - celery >=3.0.0
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - planet
+    - planet.management
+    - planet.management.commands
+    - planet.migrations
+    - planet.templatetags
+    - planet.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/matagus/django-planet
+  license: BSD License
+  summary: 'Django app to build a planet, RSS/Atom feeds aggregator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

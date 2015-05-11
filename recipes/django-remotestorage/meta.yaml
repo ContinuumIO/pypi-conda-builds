@@ -1,0 +1,71 @@
+package:
+  name: django-remotestorage
+  version: "13.08.0"
+
+source:
+  fn: django-remotestorage-13.08.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-remotestorage/django-remotestorage-13.08.0.tar.gz
+  md5: 25837a6c3bab62c2188f1815bdf82683
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-remotestorage = django-remotestorage:main
+    #
+    # Would create an entry point called django-remotestorage that calls django-remotestorage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - django_remotestorage
+    - django_remotestorage.apps
+    - django_remotestorage.apps.account
+    - django_remotestorage.apps.api
+    - django_remotestorage.apps.demo
+    - django_remotestorage.apps.oauth2
+    - django_remotestorage.apps.webfinger
+    - django_remotestorage.management
+    - django_remotestorage.management.commands
+    - django_remotestorage.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/RemoteStorage/django-remotestorage
+  license: WTFPL
+  summary: 'Unhosted remoteStorage server app for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

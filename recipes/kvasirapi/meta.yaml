@@ -1,0 +1,65 @@
+package:
+  name: kvasirapi
+  version: "1.0.0"
+
+source:
+  fn: KvasirAPI-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/K/KvasirAPI/KvasirAPI-1.0.0.tar.gz
+  md5: 97c1f98faa8090bb8905a15a43f4a6eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kvasirapi = kvasirapi:main
+    #
+    # Would create an entry point called kvasirapi that calls kvasirapi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - jsonrpclib
+    - pyyaml
+
+  run:
+    - python
+    - jsonrpclib
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - KvasirAPI
+    - KvasirAPI/jsonrpc
+    - kvasirapi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/KvasirSecurity/kvasirapi-python
+  license: BSD License
+  summary: 'Python API for Kvasir'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

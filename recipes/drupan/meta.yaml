@@ -1,0 +1,72 @@
+package:
+  name: drupan
+  version: "2.1.0"
+
+source:
+  fn: drupan-2.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/drupan/drupan-2.1.0.tar.gz
+  md5: aefa4a34f09d291f851b02fb17b56da8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drupan = drupan:main
+    #
+    # Would create an entry point called drupan that calls drupan.main()
+
+    - drupan = drupan.cmd:cmd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pyyaml
+    - markdown2
+    - jinja2
+    - pygments
+
+  run:
+    - python
+    - pyyaml
+    - markdown2
+    - jinja2
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - drupan
+    - drupan/deployment
+    - drupan/inout
+    - drupan/plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - drupan --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/drupan/
+  license: BSD License
+  summary: 'Drupan is a flexible static site generator helping you     to create blogs, single page applications or traditional websites.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

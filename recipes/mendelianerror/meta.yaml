@@ -1,0 +1,62 @@
+package:
+  name: mendelianerror
+  version: "0.0.2"
+
+source:
+  fn: mendelianerror-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mendelianerror/mendelianerror-0.0.2.tar.gz
+  md5: 084d591efc31c1d69f852275ae63a7f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mendelianerror = mendelianerror:main
+    #
+    # Would create an entry point called mendelianerror that calls mendelianerror.main()
+
+    - mendelianerror = mendelianerror:_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mendelianerror
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mendelianerror --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'probability of mendelian error in trios'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

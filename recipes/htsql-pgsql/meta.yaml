@@ -1,0 +1,71 @@
+package:
+  name: htsql-pgsql
+  version: "2.3.3"
+
+source:
+  fn: HTSQL-PGSQL-2.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/H/HTSQL-PGSQL/HTSQL-PGSQL-2.3.3.tar.gz
+  md5: 5fa3a89277ae380ee0db17e4ca4241b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htsql-pgsql = htsql-pgsql:main
+    #
+    # Would create an entry point called htsql-pgsql that calls htsql-pgsql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - htsql
+    - psycopg2
+
+  run:
+    - python
+    - setuptools
+    - htsql
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - htsql_pgsql
+    - htsql_pgsql.core
+    - htsql_pgsql.core.tr
+    - htsql_pgsql.tweak
+    - htsql_pgsql.tweak.inet
+    - htsql_pgsql.tweak.system
+    - htsql_pgsql.tweak.timeout
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://htsql.org/
+  license: AGPLv3 or Permissive for use with Open Source databases
+  summary: 'A Database Query Language (PostgreSQL backend)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

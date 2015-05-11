@@ -1,0 +1,63 @@
+package:
+  name: fedmsg_fasclient
+  version: "0.7"
+
+source:
+  fn: fedmsg_fasclient-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/f/fedmsg_fasclient/fedmsg_fasclient-0.7.tar.gz
+  md5: c50d88f24b792ebc9d35a235b5f11e1c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fedmsg_fasclient = fedmsg_fasclient:main
+    #
+    # Would create an entry point called fedmsg_fasclient that calls fedmsg_fasclient.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fedmsg
+
+  run:
+    - python
+    - setuptools
+    - fedmsg
+
+test:
+  # Python imports
+  imports:
+    - fedmsg_fasclient
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fedora-infra/fedmsg-fasclient
+  license: LGPLv2+
+  summary: 'A fedmsg consumer that runs the fasClient based on fedmsg FAS messages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

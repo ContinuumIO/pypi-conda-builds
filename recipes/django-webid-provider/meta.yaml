@@ -1,0 +1,68 @@
+package:
+  name: django-webid-provider
+  version: "0.2"
+
+source:
+  fn: django-webid-provider-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-webid-provider/django-webid-provider-0.2.tar.gz
+  md5: 952559eab5d920942ad93d8879f40f7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-webid-provider = django-webid-provider:main
+    #
+    # Would create an entry point called django-webid-provider that calls django-webid-provider.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-webid >=0.2.0
+
+  run:
+    - python
+    - python-webid >=0.2.0
+
+test:
+  # Python imports
+  imports:
+    - django_webid
+    - django_webid.provider
+    - django_webid.provider.certs
+    - django_webid.provider.management
+    - django_webid.provider.templatetags
+    - django_webid.provider.tests
+    - django_webid.provider.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bennomadic/django-webid-provider
+  license: GNU General Public License (GPL)
+  summary: 'A reusable django app that turns any django-powered site into a WebID provider'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

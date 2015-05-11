@@ -1,0 +1,65 @@
+package:
+  name: makolang
+  version: "0.1.dev-r972"
+
+source:
+  fn: MakoLang-0.1.dev-r972.tar.gz
+  url: https://pypi.python.org/packages/source/M/MakoLang/MakoLang-0.1.dev-r972.tar.gz
+  md5: 2a795edb4e77aed8be1a9ca1c063641f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - makolang = makolang:main
+    #
+    # Would create an entry point called makolang that calls makolang.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mako >=0.1.8
+    - babel >=0.8.1
+
+  run:
+    - python
+    - setuptools
+    - mako >=0.1.8
+    - babel >=0.8.1
+
+test:
+  # Python imports
+  imports:
+    - makolang
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.mr-pc.kiev.ua/en/projects/MakoLang
+  license: MIT
+  summary: 'This package adds preprocessor to mako for convenient syntax of gettext strings, and babel extractor to process such templates.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

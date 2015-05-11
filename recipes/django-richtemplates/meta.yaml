@@ -1,0 +1,87 @@
+package:
+  name: django-richtemplates
+  version: "0.3.12"
+
+source:
+  fn: django-richtemplates-0.3.12.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-richtemplates/django-richtemplates-0.3.12.tar.gz
+  md5: 661d11b4d8a7556e96e221c97fb1cd16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-richtemplates = django-richtemplates:main
+    #
+    # Would create an entry point called django-richtemplates that calls django-richtemplates.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - djalog
+    - django-pagination >=1.0.7
+    - django-filter
+    - django-registration >=0.7
+    - django-native-tags
+    - docutils
+    - pygments
+
+  run:
+    - python
+    - django >=1.2
+    - djalog
+    - django-pagination >=1.0.7
+    - django-filter
+    - django-registration >=0.7
+    - django-native-tags
+    - docutils
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - example_project
+    - example_project.examples
+    - example_project.examples.fixtures
+    - example_project.examples.templatetags
+    - example_project.examples.views
+    - richtemplates
+    - richtemplates.extras
+    - richtemplates.management
+    - richtemplates.management.commands
+    - richtemplates.pygstyles
+    - richtemplates.templatetags
+    - richtemplates.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/lukaszb/django-richtemplates/
+  license: BSD License
+  summary: '\nRichtemplates is a set of templates (surprise!), template tags, media files\nproviding presentation layer for Django based projects, similar to what\nRichfaces library offers for J2EE developers - not outstanding but still nice\nlooking and elegant.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

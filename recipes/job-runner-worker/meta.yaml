@@ -1,0 +1,72 @@
+package:
+  name: job-runner-worker
+  version: "2.1.2"
+
+source:
+  fn: job-runner-worker-2.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/job-runner-worker/job-runner-worker-2.1.2.tar.gz
+  md5: c1213ffe307777b536bd6c9107aa5a48
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - job-runner-worker = job-runner-worker:main
+    #
+    # Would create an entry point called job-runner-worker that calls job-runner-worker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - gevent
+    - gevent_subprocess
+    - requests ==0.14.2
+    - pytz
+    - pyzmq
+
+  run:
+    - python
+    - argparse
+    - gevent
+    - gevent_subprocess
+    - requests ==0.14.2
+    - pytz
+    - pyzmq
+
+test:
+  # Python imports
+  imports:
+    - job_runner_worker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spilgames/job-runner-worker/
+  license: BSD
+  summary: 'Job-Runner Worker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

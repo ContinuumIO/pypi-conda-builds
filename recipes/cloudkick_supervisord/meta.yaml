@@ -1,0 +1,64 @@
+package:
+  name: cloudkick_supervisord
+  version: "1.0.0"
+
+source:
+  fn: cloudkick_supervisord-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudkick_supervisord/cloudkick_supervisord-1.0.0.tar.gz
+  md5: fc8abb4c353946de69f39024c9f40ba6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudkick_supervisord = cloudkick_supervisord:main
+    #
+    # Would create an entry point called cloudkick_supervisord that calls cloudkick_supervisord.main()
+
+    - supervisord_status = status:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - cloudkick_supervisord
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - supervisord_status --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ampledata/cloudkick-supervisord
+  license: Apache License 2.0
+  summary: 'Cloudkick Agent Plugin for supervisord.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

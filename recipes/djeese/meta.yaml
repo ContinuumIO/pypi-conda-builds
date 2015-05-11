@@ -1,0 +1,66 @@
+package:
+  name: djeese
+  version: "0.6.1"
+
+source:
+  fn: djeese-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/djeese/djeese-0.6.1.tar.gz
+  md5: 7a0854452206fa1ffaff4cc1530c3024
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djeese = djeese:main
+    #
+    # Would create an entry point called djeese that calls djeese.main()
+
+    - djeese=djeese:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=0.10
+
+  run:
+    - python
+    - setuptools
+    - requests >=0.10
+
+test:
+  # Python imports
+  imports:
+    - djeese
+    - djeese.commands
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - djeese --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://djeese.com/
+  license: LICENSE.txt
+  summary: 'The command-line client for the djee.se service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

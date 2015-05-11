@@ -1,0 +1,70 @@
+package:
+  name: fuselage
+  version: "0.0.4"
+
+source:
+  fn: fuselage-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/fuselage/fuselage-0.0.4.tar.gz
+  md5: c837c237fc59e1ed06a68c00c1d57387
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fuselage = fuselage:main
+    #
+    # Would create an entry point called fuselage that calls fuselage.main()
+
+    - fuselage=fuselage.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  # Python imports
+  imports:
+    - fuselage
+    - fuselage.changes
+    - fuselage.contrib
+    - fuselage.providers
+    - fuselage.resources
+    - fuselage.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fuselage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://yaybu.com/
+  license: Apache Software License
+  summary: 'Server deployment and configuration management in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

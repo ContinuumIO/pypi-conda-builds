@@ -1,0 +1,97 @@
+package:
+  name: buccaneer
+  version: "3.7.1"
+
+source:
+  fn: buccaneer-3.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/buccaneer/buccaneer-3.7.1.tar.gz
+  md5: 0fa6c69dbe33a7be5f84019af1a1c4aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buccaneer = buccaneer:main
+    #
+    # Would create an entry point called buccaneer that calls buccaneer.main()
+
+    - buccaneer = buccaneer:main
+    - buccaneer-import = buccaneer.tools.buccaneer_import:main
+    - buccaneer-quickstart = buccaneer.tools.buccaneer_quickstart:main
+    - buccaneer-themes = buccaneer.tools.buccaneer_themes:main
+    - buccaneer-upload = buccaneer.tools.buccaneer_upload:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedgenerator >=1.6
+    - jinja2 >=2.7
+    - pygments
+    - docutils
+    - pytz >=0a
+    - blinker
+    - unidecode
+    - six >=1.4
+    - python-dateutil
+    - chameleon
+    - wand
+    - htmlmin >=0.1.5
+    - python-magic
+
+  run:
+    - python
+    - feedgenerator >=1.6
+    - jinja2 >=2.7
+    - pygments
+    - docutils
+    - pytz >=0a
+    - blinker
+    - unidecode
+    - six >=1.4
+    - python-dateutil
+    - chameleon
+    - wand
+    - htmlmin >=0.1.5
+    - python-magic
+
+test:
+  # Python imports
+  imports:
+    - buccaneer
+    - buccaneer.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - buccaneer --help
+    - buccaneer-import --help
+    - buccaneer-quickstart --help
+    - buccaneer-themes --help
+    - buccaneer-upload --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://testing-software.org/
+  license: GNU Affero General Public License v3
+  summary: 'A tool to generate a static blog from reStructuredText or Markdown input files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

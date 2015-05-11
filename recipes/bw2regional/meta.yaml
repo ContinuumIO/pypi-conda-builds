@@ -1,0 +1,78 @@
+package:
+  name: bw2regional
+  version: "0.2"
+
+source:
+  fn: bw2regional-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/bw2regional/bw2regional-0.2.tar.gz
+  md5: c458dac46159cd5aec8d1cc4d818405d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bw2regional = bw2regional:main
+    #
+    # Would create an entry point called bw2regional that calls bw2regional.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - brightway2
+    - bw2calc >=0.11
+    - bw2data >=0.12
+    - pandarus
+    - fiona >=1.1.3
+    - progressbar-ipython
+    - stats_arrays
+    - voluptuous
+
+  run:
+    - python
+    - brightway2
+    - bw2calc >=0.11
+    - bw2data >=0.12
+    - pandarus
+    - fiona >=1.1.3
+    - progressbar-ipython
+    - stats_arrays
+    - voluptuous
+
+test:
+  # Python imports
+  imports:
+    - bw2regional
+    - bw2regional.lca
+    - bw2regional.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/cmutel/brightway2-regional
+  license: BSD License
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

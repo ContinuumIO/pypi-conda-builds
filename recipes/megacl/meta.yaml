@@ -1,0 +1,71 @@
+package:
+  name: megacl
+  version: "0.4.6"
+
+source:
+  fn: megacl-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/megacl/megacl-0.4.6.tar.gz
+  md5: 7a31714a70030da06f0754838e31a128
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megacl = megacl:main
+    #
+    # Would create an entry point called megacl that calls megacl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - supertools
+    - cltools >=0.4.0
+    - mega.py >=0.9.13
+    - requests
+    - pycrypto
+
+  run:
+    - python
+    - supertools
+    - cltools >=0.4.0
+    - mega.py >=0.9.13
+    - requests
+    - pycrypto
+
+test:
+  # Python imports
+  imports:
+    - megacl
+    - megacllib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gissehel/megacl.git
+  license: MIT License
+  summary: 'mega.co.nz command line client.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

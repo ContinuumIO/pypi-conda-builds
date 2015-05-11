@@ -1,0 +1,74 @@
+package:
+  name: megrok.z3cform.crud
+  version: "0.1"
+
+source:
+  fn: megrok.z3cform.crud-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/megrok.z3cform.crud/megrok.z3cform.crud-0.1.tar.gz
+  md5: f5d603f9aa8f9f10b8bbf0af6a07f061
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megrok.z3cform.crud = megrok.z3cform.crud:main
+    #
+    # Would create an entry point called megrok.z3cform.crud that calls megrok.z3cform.crud.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - grokcore.view
+    - grokcore.component
+    - z3c.batching
+    - z3c.form >=2.1
+    - megrok.z3cform.base
+
+  run:
+    - python
+    - setuptools
+    - grokcore.view
+    - grokcore.component
+    - z3c.batching
+    - z3c.form >=2.1
+    - megrok.z3cform.base
+
+test:
+  # Python imports
+  imports:
+    - megrok
+    - megrok.z3cform
+    - megrok.z3cform.crud
+    - megrok.z3cform.crud.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/megrok.z3cform.crud
+  license: GPL
+  summary: 'Crud forms for Grok, uusing z3c.form'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

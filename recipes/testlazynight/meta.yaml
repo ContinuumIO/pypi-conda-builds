@@ -1,0 +1,66 @@
+package:
+  name: testlazynight
+  version: "3.11.27.1"
+
+source:
+  fn: TestLazynight-3.11.27.1.tar.gz
+  url: https://pypi.python.org/packages/source/T/TestLazynight/TestLazynight-3.11.27.1.tar.gz
+  md5: 7cefc62c225f0246d21ed338de5b0cbb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - testlazynight = testlazynight:main
+    #
+    # Would create an entry point called testlazynight that calls testlazynight.main()
+
+    - test = test.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - web.py
+
+  run:
+    - python
+    - web.py
+
+test:
+  # Python imports
+  imports:
+    - fabfile
+    - test
+    - testlazynight
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - test --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://read.sohu.com
+  license: UNKNOWN
+  summary: 'HELLO README!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

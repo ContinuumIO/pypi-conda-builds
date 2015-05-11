@@ -1,0 +1,71 @@
+package:
+  name: fmspy
+  version: "0.1.0"
+
+source:
+  fn: fmspy-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fmspy/fmspy-0.1.0.tar.gz
+  md5: a089968644ebe923f6b1ddf3d1d8fb72
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fmspy = fmspy:main
+    #
+    # Would create an entry point called fmspy that calls fmspy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=8.1.0
+    - pyamf >=0.4
+
+  run:
+    - python
+    - twisted >=8.1.0
+    - pyamf >=0.4
+
+test:
+  # Python imports
+  imports:
+    - fmspy
+    - fmspy.application
+    - fmspy.application.tests
+    - fmspy.plugins
+    - fmspy.rtmp
+    - fmspy.rtmp.protocol
+    - fmspy.rtmp.tests
+    - twisted.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://fmspy.org/
+  license: MIT License
+  summary: 'Flash Media Server in Python using Twisted Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

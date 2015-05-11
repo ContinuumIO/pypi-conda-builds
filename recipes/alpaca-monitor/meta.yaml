@@ -1,0 +1,122 @@
+package:
+  name: alpaca-monitor
+  version: "0.3.0"
+
+source:
+  fn: alpaca-monitor-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/alpaca-monitor/alpaca-monitor-0.3.0.tar.gz
+  md5: 948d05c319bca5739c34e6afa5e08943
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alpaca-monitor = alpaca-monitor:main
+    #
+    # Would create an entry point called alpaca-monitor that calls alpaca-monitor.main()
+
+    - alpaca-admin = alpaca.admin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - psycopg2
+    - pytz
+    - pyramid ==1.4.3
+    - pyramid_zcml ==1.0.0
+    - pyramid_layout ==0.8
+    - pyramid_tm ==0.7
+    - waitress ==0.8.7
+    - zope.component ==4.1.0
+    - zope.interface ==4.0.5
+    - zope.configuration ==4.0.2
+    - zope.sqlalchemy ==0.7.3
+    - sqlalchemy ==0.8.2
+    - msgpack-python ==0.3.0
+    - pbkdf2 ==1.3
+    - pyzmq ==13.1.0
+    - tornado ==3.1.1
+    - beaker ==1.6.4
+    - colander ==1.0b1
+    - deform ==0.9.9
+    - deform_bootstrap ==0.2.9
+
+  run:
+    - python
+    - setuptools
+    - distribute
+    - psycopg2
+    - pytz
+    - pyramid ==1.4.3
+    - pyramid_zcml ==1.0.0
+    - pyramid_layout ==0.8
+    - pyramid_tm ==0.7
+    - waitress ==0.8.7
+    - zope.component ==4.1.0
+    - zope.interface ==4.0.5
+    - zope.configuration ==4.0.2
+    - zope.sqlalchemy ==0.7.3
+    - sqlalchemy ==0.8.2
+    - msgpack-python ==0.3.0
+    - pbkdf2 ==1.3
+    - pyzmq ==13.1.0
+    - tornado ==3.1.1
+    - beaker ==1.6.4
+    - colander ==1.0b1
+    - deform ==0.9.9
+    - deform_bootstrap ==0.2.9
+
+test:
+  # Python imports
+  imports:
+    - alpaca
+    - alpaca.admin
+    - alpaca.admin.commands
+    - alpaca.common
+    - alpaca.common.domain
+    - alpaca.common.persistence
+    - alpaca.common.persistence.types
+    - alpaca.common.services
+    - alpaca.common.tests
+    - alpaca.common.tests.domain
+    - alpaca.common.tests.persistence
+    - alpaca.common.tests.persistence.types
+    - alpaca.common.tests.services
+    - alpaca.common.tests.utilties
+    - alpaca.common.utilities
+    - alpaca.frontend
+    - alpaca.frontend.tests
+    - alpaca.monitor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - alpaca-admin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/msiedlarek/alpaca
+  license: Apache Software License
+  summary: 'Software error aggregator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

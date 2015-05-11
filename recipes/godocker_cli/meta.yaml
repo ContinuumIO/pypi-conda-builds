@@ -1,0 +1,86 @@
+package:
+  name: godocker_cli
+  version: "1.02"
+
+source:
+  fn: godocker_CLI-1.02.tar.gz
+  url: https://pypi.python.org/packages/source/g/godocker_CLI/godocker_CLI-1.02.tar.gz
+  md5: 5985880c9fb500532fbf7ee5c49c94c9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - godocker_cli = godocker_cli:main
+    #
+    # Would create an entry point called godocker_cli that calls godocker_cli.main()
+
+    - godjob = bin.godjob:run
+    - godlogin = bin.godlogin:login
+    - goduser = bin.goduser:run
+    - godfile = bin.godfile:run
+    - godimage = bin.godimage:run
+    - godssh = bin.godssh:run
+    - godproject = bin.godproject:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycli >=2.0.3
+    - terminaltables >=1.0.2
+    - click
+    - requests
+    - configparser
+
+  run:
+    - python
+    - pycli >=2.0.3
+    - terminaltables >=1.0.2
+    - click
+    - requests
+    - configparser
+
+test:
+  # Python imports
+  imports:
+    - bin
+    - godocker_cli
+    - godockercli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - godjob --help
+    - godlogin --help
+    - goduser --help
+    - godfile --help
+    - godimage --help
+    - godssh --help
+    - godproject --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: CECILL
+  summary: 'CLI for godocker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

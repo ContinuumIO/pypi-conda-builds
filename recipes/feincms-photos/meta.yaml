@@ -1,0 +1,68 @@
+package:
+  name: feincms-photos
+  version: "0.3.0"
+
+source:
+  fn: feincms-photos-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/feincms-photos/feincms-photos-0.3.0.tar.gz
+  md5: 64bbd4a0ee871f0106511308cc67323c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - feincms-photos = feincms-photos:main
+    #
+    # Would create an entry point called feincms-photos that calls feincms-photos.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+    - feincms
+    - towel
+
+  run:
+    - python
+    - django >=1.4.2
+    - feincms
+    - towel
+
+test:
+  # Python imports
+  imports:
+    - photos
+    - photos.migrations
+    - photos.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/matthiask/feincms-photos/
+  license: BSD License
+  summary: 'Photo gallery version 42'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

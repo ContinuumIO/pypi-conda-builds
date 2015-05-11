@@ -1,0 +1,73 @@
+package:
+  name: djc.recipe
+  version: "0.9.7"
+
+source:
+  fn: djc.recipe-0.9.7.zip
+  url: https://pypi.python.org/packages/source/d/djc.recipe/djc.recipe-0.9.7.zip
+  md5: c5d5873934a3018766f080ac8a0a2a8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djc.recipe = djc.recipe:main
+    #
+    # Would create an entry point called djc.recipe that calls djc.recipe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - tempita
+    - django
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - tempita
+    - django
+
+test:
+  # Python imports
+  imports:
+    - djc
+    - djc.recipe
+    - djc.recipe.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/abstract-open-solutions/djc.recipe
+  license: BSD License
+  summary: 'A Django buildout recipe'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

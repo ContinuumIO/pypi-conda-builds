@@ -1,0 +1,65 @@
+package:
+  name: heka-py-cef
+  version: "0.3.1"
+
+source:
+  fn: heka-py-cef-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/heka-py-cef/heka-py-cef-0.3.1.tar.gz
+  md5: c36abd493b386a953fd69699ad17c616
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - heka-py-cef = heka-py-cef:main
+    #
+    # Would create an entry point called heka-py-cef that calls heka-py-cef.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - heka-py >=0.30.1
+    - cef
+
+  run:
+    - python
+    - heka-py >=0.30.1
+    - cef
+
+test:
+  # Python imports
+  imports:
+    - heka_cef
+    - heka_cef.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla-services/heka-cef
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'CEF extensions to metrics logging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

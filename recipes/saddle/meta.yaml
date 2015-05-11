@@ -1,0 +1,76 @@
+package:
+  name: saddle
+  version: "0.1.1"
+
+source:
+  fn: saddle-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/saddle/saddle-0.1.1.tar.gz
+  md5: 40fcc7511b334390a6bebe5e5edd4df9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - saddle = saddle:main
+    #
+    # Would create an entry point called saddle that calls saddle.main()
+
+    - saddle=saddle:cli.run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clip.py >=0.2.0
+    - humanize >=0.5.1
+    - ipython >=0.13
+    - colorama
+    - psutil
+    - pyuv
+
+  run:
+    - python
+    - clip.py >=0.2.0
+    - humanize >=0.5.1
+    - ipython >=0.13
+    - colorama
+    - psutil
+    - pyuv
+
+test:
+  # Python imports
+  imports:
+    - saddle
+    - saddle.libfaketime
+    - saddle.services
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - saddle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://saddle.readthedocs.org/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Functional testing framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

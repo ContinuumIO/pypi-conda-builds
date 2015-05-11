@@ -1,0 +1,83 @@
+package:
+  name: aqopa
+  version: "0.9.1"
+
+source:
+  fn: AQoPA-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/A/AQoPA/AQoPA-0.9.1.tar.gz
+  md5: 24c0c37d7032863a48a7f562e91d1b23
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aqopa = aqopa:main
+    #
+    # Would create an entry point called aqopa that calls aqopa.main()
+
+    - aqopa-gui = aqopa.cmd:gui_command
+    - aqopa-console = aqopa.cmd:console_command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply
+    - numpy
+
+  run:
+    - python
+    - ply
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - aqopa
+    - aqopa.bin
+    - aqopa.gui
+    - aqopa.model
+    - aqopa.model.parser
+    - aqopa.model.parser.lex_yacc
+    - aqopa.model.parser.lex_yacc.grammar
+    - aqopa.module
+    - aqopa.module.energyanalysis
+    - aqopa.module.financialanalysis
+    - aqopa.module.greenanalysis
+    - aqopa.module.qopanalysis
+    - aqopa.module.reputation
+    - aqopa.module.timeanalysis
+    - aqopa.simulator
+    - sme
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - aqopa-gui --help
+    - aqopa-console --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://qopml.org/aqopa/
+  license: Freeware
+  summary: 'Automated Quality of Protection Analysis Tool for QoP-ML models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

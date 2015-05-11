@@ -1,0 +1,63 @@
+package:
+  name: django-vernissage
+  version: "0.0.12"
+
+source:
+  fn: django-vernissage-0.0.12.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-vernissage/django-vernissage-0.0.12.tar.gz
+  md5: 972632f703d2ef106e7d2bb38ff6a15e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-vernissage = django-vernissage:main
+    #
+    # Would create an entry point called django-vernissage that calls django-vernissage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-admin-sortable2
+
+  run:
+    - python
+    - django-admin-sortable2
+
+test:
+  # Python imports
+  imports:
+    - vernissage
+    - vernissage.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Lacrymology/django-vernissage
+  license: MIT License
+  summary: 'An extremely simple dynamic TemplateView for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

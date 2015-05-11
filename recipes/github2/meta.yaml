@@ -1,0 +1,69 @@
+package:
+  name: github2
+  version: "0.6.2"
+
+source:
+  fn: github2-0.6.2.tar.bz2
+  url: https://pypi.python.org/packages/source/g/github2/github2-0.6.2.tar.bz2
+  md5: 3719fa947fb5aaae39b273d889fd0997
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github2 = github2:main
+    #
+    # Would create an entry point called github2 that calls github2.main()
+
+    - github_manage_collaborators = github2.bin.manage_collaborators:main
+    - github_search_repos = github2.bin.search_repos:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2 >=0.7.0
+    - python-dateutil <2.0,>=2.1
+
+  run:
+    - python
+    - httplib2 >=0.7.0
+    - python-dateutil <2.0,>=2.1
+
+test:
+  # Python imports
+  imports:
+    - github2
+    - github2.bin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - github_manage_collaborators --help
+    - github_search_repos --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ask/python-github2
+  license: BSD License
+  summary: 'GitHub API v2 library for Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

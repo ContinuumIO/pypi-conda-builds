@@ -1,0 +1,75 @@
+package:
+  name: cmsplugin-blog
+  version: "1.1.2"
+
+source:
+  fn: cmsplugin-blog-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-blog/cmsplugin-blog-1.1.2.tar.gz
+  md5: 33a89c6f9fa88661126d3bb7a2e9c43a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-blog = cmsplugin-blog:main
+    #
+    # Would create an entry point called cmsplugin-blog that calls cmsplugin-blog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms
+    - simple-translation
+    - djangocms-utils
+    - django-tagging
+    - django-missing
+
+  run:
+    - python
+    - django-cms
+    - simple-translation
+    - djangocms-utils
+    - django-tagging
+    - django-missing
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_blog
+    - cmsplugin_blog.migrations
+    - cmsplugin_blog.templatetags
+    - cmsplugin_blog.test
+    - cmsplugin_blog.test.testapp
+    - cmsplugin_blog.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fivethreeo/cmsplugin-blog/
+  license: BSD License
+  summary: 'This is a blog app/plugin for django-cms 2.2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: alfredo
+  version: "0.2"
+
+source:
+  fn: alfredo-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/alfredo/alfredo-0.2.tar.gz
+  md5: f2f7db84dd6737328da305dc9270c147
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - alfredo = alfredo:main
+    #
+    # Would create an entry point called alfredo that calls alfredo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup ==3.2.1
+    - plugnplay ==0.5.0
+    - requests ==0.13.2
+    - simplejson ==2.6.0
+    - xmpppy ==0.5.0rc1
+
+  run:
+    - python
+    - beautifulsoup ==3.2.1
+    - plugnplay ==0.5.0
+    - requests ==0.13.2
+    - simplejson ==2.6.0
+    - xmpppy ==0.5.0rc1
+
+test:
+  # Python imports
+  imports:
+    - alfredo
+    - alfredo/commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/daltonmatos/alfredo
+  license: BSD License
+  summary: 'Alfredo is a gtalk bot born so serve you.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: metrique
+  version: "0.3.2-1"
+
+source:
+  fn: metrique-0.3.2-1.tar.gz
+  url: https://pypi.python.org/packages/source/m/metrique/metrique-0.3.2-1.tar.gz
+  md5: 9ccfbede0b4eaefd1ae5366c5c524665
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metrique = metrique:main
+    #
+    # Would create an entry point called metrique that calls metrique.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - anyconfig
+    - decorator
+    - lockfile
+    - python_dateutil
+    - pytz
+    - simplejson
+    - sqlalchemy >=0.9.4
+    - virtualenv >=1.11
+
+  run:
+    - python
+    - anyconfig
+    - decorator
+    - lockfile
+    - python_dateutil
+    - pytz
+    - simplejson
+    - sqlalchemy >=0.9.4
+    - virtualenv >=1.11
+
+test:
+  # Python imports
+  imports:
+    - metrique
+    - metrique.cubes
+    - metrique.cubes.csvdata
+    - metrique.cubes.gitdata
+    - metrique.cubes.osinfo
+    - metrique.cubes.sqldata
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kejbaly2/metrique
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Metrique - Client Libraries'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

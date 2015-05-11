@@ -1,0 +1,64 @@
+package:
+  name: django-metro-tiny
+  version: "1.0"
+
+source:
+  fn: django-metro-tiny-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-metro-tiny/django-metro-tiny-1.0.tar.gz
+  md5: 3a1e0240593c3a93f57586759870f482
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-metro-tiny = django-metro-tiny:main
+    #
+    # Would create an entry point called django-metro-tiny that calls django-metro-tiny.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cities-tiny
+
+  run:
+    - python
+    - django-cities-tiny
+
+test:
+  # Python imports
+  imports:
+    - metro_tiny
+    - metro_tiny.management
+    - metro_tiny.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/django-metro-tiny/
+  license: MIT License
+  summary: 'Metro stations and lines models for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

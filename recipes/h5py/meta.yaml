@@ -1,0 +1,70 @@
+package:
+  name: h5py
+  version: "2.5.0"
+
+source:
+  fn: h5py-2.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz
+  md5: 6e4301b5ad5da0d51b0a1e5ac19e3b74
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - h5py = h5py:main
+    #
+    # Would create an entry point called h5py that calls h5py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.6.1
+    - cython >=0.17
+    - six
+
+  run:
+    - python
+    - numpy >=1.6.1
+    - cython >=0.17
+    - six
+
+test:
+  # Python imports
+  imports:
+    - h5py
+    - h5py._hl
+    - h5py.tests
+    - h5py.tests.hl
+    - h5py.tests.old
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.h5py.org
+  license: BSD License
+  summary: 'Read and write HDF5 files from Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

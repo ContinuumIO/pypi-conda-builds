@@ -1,0 +1,66 @@
+package:
+  name: gitcoach
+  version: "0.2.2"
+
+source:
+  fn: gitcoach-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitcoach/gitcoach-0.2.2.tar.gz
+  md5: 290c44ee753321fa4f90bd15a99b3828
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitcoach = gitcoach:main
+    #
+    # Would create an entry point called gitcoach that calls gitcoach.main()
+
+    - gitlearn = gitcoach.commands:learn
+    - gitcoach = gitcoach.commands:coach
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - git2json
+
+  run:
+    - python
+    - git2json
+
+test:
+  # Python imports
+  imports:
+    - gitcoach
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gitlearn --help
+    - gitcoach --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mhoye/gitcoach
+  license: BSD License
+  summary: 'Help you find out what files you should be changing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

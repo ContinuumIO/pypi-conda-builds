@@ -1,0 +1,72 @@
+package:
+  name: hazel
+  version: "0.4.5"
+
+source:
+  fn: hazel-0.4.5.tar.gz
+  url: https://pypi.python.org/packages/source/h/hazel/hazel-0.4.5.tar.gz
+  md5: e743bb2d9b869775a41eb0ce69616a2a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hazel = hazel:main
+    #
+    # Would create an entry point called hazel that calls hazel.main()
+
+    - hazel = hazel.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.6
+    - markdown ==2.2.1
+    - pyyaml ==3.10
+    - clint ==0.3.1
+    - docopt ==0.6.1
+
+  run:
+    - python
+    - jinja2 ==2.6
+    - markdown ==2.2.1
+    - pyyaml ==3.10
+    - clint ==0.3.1
+    - docopt ==0.6.1
+
+test:
+  # Python imports
+  imports:
+    - hazel
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hazel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shunfan/hazel
+  license: MIT License
+  summary: 'hazel: a capsule static blog generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

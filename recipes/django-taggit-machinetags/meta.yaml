@@ -1,0 +1,64 @@
+package:
+  name: django-taggit-machinetags
+  version: "0.5.0"
+
+source:
+  fn: django-taggit-machinetags-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-taggit-machinetags/django-taggit-machinetags-0.5.0.tar.gz
+  md5: 9b48907f8eb189d23912684b5324f41a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-taggit-machinetags = django-taggit-machinetags:main
+    #
+    # Would create an entry point called django-taggit-machinetags that calls django-taggit-machinetags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-taggit
+
+  run:
+    - python
+    - django-taggit
+
+test:
+  # Python imports
+  imports:
+    - taggit_machinetags
+    - taggit_machinetags.migrations
+    - taggit_machinetags.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lpomfrey/django-taggit-machinetags
+  license: BSD License
+  summary: 'Machine tagging built upon django-taggit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

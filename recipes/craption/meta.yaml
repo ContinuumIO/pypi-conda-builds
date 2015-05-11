@@ -1,0 +1,74 @@
+package:
+  name: craption
+  version: "1.2"
+
+source:
+  fn: craption-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/craption/craption-1.2.tar.gz
+  md5: f72b1221a25f2706b0820f4f6fc5bff9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - craption = craption:main
+    #
+    # Would create an entry point called craption that calls craption.main()
+
+    - craption = craption.cli:dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dropbox
+    - pyperclip
+    - requests
+    - opster
+    - configobj
+    - sfs_upload
+
+  run:
+    - python
+    - dropbox
+    - pyperclip
+    - requests
+    - opster
+    - configobj
+    - sfs_upload
+
+test:
+  # Python imports
+  imports:
+    - craption
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - craption --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spillevink/CRAPtion
+  license: GNU GPLv3
+  summary: 'Simple screenshot uploader'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

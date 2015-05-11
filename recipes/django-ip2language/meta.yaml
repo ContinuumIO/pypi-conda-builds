@@ -1,0 +1,61 @@
+package:
+  name: django-ip2language
+  version: "0.1"
+
+source:
+  fn: django-ip2language-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ip2language/django-ip2language-0.1.tar.gz
+  md5: f2087ea9633717b4e9d51d9b72e25bc1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ip2language = django-ip2language:main
+    #
+    # Would create an entry point called django-ip2language that calls django-ip2language.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pygeoip >=0.2.6
+
+  run:
+    - python
+    - pygeoip >=0.2.6
+
+test:
+  # Python imports
+  imports:
+    - ip2language
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: LICENSE.txt
+  summary: 'A django module to derive a language code based on visitor IP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

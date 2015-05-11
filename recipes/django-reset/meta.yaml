@@ -1,0 +1,62 @@
+package:
+  name: django-reset
+  version: "0.2.0"
+
+source:
+  fn: django-reset-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-reset/django-reset-0.2.0.tar.gz
+  md5: 71ca67886b219208657279a12a556feb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-reset = django-reset:main
+    #
+    # Would create an entry point called django-reset that calls django-reset.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_reset
+    - django_reset.management
+    - django_reset.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/gregmuellegger/django-reset
+  license: BSD License
+  summary: "Forward-port of Django's reset management command. It was removed with Django 1.5."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

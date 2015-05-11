@@ -1,0 +1,127 @@
+package:
+  name: fc.agent
+  version: "1.6.6"
+
+source:
+  fn: fc.agent-1.6.6.zip
+  url: https://pypi.python.org/packages/source/f/fc.agent/fc.agent-1.6.6.zip
+  md5: f7a707f0e29b93d7f8aeddcf9292f9fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fc.agent = fc.agent:main
+    #
+    # Would create an entry point called fc.agent that calls fc.agent.main()
+
+    - list-maintenance = gocept.net.maintenance.script:list
+    - localconfig-bacula-purge-stamps = gocept.net.configure.bacula:purge_stamps
+    - localconfig-box-exports = gocept.net.configure.box:exports
+    - localconfig-box-mounts = gocept.net.configure.box:mounts
+    - localconfig-ceph-pg_num = gocept.net.configure.ceph:pg_num
+    - localconfig-ceph-pools = gocept.net.configure.ceph:pools
+    - localconfig-ceph-purge-volumes = gocept.net.configure.ceph:purge_volumes
+    - localconfig-dhcpd = gocept.net.configure.dhcpd:main
+    - localconfig-iptables-inputrules = gocept.net.configure.iptables:inputrules
+    - localconfig-kvm-init = gocept.net.configure.kvm:ensure_vms
+    - localconfig-nagioscontacts = gocept.net.configure.nagios:contacts
+    - localconfig-nagios-nodes = gocept.net.configure.nagios:nodes
+    - localconfig-postfix-master = gocept.net.configure.postfix:master
+    - localconfig-puppetmaster = gocept.net.configure.puppetmaster:main
+    - localconfig-resize2fs-vmroot = gocept.net.configure.resize2fs:check_grow
+    - localconfig-users = gocept.net.configure.users:main
+    - localconfig-zones = gocept.net.configure.zones:update
+    - request-maintenance = gocept.net.maintenance.script:request
+    - run-maintenance = gocept.net.maintenance.script:run
+    - schedule-maintenance = gocept.net.maintenance.script:schedule
+    - rbd-images = gocept.net.ceph.utils:list_images
+    - rbd-clean-old-snapshots = gocept.net.ceph.utils:clean_old_snapshots
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-ldap
+    - pyyaml
+    - pytz
+    - iso8601 >=0.1.4
+    - configobj >=4.7
+    - netaddr >=0.7
+    - shortuuid >=0.4
+
+  run:
+    - python
+    - setuptools
+    - python-ldap
+    - pyyaml
+    - pytz
+    - iso8601 >=0.1.4
+    - configobj >=4.7
+    - netaddr >=0.7
+    - shortuuid >=0.4
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.net
+    - gocept.net.ceph
+    - gocept.net.ceph.tests
+    - gocept.net.configure
+    - gocept.net.configure.tests
+    - gocept.net.maintenance
+    - gocept.net.maintenance.tests
+    - gocept.net.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - list-maintenance --help
+    - localconfig-bacula-purge-stamps --help
+    - localconfig-box-exports --help
+    - localconfig-box-mounts --help
+    - localconfig-ceph-pg_num --help
+    - localconfig-ceph-pools --help
+    - localconfig-ceph-purge-volumes --help
+    - localconfig-dhcpd --help
+    - localconfig-iptables-inputrules --help
+    - localconfig-kvm-init --help
+    - localconfig-nagioscontacts --help
+    - localconfig-nagios-nodes --help
+    - localconfig-postfix-master --help
+    - localconfig-puppetmaster --help
+    - localconfig-resize2fs-vmroot --help
+    - localconfig-users --help
+    - localconfig-zones --help
+    - request-maintenance --help
+    - run-maintenance --help
+    - schedule-maintenance --help
+    - rbd-images --help
+    - rbd-clean-old-snapshots --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/flyingcircus/fc.agent
+  license: BSD
+  summary: 'Local configuration utilities and helper APIs for flyingcircus.io\nsystem configuration.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

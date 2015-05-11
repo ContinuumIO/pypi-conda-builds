@@ -1,0 +1,65 @@
+package:
+  name: kombu-multibroker
+  version: "0.0.5"
+
+source:
+  fn: kombu-multibroker-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/k/kombu-multibroker/kombu-multibroker-0.0.5.tar.gz
+  md5: d19527e613cd93bf73785883277f8393
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kombu-multibroker = kombu-multibroker:main
+    #
+    # Would create an entry point called kombu-multibroker that calls kombu-multibroker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kombu >=2.4.7
+    - amqp >=0.9.2
+
+  run:
+    - python
+    - kombu >=2.4.7
+    - amqp >=0.9.2
+
+test:
+  # Python imports
+  imports:
+    - kombu_multibroker
+    - kombu_multibroker.transport
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rbranson/kombu-multibroker
+  license: BSD License
+  summary: 'Support for multiple brokers and publisher confirms in Kombu'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

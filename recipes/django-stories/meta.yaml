@@ -1,0 +1,67 @@
+package:
+  name: django-stories
+  version: "1.0.8"
+
+source:
+  fn: django-stories-1.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-stories/django-stories-1.0.8.tar.gz
+  md5: d6d239ba3a353c9be296e2339efd3f7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-stories = django-stories:main
+    #
+    # Would create an entry point called django-stories that calls django-stories.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+
+  run:
+    - python
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - stories
+    - stories.migrations
+    - stories.relations
+    - stories.relations.migrations
+    - stories.relations.templatetags
+    - stories.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/callowayproject/django-stories/
+  license: Apache Software License
+  summary: 'An application for handling newspaper-like stories on a web site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

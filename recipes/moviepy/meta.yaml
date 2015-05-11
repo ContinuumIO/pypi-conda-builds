@@ -1,0 +1,79 @@
+package:
+  name: moviepy
+  version: "0.2.2.11"
+
+source:
+  fn: moviepy-0.2.2.11.tar.gz
+  url: https://pypi.python.org/packages/source/m/moviepy/moviepy-0.2.2.11.tar.gz
+  md5: e45390e11304a9b255da54a35ab869a1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moviepy = moviepy:main
+    #
+    # Would create an entry point called moviepy that calls moviepy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - decorator
+    - imageio
+    - tqdm
+
+  run:
+    - python
+    - numpy
+    - decorator
+    - imageio
+    - tqdm
+
+test:
+  # Python imports
+  imports:
+    - moviepy
+    - moviepy.audio
+    - moviepy.audio.fx
+    - moviepy.audio.fx.all
+    - moviepy.audio.io
+    - moviepy.audio.tools
+    - moviepy.video
+    - moviepy.video.compositing
+    - moviepy.video.fx
+    - moviepy.video.fx.all
+    - moviepy.video.io
+    - moviepy.video.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: see LICENSE.txt
+  summary: 'Video editing with Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

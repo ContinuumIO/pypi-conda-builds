@@ -1,0 +1,64 @@
+package:
+  name: glamkit-blogtools
+  version: "0.5.1"
+
+source:
+  fn: glamkit-blogtools-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/glamkit-blogtools/glamkit-blogtools-0.5.1.tar.gz
+  md5: 6a4a91bf2226f0827be5df0091f329c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - glamkit-blogtools = glamkit-blogtools:main
+    #
+    # Would create an entry point called glamkit-blogtools that calls glamkit-blogtools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - blogtools
+    - blogtools.templatetags
+    - blogtools.tests
+    - blogtools.tests.blug
+    - blogtools.tests.blug.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/glamkit/glamkit-blogtools
+  license: BSD License
+  summary: 'Mini framework for making Django blog apps.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

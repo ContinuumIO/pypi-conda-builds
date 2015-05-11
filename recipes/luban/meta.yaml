@@ -1,0 +1,146 @@
+package:
+  name: luban
+  version: "1.0.1"
+
+source:
+  fn: luban-1.0.1.tar.gz
+  url: http://dev.danse.us/packages/luban-1.0.1.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - luban = luban:main
+    #
+    # Would create an entry point called luban that calls luban.main()
+
+    - luban = luban.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils
+    - cherrypy >=3.2.0
+
+  run:
+    - python
+    - docutils
+    - cherrypy >=3.2.0
+
+test:
+  # Python imports
+  imports:
+    - aokuang
+    - aokuang.core
+    - aokuang.core.actors
+    - aokuang.core.actors.alert
+    - aokuang.core.actors.button
+    - aokuang.core.actors.document
+    - aokuang.core.actors.htmldocument
+    - aokuang.core.actors.loading
+    - aokuang.core.actors.paragraph
+    - aokuang.core.actors.restructuredtextdocument
+    - aokuang.core.actors.splitter
+    - aokuang.core.actors.tabs
+    - aokuang.timber
+    - aokuang.timber.actors
+    - aokuang.timber.actors.accordion
+    - aokuang.timber.actors.bulletinboard
+    - aokuang.timber.actors.codeviewer
+    - aokuang.timber.actors.dialog
+    - aokuang.timber.actors.elementbase
+    - aokuang.timber.actors.form
+    - aokuang.timber.actors.formcheckbox
+    - aokuang.timber.actors.formfield_common
+    - aokuang.timber.actors.formradiobox
+    - aokuang.timber.actors.formselectorfield
+    - aokuang.timber.actors.formtextfield
+    - aokuang.timber.actors.grid
+    - aokuang.timber.actors.image
+    - aokuang.timber.actors.portlet
+    - aokuang.timber.actors.progressbar
+    - aokuang.timber.actors.slides
+    - aokuang.timber.actors.tabs
+    - aokuang.timber.actors.toolbar
+    - aokuang.timber.actors.uploader
+    - aokuang.workflows
+    - aokuang.workflows.actors
+    - aokuang.workflows.workflows
+    - helloworld
+    - luban
+    - luban._filesystem
+    - luban.cli
+    - luban.cli._template
+    - luban.cli.db
+    - luban.cli.deploy
+    - luban.cli.paths
+    - luban.cli.sitemap
+    - luban.cli.start
+    - luban.cli.stop
+    - luban.cli.workflow
+    - luban.controller
+    - luban.db
+    - luban.scaffolding
+    - luban.scaffolding.extension
+    - luban.scaffolding.project
+    - luban.scaffolding.project.deployment
+    - luban.scaffolding.project.templates
+    - luban.timber
+    - luban.timber.actions
+    - luban.timber.controller
+    - luban.timber.elements
+    - luban.timber.utils
+    - luban.timber.weaver
+    - luban.timber.weaver.web
+    - luban.timber.weaver.web.libraries
+    - luban.ui
+    - luban.ui.actions
+    - luban.ui.descriptors
+    - luban.ui.elements
+    - luban.ui.meta
+    - luban.ui.schema
+    - luban.utils
+    - luban.weaver
+    - luban.weaver.web
+    - luban.weaver.web._json
+    - luban.weaver.web.content
+    - luban.weaver.web.libraries
+    - luban.weaver.web.renderer
+    - luban.workflows
+    - luban.workflows._utils
+    - luban.workflows.feedback
+    - luban.workflows.login
+    - luban.workflows.registration
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - luban --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lubanui.org
+  license: luca
+  summary: 'Luban: a generic (web/native) user interface "language"'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

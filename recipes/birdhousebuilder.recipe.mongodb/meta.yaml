@@ -1,0 +1,74 @@
+package:
+  name: birdhousebuilder.recipe.mongodb
+  version: "0.2.0"
+
+source:
+  fn: birdhousebuilder.recipe.mongodb-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/birdhousebuilder.recipe.mongodb/birdhousebuilder.recipe.mongodb-0.2.0.tar.gz
+  md5: 38f808c0eef30b6ad10f427af26e00cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - birdhousebuilder.recipe.mongodb = birdhousebuilder.recipe.mongodb:main
+    #
+    # Would create an entry point called birdhousebuilder.recipe.mongodb that calls birdhousebuilder.recipe.mongodb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - birdhousebuilder.recipe.conda
+    - birdhousebuilder.recipe.supervisor
+    - mako
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - birdhousebuilder.recipe.conda
+    - birdhousebuilder.recipe.supervisor
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - birdhousebuilder
+    - birdhousebuilder.recipe
+    - birdhousebuilder.recipe.mongodb
+    - birdhousebuilder.recipe.mongodb.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bird-house/birdhousebuilder.recipe.mongodb
+  license: BSD License
+  summary: 'A Buildout recipe to install and setup mongodb with Anaconda.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

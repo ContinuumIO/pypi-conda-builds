@@ -1,0 +1,64 @@
+package:
+  name: asv_seo
+  version: "dev-20121101-02"
+
+source:
+  fn: asv_seo-dev-20121101-02.tar.gz
+  url: https://pypi.python.org/packages/source/a/asv_seo/asv_seo-dev-20121101-02.tar.gz
+  md5: a74dde0798b81fe73755a84db656249c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asv_seo = asv_seo:main
+    #
+    # Would create an entry point called asv_seo that calls asv_seo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - asv_utils >=dev-20121101-01
+
+  run:
+    - python
+    - asv_utils >=dev-20121101-01
+
+test:
+  # Python imports
+  imports:
+    - asv_seo
+    - asv_seo.migrations
+    - asv_seo.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/xenolog/asv_seo/wiki/Home
+  license: GPL
+  summary: '\nThis is a title, keywords, descriptions connecting to any django model by ContentTypes.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

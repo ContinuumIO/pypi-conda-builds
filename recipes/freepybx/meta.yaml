@@ -1,0 +1,103 @@
+package:
+  name: freepybx
+  version: "1.0-RC1"
+
+source:
+  fn: FreePyBX-1.0-RC1.tar.gz
+  url: https://pypi.python.org/packages/source/F/FreePyBX/FreePyBX-1.0-RC1.tar.gz
+  md5: b96ba3000e7d61358e3212014929598b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - freepybx = freepybx:main
+    #
+    # Would create an entry point called freepybx that calls freepybx.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons >=1.0
+    - sqlalchemy >=0.7
+    - genshi >=0.6
+    - psycopg2 >=2.4
+    - beautifulsoup >=3.2
+    - amfast
+    - pyamf
+    - pytz
+    - twisted
+
+  run:
+    - python
+    - setuptools
+    - pylons >=1.0
+    - sqlalchemy >=0.7
+    - genshi >=0.6
+    - psycopg2 >=2.4
+    - beautifulsoup >=3.2
+    - amfast
+    - pyamf
+    - pytz
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - freepybx
+    - freepybx.config
+    - freepybx.controllers
+    - freepybx.dataservices
+    - freepybx.lib
+    - freepybx.lib.api
+    - freepybx.lib.api.soap
+    - freepybx.lib.pymap
+    - freepybx.model
+    - freepybx.templates
+    - freepybx.templates.admin
+    - freepybx.templates.billing
+    - freepybx.templates.email
+    - freepybx.templates.errors
+    - freepybx.templates.pbx
+    - freepybx.templates.provisioning
+    - freepybx.templates.provisioning.cisco
+    - freepybx.templates.provisioning.cisco.SPA5XX
+    - freepybx.templates.provisioning.snom
+    - freepybx.templates.provisioning.snom.3XX
+    - freepybx.templates.services
+    - freepybx.templates.web_services
+    - freepybx.templates.xml
+    - freepybx.tests
+    - freepybx.tests.functional
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.freepybx.org
+  license: UNKNOWN
+  summary: 'A PBX configurator for FreeSWITCH'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

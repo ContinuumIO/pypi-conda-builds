@@ -1,0 +1,74 @@
+package:
+  name: fedmsg_meta_fedora_infrastructure
+  version: "0.5.3"
+
+source:
+  fn: fedmsg_meta_fedora_infrastructure-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/fedmsg_meta_fedora_infrastructure/fedmsg_meta_fedora_infrastructure-0.5.3.tar.gz
+  md5: 0f979dda014612fcf4833d1e6d98c285
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fedmsg_meta_fedora_infrastructure = fedmsg_meta_fedora_infrastructure:main
+    #
+    # Would create an entry point called fedmsg_meta_fedora_infrastructure that calls fedmsg_meta_fedora_infrastructure.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fedmsg
+    - python-fedora
+    - python-dateutil
+
+  run:
+    - python
+    - setuptools
+    - fedmsg
+    - python-fedora
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - fedmsg_meta_fedora_infrastructure
+    - fedmsg_meta_fedora_infrastructure.conglomerators
+    - fedmsg_meta_fedora_infrastructure.conglomerators.bodhi
+    - fedmsg_meta_fedora_infrastructure.conglomerators.pkgdb
+    - fedmsg_meta_fedora_infrastructure.tests
+    - fedmsg_meta_fedora_infrastructure.tests.conglomerate
+    - fedmsg_meta_fedora_infrastructure.tests.conglomerate.bodhi
+    - fedmsg_meta_fedora_infrastructure.tests.conglomerate.pkgdb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ralphbean/fedmsg_meta_fedora_infrastructure/
+  license: LGPLv2+
+  summary: "fedmsg metadata providers for Fedora Infrastructure's deployment"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

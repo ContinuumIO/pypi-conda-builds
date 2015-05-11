@@ -1,0 +1,65 @@
+package:
+  name: distributed-nose
+  version: "1.0.0"
+
+source:
+  fn: distributed-nose-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/distributed-nose/distributed-nose-1.0.0.tar.gz
+  md5: 9aa90b38f14f6db693c33282647fc03d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - distributed-nose = distributed-nose:main
+    #
+    # Would create an entry point called distributed-nose that calls distributed-nose.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+    - hash_ring
+
+  run:
+    - python
+    - setuptools
+    - nose
+    - hash_ring
+
+test:
+  # Python imports
+  imports:
+    - distributed_nose
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://policystat.github.com/distributed-nose
+  license: BSD License
+  summary: 'Distribute your nose tests across multiple machines, hassle-free'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

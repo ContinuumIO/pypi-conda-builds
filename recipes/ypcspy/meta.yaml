@@ -1,0 +1,67 @@
+package:
+  name: ypcspy
+  version: "0.0.5a"
+
+source:
+  fn: ypcspy-0.0.5a.tar.gz
+  url: https://pypi.python.org/packages/source/y/ypcspy/ypcspy-0.0.5a.tar.gz
+  md5: 287834a2bda9db761d4c0a06a40c53cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ypcspy = ypcspy:main
+    #
+    # Would create an entry point called ypcspy that calls ypcspy.main()
+
+    - ypcspy = ypcspy.core:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - requests
+    - requests_cache
+    - lxml
+
+  run:
+    - python
+    - requests
+    - requests_cache
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - ypcspy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ypcspy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ypcs/ypcspy
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Misc python tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

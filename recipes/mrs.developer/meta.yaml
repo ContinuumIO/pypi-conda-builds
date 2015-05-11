@@ -1,0 +1,71 @@
+package:
+  name: mrs.developer
+  version: "0"
+
+source:
+  fn: mrs.developer-0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mrs.developer/mrs.developer-0.tar.gz
+  md5: 8fcf69513fefdf9ddeb29e478702a1f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mrs.developer = mrs.developer:main
+    #
+    # Would create an entry point called mrs.developer that calls mrs.developer.main()
+
+    - mrsd = mrs.developer.console_script:mrsd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - odict
+    - zope.location
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - odict
+    - zope.location
+
+test:
+  # Python imports
+  imports:
+    - mrs
+    - mrs.developer
+    - mrs.developer.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mrsd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/chaoflow/mrs.developer
+  license: General Public Licence
+  summary: 'Mrs. Developer intends to be useful for developers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

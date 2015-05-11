@@ -1,0 +1,67 @@
+package:
+  name: mosaik-householdsim
+  version: "2.0.2"
+
+source:
+  fn: mosaik-householdsim-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mosaik-householdsim/mosaik-householdsim-2.0.2.tar.gz
+  md5: ee9e92e533bcf683c59fec5fe5f57ad9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mosaik-householdsim = mosaik-householdsim:main
+    #
+    # Would create an entry point called mosaik-householdsim that calls mosaik-householdsim.main()
+
+    - mosaik-householdsim = householdsim.mosaik:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - arrow >=0.4.2
+    - mosaik-api >=2.0
+
+  run:
+    - python
+    - arrow >=0.4.2
+    - mosaik-api >=2.0
+
+test:
+  # Python imports
+  imports:
+    - householdsim
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mosaik-householdsim --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/mosaik/mosaik-householdsim
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'A simple simulator for household profiles.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

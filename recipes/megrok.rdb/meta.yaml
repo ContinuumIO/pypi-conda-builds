@@ -1,0 +1,87 @@
+package:
+  name: megrok.rdb
+  version: "0.12"
+
+source:
+  fn: megrok.rdb-0.12.tar.gz
+  url: https://pypi.python.org/packages/source/m/megrok.rdb/megrok.rdb-0.12.tar.gz
+  md5: 1ea582759d7ce4ff8e6059565bf3f41e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megrok.rdb = megrok.rdb:main
+    #
+    # Would create an entry point called megrok.rdb that calls megrok.rdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.interface
+    - zope.schema
+    - zope.component
+    - zope.event
+    - zope.location
+    - grokcore.component
+    - zope.container
+    - martian
+    - sqlalchemy >0.5beta2
+    - zope.sqlalchemy
+    - z3c.saconfig >=0.9
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.interface
+    - zope.schema
+    - zope.component
+    - zope.event
+    - zope.location
+    - grokcore.component
+    - zope.container
+    - martian
+    - sqlalchemy >0.5beta2
+    - zope.sqlalchemy
+    - z3c.saconfig >=0.9
+
+test:
+  # Python imports
+  imports:
+    - megrok
+    - megrok.rdb
+    - megrok.rdb.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Zope Public License
+  summary: 'SQLAlchemy based RDB support for Grok.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

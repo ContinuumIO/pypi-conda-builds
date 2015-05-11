@@ -1,0 +1,69 @@
+package:
+  name: docker-registry-driver-jss
+  version: "0.2.4"
+
+source:
+  fn: docker-registry-driver-jss-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-registry-driver-jss/docker-registry-driver-jss-0.2.4.tar.gz
+  md5: cf6c729a9e1f38dedaf6e07be1b94910
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-registry-driver-jss = docker-registry-driver-jss:main
+    #
+    # Would create an entry point called docker-registry-driver-jss that calls docker-registry-driver-jss.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose ==1.3.3
+    - coverage ==3.7.1
+    - flake8 ==2.1.0
+    - docker-registry-core >=2,<3
+
+  run:
+    - python
+    - nose ==1.3.3
+    - coverage ==3.7.1
+    - flake8 ==2.1.0
+    - docker-registry-core >=2,<3
+
+test:
+  # Python imports
+  imports:
+    - docker_registry
+    - docker_registry.drivers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://icode.jd.com.com/cdlxyong/docker-registry-driver-jss
+  license: Apache Software License
+  summary: 'Docker registry jss storage driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: ftw.participation
+  version: "1.3.7"
+
+source:
+  fn: ftw.participation-1.3.7.zip
+  url: https://pypi.python.org/packages/source/f/ftw.participation/ftw.participation-1.3.7.zip
+  md5: db471ec16bb45cd1e81b550c3e3e956c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.participation = ftw.participation:main
+    #
+    # Would create an entry point called ftw.participation that calls ftw.participation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - archetypes.schemaextender
+    - ftw.upgrade >=1.6.0
+    - plone.app.registry
+    - plone.formwidget.autocomplete
+    - plone.principalsource
+    - plone.z3cform
+    - setuptools
+    - z3c.form
+
+  run:
+    - python
+    - setuptools
+    - archetypes.schemaextender
+    - ftw.upgrade >=1.6.0
+    - plone.app.registry
+    - plone.formwidget.autocomplete
+    - plone.principalsource
+    - plone.z3cform
+    - setuptools
+    - z3c.form
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.participation
+    - ftw.participation.browser
+    - ftw.participation.tests
+    - ftw.participation.tests.pages
+    - ftw.participation.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.participation
+  license: GPL2
+  summary: 'Invite other users (registered or unregistered) to a context in plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

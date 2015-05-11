@@ -1,0 +1,68 @@
+package:
+  name: ujs-jsonvalidate
+  version: "0.1.0"
+
+source:
+  fn: ujs-jsonvalidate-0.1.0.zip
+  url: https://pypi.python.org/packages/source/u/ujs-jsonvalidate/ujs-jsonvalidate-0.1.0.zip
+  md5: 9307afa59b37637436396085b8e37ccb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ujs-jsonvalidate = ujs-jsonvalidate:main
+    #
+    # Would create an entry point called ujs-jsonvalidate that calls ujs-jsonvalidate.main()
+
+    - validate=jsonvalidate.main:main
+    - validatep=jsonvalidate.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonschema
+    - ujs-safefile
+
+  run:
+    - python
+    - jsonschema
+    - ujs-safefile
+
+test:
+  # Python imports
+  imports:
+    - jsonvalidate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - validate --help
+    - validatep --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/usingjsonschema/ujs-jsonvalidate-python
+  license: MIT License
+  summary: 'JSON validation utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

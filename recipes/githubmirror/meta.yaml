@@ -1,0 +1,68 @@
+package:
+  name: githubmirror
+  version: "0.3.5"
+
+source:
+  fn: githubmirror-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/githubmirror/githubmirror-0.3.5.tar.gz
+  md5: 16aa1ff26e1a3c1360650029ddb40192
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - githubmirror = githubmirror:main
+    #
+    # Would create an entry point called githubmirror that calls githubmirror.main()
+
+    - github-mirror = githubmirror:cmd
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython
+    - pygithub
+    - docopt
+
+  run:
+    - python
+    - gitpython
+    - pygithub
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - githubmirror
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - github-mirror --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/martinmelin/githubmirror
+  license: Creative Commons Attribution-Noncommercial-Share Alike license
+  summary: 'A small script to keep a copy of every repo in a Github org.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

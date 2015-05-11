@@ -1,0 +1,66 @@
+package:
+  name: historybash
+  version: "45"
+
+source:
+  fn: historybash-45.tar.gz
+  url: https://pypi.python.org/packages/source/h/historybash/historybash-45.tar.gz
+  md5: d8c6480071b9c310a8cc720235e3c7f0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - historybash = historybash:main
+    #
+    # Would create an entry point called historybash that calls historybash.main()
+
+    - hist=historybash:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-levenshtein
+    - docopt
+
+  run:
+    - python
+    - python-levenshtein
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - historybash
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hist --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/erikdejonge/historybash
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Bash history command colorized on levenshtein distance of last 10 commands'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

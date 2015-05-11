@@ -1,0 +1,75 @@
+package:
+  name: ice_pick
+  version: "0.2"
+
+source:
+  fn: ice_pick-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/ice_pick/ice_pick-0.2.tar.gz
+  md5: 03fdfe40b8b2acc026345c81c5fd3a8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ice_pick = ice_pick:main
+    #
+    # Would create an entry point called ice_pick that calls ice_pick.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose ==1.3.0
+    - mock ==1.0.1
+    - cov-core ==1.7
+    - coverage ==3.7.1
+    - nose-cov ==1.6
+    - nose-html ==1.1
+    - requests ==2.2.1
+
+  run:
+    - python
+    - nose ==1.3.0
+    - mock ==1.0.1
+    - cov-core ==1.7
+    - coverage ==3.7.1
+    - nose-cov ==1.6
+    - nose-html ==1.1
+    - requests ==2.2.1
+
+test:
+  # Python imports
+  imports:
+    - ice_pick
+    - ice_pick.filters
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/demandmedia/ice_pick
+  license: Apache Software License
+  summary: 'Python data access interface for Netflix OSS Ice Tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

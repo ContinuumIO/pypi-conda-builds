@@ -1,0 +1,74 @@
+package:
+  name: event-store
+  version: "1.0.1a9"
+
+source:
+  fn: event-store-1.0.1a9.zip
+  url: https://pypi.python.org/packages/source/e/event-store/event-store-1.0.1a9.zip
+  md5: b92a081c32b607905b0aead6e5087808
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - event-store = event-store:main
+    #
+    # Would create an entry point called event-store that calls event-store.main()
+
+    - event_store = event_store.infrastructure.scripts.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.9.8
+    - psycopg2 >=2.5.3
+
+  run:
+    - python
+    - sqlalchemy >=0.9.8
+    - psycopg2 >=2.5.3
+
+test:
+  # Python imports
+  imports:
+    - event_store
+    - event_store.domain
+    - event_store.domain.model
+    - event_store.infrastructure
+    - event_store.infrastructure.configuration
+    - event_store.infrastructure.persistence
+    - event_store.infrastructure.persistence.schema
+    - event_store.infrastructure.reflection
+    - event_store.infrastructure.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - event_store --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/drozdyuk/event-store
+  license: Apache Software License
+  summary: 'Event Store implemented in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

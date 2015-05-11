@@ -1,0 +1,63 @@
+package:
+  name: django-queued-storage-fork
+  version: "0.3"
+
+source:
+  fn: django-queued-storage-fork-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-queued-storage-fork/django-queued-storage-fork-0.3.tar.gz
+  md5: fe0a3d4bd4ad4b4cf4fa0ac6af8630d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-queued-storage-fork = django-queued-storage-fork:main
+    #
+    # Would create an entry point called django-queued-storage-fork that calls django-queued-storage-fork.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-celery >=2.3.3
+
+  run:
+    - python
+    - django-celery >=2.3.3
+
+test:
+  # Python imports
+  imports:
+    - queued_storage
+    - queued_storage.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Allows for files to be uploaded locally and then transferred to a remote location. This is a fork because the original is not online.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

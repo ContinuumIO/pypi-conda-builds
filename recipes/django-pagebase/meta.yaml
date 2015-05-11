@@ -1,0 +1,64 @@
+package:
+  name: django-pagebase
+  version: "0.4.1"
+
+source:
+  fn: django-pagebase-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pagebase/django-pagebase-0.4.1.tar.gz
+  md5: 87c7ee09b8b67ca321e1a0e4061b4502
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pagebase = django-pagebase:main
+    #
+    # Would create an entry point called django-pagebase that calls django-pagebase.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-aislug >=0.1
+
+  run:
+    - python
+    - django-aislug >=0.1
+
+test:
+  # Python imports
+  imports:
+    - pagebase
+    - pagebase.models
+    - pagebase.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aino/django-pagebase
+  license: BSD License
+  summary: 'Pages for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

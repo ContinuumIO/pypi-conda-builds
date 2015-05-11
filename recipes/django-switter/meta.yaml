@@ -1,0 +1,67 @@
+package:
+  name: django-switter
+  version: "0.1"
+
+source:
+  fn: django-switter-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-switter/django-switter-0.1.tar.gz
+  md5: 6471caa4a75fd66aa1c273f8a176ecd6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-switter = django-switter:main
+    #
+    # Would create an entry point called django-switter that calls django-switter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - twython ==2.10.1
+
+  run:
+    - python
+    - django >=1.2
+    - twython ==2.10.1
+
+test:
+  # Python imports
+  imports:
+    - switter
+    - switter.migrations
+    - switter.plugins
+    - switter.plugins.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/grucha/django-switter
+  license: MIT License
+  summary: 'Switter is a drop-in Django app that gets tweets for you, keeps them cached for a short while and makes it easy to display them on your site. Switter provides a django-cms plugin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

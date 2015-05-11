@@ -1,0 +1,65 @@
+package:
+  name: surveygizmo
+  version: "0.2.0"
+
+source:
+  fn: SurveyGizmo-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/S/SurveyGizmo/SurveyGizmo-0.2.0.tar.gz
+  md5: ed02f8b2c5454631179d4abc2cbe2cc7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - surveygizmo = surveygizmo:main
+    #
+    # Would create an entry point called surveygizmo that calls surveygizmo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==1.2.3
+    - rauth
+
+  run:
+    - python
+    - requests ==1.2.3
+    - rauth
+
+test:
+  # Python imports
+  imports:
+    - surveygizmo
+    - surveygizmo.api
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rpkilby/SurveyGizmo/
+  license: BSD License
+  summary: "A Python Wrapper for SurveyGizmo's restful API service."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

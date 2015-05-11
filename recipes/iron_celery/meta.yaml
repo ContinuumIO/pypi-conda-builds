@@ -1,0 +1,65 @@
+package:
+  name: iron_celery
+  version: "0.4.3"
+
+source:
+  fn: iron_celery-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/iron_celery/iron_celery-0.4.3.tar.gz
+  md5: 74d5bd28d4f1ea5abadb98431183c724
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iron_celery = iron_celery:main
+    #
+    # Would create an entry point called iron_celery that calls iron_celery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - iron_mq
+    - iron_cache
+    - celery
+
+  run:
+    - python
+    - iron_mq
+    - iron_cache
+    - celery
+
+test:
+  # Python imports
+  imports:
+    - iron_celery
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iron-io/iron_celery
+  license: UNKNOWN
+  summary: 'IronMQ transport and IronCache backend for Celery'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

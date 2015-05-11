@@ -1,0 +1,82 @@
+package:
+  name: django-suave
+  version: "0.5.19"
+
+source:
+  fn: django-suave-0.5.19.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-suave/django-suave-0.5.19.tar.gz
+  md5: d2a0a00ac676898a983efa06edb62d7b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-suave = django-suave:main
+    #
+    # Would create an entry point called django-suave that calls django-suave.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2
+    - south >=0.7.6
+    - django-mptt >=0.5.5
+    - django-reversion >=1.6.5
+    - django-model-utils >=1.1.0
+    - sorl-thumbnail >=11.12
+    - django-extensions >=1.0.2
+    - django-widget-tweaks >=1.1.2
+    - johnny-cache >=1.4
+
+  run:
+    - python
+    - django >=1.4.2
+    - south >=0.7.6
+    - django-mptt >=0.5.5
+    - django-reversion >=1.6.5
+    - django-model-utils >=1.1.0
+    - sorl-thumbnail >=11.12
+    - django-extensions >=1.0.2
+    - django-widget-tweaks >=1.1.2
+    - johnny-cache >=1.4
+
+test:
+  # Python imports
+  imports:
+    - suave
+    - suave.management
+    - suave.management.commands
+    - suave.migrations
+    - suave.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/radiosilence/django-suave
+  license: LICENSE.txt
+  summary: 'Rather nice pages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

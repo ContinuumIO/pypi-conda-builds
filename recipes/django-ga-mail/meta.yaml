@@ -1,0 +1,68 @@
+package:
+  name: django-ga-mail
+  version: "0.2.2"
+
+source:
+  fn: django-ga-mail-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ga-mail/django-ga-mail-0.2.2.tar.gz
+  md5: 83fd714615d7eecd4ea9cda1156b37b7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ga-mail = django-ga-mail:main
+    #
+    # Would create an entry point called django-ga-mail that calls django-ga-mail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - gdata
+    - mock
+
+  run:
+    - python
+    - django
+    - gdata
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - ga_mail
+    - ga_mail.management
+    - ga_mail.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nanvel/django-ga-mail
+  license: The MIT License
+  summary: 'A reusable Django app that sends google analytics report by email.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

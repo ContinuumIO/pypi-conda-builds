@@ -1,0 +1,67 @@
+package:
+  name: investigators
+  version: "0.1.4.2"
+
+source:
+  fn: investigators-0.1.4.2.zip
+  url: https://pypi.python.org/packages/source/i/investigators/investigators-0.1.4.2.zip
+  md5: 4b1744e0dfbe105de593d9568ad61e5d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - investigators = investigators:main
+    #
+    # Would create an entry point called investigators that calls investigators.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pil
+
+  run:
+    - python
+    - numpy
+    - pil
+
+test:
+  # Python imports
+  imports:
+    - _cv2_win_fallback
+    - investigators
+    - tests
+    - tests.integration
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/kobejohn/investigators
+  license: MIT
+  summary: 'Achieve various investigations of data by combining easy-to-use investigator classes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

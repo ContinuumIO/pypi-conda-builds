@@ -1,0 +1,65 @@
+package:
+  name: checkoutmanager
+  version: "2.0"
+
+source:
+  fn: checkoutmanager-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/checkoutmanager/checkoutmanager-2.0.tar.gz
+  md5: cb1d6bec60c08492f26d409d3ac34a0a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkoutmanager = checkoutmanager:main
+    #
+    # Would create an entry point called checkoutmanager that calls checkoutmanager.main()
+
+    - checkoutmanager = checkoutmanager.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - checkoutmanager
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - checkoutmanager --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://reinout.vanrees.org
+  license: GPL
+  summary: 'Gives you overview and control over your git/hg/bzr/svn checkouts/clones.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

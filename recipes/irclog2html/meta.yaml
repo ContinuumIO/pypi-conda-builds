@@ -1,0 +1,67 @@
+package:
+  name: irclog2html
+  version: "2.14.0"
+
+source:
+  fn: irclog2html-2.14.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/irclog2html/irclog2html-2.14.0.tar.gz
+  md5: 37b71681e8e11a80649b180c432121b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - irclog2html = irclog2html:main
+    #
+    # Would create an entry point called irclog2html that calls irclog2html.main()
+
+    - irclog2html=irclog2html.irclog2html:main
+    - logs2html=irclog2html.logs2html:main
+    - irclogsearch=irclog2html.irclogsearch:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - irclog2html
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - irclog2html --help
+    - logs2html --help
+    - irclogsearch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mg.pov.lt/irclog2html/
+  license: GNU General Public License (GPL)
+  summary: 'Convert IRC logs to HTML'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

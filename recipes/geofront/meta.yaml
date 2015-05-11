@@ -1,0 +1,80 @@
+package:
+  name: geofront
+  version: "0.2.2"
+
+source:
+  fn: Geofront-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/G/Geofront/Geofront-0.2.2.tar.gz
+  md5: 49176ce076524d09aea9e504d4cadefe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geofront = geofront:main
+    #
+    # Would create an entry point called geofront that calls geofront.main()
+
+    - geofront-server=geofront.server:main
+    - geofront-key-regen=geofront.regen:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - paramiko >=1.13.0,==dev
+    - werkzeug >=0.9
+    - flask >=0.10
+    - apache-libcloud >=0.15.0
+    - waitress >=0.8.8
+    - singledispatch
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - paramiko >=1.13.0,==dev
+    - werkzeug >=0.9
+    - flask >=0.10
+    - apache-libcloud >=0.15.0
+    - waitress >=0.8.8
+    - singledispatch
+
+test:
+  # Python imports
+  imports:
+    - geofront
+    - geofront.backends
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - geofront-server --help
+    - geofront-key-regen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spoqa/geofront
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'Simple SSH key management service'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

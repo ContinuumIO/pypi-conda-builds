@@ -1,0 +1,73 @@
+package:
+  name: darcs-cgi
+  version: "0.01.001dev"
+
+source:
+  fn: darcs-cgi-0.01.001dev.tar.gz
+  url: https://pypi.python.org/packages/source/d/darcs-cgi/darcs-cgi-0.01.001dev.tar.gz
+  md5: e0df02299b80682845703e6d87d16bcf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - darcs-cgi = darcs-cgi:main
+    #
+    # Would create an entry point called darcs-cgi that calls darcs-cgi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons >=0.9.7
+    - lxml >=2.2
+    - pygpgme >=0.8.1
+
+  run:
+    - python
+    - setuptools
+    - pylons >=0.9.7
+    - lxml >=2.2
+    - pygpgme >=0.8.1
+
+test:
+  # Python imports
+  imports:
+    - darcscgi
+    - darcscgi.config
+    - darcscgi.controllers
+    - darcscgi.lib
+    - darcscgi.model
+    - darcscgi.tests
+    - darcscgi.tests.functional
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: UNKNOWN
+  summary: 'provides authenticated access to darcs repositories'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

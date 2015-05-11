@@ -1,0 +1,73 @@
+package:
+  name: django_distributed_task
+  version: "1.0.0"
+
+source:
+  fn: django_distributed_task-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_distributed_task/django_distributed_task-1.0.0.tar.gz
+  md5: 934cc4813c0b0e18b75579ceefb47445
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_distributed_task = django_distributed_task:main
+    #
+    # Would create an entry point called django_distributed_task that calls django_distributed_task.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - pika >=0.9.0
+
+  run:
+    - python
+    - django >=1.6
+    - pika >=0.9.0
+
+test:
+  # Python imports
+  imports:
+    - distributed_task
+    - distributed_task.broker
+    - distributed_task.broker.backends
+    - distributed_task.core
+    - distributed_task.management
+    - distributed_task.management.commands
+    - distributed_task.task
+    - distributed_task.tests
+    - distributed_task.utils
+    - django_distributed_task
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-distributed-task/
+  license: MIT License
+  summary: 'Django application to delegate tasks asynchronously to worker processes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

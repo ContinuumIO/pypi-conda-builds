@@ -1,0 +1,74 @@
+package:
+  name: couchdb-python-curl
+  version: "1.1.6"
+
+source:
+  fn: couchdb-python-curl-1.1.6.tar.bz2
+  url: https://pypi.python.org/packages/source/c/couchdb-python-curl/couchdb-python-curl-1.1.6.tar.bz2
+  md5: 9c80c9b9b9820ea92eed2cc35704a6e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - couchdb-python-curl = couchdb-python-curl:main
+    #
+    # Would create an entry point called couchdb-python-curl that calls couchdb-python-curl.main()
+
+    - couchdb-curl-pinger = couchdbcurl.pinger:main
+    - couchdb-curl-dbcompact = couchdbcurl.dbcompact:main
+    - couchdb-curl-viewserver = couchdbcurl.view:main
+    - couchdb-curl-dump = couchdbcurl.tools.dump:main
+    - couchdb-curl-load = couchdbcurl.tools.load:main
+    - couchdb-curl-replicate = couchdbcurl.tools.replication_helper:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - couchdbcurl
+    - couchdbcurl.tests
+    - couchdbcurl.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - couchdb-curl-pinger --help
+    - couchdb-curl-dbcompact --help
+    - couchdb-curl-viewserver --help
+    - couchdb-curl-dump --help
+    - couchdb-curl-load --help
+    - couchdb-curl-replicate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/couchdb-python-curl/
+  license: GNU General Public License (GPL)
+  summary: 'CouchDB-python wrapper (using cURL library)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

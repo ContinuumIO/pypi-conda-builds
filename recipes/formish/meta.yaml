@@ -1,0 +1,77 @@
+package:
+  name: formish
+  version: "0.9.1"
+
+source:
+  fn: formish-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/formish/formish-0.9.1.tar.gz
+  md5: 9e306252ec13378a17fd92be0352a851
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - formish = formish:main
+    #
+    # Would create an entry point called formish that calls formish.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - proxytypes >=0.9
+    - schemaish >=0.5.6
+    - validatish >=0.6.3
+    - convertish >=0.5.5
+    - dottedish >=0.6
+    - webob >=0.9.5
+    - mako
+
+  run:
+    - python
+    - setuptools
+    - proxytypes >=0.9
+    - schemaish >=0.5.6
+    - validatish >=0.6.3
+    - convertish >=0.5.5
+    - dottedish >=0.6
+    - webob >=0.9.5
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - formish
+    - formish.tests
+    - formish.tests.unittests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://form.ish.io
+  license: BSD License
+  summary: 'Formish is a schema backed, templating language agnostic form generation and handling library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

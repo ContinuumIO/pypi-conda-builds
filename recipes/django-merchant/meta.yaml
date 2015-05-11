@@ -1,0 +1,71 @@
+package:
+  name: django-merchant
+  version: "0.2"
+
+source:
+  fn: django-merchant-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-merchant/django-merchant-0.2.tar.gz
+  md5: dccdd9c72828e3a7781e11c714546777
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-merchant = django-merchant:main
+    #
+    # Would create an entry point called django-merchant that calls django-merchant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - billing
+    - billing.forms
+    - billing.gateways
+    - billing.gateways.eway_gateway
+    - billing.gateways.eway_gateway.eway_api
+    - billing.integrations
+    - billing.management
+    - billing.management.commands
+    - billing.models
+    - billing.templatetags
+    - billing.tests
+    - billing.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/agiliq/merchant
+  license: BSD License
+  summary: 'A Django app that provides helpers for multiple pluggable payment backends.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

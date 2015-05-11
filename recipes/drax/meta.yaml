@@ -1,0 +1,64 @@
+package:
+  name: drax
+  version: "0.4.0"
+
+source:
+  fn: drax-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/drax/drax-0.4.0.tar.gz
+  md5: 9f900d797695b9ef141e9747b0475e86
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drax = drax:main
+    #
+    # Would create an entry point called drax that calls drax.main()
+
+    - drax=drax.commands:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=4.0.2
+
+  run:
+    - python
+    - tornado >=4.0.2
+
+test:
+  # Python imports
+  imports:
+    - drax
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - drax --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tax/drax
+  license: MIT
+  summary: 'Drax is a react and python implementation of the dashingdashboard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

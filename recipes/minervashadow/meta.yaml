@@ -1,0 +1,71 @@
+package:
+  name: minervashadow
+  version: "0.0.4a3"
+
+source:
+  fn: minervashadow-0.0.4a3.tar.gz
+  url: https://pypi.python.org/packages/source/m/minervashadow/minervashadow-0.0.4a3.tar.gz
+  md5: 21f661ea62cd6e75ed6c5257c1289bf8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minervashadow = minervashadow:main
+    #
+    # Would create an entry point called minervashadow that calls minervashadow.main()
+
+    - minervashadow=minervashadow:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - mechanize
+    - beautifulsoup4
+
+  run:
+    - python
+    - docopt
+    - mechanize
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - minervashadow
+    - minervashadow.reader
+    - minervashadow.ui
+    - minervashadow.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - minervashadow --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cadesalaberry/minervashadow
+  license: MIT License
+  summary: 'A python interface to the aging minerva website.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

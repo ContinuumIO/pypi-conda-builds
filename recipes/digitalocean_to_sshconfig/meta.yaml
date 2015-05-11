@@ -1,0 +1,68 @@
+package:
+  name: digitalocean_to_sshconfig
+  version: "0.0.1"
+
+source:
+  fn: digitalocean_to_sshconfig-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/digitalocean_to_sshconfig/digitalocean_to_sshconfig-0.0.1.tar.gz
+  md5: 5147c2006ca6198c86af79fc5de6df81
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - digitalocean_to_sshconfig = digitalocean_to_sshconfig:main
+    #
+    # Would create an entry point called digitalocean_to_sshconfig that calls digitalocean_to_sshconfig.main()
+
+    - digitalocean_to_sshconfig=do2sshconfig:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - stormssh
+    - clint
+    - python-digitalocean
+
+  run:
+    - python
+    - stormssh
+    - clint
+    - python-digitalocean
+
+test:
+  # Python imports
+  imports:
+    - digitalocean_to_sshconfig
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - digitalocean_to_sshconfig --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/emre/digitalocean_to_sshconfig
+  license: MIT
+  summary: 'automatically add your droplets into your ssh config.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

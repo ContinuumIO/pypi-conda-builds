@@ -1,0 +1,66 @@
+package:
+  name: bpython-gist
+  version: "0.7.1"
+
+source:
+  fn: bpython-gist-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bpython-gist/bpython-gist-0.7.1.tar.gz
+  md5: 8983e66e01d908aab96ef6600767d75f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bpython-gist = bpython-gist:main
+    #
+    # Would create an entry point called bpython-gist that calls bpython-gist.main()
+
+    - bpython = bpython.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+    - pyparsing
+
+  run:
+    - python
+    - pygments
+    - pyparsing
+
+test:
+  # Python imports
+  imports:
+    - bpython
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bpython --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.noiseforfree.com/bpython/
+  license: MIT/X
+  summary: 'Fancy Interface to the Python Interpreter w/ Gist Integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

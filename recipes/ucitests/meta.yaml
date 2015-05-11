@@ -1,0 +1,69 @@
+package:
+  name: ucitests
+  version: "0.1.5"
+
+source:
+  fn: ucitests-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/u/ucitests/ucitests-0.1.5.tar.gz
+  md5: fd273e1dc964d627c151bbbabb616e85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ucitests = ucitests:main
+    #
+    # Would create an entry point called ucitests that calls ucitests.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pep8
+    - pyflakes
+    - python-subunit
+    - testtools
+
+  run:
+    - python
+    - pep8
+    - pyflakes
+    - python-subunit
+    - testtools
+
+test:
+  # Python imports
+  imports:
+    - ucitests
+    - ucitests.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/uci-tests
+  license: GPLv3
+  summary: 'Ubuntu Continuous Integration test tools.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

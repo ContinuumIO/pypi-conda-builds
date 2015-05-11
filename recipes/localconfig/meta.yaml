@@ -1,0 +1,60 @@
+package:
+  name: localconfig
+  version: "0.4.1"
+
+source:
+  fn: localconfig-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/localconfig/localconfig-0.4.1.tar.gz
+  md5: ae79fd9f8ebf839899b5ed34afaa255b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - localconfig = localconfig:main
+    #
+    # Would create an entry point called localconfig that calls localconfig.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - localconfig
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: "localconfig\n===========\n\nA simplified interface to `ConfigParser`_ using dot notion with data type / comment support.\n\nFeature Summary\n===============\n\n* Simple access to config using dot notion and iterators\n* Full compatibility with `ConfigParser`_ ini formats (as that is used as the backend)\n* Data type support by intelligently guessing the data types based on value on read.\n* Multiple config source input (read from string, file pointer, file, or list of them)\n* Full comment support / retention on save\n* Lazy reading of config sources for performance (only read when a config value is accessed)\n\n.. _ConfigParser: https://docs.python.org/2/library/configparser.html\n\nQuick Start Tutorial\n====================\n\nTo install::\n\n    pip install localconfig\n\nLet's say we have a script named 'program' with the following config in ~/.config/program:\n\n.. code-block:: ini\n\n    [Web Server]\n    # Server host\n    host = 0.0.0.0\n\n    # Server port\n    port = 8080\n\n    # Debug logging\n    debug = off\n\nTo read the config, simply do:\n\n.. code-block:: python\n\n    from localconfig import config\n\n    start_server(config.web_server.host, config.web_server.port, config.web_server.debug)\n\n    # Or use get method:\n    # start_server(config.get('Web Server', 'host'),\n    #              config.get('Web Server', 'port'),\n    #              config.get('web_server', 'debug'))  # Yes, 'web_server' also works here!\n    #\n    # Or if the config is in docstring, read from it:\n    # config.read(__doc__)\n    #\n    # Or if the config file is elsewhere:\n    # config.read('/etc/path/to/config.ini')  # Non-existing file is ignored\n    #\n    # Or read from a list of sources\n    # config.read(['string config', file_path, file_pointer, StringIO('config')])\n    #\n    # Or create another instance for another config:\n    # from localconfig import LocalConfig\n    # config2 = LocalConfig('/etc/path/to/another/config.ini')\n\nNow, let's do some inspection:\n\n.. code-block:: python\n\n    # Iterate over sections and their keys/values\n    for section in config:\n      print section                    # Web Server\n\n      for key, value in config.items(section):\n        print key, value, type(value)  # host 0.0.0.0 <type 'str'>\n                                       # port 8080 <type 'int'>\n                                       # debug False <type 'bool'>\n\n    sections = list(config)            # ['Web Server']\n\n    # Iterate over keys/values\n    for key, value in config.web_server:\n      print key, value, type(value)    # Same output as above config.items()\n\n    items = list(config.web_server)    # [('host', '0.0.0.0'), ('port', 8080), ('debug', False)]\n    items = dict(config.web_server)    # {'host': '0.0.0.0', 'port': 8080, 'debug': False}\n\nTo add a section and set a value:\n\n.. code-block:: python\n\n    config.add_section('App Server', comment='Settings for application server')\n    config.app_server.host = 'localhost'\n\n    # Use `set` if you want to set a comment\n    config.set('App Server', 'port', 9090, comment='App server port')\n\nTo write the config:\n\n.. code-block:: python\n\n    config.save()\n\n    # Or simply get the config as a string:\n    # config_str = str(config)\n    #\n    # Or save to a different location:\n    # config.save('/path/to/save/to.ini')\n\nIf we open ~/.config/program now, we would see:\n\n.. code-block:: ini\n\n    [Web Server]\n\n    # Server host\n    host = 0.0.0.0\n\n    # Server port\n    port = 8080\n\n    # Debug logging\n    debug = off\n\n\n    # Settings for application server\n    [App Server]\n\n    host = localhost\n\n    # App server port\n    port = 9090\n\nSupported Data Types\n====================\n\nData type is guessed based on the value and converted on read.\n\nThe following types are supported:\n\n======= ===========================================\nType    Example Value\n======= ===========================================\nint     1\nfloat   2.0\nlong    3L\nbool    true false yes no on off (case insensitive)\nNone    none (case insensitive)\nstr     Any other value not matched by above\n======= ===========================================\n\nRemote Config\n=============\n\nCheck out: https://pypi.python.org/pypi/remoteconfig\n\nMore\n====\n\n| Documentation: http://localconfig.readthedocs.org/\n|\n| PyPI Package: https://pypi.python.org/pypi/localconfig\n| GitHub Source: https://github.com/maxzheng/localconfig\n| Report Issues/Bugs: https://github.com/maxzheng/localconfig/issues\n|\n| Connect: https://www.linkedin.com/in/maxzheng\n| Contact: maxzheng.os @t gmail.com\n"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

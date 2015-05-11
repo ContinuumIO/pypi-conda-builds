@@ -1,0 +1,74 @@
+package:
+  name: django-stripe-payments
+  version: "2.0.0"
+
+source:
+  fn: django-stripe-payments-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-stripe-payments/django-stripe-payments-2.0.0.tar.gz
+  md5: 08612839a4a73dccda79d9562911ab85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-stripe-payments = django-stripe-payments:main
+    #
+    # Would create an entry point called django-stripe-payments that calls django-stripe-payments.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-jsonfield >=0.8
+    - stripe >=1.7.9
+    - django >=1.6
+    - pytz
+    - six
+
+  run:
+    - python
+    - django-jsonfield >=0.8
+    - stripe >=1.7.9
+    - django >=1.6
+    - pytz
+    - six
+
+test:
+  # Python imports
+  imports:
+    - payments
+    - payments.management
+    - payments.management.commands
+    - payments.templatetags
+    - payments.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pinax/django-stripe-payments
+  license: BSD License
+  summary: 'a payments Django app for Stripe'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

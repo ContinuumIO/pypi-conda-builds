@@ -1,0 +1,77 @@
+package:
+  name: esauth
+  version: "0.2"
+
+source:
+  fn: esauth-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/esauth/esauth-0.2.tar.gz
+  md5: 12d620f4ea0b624878e2c0cb7790804b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - esauth = esauth:main
+    #
+    # Would create an entry point called esauth that calls esauth.main()
+
+    - esauth-make-config = esauth.scripts:generate_prod_config
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wtforms
+    - pyramid
+    - pyramid_jinja2
+    - pyramid_webassets
+    - pyramid_beaker
+    - waitress
+    - ldapom
+
+  run:
+    - python
+    - setuptools
+    - wtforms
+    - pyramid
+    - pyramid_jinja2
+    - pyramid_webassets
+    - pyramid_beaker
+    - waitress
+    - ldapom
+
+test:
+  # Python imports
+  imports:
+    - esauth
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - esauth-make-config --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/subuk/esauth
+  license: UNKNOWN
+  summary: 'Simple LDAP account management tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

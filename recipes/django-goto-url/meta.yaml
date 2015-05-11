@@ -1,0 +1,62 @@
+package:
+  name: django-goto-url
+  version: "0.3"
+
+source:
+  fn: django-goto-url-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-goto-url/django-goto-url-0.3.tar.gz
+  md5: 8313aede5b520d9df370c9195eacf10b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-goto-url = django-goto-url:main
+    #
+    # Would create an entry point called django-goto-url that calls django-goto-url.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - goto_url
+    - goto_url.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/adw0rd/django-goto-url
+  license: BSD License
+  summary: 'Wraps external links in base64 and relocate on the special View, later redirect to source URL'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

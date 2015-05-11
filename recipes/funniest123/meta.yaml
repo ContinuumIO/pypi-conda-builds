@@ -1,0 +1,62 @@
+package:
+  name: funniest123
+  version: "0.2.1"
+
+source:
+  fn: funniest123-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/funniest123/funniest123-0.2.1.tar.gz
+  md5: bc896a3d0cb4a31d02a7c20834db163b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - funniest123 = funniest123:main
+    #
+    # Would create an entry point called funniest123 that calls funniest123.main()
+
+    - jokeByEntryPoint=funniest123.command_line:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - funniest123
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jokeByEntryPoint --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nickytong/funniest123
+  license: MIT
+  summary: 'The funniest joke in the world'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

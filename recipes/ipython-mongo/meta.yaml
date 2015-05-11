@@ -1,0 +1,64 @@
+package:
+  name: ipython-mongo
+  version: "0.3.3"
+
+source:
+  fn: ipython-mongo-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython-mongo/ipython-mongo-0.3.3.tar.gz
+  md5: 8af1a1b143b07587cbecbf543cfbda9c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipython-mongo = ipython-mongo:main
+    #
+    # Would create an entry point called ipython-mongo that calls ipython-mongo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipython >=1.0
+    - pymongo >=2.7
+
+  run:
+    - python
+    - ipython >=1.0
+    - pymongo >=2.7
+
+test:
+  # Python imports
+  imports:
+    - imongo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Bloodevil/ipython_mongo
+  license: MIT License
+  summary: 'MONGODB access via IPython'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: openerp-hr-timesheet
+  version: "7.0.406"
+
+source:
+  fn: openerp-hr-timesheet-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-hr-timesheet/openerp-hr-timesheet-7.0.406.tar.gz
+  md5: 2841afbe5af79267bdc7274f4dffc3b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-hr-timesheet = openerp-hr-timesheet:main
+    #
+    # Would create an entry point called openerp-hr-timesheet that calls openerp-hr-timesheet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-account
+    - openerp-hr
+    - openerp-core
+    - openerp-hr-attendance
+    - openerp-process
+
+  run:
+    - python
+    - openerp-account
+    - openerp-hr
+    - openerp-core
+    - openerp-hr-attendance
+    - openerp-process
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.hr_timesheet
+    - openerp.addons.hr_timesheet.report
+    - openerp.addons.hr_timesheet.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Timesheets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

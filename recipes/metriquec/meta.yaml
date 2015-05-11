@@ -1,0 +1,75 @@
+package:
+  name: metriquec
+  version: "0.2.7-1a"
+
+source:
+  fn: metriquec-0.2.7-1a.tar.gz
+  url: https://pypi.python.org/packages/source/m/metriquec/metriquec-0.2.7-1a.tar.gz
+  md5: 203d35ca6dfc96f633420f0d00e5359c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metriquec = metriquec:main
+    #
+    # Would create an entry point called metriquec that calls metriquec.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - metrique >=0.2.7
+    - celery >=3.1.8
+    - psycopg2 >=2.5.2
+    - gittle >=0.2.2
+
+  run:
+    - python
+    - metrique >=0.2.7
+    - celery >=3.1.8
+    - psycopg2 >=2.5.2
+    - gittle >=0.2.2
+
+test:
+  # Python imports
+  imports:
+    - metriquec
+    - metriquec.cubes
+    - metriquec.cubes.csvdata
+    - metriquec.cubes.gitdata
+    - metriquec.cubes.jknsapi
+    - metriquec.cubes.jsondata
+    - metriquec.cubes.sqldata
+    - metriquec.sql
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/drpoovilleorg/metrique
+  license: GPLv3
+  summary: 'Metrique - Cubes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

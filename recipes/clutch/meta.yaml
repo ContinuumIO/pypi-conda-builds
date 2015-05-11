@@ -1,0 +1,66 @@
+package:
+  name: clutch
+  version: "0.1a2"
+
+source:
+  fn: Clutch-0.1a2.tar.gz
+  url: https://pypi.python.org/packages/source/C/Clutch/Clutch-0.1a2.tar.gz
+  md5: 7592762213855317fe600a600bfe5e2e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clutch = clutch:main
+    #
+    # Would create an entry point called clutch that calls clutch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - routes
+    - mako
+
+  run:
+    - python
+    - setuptools
+    - routes
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - clutch
+    - clutch.forms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://getclutch.appspot.com
+  license: MIT License
+  summary: 'A Python Web Framework for GAE'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: hurry.tinymce
+  version: "3.3.9.4"
+
+source:
+  fn: hurry.tinymce-3.3.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.tinymce/hurry.tinymce-3.3.9.4.tar.gz
+  md5: 462a26f8a1894c2bbb0308e5115a8eb1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.tinymce = hurry.tinymce:main
+    #
+    # Would create an entry point called hurry.tinymce that calls hurry.tinymce.main()
+
+    - tinymceprepare = hurry.tinymce.prepare:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hurry.resource
+
+  run:
+    - python
+    - setuptools
+    - hurry.resource
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.tinymce
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tinymceprepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'TinyMCE for hurry.resource.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: isisdm
+  version: "0.2.3"
+
+source:
+  fn: isisdm-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/isisdm/isisdm-0.2.3.tar.gz
+  md5: 7a6f0a8f9c08f0352fc6370fd290c586
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isisdm = isisdm:main
+    #
+    # Would create an entry point called isisdm that calls isisdm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colander
+    - deform
+    - couchdbkit
+
+  run:
+    - python
+    - colander
+    - deform
+    - couchdbkit
+
+test:
+  # Python imports
+  imports:
+    - isis
+    - isis.model
+    - isis.model.tests
+    - isis.utils
+    - isisdm
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://reddes.bvsalud.org/
+  license: LGPL v2.1 (http://www.gnu.org/licenses/lgpl-2.1.txt)
+  summary: 'ISIS-DM allows programmers to express constraints and functionality similar to those of the CDS/ISIS Field Definition Table and the CDS/ISIS Formatting Language, but in contemporary, object-oriented programming languages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

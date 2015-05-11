@@ -1,0 +1,78 @@
+package:
+  name: horsemeat
+  version: "2.11.1"
+
+source:
+  fn: horsemeat-2.11.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/horsemeat/horsemeat-2.11.1.tar.gz
+  md5: 6c180c517d225eb668e171743b2986d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - horsemeat = horsemeat:main
+    #
+    # Would create an entry point called horsemeat that calls horsemeat.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.6
+    - pyyaml >=3.10
+    - werkzeug >=0.10.1
+    - decorator ==3.4.0
+    - psycopg2 ==2.5
+    - clepy >=0.3.23
+    - nose >=1.3.3
+
+  run:
+    - python
+    - jinja2 ==2.6
+    - pyyaml >=3.10
+    - werkzeug >=0.10.1
+    - decorator ==3.4.0
+    - psycopg2 ==2.5
+    - clepy >=0.3.23
+    - nose >=1.3.3
+
+test:
+  # Python imports
+  imports:
+    - horsemeat
+    - horsemeat.model
+    - horsemeat.tests
+    - horsemeat.webapp
+    - horsemeat.webapp.framework_templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://GitHub.com/216software/horsemeat
+  license: UNKNOWN
+  summary: 'Web framework for the damned.  The mad.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

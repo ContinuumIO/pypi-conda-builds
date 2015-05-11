@@ -1,0 +1,70 @@
+package:
+  name: redmine-releasedate
+  version: "0.1.2"
+
+source:
+  fn: redmine-releasedate-0.1.2.zip
+  url: https://pypi.python.org/packages/source/r/redmine-releasedate/redmine-releasedate-0.1.2.zip
+  md5: 89cbba6cf45d121e9f63ff7b95cbfbe6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redmine-releasedate = redmine-releasedate:main
+    #
+    # Would create an entry point called redmine-releasedate that calls redmine-releasedate.main()
+
+    - redmine-release-server = releasedate.server:main
+    - redmine-release = releasedate.jenkins:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - gitpython
+    - werkzeug
+
+  run:
+    - python
+    - requests
+    - gitpython
+    - werkzeug
+
+test:
+  # Python imports
+  imports:
+    - releasedate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - redmine-release-server --help
+    - redmine-release --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/futurecolors/redmine-releasedate
+  license: MIT
+  summary: 'Track when your features are shipped to production in Redmine.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

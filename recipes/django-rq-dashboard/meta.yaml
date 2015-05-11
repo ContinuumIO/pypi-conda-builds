@@ -1,0 +1,66 @@
+package:
+  name: django-rq-dashboard
+  version: "0.2.2"
+
+source:
+  fn: django-rq-dashboard-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rq-dashboard/django-rq-dashboard-0.2.2.tar.gz
+  md5: 7b9015a4da6f0e87bb58913b76e70d6e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rq-dashboard = django-rq-dashboard:main
+    #
+    # Would create an entry point called django-rq-dashboard that calls django-rq-dashboard.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+    - rq
+    - django >=1.4
+
+  run:
+    - python
+    - pytz
+    - rq
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - django_rq_dashboard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brutasse/django-rq-dashboard
+  license: BSD License
+  summary: 'A dashboard for managing RQ in the Django admin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

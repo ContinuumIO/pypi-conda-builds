@@ -1,0 +1,66 @@
+package:
+  name: raspa2
+  version: "2.0.2"
+
+source:
+  fn: RASPA2-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/R/RASPA2/RASPA2-2.0.2.tar.gz
+  md5: fb842236e1ff96c93a68e99777f99c56
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - raspa2 = raspa2:main
+    #
+    # Would create an entry point called raspa2 that calls raspa2.main()
+
+    - simulate = RASPA2:run_command_line
+    - raspa-dir = RASPA2:get_raspa_dir
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - RASPA2
+    - RASPA2.share.raspa
+    - raspa2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - simulate --help
+    - raspa-dir --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/numat/RASPA2/
+  license: UNKNOWN
+  summary: 'A general purpose classical simulation package.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

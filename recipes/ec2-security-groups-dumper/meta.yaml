@@ -1,0 +1,66 @@
+package:
+  name: ec2-security-groups-dumper
+  version: "1.0"
+
+source:
+  fn: ec2-security-groups-dumper-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/ec2-security-groups-dumper/ec2-security-groups-dumper-1.0.tar.gz
+  md5: ce9f3633a2d8ae4139be169e705fa04e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ec2-security-groups-dumper = ec2-security-groups-dumper:main
+    #
+    # Would create an entry point called ec2-security-groups-dumper that calls ec2-security-groups-dumper.main()
+
+    - ec2-security-groups-dumper=ec2_security_groups_dumper.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto
+    - docopt
+
+  run:
+    - python
+    - boto
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - ec2_security_groups_dumper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ec2-security-groups-dumper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/percolate/ec2-security-groups-dumper
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'AWS EC2 Security Groups dump tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

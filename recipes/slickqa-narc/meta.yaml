@@ -1,0 +1,84 @@
+package:
+  name: slickqa-narc
+  version: "1.0.25"
+
+source:
+  fn: slickqa-narc-1.0.25.tar.gz
+  url: https://pypi.python.org/packages/source/s/slickqa-narc/slickqa-narc-1.0.25.tar.gz
+  md5: 2733f574d255249890d2b8aeb9cffcb0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slickqa-narc = slickqa-narc:main
+    #
+    # Would create an entry point called slickqa-narc that calls slickqa-narc.main()
+
+    - narc = narc.main:main
+    - narcctl = narc.main:ctlmain
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - slickqa >=2.0.16
+    - kombu >=2.5.4
+    - jinja2 >=2.6
+    - pygal >=0.13.0
+    - cairosvg >=0.5
+    - tinycss >=0.3
+    - cssselect >=0.7.1
+    - amqp >=1.0.6
+    - anyjson >=0.3.3
+
+  run:
+    - python
+    - setuptools
+    - slickqa >=2.0.16
+    - kombu >=2.5.4
+    - jinja2 >=2.6
+    - pygal >=0.13.0
+    - cairosvg >=0.5
+    - tinycss >=0.3
+    - cssselect >=0.7.1
+    - amqp >=1.0.6
+    - anyjson >=0.3.3
+
+test:
+  # Python imports
+  imports:
+    - narc
+    - narc.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - narc --help
+    - narcctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/slickqa
+  license: License :: OSI Approved :: Apache Software License
+  summary: 'A program responsible for responding to Slick events'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

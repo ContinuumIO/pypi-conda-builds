@@ -1,0 +1,66 @@
+package:
+  name: django-ga-puller
+  version: "0.1.4"
+
+source:
+  fn: django-ga-puller-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ga-puller/django-ga-puller-0.1.4.tar.gz
+  md5: 1e898ede2941dbe9d0d9c2aedd32697d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ga-puller = django-ga-puller:main
+    #
+    # Would create an entry point called django-ga-puller that calls django-ga-puller.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - google-api-python-client >=1.2
+    - pycrypto >=2.6.1
+
+  run:
+    - python
+    - google-api-python-client >=1.2
+    - pycrypto >=2.6.1
+
+test:
+  # Python imports
+  imports:
+    - ga_puller
+    - ga_puller.management
+    - ga_puller.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/CIGIHub/django-ga-puller/
+  license: MIT License
+  summary: 'Django app used to pull daily Google Analytics data into your django database.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

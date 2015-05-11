@@ -1,0 +1,67 @@
+package:
+  name: hubspot-connection
+  version: "1.0rc4"
+
+source:
+  fn: hubspot-connection-1.0rc4.tar.gz
+  url: https://pypi.python.org/packages/source/h/hubspot-connection/hubspot-connection-1.0rc4.tar.gz
+  md5: bad5e82620f5eacaa7c475f7e0e62241
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hubspot-connection = hubspot-connection:main
+    #
+    # Would create an entry point called hubspot-connection that calls hubspot-connection.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.2.1
+    - pyrecord >=1.0a1
+    - voluptuous >=0.8.4
+
+  run:
+    - python
+    - requests >=2.2.1
+    - pyrecord >=1.0a1
+    - voluptuous >=0.8.4
+
+test:
+  # Python imports
+  imports:
+    - hubspot
+    - hubspot.connection
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pythonhosted.org/hubspot-connection/
+  license: BSD License
+  summary: 'Lightweight abstraction layer for making requests to the HubSpot API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

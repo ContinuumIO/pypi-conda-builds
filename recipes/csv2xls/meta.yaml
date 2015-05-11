@@ -1,0 +1,64 @@
+package:
+  name: csv2xls
+  version: "0.4"
+
+source:
+  fn: csv2xls-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/csv2xls/csv2xls-0.4.tar.gz
+  md5: 7815f85bfc424ef6ef3f612a16210539
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - csv2xls = csv2xls:main
+    #
+    # Would create an entry point called csv2xls that calls csv2xls.main()
+
+    - csv2xls = csv_to_xls:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - xlwt ==0.7.5
+
+  run:
+    - python
+    - xlwt ==0.7.5
+
+test:
+  # Python imports
+  imports:
+    - csv2xls
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - csv2xls --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alexprengere/csv2xls
+  license: csv2xlsx
+  summary: 'Put together some CSV files into a single Excel file, in different sheets.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

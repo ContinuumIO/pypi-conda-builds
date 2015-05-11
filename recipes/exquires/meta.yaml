@@ -1,0 +1,78 @@
+package:
+  name: exquires
+  version: "0.9.9.3"
+
+source:
+  fn: exquires-0.9.9.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/exquires/exquires-0.9.9.3.tar.gz
+  md5: 4f2d49cf253772d86c7151859e2cd3b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - exquires = exquires:main
+    #
+    # Would create an entry point called exquires that calls exquires.main()
+
+    - exquires-aggregate = exquires.aggregate:main
+    - exquires-compare = exquires.compare:main
+    - exquires-correlate = exquires.correlate:main
+    - exquires-new = exquires.new:main
+    - exquires-report = exquires.report:main
+    - exquires-run = exquires.run:main
+    - exquires-update = exquires.update:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configobj
+    - numpy
+
+  run:
+    - python
+    - configobj
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - exquires
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - exquires-aggregate --help
+    - exquires-compare --help
+    - exquires-correlate --help
+    - exquires-new --help
+    - exquires-report --help
+    - exquires-run --help
+    - exquires-update --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://exquires.ca
+  license: BSD License
+  summary: 'EXQUIRES (EXtensible QUantitative Image RESampling) test suite'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

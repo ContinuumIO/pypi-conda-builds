@@ -1,0 +1,70 @@
+package:
+  name: couchdb
+  version: "1.0"
+
+source:
+  fn: CouchDB-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/C/CouchDB/CouchDB-1.0.tar.gz
+  md5: 94fa641fa032f9b8a58515881fbb4b1e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - couchdb = couchdb:main
+    #
+    # Would create an entry point called couchdb that calls couchdb.main()
+
+    - couchpy = couchdb.view:main
+    - couchdb-dump = couchdb.tools.dump:main
+    - couchdb-load = couchdb.tools.load:main
+    - couchdb-replicate = couchdb.tools.replicate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - couchdb
+    - couchdb.tests
+    - couchdb.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - couchpy --help
+    - couchdb-dump --help
+    - couchdb-load --help
+    - couchdb-replicate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/djc/couchdb-python/
+  license: BSD License
+  summary: 'Python library for working with CouchDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

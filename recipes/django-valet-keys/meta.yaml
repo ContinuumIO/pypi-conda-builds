@@ -1,0 +1,64 @@
+package:
+  name: django-valet-keys
+  version: "0.0.2"
+
+source:
+  fn: django-valet-keys-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-valet-keys/django-valet-keys-0.0.2.tar.gz
+  md5: ca347e80251503830c11a9bca8cce891
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-valet-keys = django-valet-keys:main
+    #
+    # Would create an entry point called django-valet-keys that calls django-valet-keys.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - valet_keys
+    - valet_keys.migrations
+    - valet_keys.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lmorchard/django-valet-keys
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Django app for managing valet keys for robots'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

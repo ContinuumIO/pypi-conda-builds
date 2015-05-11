@@ -1,0 +1,77 @@
+package:
+  name: ilrt.contentmigrator
+  version: "1.14"
+
+source:
+  fn: ilrt.contentmigrator-1.14.tar.gz
+  url: https://pypi.python.org/packages/source/i/ilrt.contentmigrator/ilrt.contentmigrator-1.14.tar.gz
+  md5: 6b15244df0e5d209a38c91f6795e94c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ilrt.contentmigrator = ilrt.contentmigrator:main
+    #
+    # Would create an entry point called ilrt.contentmigrator that calls ilrt.contentmigrator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - ilrt.migrationtool
+    - gdata
+    - zope.app.publisher
+    - zope.app.container
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - ilrt.migrationtool
+    - gdata
+    - zope.app.publisher
+    - zope.app.container
+
+test:
+  # Python imports
+  imports:
+    - ilrt
+    - ilrt.contentmigrator
+    - ilrt.contentmigrator.ContentMigrator
+    - ilrt.contentmigrator.browser
+    - ilrt.contentmigrator.exportimport
+    - ilrt.contentmigrator.google
+    - ilrt.contentmigrator.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/edcrewe/ilrt.contentmigrator
+  license: BSD License
+  summary: 'Migrate old Plone or Google Sites content to current Plone 4'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

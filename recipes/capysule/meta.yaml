@@ -1,0 +1,67 @@
+package:
+  name: capysule
+  version: "0.5.1"
+
+source:
+  fn: capysule-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/capysule/capysule-0.5.1.tar.gz
+  md5: 8b8dcdcc18fa37a74a21a7c0f95ae5ab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - capysule = capysule:main
+    #
+    # Would create an entry point called capysule that calls capysule.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - wren ==0.3.5
+    - booby ==0.6.0
+
+  run:
+    - python
+    - requests
+    - wren ==0.3.5
+    - booby ==0.6.0
+
+test:
+  # Python imports
+  imports:
+    - capysule
+    - capysule.resources
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bodylabs/capysule
+  license: Apache Software License
+  summary: 'Bindings for Capsule CRM based on Requests and Booby'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

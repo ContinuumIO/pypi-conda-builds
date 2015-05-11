@@ -1,0 +1,75 @@
+package:
+  name: edeposit.amqp.harvester
+  version: "1.0.0"
+
+source:
+  fn: edeposit.amqp.harvester-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/edeposit.amqp.harvester/edeposit.amqp.harvester-1.0.0.tar.gz
+  md5: 856a5e53e248fb8032a5d3923f27539f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edeposit.amqp.harvester = edeposit.amqp.harvester:main
+    #
+    # Would create an entry point called edeposit.amqp.harvester that calls edeposit.amqp.harvester.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - httpkie
+    - pydhtmlparser >=2.0.5
+    - edeposit.amqp.aleph
+
+  run:
+    - python
+    - setuptools
+    - pyyaml
+    - httpkie
+    - pydhtmlparser >=2.0.5
+    - edeposit.amqp.aleph
+
+test:
+  # Python imports
+  imports:
+    - edeposit
+    - edeposit.amqp
+    - edeposit.amqp.harvester
+    - edeposit.amqp.harvester.autoparser
+    - edeposit.amqp.harvester.filters
+    - edeposit.amqp.harvester.scrappers
+    - edeposit.amqp.harvester.scrappers.zonerpress_cz
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edeposit/edeposit.amqp.harvester/
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Metadata harvester of the books printed by specific publishers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

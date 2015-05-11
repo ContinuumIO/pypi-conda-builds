@@ -1,0 +1,73 @@
+package:
+  name: freeboxtv
+  version: "0.9.1"
+
+source:
+  fn: freeboxtv-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/freeboxtv/freeboxtv-0.9.1.tar.gz
+  md5: 38493c5a653b360b5c8ae0cdedca6571
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - freeboxtv = freeboxtv:main
+    #
+    # Would create an entry point called freeboxtv that calls freeboxtv.main()
+
+    - fbxtv=freeboxtv:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle
+    - webob
+    - webhelpers
+    - configobject
+    - wsgiproxy
+
+  run:
+    - python
+    - setuptools
+    - bottle
+    - webob
+    - webhelpers
+    - configobject
+    - wsgiproxy
+
+test:
+  # Python imports
+  imports:
+    - freeboxtv
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fbxtv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gawel/freeboxtv
+  license: GPL
+  summary: 'VLC launcher for Freebox TV/Freeplayer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

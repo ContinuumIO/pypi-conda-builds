@@ -1,0 +1,91 @@
+package:
+  name: devassistant
+  version: "0.11.1"
+
+source:
+  fn: devassistant-0.11.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/devassistant/devassistant-0.11.1.tar.gz
+  md5: b0a8da6281d2875ab58160cf5c470015
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - devassistant = devassistant:main
+    #
+    # Would create an entry point called devassistant that calls devassistant.main()
+
+    - da=devassistant.cli.cli_runner:CliRunner.run
+    - da-gui=devassistant.gui:run_gui
+    - devassistant=devassistant.cli.cli_runner:CliRunner.run
+    - devassistant-gui=devassistant.gui:run_gui
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygithub >=1.14.2
+    - pyyaml
+    - dapp
+    - jinja2
+    - progress
+    - requests >=2.3.0
+    - six
+    - ndg-httpsclient >=0.3.2
+    - pyopenssl >=0.14
+    - pyasn1 >=0.1.7
+
+  run:
+    - python
+    - pygithub >=1.14.2
+    - pyyaml
+    - dapp
+    - jinja2
+    - progress
+    - requests >=2.3.0
+    - six
+    - ndg-httpsclient >=0.3.2
+    - pyopenssl >=0.14
+    - pyasn1 >=0.1.7
+
+test:
+  # Python imports
+  imports:
+    - devassistant
+    - devassistant.cli
+    - devassistant.dapi
+    - devassistant.gui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - da --help
+    - da-gui --help
+    - devassistant --help
+    - devassistant-gui --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bkabrda/devassistant
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'DevAssistant helps you kickstart your projects with ease.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

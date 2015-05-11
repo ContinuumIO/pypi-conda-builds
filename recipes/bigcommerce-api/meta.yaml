@@ -1,0 +1,66 @@
+package:
+  name: bigcommerce-api
+  version: "0.10.1"
+
+source:
+  fn: bigcommerce-api-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bigcommerce-api/bigcommerce-api-0.10.1.tar.gz
+  md5: 541e55afc4e93f66ac89f196ae5d7554
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bigcommerce-api = bigcommerce-api:main
+    #
+    # Would create an entry point called bigcommerce-api that calls bigcommerce-api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.1.0
+    - streql >=3.0.2
+
+  run:
+    - python
+    - requests >=2.1.0
+    - streql >=3.0.2
+
+test:
+  # Python imports
+  imports:
+    - bigcommerce
+    - bigcommerce.resources
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bigcommerce/bigcommerce-api-python/tree/alpha
+  license: MIT License
+  summary: 'Connect Python applications with the Bigcommerce API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

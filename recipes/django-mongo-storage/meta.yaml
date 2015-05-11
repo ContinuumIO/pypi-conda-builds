@@ -1,0 +1,64 @@
+package:
+  name: django-mongo-storage
+  version: "0.3.1"
+
+source:
+  fn: django-mongo-storage-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mongo-storage/django-mongo-storage-0.3.1.tar.gz
+  md5: 7cd86450f8ace2f69f62cb23d9a3a94c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mongo-storage = django-mongo-storage:main
+    #
+    # Would create an entry point called django-mongo-storage that calls django-mongo-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - pymongo
+
+  run:
+    - python
+    - django
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - mongo_storage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/madisona/django-mongo-storage
+  license: BSD License
+  summary: 'A mongo GridFS storage backend for django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

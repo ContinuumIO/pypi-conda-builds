@@ -1,0 +1,81 @@
+package:
+  name: internationalization
+  version: "1.0"
+
+source:
+  fn: internationalization-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/internationalization/internationalization-1.0.tar.gz
+  md5: 779e5193e4ec6f9527ea43ad51761e59
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - internationalization = internationalization:main
+    #
+    # Would create an entry point called internationalization that calls internationalization.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ally-api >=1.0
+    - ally-plugin >=1.0
+    - support-sqlalchemy >=1.0
+    - support-cdm >=1.0
+
+  run:
+    - python
+    - ally-api >=1.0
+    - ally-plugin >=1.0
+    - support-sqlalchemy >=1.0
+    - support-cdm >=1.0
+
+test:
+  # Python imports
+  imports:
+    - __plugin__
+    - __plugin__.internationalization
+    - __unit_test__
+    - __unit_test__.internationalization
+    - __unit_test__.internationalization.core
+    - __unit_test__.internationalization.core.impl
+    - internationalization
+    - internationalization.api
+    - internationalization.core
+    - internationalization.core.impl
+    - internationalization.impl
+    - internationalization.meta
+    - internationalization.support
+    - internationalization.support.babel
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sourcefabric.org/en/superdesk/
+  license: GPL v3
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

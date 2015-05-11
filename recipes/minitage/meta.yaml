@@ -1,0 +1,82 @@
+package:
+  name: minitage
+  version: "2.0.67"
+
+source:
+  fn: minitage-2.0.67.zip
+  url: https://pypi.python.org/packages/source/m/minitage/minitage-2.0.67.zip
+  md5: 523d0f2d7129c160e71656d6aee4e450
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minitage = minitage:main
+    #
+    # Would create an entry point called minitage that calls minitage.main()
+
+    - minimerge = minitage.core.launchers.minimerge:launch
+    - minitagify = minitage.core.launchers.minitagize:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - iniparse
+    - setuptools
+    - minitage.paste >=1.4.6
+    - ordereddict
+    - setuptools
+
+  run:
+    - python
+    - iniparse
+    - setuptools
+    - minitage.paste >=1.4.6
+    - ordereddict
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - minitage
+    - minitage.core
+    - minitage.core.fetchers
+    - minitage.core.launchers
+    - minitage.core.makers
+    - minitage.core.tests
+    - minitage.core.tests.fetchers
+    - minitage.core.tests.makers
+    - minitage.core.tests.unpackers
+    - minitage.core.unpackers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - minimerge --help
+    - minitagify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage
+  license: BSD License
+  summary: 'A meta package-manager to deploy projects on UNIX Systemes sponsored by Makina Corpus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

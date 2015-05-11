@@ -1,0 +1,70 @@
+package:
+  name: dumpyme
+  version: "0.1.0"
+
+source:
+  fn: dumpyme-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dumpyme/dumpyme-0.1.0.tar.gz
+  md5: 736458bdc73605866d847025a97c968d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dumpyme = dumpyme:main
+    #
+    # Would create an entry point called dumpyme that calls dumpyme.main()
+
+    - dumpy=src.commander:dumpy
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - fabric
+
+  run:
+    - python
+    - setuptools
+    - click
+    - fabric
+
+test:
+  # Python imports
+  imports:
+    - dumpyme
+    - src
+    - src.tasks
+    - src.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dumpy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/marioidival/dumpyme
+  license: MIT
+  summary: 'Command line package to get dump databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

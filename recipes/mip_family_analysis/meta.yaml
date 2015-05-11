@@ -1,0 +1,68 @@
+package:
+  name: mip_family_analysis
+  version: "0.9.4"
+
+source:
+  fn: mip_family_analysis-0.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mip_family_analysis/mip_family_analysis-0.9.4.tar.gz
+  md5: 112e97c756dad74ba896820dac36d5e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mip_family_analysis = mip_family_analysis:main
+    #
+    # Would create an entry point called mip_family_analysis that calls mip_family_analysis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ped_parser
+    - interval_tree
+
+  run:
+    - python
+    - ped_parser
+    - interval_tree
+
+test:
+  # Python imports
+  imports:
+    - Mip_Family_Analysis
+    - Mip_Family_Analysis.Models
+    - Mip_Family_Analysis.Utils
+    - Mip_Family_Analysis.Variants
+    - mip_family_analysis
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/moonso/Mip_Family_Analysis
+  license: UNKNOWN
+  summary: 'A new tool for doing inheritance analysis and scoring in the mip pipeline.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: manage_server_power
+  version: "0.0.5"
+
+source:
+  fn: manage_server_power-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/manage_server_power/manage_server_power-0.0.5.tar.gz
+  md5: 89e66c781b42ed84c3c266d734908ccc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - manage_server_power = manage_server_power:main
+    #
+    # Would create an entry point called manage_server_power that calls manage_server_power.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wakeonlan
+    - paramiko
+
+  run:
+    - python
+    - wakeonlan
+    - paramiko
+
+test:
+  # Python imports
+  imports:
+    - manage_server_power
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ojarva/python-manage-server-power
+  license: BSD License
+  summary: 'Small library for shutting down and starting up local server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

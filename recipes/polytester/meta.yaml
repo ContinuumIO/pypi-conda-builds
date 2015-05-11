@@ -1,0 +1,73 @@
+package:
+  name: polytester
+  version: "1.2.0"
+
+source:
+  fn: polytester-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/polytester/polytester-1.2.0.tar.gz
+  md5: a3b724bdab7e40b49f3227b4e6789277
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - polytester = polytester:main
+    #
+    # Would create an entry point called polytester that calls polytester.main()
+
+    - pt = polytester.main:main
+    - polytester = polytester.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clint ==0.4.1
+    - pyyaml ==3.11
+    - watchdog ==0.8.2
+
+  run:
+    - python
+    - clint ==0.4.1
+    - pyyaml ==3.11
+    - watchdog ==0.8.2
+
+test:
+  # Python imports
+  imports:
+    - polytester
+    - polytester.parsers
+    - tests
+    - tests.parsers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pt --help
+    - polytester --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/skoczen/polytester
+  license: MIT License
+  summary: 'A simple, easy-to-use multi-language test runner.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

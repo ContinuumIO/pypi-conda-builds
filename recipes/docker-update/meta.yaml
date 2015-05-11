@@ -1,0 +1,64 @@
+package:
+  name: docker-update
+  version: "0.1.0"
+
+source:
+  fn: docker-update-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-update/docker-update-0.1.0.tar.gz
+  md5: edb27cfd3e863a85b04d2686aba1aa46
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-update = docker-update:main
+    #
+    # Would create an entry point called docker-update that calls docker-update.main()
+
+    - docker-update=docker_update:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-parse
+
+  run:
+    - python
+    - docker-parse
+
+test:
+  # Python imports
+  imports:
+    - docker_update
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - docker-update --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iamfat/docker-update
+  license: MIT License
+  summary: 'Generate commands you need to upgrade your docker containers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: zeropos
+  version: "0.1.2"
+
+source:
+  fn: zeropos-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zeropos/zeropos-0.1.2.tar.gz
+  md5: 57b456fb2272e1516a9b10168759afd0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zeropos = zeropos:main
+    #
+    # Would create an entry point called zeropos that calls zeropos.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zeroconf
+    - python-escpos
+    - flask
+    - gevent
+
+  run:
+    - python
+    - zeroconf
+    - python-escpos
+    - flask
+    - gevent
+
+test:
+  # Python imports
+  imports:
+    - zeropos
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openlabs.co.in/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Zero POS\n========\n\nA zeroconf based POS printing daemon\n\nWhat is Zero POS\n----------------\n\nZero POS was designed to solve a very specific problem we faced at\nOpenlabs, but we thought could be generic enough for others to use. Here\nis the use case:\n\nThe Tryton iPad based POS should be able to print to the commonly found\nPOS printer - a thermal printer like the Epson TM-T81. The printer only\ntalks over USB and does not have wireless printing capabilities!\n\nWith zeropos, you could bundle the printer with a low cost computer like\nthe Raspberry Pi and connect the printer to it and run zeropos daemon on\nthe raspberry pi. The printing service can be discovered over zero conf\nfrom the iPad application and your application could send a POST request\nto the service to print ZPL to the printer.\n\nInstallation\n-------------\n\nThe quickest way to install this software is using pip\n\n:: \n\n    pip install zeropos\n\n\nAdministration\n--------------\n\nThe daemon can be adminisered by opening the service URL from a browser.\n\n\nTODO\n----\n\n1. Implement secutiry for the admin interface.\n2. Write API documentation for the admin HTTP API.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

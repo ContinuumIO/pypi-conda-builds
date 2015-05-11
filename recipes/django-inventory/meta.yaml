@@ -1,0 +1,101 @@
+package:
+  name: django-inventory
+  version: "1.0.rc1"
+
+source:
+  fn: django-inventory-1.0.rc1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-inventory/django-inventory-1.0.rc1.tar.gz
+  md5: d1103959fa8337577d56a32583aa0c04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-inventory = django-inventory:main
+    #
+    # Would create an entry point called django-inventory that calls django-inventory.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.6.5
+    - pillow ==2.5.1
+    - south ==1.0
+    - django-compressor ==1.4
+    - django-pagination ==1.0.7
+    - django-photologue ==2.3
+    - django-solo ==1.0.5
+
+  run:
+    - python
+    - django ==1.6.5
+    - pillow ==2.5.1
+    - south ==1.0
+    - django-compressor ==1.4
+    - django-pagination ==1.0.7
+    - django-photologue ==2.3
+    - django-solo ==1.0.5
+
+test:
+  # Python imports
+  imports:
+    - django_inventory
+    - django_inventory.apps.assets
+    - django_inventory.apps.assets.conf
+    - django_inventory.apps.assets.templatetags
+    - django_inventory.apps.common
+    - django_inventory.apps.common.conf
+    - django_inventory.apps.common.middleware
+    - django_inventory.apps.common.migrations
+    - django_inventory.apps.common.templatetags
+    - django_inventory.apps.dynamic_search
+    - django_inventory.apps.generic_views
+    - django_inventory.apps.generic_views.templatetags
+    - django_inventory.apps.importer
+    - django_inventory.apps.inventory
+    - django_inventory.apps.inventory.conf
+    - django_inventory.apps.inventory.templatetags
+    - django_inventory.apps.main
+    - django_inventory.apps.main.management
+    - django_inventory.apps.main.management.commands
+    - django_inventory.apps.main.templatetags
+    - django_inventory.apps.movements
+    - django_inventory.apps.photos
+    - django_inventory.apps.photos.conf
+    - django_inventory.apps.photos.templatetags
+    - django_inventory.apps.web_theme
+    - django_inventory.apps.web_theme.conf
+    - django_inventory.apps.web_theme.templatetags
+    - django_inventory.settings
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rosarior/django-inventory
+  license: Apache Software License
+  summary: 'Free Open Source Inventory and Fixed Assets Control System.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

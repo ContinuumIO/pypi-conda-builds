@@ -1,0 +1,65 @@
+package:
+  name: django_metrics
+  version: "0.0.1"
+
+source:
+  fn: django_metrics-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_metrics/django_metrics-0.0.1.tar.gz
+  md5: 970b21058b996f59f14cb9115c038d79
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_metrics = django_metrics:main
+    #
+    # Would create an entry point called django_metrics that calls django_metrics.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.7
+
+  run:
+    - python
+    - django ==1.7
+
+test:
+  # Python imports
+  imports:
+    - django_metrics
+    - metrics
+    - metrics.migrations
+    - metrics.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: WTFPL
+  summary: 'Basic Django app that provides an interface to add metrics code snippets from the Django admin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

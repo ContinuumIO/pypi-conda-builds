@@ -1,0 +1,74 @@
+package:
+  name: jtime
+  version: "0.5.4"
+
+source:
+  fn: jtime-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/j/jtime/jtime-0.5.4.tar.gz
+  md5: 791c658832f4a9d7fc5c7f78322b3fcb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jtime = jtime:main
+    #
+    # Would create an entry point called jtime that calls jtime.main()
+
+    - jtime = jtime.jtime:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jira
+    - gitpython ==0.1.7
+    - python-dateutil
+    - argh
+    - argcomplete
+    - rollbar
+
+  run:
+    - python
+    - jira
+    - gitpython ==0.1.7
+    - python-dateutil
+    - argh
+    - argcomplete
+    - rollbar
+
+test:
+  # Python imports
+  imports:
+    - jtime
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jtime --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mapmyfitness/jtime
+  license: UNKNOWN
+  summary: 'Jira time tracking tool built on the command line to take context from your various git repositories.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

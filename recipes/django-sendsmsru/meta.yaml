@@ -1,0 +1,65 @@
+package:
+  name: django-sendsmsru
+  version: "0.1.9"
+
+source:
+  fn: django-sendsmsru-0.1.9.zip
+  url: https://pypi.python.org/packages/source/d/django-sendsmsru/django-sendsmsru-0.1.9.zip
+  md5: 96065c06b70dd584e1d43b5b41f9cf84
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sendsmsru = django-sendsmsru:main
+    #
+    # Would create an entry point called django-sendsmsru that calls django-sendsmsru.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-sendsms
+
+  run:
+    - python
+    - django
+    - django-sendsms
+
+test:
+  # Python imports
+  imports:
+    - sendsmsru
+    - sendsmsru.backends
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/suvit/django-sendsmsru
+  license: MIT
+  summary: 'Russian backends for django-sendsms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: hookit
+  version: "0.9.1"
+
+source:
+  fn: hookit-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hookit/hookit-0.9.1.tar.gz
+  md5: 667734df5e2ae83547f3e99a7ebe6270
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hookit = hookit:main
+    #
+    # Would create an entry point called hookit that calls hookit.main()
+
+    - hookit = hookit:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt >=0.6.0
+    - github3.py >=0.9.0
+    - ipaddress >=1.0.6
+
+  run:
+    - python
+    - docopt >=0.6.0
+    - github3.py >=0.9.0
+    - ipaddress >=1.0.6
+
+test:
+  # Python imports
+  imports:
+    - hookit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hookit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tiwilliam/hookit
+  license: MIT License
+  summary: 'Bind GitHub WebHooks to actions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

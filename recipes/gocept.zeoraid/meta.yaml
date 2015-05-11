@@ -1,0 +1,74 @@
+package:
+  name: gocept.zeoraid
+  version: "1.0b8"
+
+source:
+  fn: gocept.zeoraid-1.0b8.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.zeoraid/gocept.zeoraid-1.0b8.tar.gz
+  md5: 783ccbaadc8b2e9e67ceb45ea552d922
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.zeoraid = gocept.zeoraid:main
+    #
+    # Would create an entry point called gocept.zeoraid that calls gocept.zeoraid.main()
+
+    - zeoraid=gocept.zeoraid.scripts.controller:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mock
+    - setuptools
+    - zc.zodbrecipes
+    - zodb3 >=3.9dev
+
+  run:
+    - python
+    - setuptools
+    - mock
+    - setuptools
+    - zc.zodbrecipes
+    - zodb3 >=3.9dev
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.zeoraid
+    - gocept.zeoraid.scripts
+    - gocept.zeoraid.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zeoraid --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.zeoraid
+  license: ZPL 2.1
+  summary: 'A ZODB storage for replication using RAID techniques.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

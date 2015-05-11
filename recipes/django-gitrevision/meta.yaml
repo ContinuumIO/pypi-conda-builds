@@ -1,0 +1,62 @@
+package:
+  name: django-gitrevision
+  version: "0.1.5"
+
+source:
+  fn: django-gitrevision-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-gitrevision/django-gitrevision-0.1.5.tar.gz
+  md5: 5951ccac34db395b7038828b4a127b65
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-gitrevision = django-gitrevision:main
+    #
+    # Would create an entry point called django-gitrevision that calls django-gitrevision.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython
+
+  run:
+    - python
+    - gitpython
+
+test:
+  # Python imports
+  imports:
+    - gitrevision
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/klen/django-gitrevision.git
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Django git revision, simple add current git revision to request object for use in tempaltes and views.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

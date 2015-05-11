@@ -1,0 +1,71 @@
+package:
+  name: easy-aws
+  version: "1.0.6"
+
+source:
+  fn: easy-aws-1.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/e/easy-aws/easy-aws-1.0.6.tar.gz
+  md5: f00a2611863dd8258a89913c425d56d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easy-aws = easy-aws:main
+    #
+    # Would create an entry point called easy-aws that calls easy-aws.main()
+
+    - easy-aws=easyaws:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - paramiko
+    - boto
+    - requests
+
+  run:
+    - python
+    - argparse
+    - paramiko
+    - boto
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - easyaws
+    - easyaws.libs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - easy-aws --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/dlis/easy-aws
+  license: MIT License
+  summary: 'Deploying django-projects to Amazon AWS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

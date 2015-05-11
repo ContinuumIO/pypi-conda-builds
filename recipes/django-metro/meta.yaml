@@ -1,0 +1,71 @@
+package:
+  name: django-metro
+  version: "0.4.2"
+
+source:
+  fn: django-metro-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-metro/django-metro-0.4.2.tar.gz
+  md5: 00a90c98211e44e17674c51fb485c5ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-metro = django-metro:main
+    #
+    # Would create an entry point called django-metro that calls django-metro.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - beautifulsoup4
+    - requests
+
+  run:
+    - python
+    - django >=1.7
+    - beautifulsoup4
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - metro
+    - metro.management
+    - metro.management.commands
+    - metro.migrations
+    - metro.parser
+    - metro.parser.providers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xfenix/django-metro
+  license: UNKNOWN
+  summary: 'Basic metro models for Django 1.7+,     plus the parser that fills models with actual data     (lines numbers, lines titles, lines colors, the names     of the lines, the station names) from various data     sources (primary - Wikipedia).\n    '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

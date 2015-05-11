@@ -1,0 +1,67 @@
+package:
+  name: django-baseboard
+  version: "0.3"
+
+source:
+  fn: django-baseboard-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-baseboard/django-baseboard-0.3.tar.gz
+  md5: 180314a8b9f5945fdcbb31664a9366d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-baseboard = django-baseboard:main
+    #
+    # Would create an entry point called django-baseboard that calls django-baseboard.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - basecampreporting
+    - feedparser
+
+  run:
+    - python
+    - setuptools
+    - basecampreporting
+    - feedparser
+
+test:
+  # Python imports
+  imports:
+    - baseboard
+    - baseboard.management
+    - baseboard.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cmheisel/django-baseboard
+  license: MIT License
+  summary: 'Dashboard view across various Basecamp projects, powered by Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

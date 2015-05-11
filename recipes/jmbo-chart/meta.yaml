@@ -1,0 +1,65 @@
+package:
+  name: jmbo-chart
+  version: "2.0.0a1"
+
+source:
+  fn: jmbo-chart-2.0.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo-chart/jmbo-chart-2.0.0a1.tar.gz
+  md5: 0174534fc9edb36ede7d1736d4a0ce1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo-chart = jmbo-chart:main
+    #
+    # Would create an entry point called jmbo-chart that calls jmbo-chart.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jmbo-music ==2.0.0a1
+
+  run:
+    - python
+    - jmbo-music ==2.0.0a1
+
+test:
+  # Python imports
+  imports:
+    - chart
+    - chart.management
+    - chart.management.commands
+    - chart.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/jmbo-chart
+  license: BSD License
+  summary: 'Jmbo chart app.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

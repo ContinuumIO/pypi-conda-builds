@@ -1,0 +1,126 @@
+package:
+  name: teuthology
+  version: "0.1.0"
+
+source:
+  fn: teuthology-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/teuthology/teuthology-0.1.0.tar.gz
+  md5: a4c56a35fe47defc01ac03dc40d6da5d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - teuthology = teuthology:main
+    #
+    # Would create an entry point called teuthology that calls teuthology.main()
+
+    - teuthology = scripts.run:main
+    - teuthology-nuke = scripts.nuke:main
+    - teuthology-suite = scripts.suite:main
+    - teuthology-ls = scripts.ls:main
+    - teuthology-worker = scripts.worker:main
+    - teuthology-lock = scripts.lock:main
+    - teuthology-schedule = scripts.schedule:main
+    - teuthology-updatekeys = scripts.updatekeys:main
+    - teuthology-coverage = scripts.coverage:main
+    - teuthology-results = scripts.results:main
+    - teuthology-report = scripts.report:main
+    - teuthology-kill = scripts.kill:main
+    - teuthology-queue = scripts.queue:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent ==0.13.6
+    - mysql-python ==1.2.3
+    - pyyaml
+    - argparse >=1.2.1
+    - beanstalkc >=0.2.0
+    - boto >=2.0b4
+    - bunch >=1.0.0
+    - configobj
+    - httplib2
+    - paramiko <1.8
+    - pexpect
+    - requests >=1.0
+    - raven
+    - web.py
+    - docopt
+    - psutil >=2.1.0
+    - configparser
+
+  run:
+    - python
+    - setuptools
+    - gevent ==0.13.6
+    - mysql-python ==1.2.3
+    - pyyaml
+    - argparse >=1.2.1
+    - beanstalkc >=0.2.0
+    - boto >=2.0b4
+    - bunch >=1.0.0
+    - configobj
+    - httplib2
+    - paramiko <1.8
+    - pexpect
+    - requests >=1.0
+    - raven
+    - web.py
+    - docopt
+    - psutil >=2.1.0
+    - configparser
+
+test:
+  # Python imports
+  imports:
+    - scripts
+    - teuthology
+    - teuthology.orchestra
+    - teuthology.orchestra.test
+    - teuthology.task
+    - teuthology.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - teuthology --help
+    - teuthology-nuke --help
+    - teuthology-suite --help
+    - teuthology-ls --help
+    - teuthology-worker --help
+    - teuthology-lock --help
+    - teuthology-schedule --help
+    - teuthology-updatekeys --help
+    - teuthology-coverage --help
+    - teuthology-results --help
+    - teuthology-report --help
+    - teuthology-kill --help
+    - teuthology-queue --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ceph/teuthology
+  license: MIT License
+  summary: 'Ceph test framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: shaunsephton.recipe.uwsgi
+  version: "0.0.9"
+
+source:
+  fn: shaunsephton.recipe.uwsgi-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/s/shaunsephton.recipe.uwsgi/shaunsephton.recipe.uwsgi-0.0.9.tar.gz
+  md5: 933284b532bb7e68423d023714ac123f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shaunsephton.recipe.uwsgi = shaunsephton.recipe.uwsgi:main
+    #
+    # Would create an entry point called shaunsephton.recipe.uwsgi that calls shaunsephton.recipe.uwsgi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - shaunsephton
+    - shaunsephton.recipe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shaunsephton/shaunsephton.recipe.uwsgi
+  license: BSD License
+  summary: 'Buildout recipe downloading, compiling and configuring uWSGI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

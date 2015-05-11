@@ -1,0 +1,106 @@
+package:
+  name: localshop
+  version: "0.9.0"
+
+source:
+  fn: localshop-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/localshop/localshop-0.9.0.tar.gz
+  md5: 12f1b47d995cb902dc96653a4e311c35
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - localshop = localshop:main
+    #
+    # Would create an entry point called localshop that calls localshop.main()
+
+    - localshop = localshop.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.7.1
+    - pillow ==2.6.1
+    - celery ==3.1.17
+    - kombu ==3.0.24
+    - django-celery ==3.1.16
+    - django-model-utils ==2.2.0
+    - django-userena ==1.3.1
+    - django-uuidfield ==0.5.0
+    - django-storages ==1.1.8
+    - django-configurations ==0.8
+    - django-environ ==0.3.0
+    - docutils ==0.11
+    - gunicorn ==19.1.1
+    - netaddr ==0.7.12
+    - requests ==2.5.1
+    - versio ==0.2.1
+
+  run:
+    - python
+    - django ==1.7.1
+    - pillow ==2.6.1
+    - celery ==3.1.17
+    - kombu ==3.0.24
+    - django-celery ==3.1.16
+    - django-model-utils ==2.2.0
+    - django-userena ==1.3.1
+    - django-uuidfield ==0.5.0
+    - django-storages ==1.1.8
+    - django-configurations ==0.8
+    - django-environ ==0.3.0
+    - docutils ==0.11
+    - gunicorn ==19.1.1
+    - netaddr ==0.7.12
+    - requests ==2.5.1
+    - versio ==0.2.1
+
+test:
+  # Python imports
+  imports:
+    - localshop
+    - localshop.apps
+    - localshop.apps.packages
+    - localshop.apps.packages.migrations
+    - localshop.apps.permissions
+    - localshop.apps.permissions.migrations
+    - localshop.management
+    - localshop.management.commands
+    - localshop.templatetags
+    - tests
+    - tests.apps
+    - tests.apps.packages
+    - tests.apps.permissions
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - localshop --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mvantellingen/localshop
+  license: BSD
+  summary: 'A private pypi server including auto-mirroring of pypi.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

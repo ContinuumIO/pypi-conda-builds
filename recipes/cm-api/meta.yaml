@@ -1,0 +1,64 @@
+package:
+  name: cm-api
+  version: "10.0.0"
+
+source:
+  fn: cm_api-10.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cm-api/cm_api-10.0.0.tar.gz
+  md5: 61bfa703f6d40ed5444b32efd4f4e9ee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cm-api = cm-api:main
+    #
+    # Would create an entry point called cm-api that calls cm-api.main()
+
+    - cmps = cm_shell.cmps:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cm_api
+    - cm_api.endpoints
+    - cm_shell
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cmps --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cloudera.github.com/cm_api/
+  license: Apache License 2.0
+  summary: 'Cloudera Manager API client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

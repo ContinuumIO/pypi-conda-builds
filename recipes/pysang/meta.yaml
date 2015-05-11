@@ -1,0 +1,62 @@
+package:
+  name: pysang
+  version: "0.3.9"
+
+source:
+  fn: PySang-0.3.9.tar.gz
+  url: https://pypi.python.org/packages/source/P/PySang/PySang-0.3.9.tar.gz
+  md5: 8bb0127f00406c6466d1bd952bfe66a8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pysang = pysang:main
+    #
+    # Would create an entry point called pysang that calls pysang.main()
+
+    - pysang = pysang.command_line:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pysang
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pysang --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iosonofabio/pysang
+  license: Public domain
+  summary: 'Visualizer for Sanger chromatographs (ABI/AB1).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

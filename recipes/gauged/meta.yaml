@@ -1,0 +1,63 @@
+package:
+  name: gauged
+  version: "1.0.0"
+
+source:
+  fn: gauged-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gauged/gauged-1.0.0.tar.gz
+  md5: 5ebf4c3a067dc4b42d154db8e61e5642
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gauged = gauged:main
+    #
+    # Would create an entry point called gauged that calls gauged.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - gauged
+    - gauged.drivers
+    - gauged.errors
+    - gauged.results
+    - gauged.structures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chriso/gauged
+  license: MIT
+  summary: 'A fast, append-only storage layer for numeric data that changes over time'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

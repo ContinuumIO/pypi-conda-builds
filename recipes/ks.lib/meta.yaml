@@ -1,0 +1,72 @@
+package:
+  name: ks.lib
+  version: "1.0.7"
+
+source:
+  fn: ks.lib-1.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/k/ks.lib/ks.lib-1.0.7.tar.gz
+  md5: 654f88eccc6471f3752afe13b3735e7a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ks.lib = ks.lib:main
+    #
+    # Would create an entry point called ks.lib that calls ks.lib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ks
+    - ks.lib
+    - ks.lib.datetime
+    - ks.lib.mailtemplate
+    - ks.lib.pagetemplate
+    - ks.lib.schema
+    - ks.lib.scriptgetter
+    - ks.lib.textguard
+    - ks.lib.topolsort
+    - ks.lib.treenodeklp
+    - ks.lib.treenodeklp.tests
+    - ks.lib.tstypes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.keysolutionscorp.com/downloads/public/pypi/ks.lib
+  license: Zope Public License
+  summary: 'Some useful modules for Hivurt'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

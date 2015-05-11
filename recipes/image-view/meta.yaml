@@ -1,0 +1,61 @@
+package:
+  name: image-view
+  version: "0.4.1"
+
+source:
+  fn: image-view-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/image-view/image-view-0.4.1.tar.gz
+  md5: d0a12ab8c2542579ac61177c3d7bbbab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - image-view = image-view:main
+    #
+    # Would create an entry point called image-view that calls image-view.main()
+
+    - image-view = image_view:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - image-view --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/myint/image-view
+  license: MIT License
+  summary: 'Displays images (PNM, PNG, JPEG, etc.) conveniently from the terminal.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

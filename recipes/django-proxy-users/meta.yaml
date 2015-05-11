@@ -1,0 +1,63 @@
+package:
+  name: django-proxy-users
+  version: "0.0.8"
+
+source:
+  fn: django-proxy-users-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-proxy-users/django-proxy-users-0.0.8.tar.gz
+  md5: 8f80ef1e168cad2c48c5bb332f7a8ac8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-proxy-users = django-proxy-users:main
+    #
+    # Would create an entry point called django-proxy-users that calls django-proxy-users.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.1
+
+  run:
+    - python
+    - django >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - django_proxy_users
+    - django_proxy_users.auth
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jturo/django-proxy-users.git
+  license: BSD License
+  summary: 'Authentication extension to enable proxy users in django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

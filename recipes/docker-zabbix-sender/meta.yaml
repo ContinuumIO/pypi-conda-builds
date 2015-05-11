@@ -1,0 +1,65 @@
+package:
+  name: docker-zabbix-sender
+  version: "0.3.3"
+
+source:
+  fn: docker-zabbix-sender-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-zabbix-sender/docker-zabbix-sender-0.3.3.tar.gz
+  md5: 510926a909f2eddf4780bf5447879ba4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-zabbix-sender = docker-zabbix-sender:main
+    #
+    # Would create an entry point called docker-zabbix-sender that calls docker-zabbix-sender.main()
+
+    - docker-zabbix-sender=docker_zabbix_sender.zabbix_sender:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-py >=1.0.0
+
+  run:
+    - python
+    - setuptools
+    - docker-py >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - docker_zabbix_sender
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - docker-zabbix-sender --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dockermeetupsinbordeaux/docker-zabbix-sender
+  license: Apache Software License
+  summary: 'Push Docker containers statistics to Zabbix efficiently'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

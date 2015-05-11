@@ -1,0 +1,72 @@
+package:
+  name: fresher
+  version: "0.4.0"
+
+source:
+  fn: fresher-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fresher/fresher-0.4.0.tar.gz
+  md5: b033713a217ed2762005a519935ece1c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fresher = fresher:main
+    #
+    # Would create an entry point called fresher that calls fresher.main()
+
+    - fresher-list = fresher.commands:list_steps
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyparsing >=1.5.0
+    - pyyaml
+    - nose >=0.11.1
+    - six
+
+  run:
+    - python
+    - setuptools
+    - pyparsing >=1.5.0
+    - pyyaml
+    - nose >=0.11.1
+    - six
+
+test:
+  # Python imports
+  imports:
+    - fresher
+    - fresher.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fresher-list --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lddubeau/fresher
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Clone of the Cucumber BDD framework for Python forked from Freshen'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

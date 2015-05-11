@@ -1,0 +1,83 @@
+package:
+  name: insight_reloaded
+  version: "1.6.6"
+
+source:
+  fn: insight_reloaded-1.6.6.zip
+  url: https://pypi.python.org/packages/source/i/insight_reloaded/insight_reloaded-1.6.6.zip
+  md5: caf8912f2096e404c7ceb637d57f5c93
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - insight_reloaded = insight_reloaded:main
+    #
+    # Would create an entry point called insight_reloaded that calls insight_reloaded.main()
+
+    - insight_api = insight_reloaded.api:main
+    - insight = insight_reloaded.worker:main
+    - fake_callback = insight_reloaded.fake_callback:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - tornado-redis
+    - requests
+    - redis
+    - raven <5.0.0
+    - boto
+    - pyrax <1.8.0
+
+  run:
+    - python
+    - setuptools
+    - tornado
+    - tornado-redis
+    - requests
+    - redis
+    - raven <5.0.0
+    - boto
+    - pyrax <1.8.0
+
+test:
+  # Python imports
+  imports:
+    - insight_reloaded
+    - insight_reloaded.storage
+    - insight_reloaded.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - insight_api --help
+    - insight --help
+    - fake_callback --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/novapost/insight-reloaded
+  license: BSD License
+  summary: '\n          A full async docsplit previewer server based on Tornado and Redis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

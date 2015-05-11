@@ -1,0 +1,67 @@
+package:
+  name: isotoma.zope.testpythonscript
+  version: "1.0.0"
+
+source:
+  fn: isotoma.zope.testpythonscript-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/isotoma.zope.testpythonscript/isotoma.zope.testpythonscript-1.0.0.tar.gz
+  md5: 0b3bbd235215e197014cfb2997c1b543
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isotoma.zope.testpythonscript = isotoma.zope.testpythonscript:main
+    #
+    # Would create an entry point called isotoma.zope.testpythonscript that calls isotoma.zope.testpythonscript.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mock
+    - indent_finder
+
+  run:
+    - python
+    - mock
+    - indent_finder
+
+test:
+  # Python imports
+  imports:
+    - isotoma
+    - isotoma.zope
+    - isotoma.zope.testpythonscript
+    - isotoma.zope.testpythonscript.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.isotoma.com/
+  license: Apache Software License
+  summary: 'Provides simple classes to be used for unit testing PythonScript and FSPythonScripts from Zope / Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

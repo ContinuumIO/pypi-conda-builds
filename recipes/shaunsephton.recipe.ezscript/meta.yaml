@@ -1,0 +1,64 @@
+package:
+  name: shaunsephton.recipe.ezscript
+  version: "0.0.1"
+
+source:
+  fn: shaunsephton.recipe.ezscript-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/shaunsephton.recipe.ezscript/shaunsephton.recipe.ezscript-0.0.1.tar.gz
+  md5: 4a7779bb8f7d817306cf00579c1c6533
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shaunsephton.recipe.ezscript = shaunsephton.recipe.ezscript:main
+    #
+    # Would create an entry point called shaunsephton.recipe.ezscript that calls shaunsephton.recipe.ezscript.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - shaunsephton
+    - shaunsephton.recipe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shaunsephton/shaunsephton.recipe.ezscript
+  license: BSD License
+  summary: 'Buildout recipe creating bin script for arbitrary callable.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

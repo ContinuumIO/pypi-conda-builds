@@ -1,0 +1,69 @@
+package:
+  name: kss.plugin.livesearch
+  version: "1.0dev-20080523"
+
+source:
+  fn: kss.plugin.livesearch-1.0dev-20080523.tar.gz
+  url: https://pypi.python.org/packages/source/k/kss.plugin.livesearch/kss.plugin.livesearch-1.0dev-20080523.tar.gz
+  md5: 62231525d2fe709dc76e5450ec133349
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kss.plugin.livesearch = kss.plugin.livesearch:main
+    #
+    # Would create an entry point called kss.plugin.livesearch that calls kss.plugin.livesearch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kss.core
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - kss.core
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - kss
+    - kss.plugin
+    - kss.plugin.livesearch
+    - kss.plugin.livesearch.demo
+    - kss.plugin.livesearch.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kssproject.org
+  license: UNKNOWN
+  summary: 'KSS livesearch / autocomplete plugin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

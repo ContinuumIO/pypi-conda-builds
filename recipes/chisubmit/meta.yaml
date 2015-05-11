@@ -1,0 +1,114 @@
+package:
+  name: chisubmit
+  version: "0.9.4"
+
+source:
+  fn: chisubmit-0.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/chisubmit/chisubmit-0.9.4.tar.gz
+  md5: 08e93b73559341522f7ce8aca26494cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chisubmit = chisubmit:main
+    #
+    # Would create an entry point called chisubmit that calls chisubmit.main()
+
+    - chisubmit = chisubmit.cli:chisubmit_cmd_wrapper
+    - chisubmit-get-credentials = chisubmit.cli:chisubmit_get_credentials_cmd_wrapper
+    - chisubmit-server = chisubmit.cli:chisubmit_server_cmd [server]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygithub >=1.25.2
+    - pyapi-gitlab >=7.8.4
+    - gitpython >=0.3.5
+    - pyyaml >=3.10
+    - pytz >=2013.8
+    - tzlocal >=1.0
+    - python-dateutil >=2.4
+    - click >=3.3
+    - requests >=2.5.1
+    - colorama >=0.3.2
+    - docutils >=0.12
+
+  run:
+    - python
+    - pygithub >=1.25.2
+    - pyapi-gitlab >=7.8.4
+    - gitpython >=0.3.5
+    - pyyaml >=3.10
+    - pytz >=2013.8
+    - tzlocal >=1.0
+    - python-dateutil >=2.4
+    - click >=3.3
+    - requests >=2.5.1
+    - colorama >=0.3.2
+    - docutils >=0.12
+
+test:
+  # Python imports
+  imports:
+    - chisubmit
+    - chisubmit.backend
+    - chisubmit.backend.webapp
+    - chisubmit.backend.webapp.api
+    - chisubmit.backend.webapp.api.assignments
+    - chisubmit.backend.webapp.api.courses
+    - chisubmit.backend.webapp.api.models
+    - chisubmit.backend.webapp.api.teams
+    - chisubmit.backend.webapp.api.users
+    - chisubmit.backend.webapp.auth
+    - chisubmit.cli
+    - chisubmit.cli.admin
+    - chisubmit.cli.grader
+    - chisubmit.cli.instructor
+    - chisubmit.cli.shared
+    - chisubmit.cli.student
+    - chisubmit.client
+    - chisubmit.client.session
+    - chisubmit.common
+    - chisubmit.config
+    - chisubmit.repos
+    - chisubmit.rubric
+    - chisubmit.tests
+    - chisubmit.tests.api
+    - chisubmit.tests.cli
+    - chisubmit.tests.client
+    - chisubmit.tests.integration
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chisubmit --help
+    - chisubmit-get-credentials --help
+    - chisubmit-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cs.uchicago.edu/
+  license: BSD License
+  summary: 'A system for managing assignments and teams in university courses'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

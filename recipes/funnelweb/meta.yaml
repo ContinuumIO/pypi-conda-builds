@@ -1,0 +1,89 @@
+package:
+  name: funnelweb
+  version: "1.1.1"
+
+source:
+  fn: funnelweb-1.1.1.zip
+  url: https://pypi.python.org/packages/source/f/funnelweb/funnelweb-1.1.1.zip
+  md5: 83676ceeb193234154240dd9bbc1b6d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - funnelweb = funnelweb:main
+    #
+    # Would create an entry point called funnelweb that calls funnelweb.main()
+
+    - funnelweb = funnelweb.runner:runner
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - collective.transmogrifier
+    - transmogrify.webcrawler >=1.1
+    - transmogrify.siteanalyser >=1.2
+    - transmogrify.htmlcontentextractor >=1.0
+    - transmogrify.ploneremote >=1.2
+    - products.cmfcore
+    - zope.app.pagetemplate
+    - zope.app.component
+    - mr.migrator >=1.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - collective.transmogrifier
+    - transmogrify.webcrawler >=1.1
+    - transmogrify.siteanalyser >=1.2
+    - transmogrify.htmlcontentextractor >=1.0
+    - transmogrify.ploneremote >=1.2
+    - products.cmfcore
+    - zope.app.pagetemplate
+    - zope.app.component
+    - mr.migrator >=1.0
+
+test:
+  # Python imports
+  imports:
+    - funnelweb
+    - funnelweb.recipe
+    - funnelweb.recipe.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - funnelweb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/funnelweb
+  license: Zope Public License
+  summary: 'Crawl and parse static sites and import to Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

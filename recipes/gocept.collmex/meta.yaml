@@ -1,0 +1,78 @@
+package:
+  name: gocept.collmex
+  version: "1.7.0"
+
+source:
+  fn: gocept.collmex-1.7.0.zip
+  url: https://pypi.python.org/packages/source/g/gocept.collmex/gocept.collmex-1.7.0.zip
+  md5: ebc02c5194591b347ecc25e3e6c8d6a9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.collmex = gocept.collmex:main
+    #
+    # Would create an entry point called gocept.collmex that calls gocept.collmex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gocept.cache >=0.6.1
+    - setuptools >=1.0
+    - transaction >=1.4
+    - zope.deprecation >=4.0
+    - zope.interface >=4.0
+    - webtest >=2.0
+    - wsgiproxy2
+    - six
+
+  run:
+    - python
+    - gocept.cache >=0.6.1
+    - setuptools >=1.0
+    - transaction >=1.4
+    - zope.deprecation >=4.0
+    - zope.interface >=4.0
+    - webtest >=2.0
+    - wsgiproxy2
+    - six
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.collmex
+    - gocept.collmex.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.collmex
+  license: Zope Public License
+  summary: 'Python-bindings for the Collmex import/export API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

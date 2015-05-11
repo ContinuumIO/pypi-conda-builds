@@ -1,0 +1,98 @@
+package:
+  name: por.models
+  version: "1.3.22"
+
+source:
+  fn: por.models-1.3.22.tar.gz
+  url: https://pypi.python.org/packages/source/p/por.models/por.models-1.3.22.tar.gz
+  md5: 242b22baca73fff103bb7aa991d5de16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - por.models = por.models:main
+    #
+    # Would create an entry point called por.models that calls por.models.main()
+
+    - populate_penelope=por.models.scripts.populate:main
+    - populate_with_dummies=por.models.scripts.dummies:main
+    - import_svn=por.models.scripts.importsvn:main
+    - quality_export=por.models.scripts.quality_export:main
+    - contracts_import=por.models.scripts.contracts_import:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - sqlalchemy
+    - zope.sqlalchemy
+    - psycopg2
+    - plone.i18n
+    - transaction
+    - pastescript
+    - lorem-ipsum-generator
+    - trac
+    - profilehooks
+    - por.dashboard
+    - gspread
+
+  run:
+    - python
+    - setuptools
+    - distribute
+    - sqlalchemy
+    - zope.sqlalchemy
+    - psycopg2
+    - plone.i18n
+    - transaction
+    - pastescript
+    - lorem-ipsum-generator
+    - trac
+    - profilehooks
+    - por.dashboard
+    - gspread
+
+test:
+  # Python imports
+  imports:
+    - por
+    - por.models
+    - por.models.scripts
+    - por.models.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - populate_penelope --help
+    - populate_with_dummies --help
+    - import_svn --help
+    - quality_export --help
+    - contracts_import --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://getpenelope.github.com
+  license: UNKNOWN
+  summary: 'SQLAlchemy models for Penelope'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

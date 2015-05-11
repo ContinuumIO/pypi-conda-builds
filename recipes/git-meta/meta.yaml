@@ -1,0 +1,65 @@
+package:
+  name: git-meta
+  version: "0.1.3"
+
+source:
+  fn: git-meta-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-meta/git-meta-0.1.3.tar.gz
+  md5: 83b6a8e051a4b3051d845fc2f466e4b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-meta = git-meta:main
+    #
+    # Would create an entry point called git-meta that calls git-meta.main()
+
+    - git-meta = git.meta:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygit2 ==0.22.0
+
+  run:
+    - python
+    - pygit2 ==0.22.0
+
+test:
+  # Python imports
+  imports:
+    - git
+    - git.meta
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-meta --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/galactics/git-meta
+  license: BSD
+  summary: 'Git reposiroties manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

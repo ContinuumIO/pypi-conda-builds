@@ -1,0 +1,68 @@
+package:
+  name: django-utils2
+  version: "2.0.0"
+
+source:
+  fn: django-utils2-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-utils2/django-utils2-2.0.0.tar.gz
+  md5: a23cd795466ed3cf140f651956888795
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-utils2 = django-utils2:main
+    #
+    # Would create an entry point called django-utils2 that calls django-utils2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-utils >=1.6.0
+    - anyjson >=0.3.0six
+
+  run:
+    - python
+    - python-utils >=1.6.0
+    - anyjson >=0.3.0six
+
+test:
+  # Python imports
+  imports:
+    - django_utils
+    - django_utils.management
+    - django_utils.management.commands
+    - django_utils.templatetags
+    - tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WoLpH/django-utils
+  license: BSD License
+  summary: 'Django Utils is a module with some convenient utilities not included with the standard Django install'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

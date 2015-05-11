@@ -1,0 +1,70 @@
+package:
+  name: dgw
+  version: "0.1.0"
+
+source:
+  fn: dgw-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dgw/dgw-0.1.0.tar.gz
+  md5: cc0915e7b9c24c235d7df0e796a8372e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dgw = dgw:main
+    #
+    # Would create an entry point called dgw that calls dgw.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dgw
+    - dgw._mlpy
+    - dgw.cli
+    - dgw.cluster
+    - dgw.data
+    - dgw.data.parsers
+    - dgw.data.visualisation
+    - dgw.dtw
+    - dgw.tests
+    - dgw.tests.data
+    - dgw.tests.data.parsers
+    - dgw.tests.dtw
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sauliusl.github.com/dgw/
+  license: GPLv3
+  summary: 'Dynamic Genome Warping'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

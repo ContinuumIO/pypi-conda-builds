@@ -1,0 +1,64 @@
+package:
+  name: django-sql-explorer
+  version: "0.7"
+
+source:
+  fn: django-sql-explorer-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sql-explorer/django-sql-explorer-0.7.tar.gz
+  md5: 83ddcea67ef175bf375de60253b5f0ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sql-explorer = django-sql-explorer:main
+    #
+    # Would create an entry point called django-sql-explorer that calls django-sql-explorer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.7
+    - sqlparse ==0.1.11
+
+  run:
+    - python
+    - django >=1.6.7
+    - sqlparse ==0.1.11
+
+test:
+  # Python imports
+  imports:
+    - explorer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/epantry/django-sql-explorer
+  license: MIT
+  summary: 'A pluggable app that allows users (admins) to execute SQL, view, and export the results. Inspired by Stack Exchange Data Explorer.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: riak-docs
+  version: "0.1.8"
+
+source:
+  fn: riak-docs-0.1.8.zip
+  url: https://pypi.python.org/packages/source/r/riak-docs/riak-docs-0.1.8.zip
+  md5: 033e67262c000c2b40ed154e42267c1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - riak-docs = riak-docs:main
+    #
+    # Would create an entry point called riak-docs that calls riak-docs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - riak
+    - blinker
+
+  run:
+    - python
+    - riak
+    - blinker
+
+test:
+  # Python imports
+  imports:
+    - riakdoc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/danostrowski/riakdocs
+  license: MIT License
+  summary: 'Models to facilitate some common interactions with Riak documents.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

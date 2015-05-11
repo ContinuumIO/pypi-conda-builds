@@ -1,0 +1,78 @@
+package:
+  name: bbarchivist
+  version: "1.4.2"
+
+source:
+  fn: bbarchivist-1.4.2.zip
+  url: https://pypi.python.org/packages/source/b/bbarchivist/bbarchivist-1.4.2.zip
+  md5: b27cf0d6fd22a17d24c92afa6adc9209
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bbarchivist = bbarchivist:main
+    #
+    # Would create an entry point called bbarchivist that calls bbarchivist.main()
+
+    - bb-archivist=bbarchivist.archivist_wrap:main
+    - bb-lazyloader=bbarchivist.lazyloader_wrap:main
+    - bb-cchecker=bbarchivist.carrierchecker_wrap:main
+    - bb-filehasher=bbarchivist.filehasher_wrap:main
+    - bb-escreens=bbarchivist.escreens_wrap:main
+    - bb-linkgen=bbarchivist.linkgen_wrap:main
+    - bb-gpgrunner=bbarchivist.gpgrunner_wrap:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - python-gnupg
+
+  run:
+    - python
+    - requests
+    - python-gnupg
+
+test:
+  # Python imports
+  imports:
+    - bbarchivist
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bb-archivist --help
+    - bb-lazyloader --help
+    - bb-cchecker --help
+    - bb-filehasher --help
+    - bb-escreens --help
+    - bb-linkgen --help
+    - bb-gpgrunner --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/thurask/bbarchivist
+  license: Do whatever
+  summary: 'BlackBerry 10 autoloader tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

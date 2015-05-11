@@ -1,0 +1,66 @@
+package:
+  name: marathon-proxy-manager
+  version: "0.1.5"
+
+source:
+  fn: marathon-proxy-manager-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/marathon-proxy-manager/marathon-proxy-manager-0.1.5.tar.gz
+  md5: 50ca5a93bcaa7b32f128edb5de17ecc1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marathon-proxy-manager = marathon-proxy-manager:main
+    #
+    # Would create an entry point called marathon-proxy-manager that calls marathon-proxy-manager.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - marathon
+    - jinja2
+
+  run:
+    - python
+    - argparse
+    - marathon
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - marathon_proxy_manager
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/michallula/marathon-proxy-manager
+  license: MIT
+  summary: u'Reverse proxy and load balancing configuration for marathon mesos environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

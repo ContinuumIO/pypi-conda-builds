@@ -1,0 +1,66 @@
+package:
+  name: django-zebra
+  version: "0.4.5"
+
+source:
+  fn: django-zebra-0.4.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-zebra/django-zebra-0.4.5.tar.gz
+  md5: 34aaa0998bdbbfeb7dba40f8429dc379
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-zebra = django-zebra:main
+    #
+    # Would create an entry point called django-zebra that calls django-zebra.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - zebra
+    - zebra.conf
+    - zebra.management
+    - zebra.management.commands
+    - zebra.templatetags
+    - zebra_sample_project
+    - zebra_sample_project.marty
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/GoodCloud/django-zebra
+  license: MIT License
+  summary: 'Library for Django and Stripe'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

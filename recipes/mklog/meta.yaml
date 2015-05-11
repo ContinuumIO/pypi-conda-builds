@@ -1,0 +1,62 @@
+package:
+  name: mklog
+  version: "0.3.2"
+
+source:
+  fn: mklog-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mklog/mklog-0.3.2.tar.gz
+  md5: 64f2a7cae46f7c2718cd4c4a5ab3c5b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mklog = mklog:main
+    #
+    # Would create an entry point called mklog that calls mklog.main()
+
+    - mklog = mklog.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mklog
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mklog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://git.framasoft.org/spalax/mklog
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Append date and time before text'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

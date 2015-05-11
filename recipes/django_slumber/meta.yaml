@@ -1,0 +1,82 @@
+package:
+  name: django_slumber
+  version: "0.8.1"
+
+source:
+  fn: django_slumber-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_slumber/django_slumber-0.8.1.tar.gz
+  md5: f578701bb46f8036af4a96b9a9a55d7b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_slumber = django_slumber:main
+    #
+    # Would create an entry point called django_slumber that calls django_slumber.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - httplib2
+    - django-fost-authn >=0.3.8
+    - dicttoxml
+    - dougrain
+    - beautifulsoup
+
+  run:
+    - python
+    - simplejson
+    - httplib2
+    - django-fost-authn >=0.3.8
+    - dicttoxml
+    - dougrain
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - django_slumber
+    - slumber
+    - slumber.connector
+    - slumber.operations
+    - slumber.server
+    - slumber_ex_shop
+    - slumber_examples
+    - slumber_examples.nested1
+    - slumber_examples.nested1.nested2
+    - slumber_examples.no_models
+    - slumber_examples.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/KayEss/django-slumber
+  license: Boost Software License - Version 1.0 - August 17th, 2003
+  summary: 'RESTful data connector for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,107 @@
+package:
+  name: neurounits
+  version: "0.1.2"
+
+source:
+  fn: NeuroUnits-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/N/NeuroUnits/NeuroUnits-0.1.2.tar.gz
+  md5: 6b99c94dfa1e2dfe764fbd1ebebc7902
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - neurounits = neurounits:main
+    #
+    # Would create an entry point called neurounits that calls neurounits.main()
+
+    - neurounits.nine = neurounits.frontend.cmdline.nineml_fe:main
+    - neurounits = neurounits.frontend.cmdline.neurounits:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - matplotlib
+    - quantities
+    - straight.plugin
+    - networkx
+
+  run:
+    - python
+    - matplotlib
+    - quantities
+    - straight.plugin
+    - networkx
+
+test:
+  # Python imports
+  imports:
+    - neurounits
+    - neurounits.ast
+    - neurounits.ast_annotations
+    - neurounits.ast_builder
+    - neurounits.ast_builder.eqnsetbuilder_io
+    - neurounits.ast_operations
+    - neurounits.codegen
+    - neurounits.codegen.cffi_functor
+    - neurounits.codegen.cpp
+    - neurounits.codegen.cpp.fixed_point
+    - neurounits.codegen.nmodl
+    - neurounits.codegen.population_infrastructure
+    - neurounits.codegen.python_functor
+    - neurounits.codegen.utils
+    - neurounits.codegen.utils.c_compilation
+    - neurounits.frontend
+    - neurounits.frontend.cmdline
+    - neurounits.frontend.gui
+    - neurounits.importers
+    - neurounits.importers.neuroml
+    - neurounits.simulation_io
+    - neurounits.unit_data
+    - neurounits.unit_expr_parsing
+    - neurounits.unit_term_parsing
+    - neurounits.units_backends
+    - neurounits.visitors
+    - neurounits.visitors.bases
+    - neurounits.visitors.common
+    - neurounits.visualisation
+    - neurounits.visualisation.mredoc
+    - neurounits.visualisation.networkx
+    - neurounitscontrib
+    - neurounitscontrib.demo
+    - neurounitscontrib.demo.plugins
+    - neurounitscontrib.test
+    - neurounitscontrib.test.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - neurounits.nine --help
+    - neurounits --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mikehulluk/NeuroUnits
+  license: BSD License
+  summary: 'A library for parsing quantities and sets of equations involving units for computational neuroscience.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

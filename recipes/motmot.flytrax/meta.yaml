@@ -1,0 +1,70 @@
+package:
+  name: motmot.flytrax
+  version: "0.5.8"
+
+source:
+  fn: motmot.flytrax-0.5.8.tar.gz
+  url: https://pypi.python.org/packages/source/m/motmot.flytrax/motmot.flytrax-0.5.8.tar.gz
+  md5: 53b76f973b256bd6c4d4f245ae53076d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - motmot.flytrax = motmot.flytrax:main
+    #
+    # Would create an entry point called motmot.flytrax that calls motmot.flytrax.main()
+
+    - flytrax_print_info = motmot.flytrax.traxio:print_info_main
+    - trx2fullframefmf = motmot.flytrax.trx2fullframefmf:main
+    - flytrax_replay = motmot.flytrax.trax_replay:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - motmot.flymovieformat
+
+  run:
+    - python
+    - setuptools
+    - motmot.flymovieformat
+
+test:
+  # Python imports
+  imports:
+    - motmot
+    - motmot.flytrax
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flytrax_print_info --help
+    - trx2fullframefmf --help
+    - flytrax_replay --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.astraw.com/projects/motmot
+  license: BSD
+  summary: 'plugin for fview to perform 2D image tracking (part of the motmot camera packages)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: confluent_client
+  version: "1.0"
+
+source:
+  fn: confluent_client-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/confluent_client/confluent_client-1.0.tar.gz
+  md5: 535eccbaf81244bb1e318249254bb04b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - confluent_client = confluent_client:main
+    #
+    # Would create an entry point called confluent_client that calls confluent_client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - confluent_common >=0.1.0
+
+  run:
+    - python
+    - confluent_common >=0.1.0
+
+test:
+  # Python imports
+  imports:
+    - confluent
+    - confluent_client
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://xcat.sf.net/
+  license: UNKNOWN
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

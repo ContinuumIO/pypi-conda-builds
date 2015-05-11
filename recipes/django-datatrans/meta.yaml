@@ -1,0 +1,65 @@
+package:
+  name: django-datatrans
+  version: "0.1.5"
+
+source:
+  fn: django-datatrans-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-datatrans/django-datatrans-0.1.5.tar.gz
+  md5: ad407084e03755efcb00cb22a90e1366
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-datatrans = django-datatrans:main
+    #
+    # Would create an entry point called django-datatrans that calls django-datatrans.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - datatrans
+    - datatrans.management
+    - datatrans.management.commands
+    - datatrans.migrations
+    - test_project
+    - test_project.testapp
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/citylive/django-datatrans/
+  license: BSD License
+  summary: 'Translate Django models without changing anything to existing applications and their underlying database.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

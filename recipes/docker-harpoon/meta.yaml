@@ -1,0 +1,85 @@
+package:
+  name: docker-harpoon
+  version: "0.5.6.6"
+
+source:
+  fn: docker-harpoon-0.5.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-harpoon/docker-harpoon-0.5.6.6.tar.gz
+  md5: d6acd33e8d5c35b730170261119686fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-harpoon = docker-harpoon:main
+    #
+    # Would create an entry point called docker-harpoon that calls docker-harpoon.main()
+
+    - harpoon = harpoon.executor:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - delfick_error ==1.6.1
+    - option_merge ==0.9.4
+    - input_algorithms ==0.4.4.3
+    - docker-py ==1.2.1
+    - six
+    - glob2
+    - dulwich
+    - humanize
+    - pyyaml ==3.10
+    - rainbow_logging_handler ==2.2.2
+
+  run:
+    - python
+    - delfick_error ==1.6.1
+    - option_merge ==0.9.4
+    - input_algorithms ==0.4.4.3
+    - docker-py ==1.2.1
+    - six
+    - glob2
+    - dulwich
+    - humanize
+    - pyyaml ==3.10
+    - rainbow_logging_handler ==2.2.2
+
+test:
+  # Python imports
+  imports:
+    - harpoon
+    - harpoon.dockerpty
+    - harpoon.option_spec
+    - harpoon.ship
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - harpoon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/realestate-com-au/harpoon
+  license: MIT
+  summary: 'Opinionated wrapper around docker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

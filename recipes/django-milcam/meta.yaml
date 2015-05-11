@@ -1,0 +1,80 @@
+package:
+  name: django-milcam
+  version: "0.3.1"
+
+source:
+  fn: django-milcam-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-milcam/django-milcam-0.3.1.tar.gz
+  md5: a20c091eaed60d6e4eb57bd5f5120674
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-milcam = django-milcam:main
+    #
+    # Would create an entry point called django-milcam that calls django-milcam.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.6.7
+    - pytz ==2014.4
+    - django-geoposition ==0.2.2
+    - pil ==1.1.7
+    - sorl-thumbnail ==11.12
+    - django-uuidfield ==0.5.0
+    - django-annoying ==0.8.0
+    - django-tastypie ==0.11.1
+    - django-js-reverse ==0.3.3
+
+  run:
+    - python
+    - django ==1.6.7
+    - pytz ==2014.4
+    - django-geoposition ==0.2.2
+    - pil ==1.1.7
+    - sorl-thumbnail ==11.12
+    - django-uuidfield ==0.5.0
+    - django-annoying ==0.8.0
+    - django-tastypie ==0.11.1
+    - django-js-reverse ==0.3.3
+
+test:
+  # Python imports
+  imports:
+    - milcam
+    - milcam.migrations
+    - milcam.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/anonymous-ukrainian-patriot/django-milcam/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Military Camera project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

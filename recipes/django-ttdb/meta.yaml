@@ -1,0 +1,64 @@
+package:
+  name: django-ttdb
+  version: "0.2"
+
+source:
+  fn: django-ttdb-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ttdb/django-ttdb-0.2.tar.gz
+  md5: 7ea30ba3234a2266575bd26cd0a79b72
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ttdb = django-ttdb:main
+    #
+    # Would create an entry point called django-ttdb that calls django-ttdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.2,<1.7
+    - mock
+
+  run:
+    - python
+    - django >=1.4.2,<1.7
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - ttdb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/wilbuick/django-ttdb
+  license: BSD License
+  summary: 'Creates a django test database using a postgres template database.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: django-invitation
+  version: "1.0"
+
+source:
+  fn: django-invitation-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-invitation/django-invitation-1.0.tar.gz
+  md5: a6649ff5f2b07cee711afedc891c26f6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-invitation = django-invitation:main
+    #
+    # Would create an entry point called django-invitation that calls django-invitation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - invitation
+    - invitation.management
+    - invitation.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.welldev.org/django-invitation/
+  license: BSD License
+  summary: 'Built on top of django-registration, it restricts registration to a given number of invited person per active user (strategy introduced by GMail to involve 2.0 users).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

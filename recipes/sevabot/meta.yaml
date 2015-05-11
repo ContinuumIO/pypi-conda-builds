@@ -1,0 +1,69 @@
+package:
+  name: sevabot
+  version: "1.2.4"
+
+source:
+  fn: sevabot-1.2.4.zip
+  url: https://pypi.python.org/packages/source/s/sevabot/sevabot-1.2.4.zip
+  md5: 9b81412cf6f7173f3ea7564fe2124391
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sevabot = sevabot:main
+    #
+    # Would create an entry point called sevabot that calls sevabot.main()
+
+    - sevabot=sevabot.frontend.main:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - skype4py
+    - plac
+
+  run:
+    - python
+    - setuptools
+    - flask
+    - skype4py
+    - plac
+
+test:
+  # Python imports
+  imports:
+    - sevabot
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sevabot --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/opensourcehacker/sevabot
+  license: BSD
+  summary: 'A Skype bot supporting integration with external services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

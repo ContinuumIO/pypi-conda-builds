@@ -1,0 +1,64 @@
+package:
+  name: hammertime
+  version: "0.2.4"
+
+source:
+  fn: Hammertime-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/H/Hammertime/Hammertime-0.2.4.tar.gz
+  md5: 0ef6035f4342144140670aa69a162505
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hammertime = hammertime:main
+    #
+    # Would create an entry point called hammertime that calls hammertime.main()
+
+    - git-time = hammertime:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython
+
+  run:
+    - python
+    - gitpython
+
+test:
+  # Python imports
+  imports:
+    - hammertime
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-time --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/caffeinehit/hammertime
+  license: MIT License
+  summary: 'Time tracking with git.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

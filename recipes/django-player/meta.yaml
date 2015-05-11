@@ -1,0 +1,138 @@
+package:
+  name: django-player
+  version: "0.1.0-beta8"
+
+source:
+  fn: django-player-0.1.0-beta8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-player/django-player-0.1.0-beta8.tar.gz
+  md5: eb298155b742dba6313d7d1744ad41f7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-player = django-player:main
+    #
+    # Would create an entry point called django-player that calls django-player.main()
+
+    - create-website = player.bin.create_website:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+    - feedparser
+    - elementtree
+    - south ==0.7.6
+    - cmsutils
+    - cssutils
+    - django-pagination >=1.0.7
+    - template_utils
+    - django-oembed
+    - django-announcements >=0.1.2
+    - transhette
+    - django-inlinetrans >=0.4.3dev
+    - django-transmeta >=0.6
+    - django-debug-toolbar-django13
+    - sorl-thumbnail >=11.01
+    - django_compressor ==0.5.3
+    - django-classy-tags ==0.3.0
+    - django-inplaceedit >=0.60
+    - django-dbtemplates >=0.8.0
+    - django-reversion >=1.3.2
+    - django-dburlresolvers ==0.1.0-beta2
+    - django-staging
+    - django-configfield
+    - django-filebrowser-django13
+    - pygments ==1.0
+
+  run:
+    - python
+    - beautifulsoup
+    - feedparser
+    - elementtree
+    - south ==0.7.6
+    - cmsutils
+    - cssutils
+    - django-pagination >=1.0.7
+    - template_utils
+    - django-oembed
+    - django-announcements >=0.1.2
+    - transhette
+    - django-inlinetrans >=0.4.3dev
+    - django-transmeta >=0.6
+    - django-debug-toolbar-django13
+    - sorl-thumbnail >=11.01
+    - django_compressor ==0.5.3
+    - django-classy-tags ==0.3.0
+    - django-inplaceedit >=0.60
+    - django-dbtemplates >=0.8.0
+    - django-reversion >=1.3.2
+    - django-dburlresolvers ==0.1.0-beta2
+    - django-staging
+    - django-configfield
+    - django-filebrowser-django13
+    - pygments ==1.0
+
+test:
+  # Python imports
+  imports:
+    - example_project
+    - example_project.items
+    - example_project.news
+    - example_project.website
+    - player
+    - player.base
+    - player.base.management
+    - player.base.templatetags
+    - player.bin
+    - player.block
+    - player.block.templatetags
+    - player.crawler
+    - player.crawler.backends
+    - player.crawler.management
+    - player.crawler.management.commands
+    - player.data
+    - player.data.templatetags
+    - player.dbtemplate
+    - player.dburl
+    - player.logicaldelete
+    - player.manage
+    - player.manage.templatetags
+    - player.migration
+    - player.multimedia
+    - player.multimedia.templatetags
+    - player.player_staging
+    - player.serializers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - create-website --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Django-based Presentation Layer, focused on present contents extracted from CMSs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

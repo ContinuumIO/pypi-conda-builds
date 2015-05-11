@@ -1,0 +1,64 @@
+package:
+  name: django-subdomain
+  version: "1.1"
+
+source:
+  fn: django-subdomain-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-subdomain/django-subdomain-1.1.tar.gz
+  md5: eba74c45a3b6d7870a32f100db998389
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-subdomain = django-subdomain:main
+    #
+    # Would create an entry point called django-subdomain that calls django-subdomain.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - project
+    - project.subdomains
+    - project.subdomains.conf
+    - subdomains
+    - subdomains.conf
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.agiliq.com/
+  license: GNU General Public License (GPL)
+  summary: 'app to provide subdomain functionality in django project'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

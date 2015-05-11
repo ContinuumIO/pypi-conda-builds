@@ -1,0 +1,69 @@
+package:
+  name: zgeo.plone.atom
+  version: "0.2"
+
+source:
+  fn: zgeo.plone.atom-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zgeo.plone.atom/zgeo.plone.atom-0.2.tar.gz
+  md5: 6cdf12fe46dd4b65298ad868d6969675
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zgeo.plone.atom = zgeo.plone.atom:main
+    #
+    # Would create an entry point called zgeo.plone.atom that calls zgeo.plone.atom.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zgeo.atom >=0.4
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zgeo.atom >=0.4
+
+test:
+  # Python imports
+  imports:
+    - zgeo
+    - zgeo.plone
+    - zgeo.plone.atom
+    - zgeo.plone.atom.Extensions
+    - zgeo.plone.atom.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://trac.gispython.org/projects/PrimaGIS/wiki/zgeo.plone.atom
+  license: GPL
+  summary: 'Plone specific Atom syndication with GeoRSS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

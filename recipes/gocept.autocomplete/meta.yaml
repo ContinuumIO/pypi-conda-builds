@@ -1,0 +1,81 @@
+package:
+  name: gocept.autocomplete
+  version: "0.6"
+
+source:
+  fn: gocept.autocomplete-0.6.zip
+  url: https://pypi.python.org/packages/source/g/gocept.autocomplete/gocept.autocomplete-0.6.zip
+  md5: 6611616504fc6132f52ef5bf58495cf6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.autocomplete = gocept.autocomplete:main
+    #
+    # Would create an entry point called gocept.autocomplete that calls gocept.autocomplete.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - js.jqueryui
+    - setuptools
+    - z3c.form
+    - zope.browser
+    - zope.component
+    - zope.interface
+    - zope.pagetemplate
+    - zope.publisher
+    - zope.schema
+    - zope.traversing
+
+  run:
+    - python
+    - js.jqueryui
+    - setuptools
+    - z3c.form
+    - zope.browser
+    - zope.component
+    - zope.interface
+    - zope.pagetemplate
+    - zope.publisher
+    - zope.schema
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.autocomplete
+    - gocept.autocomplete.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'AJAX autocomplete widget for z3c.form'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

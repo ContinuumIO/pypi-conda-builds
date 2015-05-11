@@ -1,0 +1,78 @@
+package:
+  name: sloth-ci
+  version: "1.2.6"
+
+source:
+  fn: sloth-ci-1.2.6.zip
+  url: https://pypi.python.org/packages/source/s/sloth-ci/sloth-ci-1.2.6.zip
+  md5: 091ce794ab4bce25c63551d7be146534
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sloth-ci = sloth-ci:main
+    #
+    # Would create an entry point called sloth-ci that calls sloth-ci.main()
+
+    - sloth-ci = sloth_ci.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cherrypy
+    - routes
+    - pyyaml
+    - requests
+    - docopt
+    - tabulate
+    - colorama
+
+  run:
+    - python
+    - cherrypy
+    - routes
+    - pyyaml
+    - requests
+    - docopt
+    - tabulate
+    - colorama
+
+test:
+  # Python imports
+  imports:
+    - sloth_ci
+    - sloth_ci.api
+    - sloth_ci.ext
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sloth-ci --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/moigagoo/sloth-ci
+  license: MIT
+  summary: 'Simple app for automatization of everything'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

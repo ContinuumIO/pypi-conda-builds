@@ -1,0 +1,73 @@
+package:
+  name: kinto
+  version: "0.2.1"
+
+source:
+  fn: kinto-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/k/kinto/kinto-0.2.1.tar.gz
+  md5: 1fb9e9a8a32645347bc42dac2c41f2ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kinto = kinto:main
+    #
+    # Would create an entry point called kinto that calls kinto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colander
+    - cornice
+    - six
+    - waitress
+    - cliquet[postgresql,monitoring] >=1.4.1
+
+  run:
+    - python
+    - setuptools
+    - colander
+    - cornice
+    - six
+    - waitress
+    - cliquet[postgresql,monitoring] >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - kinto
+    - kinto.tests
+    - kinto.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: Apache Software License
+  summary: 'kinto'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

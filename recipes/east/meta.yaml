@@ -1,0 +1,73 @@
+package:
+  name: east
+  version: "0.3.8"
+
+source:
+  fn: EAST-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/E/EAST/EAST-0.3.8.tar.gz
+  md5: 239fba8610c0e407d0d4d1002f41c845
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - east = east:main
+    #
+    # Would create an entry point called east that calls east.main()
+
+    - east = east.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.7.1
+    - docutils >=0.3
+    - testtools >=0.9.35
+
+  run:
+    - python
+    - numpy >=1.7.1
+    - docutils >=0.3
+    - testtools >=0.9.35
+
+test:
+  # Python imports
+  imports:
+    - analysis
+    - east
+    - east.asts
+    - east.synonyms
+    - tests
+    - tests.asts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - east --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/msdubov/AST-text-analysis
+  license: MIT
+  summary: 'Text analysis library based on the Annotated Suffix Tree method'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

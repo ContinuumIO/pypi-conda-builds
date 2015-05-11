@@ -1,0 +1,70 @@
+package:
+  name: daploader
+  version: "0.0.9"
+
+source:
+  fn: daploader-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/daploader/daploader-0.0.9.tar.gz
+  md5: 0fc25614cd74985644a12e24045a5be8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - daploader = daploader:main
+    #
+    # Would create an entry point called daploader that calls daploader.main()
+
+    - daplint = daploader.daplint:lint
+    - dapi = daploader.dapicli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - requests
+    - sh
+
+  run:
+    - python
+    - pyyaml
+    - requests
+    - sh
+
+test:
+  # Python imports
+  imports:
+    - daploader
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - daplint --help
+    - dapi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hroncok/daploader
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Dap archives loader and checker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

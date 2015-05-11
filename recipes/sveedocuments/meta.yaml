@@ -1,0 +1,82 @@
+package:
+  name: sveedocuments
+  version: "1.1.1"
+
+source:
+  fn: sveedocuments-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/sveedocuments/sveedocuments-1.1.1.tar.gz
+  md5: 79ad0f95ab64054cab2b9cb416e41eb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sveedocuments = sveedocuments:main
+    #
+    # Would create an entry point called sveedocuments that calls sveedocuments.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils >=0.7
+    - rstview >=0.2
+    - autobreadcrumbs >=1.0
+    - djangocodemirror >=0.9.6
+    - django-mptt >=0.6.1
+    - crispy-forms-foundation >=0.3.4
+    - django-braces >=1.3.0
+
+  run:
+    - python
+    - docutils >=0.7
+    - rstview >=0.2
+    - autobreadcrumbs >=1.0
+    - djangocodemirror >=0.9.6
+    - django-mptt >=0.6.1
+    - crispy-forms-foundation >=0.3.4
+    - django-braces >=1.3.0
+
+test:
+  # Python imports
+  imports:
+    - sveedocuments
+    - sveedocuments.forms
+    - sveedocuments.management
+    - sveedocuments.management.commands
+    - sveedocuments.migrations
+    - sveedocuments.templatetags
+    - sveedocuments.utils
+    - sveedocuments.views
+    - sveedocuments.views.board
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/sveedocuments
+  license: MIT License
+  summary: '\nDjango application to manage documents in ReStructuredText\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: isass
+  version: "0.1.14"
+
+source:
+  fn: isass-0.1.14.tar.gz
+  url: https://pypi.python.org/packages/source/i/isass/isass-0.1.14.tar.gz
+  md5: 4b60047f81dcb768c435efb29fe47350
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isass = isass:main
+    #
+    # Would create an entry point called isass that calls isass.main()
+
+    - isass = isass.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyscss >=1.2.0
+    - watchdog >=0.6.0
+    - pymlconf
+    - csscompressor
+
+  run:
+    - python
+    - pyscss >=1.2.0
+    - watchdog >=0.6.0
+    - pymlconf
+    - csscompressor
+
+test:
+  # Python imports
+  imports:
+    - isass
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - isass --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pylover/isass
+  license: MIT License
+  summary: 'compiles indented-SASS-syntax to CSS stylesheets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

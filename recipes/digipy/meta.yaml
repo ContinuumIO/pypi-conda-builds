@@ -1,0 +1,81 @@
+package:
+  name: digipy
+  version: "0.1.1"
+
+source:
+  fn: digipy-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/digipy/digipy-0.1.1.tar.gz
+  md5: fe38d17133a831177cc4e79025f0ca60
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - digipy = digipy:main
+    #
+    # Would create an entry point called digipy that calls digipy.main()
+
+    - digipy = digipy.app:main
+    - digipy-freq-analysis = digipy.data_analysis_freq:main
+    - digipy-features2D = digipy.features_2d:main
+    - digipy-train = digipy.train:main
+    - digipy-compare = digipy.compare_raw_FE:main
+    - digipy-extract-features = digipy.extract_features:main
+    - digipy-see-data = digipy.see_sample_digits:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mlboost >=0.4.1
+    - pil >=1.1.6
+
+  run:
+    - python
+    - mlboost >=0.4.1
+    - pil >=1.1.6
+
+test:
+  # Python imports
+  imports:
+    - digipy
+    - digipy.datasets
+    - digipy.datasets.digits
+    - digipy.ui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - digipy --help
+    - digipy-freq-analysis --help
+    - digipy-features2D --help
+    - digipy-train --help
+    - digipy-compare --help
+    - digipy-extract-features --help
+    - digipy-see-data --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: AGPL v3 or later
+  summary: 'A cool demo for Montreal Python 6 that does real time digits recognition'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

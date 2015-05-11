@@ -1,0 +1,77 @@
+package:
+  name: fabricant
+  version: "1.0.1"
+
+source:
+  fn: Fabricant-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Fabricant/Fabricant-1.0.1.tar.gz
+  md5: 24d3ef8f7bff635fad70b854f98bb06a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fabricant = fabricant:main
+    #
+    # Would create an entry point called fabricant that calls fabricant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - fabtools
+    - tabulate
+
+  run:
+    - python
+    - fabric
+    - fabtools
+    - tabulate
+
+test:
+  # Python imports
+  imports:
+    - fabricant
+    - fabricant.coreos
+    - fabricant.coreos.services
+    - fabricant.coreos.services.mariadb
+    - fabricant.coreos.services.mongo
+    - fabricant.coreos.services.mysql
+    - fabricant.coreos.services.nginx
+    - fabricant.coreos.services.postgres
+    - fabricant.coreos.services.rabbitmq
+    - fabricant.coreos.services.rabbitmq_management
+    - fabricant.coreos.services.redis
+    - fabricant.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kamil.samigullin.info/github/Fabricant
+  license: MIT License
+  summary: 'Automation with Fabric.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

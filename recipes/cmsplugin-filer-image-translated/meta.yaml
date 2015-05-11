@@ -1,0 +1,71 @@
+package:
+  name: cmsplugin-filer-image-translated
+  version: "0.2"
+
+source:
+  fn: cmsplugin-filer-image-translated-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-filer-image-translated/cmsplugin-filer-image-translated-0.2.tar.gz
+  md5: f7710e7dd588e10759be75f082fecb91
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-filer-image-translated = cmsplugin-filer-image-translated:main
+    #
+    # Would create an entry point called cmsplugin-filer-image-translated that calls cmsplugin-filer-image-translated.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-filer
+    - django-hvad
+
+  run:
+    - python
+    - django
+    - django-filer
+    - django-hvad
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_filer_image_translated
+    - cmsplugin_filer_image_translated.migrations
+    - cmsplugin_filer_image_translated.settings
+    - cmsplugin_filer_image_translated.tests
+    - cmsplugin_filer_image_translated.tests.test_app
+    - fabfile
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/cmsplugin-filer-image-translated
+  license: The MIT License
+  summary: 'Adds simple-translation to the Image admin of cmsplugin-filer\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

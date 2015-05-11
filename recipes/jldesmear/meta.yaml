@@ -1,0 +1,75 @@
+package:
+  name: jldesmear
+  version: "2014.03.14"
+
+source:
+  fn: jldesmear-2014.03.14.zip
+  url: https://pypi.python.org/packages/source/j/jldesmear/jldesmear-2014.03.14.zip
+  md5: 1129c5d70849e91bbd7f1d8c2c1bb80f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jldesmear = jldesmear:main
+    #
+    # Would create an entry point called jldesmear that calls jldesmear.main()
+
+    - jldesmear_qt = jldesmear.desmear:desmear_qt
+    - jldesmear = jldesmear.desmear:desmear_cli
+    - jldesmear_traits = jldesmear.gui.traitsgui:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx >=0.6
+    - numpy
+    - scipy
+
+  run:
+    - python
+    - sphinx >=0.6
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - jldesmear
+    - jldesmear/api
+    - jldesmear/fileio
+    - jldesmear/gui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jldesmear_qt --help
+    - jldesmear --help
+    - jldesmear_traits --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://prjemian.github.io/jldesmear
+  license:  (see LICENSE file for details)
+  summary: u'Desmear small-angle scattering data by Jemian and Lake'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

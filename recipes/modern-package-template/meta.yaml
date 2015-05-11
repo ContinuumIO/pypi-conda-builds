@@ -1,0 +1,65 @@
+package:
+  name: modern-package-template
+  version: "1.0"
+
+source:
+  fn: modern-package-template-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/modern-package-template/modern-package-template-1.0.tar.gz
+  md5: 37c3777013c758720742325b995b623e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - modern-package-template = modern-package-template:main
+    #
+    # Would create an entry point called modern-package-template that calls modern-package-template.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste
+    - pastescript
+
+  run:
+    - python
+    - setuptools
+    - paste
+    - pastescript
+
+test:
+  # Python imports
+  imports:
+    - modern_package
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/srid/modern-package-template/
+  license: GNU General Public License (GPL)
+  summary: 'PasteScript template to create a Python project with distribute and buildout support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

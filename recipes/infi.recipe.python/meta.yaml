@@ -1,0 +1,72 @@
+package:
+  name: infi.recipe.python
+  version: "0.6.17"
+
+source:
+  fn: infi.recipe.python-0.6.17.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.recipe.python/infi.recipe.python-0.6.17.tar.gz
+  md5: 295d2039f0d54b4db44a5dcb4248c959
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.recipe.python = infi.recipe.python:main
+    #
+    # Would create an entry point called infi.recipe.python that calls infi.recipe.python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - infi.os_info
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - infi.os_info
+    - setuptools
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.recipe
+    - infi.recipe.python
+    - infi.recipe.python.download
+    - infi.recipe.python.pack
+    - infi.recipe.python.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.recipe.python
+  license: Python Software Foundation License
+  summary: 'a recipe for downloading and packing portable builds of Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

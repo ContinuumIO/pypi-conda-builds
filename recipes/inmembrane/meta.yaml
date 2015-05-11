@@ -1,0 +1,70 @@
+package:
+  name: inmembrane
+  version: "0.94.2"
+
+source:
+  fn: inmembrane-0.94.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/inmembrane/inmembrane-0.94.2.tar.gz
+  md5: d5841e9b0fdcf3391f474c3e5ab55509
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inmembrane = inmembrane:main
+    #
+    # Would create an entry point called inmembrane that calls inmembrane.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - suds >=0.4
+    - beautifulsoup >=3.2.1
+    - twill ==0.9.1
+    - requests >=2.0.0
+
+  run:
+    - python
+    - suds >=0.4
+    - beautifulsoup >=3.2.1
+    - twill ==0.9.1
+    - requests >=2.0.0
+
+test:
+  # Python imports
+  imports:
+    - inmembrane
+    - inmembrane.plugins
+    - inmembrane.protocols
+    - inmembrane.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/boscoh/inmembrane
+  license: BSD License
+  summary: 'A bioinformatic pipeline for proteome annotation to predict if a protein is exposed on the surface of a bacteria.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

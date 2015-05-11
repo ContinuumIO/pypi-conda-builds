@@ -1,0 +1,91 @@
+package:
+  name: carml
+  version: "0.0.6"
+
+source:
+  fn: carml-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/carml/carml-0.0.6.tar.gz
+  md5: fbf6accfae1c63c015a65eb58ab759fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - carml = carml:main
+    #
+    # Would create an entry point called carml that calls carml.main()
+
+    - carml = carml.dispatch:dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - humanize ==0.5
+    - ansicolors ==1.0.2
+    - txtorcon ==0.10.0
+    - zope.interface ==4.0.5
+    - pyopenssl ==0.14
+    - service_identity
+    - cryptography ==0.4
+    - six ==1.7.3
+    - cffi ==0.8.2
+    - pycparser ==2.10
+    - twisted ==14.0.0
+    - pyasn1 ==0.1.7
+    - characteristic ==0.1.0
+    - pyasn1_modules ==0.0.5
+
+  run:
+    - python
+    - humanize ==0.5
+    - ansicolors ==1.0.2
+    - txtorcon ==0.10.0
+    - zope.interface ==4.0.5
+    - pyopenssl ==0.14
+    - service_identity
+    - cryptography ==0.4
+    - six ==1.7.3
+    - cffi ==0.8.2
+    - pycparser ==2.10
+    - twisted ==14.0.0
+    - pyasn1 ==0.1.7
+    - characteristic ==0.1.0
+    - pyasn1_modules ==0.0.5
+
+test:
+  # Python imports
+  imports:
+    - carml
+    - carml.command
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - carml --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/meejah/carml
+  license: Public Domain (http://unlicense.org/)
+  summary: 'A command-line tool to query and control a running Tor. Based on txtorcon + Twisted.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

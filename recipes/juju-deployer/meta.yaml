@@ -1,0 +1,69 @@
+package:
+  name: juju-deployer
+  version: "0.4.3"
+
+source:
+  fn: juju-deployer-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/j/juju-deployer/juju-deployer-0.4.3.tar.gz
+  md5: 8cca0b74931061be56109fc862152cfa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - juju-deployer = juju-deployer:main
+    #
+    # Would create an entry point called juju-deployer that calls juju-deployer.main()
+
+    - juju-deployer = deployer.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jujuclient >=0.18
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - jujuclient >=0.18
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - deployer
+    - deployer.action
+    - deployer.env
+    - deployer.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - juju-deployer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/juju-deployer
+  license: UNKNOWN
+  summary: 'A tool for deploying complex stacks with juju.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

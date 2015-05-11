@@ -1,0 +1,65 @@
+package:
+  name: django-socialprofile
+  version: "0.2.2"
+
+source:
+  fn: django-socialprofile-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-socialprofile/django-socialprofile-0.2.2.tar.gz
+  md5: c8e12588dd38c02b8b2a7aa6204e71fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-socialprofile = django-socialprofile:main
+    #
+    # Would create an entry point called django-socialprofile that calls django-socialprofile.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7.1
+    - python-social-auth >=0.2.1
+
+  run:
+    - python
+    - django >=1.7.1
+    - python-social-auth >=0.2.1
+
+test:
+  # Python imports
+  imports:
+    - socialprofile
+    - socialprofile.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cyface/django-socialprofile
+  license: BSD License
+  summary: 'django-socialprofile enables users to manage their user profile built by logging in via a social     service such as Google, Twitter, or Facebook. It relies on python-socialauth.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

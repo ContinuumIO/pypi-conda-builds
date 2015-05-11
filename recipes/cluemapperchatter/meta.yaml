@@ -1,0 +1,67 @@
+package:
+  name: cluemapperchatter
+  version: "0.6"
+
+source:
+  fn: ClueMapperChatter-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/C/ClueMapperChatter/ClueMapperChatter-0.6.tar.gz
+  md5: 012910a02e3af008f7c6b950c2b933fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cluemapperchatter = cluemapperchatter:main
+    #
+    # Would create an entry point called cluemapperchatter that calls cluemapperchatter.main()
+
+    - cluechatter-notify = clue.chatter.svnnotify:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - supybot >=0.83,<=0.83.9999
+
+  run:
+    - python
+    - setuptools
+    - supybot >=0.83,<=0.83.9999
+
+test:
+  # Python imports
+  imports:
+    - clue
+    - clue.chatter
+    - cluemapperchatter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cluechatter-notify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cluemapper.org
+  license: BSD
+  summary: 'Instant messaging plugin for ClueMapper.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

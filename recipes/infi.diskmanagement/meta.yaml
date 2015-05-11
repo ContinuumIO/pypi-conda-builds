@@ -1,0 +1,84 @@
+package:
+  name: infi.diskmanagement
+  version: "0.3.9"
+
+source:
+  fn: infi.diskmanagement-0.3.9.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.diskmanagement/infi.diskmanagement-0.3.9.tar.gz
+  md5: 3ac2495adfa9f6f56dbc08cf5c7ae9aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.diskmanagement = infi.diskmanagement:main
+    #
+    # Would create an entry point called infi.diskmanagement that calls infi.diskmanagement.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - capacity
+    - infi.cwrap
+    - infi.devicemanager
+    - infi.instruct
+    - infi.pyutils
+    - infi.wioctl >=0.1.3
+    - infi.wmi
+    - setuptools
+    - waiting
+
+  run:
+    - python
+    - capacity
+    - infi.cwrap
+    - infi.devicemanager
+    - infi.instruct
+    - infi.pyutils
+    - infi.wioctl >=0.1.3
+    - infi.wmi
+    - setuptools
+    - waiting
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.diskmanagement
+    - infi.diskmanagement.disk
+    - infi.diskmanagement.ioctl
+    - infi.diskmanagement.mount_manager
+    - infi.diskmanagement.wmi
+    - infi.diskmanagement.wmi.model
+    - infi.diskmanagement.wmi.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.diskmanagement
+  license: Python Software Foundation License
+  summary: 'Windows Disk Management wrapping in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

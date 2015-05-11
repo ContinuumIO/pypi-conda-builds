@@ -1,0 +1,89 @@
+package:
+  name: brian
+  version: "1.4.1"
+
+source:
+  fn: brian-1.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/brian/brian-1.4.1.tar.gz
+  md5: eae71f4755884b0abebd549e13f0a826
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brian = brian:main
+    #
+    # Would create an entry point called brian that calls brian.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - brian
+    - brian.connections
+    - brian.deprecated
+    - brian.experimental
+    - brian.experimental.codegen
+    - brian.experimental.codegen2
+    - brian.experimental.codegen2.gpu
+    - brian.experimental.compensation
+    - brian.experimental.cspikequeue
+    - brian.experimental.cuda
+    - brian.experimental.genn
+    - brian.experimental.modelfitting
+    - brian.experimental.nemo
+    - brian.experimental.neuromorphic
+    - brian.hears
+    - brian.hears.filtering
+    - brian.hears.hrtf
+    - brian.library
+    - brian.library.electrophysiology
+    - brian.library.modelfitting
+    - brian.synapses
+    - brian.tests
+    - brian.tests.testcorrectness
+    - brian.tests.testfeatures
+    - brian.tests.testinterface
+    - brian.tests.testutils
+    - brian.tools
+    - brian.utils
+    - brian.utils.ccircular
+    - brian.utils.fastexp
+    - brian.utils.sparse_patch
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.briansimulator.org/
+  license: UNKNOWN
+  summary: 'A clock-driven simulator for spiking neural networks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

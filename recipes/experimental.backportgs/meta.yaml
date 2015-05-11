@@ -1,0 +1,68 @@
+package:
+  name: experimental.backportgs
+  version: "0.2.1"
+
+source:
+  fn: experimental.backportGS-0.2.1.zip
+  url: https://pypi.python.org/packages/source/e/experimental.backportGS/experimental.backportGS-0.2.1.zip
+  md5: 12a3161a3b6a84eafea957e2f43f2593
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - experimental.backportgs = experimental.backportgs:main
+    #
+    # Would create an entry point called experimental.backportgs that calls experimental.backportgs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone <=4.0b1
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone <=4.0b1
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - experimental
+    - experimental.backportGS
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/RedTurtle/experimental.backportGS
+  license: GPL
+  summary: 'Monkey-patch Plone 3 to make Plone 4 Generic Setup import steps to continue working'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,89 @@
+package:
+  name: mrwolfe
+  version: "1.2.0"
+
+source:
+  fn: mrwolfe-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mrwolfe/mrwolfe-1.2.0.tar.gz
+  md5: 75e6f3dcbfbda0edadff34e74c7025ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mrwolfe = mrwolfe:main
+    #
+    # Would create an entry point called mrwolfe that calls mrwolfe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - django-compressor
+    - django-attachments
+    - django-haystack >=2.0
+    - whoosh
+    - markdown
+    - html2text
+    - chardet
+    - imapclient
+    - tnefparse
+    - django-bootstrap3
+
+  run:
+    - python
+    - django >=1.5
+    - django-compressor
+    - django-attachments
+    - django-haystack >=2.0
+    - whoosh
+    - markdown
+    - html2text
+    - chardet
+    - imapclient
+    - tnefparse
+    - django-bootstrap3
+
+test:
+  # Python imports
+  imports:
+    - mrwolfe
+    - mrwolfe.forms
+    - mrwolfe.management
+    - mrwolfe.management.commands
+    - mrwolfe.models
+    - mrwolfe.templatetags
+    - mrwolfe.tests
+    - mrwolfe.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wyldebeast-wunderliebe/mrwolfe/
+  license: beer-ware
+  summary: 'Django Issue tracker & support system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: inspect-it
+  version: "0.3.2"
+
+source:
+  fn: inspect-it-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/inspect-it/inspect-it-0.3.2.tar.gz
+  md5: 65da1626398629b6c82beeba424b15a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inspect-it = inspect-it:main
+    #
+    # Would create an entry point called inspect-it that calls inspect-it.main()
+
+    - inspect = inspector:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt >=0.6
+    - jinja2 >=2.7
+
+  run:
+    - python
+    - docopt >=0.6
+    - jinja2 >=2.7
+
+test:
+  # Python imports
+  imports:
+    - inspector
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - inspect --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Reads your code and returns a JSON description you can use to generate documentation. Like Sphinx AutoDoc but without Sphinx.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

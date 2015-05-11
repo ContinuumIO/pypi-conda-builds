@@ -1,0 +1,68 @@
+package:
+  name: complexity
+  version: "0.9.1"
+
+source:
+  fn: complexity-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/complexity/complexity-0.9.1.tar.gz
+  md5: ae648cfb716cb0ecfc54c4a3fb75cb61
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - complexity = complexity:main
+    #
+    # Would create an entry point called complexity that calls complexity.main()
+
+    - complexity = complexity.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.4
+    - binaryornot >=0.1.1
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - jinja2 >=2.4
+    - binaryornot >=0.1.1
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - complexity
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - complexity --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/audreyr/complexity
+  license: BSD License
+  summary: 'A refreshingly simple static site generator, for those who like to work in HTML.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

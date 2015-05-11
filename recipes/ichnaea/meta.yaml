@@ -1,0 +1,137 @@
+package:
+  name: ichnaea
+  version: "1.1"
+
+source:
+  fn: ichnaea-1.1.zip
+  url: https://pypi.python.org/packages/source/i/ichnaea/ichnaea-1.1.zip
+  md5: 65d43dc8adcab54a949d55025dcc3807
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ichnaea = ichnaea:main
+    #
+    # Would create an entry point called ichnaea that calls ichnaea.main()
+
+    - location_import=ichnaea.scripts.importer:console_entry
+    - location_initdb=ichnaea.scripts.initdb:console_entry
+    - location_map=ichnaea.scripts.map:console_entry
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - alembic
+    - boto
+    - celery
+    - colander
+    - configparser
+    - country-bounding-boxes
+    - filechunkio
+    - gunicorn
+    - heka-py
+    - heka-py-raven
+    - iso3166
+    - mobile-codes
+    - pygeoip
+    - pymysql
+    - pyramid
+    - pyramid-chameleon
+    - pytz
+    - raven
+    - redis
+    - requests
+    - setproctitle
+    - simplejson
+    - statsd
+    - sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - alembic
+    - boto
+    - celery
+    - colander
+    - configparser
+    - country-bounding-boxes
+    - filechunkio
+    - gunicorn
+    - heka-py
+    - heka-py-raven
+    - iso3166
+    - mobile-codes
+    - pygeoip
+    - pymysql
+    - pyramid
+    - pyramid-chameleon
+    - pytz
+    - raven
+    - redis
+    - requests
+    - setproctitle
+    - simplejson
+    - statsd
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - ichnaea
+    - ichnaea.async
+    - ichnaea.backfill
+    - ichnaea.backup
+    - ichnaea.content
+    - ichnaea.content.tests
+    - ichnaea.data
+    - ichnaea.data.tests
+    - ichnaea.export
+    - ichnaea.monitor
+    - ichnaea.scripts
+    - ichnaea.scripts.tests
+    - ichnaea.service
+    - ichnaea.service.geolocate
+    - ichnaea.service.geosubmit
+    - ichnaea.service.heartbeat
+    - ichnaea.service.search
+    - ichnaea.service.search.tests
+    - ichnaea.service.submit
+    - ichnaea.service.submit.tests
+    - ichnaea.service.tests
+    - ichnaea.tests
+    - integration_tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - location_import --help
+    - location_initdb --help
+    - location_map --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla/ichnaea
+  license: Apache Software License
+  summary: 'Mozilla Location Service - Ichnaea'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

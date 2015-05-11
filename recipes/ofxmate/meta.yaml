@@ -1,0 +1,76 @@
+package:
+  name: ofxmate
+  version: "1.0.1"
+
+source:
+  fn: ofxmate-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/o/ofxmate/ofxmate-1.0.1.tar.gz
+  md5: bd206177e992a3daaead201ec5a90aec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ofxmate = ofxmate:main
+    #
+    # Would create an entry point called ofxmate that calls ofxmate.main()
+
+    - ofxmate = ofxmate.server:cmdline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ofxhome
+    - ofxclient >=1.3.1
+    - simplejson
+    - cherrypy
+    - mako
+
+  run:
+    - python
+    - ofxhome
+    - ofxclient >=1.3.1
+    - simplejson
+    - cherrypy
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - ofxmate
+    - ofxmate.webapp
+    - ofxmate.webapp.html
+    - ofxmate.webapp.html.static
+    - ofxmate.webapp.html.static.css
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ofxmate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/captin411/ofxmate
+  license: MIT License
+  summary: 'OFX client for dowloading transactions from banks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

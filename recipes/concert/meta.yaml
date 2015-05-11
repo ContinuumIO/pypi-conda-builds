@@ -1,0 +1,95 @@
+package:
+  name: concert
+  version: "0.10.0"
+
+source:
+  fn: concert-0.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/concert/concert-0.10.0.tar.gz
+  md5: 6eb9d29e6de2bbd3c9f6f594c3b48eff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - concert = concert:main
+    #
+    # Would create an entry point called concert that calls concert.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - futures
+    - numpy
+    - prettytable
+    - pyxdg
+    - pint
+    - scipy
+
+  run:
+    - python
+    - futures
+    - numpy
+    - prettytable
+    - pyxdg
+    - pint
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - concert
+    - concert.coroutines
+    - concert.devices
+    - concert.devices.cameras
+    - concert.devices.detectors
+    - concert.devices.grippers
+    - concert.devices.io
+    - concert.devices.lightsources
+    - concert.devices.monochromators
+    - concert.devices.motors
+    - concert.devices.photodiodes
+    - concert.devices.positioners
+    - concert.devices.pumps
+    - concert.devices.samplechangers
+    - concert.devices.scales
+    - concert.devices.shutters
+    - concert.devices.storagerings
+    - concert.devices.xraytubes
+    - concert.experiments
+    - concert.ext
+    - concert.ext.cmd
+    - concert.networking
+    - concert.processes
+    - concert.session
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ufo-kit/concert
+  license: LGPL
+  summary: 'Lightweight beamline control system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

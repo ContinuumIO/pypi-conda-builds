@@ -1,0 +1,92 @@
+package:
+  name: antispoofing.fusion
+  version: "2.0.1"
+
+source:
+  fn: antispoofing.fusion-2.0.1.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.fusion/antispoofing.fusion-2.0.1.zip
+  md5: 3255b146c7362bd783abc2a185ec934a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.fusion = antispoofing.fusion:main
+    #
+    # Would create an entry point called antispoofing.fusion that calls antispoofing.fusion.main()
+
+    - fuse_scores.py = antispoofing.fusion.script.fuse_scores:main
+    - frame_by_frame_analysis.py = antispoofing.fusion.script.frame_by_frame_analysis:main
+    - venn.py = antispoofing.fusion.script.venn:main
+    - scatter_with_llr.py = antispoofing.fusion.script.scatter_with_llr:main
+    - find_valid_frames.py = antispoofing.fusion.script.find_valid_frames:main
+    - time_analysis.py = antispoofing.fusion.script.time_analysis:main
+    - stub.py = antispoofing.fusion.script.stub:main
+    - fusion_scores.py = antispoofing.fusion.script.fusion_scores:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - bob.db.replay
+    - antispoofing.utils
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - bob.db.replay
+    - antispoofing.utils
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.fusion
+    - antispoofing.fusion.fusion
+    - antispoofing.fusion.ml
+    - antispoofing.fusion.normalizer
+    - antispoofing.fusion.readers
+    - antispoofing.fusion.score_fusion
+    - antispoofing.fusion.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fuse_scores.py --help
+    - frame_by_frame_analysis.py --help
+    - venn.py --help
+    - scatter_with_llr.py --help
+    - find_valid_frames.py --help
+    - time_analysis.py --help
+    - stub.py --help
+    - fusion_scores.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.fusion
+  license: GPLv3
+  summary: 'Complementary countermeasures for detecting scenic face spoofing attacks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

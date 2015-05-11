@@ -1,0 +1,71 @@
+package:
+  name: djamo
+  version: "2.67.0-rc2"
+
+source:
+  fn: Djamo-2.67.0-rc2.tar.gz
+  url: https://pypi.python.org/packages/source/D/Djamo/Djamo-2.67.0-rc2.tar.gz
+  md5: 39b295451b3c498265dc5b7e15e8225a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djamo = djamo:main
+    #
+    # Would create an entry point called djamo that calls djamo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - pymongo
+    - six
+
+  run:
+    - python
+    - django
+    - pymongo
+    - six
+
+test:
+  # Python imports
+  imports:
+    - djamo
+    - djamo.collections
+    - djamo.serializers
+    - djamo.utils
+    - docs
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://djamo.yellowen.com/
+  license: GNU General Public License (GPL)
+  summary: 'Yet another Mongodb driver for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

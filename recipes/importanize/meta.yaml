@@ -1,0 +1,68 @@
+package:
+  name: importanize
+  version: "0.4"
+
+source:
+  fn: importanize-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/importanize/importanize-0.4.tar.gz
+  md5: 42deb11ac5b0d16e12bc4432b15bb8ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - importanize = importanize:main
+    #
+    # Would create an entry point called importanize that calls importanize.main()
+
+    - importanize = importanize.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - future
+    - six
+    - setuptools
+
+  run:
+    - python
+    - future
+    - six
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - importanize
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - importanize --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/miki725/importanize
+  license: MIT License
+  summary: u'Utility for organizing Python imports using PEP8 or custom rules'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

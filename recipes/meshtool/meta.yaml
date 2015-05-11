@@ -1,0 +1,77 @@
+package:
+  name: meshtool
+  version: "0.3"
+
+source:
+  fn: meshtool-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/meshtool/meshtool-0.3.tar.gz
+  md5: ae81833c92e7521187befcaacfa89f23
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - meshtool = meshtool:main
+    #
+    # Would create an entry point called meshtool that calls meshtool.main()
+
+    - meshtool = meshtool.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycollada >=0.4
+    - pil
+
+  run:
+    - python
+    - pycollada >=0.4
+    - pil
+
+test:
+  # Python imports
+  imports:
+    - meshtool
+    - meshtool.args
+    - meshtool.filters
+    - meshtool.filters.atlas_filters
+    - meshtool.filters.load_filters
+    - meshtool.filters.meta_filters
+    - meshtool.filters.optimize_filters
+    - meshtool.filters.panda_filters
+    - meshtool.filters.panda_filters.pdae_utils
+    - meshtool.filters.print_filters
+    - meshtool.filters.save_filters
+    - meshtool.filters.simplify_filters
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - meshtool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pycollada/meshtool
+  license: BSD
+  summary: 'Tool for manipulating collada meshes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

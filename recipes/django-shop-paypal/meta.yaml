@@ -1,0 +1,64 @@
+package:
+  name: django-shop-paypal
+  version: "0.0.1"
+
+source:
+  fn: django-shop-paypal-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shop-paypal/django-shop-paypal-0.0.1.tar.gz
+  md5: 4c2a474cf06ae66c19007a4004d3caa4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shop-paypal = django-shop-paypal:main
+    #
+    # Would create an entry point called django-shop-paypal that calls django-shop-paypal.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-paypal
+
+  run:
+    - python
+    - django >=1.2
+    - django-paypal
+
+test:
+  # Python imports
+  imports:
+    - shop_paypal
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.django-shop.org/
+  license: BSD License
+  summary: 'An paypal payment backend wrapping django-paypal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

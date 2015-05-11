@@ -1,0 +1,62 @@
+package:
+  name: django-grains
+  version: "0.2.2"
+
+source:
+  fn: django-grains-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-grains/django-grains-0.2.2.tar.gz
+  md5: 884111818742040e83815239187e4150
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-grains = django-grains:main
+    #
+    # Would create an entry point called django-grains that calls django-grains.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - grains
+    - grains.migrations
+    - grains.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/2general/django-grains
+  license: BSD License
+  summary: 'Define content fragments in Django templates and store their contents in the database. This is yet another take on the idea previously implemented in django-flatblocks, django-chunks etc.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

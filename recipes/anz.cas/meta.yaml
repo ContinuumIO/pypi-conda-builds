@@ -1,0 +1,72 @@
+package:
+  name: anz.cas
+  version: "1.0.1"
+
+source:
+  fn: anz.cas-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/anz.cas/anz.cas-1.0.1.tar.gz
+  md5: 1ef6aad0a5c66de85cb78380d90b2c8e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anz.cas = anz.cas:main
+    #
+    # Would create an entry point called anz.cas that calls anz.cas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.8.3
+    - zope.proxy >=3.4.1
+    - zope.bforest
+    - uuid
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.8.3
+    - zope.proxy >=3.4.1
+    - zope.bforest
+    - uuid
+
+test:
+  # Python imports
+  imports:
+    - anz
+    - anz.cas
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/anz.cas/
+  license: GPL
+  summary: "This is an Python implementation of the server-end of JA-SIG's CAS protocol."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

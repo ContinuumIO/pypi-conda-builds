@@ -1,0 +1,66 @@
+package:
+  name: chef-ssh
+  version: "0.1"
+
+source:
+  fn: chef-ssh-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/chef-ssh/chef-ssh-0.1.tar.gz
+  md5: 1b831c37da98b7d919c6ef869212348c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chef-ssh = chef-ssh:main
+    #
+    # Would create an entry point called chef-ssh that calls chef-ssh.main()
+
+    - chef-ssh=chefssh.entry:ssh
+    - chef-scp=chefssh.entry:scp
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pychef >=0.2
+
+  run:
+    - python
+    - pychef >=0.2
+
+test:
+  # Python imports
+  imports:
+    - chefssh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chef-ssh --help
+    - chef-scp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/omribahumi/chefssh
+  license: UNKNOWN
+  summary: "Chef SSH is a tool to easily query the Chef server's inventory for running scp/ssh to/from the machines"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

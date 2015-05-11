@@ -1,0 +1,64 @@
+package:
+  name: gitinit
+  version: "1.0.8"
+
+source:
+  fn: gitinit-1.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitinit/gitinit-1.0.8.tar.gz
+  md5: f866ac49937c9b5a6d67bfec1befd9cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitinit = gitinit:main
+    #
+    # Would create an entry point called gitinit that calls gitinit.main()
+
+    - gitinit=gitinit.gitinit:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - gitinit
+    - gitinit.gitignores
+    - gitinit.gitignores.Global
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gitinit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/iambibhas/gitinit
+  license: GNU General Public License (GPL)
+  summary: 'Initiates git with gitignore for provided language'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

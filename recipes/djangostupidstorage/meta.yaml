@@ -1,0 +1,65 @@
+package:
+  name: djangostupidstorage
+  version: "0.2.4"
+
+source:
+  fn: djangostupidstorage-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangostupidstorage/djangostupidstorage-0.2.4.tar.gz
+  md5: bf208f4303449599f5bbaebdbf58e494
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangostupidstorage = djangostupidstorage:main
+    #
+    # Would create an entry point called djangostupidstorage that calls djangostupidstorage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-rq >=0.4.6
+    - easywebdav ==1.0.7
+
+  run:
+    - python
+    - django-rq >=0.4.6
+    - easywebdav ==1.0.7
+
+test:
+  # Python imports
+  imports:
+    - django_stupid_storage
+    - djangostupidstorage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/irqed/django-stupid-storage
+  license: BSD License
+  summary: 'Simple Django WebDAV storage with upload queue.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

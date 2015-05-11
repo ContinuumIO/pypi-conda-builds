@@ -1,0 +1,78 @@
+package:
+  name: pynance
+  version: "0.4.0"
+
+source:
+  fn: pynance-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pynance/pynance-0.4.0.tar.gz
+  md5: 414d5f0ec6eb884f0a3182ea0a2bb9d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pynance = pynance:main
+    #
+    # Would create an entry point called pynance that calls pynance.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pandas
+    - pandas-datareader >=0.1.1
+    - matplotlib
+    - lxml
+    - html5lib
+    - beautifulsoup4
+
+  run:
+    - python
+    - numpy
+    - pandas
+    - pandas-datareader >=0.1.1
+    - matplotlib
+    - lxml
+    - html5lib
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - pynance
+    - pynance.data
+    - pynance.opt
+    - pynance.opt.spread
+    - pynance.tech
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pynance.net
+  license: MIT License
+  summary: 'Retrieve and analyse financial market data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

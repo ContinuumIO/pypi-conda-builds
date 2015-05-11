@@ -1,0 +1,72 @@
+package:
+  name: fteproxy
+  version: "0.2.19"
+
+source:
+  fn: fteproxy-0.2.19.tar.gz
+  url: https://pypi.python.org/packages/source/f/fteproxy/fteproxy-0.2.19.tar.gz
+  md5: b11b46247a26f4338a61da647ee32feb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fteproxy = fteproxy:main
+    #
+    # Would create an entry point called fteproxy that calls fteproxy.main()
+
+    - fteproxy = fteproxy.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fte
+    - twisted
+    - pyptlib
+    - obfsproxy
+
+  run:
+    - python
+    - fte
+    - twisted
+    - pyptlib
+    - obfsproxy
+
+test:
+  # Python imports
+  imports:
+    - fteproxy
+    - fteproxy.defs
+    - fteproxy.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fteproxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://fteproxy.org/
+  license: UNKNOWN
+  summary: 'fteproxy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

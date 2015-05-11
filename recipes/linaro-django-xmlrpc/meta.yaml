@@ -1,0 +1,64 @@
+package:
+  name: linaro-django-xmlrpc
+  version: "0.6"
+
+source:
+  fn: linaro-django-xmlrpc-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/l/linaro-django-xmlrpc/linaro-django-xmlrpc-0.6.tar.gz
+  md5: bcf33ff7f7b87b3f7cd94e02906d907f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - linaro-django-xmlrpc = linaro-django-xmlrpc:main
+    #
+    # Would create an entry point called linaro-django-xmlrpc that calls linaro-django-xmlrpc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+
+  run:
+    - python
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - linaro_django_xmlrpc
+    - linaro_django_xmlrpc.test_project
+    - linaro_django_xmlrpc.test_project.example
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/linaro-django-xmlrpc
+  license: GNU Affero General Public License v3
+  summary: 'Flexible XML-RPC application for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

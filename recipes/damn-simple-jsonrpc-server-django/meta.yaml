@@ -1,0 +1,64 @@
+package:
+  name: damn-simple-jsonrpc-server-django
+  version: "0.2.1"
+
+source:
+  fn: damn-simple-jsonrpc-server-django-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/damn-simple-jsonrpc-server-django/damn-simple-jsonrpc-server-django-0.2.1.tar.gz
+  md5: 6430677282477531506b71bbdd7f76e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - damn-simple-jsonrpc-server-django = damn-simple-jsonrpc-server-django:main
+    #
+    # Would create an entry point called damn-simple-jsonrpc-server-django that calls damn-simple-jsonrpc-server-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - damn-simple-jsonrpc-server >=0.3
+
+  run:
+    - python
+    - damn-simple-jsonrpc-server >=0.3
+
+test:
+  # Python imports
+  imports:
+    - jsonrpcdjango
+    - jsonrpcdjango.management
+    - jsonrpcdjango.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/marcinn/json-rpc-server-django
+  license: BSD License
+  summary: 'Django adapter for damn simple JSON-RPC Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

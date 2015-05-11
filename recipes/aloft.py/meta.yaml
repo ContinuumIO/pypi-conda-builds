@@ -1,0 +1,64 @@
+package:
+  name: aloft.py
+  version: "0.0.4"
+
+source:
+  fn: aloft.py-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/aloft.py/aloft.py-0.0.4.tar.gz
+  md5: ccde7e9a66bee4f46315c10c4e6d7b19
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - aloft.py = aloft.py:main
+    #
+    # Would create an entry point called aloft.py that calls aloft.py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.2
+    - requests ==2.6.0
+
+  run:
+    - python
+    - beautifulsoup4 ==4.3.2
+    - requests ==2.6.0
+
+test:
+  # Python imports
+  imports:
+    - aloft
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/natemara/aloft.py
+  license: MIT License
+  summary: 'A simple API for getting winds aloft data from NOAA'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

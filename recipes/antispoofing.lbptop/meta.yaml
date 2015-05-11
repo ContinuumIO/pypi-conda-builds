@@ -1,0 +1,86 @@
+package:
+  name: antispoofing.lbptop
+  version: "1.0.4"
+
+source:
+  fn: antispoofing.lbptop-1.0.4.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.lbptop/antispoofing.lbptop-1.0.4.zip
+  md5: 7f821648572cdee2ad7b579ec53ccfd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.lbptop = antispoofing.lbptop:main
+    #
+    # Would create an entry point called antispoofing.lbptop that calls antispoofing.lbptop.main()
+
+    - lbptop_calculate_parameters.py = antispoofing.lbptop.script.lbptop_calculate_parameters:main
+    - lbptop_cmphistmodels.py = antispoofing.lbptop.script.lbptop_cmphistmodels:main
+    - lbptop_ldatrain.py = antispoofing.lbptop.script.lbptop_ldatrain:main
+    - lbptop_make_scores.py = antispoofing.lbptop.script.lbptop_make_scores:main
+    - lbptop_mkhistmodel.py = antispoofing.lbptop.script.lbptop_mkhistmodel:main
+    - lbptop_result_analysis.py = antispoofing.lbptop.script.lbptop_result_analysis:main
+    - lbptop_svmtrain.py  = antispoofing.lbptop.script.lbptop_svmtrain:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.2.0
+    - xbob.db.replay >=1.0.4
+    - xbob.db.casia_fasd >=1.1.0
+    - antispoofing.utils >=1.1.3
+
+  run:
+    - python
+    - bob >=1.2.0
+    - xbob.db.replay >=1.0.4
+    - xbob.db.casia_fasd >=1.1.0
+    - antispoofing.utils >=1.1.3
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.lbptop
+    - antispoofing.lbptop.helpers
+    - antispoofing.lbptop.script
+    - antispoofing.lbptop.spoof
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lbptop_calculate_parameters.py --help
+    - lbptop_cmphistmodels.py --help
+    - lbptop_ldatrain.py --help
+    - lbptop_make_scores.py --help
+    - lbptop_mkhistmodel.py --help
+    - lbptop_result_analysis.py --help
+    - lbptop_svmtrain.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.lbptop
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'LBP-TOP based countermeasure against facial spoofing attacks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

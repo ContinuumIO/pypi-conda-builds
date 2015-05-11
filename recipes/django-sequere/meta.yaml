@@ -1,0 +1,71 @@
+package:
+  name: django-sequere
+  version: "0.2.4"
+
+source:
+  fn: django-sequere-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sequere/django-sequere-0.2.4.tar.gz
+  md5: e94c9bb0ac6cf6989b736167906f420e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sequere = django-sequere:main
+    #
+    # Would create an entry point called django-sequere that calls django-sequere.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  # Python imports
+  imports:
+    - sequere
+    - sequere.backends
+    - sequere.backends.database
+    - sequere.backends.redis
+    - sequere.contrib
+    - sequere.contrib.timeline
+    - sequere.contrib.user
+    - sequere.migrations
+    - sequere.templatetags
+    - sequere.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/thoas/django-sequere
+  license: MIT License
+  summary: 'A Django application to implement a follow system and a timeline using multiple backends (db, redis, etc.)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: jsqt
+  version: "0.5.0"
+
+source:
+  fn: JsQt-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/J/JsQt/JsQt-0.5.0.tar.gz
+  md5: d5a1a9ae53bf454943968f24bd50cd50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jsqt = jsqt:main
+    #
+    # Would create an entry point called jsqt that calls jsqt.main()
+
+    - jsqt=jsqt.entry_points:main_jsqt
+    - jsuic=jsqt.entry_points:main_jsuic
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml >=2.2.2
+
+  run:
+    - python
+    - lxml >=2.2.2
+
+test:
+  # Python imports
+  imports:
+    - jsqt
+    - jsqt.il
+    - jsqt.il.qt
+    - jsqt.js
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jsqt --help
+    - jsuic --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://jsqt.org
+  license: GPLv2
+  summary: "A tool to compile Qt Designer's .ui files to qooxdoo code."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

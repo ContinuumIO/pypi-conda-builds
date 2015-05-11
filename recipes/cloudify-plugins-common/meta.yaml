@@ -1,0 +1,75 @@
+package:
+  name: cloudify-plugins-common
+  version: "3.2a8"
+
+source:
+  fn: cloudify-plugins-common-3.2a8.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudify-plugins-common/cloudify-plugins-common-3.2a8.tar.gz
+  md5: 54dca86dd73c372bd41db3bf946d0a56
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudify-plugins-common = cloudify-plugins-common:main
+    #
+    # Would create an entry point called cloudify-plugins-common that calls cloudify-plugins-common.main()
+
+    - ctx = cloudify.proxy.client:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cloudify-rest-client ==3.2a8
+    - pika ==0.9.13
+    - networkx ==1.8.1
+    - proxy_tools ==0.1.0
+    - bottle ==0.12.7
+
+  run:
+    - python
+    - cloudify-rest-client ==3.2a8
+    - pika ==0.9.13
+    - networkx ==1.8.1
+    - proxy_tools ==0.1.0
+    - bottle ==0.12.7
+
+test:
+  # Python imports
+  imports:
+    - cloudify
+    - cloudify.plugins
+    - cloudify.proxy
+    - cloudify.workflows
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ctx --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: LICENSE
+  summary: 'Contains necessary decorators and utility methods for writing Cloudify plugins'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

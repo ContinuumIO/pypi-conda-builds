@@ -1,0 +1,70 @@
+package:
+  name: errormator-client
+  version: "0.5.15"
+
+source:
+  fn: errormator_client-0.5.15.tar.gz
+  url: https://pypi.python.org/packages/source/e/errormator-client/errormator_client-0.5.15.tar.gz
+  md5: 8dde4af88081ad9a911e045401123825
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - errormator-client = errormator-client:main
+    #
+    # Would create an entry point called errormator-client that calls errormator-client.main()
+
+    - errormator_client=errormator_client.cli:cli_start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - decorator
+
+  run:
+    - python
+    - setuptools
+    - webob
+    - decorator
+
+test:
+  # Python imports
+  imports:
+    - errormator_client
+    - errormator_client.ext
+    - errormator_client.templates
+    - errormator_client.timing
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - errormator_client --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Client for Errormator reporting - supporting WSGI and django (http://errormator.com)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

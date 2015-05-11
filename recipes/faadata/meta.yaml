@@ -1,0 +1,79 @@
+package:
+  name: faadata
+  version: "1.0.0"
+
+source:
+  fn: faadata-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/faadata/faadata-1.0.0.tar.gz
+  md5: 45e420fb034880adb4bb0fd882e1e492
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - faadata = faadata:main
+    #
+    # Would create an entry point called faadata that calls faadata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - faadata
+    - faadata.aircraft
+    - faadata.aircraft.management
+    - faadata.aircraft.management.commands
+    - faadata.aircraft.migrations
+    - faadata.airports
+    - faadata.airports.management
+    - faadata.airports.management.commands
+    - faadata.airports.migrations
+    - faadata.awoses
+    - faadata.awoses.management
+    - faadata.awoses.management.commands
+    - faadata.awoses.migrations
+    - faadata.fadds
+    - faadata.fadds.management
+    - faadata.fadds.management.commands
+    - faadata.fixes
+    - faadata.fixes.management
+    - faadata.fixes.management.commands
+    - faadata.fixes.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/adamfast/faadata
+  license: BSD License
+  summary: 'Models and load scripts used to import FAA (and FADDS) data into Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

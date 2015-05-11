@@ -1,0 +1,72 @@
+package:
+  name: jmbo-music
+  version: "2.0.0a1"
+
+source:
+  fn: jmbo-music-2.0.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo-music/jmbo-music-2.0.0a1.tar.gz
+  md5: a66a6936b9620f01a9c372da98a56003
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo-music = jmbo-music:main
+    #
+    # Would create an entry point called jmbo-music that calls jmbo-music.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jmbo ==2.0.0a2
+    - jmbo-gallery ==2.0.0a1
+    - lxml
+    - pylast
+
+  run:
+    - python
+    - jmbo ==2.0.0a2
+    - jmbo-gallery ==2.0.0a1
+    - lxml
+    - pylast
+
+test:
+  # Python imports
+  imports:
+    - music
+    - music.management
+    - music.management.commands
+    - music.migrations
+    - music.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/jmbo-music
+  license: BSD License
+  summary: 'Jmbo music app.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

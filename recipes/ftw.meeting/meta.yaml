@@ -1,0 +1,79 @@
+package:
+  name: ftw.meeting
+  version: "1.5.3"
+
+source:
+  fn: ftw.meeting-1.5.3.zip
+  url: https://pypi.python.org/packages/source/f/ftw.meeting/ftw.meeting-1.5.3.zip
+  md5: 9af6e78502f70e7890077224d444f7cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.meeting = ftw.meeting:main
+    #
+    # Would create an entry point called ftw.meeting that calls ftw.meeting.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.datagridfield >=1.9
+    - setuptools
+    - ftw.calendarwidget
+    - plone.principalsource
+    - ftw.upgrade
+
+  run:
+    - python
+    - setuptools
+    - products.datagridfield >=1.9
+    - setuptools
+    - ftw.calendarwidget
+    - plone.principalsource
+    - ftw.upgrade
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.meeting
+    - ftw.meeting.browser
+    - ftw.meeting.content
+    - ftw.meeting.latex
+    - ftw.meeting.tests
+    - ftw.meeting.upgrades
+    - ftw.meeting.viewlets
+    - ftw.meeting.zipexport
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.meeting
+  license: GNU General Public License (GPL)
+  summary: 'A meeting content type for Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: checklists_scrapers
+  version: "0.2.3"
+
+source:
+  fn: checklists_scrapers-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/checklists_scrapers/checklists_scrapers-0.2.3.tar.gz
+  md5: 583bd9e881bb9234b1b7f5878f6d4327
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checklists_scrapers = checklists_scrapers:main
+    #
+    # Would create an entry point called checklists_scrapers that calls checklists_scrapers.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - scrapy ==0.16.4
+    - unidecode
+
+  run:
+    - python
+    - scrapy ==0.16.4
+    - unidecode
+
+test:
+  # Python imports
+  imports:
+    - checklists_scrapers
+    - checklists_scrapers.spiders
+    - checklists_scrapers.tests
+    - checklists_scrapers.tests.scripts
+    - checklists_scrapers.tests.spiders
+    - checklists_scrapers.tests.spiders.ebird
+    - checklists_scrapers.tests.spiders.worldbirds
+    - checklists_scrapers.tests.validation
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/checklists_scrapers/
+  license: BSD License
+  summary: 'Web scrapers for downloading checklists of birds from onlinedatabases such as eBird.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

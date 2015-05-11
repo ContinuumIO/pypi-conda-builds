@@ -1,0 +1,70 @@
+package:
+  name: bottle-auth
+  version: "0.3.3"
+
+source:
+  fn: bottle-auth-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/bottle-auth/bottle-auth-0.3.3.tar.gz
+  md5: 16a05f706ed7e2d86cac40f1409433a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bottle-auth = bottle-auth:main
+    #
+    # Would create an entry point called bottle-auth that calls bottle-auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - bottle
+    - bottle-mongo
+    - bottle-beaker
+
+  run:
+    - python
+    - webob
+    - bottle
+    - bottle-mongo
+    - bottle-beaker
+
+test:
+  # Python imports
+  imports:
+    - bottle_auth
+    - bottle_auth.core
+    - bottle_auth.social
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/avelino/bottle-auth
+  license: MIT License
+  summary: 'Bootle authentication, for Personal, Google, Twitter and facebook.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

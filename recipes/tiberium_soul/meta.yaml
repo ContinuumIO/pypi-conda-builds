@@ -1,0 +1,72 @@
+package:
+  name: tiberium_soul
+  version: "0.1.2"
+
+source:
+  fn: tiberium_soul-0.1.2.zip
+  url: https://pypi.python.org/packages/source/t/tiberium_soul/tiberium_soul-0.1.2.zip
+  md5: b2c5973a1e2f0cb4df3e28021ec83b6f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tiberium_soul = tiberium_soul:main
+    #
+    # Would create an entry point called tiberium_soul that calls tiberium_soul.main()
+
+    - tiberium_soul = tiberium_soul.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - quorum
+    - tiberium
+
+  run:
+    - python
+    - flask
+    - quorum
+    - tiberium
+
+test:
+  # Python imports
+  imports:
+    - tiberium_soul
+    - tiberium_soul.util
+    - tiberium_soul.views
+    - tiberium_soul.views.api
+    - tiberium_soul.views.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tiberium_soul --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://tiberium_soul.hive.pt
+  license: GNU General Public License (GPL)
+  summary: 'Tiberium Soul System'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

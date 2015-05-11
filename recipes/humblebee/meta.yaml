@@ -1,0 +1,74 @@
+package:
+  name: humblebee
+  version: "1.101"
+
+source:
+  fn: humblebee-1.101.tar.gz
+  url: https://pypi.python.org/packages/source/h/humblebee/humblebee-1.101.tar.gz
+  md5: 88316bd8f672fad00c7a0824fbf18e4a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - humblebee = humblebee:main
+    #
+    # Would create an entry point called humblebee that calls humblebee.main()
+
+    - humblebee = humblebee.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - pyunrar2
+    - send2trash
+    - unidecode
+    - gnarlytvdb
+    - xmltodict
+
+  run:
+    - python
+    - httplib2
+    - pyunrar2
+    - send2trash
+    - unidecode
+    - gnarlytvdb
+    - xmltodict
+
+test:
+  # Python imports
+  imports:
+    - humblebee
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - humblebee --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/steinitzu/humblebee
+  license: MIT
+  summary: 'A scraper for TV shows.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

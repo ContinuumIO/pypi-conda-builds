@@ -1,0 +1,78 @@
+package:
+  name: django-jinja
+  version: "1.4.1"
+
+source:
+  fn: django-jinja-1.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-jinja/django-jinja-1.4.1.tar.gz
+  md5: 5f1dcde247d59ac65d0a603e2e5629e5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-jinja = django-jinja:main
+    #
+    # Would create an entry point called django-jinja that calls django-jinja.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.5
+    - django >=1.4
+
+  run:
+    - python
+    - jinja2 >=2.5
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - django_jinja
+    - django_jinja.builtins
+    - django_jinja.contrib
+    - django_jinja.contrib._easy_thumbnails
+    - django_jinja.contrib._easy_thumbnails.templatetags
+    - django_jinja.contrib._humanize
+    - django_jinja.contrib._humanize.templatetags
+    - django_jinja.contrib._pipeline
+    - django_jinja.contrib._pipeline.templatetags
+    - django_jinja.contrib._subdomains
+    - django_jinja.contrib._subdomains.templatetags
+    - django_jinja.management
+    - django_jinja.management.commands
+    - django_jinja.views
+    - django_jinja.views.generic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/niwibe/django-jinja
+  license: BSD License
+  summary: 'Jinja2 templating language integrated in Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

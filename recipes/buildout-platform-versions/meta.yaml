@@ -1,0 +1,67 @@
+package:
+  name: buildout-platform-versions
+  version: "1.2.3"
+
+source:
+  fn: buildout-platform-versions-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildout-platform-versions/buildout-platform-versions-1.2.3.tar.gz
+  md5: 0d413127b3b46e9944ce51f76ad1a457
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildout-platform-versions = buildout-platform-versions:main
+    #
+    # Would create an entry point called buildout-platform-versions that calls buildout-platform-versions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - config-enhance
+    - setuptools >=0.6c11
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - config-enhance
+    - setuptools >=0.6c11
+
+test:
+  # Python imports
+  imports:
+    - buildout_platform_versions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/zillow/buildout-platform-versions
+  license: MIT License
+  summary: 'Dependency version management forklift for buildout.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

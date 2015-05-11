@@ -1,0 +1,65 @@
+package:
+  name: mezzanine-dpaste
+  version: "2.1.1"
+
+source:
+  fn: mezzanine-dpaste-2.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-dpaste/mezzanine-dpaste-2.1.1.tar.gz
+  md5: 08356695573ee20c5bbe93a033cc88ac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-dpaste = mezzanine-dpaste:main
+    #
+    # Would create an entry point called mezzanine-dpaste that calls mezzanine-dpaste.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dpaste
+    - mezzanine >3.1.1
+
+  run:
+    - python
+    - dpaste
+    - mezzanine >3.1.1
+
+test:
+  # Python imports
+  imports:
+    - mezzpaste
+    - mezzpaste.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/prikhi/mezzanine-dpaste
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A Mezzanine app to integrate dpaste, a Django pastebin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

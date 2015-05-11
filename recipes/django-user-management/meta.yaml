@@ -1,0 +1,79 @@
+package:
+  name: django-user-management
+  version: "10.1.0"
+
+source:
+  fn: django-user-management-10.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-user-management/django-user-management-10.1.0.tar.gz
+  md5: eea9a79ad20a7d8ecbcbf5fa4fcc24ac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-user-management = django-user-management:main
+    #
+    # Would create an entry point called django-user-management that calls django-user-management.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - djangorestframework >=2.4.4,<3
+    - incuna_mail >=2.0.0,<4.0.0
+    - incuna-pigeon >=0.1.0,<1.0.0
+
+  run:
+    - python
+    - djangorestframework >=2.4.4,<3
+    - incuna_mail >=2.0.0,<4.0.0
+    - incuna-pigeon >=0.1.0,<1.0.0
+
+test:
+  # Python imports
+  imports:
+    - user_management
+    - user_management.api
+    - user_management.api.avatar
+    - user_management.api.avatar.tests
+    - user_management.api.avatar.urls
+    - user_management.api.management
+    - user_management.api.management.commands
+    - user_management.api.tests
+    - user_management.api.urls
+    - user_management.models
+    - user_management.models.tests
+    - user_management.tests
+    - user_management.utils
+    - user_management.utils.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/incuna/django-user-management/
+  license: BSD License
+  summary: 'User management model mixins and api views.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

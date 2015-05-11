@@ -1,0 +1,73 @@
+package:
+  name: chorddb
+  version: "0.0.4"
+
+source:
+  fn: chorddb-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/chorddb/chorddb-0.0.4.tar.gz
+  md5: 7a05755d9fb05e8fe8d77b902ca23cb2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chorddb = chorddb:main
+    #
+    # Would create an entry point called chorddb that calls chorddb.main()
+
+    - chorddb=chorddb:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama
+
+  run:
+    - python
+    - colorama
+
+test:
+  # Python imports
+  imports:
+    - chorddb
+    - chorddb.chords
+    - chorddb.curses
+    - chorddb.tab
+    - chorddb.terminal
+    - chorddb.utils
+    - test
+    - test.test_chords
+    - test.test_tab
+    - test.test_utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chorddb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pignacio/chorddb
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A tablature parser / chord database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

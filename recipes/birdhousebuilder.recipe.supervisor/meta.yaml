@@ -1,0 +1,72 @@
+package:
+  name: birdhousebuilder.recipe.supervisor
+  version: "0.2.0"
+
+source:
+  fn: birdhousebuilder.recipe.supervisor-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/birdhousebuilder.recipe.supervisor/birdhousebuilder.recipe.supervisor-0.2.0.tar.gz
+  md5: 4421faaa6fe70c8ef6d8e8a88920502a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - birdhousebuilder.recipe.supervisor = birdhousebuilder.recipe.supervisor:main
+    #
+    # Would create an entry point called birdhousebuilder.recipe.supervisor that calls birdhousebuilder.recipe.supervisor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - mako
+    - birdhousebuilder.recipe.conda
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - mako
+    - birdhousebuilder.recipe.conda
+
+test:
+  # Python imports
+  imports:
+    - birdhousebuilder
+    - birdhousebuilder.recipe
+    - birdhousebuilder.recipe.supervisor
+    - birdhousebuilder.recipe.supervisor.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bird-house/birdhousebuilder.recipe.supervisor.git
+  license: BSD License
+  summary: 'A Buildout recipe to install and configure supervisor for Anaconda.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

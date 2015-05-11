@@ -1,0 +1,91 @@
+package:
+  name: antispoofing.fusion_faceverif
+  version: "3.0.0"
+
+source:
+  fn: antispoofing.fusion_faceverif-3.0.0.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.fusion_faceverif/antispoofing.fusion_faceverif-3.0.0.zip
+  md5: 7e9585c1508008920705d176b347b6af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.fusion_faceverif = antispoofing.fusion_faceverif:main
+    #
+    # Would create an entry point called antispoofing.fusion_faceverif that calls antispoofing.fusion_faceverif.main()
+
+    - and_decision_fusion.py = antispoofing.fusion_faceverif.script.and_decision_fusion:main
+    - fusion_fvas.py = antispoofing.fusion_faceverif.script.fusion_fvas:main
+    - antispoof_threshold.py = antispoofing.fusion_faceverif.script.antispoof_threshold:main
+    - faceverif_threshold.py = antispoofing.fusion_faceverif.script.faceverif_threshold:main
+    - four_column_to_dir_structure.py = antispoofing.fusion_faceverif.script.four_column_to_dir_structure:main
+    - scatter_plot.py = antispoofing.fusion_faceverif.script.scatter_plot:main
+    - plot_on_demand.py = antispoofing.fusion_faceverif.script.plot_on_demand:main
+    - apply_threshold.py = bob.measure.script.apply_threshold:main
+    - eval_threshold.py = bob.measure.script.eval_threshold:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob.db.base
+    - argparse
+    - bob.db.replay
+    - antispoofing.utils
+    - antispoofing.fusion
+
+  run:
+    - python
+    - bob.db.base
+    - argparse
+    - bob.db.replay
+    - antispoofing.utils
+    - antispoofing.fusion
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.fusion_faceverif
+    - antispoofing.fusion_faceverif.helpers
+    - antispoofing.fusion_faceverif.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - and_decision_fusion.py --help
+    - fusion_fvas.py --help
+    - antispoof_threshold.py --help
+    - faceverif_threshold.py --help
+    - four_column_to_dir_structure.py --help
+    - scatter_plot.py --help
+    - plot_on_demand.py --help
+    - apply_threshold.py --help
+    - eval_threshold.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/antispoofing.fusion_faceverif
+  license: LICENSE.txt
+  summary: 'Decision and score-level fusion tools for joint operation of face verification and anti-spoofing system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

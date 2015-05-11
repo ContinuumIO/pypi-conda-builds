@@ -1,0 +1,86 @@
+package:
+  name: garlicsim_lib
+  version: "0.6.3"
+
+source:
+  fn: garlicsim_lib-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/garlicsim_lib/garlicsim_lib-0.6.3.tar.gz
+  md5: f0958f2675e3c4bb882f4b96b8fa857a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - garlicsim_lib = garlicsim_lib:main
+    #
+    # Would create an entry point called garlicsim_lib that calls garlicsim_lib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - garlicsim ==0.6.3
+
+  run:
+    - python
+    - garlicsim ==0.6.3
+
+test:
+  # Python imports
+  imports:
+    - garlicsim_lib
+    - garlicsim_lib.simpacks
+    - garlicsim_lib.simpacks._endable_life_test
+    - garlicsim_lib.simpacks._endable_life_test.wx
+    - garlicsim_lib.simpacks._endable_life_test.wx.widgets
+    - garlicsim_lib.simpacks._history_test
+    - garlicsim_lib.simpacks._history_test.wx
+    - garlicsim_lib.simpacks._history_test.wx.widgets
+    - garlicsim_lib.simpacks._prisoner_persistent_test
+    - garlicsim_lib.simpacks._prisoner_persistent_test.players
+    - garlicsim_lib.simpacks._prisoner_persistent_test.wx
+    - garlicsim_lib.simpacks._prisoner_persistent_test.wx.widgets
+    - garlicsim_lib.simpacks.life
+    - garlicsim_lib.simpacks.life.wx
+    - garlicsim_lib.simpacks.life.wx.widgets
+    - garlicsim_lib.simpacks.prisoner
+    - garlicsim_lib.simpacks.prisoner.players
+    - garlicsim_lib.simpacks.prisoner.wx
+    - garlicsim_lib.simpacks.prisoner.wx.widgets
+    - garlicsim_lib.simpacks.queue
+    - garlicsim_lib.simpacks.queue.events
+    - garlicsim_lib.simpacks.queue.wx
+    - garlicsim_lib.simpacks.queue.wx.widgets
+    - test_garlicsim_lib
+    - test_garlicsim_lib.scripts
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://garlicsim.org
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Collection of GarlicSim simulation packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

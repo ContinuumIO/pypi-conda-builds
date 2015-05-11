@@ -1,0 +1,66 @@
+package:
+  name: learnbysubs
+  version: "0.1"
+
+source:
+  fn: learnbysubs-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/learnbysubs/learnbysubs-0.1.tar.gz
+  md5: 505b9e70dc151098b1436b63b995d8e1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - learnbysubs = learnbysubs:main
+    #
+    # Would create an entry point called learnbysubs that calls learnbysubs.main()
+
+    - learnbysubs = learnbysubs:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pysrt ==1.0.0
+    - cchardet ==0.3.5
+
+  run:
+    - python
+    - pysrt ==1.0.0
+    - cchardet ==0.3.5
+
+test:
+  # Python imports
+  imports:
+    - learnbysubs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - learnbysubs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hakanzy/learnbysubs
+  license: BSD License
+  summary: 'Generate combined subtitle file with two different languages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

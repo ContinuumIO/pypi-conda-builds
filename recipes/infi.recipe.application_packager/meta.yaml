@@ -1,0 +1,112 @@
+package:
+  name: infi.recipe.application_packager
+  version: "0.5.31"
+
+source:
+  fn: infi.recipe.application_packager-0.5.31.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.recipe.application_packager/infi.recipe.application_packager-0.5.31.tar.gz
+  md5: 8084a2563a69909619e0f4185f33b874
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.recipe.application_packager = infi.recipe.application_packager:main
+    #
+    # Would create an entry point called infi.recipe.application_packager that calls infi.recipe.application_packager.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - archive
+    - git-py
+    - infi.execute
+    - infi.os_info
+    - infi.pypi_manager
+    - infi.pyutils
+    - infi.recipe.buildout_logging
+    - infi.recipe.close_application
+    - infi.recipe.console_scripts
+    - infi.registry
+    - infi.winver
+    - jinja2
+    - pystick
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - archive
+    - git-py
+    - infi.execute
+    - infi.os_info
+    - infi.pypi_manager
+    - infi.pyutils
+    - infi.recipe.buildout_logging
+    - infi.recipe.close_application
+    - infi.recipe.console_scripts
+    - infi.registry
+    - infi.winver
+    - jinja2
+    - pystick
+    - setuptools
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.recipe
+    - infi.recipe.application_packager
+    - infi.recipe.application_packager.assertions
+    - infi.recipe.application_packager.auto
+    - infi.recipe.application_packager.base
+    - infi.recipe.application_packager.deb
+    - infi.recipe.application_packager.embedded
+    - infi.recipe.application_packager.embedded.environment
+    - infi.recipe.application_packager.installer
+    - infi.recipe.application_packager.msi
+    - infi.recipe.application_packager.msi.wix
+    - infi.recipe.application_packager.pkg
+    - infi.recipe.application_packager.rpm
+    - infi.recipe.application_packager.scripts
+    - infi.recipe.application_packager.scripts.refactoring
+    - infi.recipe.application_packager.utils
+    - infi.recipe.application_packager.utils.buildout
+    - infi.recipe.application_packager.utils.compiler
+    - infi.recipe.application_packager.utils.execute
+    - infi.recipe.application_packager.utils.rcedit
+    - infi.recipe.application_packager.utils.signtool
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.recipe.application_packager
+  license: Python Software Foundation License
+  summary: 'buildout recipe for packaging projects as applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

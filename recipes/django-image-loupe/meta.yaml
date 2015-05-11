@@ -1,0 +1,67 @@
+package:
+  name: django-image-loupe
+  version: "0.5"
+
+source:
+  fn: django-image-loupe-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-image-loupe/django-image-loupe-0.5.tar.gz
+  md5: 8c5cece706b69f91b1ae76d1a0ac6644
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-image-loupe = django-image-loupe:main
+    #
+    # Would create an entry point called django-image-loupe that calls django-image-loupe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-dirtyfields ==0.3b1
+
+  run:
+    - python
+    - django-dirtyfields ==0.3b1
+
+test:
+  # Python imports
+  imports:
+    - example
+    - example.simpleapp
+    - loupe
+    - loupe.dezoomify
+    - loupe.migrations
+    - loupe.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/natgeoed/django-loupe
+  license: UNKNOWN
+  summary: 'A high resolution image manager for pan and zooming into images'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

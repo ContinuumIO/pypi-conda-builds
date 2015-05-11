@@ -1,0 +1,64 @@
+package:
+  name: m4pomodoro
+  version: "0.1.1.post3.dev101723961"
+
+source:
+  fn: m4pomodoro-0.1.1.post3.dev101723961.tar.gz
+  url: https://pypi.python.org/packages/source/m/m4pomodoro/m4pomodoro-0.1.1.post3.dev101723961.tar.gz
+  md5: 97636711265c95ea95810725630efc50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m4pomodoro = m4pomodoro:main
+    #
+    # Would create an entry point called m4pomodoro that calls m4pomodoro.main()
+
+    - m4pomodoro = m4pomodoro.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygobject
+
+  run:
+    - python
+    - pygobject
+
+test:
+  # Python imports
+  imports:
+    - m4pomodoro
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - m4pomodoro --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: 'simple pomodoro app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

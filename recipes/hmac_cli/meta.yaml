@@ -1,0 +1,65 @@
+package:
+  name: hmac_cli
+  version: "0.0.0"
+
+source:
+  fn: hmac_cli-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/hmac_cli/hmac_cli-0.0.0.tar.gz
+  md5: 5815a082e85cc02fc1d44c6025a88911
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hmac_cli = hmac_cli:main
+    #
+    # Would create an entry point called hmac_cli that calls hmac_cli.main()
+
+    - hmac=hmac_cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+
+  run:
+    - python
+    - setuptools
+    - click
+
+test:
+  # Python imports
+  imports:
+    - hmac_cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hmac --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/msabramo/hmac_cli
+  license: MIT
+  summary: 'Simple CLI for encrypting data with a private key, using HMAC'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

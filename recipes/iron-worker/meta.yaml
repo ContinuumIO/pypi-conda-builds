@@ -1,0 +1,64 @@
+package:
+  name: iron-worker
+  version: "1.3.1"
+
+source:
+  fn: iron-worker-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/iron-worker/iron-worker-1.3.1.tar.gz
+  md5: 5f2186e73e8bd4a5fe1ce601c42ebe10
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iron-worker = iron-worker:main
+    #
+    # Would create an entry point called iron-worker that calls iron-worker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - iron_core >=1.1.0
+    - python-dateutil
+
+  run:
+    - python
+    - iron_core >=1.1.0
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - testDir
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.github.com/iron-io/iron_worker_python
+  license: BSD License
+  summary: 'The Python client for IronWorker, a cloud service for background processing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

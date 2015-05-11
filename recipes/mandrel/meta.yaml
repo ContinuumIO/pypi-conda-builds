@@ -1,0 +1,73 @@
+package:
+  name: mandrel
+  version: "0.2.0"
+
+source:
+  fn: mandrel-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mandrel/mandrel-0.2.0.tar.gz
+  md5: 9c3cb1efc8e437eff76ebfbc7eaac480
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mandrel = mandrel:main
+    #
+    # Would create an entry point called mandrel that calls mandrel.main()
+
+    - mandrel-runner = mandrel.runner:launch_callable
+    - mandrel-script = mandrel.runner:launch_script
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mock
+    - pyyaml
+
+  run:
+    - python
+    - mock
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - mandrel
+    - mandrel.config
+    - mandrel.test
+    - mandrel.test.bootstrap
+    - mandrel.test.config
+    - mandrel.test.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mandrel-runner --help
+    - mandrel-script --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ethanrowe/python-mandrel
+  license: MIT License
+  summary: 'Provides bootstrapping for sane configuration management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

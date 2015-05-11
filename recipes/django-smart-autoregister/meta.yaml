@@ -1,0 +1,64 @@
+package:
+  name: django-smart-autoregister
+  version: "0.0.1"
+
+source:
+  fn: django-smart-autoregister-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-smart-autoregister/django-smart-autoregister-0.0.1.tar.gz
+  md5: 4d80a9c5ece6ab8adae0fa72421d5249
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-smart-autoregister = django-smart-autoregister:main
+    #
+    # Would create an entry point called django-smart-autoregister that calls django-smart-autoregister.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  # Python imports
+  imports:
+    - django_smart_autoregister
+    - django_smart_autoregister.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paulocheque/django-smart-autoregister
+  license: MIT
+  summary: 'Automatically register models in the admin interface in a smart way.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

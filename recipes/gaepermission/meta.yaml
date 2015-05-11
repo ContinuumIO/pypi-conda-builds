@@ -1,0 +1,77 @@
+package:
+  name: gaepermission
+  version: "0.12"
+
+source:
+  fn: gaepermission-0.12.tar.gz
+  url: https://pypi.python.org/packages/source/g/gaepermission/gaepermission-0.12.tar.gz
+  md5: 2646659b61f0e2fe2dff0eb05e4bb73a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gaepermission = gaepermission:main
+    #
+    # Would create an entry point called gaepermission that calls gaepermission.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gaecookie >=0.6
+    - gaebusiness >=3.0
+    - gaegraph >=3.5
+    - gaeforms >=0.3
+    - pytz >=2014.4
+    - babel ==1.3
+    - tekton ==4.2
+
+  run:
+    - python
+    - gaecookie >=0.6
+    - gaebusiness >=3.0
+    - gaegraph >=3.5
+    - gaeforms >=0.3
+    - pytz >=2014.4
+    - babel ==1.3
+    - tekton ==4.2
+
+test:
+  # Python imports
+  imports:
+    - gaepermission
+    - gaepermission.facebook
+    - gaepermission.google
+    - gaepermission.passwordless
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/renzon/gaepermission
+  license: BSD License
+  summary: 'Tekton app to handle user login and permissions based on groups and holes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

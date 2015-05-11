@@ -1,0 +1,68 @@
+package:
+  name: android-benchmark-views
+  version: "0.1.7"
+
+source:
+  fn: android-benchmark-views-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/android-benchmark-views/android-benchmark-views-0.1.7.tar.gz
+  md5: 4e451d65236ba279a3be0ad2991304c9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - android-benchmark-views = android-benchmark-views:main
+    #
+    # Would create an entry point called android-benchmark-views that calls android-benchmark-views.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lava-server
+    - south >=0.7.3
+    - versiontools >=1.8
+
+  run:
+    - python
+    - setuptools
+    - lava-server
+    - south >=0.7.3
+    - versiontools >=1.8
+
+test:
+  # Python imports
+  imports:
+    - android_benchmark_views_app
+    - android_benchmark_views_app.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: AGPL
+  summary: 'LAVA Android Benchmark Views Application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

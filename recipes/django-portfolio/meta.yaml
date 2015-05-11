@@ -1,0 +1,68 @@
+package:
+  name: django-portfolio
+  version: "0.0.5-pre-alpha"
+
+source:
+  fn: django-portfolio-0.0.5-pre-alpha.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-portfolio/django-portfolio-0.0.5-pre-alpha.tar.gz
+  md5: 20a6ae3f9af299b8be5fd36d2f039096
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-portfolio = django-portfolio:main
+    #
+    # Would create an entry point called django-portfolio that calls django-portfolio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-tagging ==0.3.1
+    - docutils ==0.8.1
+
+  run:
+    - python
+    - django-tagging ==0.3.1
+    - docutils ==0.8.1
+
+test:
+  # Python imports
+  imports:
+    - portfolio
+    - portfolio.blog
+    - portfolio.contact
+    - portfolio.projects
+    - portfolio.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://igniteflow@github.com/igniteflow/django-portfolio.git
+  license: BSD License
+  summary: 'A simple set of abstract models and functionality to speed up the development of a portfolio type site in Django 1.3+'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

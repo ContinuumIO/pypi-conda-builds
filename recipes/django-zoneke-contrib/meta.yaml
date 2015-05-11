@@ -1,0 +1,73 @@
+package:
+  name: django-zoneke-contrib
+  version: "0.05"
+
+source:
+  fn: django-zoneke-contrib-0.05.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-zoneke-contrib/django-zoneke-contrib-0.05.tar.gz
+  md5: 4bcad98c00ec300ca4d7b86c2568df91
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-zoneke-contrib = django-zoneke-contrib:main
+    #
+    # Would create an entry point called django-zoneke-contrib that calls django-zoneke-contrib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - applications
+    - applications.base
+    - applications.ueditor
+    - applications.weixin
+    - applications.weixin.libs
+    - applications.weixin.migrations
+    - applications.weixin.models
+    - applications.weixin.weixin
+    - config
+    - libs
+    - libs.models
+    - settings
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/chenchiyuan/contrib
+  license: BSD License
+  summary: u'Django Contrib'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

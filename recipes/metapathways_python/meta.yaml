@@ -1,0 +1,76 @@
+package:
+  name: metapathways_python
+  version: "v2.1"
+
+source:
+  fn: MetaPathways_Python-v2.1.tar.gz
+  url: https://pypi.python.org/packages/source/M/MetaPathways_Python/MetaPathways_Python-v2.1.tar.gz
+  md5: a5a04b88c7baf016e0ee4a7406a59c1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metapathways_python = metapathways_python:main
+    #
+    # Would create an entry point called metapathways_python that calls metapathways_python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - metapathways2
+    - metapathways2.config
+    - metapathways2.executables
+    - metapathways2.executables.linux
+    - metapathways2.executables.linux.bit32
+    - metapathways2.libs
+    - metapathways2.libs.python_modules
+    - metapathways2.libs.python_modules.annotate
+    - metapathways2.libs.python_modules.annotate.sequence
+    - metapathways2.libs.python_modules.diagnostics
+    - metapathways2.libs.python_modules.grid
+    - metapathways2.libs.python_modules.parsers
+    - metapathways2.libs.python_modules.pipeline
+    - metapathways2.libs.python_modules.taxonomy
+    - metapathways2.libs.python_modules.utils
+    - metapathways2.libs.python_scripts
+    - metapathways_python
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/metapathwaysv2
+  license: BSD
+  summary: 'A pipeline for MetaGenomic analysis which is capable of creating ePGDBs using Pathway Tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: expyrimenter
+  version: "0.2.0"
+
+source:
+  fn: expyrimenter-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/expyrimenter/expyrimenter-0.2.0.tar.gz
+  md5: 4acf63487ae3b4291f282480a1065932
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - expyrimenter = expyrimenter:main
+    #
+    # Would create an entry point called expyrimenter that calls expyrimenter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - expyrimenter
+    - expyrimenter.apps
+    - expyrimenter.clouds
+    - expyrimenter.clouds.cloudstack
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cemsbr/expyrimenter
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Python tool to ease and parallelize distributed system management tasks.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

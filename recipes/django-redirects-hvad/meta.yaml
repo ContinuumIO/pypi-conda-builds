@@ -1,0 +1,66 @@
+package:
+  name: django-redirects-hvad
+  version: "1.1.1"
+
+source:
+  fn: django-redirects-hvad-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-redirects-hvad/django-redirects-hvad-1.1.1.tar.gz
+  md5: 9cbae19333842bf2f11c86c5bbc395e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-redirects-hvad = django-redirects-hvad:main
+    #
+    # Would create an entry point called django-redirects-hvad that calls django-redirects-hvad.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-hvad
+
+  run:
+    - python
+    - setuptools
+    - django-hvad
+
+test:
+  # Python imports
+  imports:
+    - redirects_hvad
+    - redirects_hvad.management
+    - redirects_hvad.management.commands
+    - redirects_hvad.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/piquadrat/django-redirects-hvad
+  license: BSD License
+  summary: 'A modified version of django.contrib.redirects with multilingual target URLs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,88 @@
+package:
+  name: cheshire3
+  version: "1.1.8"
+
+source:
+  fn: cheshire3-1.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/cheshire3/cheshire3-1.1.8.tar.gz
+  md5: 87518643ca30672e88ab99dde1dc7629
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cheshire3 = cheshire3:main
+    #
+    # Would create an entry point called cheshire3 that calls cheshire3.main()
+
+    - cheshire3 = cheshire3.commands.console:main
+    - cheshire3-init = cheshire3.commands.init:main
+    - cheshire3-load = cheshire3.commands.load:main
+    - cheshire3-register = cheshire3.commands.register:main
+    - cheshire3-unregister = cheshire3.commands.unregister:main
+    - cheshire3-search = cheshire3.commands.search:main
+    - cheshire3-serve = cheshire3.commands.serve:main
+    - icheshire3-load = cheshire3.grid.commands.load:main [grid]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils >=0.9
+    - lxml >=2.1
+    - zopyx.txng3.ext >=3.3.1
+    - lz4 >=0.4
+    - paste >=1.7.5
+    - python-dateutil ==1.5
+
+  run:
+    - python
+    - docutils >=0.9
+    - lxml >=2.1
+    - zopyx.txng3.ext >=3.3.1
+    - lz4 >=0.4
+    - paste >=1.7.5
+    - python-dateutil ==1.5
+
+test:
+  # Python imports
+  imports:
+    - cheshire3
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cheshire3 --help
+    - cheshire3-init --help
+    - cheshire3-load --help
+    - cheshire3-register --help
+    - cheshire3-unregister --help
+    - cheshire3-search --help
+    - cheshire3-serve --help
+    - icheshire3-load --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheshire3.liv.ac.uk /
+  license: BSD License
+  summary: 'Cheshire3 Search and Retrieval Engine and Information Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

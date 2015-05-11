@@ -1,0 +1,65 @@
+package:
+  name: jinja2-cli
+  version: "0.3.0"
+
+source:
+  fn: jinja2-cli-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/j/jinja2-cli/jinja2-cli-0.3.0.tar.gz
+  md5: 2563b9cc1a6ec25043de6a975530479c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jinja2-cli = jinja2-cli:main
+    #
+    # Would create an entry point called jinja2-cli that calls jinja2-cli.main()
+
+    - jinja2 = jinja2cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+
+  run:
+    - python
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - jinja2cli
+    - jinja2cli.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jinja2 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mattrobenolt/jinja2-cli
+  license: BSD
+  summary: 'A CLI interface to Jinja2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,71 @@
+package:
+  name: requesocks
+  version: "0.10.8"
+
+source:
+  fn: requesocks-0.10.8.tar.gz
+  url: https://pypi.python.org/packages/source/r/requesocks/requesocks-0.10.8.tar.gz
+  md5: 3f43bd8a00c704b3de4f1a212cc72818
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - requesocks = requesocks:main
+    #
+    # Would create an entry point called requesocks that calls requesocks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - certifi >=0.0.7
+    - chardet >=1.0.0
+
+  run:
+    - python
+    - certifi >=0.0.7
+    - chardet >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - requesocks
+    - requesocks.packages
+    - requesocks.packages.oreos
+    - requesocks.packages.urllib3
+    - requesocks.packages.urllib3.packages
+    - requesocks.packages.urllib3.packages.mimetools_choose_boundary
+    - requesocks.packages.urllib3.packages.socksipy
+    - requesocks.packages.urllib3.packages.ssl_match_hostname
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://python-requests.org
+  license: ISC License (ISCL)
+  summary: 'Python HTTP for Humans, with socks proxy support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

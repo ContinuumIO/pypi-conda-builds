@@ -1,0 +1,70 @@
+package:
+  name: elasticsearch-curator-dev
+  version: "3.0.0rc1"
+
+source:
+  fn: elasticsearch-curator-dev-3.0.0rc1.tar.gz
+  url: https://pypi.python.org/packages/source/e/elasticsearch-curator-dev/elasticsearch-curator-dev-3.0.0rc1.tar.gz
+  md5: d348c49fe1bfb4f79c91bae18ef1dd7d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elasticsearch-curator-dev = elasticsearch-curator-dev:main
+    #
+    # Would create an entry point called elasticsearch-curator-dev that calls elasticsearch-curator-dev.main()
+
+    - curator = curator.curator:main
+    - es_repo_mgr = curator.es_repo_mgr:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elasticsearch >=1.0.0,<2.0.0
+    - click >=3.3
+
+  run:
+    - python
+    - elasticsearch >=1.0.0,<2.0.0
+    - click >=3.3
+
+test:
+  # Python imports
+  imports:
+    - curator
+    - curator.api
+    - curator.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - curator --help
+    - es_repo_mgr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/elasticsearch/curator
+  license: Apache Software License
+  summary: 'Tending your Elasticsearch indices'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

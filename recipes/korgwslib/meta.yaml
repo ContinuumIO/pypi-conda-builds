@@ -1,0 +1,65 @@
+package:
+  name: korgwslib
+  version: "0.1a"
+
+source:
+  fn: korgwslib-0.1a.zip
+  url: https://pypi.python.org/packages/source/k/korgwslib/korgwslib-0.1a.zip
+  md5: bd0cc889aba89de4259eee5df030e329
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - korgwslib = korgwslib:main
+    #
+    # Would create an entry point called korgwslib that calls korgwslib.main()
+
+    - wslistbanks=korgws.scripts.listbanks:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - korgws
+    - korgws.scripts
+    - korgwslib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - wslistbanks --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://chrisarndt.de/projects/korgwslib
+  license: MIT License
+  summary: 'Korg Wavestation Sysex handling library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

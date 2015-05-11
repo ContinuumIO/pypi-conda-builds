@@ -1,0 +1,67 @@
+package:
+  name: django-service-rating-store
+  version: "0.3.0a"
+
+source:
+  fn: django-service-rating-store-0.3.0a.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-service-rating-store/django-service-rating-store-0.3.0a.tar.gz
+  md5: 915b09e49f031ccf31e4b9aeb88b6dde
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-service-rating-store = django-service-rating-store:main
+    #
+    # Would create an entry point called django-service-rating-store that calls django-service-rating-store.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-tastypie
+    - south
+
+  run:
+    - python
+    - django
+    - django-tastypie
+    - south
+
+test:
+  # Python imports
+  imports:
+    - servicerating
+    - servicerating.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/praekelt/django-service-rating-store
+  license: BSD License
+  summary: 'Django app that allows storage and visualisation of Service Rating data posted via REST API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

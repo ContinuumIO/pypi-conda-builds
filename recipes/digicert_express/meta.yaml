@@ -1,0 +1,69 @@
+package:
+  name: digicert_express
+  version: "1.1"
+
+source:
+  fn: digicert_express-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/digicert_express/digicert_express-1.1.tar.gz
+  md5: 9d7039b2cc88fbfabbba0d79783c94ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - digicert_express = digicert_express:main
+    #
+    # Would create an entry point called digicert_express that calls digicert_express.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - digicert_client
+    - python-augeas
+
+  run:
+    - python
+    - digicert_client
+    - python-augeas
+
+test:
+  # Python imports
+  imports:
+    - digicert_express
+    - digicert_express.cqrs
+    - digicert_express.loggers
+    - digicert_express.parsers
+    - digicert_express.platforms
+    - digicert_express.webservers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/digicert/express_install
+  license: MIT License
+  summary: 'Express Install for DigiCert, Inc.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

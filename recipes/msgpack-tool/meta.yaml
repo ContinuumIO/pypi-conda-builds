@@ -1,0 +1,64 @@
+package:
+  name: msgpack-tool
+  version: "0.0.1"
+
+source:
+  fn: msgpack-tool-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/msgpack-tool/msgpack-tool-0.0.1.tar.gz
+  md5: c2629d2462ee0d2f9a5b4f387af27fd1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - msgpack-tool = msgpack-tool:main
+    #
+    # Would create an entry point called msgpack-tool that calls msgpack-tool.main()
+
+    - msgpack=msgpack_tool:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - msgpack-python
+
+  run:
+    - python
+    - msgpack-python
+
+test:
+  # Python imports
+  imports:
+    - msgpack_tool
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - msgpack --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zweifisch/msgpack-tool
+  license: UNKNOWN
+  summary: 'a cli utility for msgpack/json conversion'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: django-siteuser
+  version: "0.1.2"
+
+source:
+  fn: django-siteuser-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-siteuser/django-siteuser-0.1.2.tar.gz
+  md5: 4117fc6a41ad40e9bd34297bd61ffc96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-siteuser = django-siteuser:main
+    #
+    # Would create an entry point called django-siteuser that calls django-siteuser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - socialoauth
+    - django-celery
+
+  run:
+    - python
+    - socialoauth
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - siteuser
+    - siteuser.functional
+    - siteuser.notify
+    - siteuser.upload_avatar
+    - siteuser.users
+    - siteuser.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yueyoum/django-siteuser
+  license: BSD License
+  summary: 'A Django APP for Universal Maintain Accounts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

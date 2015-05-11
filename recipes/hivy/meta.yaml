@@ -1,0 +1,84 @@
+package:
+  name: hivy
+  version: "0.0.6"
+
+source:
+  fn: hivy-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/h/hivy/hivy-0.0.6.tar.gz
+  md5: 8e3999ba26405e15e8bc560cc156de76
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hivy = hivy:main
+    #
+    # Would create an entry point called hivy that calls hivy.main()
+
+    - hivy = hivy.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask-restful >=0.2.11
+    - docopt >=0.6.1
+    - itsdangerous >=0.23
+    - pytz >=2013.9
+    - salt >=0.17.5
+    - sh >=1.09
+    - logbook >=0.6.0
+    - structlog >=0.4.1
+    - docker-py >=0.2.3
+
+  run:
+    - python
+    - flask-restful >=0.2.11
+    - docopt >=0.6.1
+    - itsdangerous >=0.23
+    - pytz >=2013.9
+    - salt >=0.17.5
+    - sh >=1.09
+    - logbook >=0.6.0
+    - structlog >=0.4.1
+    - docker-py >=0.2.3
+
+test:
+  # Python imports
+  imports:
+    - hivy
+    - hivy.node
+    - hivy.reactor
+    - hivy.reactor.hooks
+    - hivy.resources
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hivy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hivetech/hivy
+  license: Apache Software License
+  summary: 'This plugin provides a RESTFul interface to unide'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

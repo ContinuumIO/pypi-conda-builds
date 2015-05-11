@@ -1,0 +1,82 @@
+package:
+  name: etianen-cms
+  version: "2.6.5"
+
+source:
+  fn: etianen-cms-2.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/e/etianen-cms/etianen-cms-2.6.5.tar.gz
+  md5: e0503ab458d9e8c10d98f0b26af07632
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - etianen-cms = etianen-cms:main
+    #
+    # Would create an entry point called etianen-cms that calls etianen-cms.main()
+
+    - start_cms_project.py = cms.bin.start_cms_project:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-optimizations
+    - pillow
+
+  run:
+    - python
+    - django
+    - django-optimizations
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - cms
+    - cms.apps
+    - cms.apps.links
+    - cms.apps.links.migrations
+    - cms.apps.media
+    - cms.apps.media.migrations
+    - cms.apps.news
+    - cms.apps.news.migrations
+    - cms.apps.news.templatetags
+    - cms.apps.pages
+    - cms.apps.pages.migrations
+    - cms.apps.pages.templatetags
+    - cms.bin
+    - cms.models
+    - cms.templatetags
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - start_cms_project.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/etianen/cms
+  license: BSD License
+  summary: 'A collection of Django extensions that add content-management facilities to Django projects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

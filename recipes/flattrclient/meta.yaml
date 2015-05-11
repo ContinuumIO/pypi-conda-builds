@@ -1,0 +1,67 @@
+package:
+  name: flattrclient
+  version: "0.2"
+
+source:
+  fn: flattrclient-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/flattrclient/flattrclient-0.2.tar.gz
+  md5: a06519be24cb03492c222347bdf18a04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flattrclient = flattrclient:main
+    #
+    # Would create an entry point called flattrclient that calls flattrclient.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - requests
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - six
+    - requests
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - flattrclient
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrigl/python-flattr
+  license: Apache Software License
+  summary: 'Implementation of a python library for the flattr restful api'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

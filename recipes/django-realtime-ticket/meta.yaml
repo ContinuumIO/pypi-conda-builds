@@ -1,0 +1,64 @@
+package:
+  name: django-realtime-ticket
+  version: "0.1.0"
+
+source:
+  fn: django-realtime-ticket-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-realtime-ticket/django-realtime-ticket-0.1.0.tar.gz
+  md5: e83b30951faa3d23412d8de9e82ae45e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-realtime-ticket = django-realtime-ticket:main
+    #
+    # Would create an entry point called django-realtime-ticket that calls django-realtime-ticket.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3.1
+    - redis >=2.6.0
+
+  run:
+    - python
+    - django >=1.3.1
+    - redis >=2.6.0
+
+test:
+  # Python imports
+  imports:
+    - realtime_ticket
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/FZambia/django-realtime-ticket
+  license: http://www.apache.org/licenses/LICENSE-2.0
+  summary: 'authorize django users in realtime(asynchronous) backends using expiring tickets in Redis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

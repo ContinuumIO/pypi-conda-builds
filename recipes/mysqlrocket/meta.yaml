@@ -1,0 +1,68 @@
+package:
+  name: mysqlrocket
+  version: "0.1.0"
+
+source:
+  fn: mysqlrocket-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mysqlrocket/mysqlrocket-0.1.0.tar.gz
+  md5: 94dc48d6c013f9c7fae303f90673345f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mysqlrocket = mysqlrocket:main
+    #
+    # Would create an entry point called mysqlrocket that calls mysqlrocket.main()
+
+    - mysqlrocket = mysqlrocket.mysqlrocket:launcher
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs
+    - mysql-python
+    - argparse
+
+  run:
+    - python
+    - appdirs
+    - mysql-python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - mysqlrocket
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mysqlrocket --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cypx/mysqlrocket
+  license: GPL
+  summary: 'Simple CLI tool to create and delete easily MySQL databases.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

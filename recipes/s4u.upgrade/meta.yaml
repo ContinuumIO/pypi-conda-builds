@@ -1,0 +1,69 @@
+package:
+  name: s4u.upgrade
+  version: "1.3"
+
+source:
+  fn: s4u.upgrade-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/s/s4u.upgrade/s4u.upgrade-1.3.tar.gz
+  md5: fe0eae21f00cea6a4f60270b6faf4b8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - s4u.upgrade = s4u.upgrade:main
+    #
+    # Would create an entry point called s4u.upgrade that calls s4u.upgrade.main()
+
+    - upgrade=s4u.upgrade:upgrade
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - venusian
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - venusian
+
+test:
+  # Python imports
+  imports:
+    - s4u
+    - s4u.upgrade
+    - s4u.upgrade.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - upgrade --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://readthedocs.org/builds/s4uupgrade/
+  license: BSD License
+  summary: '2Style4You upgrade framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

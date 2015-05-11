@@ -1,0 +1,63 @@
+package:
+  name: pymysql3
+  version: "0.5"
+
+source:
+  fn: PyMySQL3-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyMySQL3/PyMySQL3-0.5.tar.gz
+  md5: 9157b6068f9b2a277d8b126ef05bab3a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pymysql3 = pymysql3:main
+    #
+    # Would create an entry point called pymysql3 that calls pymysql3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pymysql
+    - pymysql.constants
+    - pymysql.tests
+    - pymysql3
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/pymysql
+  license: MIT
+  summary: 'Pure Python MySQL Driver '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

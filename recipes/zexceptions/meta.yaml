@@ -1,0 +1,69 @@
+package:
+  name: zexceptions
+  version: "2.13.0"
+
+source:
+  fn: zExceptions-2.13.0.zip
+  url: https://pypi.python.org/packages/source/z/zExceptions/zExceptions-2.13.0.zip
+  md5: 4c679696c959040d8e656ef85ae40136
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zexceptions = zexceptions:main
+    #
+    # Would create an entry point called zexceptions that calls zexceptions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.publisher
+    - zope.security
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.publisher
+    - zope.security
+
+test:
+  # Python imports
+  imports:
+    - zExceptions
+    - zExceptions.tests
+    - zexceptions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zExceptions
+  license: ZPL 2.1
+  summary: 'zExceptions contains common exceptions used in Zope2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

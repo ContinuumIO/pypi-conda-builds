@@ -1,0 +1,73 @@
+package:
+  name: jivedata
+  version: "0.1"
+
+source:
+  fn: JiveData-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/J/JiveData/JiveData-0.1.tar.gz
+  md5: 0d07743803f964b8835fa53d94c91dab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jivedata = jivedata:main
+    #
+    # Would create an entry point called jivedata that calls jivedata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - jinja2
+    - requests
+
+  run:
+    - python
+    - flask
+    - jinja2
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - jivedata
+    - jivedata.alerts
+    - jivedata.alerts.test
+    - jivedata.utils
+    - jivedata.utils.test
+    - jivedata.webapp
+    - jivedata.webapp.test
+    - jivedata.webapp.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.jivedata.com
+  license: BSD License
+  summary: 'The code that powers www.jivedata.com, our email alerts, and twitter notifications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

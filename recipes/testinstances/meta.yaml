@@ -1,0 +1,66 @@
+package:
+  name: testinstances
+  version: "0.2.0"
+
+source:
+  fn: testinstances-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/testinstances/testinstances-0.2.0.tar.gz
+  md5: a59471bec489ece19b37f6741444be62
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - testinstances = testinstances:main
+    #
+    # Would create an entry point called testinstances that calls testinstances.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+    - redis
+
+  run:
+    - python
+    - pymongo
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - testinstances
+    - tests
+    - tests.testinstances
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Parsely/testinstances
+  license: Apache License 2.0
+  summary: 'Managed test instances for integration tests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

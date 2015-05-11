@@ -1,0 +1,63 @@
+package:
+  name: django-websocket
+  version: "0.3.0"
+
+source:
+  fn: django-websocket-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-websocket/django-websocket-0.3.0.tar.gz
+  md5: fa2b28f7b4b50019f8a86c6c5d0f2678
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-websocket = django-websocket:main
+    #
+    # Would create an entry point called django-websocket that calls django-websocket.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - django_websocket
+    - django_websocket.management
+    - django_websocket.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-websocket
+  license: BSD License
+  summary: u'Websocket support for django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

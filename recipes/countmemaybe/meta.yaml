@@ -1,0 +1,64 @@
+package:
+  name: countmemaybe
+  version: "0.4.4"
+
+source:
+  fn: countmemaybe-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/countmemaybe/countmemaybe-0.4.4.tar.gz
+  md5: 1674a4249efeaa8048389a993b4b34ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - countmemaybe = countmemaybe:main
+    #
+    # Would create an entry point called countmemaybe that calls countmemaybe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mmh3
+    - blist
+
+  run:
+    - python
+    - mmh3
+    - blist
+
+test:
+  # Python imports
+  imports:
+    - countmemaybe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mynameisfiber/countmemaybe/
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'A set of probabilstic distinct value estimators (ie: calculate the cardinality of big sets)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

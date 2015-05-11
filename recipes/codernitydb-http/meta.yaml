@@ -1,0 +1,64 @@
+package:
+  name: codernitydb-http
+  version: "0.4.1"
+
+source:
+  fn: CodernityDB-HTTP-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/C/CodernityDB-HTTP/CodernityDB-HTTP-0.4.1.tar.gz
+  md5: 3f6b799b3cea8aff73997516ca6565a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codernitydb-http = codernitydb-http:main
+    #
+    # Would create an entry point called codernitydb-http that calls codernitydb-http.main()
+
+    - cdb_startserver = CodernityDBHTTP.server:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - codernitydb
+
+  run:
+    - python
+    - codernitydb
+
+test:
+  # Python imports
+  imports:
+    - CodernityDBHTTP
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cdb_startserver --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://labs.codernity.com/codernitydb-http
+  license: Apache Software License
+  summary: 'HTTP server version of CodernityDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

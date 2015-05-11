@@ -1,0 +1,83 @@
+package:
+  name: bpython
+  version: "0.14.1"
+
+source:
+  fn: bpython-0.14.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bpython/bpython-0.14.1.tar.gz
+  md5: 106551e4f563f2575f67a3738a56b815
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bpython = bpython:main
+    #
+    # Would create an entry point called bpython that calls bpython.main()
+
+    - bpython = bpython.curtsies:main
+    - bpython-curses = bpython.cli:main
+    - bpython-urwid = bpython.urwid:main [urwid]
+    - bpbd = bpdb:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+    - requests
+    - curtsies >=0.1.18,<0.2.0
+    - greenlet
+    - six >=1.5
+
+  run:
+    - python
+    - pygments
+    - requests
+    - curtsies >=0.1.18,<0.2.0
+    - greenlet
+    - six >=1.5
+
+test:
+  # Python imports
+  imports:
+    - bpdb
+    - bpython
+    - bpython.curtsiesfrontend
+    - bpython.test
+    - bpython.test.fodder
+    - bpython.translations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bpython --help
+    - bpython-curses --help
+    - bpython-urwid --help
+    - bpbd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.bpython-interpreter.org/
+  license: MIT/X
+  summary: 'Fancy Interface to the Python Interpreter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-oscar-stores
+  version: "0.8"
+
+source:
+  fn: django-oscar-stores-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oscar-stores/django-oscar-stores-0.8.tar.gz
+  md5: 15adf0eabdddad1b805dd8fabee7b6d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oscar-stores = django-oscar-stores:main
+    #
+    # Would create an entry point called django-oscar-stores that calls django-oscar-stores.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-oscar >=0.6
+    - requests >=1.1
+
+  run:
+    - python
+    - django-oscar >=0.6
+    - requests >=1.1
+
+test:
+  # Python imports
+  imports:
+    - stores
+    - stores.dashboard
+    - stores.migrations
+    - stores.services
+    - stores.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/django-oscar/django-oscar-stores
+  license: BSD License
+  summary: 'An extension for Oscar to include stores'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

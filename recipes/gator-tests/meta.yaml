@@ -1,0 +1,65 @@
+package:
+  name: gator-tests
+  version: "0.2.dev"
+
+source:
+  fn: gator-tests-0.2.dev.tar.gz
+  url: https://pypi.python.org/packages/source/g/gator-tests/gator-tests-0.2.dev.tar.gz
+  md5: 1826943aa235772e48e726444a961ca7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gator-tests = gator-tests:main
+    #
+    # Would create an entry point called gator-tests that calls gator-tests.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lava-test >=0.2
+    - versiontools >=1.8
+
+  run:
+    - python
+    - setuptools
+    - lava-test >=0.2
+    - versiontools >=1.8
+
+test:
+  # Python imports
+  imports:
+    - gator_tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://code.launchpad.net/~stubbsdm/+junk/gator-tests
+  license: GNU General Public License (GPL)
+  summary: 'Tests for checking the gator module and gator daemon'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

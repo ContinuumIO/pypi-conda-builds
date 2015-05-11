@@ -1,0 +1,66 @@
+package:
+  name: mots-vides
+  version: "2015.2.6"
+
+source:
+  fn: mots-vides-2015.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/mots-vides/mots-vides-2015.2.6.tar.gz
+  md5: 30f62c3068a919ca69dcf0ac1cb114d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mots-vides = mots-vides:main
+    #
+    # Would create an entry point called mots-vides that calls mots-vides.main()
+
+    - merge-stop-words=mots_vides.scripts.merger:cmdline
+    - rebase-stop-words=mots_vides.scripts.rebaser:cmdline
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mots_vides
+    - mots_vides.scripts
+    - mots_vides.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - merge-stop-words --help
+    - rebase-stop-words --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Fantomas42/mots-vides
+  license: BSD License
+  summary: 'Python library for managing stop words in many languages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-misc
+  version: "0.1.0"
+
+source:
+  fn: django-misc-0.1.0.zip
+  url: https://pypi.python.org/packages/source/d/django-misc/django-misc-0.1.0.zip
+  md5: dd12fd9c13801e6242682f772f1f3dea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-misc = django-misc:main
+    #
+    # Would create an entry point called django-misc that calls django-misc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - postmarkup
+
+  run:
+    - python
+    - django >=1.2
+    - postmarkup
+
+test:
+  # Python imports
+  imports:
+    - misc
+    - misc.html
+    - misc.management
+    - misc.management.commands
+    - misc.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ilblackdragon/django-misc.git
+  license: MIT
+  summary: "Django miscellaneous - module with different useful stuff for django. \nHere you'll find: \n- couple decorators, like render_to and receive; \n- json_encode module for simplify work with json; \n- some usefull templatetags, like set, filter, get etc; some additional utilities; \n- bbcode template tags; \n- template tags that provide like and share for social sevices."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

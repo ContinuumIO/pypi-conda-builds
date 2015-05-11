@@ -1,0 +1,94 @@
+package:
+  name: etltest
+  version: "0.1.5"
+
+source:
+  fn: etlTest-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/e/etlTest/etlTest-0.1.5.tar.gz
+  md5: 02abdd4a7ca590c9fe66e9a13dd54cf8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - etltest = etltest:main
+    #
+    # Would create an entry point called etltest that calls etltest.main()
+
+    - etlTest = etltest.etlTest:main
+    - etltest = etltest.etlTest:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs ==1.4.0
+    - configparser ==3.5.0b1
+    - docutils ==0.12
+    - ecdsa ==0.11
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - paramiko ==1.14.1
+    - pygments ==1.6
+    - pyyaml ==3.11
+    - sphinx ==1.2.3
+    - sqlalchemy ==0.9.7
+    - py ==1.4.24
+    - tox ==1.7.2
+
+  run:
+    - python
+    - appdirs ==1.4.0
+    - configparser ==3.5.0b1
+    - docutils ==0.12
+    - ecdsa ==0.11
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - paramiko ==1.14.1
+    - pygments ==1.6
+    - pyyaml ==3.11
+    - sphinx ==1.2.3
+    - sqlalchemy ==0.9.7
+    - py ==1.4.24
+    - tox ==1.7.2
+
+test:
+  # Python imports
+  imports:
+    - etltest
+    - etltest.test
+    - etltest.test.utilities
+    - etltest.utilities
+    - scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - etlTest --help
+    - etltest --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/OpenDataAlex/etlTest
+  license: GNU GENERAL PUBLIC LICENSE Version 3
+  summary: 'Automated and tool agnostic data integration testing tool.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

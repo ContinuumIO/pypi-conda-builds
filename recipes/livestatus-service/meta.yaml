@@ -1,0 +1,64 @@
+package:
+  name: livestatus-service
+  version: "0.3.4"
+
+source:
+  fn: livestatus-service-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/l/livestatus-service/livestatus-service-0.3.4.tar.gz
+  md5: fa6a3e921e79f83a59b8c872ccb55e40
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - livestatus-service = livestatus-service:main
+    #
+    # Would create an entry point called livestatus-service that calls livestatus-service.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - simplejson
+
+  run:
+    - python
+    - flask
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - livestatus_service
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ImmobilienScout24/livestatus_service
+  license: MIT License
+  summary: 'Exposes MK livestatus to the outside world over HTTP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

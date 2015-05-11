@@ -1,0 +1,72 @@
+package:
+  name: keas.build
+  version: "0.4.1"
+
+source:
+  fn: keas.build-0.4.1.zip
+  url: https://pypi.python.org/packages/source/k/keas.build/keas.build-0.4.1.zip
+  md5: b662184c22bca7c1a49d5af9950276d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - keas.build = keas.build:main
+    #
+    # Would create an entry point called keas.build that calls keas.build.main()
+
+    - build=keas.build.build:main
+    - build-package=keas.build.package:main
+    - install=keas.build.install:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - keas
+    - keas.build
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - build --help
+    - build-package --help
+    - install --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/keas.build
+  license: Zope Public License
+  summary: 'A Build System'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

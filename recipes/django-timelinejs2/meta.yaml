@@ -1,0 +1,64 @@
+package:
+  name: django-timelinejs2
+  version: "2.18.1"
+
+source:
+  fn: django-timelinejs2-2.18.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-timelinejs2/django-timelinejs2-2.18.1.tar.gz
+  md5: bef35c65e31c0596c30bd561cf16fb96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-timelinejs2 = django-timelinejs2:main
+    #
+    # Would create an entry point called django-timelinejs2 that calls django-timelinejs2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django-staticfiles-timelinejs_static ==2.18
+    - python-dateutil >=1.5
+
+  run:
+    - python
+    - django-staticfiles-timelinejs_static ==2.18
+    - python-dateutil >=1.5
+
+test:
+  # Python imports
+  imports:
+    - timelinejs
+    - timelinejs.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tswicegood/django-timelinejs/
+  license: BSD License
+  summary: 'Connecting Timeline.js v2.18 to Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: django-vkontakte-groups-statistic
+  version: "0.5.3"
+
+source:
+  fn: django-vkontakte-groups-statistic-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-vkontakte-groups-statistic/django-vkontakte-groups-statistic-0.5.3.tar.gz
+  md5: 75c1a7b13b6b1328ef8856ae7aa494ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-vkontakte-groups-statistic = django-vkontakte-groups-statistic:main
+    #
+    # Would create an entry point called django-vkontakte-groups-statistic that calls django-vkontakte-groups-statistic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-vkontakte-api >=0.4.2
+    - django-vkontakte-groups >=0.3.5
+
+  run:
+    - python
+    - django-vkontakte-api >=0.4.2
+    - django-vkontakte-groups >=0.3.5
+
+test:
+  # Python imports
+  imports:
+    - vkontakte_groups_statistic
+    - vkontakte_groups_statistic.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-vkontakte-groups-statistic
+  license: BSD License
+  summary: 'Django implementation for vkontakte API Groups Statistic'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

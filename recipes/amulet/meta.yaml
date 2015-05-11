@@ -1,0 +1,70 @@
+package:
+  name: amulet
+  version: "1.10.1"
+
+source:
+  fn: amulet-1.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/amulet/amulet-1.10.1.tar.gz
+  md5: 6f0b6a4280847d797ee0f87a966da7d0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amulet = amulet:main
+    #
+    # Would create an entry point called amulet that calls amulet.main()
+
+    - amulet=amulet.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - charmworldlib
+    - pyyaml
+    - path.py
+
+  run:
+    - python
+    - requests
+    - charmworldlib
+    - pyyaml
+    - path.py
+
+test:
+  # Python imports
+  imports:
+    - amulet
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - amulet --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/amulet
+  license: UNKNOWN
+  summary: 'Tools to help with writing Juju Charm Functional tests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

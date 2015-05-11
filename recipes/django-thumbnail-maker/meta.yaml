@@ -1,0 +1,65 @@
+package:
+  name: django-thumbnail-maker
+  version: "0.0.5"
+
+source:
+  fn: django-thumbnail-maker-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-thumbnail-maker/django-thumbnail-maker-0.0.5.tar.gz
+  md5: d1ffaea3d8f90619f95ac0b37983811a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-thumbnail-maker = django-thumbnail-maker:main
+    #
+    # Would create an entry point called django-thumbnail-maker that calls django-thumbnail-maker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sorl-thumbnail
+
+  run:
+    - python
+    - sorl-thumbnail
+
+test:
+  # Python imports
+  imports:
+    - thumbnail_maker
+    - thumbnail_maker.management
+    - thumbnail_maker.management.commands
+    - thumbnail_maker.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/infinityxxx/django-thumbnail-maker
+  license: BSD License
+  summary: 'Thumbnail maker for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

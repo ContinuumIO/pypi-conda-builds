@@ -1,0 +1,67 @@
+package:
+  name: flask-skel
+  version: "0.4"
+
+source:
+  fn: flask-skel-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-skel/flask-skel-0.4.tar.gz
+  md5: 4e226d5eb596d8f778d6a492f943c09c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-skel = flask-skel:main
+    #
+    # Would create an entry point called flask-skel that calls flask-skel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pastedeploy >=1.3
+    - pastescript >=1.7
+    - tempita >=0.4
+
+  run:
+    - python
+    - setuptools
+    - pastedeploy >=1.3
+    - pastescript >=1.7
+    - tempita >=0.4
+
+test:
+  # Python imports
+  imports:
+    - flaskskel
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/eka/flask-skel/
+  license: BSD License
+  summary: 'Basic Flask paster skeleton template'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

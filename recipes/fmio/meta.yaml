@@ -1,0 +1,66 @@
+package:
+  name: fmio
+  version: "1.0-beta"
+
+source:
+  fn: fmio-1.0-beta.tar.gz
+  url: https://pypi.python.org/packages/source/f/fmio/fmio-1.0-beta.tar.gz
+  md5: 4673edc22bd1a3ae7ab37ae67d7de578
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fmio = fmio:main
+    #
+    # Would create an entry point called fmio that calls fmio.main()
+
+    - fmio = fmio:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - pandas
+
+  run:
+    - python
+    - numpy
+    - pandas
+
+test:
+  # Python imports
+  imports:
+    - fmio
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fmio --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/gilesc/fmio
+  license: UNKNOWN
+  summary: 'Fast streaming I/O of numeric matrices'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

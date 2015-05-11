@@ -1,0 +1,66 @@
+package:
+  name: km2pg
+  version: "0.2.0.1"
+
+source:
+  fn: km2pg-0.2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/k/km2pg/km2pg-0.2.0.1.tar.gz
+  md5: bd039688d18063475ee438264f24ccb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - km2pg = km2pg:main
+    #
+    # Would create an entry point called km2pg that calls km2pg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlparse
+    - boto
+    - psycopg2
+
+  run:
+    - python
+    - sqlparse
+    - boto
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - km2pg
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shashank025/km2pg
+  license: MIT
+  summary: 'Load kissmetrics website analytics data from an s3 bucket into a postgres database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

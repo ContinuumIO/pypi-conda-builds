@@ -1,0 +1,70 @@
+package:
+  name: git-up-all
+  version: "0.3.1.1"
+
+source:
+  fn: git-up-all-0.3.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-up-all/git-up-all-0.3.1.1.tar.gz
+  md5: c9583cfcb6f19681043218a928c365bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-up-all = git-up-all:main
+    #
+    # Would create an entry point called git-up-all that calls git-up-all.main()
+
+    - git-up-all = gitupall:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitpython ==0.3.2.RC1
+    - git-up ==1.1.4
+    - biplist ==0.7
+    - termcolor ==1.1.0
+
+  run:
+    - python
+    - gitpython ==0.3.2.RC1
+    - git-up ==1.1.4
+    - biplist ==0.7
+    - termcolor ==1.1.0
+
+test:
+  # Python imports
+  imports:
+    - PyGitUpAll
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-up-all --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jimmykane/PyGitUpAll
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Run git-up trough a json list of repos'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

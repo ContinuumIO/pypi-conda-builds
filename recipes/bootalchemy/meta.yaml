@@ -1,0 +1,65 @@
+package:
+  name: bootalchemy
+  version: "0.4.1"
+
+source:
+  fn: bootalchemy-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bootalchemy/bootalchemy-0.4.1.tar.gz
+  md5: fbb66cf4e3085093ed5dcec2d1850751
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bootalchemy = bootalchemy:main
+    #
+    # Would create an entry point called bootalchemy that calls bootalchemy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - pyyaml
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - bootalchemy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT
+  summary: 'A package to create database entries from yaml using sqlalchemy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

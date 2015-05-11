@@ -1,0 +1,64 @@
+package:
+  name: hindsight
+  version: "0.1.7"
+
+source:
+  fn: hindsight-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/h/hindsight/hindsight-0.1.7.tar.gz
+  md5: 9f431673eec1f9d86549785176893282
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hindsight = hindsight:main
+    #
+    # Would create an entry point called hindsight that calls hindsight.main()
+
+    - behave-cli = hindsight.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - hindsight
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - behave-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/hindsight/
+  license: MIT License
+  summary: 'Python tools for Hindsight Software'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

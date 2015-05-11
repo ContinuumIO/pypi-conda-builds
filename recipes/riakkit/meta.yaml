@@ -1,0 +1,64 @@
+package:
+  name: riakkit
+  version: "0.6.0a"
+
+source:
+  fn: riakkit-0.6.0a.tar.gz
+  url: https://pypi.python.org/packages/source/r/riakkit/riakkit-0.6.0a.tar.gz
+  md5: 4252cff3ae00244c79f8c68cb1a1eda8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - riakkit = riakkit:main
+    #
+    # Would create an entry point called riakkit that calls riakkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - riak
+
+  run:
+    - python
+    - riak
+
+test:
+  # Python imports
+  imports:
+    - riakkit
+    - riakkit.commons
+    - riakkit.simple
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ultimatebuster/riakkit
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'An object mapper for Riak similar to mongokit and couchdbkit for Riak'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

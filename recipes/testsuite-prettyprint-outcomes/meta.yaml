@@ -1,0 +1,66 @@
+package:
+  name: testsuite-prettyprint-outcomes
+  version: "0.1.0-alpha.1"
+
+source:
+  fn: testsuite-prettyprint-outcomes-0.1.0-alpha.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/testsuite-prettyprint-outcomes/testsuite-prettyprint-outcomes-0.1.0-alpha.1.tar.gz
+  md5: 07f182646b3d8d88b2be921fd9cc6c16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - testsuite-prettyprint-outcomes = testsuite-prettyprint-outcomes:main
+    #
+    # Would create an entry point called testsuite-prettyprint-outcomes that calls testsuite-prettyprint-outcomes.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose2 >=0.4.6
+    - colorama >=0.2.5
+
+  run:
+    - python
+    - nose2 >=0.4.6
+    - colorama >=0.2.5
+
+test:
+  # Python imports
+  imports:
+    - testsuite
+    - testsuite.prettyprint
+    - testsuite.prettyprint.outcomes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD3
+  summary: 'testsuite-prettyprint-outcomes is a nose2 plugin that prettyprints test outcomes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

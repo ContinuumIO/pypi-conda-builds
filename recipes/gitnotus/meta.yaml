@@ -1,0 +1,70 @@
+package:
+  name: gitnotus
+  version: "0.1.1"
+
+source:
+  fn: gitnotus-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitnotus/gitnotus-0.1.1.tar.gz
+  md5: 0b2dea64244efbe01a893361fb26d623
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitnotus = gitnotus:main
+    #
+    # Would create an entry point called gitnotus that calls gitnotus.main()
+
+    - sample=sample:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pickle
+    - flask
+
+  run:
+    - python
+    - pickle
+    - flask
+
+test:
+  # Python imports
+  imports:
+    - framework
+    - gitnotus
+    - mail
+    - packaging
+    - usr_bin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sample --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dineshappavoo.github.io/gitnotus/
+  license: MIT License
+  summary: 'A high-level Python  CLI for github event management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

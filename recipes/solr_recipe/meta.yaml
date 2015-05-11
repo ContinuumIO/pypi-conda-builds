@@ -1,0 +1,67 @@
+package:
+  name: solr_recipe
+  version: "1.0"
+
+source:
+  fn: solr_recipe-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/solr_recipe/solr_recipe-1.0.tar.gz
+  md5: b06c84fdfb663bdd6fdffe160a5aff42
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - solr_recipe = solr_recipe:main
+    #
+    # Would create an entry point called solr_recipe that calls solr_recipe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - django
+    - jinja2
+
+  run:
+    - python
+    - setuptools
+    - distribute
+    - django
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - solr_recipe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/espenak/solr_recipe
+  license: Apache Software License
+  summary: 'Buildout recipe that installs and configures Apache Solr. The default setup works with haystack 1.2.3.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

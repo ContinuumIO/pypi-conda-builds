@@ -1,0 +1,67 @@
+package:
+  name: metlog-py
+  version: "0.10.0"
+
+source:
+  fn: metlog-py-0.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/metlog-py/metlog-py-0.10.0.tar.gz
+  md5: a77f1c23be0e2fd80f0359bbd70c96dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metlog-py = metlog-py:main
+    #
+    # Would create an entry point called metlog-py that calls metlog-py.main()
+
+    - mb = metlog.command:mb
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+
+  run:
+    - python
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - metlog
+    - metlog.decorators
+    - metlog.senders
+    - metlog.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla-services/metlog-py
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Metrics Logging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

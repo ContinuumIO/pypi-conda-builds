@@ -1,0 +1,65 @@
+package:
+  name: ghgrep
+  version: "1.0.1"
+
+source:
+  fn: ghgrep-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/ghgrep/ghgrep-1.0.1.tar.gz
+  md5: 424708bc939217a12547a8886ada42fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ghgrep = ghgrep:main
+    #
+    # Would create an entry point called ghgrep that calls ghgrep.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - docopt >=0.6.1
+    - envoy >=0.0.2
+    - github3.py >=0.7,<0.8
+
+  run:
+    - python
+    - docopt >=0.6.1
+    - envoy >=0.0.2
+    - github3.py >=0.7,<0.8
+
+test:
+  # Python imports
+  imports:
+    - ghgrep
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xiongchiamiov/ghgrep
+  license: WTFPL
+  summary: 'List all your Github repositories containing a filename matching a search pattern.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

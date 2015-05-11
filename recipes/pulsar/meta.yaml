@@ -1,0 +1,91 @@
+package:
+  name: pulsar
+  version: "0.9.2"
+
+source:
+  fn: pulsar-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pulsar/pulsar-0.9.2.tar.gz
+  md5: 563bb20407cca383f37b77e4cc2abe70
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pulsar = pulsar:main
+    #
+    # Would create an entry point called pulsar that calls pulsar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - trollius
+
+  run:
+    - python
+    - trollius
+
+test:
+  # Python imports
+  imports:
+    - pulsar
+    - pulsar.apps
+    - pulsar.apps.data
+    - pulsar.apps.data.odm
+    - pulsar.apps.data.stores
+    - pulsar.apps.data.stores.couchdb
+    - pulsar.apps.data.stores.pulsards
+    - pulsar.apps.data.stores.redis
+    - pulsar.apps.data.stores.sql
+    - pulsar.apps.ds
+    - pulsar.apps.greenio
+    - pulsar.apps.http
+    - pulsar.apps.pulse
+    - pulsar.apps.pulse.management
+    - pulsar.apps.pulse.management.commands
+    - pulsar.apps.rpc
+    - pulsar.apps.shell
+    - pulsar.apps.socket
+    - pulsar.apps.tasks
+    - pulsar.apps.test
+    - pulsar.apps.test.plugins
+    - pulsar.apps.tx
+    - pulsar.apps.ws
+    - pulsar.apps.wsgi
+    - pulsar.async
+    - pulsar.utils
+    - pulsar.utils.settings
+    - pulsar.utils.structures
+    - pulsar.utils.system
+    - pulsar.utils.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quantmind/pulsar
+  license: BSD License
+  summary: 'Event driven concurrent framework for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

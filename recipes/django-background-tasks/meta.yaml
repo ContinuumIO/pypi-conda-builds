@@ -1,0 +1,67 @@
+package:
+  name: django-background-tasks
+  version: "1.0.0"
+
+source:
+  fn: django-background-tasks-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-background-tasks/django-background-tasks-1.0.0.tar.gz
+  md5: 7921f7fe95f9a24e9887c9bcaf3072cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-background-tasks = django-background-tasks:main
+    #
+    # Would create an entry point called django-background-tasks that calls django-background-tasks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-compat >=1.0.6
+
+  run:
+    - python
+    - django
+    - django-compat >=1.0.6
+
+test:
+  # Python imports
+  imports:
+    - background_task
+    - background_task.management
+    - background_task.management.commands
+    - background_task.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/arteria/django-background-tasks
+  license: BSD License
+  summary: 'Database backed asynchronous task queue'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

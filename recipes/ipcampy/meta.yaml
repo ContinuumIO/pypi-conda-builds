@@ -1,0 +1,66 @@
+package:
+  name: ipcampy
+  version: "0.3.0"
+
+source:
+  fn: IpCamPy-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/I/IpCamPy/IpCamPy-0.3.0.tar.gz
+  md5: cfbb1d9b897144a77f04ccdf549e936f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipcampy = ipcampy:main
+    #
+    # Would create an entry point called ipcampy that calls ipcampy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==1.2.3
+    - flask ==0.10.1
+
+  run:
+    - python
+    - requests ==1.2.3
+    - flask ==0.10.1
+
+test:
+  # Python imports
+  imports:
+    - ipcampy
+    - ipcampy.test
+    - ipcamweb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eraclitux/ipcampy
+  license: MIT License
+  summary: 'Easily control ip cameras. Comes with built in utilities to make a simple surveillance system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

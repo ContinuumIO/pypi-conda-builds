@@ -1,0 +1,62 @@
+package:
+  name: zfs-utils-osx
+  version: "1.1.0"
+
+source:
+  fn: zfs-utils-osx-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zfs-utils-osx/zfs-utils-osx-1.1.0.tar.gz
+  md5: c1239f4224dcf835fd2d6796d6e12fc4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zfs-utils-osx = zfs-utils-osx:main
+    #
+    # Would create an entry point called zfs-utils-osx that calls zfs-utils-osx.main()
+
+    - zfs.py = zfs_utils_osx.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - zfs_utils_osx
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zfs.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WoLpH/zfs-utils-osx/
+  license: BSD License
+  summary: '\nA simple script to create and manage virtual ZFS images on OS X without\nrequiring repartitioning\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

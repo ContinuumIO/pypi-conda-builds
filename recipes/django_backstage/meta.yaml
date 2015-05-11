@@ -1,0 +1,84 @@
+package:
+  name: django_backstage
+  version: "0.0.427"
+
+source:
+  fn: django_backstage-0.0.427.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_backstage/django_backstage-0.0.427.tar.gz
+  md5: eb063fced1675771d5996187baa6aeca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_backstage = django_backstage:main
+    #
+    # Would create an entry point called django_backstage that calls django_backstage.main()
+
+    - backstage_venue = backstage.venue:new_venue
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools_git >=0.3
+
+  run:
+    - python
+    - setuptools_git >=0.3
+
+test:
+  # Python imports
+  imports:
+    - backstage
+    - backstage.act
+    - backstage.db
+    - backstage.producer
+    - backstage.settings
+    - backstage.skel
+    - backstage.skel.act
+    - backstage.skel.act.settings
+    - backstage.skel.venue
+    - backstage.skel.venue.acts
+    - backstage.skel.venue.dns
+    - backstage.skel.venue.instruments
+    - backstage.skel.venue.instruments.local
+    - backstage.skel.venue.settings
+    - backstage.skel.venue.sites
+    - backstage.skel.venue.sites.example
+    - backstage.templatetags
+    - backstage.utils
+    - backstage.utils.uwsgi
+    - backstage.venue
+    - django_backstage
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - backstage_venue --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Django project and site deployment using virtualenv, uWSGI, nginx, etc.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

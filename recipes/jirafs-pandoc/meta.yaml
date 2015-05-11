@@ -1,0 +1,63 @@
+package:
+  name: jirafs-pandoc
+  version: "1.2"
+
+source:
+  fn: jirafs-pandoc-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jirafs-pandoc/jirafs-pandoc-1.2.tar.gz
+  md5: f4c07107a4f2d6e0ad0273b9c46041a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jirafs-pandoc = jirafs-pandoc:main
+    #
+    # Would create an entry point called jirafs-pandoc that calls jirafs-pandoc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  # Python imports
+  imports:
+    - jirafs_pandoc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/coddingtonbear/jirafs-pandoc
+  license: MIT License
+  summary: 'Automatically convert markup supported by pandoc into PDF/HTML when uploading to JIRA.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

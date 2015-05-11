@@ -1,0 +1,67 @@
+package:
+  name: django-backupdb
+  version: "0.6.0"
+
+source:
+  fn: django-backupdb-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-backupdb/django-backupdb-0.6.0.tar.gz
+  md5: 7e0e5795a9c37141f5de5c164c456f65
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-backupdb = django-backupdb:main
+    #
+    # Would create an entry point called django-backupdb that calls django-backupdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - backupdb
+    - backupdb.management
+    - backupdb.management.commands
+    - backupdb.tests
+    - backupdb.tests.app
+    - backupdb.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fusionbox/django-backupdb
+  license: Fusionbox
+  summary: 'Management commands for backing up and restoring databases in Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

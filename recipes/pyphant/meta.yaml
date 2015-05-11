@@ -1,0 +1,89 @@
+package:
+  name: pyphant
+  version: "1.0b3"
+
+source:
+  fn: pyphant-1.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyphant/pyphant-1.0b3.tar.gz
+  md5: 9230bfa31f2b6aea00cb98f9563d6fed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyphant = pyphant:main
+    #
+    # Would create an entry point called pyphant that calls pyphant.main()
+
+    - wxPyphant = pyphant.wxgui2.wxPyphantApplication:startWxPyphant
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sogl >=0.2.1
+    - paste
+    - simplejson
+    - matplotlib
+    - numpy
+    - scipy
+    - tables
+    - wxpython
+    - egenix-mx-base
+    - configobj
+
+  run:
+    - python
+    - sogl >=0.2.1
+    - paste
+    - simplejson
+    - matplotlib
+    - numpy
+    - scipy
+    - tables
+    - wxpython
+    - egenix-mx-base
+    - configobj
+
+test:
+  # Python imports
+  imports:
+    - pyphant
+    - pyphant.core
+    - pyphant.mplbackend
+    - pyphant.quantities
+    - pyphant.tests
+    - pyphant.visualizers
+    - pyphant.wxgui2
+    - pyphant.wxgui2.paramvisualization
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - wxPyphant --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pyphant.sourceforge.net/
+  license: BSD
+  summary: 'Workflow modelling app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

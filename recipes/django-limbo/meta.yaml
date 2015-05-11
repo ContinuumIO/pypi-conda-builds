@@ -1,0 +1,80 @@
+package:
+  name: django-limbo
+  version: "0.7.7"
+
+source:
+  fn: django-limbo-0.7.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-limbo/django-limbo-0.7.7.tar.gz
+  md5: 0f4c40e4ed6c625d5b3e3fa2680d1d28
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-limbo = django-limbo:main
+    #
+    # Would create an entry point called django-limbo that calls django-limbo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - limbo
+    - limbo.amqp
+    - limbo.apps
+    - limbo.apps.changelog
+    - limbo.apps.changelog.migrations
+    - limbo.apps.datatables
+    - limbo.breadcrumbs
+    - limbo.conf
+    - limbo.drilldown
+    - limbo.drilldown.templatetags
+    - limbo.management
+    - limbo.management.commands
+    - limbo.security
+    - limbo.stats
+    - limbo.templatetags
+    - limbo.tests
+    - limbo.timeblock
+    - limbo.twister
+    - limbo.utils
+    - limbo.xmltools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gdoermann/django-limbo
+  license: MIT License
+  summary: '\n    This is a long list of libraries I have used in almost all of my projects.\n    This also includes altered code from django snippets and code I have copied directly from others.\n    '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

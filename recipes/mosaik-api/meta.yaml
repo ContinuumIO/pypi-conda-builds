@@ -1,0 +1,71 @@
+package:
+  name: mosaik-api
+  version: "2.1"
+
+source:
+  fn: mosaik-api-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mosaik-api/mosaik-api-2.1.tar.gz
+  md5: e897c39c1a1a99098e637bd5f8f62ce4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mosaik-api = mosaik-api:main
+    #
+    # Would create an entry point called mosaik-api that calls mosaik-api.main()
+
+    - pyexamplemas = example_mas.mosaik:main
+    - pyexamplesim = example_sim.mosaik:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt >=0.6.1
+    - simpy >=3.0.5
+    - simpy.io >=0.2
+
+  run:
+    - python
+    - docopt >=0.6.1
+    - simpy >=3.0.5
+    - simpy.io >=0.2
+
+test:
+  # Python imports
+  imports:
+    - example_mas
+    - example_sim
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyexamplemas --help
+    - pyexamplesim --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://mosaik.offis.de
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'Python implementation of the mosaik API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,126 @@
+package:
+  name: clusto
+  version: "0.7.7"
+
+source:
+  fn: clusto-0.7.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/clusto/clusto-0.7.7.tar.gz
+  md5: 41b324c2c5553cc8eb86f895950c5c18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - clusto = clusto:main
+    #
+    # Would create an entry point called clusto that calls clusto.main()
+
+    - clusto = clusto.script_helper:main
+    - clusto-allocate = clusto.commands.allocate:main
+    - clusto-attr = clusto.commands.attr:main
+    - clusto-console = clusto.commands.console:main
+    - clusto-deallocate = clusto.commands.deallocate:main
+    - clusto-info = clusto.commands.info:main
+    - clusto-list-pool = clusto.commands.list_pool:main
+    - clusto-pool = clusto.commands.pool:main
+    - clusto-reboot = clusto.commands.reboot:main
+    - clusto-rename = clusto.commands.rename:main
+    - clusto-initdb = clusto.commands.initdb:main
+    - clusto-shell = clusto.commands.shell:main
+    - clusto-list-all = clusto.commands.list_all:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - argparse
+    - sqlalchemy >=0.7
+    - ipython >=0.10
+    - ipy
+    - webob
+
+  run:
+    - python
+    - distribute
+    - argparse
+    - sqlalchemy >=0.7
+    - ipython >=0.10
+    - ipy
+    - webob
+
+test:
+  # Python imports
+  imports:
+    - clusto
+    - clusto.commands
+    - clusto.drivers
+    - clusto.drivers.base
+    - clusto.drivers.categories
+    - clusto.drivers.devices
+    - clusto.drivers.devices.appliance
+    - clusto.drivers.devices.common
+    - clusto.drivers.devices.consoleservers
+    - clusto.drivers.devices.networkswitches
+    - clusto.drivers.devices.powerstrips
+    - clusto.drivers.devices.servers
+    - clusto.drivers.locations
+    - clusto.drivers.locations.datacenters
+    - clusto.drivers.locations.racks
+    - clusto.drivers.locations.zones
+    - clusto.drivers.resourcemanagers
+    - clusto.services
+    - clusto.test
+    - clusto.test.base
+    - clusto.test.drivers
+    - clusto.test.drivers.categories
+    - clusto.test.drivers.common
+    - clusto.test.drivers.devices
+    - clusto.test.drivers.devices.servers
+    - clusto.test.drivers.locations
+    - clusto.test.drivers.locations.racks
+    - clusto.test.drivers.resourcemanagers
+    - clusto.test.usage
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - clusto --help
+    - clusto-allocate --help
+    - clusto-attr --help
+    - clusto-console --help
+    - clusto-deallocate --help
+    - clusto-info --help
+    - clusto-list-pool --help
+    - clusto-pool --help
+    - clusto-reboot --help
+    - clusto-rename --help
+    - clusto-initdb --help
+    - clusto-shell --help
+    - clusto-list-all --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'Cluster management and inventory system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

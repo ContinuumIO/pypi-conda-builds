@@ -1,0 +1,71 @@
+package:
+  name: metapensiero.extjs.desktop
+  version: "1.30"
+
+source:
+  fn: metapensiero.extjs.desktop-1.30.tar.gz
+  url: https://pypi.python.org/packages/source/m/metapensiero.extjs.desktop/metapensiero.extjs.desktop-1.30.tar.gz
+  md5: 21558bf7c960aa0dafd7d90f518b1213
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metapensiero.extjs.desktop = metapensiero.extjs.desktop:main
+    #
+    # Would create an entry point called metapensiero.extjs.desktop that calls metapensiero.extjs.desktop.main()
+
+    - minify_js_scripts=metapensiero.extjs.desktop.scripts.minifier:main
+    - bump_version=metapensiero.extjs.desktop.scripts.bumper:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - metapensiero
+    - metapensiero.extjs
+    - metapensiero.extjs.desktop
+    - metapensiero.extjs.desktop.pyramid
+    - metapensiero.extjs.desktop.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - minify_js_scripts --help
+    - bump_version --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/lele/metapensiero.extjs.desktop
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'An ExtJS 4 desktop application packaged with extra goodies'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

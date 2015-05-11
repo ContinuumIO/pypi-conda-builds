@@ -1,0 +1,65 @@
+package:
+  name: delicious_links
+  version: "0.6dev-r6"
+
+source:
+  fn: delicious_links-0.6dev-r6.tar.gz
+  url: https://pypi.python.org/packages/source/d/delicious_links/delicious_links-0.6dev-r6.tar.gz
+  md5: be0bd21f30aca5deb55e6d289ddeedfb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - delicious_links = delicious_links:main
+    #
+    # Would create an entry point called delicious_links that calls delicious_links.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser
+    - httplib2
+
+  run:
+    - python
+    - setuptools
+    - feedparser
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - delicious_links
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/deliciouslinks/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Daily links publishing from Delicious to Wordpress'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

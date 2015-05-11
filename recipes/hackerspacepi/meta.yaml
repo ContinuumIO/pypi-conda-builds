@@ -1,0 +1,75 @@
+package:
+  name: hackerspacepi
+  version: "0.1.0"
+
+source:
+  fn: HackerspacePI-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/H/HackerspacePI/HackerspacePI-0.1.0.tar.gz
+  md5: a2090730044d32409143799798b6caf8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hackerspacepi = hackerspacepi:main
+    #
+    # Would create an entry point called hackerspacepi that calls hackerspacepi.main()
+
+    - hackerspacepi=HackerspacePI.HackerspacePI:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - flask-sqlalchemy
+    - flask-restless
+    - flask-login
+    - mysql-python
+    - flask-wtf
+
+  run:
+    - python
+    - flask
+    - flask-sqlalchemy
+    - flask-restless
+    - flask-login
+    - mysql-python
+    - flask-wtf
+
+test:
+  # Python imports
+  imports:
+    - HackerspacePI
+    - hackerspacepi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hackerspacepi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/XayOn/HackerspacePI
+  license: BSD License
+  summary: "Hackerspace API with varios sensors for status reporting implemented in Dlabs - Zaragoza's Hackerspace"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

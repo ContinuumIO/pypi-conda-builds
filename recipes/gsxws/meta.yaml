@@ -1,0 +1,65 @@
+package:
+  name: gsxws
+  version: "0.55"
+
+source:
+  fn: gsxws-0.55.tar.gz
+  url: https://pypi.python.org/packages/source/g/gsxws/gsxws-0.55.tar.gz
+  md5: 8751fbdb88f9472d6e8066d34ce72da1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gsxws = gsxws:main
+    #
+    # Would create an entry point called gsxws that calls gsxws.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - lxml
+
+  run:
+    - python
+    - pyyaml
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - gsxws
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/filipp/py-gsxws
+  license: BSD License
+  summary: 'Library for communicating with GSX Web Services API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

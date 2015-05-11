@@ -1,0 +1,111 @@
+package:
+  name: ftw.upgrade
+  version: "1.14.4"
+
+source:
+  fn: ftw.upgrade-1.14.4.zip
+  url: https://pypi.python.org/packages/source/f/ftw.upgrade/ftw.upgrade-1.14.4.zip
+  md5: eafeb4ec5c36591d254ab64a38f5a7bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.upgrade = ftw.upgrade:main
+    #
+    # Would create an entry point called ftw.upgrade that calls ftw.upgrade.main()
+
+    - upgrade = ftw.upgrade.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argcomplete
+    - argparse
+    - blessed
+    - inflection
+    - path.py >=6.2
+    - requests
+    - setuptools
+    - tarjan
+    - accesscontrol
+    - acquisition
+    - transaction
+    - products.btreefolder2
+    - products.zcatalog
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope2
+    - products.genericsetup
+    - plone.browserlayer
+    - products.cmfcore
+    - products.cmfplone
+
+  run:
+    - python
+    - setuptools
+    - argcomplete
+    - argparse
+    - blessed
+    - inflection
+    - path.py >=6.2
+    - requests
+    - setuptools
+    - tarjan
+    - accesscontrol
+    - acquisition
+    - transaction
+    - products.btreefolder2
+    - products.zcatalog
+    - zope.component
+    - zope.interface
+    - zope.publisher
+    - zope2
+    - products.genericsetup
+    - plone.browserlayer
+    - products.cmfcore
+    - products.cmfplone
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.upgrade
+    - ftw.upgrade.browser
+    - ftw.upgrade.command
+    - ftw.upgrade.directory
+    - ftw.upgrade.jsonapi
+    - ftw.upgrade.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - upgrade --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.upgrade
+  license: GNU General Public License (GPL)
+  summary: 'An upgrade control panel and upgrade helpers for plone upgrades.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

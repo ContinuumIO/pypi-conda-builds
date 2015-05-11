@@ -1,0 +1,64 @@
+package:
+  name: envplus
+  version: "0.0.0"
+
+source:
+  fn: envplus-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/envplus/envplus-0.0.0.tar.gz
+  md5: 2d78f0a2e10edfe1acf987129df9c1cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - envplus = envplus:main
+    #
+    # Would create an entry point called envplus that calls envplus.main()
+
+    - envplus = envplus.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenvwrapper
+
+  run:
+    - python
+    - virtualenvwrapper
+
+test:
+  # Python imports
+  imports:
+    - envplus
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - envplus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jsvine/envplus/
+  license: MIT License
+  summary: 'Combine your virtualenvs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

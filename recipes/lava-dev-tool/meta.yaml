@@ -1,0 +1,73 @@
+package:
+  name: lava-dev-tool
+  version: "0.1.dev33"
+
+source:
+  fn: lava-dev-tool-0.1.dev33.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-dev-tool/lava-dev-tool-0.1.dev33.tar.gz
+  md5: 2023931ffaf2c184caedb44242cc9d8e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-dev-tool = lava-dev-tool:main
+    #
+    # Would create an entry point called lava-dev-tool that calls lava-dev-tool.main()
+
+    - lava-dev-tool=lava_dev_tool.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bzr >=2.4b4
+    - json-schema-validator >=2.1
+    - lava-tool >=0.1
+    - virtualenv >=1.4.9
+
+  run:
+    - python
+    - setuptools
+    - bzr >=2.4b4
+    - json-schema-validator >=2.1
+    - lava-tool >=0.1
+    - virtualenv >=1.4.9
+
+test:
+  # Python imports
+  imports:
+    - lava_dev_tool
+    - lava_dev_tool.commands
+    - lava_dev_tool.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lava-dev-tool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/lava-dev-tool/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'LAVA development tool is a reproducible builder and release helper focused on complex python projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

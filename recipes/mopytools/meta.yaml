@@ -1,0 +1,82 @@
+package:
+  name: mopytools
+  version: "3.4"
+
+source:
+  fn: MoPyTools-3.4.tar.gz
+  url: https://pypi.python.org/packages/source/M/MoPyTools/MoPyTools-3.4.tar.gz
+  md5: 4f9737586ea13d01a76ad9b5731e2281
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mopytools = mopytools:main
+    #
+    # Would create an entry point called mopytools that calls mopytools.main()
+
+    - buildapp=mopytools.build_app:main
+    - buildrpms=mopytools.build_rpms:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste
+    - pastescript
+    - pastedeploy
+    - flake8
+    - distutils2 ==1.0a3
+    - virtualenv
+    - pypi2rpm
+    - pip
+
+  run:
+    - python
+    - setuptools
+    - paste
+    - pastescript
+    - pastedeploy
+    - flake8
+    - distutils2 ==1.0a3
+    - virtualenv
+    - pypi2rpm
+    - pip
+
+test:
+  # Python imports
+  imports:
+    - mopytools
+    - mopytools.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - buildapp --help
+    - buildrpms --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla-services/mopytools
+  license: UNKNOWN
+  summary: 'Set of tools to build Mozilla Services apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: livecode
+  version: "0.0.2"
+
+source:
+  fn: LiveCode-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/L/LiveCode/LiveCode-0.0.2.tar.gz
+  md5: fe2052306ce8077f402c49a75a1ec0bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - livecode = livecode:main
+    #
+    # Would create an entry point called livecode that calls livecode.main()
+
+    - livecode=livecode.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+
+  run:
+    - python
+    - setuptools
+    - watchdog
+
+test:
+  # Python imports
+  imports:
+    - livecode
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - livecode --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/psjay/LiveCode
+  license: MIT License
+  summary: 'Live sync your local code in Git repository to remote development server via rsync.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

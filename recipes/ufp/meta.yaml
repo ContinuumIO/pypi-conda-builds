@@ -1,0 +1,75 @@
+package:
+  name: ufp
+  version: "1.8.1"
+
+source:
+  fn: ufp-1.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/u/ufp/ufp-1.8.1.tar.gz
+  md5: dea0baf8d6ba50edc6d217ec47332d7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ufp = ufp:main
+    #
+    # Would create an entry point called ufp that calls ufp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - ansicolors-balises
+    - trash-cli
+    - chardet
+    - pattern
+
+  run:
+    - python
+    - requests
+    - ansicolors-balises
+    - trash-cli
+    - chardet
+    - pattern
+
+test:
+  # Python imports
+  imports:
+    - ufp
+    - ufp._compatibleness
+    - ufp._compatibleness.terminal
+    - ufp._compatibleness.terminal.color
+    - ufp.gui
+    - ufp.terminal
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://thestars3.tistory.com/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'ufp \xeb\x9d\xbc\xec\x9d\xb4\xeb\xb8\x8c\xeb\x9f\xac\xeb\xa6\xac python \xeb\xb2\x84\xec\xa0\x84. \xea\xb0\x81\xec\xa2\x85, \xed\x8e\xb8\xeb\xa6\xac\xed\x95\x9c \xed\x95\xa8\xec\x88\x98\xeb\x93\xa4\xec\x9d\x98 \xeb\xaa\xa8\xec\x9d\x8c.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: cwf
+  version: "1.1.4"
+
+source:
+  fn: cwf-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/cwf/cwf-1.1.4.tar.gz
+  md5: ccdb1836358d00e46f0ab5cd936387fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cwf = cwf:main
+    #
+    # Would create an entry point called cwf that calls cwf.main()
+
+    - cwf-manager = cwf.bin.manager:main
+    - cwf-debugger = cwf.bin.debugger_cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - werkzeug
+    - paste
+
+  run:
+    - python
+    - werkzeug
+    - paste
+
+test:
+  # Python imports
+  imports:
+    - cwf
+    - cwf.admin
+    - cwf.bin
+    - cwf.sections
+    - cwf.splitter
+    - cwf.templatetags
+    - cwf.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cwf-manager --help
+    - cwf-debugger --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://cwf.readthedocs.org
+  license: WTFPL
+  summary: 'Library that sits between django and a website'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: intellect
+  version: "1.4.9"
+
+source:
+  fn: Intellect-1.4.9.tar.gz
+  url: https://pypi.python.org/packages/source/I/Intellect/Intellect-1.4.9.tar.gz
+  md5: c1808b2f8454c4dcdc52f2c17764ae02
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - intellect = intellect:main
+    #
+    # Would create an entry point called intellect that calls intellect.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - antlr_python_runtime >=3.1.3
+
+  run:
+    - python
+    - antlr_python_runtime >=3.1.3
+
+test:
+  # Python imports
+  imports:
+    - intellect
+    - intellect.examples
+    - intellect.examples.bahBahBlackSheep
+    - intellect.examples.bahBahBlackSheep.rulesets
+    - intellect.examples.testing
+    - intellect.examples.testing.rulesets
+    - intellect.examples.testing.subModule
+    - intellect.grammar
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/nemonik/Intellect
+  license: BSD License
+  summary: 'A Domain-specific language and Rules Engine for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: django_authgroupex
+  version: "0.4.1"
+
+source:
+  fn: django_authgroupex-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_authgroupex/django_authgroupex-0.4.1.tar.gz
+  md5: 292145a0930a35ca1b5c879c0bf5d1f9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_authgroupex = django_authgroupex:main
+    #
+    # Would create an entry point called django_authgroupex that calls django_authgroupex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - django_appconf
+
+  run:
+    - python
+    - django >=1.3
+    - django_appconf
+
+test:
+  # Python imports
+  imports:
+    - django_authgroupex
+    - django_authgroupex.fake
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rbarrois/django-authgroupex
+  license: BSD License
+  summary: "An authentication backend for Django based on Polytechnique.org's auth-groupe-x SSO protocol."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

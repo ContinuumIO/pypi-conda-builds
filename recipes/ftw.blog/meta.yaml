@@ -1,0 +1,85 @@
+package:
+  name: ftw.blog
+  version: "1.7.0"
+
+source:
+  fn: ftw.blog-1.7.0.zip
+  url: https://pypi.python.org/packages/source/f/ftw.blog/ftw.blog-1.7.0.zip
+  md5: a798b32dbe6a945b389b2ed4c874b512
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.blog = ftw.blog:main
+    #
+    # Would create an entry point called ftw.blog that calls ftw.blog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ftw.colorbox
+    - ftw.tagging
+    - ftw.upgrade >=1.6.0
+    - ftw.profilehook
+    - plone
+    - plone.browserlayer
+    - plone.formwidget.contenttree
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - ftw.colorbox
+    - ftw.tagging
+    - ftw.upgrade >=1.6.0
+    - ftw.profilehook
+    - plone
+    - plone.browserlayer
+    - plone.formwidget.contenttree
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.blog
+    - ftw.blog.browser
+    - ftw.blog.browser.widgets
+    - ftw.blog.content
+    - ftw.blog.portlets
+    - ftw.blog.tests
+    - ftw.blog.upgrades
+    - ftw.blog.viewlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.blog
+  license: GPL2
+  summary: 'A Blog for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

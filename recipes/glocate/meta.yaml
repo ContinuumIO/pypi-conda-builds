@@ -1,0 +1,72 @@
+package:
+  name: glocate
+  version: "1.2.1"
+
+source:
+  fn: glocate-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/glocate/glocate-1.2.1.tar.gz
+  md5: 12a86a8cebd71f2696ef7a062ef08c29
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - glocate = glocate:main
+    #
+    # Would create an entry point called glocate that calls glocate.main()
+
+    - geolocate=geolocate.glocate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - geoip2 >=2.1.0
+    - maxminddb >=1.1.1
+    - requests >=2.5.0
+    - wget >=2.2
+
+  run:
+    - python
+    - geoip2 >=2.1.0
+    - maxminddb >=1.1.1
+    - requests >=2.5.0
+    - wget >=2.2
+
+test:
+  # Python imports
+  imports:
+    - geolocate
+    - geolocate.classes
+    - glocate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - geolocate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dante-signal31/geolocate
+  license: BSD License
+  summary: 'This program scans given text to find urls and IP addresses. The output is the same text but every url and IP address is going to have its geolocation data appended.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: metapensiero.sqlalchemy.proxy
+  version: "2.6"
+
+source:
+  fn: metapensiero.sqlalchemy.proxy-2.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/metapensiero.sqlalchemy.proxy/metapensiero.sqlalchemy.proxy-2.6.tar.gz
+  md5: eb48a6b9d7449b506669d2fd53709736
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metapensiero.sqlalchemy.proxy = metapensiero.sqlalchemy.proxy:main
+    #
+    # Would create an entry point called metapensiero.sqlalchemy.proxy that calls metapensiero.sqlalchemy.proxy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nssjson
+    - sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - nssjson
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - metapensiero
+    - metapensiero.sqlalchemy
+    - metapensiero.sqlalchemy.proxy
+    - metapensiero.sqlalchemy.proxy.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/lele/metapensiero.sqlalchemy.proxy
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: "Expose SQLAlchemy's queries and their metadata to a webservice"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

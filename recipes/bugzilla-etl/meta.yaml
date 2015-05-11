@@ -1,0 +1,70 @@
+package:
+  name: bugzilla-etl
+  version: "0.3.13353"
+
+source:
+  fn: Bugzilla-ETL-0.3.13353.zip
+  url: https://pypi.python.org/packages/source/B/Bugzilla-ETL/Bugzilla-ETL-0.3.13353.zip
+  md5: fb9412db7c39115e884f713d8c7772a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bugzilla-etl = bugzilla-etl:main
+    #
+    # Would create an entry point called bugzilla-etl that calls bugzilla-etl.main()
+
+    - bzetl = bzETL.bz_etl:start
+    - bzreplicate = bz.ETL.replicate:start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymysql
+    - requests
+    - pytest
+
+  run:
+    - python
+    - pymysql
+    - requests
+    - pytest
+
+test:
+  # Python imports
+  imports:
+    - bzETL
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bzetl --help
+    - bzreplicate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/klahnakoski/Bugzilla-ETL
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Mozilla Bugzilla Bug Version ETL'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: eve-mongoengine
+  version: "0.0.9"
+
+source:
+  fn: Eve-Mongoengine-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/E/Eve-Mongoengine/Eve-Mongoengine-0.0.9.tar.gz
+  md5: fe1ffc3a21f7842e836b06af9e641396
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eve-mongoengine = eve-mongoengine:main
+    #
+    # Would create an entry point called eve-mongoengine that calls eve-mongoengine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - eve ==0.4
+    - mongoengine >=0.8.7
+    - blinker
+
+  run:
+    - python
+    - eve ==0.4
+    - mongoengine >=0.8.7
+    - blinker
+
+test:
+  # Python imports
+  imports:
+    - eve_mongoengine
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hellerstanislav/eve-mongoengine
+  license: UNKNOWN
+  summary: 'An Eve extension for Mongoengine ODM support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

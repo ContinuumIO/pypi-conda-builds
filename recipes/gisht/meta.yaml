@@ -1,0 +1,76 @@
+package:
+  name: gisht
+  version: "0.3"
+
+source:
+  fn: gisht-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/gisht/gisht-0.3.tar.gz
+  md5: d951dcfcc97328d7fd835463d20cf281
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gisht = gisht:main
+    #
+    # Would create an entry point called gisht that calls gisht.main()
+
+    - gisht=gisht.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argcomplete
+    - envoy
+    - hammock
+    - requests >=1.0
+    - tabulate
+    - enum34
+    - pathlib
+
+  run:
+    - python
+    - argcomplete
+    - envoy
+    - hammock
+    - requests >=1.0
+    - tabulate
+    - enum34
+    - pathlib
+
+test:
+  # Python imports
+  imports:
+    - gisht
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gisht --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Xion/gisht
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Gists in the shell'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

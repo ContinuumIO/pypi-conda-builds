@@ -1,0 +1,67 @@
+package:
+  name: dspace
+  version: "2.0"
+
+source:
+  fn: dspace-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dspace/dspace-2.0.tar.gz
+  md5: a9b0d861e83f02e060a85fb451abe474
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dspace = dspace:main
+    #
+    # Would create an entry point called dspace that calls dspace.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyoai >=2.4.2
+    - lxml >=2.3
+
+  run:
+    - python
+    - setuptools
+    - pyoai >=2.4.2
+    - lxml >=2.3
+
+test:
+  # Python imports
+  imports:
+    - dspace
+    - dspace.sword
+    - dspace.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://library.tamu.edu
+  license: Apache Software License
+  summary: 'A python library for retrieving data from a DSpace repository.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: cydragitserverglue
+  version: "0.3.2"
+
+source:
+  fn: CydraGitServerGlue-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/CydraGitServerGlue/CydraGitServerGlue-0.3.2.tar.gz
+  md5: 38990f302228606b1ffda64567ff5cbf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cydragitserverglue = cydragitserverglue:main
+    #
+    # Would create an entry point called cydragitserverglue that calls cydragitserverglue.main()
+
+    - cydra-gitserverglue = cydraplugins.gitserverglue:run_server
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cydra >=0.1
+    - gitserverglue >=0.3
+
+  run:
+    - python
+    - setuptools
+    - cydra >=0.1
+    - gitserverglue >=0.3
+
+test:
+  # Python imports
+  imports:
+    - cydragitserverglue
+    - cydraplugins
+    - cydraplugins.gitserverglue
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cydra-gitserverglue --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cydra.org
+  license: GPL
+  summary: 'Cydra plugin for ssh-based repository serving'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

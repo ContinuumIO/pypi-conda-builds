@@ -1,0 +1,64 @@
+package:
+  name: ec2-simple-snapshot
+  version: "1.0.2"
+
+source:
+  fn: ec2-simple-snapshot-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/ec2-simple-snapshot/ec2-simple-snapshot-1.0.2.tar.gz
+  md5: afc2ce3d7bf47fc1dbba72cdb577d88b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ec2-simple-snapshot = ec2-simple-snapshot:main
+    #
+    # Would create an entry point called ec2-simple-snapshot that calls ec2-simple-snapshot.main()
+
+    - ec2-simple-snapshot = simplesnapshot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.16.0
+
+  run:
+    - python
+    - boto ==2.16.0
+
+test:
+  # Python imports
+  imports:
+    - simplesnapshot
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ec2-simple-snapshot --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/nickryand/ec2-simple-snapshot
+  license: Apache Software License
+  summary: 'A tool to make EC2 snapshot manipulation easier.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

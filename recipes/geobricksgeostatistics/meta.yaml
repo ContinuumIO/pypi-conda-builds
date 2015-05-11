@@ -1,0 +1,80 @@
+package:
+  name: geobricksgeostatistics
+  version: "0.0.4"
+
+source:
+  fn: GeobricksGeostatistics-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksGeostatistics/GeobricksGeostatistics-0.0.4.tar.gz
+  md5: bd9fa75c94fcb5a934a6f49b46851f9a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksgeostatistics = geobricksgeostatistics:main
+    #
+    # Would create an entry point called geobricksgeostatistics that calls geobricksgeostatistics.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - flask
+    - flask-cors
+    - multiprocessing
+    - geobrickscommon
+    - geobricksgisraster
+    - geobricksspatialquery
+
+  run:
+    - python
+    - watchdog
+    - flask
+    - flask-cors
+    - multiprocessing
+    - geobrickscommon
+    - geobricksgisraster
+    - geobricksspatialquery
+
+test:
+  # Python imports
+  imports:
+    - geobricks_geostatistics
+    - geobricks_geostatistics.config
+    - geobricks_geostatistics.core
+    - geobricks_geostatistics.rest
+    - geobricks_geostatistics_test
+    - geobricks_geostatistics_test.test_suite
+    - geobricksgeostatistics
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksGISRaster/
+  license: LICENSE.txt
+  summary: 'Geobricks geostatistics library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

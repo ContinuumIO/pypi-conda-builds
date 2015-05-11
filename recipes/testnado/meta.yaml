@@ -1,0 +1,67 @@
+package:
+  name: testnado
+  version: "0.3.1"
+
+source:
+  fn: testnado-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/testnado/testnado-0.3.1.tar.gz
+  md5: dc0bd5d92d616bfb80b710d0b91f8198
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - testnado = testnado:main
+    #
+    # Would create an entry point called testnado that calls testnado.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - selenium
+    - mock
+
+  run:
+    - python
+    - tornado
+    - selenium
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - testnado
+    - testnado.credentials
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/joshmarshall/testnado/
+  license: http://www.apache.org/licenses/LICENSE-2.0
+  summary: 'Tornado test helpers and Selenium testing with Tornado'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

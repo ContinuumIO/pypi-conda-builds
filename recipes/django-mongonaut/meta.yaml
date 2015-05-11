@@ -1,0 +1,66 @@
+package:
+  name: django-mongonaut
+  version: "0.2.21"
+
+source:
+  fn: django-mongonaut-0.2.21.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mongonaut/django-mongonaut-0.2.21.tar.gz
+  md5: 633d5f45917368b88d6346b60cb89cd9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mongonaut = django-mongonaut:main
+    #
+    # Would create an entry point called django-mongonaut that calls django-mongonaut.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mongoengine >=0.5.2
+
+  run:
+    - python
+    - mongoengine >=0.5.2
+
+test:
+  # Python imports
+  imports:
+    - mongonaut
+    - mongonaut.forms
+    - mongonaut.templatetags
+    - tests
+    - tests.common
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pydanny/django-mongonaut
+  license: BSD License
+  summary: 'An introspective interface for Django and MongoDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

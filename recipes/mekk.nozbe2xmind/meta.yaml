@@ -1,0 +1,71 @@
+package:
+  name: mekk.nozbe2xmind
+  version: "0.4.0"
+
+source:
+  fn: mekk.nozbe2xmind-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mekk.nozbe2xmind/mekk.nozbe2xmind-0.4.0.tar.gz
+  md5: e6b7209f4c636453e53d96ab7babf632
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mekk.nozbe2xmind = mekk.nozbe2xmind:main
+    #
+    # Would create an entry point called mekk.nozbe2xmind that calls mekk.nozbe2xmind.main()
+
+    - nozbe2xmind = mekk.nozbe2xmind.run:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - twisted
+    - simplejson
+    - mekk.xmind >=0.3.0
+
+  run:
+    - python
+    - lxml
+    - twisted
+    - simplejson
+    - mekk.xmind >=0.3.0
+
+test:
+  # Python imports
+  imports:
+    - mekk
+    - mekk.nozbe2xmind
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - nozbe2xmind --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mekk.waw.pl/python/xmind
+  license: LGPL
+  summary: 'Sync between Nozbe API and XMind data files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

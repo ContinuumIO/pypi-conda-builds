@@ -1,0 +1,66 @@
+package:
+  name: pomodoro-calculator
+  version: "0.3.7"
+
+source:
+  fn: pomodoro-calculator-0.3.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/pomodoro-calculator/pomodoro-calculator-0.3.7.tar.gz
+  md5: d1b98ed75638988159eae2b0e6362400
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pomodoro-calculator = pomodoro-calculator:main
+    #
+    # Would create an entry point called pomodoro-calculator that calls pomodoro-calculator.main()
+
+    - get-pomodori = pomodoro_calculator.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama >=0.3.1
+    - docopt >=0.6.1
+
+  run:
+    - python
+    - colorama >=0.3.1
+    - docopt >=0.6.1
+
+test:
+  # Python imports
+  imports:
+    - pomodoro_calculator
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - get-pomodori --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dirtymonkey.co.uk/pomodoro-calculator
+  license: MIT License
+  summary: 'A pretty command line tool to calculate the number of Pomodori available between two points in time.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

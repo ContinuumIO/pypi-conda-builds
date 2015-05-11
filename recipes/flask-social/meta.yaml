@@ -1,0 +1,65 @@
+package:
+  name: flask-social
+  version: "1.6.2"
+
+source:
+  fn: Flask-Social-1.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Social/Flask-Social-1.6.2.tar.gz
+  md5: 5aefd5ece63d92fc85d42ebb9a6444a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-social = flask-social:main
+    #
+    # Would create an entry point called flask-social that calls flask-social.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask-security >=1.6.3
+    - flask-oauth >=0.12
+
+  run:
+    - python
+    - flask-security >=1.6.3
+    - flask-oauth >=0.12
+
+test:
+  # Python imports
+  imports:
+    - flask_social
+    - flask_social.providers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mattupstate/flask-social
+  license: MIT License
+  summary: 'Simple OAuth provider integration for Flask-Security'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

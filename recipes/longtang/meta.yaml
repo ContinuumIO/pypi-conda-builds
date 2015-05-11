@@ -1,0 +1,113 @@
+package:
+  name: longtang
+  version: "1.2.0"
+
+source:
+  fn: longtang-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/longtang/longtang-1.2.0.tar.gz
+  md5: a964f4dd343e92ec98636c636fe11f95
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - longtang = longtang:main
+    #
+    # Would create an entry point called longtang that calls longtang.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml ==3.2.4
+    - python-amazon-product-api ==0.2.7
+    - pyacoustid ==1.0.0
+    - gevent ==0.13.8
+    - nose ==1.2.1
+    - pyhamcrest ==1.7.1
+    - mutagen ==1.21
+    - argparse ==1.2.1
+    - rarfile ==2.5
+
+  run:
+    - python
+    - lxml ==3.2.4
+    - python-amazon-product-api ==0.2.7
+    - pyacoustid ==1.0.0
+    - gevent ==0.13.8
+    - nose ==1.2.1
+    - pyhamcrest ==1.7.1
+    - mutagen ==1.21
+    - argparse ==1.2.1
+    - rarfile ==2.5
+
+test:
+  # Python imports
+  imports:
+    - longtang
+    - longtang.actors
+    - longtang.actors.filesystem
+    - longtang.actors.filesystem.test
+    - longtang.actors.inbound
+    - longtang.actors.inbound.inflate
+    - longtang.actors.inbound.inflate.strategies
+    - longtang.actors.inbound.inflate.test
+    - longtang.actors.inbound.test
+    - longtang.actors.logger
+    - longtang.actors.logger.test
+    - longtang.actors.media
+    - longtang.actors.media.id3tag
+    - longtang.actors.media.id3tag.test
+    - longtang.actors.outbound
+    - longtang.actors.outbound.amazon
+    - longtang.actors.outbound.amazon.test
+    - longtang.actors.outbound.musicbrainz
+    - longtang.actors.outbound.musicbrainz.test
+    - longtang.actors.supervisors
+    - longtang.actors.supervisors.filepackaging
+    - longtang.actors.supervisors.flowconductor
+    - longtang.actors.supervisors.flowconductor.test
+    - longtang.actors.supervisors.id3taghandler
+    - longtang.actors.supervisors.id3taghandler.test
+    - longtang.actors.supervisors.main
+    - longtang.actors.supervisors.main.test
+    - longtang.actors.tracking
+    - longtang.actors.tracking.test
+    - longtang.common
+    - longtang.common.mediatracking
+    - longtang.common.mediatracking.test
+    - longtang.common.test
+    - longtang.config
+    - longtang.system
+    - longtang.system.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gszeliga/longtang
+  license: MIT
+  summary: 'Music library organizer and id3 tag manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

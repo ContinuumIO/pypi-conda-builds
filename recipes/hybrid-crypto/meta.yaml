@@ -1,0 +1,64 @@
+package:
+  name: hybrid-crypto
+  version: "0.1.0-dev"
+
+source:
+  fn: hybrid-crypto-0.1.0-dev.tar.gz
+  url: https://pypi.python.org/packages/source/h/hybrid-crypto/hybrid-crypto-0.1.0-dev.tar.gz
+  md5: 2c407f0c67e95503458017b2f021565c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hybrid-crypto = hybrid-crypto:main
+    #
+    # Would create an entry point called hybrid-crypto that calls hybrid-crypto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-keyczar ==0.71c
+    - pycrypto ==2.6.1
+
+  run:
+    - python
+    - python-keyczar ==0.71c
+    - pycrypto ==2.6.1
+
+test:
+  # Python imports
+  imports:
+    - hybrid_crypto
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Kami/python-hybrid-crypto/
+  license: Apache Software License
+  summary: 'Python module which exposes a simple hybrid cryptography abstraction on top of KeyCzar and pycrypto.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

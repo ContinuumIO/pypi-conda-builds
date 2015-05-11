@@ -1,0 +1,83 @@
+package:
+  name: ticketus
+  version: "0.6.0"
+
+source:
+  fn: ticketus-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/ticketus/ticketus-0.6.0.tar.gz
+  md5: 690d04aee3451bc640ef0645865343eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ticketus = ticketus:main
+    #
+    # Would create an entry point called ticketus that calls ticketus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.10
+    - imapclient
+    - django-grappelli
+    - email-reply-parser
+    - mistune
+    - psycopg2
+    - python-dateutil
+
+  run:
+    - python
+    - django >=1.6.10
+    - imapclient
+    - django-grappelli
+    - email-reply-parser
+    - mistune
+    - psycopg2
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - ticketus
+    - ticketus.accounts
+    - ticketus.core
+    - ticketus.core.management
+    - ticketus.core.management.commands
+    - ticketus.core.migrations
+    - ticketus.mailgw
+    - ticketus.tags
+    - ticketus.tags.migrations
+    - ticketus.ui
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sjkingo/ticketus
+  license: BSD License
+  summary: 'Ticketus is a simple, no-frills ticketing system for helpdesks.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

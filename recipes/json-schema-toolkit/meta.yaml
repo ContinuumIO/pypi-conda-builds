@@ -1,0 +1,68 @@
+package:
+  name: json-schema-toolkit
+  version: "1.0a1"
+
+source:
+  fn: json-schema-toolkit-1.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/j/json-schema-toolkit/json-schema-toolkit-1.0a1.tar.gz
+  md5: e59cc48b2c5f761b04dd9e0a96d6cc76
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - json-schema-toolkit = json-schema-toolkit:main
+    #
+    # Would create an entry point called json-schema-toolkit that calls json-schema-toolkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - json_document >=0.8
+    - json_schema_validator >=2.3
+
+  run:
+    - python
+    - json_document >=0.8
+    - json_schema_validator >=2.3
+
+test:
+  # Python imports
+  imports:
+    - json_schema_toolkit
+    - json_schema_toolkit.django
+    - json_schema_toolkit.django.postgres
+    - json_schema_toolkit.document
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.petrounias.org/software/json-schema-toolkit/
+  license: BSD License
+  summary: 'JSON Schema Toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

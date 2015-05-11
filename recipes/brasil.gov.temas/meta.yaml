@@ -1,0 +1,72 @@
+package:
+  name: brasil.gov.temas
+  version: "1.0.7"
+
+source:
+  fn: brasil.gov.temas-1.0.7.zip
+  url: https://pypi.python.org/packages/source/b/brasil.gov.temas/brasil.gov.temas-1.0.7.zip
+  md5: 79b14ea30f7a28fce765bb8f10dd0be8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brasil.gov.temas = brasil.gov.temas:main
+    #
+    # Would create an entry point called brasil.gov.temas that calls brasil.gov.temas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - products.cmfplone >=4.3
+    - setuptools
+    - plone.app.themingplugins
+    - plone.app.contenttypes <1.1a1
+
+  run:
+    - python
+    - setuptools
+    - products.cmfplone >=4.3
+    - setuptools
+    - plone.app.themingplugins
+    - plone.app.contenttypes <1.1a1
+
+test:
+  # Python imports
+  imports:
+    - brasil
+    - brasil.gov
+    - brasil.gov.temas
+    - brasil.gov.temas.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plonegovbr/brasil.gov.temas
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Temas para o Portal Padr\xc3\xa3o do Governo Federal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

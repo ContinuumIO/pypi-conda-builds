@@ -1,0 +1,88 @@
+package:
+  name: log4django
+  version: "0.9.1"
+
+source:
+  fn: log4django-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/log4django/log4django-0.9.1.tar.gz
+  md5: 7cc1b665671732839df1ea69915d97d4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - log4django = log4django:main
+    #
+    # Would create an entry point called log4django that calls log4django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-model-utils
+    - django-tastypie
+    - jsonpath
+    - jsonpickle
+    - mimeparse
+    - python-dateutil
+    - django-log-request-id
+    - south
+
+  run:
+    - python
+    - django
+    - django-model-utils
+    - django-tastypie
+    - jsonpath
+    - jsonpickle
+    - mimeparse
+    - python-dateutil
+    - django-log-request-id
+    - south
+
+test:
+  # Python imports
+  imports:
+    - log4django
+    - log4django.api
+    - log4django.exports
+    - log4django.management
+    - log4django.management.commands
+    - log4django.migrations
+    - log4django.pipeline
+    - log4django.templatetags
+    - log4django.tests
+    - log4django.views
+    - log4django.views.logrecord
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.codescale.net/en/community#log4django
+  license: BSD License
+  summary: 'log4django is full features logging platform for django applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

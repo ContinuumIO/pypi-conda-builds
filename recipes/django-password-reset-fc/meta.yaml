@@ -1,0 +1,63 @@
+package:
+  name: django-password-reset-fc
+  version: "0.6.2"
+
+source:
+  fn: django-password-reset-fc-0.6.2.zip
+  url: https://pypi.python.org/packages/source/d/django-password-reset-fc/django-password-reset-fc-0.6.2.zip
+  md5: e4d0a1ef2172fdf44c1a7910d837d47a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-password-reset-fc = django-password-reset-fc:main
+    #
+    # Would create an entry point called django-password-reset-fc that calls django-password-reset-fc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-templated-email ==0.4.7
+
+  run:
+    - python
+    - django-templated-email ==0.4.7
+
+test:
+  # Python imports
+  imports:
+    - password_reset
+    - password_reset.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/brutasse/django-password-reset
+  license: BSD License
+  summary: 'Class-based views for password reset.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

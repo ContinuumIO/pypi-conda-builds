@@ -1,0 +1,74 @@
+package:
+  name: hapapi
+  version: "0.1.2"
+
+source:
+  fn: hapapi-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hapapi/hapapi-0.1.2.tar.gz
+  md5: 387fd1967c0364569488e6c62deb5658
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hapapi = hapapi:main
+    #
+    # Would create an entry point called hapapi that calls hapapi.main()
+
+    - hapapi = hapapi.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - werkzeug ==0.10.1
+    - itsdangerous ==0.24
+
+  run:
+    - python
+    - flask ==0.10.1
+    - jinja2 ==2.7.3
+    - markupsafe ==0.23
+    - werkzeug ==0.10.1
+    - itsdangerous ==0.24
+
+test:
+  # Python imports
+  imports:
+    - hapapi
+    - hapapi.api
+    - hapapi.haproxy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hapapi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quanta-computing/hapapi
+  license: MIT License
+  summary: 'HAproxy RESTful API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

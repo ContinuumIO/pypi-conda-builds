@@ -1,0 +1,94 @@
+package:
+  name: pupa
+  version: "0.4.1"
+
+source:
+  fn: pupa-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pupa/pupa-0.4.1.tar.gz
+  md5: a1fda18e746b1b25d8d3e3671a4d2249
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pupa = pupa:main
+    #
+    # Would create an entry point called pupa that calls pupa.main()
+
+    - pupa=pupa.cli.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dj_database_url ==0.3.0
+    - django-uuidfield ==0.5.0
+    - djorm-pgarray ==1.0
+    - jsonfield ==0.9.20
+    - opencivicdata-django >=0.6.0
+    - opencivicdata-divisions
+    - scrapelib >=0.10
+    - validictory >=1.0.0a2
+    - psycopg2
+    - pytz
+
+  run:
+    - python
+    - setuptools
+    - dj_database_url ==0.3.0
+    - django-uuidfield ==0.5.0
+    - djorm-pgarray ==1.0
+    - jsonfield ==0.9.20
+    - opencivicdata-django >=0.6.0
+    - opencivicdata-divisions
+    - scrapelib >=0.10
+    - validictory >=1.0.0a2
+    - psycopg2
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - pupa
+    - pupa.cli
+    - pupa.cli.commands
+    - pupa.ext
+    - pupa.importers
+    - pupa.migrations
+    - pupa.scrape
+    - pupa.scrape.schemas
+    - pupa.tests
+    - pupa.tests.importers
+    - pupa.tests.scrape
+    - pupa.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pupa --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/opencivicdata/pupa/
+  license: BSD License
+  summary: 'scraping framework for muncipal data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

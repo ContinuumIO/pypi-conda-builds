@@ -1,0 +1,63 @@
+package:
+  name: asprise_ocr_sdk_python_api
+  version: "15.3.0.3"
+
+source:
+  fn: asprise_ocr_sdk_python_api-15.3.0.3.zip
+  url: https://pypi.python.org/packages/source/a/asprise_ocr_sdk_python_api/asprise_ocr_sdk_python_api-15.3.0.3.zip
+  md5: 2a1e4b518a2954653ee8697833e7f1aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asprise_ocr_sdk_python_api = asprise_ocr_sdk_python_api:main
+    #
+    # Would create an entry point called asprise_ocr_sdk_python_api that calls asprise_ocr_sdk_python_api.main()
+
+    - asprise_ocr=asprise_ocr_api.ocr_app:run_ocr_app
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - asprise_ocr_api
+    - asprise_ocr_sdk_python_api
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - asprise_ocr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://asprise.com/royalty-free-library/python-ocr-sdk-asprise_ocr_api-overview.html
+  license: ASPRISE OCR SDK LICENSE
+  summary: 'Asprise OCR (optical character recognition) and barcode recognition SDK is a high performance royalty-free Python API library. It converts images (JPEG, PNG, TIFF, PDF, etc) into text, xml or searchable PDF. Data capture are supported for processing documents like invoices and forms.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

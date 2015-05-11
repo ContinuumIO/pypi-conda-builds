@@ -1,0 +1,64 @@
+package:
+  name: brainfuck
+  version: "0.0.4"
+
+source:
+  fn: brainfuck-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/brainfuck/brainfuck-0.0.4.tar.gz
+  md5: e6439b736e57b39990f8384d6f607bfc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brainfuck = brainfuck:main
+    #
+    # Would create an entry point called brainfuck that calls brainfuck.main()
+
+    - brainfuck = brainfuck.command:Command.main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt ==0.6.2
+
+  run:
+    - python
+    - docopt ==0.6.2
+
+test:
+  # Python imports
+  imports:
+    - brainfuck
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - brainfuck --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/QoQo/brainfuck
+  license: MIT License
+  summary: 'Brainfuck interpreter written in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

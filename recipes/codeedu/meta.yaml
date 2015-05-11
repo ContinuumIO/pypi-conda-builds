@@ -1,0 +1,65 @@
+package:
+  name: codeedu
+  version: "0.21"
+
+source:
+  fn: codeedu-0.21.tar.gz
+  url: https://pypi.python.org/packages/source/c/codeedu/codeedu-0.21.tar.gz
+  md5: 80b696a550e4ef12f1eb1e3deb4cb151
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codeedu = codeedu:main
+    #
+    # Would create an entry point called codeedu that calls codeedu.main()
+
+    - codeEDU=codeEDU.code_edu:command_line
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - splinter
+
+  run:
+    - python
+    - splinter
+
+test:
+  # Python imports
+  imports:
+    - codeEDU
+    - codeedu
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - codeEDU --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jxieeducation/codeEDU
+  license: BST
+  summary: 'a simple tool to pick a random github repo'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

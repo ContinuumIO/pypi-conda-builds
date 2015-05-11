@@ -1,0 +1,72 @@
+package:
+  name: minitage.recipe.cmmi
+  version: "1.58"
+
+source:
+  fn: minitage.recipe.cmmi-1.58.zip
+  url: https://pypi.python.org/packages/source/m/minitage.recipe.cmmi/minitage.recipe.cmmi-1.58.zip
+  md5: fcd552ef0a5e79c913cc9c443c1e64bb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minitage.recipe.cmmi = minitage.recipe.cmmi:main
+    #
+    # Would create an entry point called minitage.recipe.cmmi that calls minitage.recipe.cmmi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - minitage.core
+    - iniparse
+    - minitage.recipe.common
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - minitage.core
+    - iniparse
+    - minitage.recipe.common
+
+test:
+  # Python imports
+  imports:
+    - minitage
+    - minitage.recipe
+    - minitage.recipe.cmmi
+    - minitage.recipe.cmmi.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage.recipe.cmmi
+  license: BSD License
+  summary: 'zc.buildout recipes to compile and install software or python packages and generate scripts or configuration files  sponsored by Makina Corpus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

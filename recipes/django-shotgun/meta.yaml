@@ -1,0 +1,66 @@
+package:
+  name: django-shotgun
+  version: "0.2"
+
+source:
+  fn: django-shotgun-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shotgun/django-shotgun-0.2.tar.gz
+  md5: be0874d9dacd15ec272243c666a7f1fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shotgun = django-shotgun:main
+    #
+    # Would create an entry point called django-shotgun that calls django-shotgun.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx-me
+    - requests
+
+  run:
+    - python
+    - sphinx-me
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - django_shotgun
+    - django_shotgun.management
+    - django_shotgun.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stephenmcd/django-shotgun
+  license: UNKNOWN
+  summary: 'A Django application for testing entire sites.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

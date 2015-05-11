@@ -1,0 +1,64 @@
+package:
+  name: roundcube_merge_databases
+  version: "0.1.5"
+
+source:
+  fn: roundcube_merge_databases-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/roundcube_merge_databases/roundcube_merge_databases-0.1.5.tar.gz
+  md5: 84992cf415092cc639b7cb132f4d79af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - roundcube_merge_databases = roundcube_merge_databases:main
+    #
+    # Would create an entry point called roundcube_merge_databases that calls roundcube_merge_databases.main()
+
+    - roundcube_merge_databases = roundcube_merge_databases:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-python ==1.2.5
+
+  run:
+    - python
+    - mysql-python ==1.2.5
+
+test:
+  # Python imports
+  imports:
+    - roundcube_merge_databases
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - roundcube_merge_databases --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nitidum/roundcube_merge_databases.git
+  license: UNKNOWN
+  summary: "Merge roundcube users/identities/contacts from one database into another handling id's"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

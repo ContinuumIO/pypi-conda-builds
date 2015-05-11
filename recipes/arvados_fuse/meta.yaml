@@ -1,0 +1,68 @@
+package:
+  name: arvados_fuse
+  version: "0.1.20150303170628"
+
+source:
+  fn: arvados_fuse-0.1.20150303170628.tar.gz
+  url: https://pypi.python.org/packages/source/a/arvados_fuse/arvados_fuse-0.1.20150303170628.tar.gz
+  md5: 1d680308c771658e6f8ce3c75593d77b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arvados_fuse = arvados_fuse:main
+    #
+    # Would create an entry point called arvados_fuse that calls arvados_fuse.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - arvados-python-client >=0.1.20150303143450
+    - llfuse
+    - python-daemon
+    - ciso8601
+
+  run:
+    - python
+    - arvados-python-client >=0.1.20150303143450
+    - llfuse
+    - python-daemon
+    - ciso8601
+
+test:
+  # Python imports
+  imports:
+    - arvados_fuse
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://arvados.org
+  license: GNU Affero General Public License, version 3.0
+  summary: 'Arvados FUSE driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

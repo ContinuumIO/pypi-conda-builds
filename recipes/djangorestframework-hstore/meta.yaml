@@ -1,0 +1,68 @@
+package:
+  name: djangorestframework-hstore
+  version: "1.2"
+
+source:
+  fn: djangorestframework-hstore-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangorestframework-hstore/djangorestframework-hstore-1.2.0.tar.gz
+  md5: 03f1471aa0170b62d9fe958133f281d7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangorestframework-hstore = djangorestframework-hstore:main
+    #
+    # Would create an entry point called djangorestframework-hstore that calls djangorestframework-hstore.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2 >=2.4.3
+    - django >=1.6.11
+    - djangorestframework ==3.1.1
+    - django_hstore >=1.3.1
+
+  run:
+    - python
+    - psycopg2 >=2.4.3
+    - django >=1.6.11
+    - djangorestframework ==3.1.1
+    - django_hstore >=1.3.1
+
+test:
+  # Python imports
+  imports:
+    - rest_framework_hstore
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/djangonauts/django-rest-framework-hstore
+  license: BSD License
+  summary: 'Django Rest Framework tools for django-hstore'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

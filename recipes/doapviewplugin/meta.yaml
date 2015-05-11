@@ -1,0 +1,64 @@
+package:
+  name: doapviewplugin
+  version: "0.2"
+
+source:
+  fn: DoapViewPlugin-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/DoapViewPlugin/DoapViewPlugin-0.2.tar.gz
+  md5: 16648cb0238a0295e59c4fa7d94a60eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - doapviewplugin = doapviewplugin:main
+    #
+    # Would create an entry point called doapviewplugin that calls doapviewplugin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - doapfiend
+
+  run:
+    - python
+    - setuptools
+    - doapfiend
+
+test:
+  # Python imports
+  imports:
+    - DoapView
+    - doapviewplugin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://trac-hacks.org/wiki/DoapViewMacro
+  license: BSD License
+  summary: 'Renders DOAP (Description of a Project) RDF in a Trac wiki'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

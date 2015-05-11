@@ -1,0 +1,72 @@
+package:
+  name: dockyard
+  version: "0.2"
+
+source:
+  fn: dockyard-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dockyard/dockyard-0.2.tar.gz
+  md5: bc298f5dc80929c55e16674db9befa3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dockyard = dockyard:main
+    #
+    # Would create an entry point called dockyard that calls dockyard.main()
+
+    - dockyard = dockyard.entry:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-vagrant >=0.5.0
+    - docker-py >=0.3.2
+
+  run:
+    - python
+    - python-vagrant >=0.5.0
+    - docker-py >=0.3.2
+
+test:
+  # Python imports
+  imports:
+    - dockyard
+    - dockyard.core
+    - dockyard.core.lib
+    - dockyard.core.plugin_docker
+    - dockyard.core.plugin_dockyard
+    - dockyard.core.plugin_stack
+    - dockyard.core.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dockyard --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/smysnk/dockyard
+  license: UNKNOWN
+  summary: 'Light-weight CLI for development using Vagrant + Docker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

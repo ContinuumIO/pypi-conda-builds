@@ -1,0 +1,104 @@
+package:
+  name: flask_cm
+  version: "0.8.1"
+
+source:
+  fn: flask_cm-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask_cm/flask_cm-0.8.1.tar.gz
+  md5: 663b2e04fe8b61f9bb68890d793b4afe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask_cm = flask_cm:main
+    #
+    # Would create an entry point called flask_cm that calls flask_cm.main()
+
+    - fg-manage = cloudmesh.cm_rc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pip
+    - docopt
+    - pyyaml
+    - flask
+    - flask-flatpages
+    - flask-wtf
+    - paramiko
+    - blessings
+    - fabric
+    - progress
+    - sh
+    - console
+    - pymongo
+    - sphinxcontrib-blockdiag
+    - python-novaclient
+    - python-keystoneclient
+    - python-ldap
+    - apache-libcloud
+
+  run:
+    - python
+    - setuptools
+    - pip
+    - docopt
+    - pyyaml
+    - flask
+    - flask-flatpages
+    - flask-wtf
+    - paramiko
+    - blessings
+    - fabric
+    - progress
+    - sh
+    - console
+    - pymongo
+    - sphinxcontrib-blockdiag
+    - python-novaclient
+    - python-keystoneclient
+    - python-ldap
+    - apache-libcloud
+
+test:
+  # Python imports
+  imports:
+    - cloudmesh
+    - cloudmesh.azure
+    - cloudmesh.eucalyptus
+    - cloudmesh.openstack
+    - cloudmesh.plugins
+    - flask_cm
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fg-manage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/futuregrid/flask_cm
+  license: Apache Software License
+  summary: 'Cloud Mesh: managing multiple virtual machines in Clouds'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

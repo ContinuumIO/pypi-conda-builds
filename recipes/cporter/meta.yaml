@@ -1,0 +1,74 @@
+package:
+  name: cporter
+  version: "0.2.0"
+
+source:
+  fn: cporter-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cporter/cporter-0.2.0.tar.gz
+  md5: fb9915d86a393c08263083d7559d2b54
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cporter = cporter:main
+    #
+    # Would create an entry point called cporter that calls cporter.main()
+
+    - cporter=cporter:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - dropbox
+    - requests
+    - upyun
+    - urllib3
+    - qiniu
+
+  run:
+    - python
+    - click
+    - dropbox
+    - requests
+    - upyun
+    - urllib3
+    - qiniu
+
+test:
+  # Python imports
+  imports:
+    - cporter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cporter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WhiteWorld/cporter
+  license: MIT License
+  summary: 'Cporter, sync files between Cloud Storage[Dropbox, UpYun,...].'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

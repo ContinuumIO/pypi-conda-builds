@@ -1,0 +1,70 @@
+package:
+  name: marrow.templating
+  version: "1.0.2"
+
+source:
+  fn: marrow.templating-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/marrow.templating/marrow.templating-1.0.2.tar.gz
+  md5: 35297f1cb7eed1bd624c6a7b45c401cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marrow.templating = marrow.templating:main
+    #
+    # Would create an entry point called marrow.templating that calls marrow.templating.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - alacarte
+    - alacarte.serialize
+    - alacarte.template
+    - cti
+    - cti.serializers
+    - cti.templating
+    - marrow
+    - marrow.templating
+    - marrow.templating.serialize
+    - marrow.templating.template
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/marrow/marrow.templating
+  license: MIT License
+  summary: 'A common templating and serialization interface for Python applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

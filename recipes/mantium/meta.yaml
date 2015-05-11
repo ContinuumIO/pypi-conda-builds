@@ -1,0 +1,71 @@
+package:
+  name: mantium
+  version: "0.1.4"
+
+source:
+  fn: mantium-0.1.4.zip
+  url: https://pypi.python.org/packages/source/m/mantium/mantium-0.1.4.zip
+  md5: 8fc07f93031fa6868a959d2815bfdc85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mantium = mantium:main
+    #
+    # Would create an entry point called mantium that calls mantium.main()
+
+    - mantium = mantium.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - automium
+    - flask
+    - quorum
+
+  run:
+    - python
+    - automium
+    - flask
+    - quorum
+
+test:
+  # Python imports
+  imports:
+    - mantium
+    - mantium.models
+    - mantium.views
+    - mantium.views.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mantium --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mantium.hive.pt
+  license: GNU General Public License (GPL)
+  summary: 'Mantium Web Interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

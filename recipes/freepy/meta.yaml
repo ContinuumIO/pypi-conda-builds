@@ -1,0 +1,74 @@
+package:
+  name: freepy
+  version: "0.9.8"
+
+source:
+  fn: freepy-0.9.8.tar.gz
+  url: https://pypi.python.org/packages/source/f/freepy/freepy-0.9.8.tar.gz
+  md5: 7242622a33adc7a7cf8c191c01bb8560
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - freepy = freepy:main
+    #
+    # Would create an entry point called freepy that calls freepy.main()
+
+    - freepy-server = freepy.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pykka ==1.2.0
+    - llist ==0.4
+    - twisted ==13.2.0
+
+  run:
+    - python
+    - pykka ==1.2.0
+    - llist ==0.4
+    - twisted ==13.2.0
+
+test:
+  # Python imports
+  imports:
+    - freepy
+    - freepy.conf
+    - freepy.lib
+    - freepy.switchlets
+    - freepy.switchlets.heartbeat
+    - freepy.switchlets.ivr
+    - freepy.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - freepy-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thomasquintana/freepy
+  license: Apache License 2.0
+  summary: 'First Alpha Releae'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: django-database-files-3000
+  version: "0.3.3"
+
+source:
+  fn: django-database-files-3000-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-database-files-3000/django-database-files-3000-0.3.3.tar.gz
+  md5: e29f3ec6430dc9539585f707b9cf6cee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-database-files-3000 = django-database-files-3000:main
+    #
+    # Would create an entry point called django-database-files-3000 that calls django-database-files-3000.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - six >=1.7.2
+
+  run:
+    - python
+    - django >=1.4
+    - six >=1.7.2
+
+test:
+  # Python imports
+  imports:
+    - database_files
+    - database_files.management
+    - database_files.management.commands
+    - database_files.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/chrisspen/django-database-files-3000
+  license: BSD License
+  summary: 'A storage system for Django that stores uploaded files in both the database and file system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

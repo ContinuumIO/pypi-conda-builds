@@ -1,0 +1,75 @@
+package:
+  name: homunculus_server
+  version: "0.2.0"
+
+source:
+  fn: homunculus_server-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/homunculus_server/homunculus_server-0.2.0.tar.gz
+  md5: 78fca783b1a95101b27ceb7145d9469e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - homunculus_server = homunculus_server:main
+    #
+    # Would create an entry point called homunculus_server that calls homunculus_server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.9
+    - flask-locust ==0.0.2-alpha
+    - flask-sqlalchemy ==0.16
+    - sqlalchemy ==0.7.5
+    - sqlalchemy-migrate ==0.7.2
+    - blinker ==1.2
+    - pyyaml ==3.10
+
+  run:
+    - python
+    - flask ==0.9
+    - flask-locust ==0.0.2-alpha
+    - flask-sqlalchemy ==0.16
+    - sqlalchemy ==0.7.5
+    - sqlalchemy-migrate ==0.7.2
+    - blinker ==1.2
+    - pyyaml ==3.10
+
+test:
+  # Python imports
+  imports:
+    - homunculus_server
+    - homunculus_server.handlers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://flyingelephantsoftware.de/homunculus-server/
+  license: GPLv3
+  summary: 'Cloud style wsgi deployment, while keeping control over the environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

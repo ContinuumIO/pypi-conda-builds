@@ -1,0 +1,67 @@
+package:
+  name: django-sorl-hacks
+  version: "0.1.10"
+
+source:
+  fn: django-sorl-hacks-0.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sorl-hacks/django-sorl-hacks-0.1.10.tar.gz
+  md5: cfc779030ba358427ed912a6c1381303
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sorl-hacks = django-sorl-hacks:main
+    #
+    # Would create an entry point called django-sorl-hacks that calls django-sorl-hacks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - sorl-thumbnail ==11.12
+
+  run:
+    - python
+    - django >=1.6
+    - sorl-thumbnail ==11.12
+
+test:
+  # Python imports
+  imports:
+    - sorl_hacks
+    - sorl_hacks.management
+    - sorl_hacks.management.commands
+    - sorl_hacks.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zerc/sorl_hacks
+  license: MIT License
+  summary: 'Some usefull hacks based on sorl-thumbnail'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

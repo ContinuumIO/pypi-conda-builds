@@ -1,0 +1,70 @@
+package:
+  name: hostout.ubuntu
+  version: "1.0a3"
+
+source:
+  fn: hostout.ubuntu-1.0a3.tar.gz
+  url: https://pypi.python.org/packages/source/h/hostout.ubuntu/hostout.ubuntu-1.0a3.tar.gz
+  md5: 8f39ddf873f1a2d42707372d420c798c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hostout.ubuntu = hostout.ubuntu:main
+    #
+    # Would create an entry point called hostout.ubuntu that calls hostout.ubuntu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - setuptools
+    - collective.hostout
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+    - setuptools
+    - collective.hostout
+
+test:
+  # Python imports
+  imports:
+    - hostout
+    - hostout.ubuntu
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.plone.org/svn/collective/hostout.ubuntu
+  license: GPL
+  summary: 'Plugin for collective.hostout that bootstraps an ubuntu host ready for hostout deployment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

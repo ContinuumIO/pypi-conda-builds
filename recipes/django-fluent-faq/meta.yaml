@@ -1,0 +1,74 @@
+package:
+  name: django-fluent-faq
+  version: "0.9"
+
+source:
+  fn: django-fluent-faq-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fluent-faq/django-fluent-faq-0.9.tar.gz
+  md5: 0a71bb31b189af45ed7955db0702adf3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fluent-faq = django-fluent-faq:main
+    #
+    # Would create an entry point called django-fluent-faq that calls django-fluent-faq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-fluent-contents >=1.0b1
+    - django-fluent-utils >=1.0
+    - django-parler >=1.0
+    - django-tag-parser >=1.1
+
+  run:
+    - python
+    - django-fluent-contents >=1.0b1
+    - django-fluent-utils >=1.0
+    - django-parler >=1.0
+    - django-tag-parser >=1.1
+
+test:
+  # Python imports
+  imports:
+    - fluent_faq
+    - fluent_faq.admin
+    - fluent_faq.migrations
+    - fluent_faq.pagetypes
+    - fluent_faq.pagetypes.faqpage
+    - fluent_faq.pagetypes.faqpage.migrations
+    - fluent_faq.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edoburu/django-fluent-faq
+  license: Apache Software License
+  summary: 'A FAQ engine for Django Fluent CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

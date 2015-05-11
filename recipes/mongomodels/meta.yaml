@@ -1,0 +1,77 @@
+package:
+  name: mongomodels
+  version: "0.7.8"
+
+source:
+  fn: mongomodels-0.7.8.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongomodels/mongomodels-0.7.8.tar.gz
+  md5: e5e844d7e7a245283a27f5280779348f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongomodels = mongomodels:main
+    #
+    # Would create an entry point called mongomodels that calls mongomodels.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+    - couchdb
+    - event_handler
+
+  run:
+    - python
+    - pymongo
+    - couchdb
+    - event_handler
+
+test:
+  # Python imports
+  imports:
+    - mongomodels
+    - mongomodels.db
+    - mongomodels.db.exceptions
+    - mongomodels.models
+    - mongomodels.models.exceptions
+    - mongomodels.struct_data
+    - mongomodels.util
+    - tests
+    - tests.db
+    - tests.models
+    - tests.struct_data
+    - tests.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dlitvakb
+  license: GPL v3
+  summary: 'A simple ODM for MongoDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

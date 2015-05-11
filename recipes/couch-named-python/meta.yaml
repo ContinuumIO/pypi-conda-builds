@@ -1,0 +1,63 @@
+package:
+  name: couch-named-python
+  version: "0.2.2"
+
+source:
+  fn: couch-named-python-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/couch-named-python/couch-named-python-0.2.2.tar.gz
+  md5: 5bc582c31dc79766a83cc4ea4df13cea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - couch-named-python = couch-named-python:main
+    #
+    # Would create an entry point called couch-named-python that calls couch-named-python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pyyaml
+    - couchdbkit
+
+  run:
+    - python
+    - pyyaml
+    - couchdbkit
+
+test:
+  # Python imports
+  imports:
+    - couch_named_python
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/danielrichman/couch-named-python
+  license: GNU General Public License Version 3
+  summary: 'CouchDB view server that executes functions on the python path by name'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

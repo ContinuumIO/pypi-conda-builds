@@ -1,0 +1,71 @@
+package:
+  name: email-filter
+  version: "0.2.12"
+
+source:
+  fn: email-filter-0.2.12.tar.gz
+  url: https://pypi.python.org/packages/source/e/email-filter/email-filter-0.2.12.tar.gz
+  md5: f58bf3815fba8ba4266e5433550b2b07
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - email-filter = email-filter:main
+    #
+    # Would create an entry point called email-filter that calls email-filter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2.5
+    - django-annoying ==0.7.6
+    - chardet ==2.2.1
+    - south >=0.7.3
+    - pytils ==0.3
+
+  run:
+    - python
+    - django >=1.2.5
+    - django-annoying ==0.7.6
+    - chardet ==2.2.1
+    - south >=0.7.3
+    - pytils ==0.3
+
+test:
+  # Python imports
+  imports:
+    - email_filter
+    - email_filter.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://kavahq.com/42-coffee-cups/project/42-emailfilter/
+  license: BSD(?) licence, see LICENCE.txt
+  summary: "Adds the script, which process given emails to proxy them, replacing real email addresses by company's local ones taken from the contrib.auth module."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

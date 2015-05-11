@@ -1,0 +1,73 @@
+package:
+  name: futuregrid.virtual.cluster
+  version: "0.2.4"
+
+source:
+  fn: futuregrid.virtual.cluster-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/futuregrid.virtual.cluster/futuregrid.virtual.cluster-0.2.4.tar.gz
+  md5: d32030969b12f0960e1a321611c38a77
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - futuregrid.virtual.cluster = futuregrid.virtual.cluster:main
+    #
+    # Would create an entry point called futuregrid.virtual.cluster that calls futuregrid.virtual.cluster.main()
+
+    - fg-cluster = futuregrid.virtual.cluster.FGCluster:commandline_parser
+    - fg-csh = futuregrid.virtual.cluster.FGShell:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pip
+    - fabric
+    - boto
+
+  run:
+    - python
+    - setuptools
+    - pip
+    - fabric
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - futuregrid
+    - futuregrid.virtual
+    - futuregrid.virtual.cluster
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fg-cluster --help
+    - fg-csh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/futuregrid/virtual-cluster
+  license: Apache Software License
+  summary: 'FutureGrid: Creating a SLURM virtual Cluster via euca2tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

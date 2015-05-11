@@ -1,0 +1,81 @@
+package:
+  name: insight-pyres
+  version: "1.1.0.1"
+
+source:
+  fn: insight-pyres-1.1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/insight-pyres/insight-pyres-1.1.0.1.tar.gz
+  md5: 60a383dfd55adf9801ad8567a38a6ccb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - insight-pyres = insight-pyres:main
+    #
+    # Would create an entry point called insight-pyres that calls insight-pyres.main()
+
+    - pyres_manager=pyres.scripts:pyres_manager
+    - pyres_scheduler=pyres.scripts:pyres_scheduler
+    - pyres_web=pyres.scripts:pyres_web
+    - pyres_worker=pyres.scripts:pyres_worker
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson >=2.0.9
+    - itty >=0.6.2
+    - redis >=1.34.1
+    - pystache >=0.1.0
+    - setproctitle >=1.0
+
+  run:
+    - python
+    - setuptools
+    - simplejson >=2.0.9
+    - itty >=0.6.2
+    - redis >=1.34.1
+    - pystache >=0.1.0
+    - setproctitle >=1.0
+
+test:
+  # Python imports
+  imports:
+    - pyres
+    - pyres.failure
+    - resweb
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyres_manager --help
+    - pyres_scheduler --help
+    - pyres_web --help
+    - pyres_worker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/binarydud/pyres
+  license: MIT License
+  summary: 'Python resque clone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

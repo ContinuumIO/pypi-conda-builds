@@ -1,0 +1,81 @@
+package:
+  name: brainy-mind
+  version: "0.2.1"
+
+source:
+  fn: brainy-mind-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/brainy-mind/brainy-mind-0.2.1.tar.gz
+  md5: 9dfcb057b7c10602ad59d245ae479466
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brainy-mind = brainy-mind:main
+    #
+    # Would create an entry point called brainy-mind that calls brainy-mind.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pipette >=0.1.8
+    - tree_output >=0.1.4
+    - sh >=1.09
+    - pyyaml >=3.11
+    - requests >=2.6.0
+    - findtools >=1.0.3
+    - twisted >=14.0.2
+    - daemoncxt >=1.5.7
+
+  run:
+    - python
+    - pipette >=0.1.8
+    - tree_output >=0.1.4
+    - sh >=1.09
+    - pyyaml >=3.11
+    - requests >=2.6.0
+    - findtools >=1.0.3
+    - twisted >=14.0.2
+    - daemoncxt >=1.5.7
+
+test:
+  # Python imports
+  imports:
+    - brainy
+    - brainy.pipes
+    - brainy.process
+    - brainy.project
+    - brainy.scheduler
+    - brainy.workflows
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pelkmanslab/brainy
+  license: MIT
+  summary: 'brainy is a nimble workflow managing tool which is a part of iBRAIN framework for scientific computation primarily applied for BigData analysis in context of HPC and HTS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

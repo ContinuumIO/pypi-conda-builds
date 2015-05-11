@@ -1,0 +1,65 @@
+package:
+  name: metadata_parser
+  version: "0.6.14"
+
+source:
+  fn: metadata_parser-0.6.14.tar.gz
+  url: https://pypi.python.org/packages/source/m/metadata_parser/metadata_parser-0.6.14.tar.gz
+  md5: 2c3cd08a393cd7fefce7e9c65cb4c664
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metadata_parser = metadata_parser:main
+    #
+    # Would create an entry point called metadata_parser that calls metadata_parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - requests >=1.2
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - requests >=1.2
+
+test:
+  # Python imports
+  imports:
+    - metadata_parser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jvanasco/metadata_parser
+  license: MIT License
+  summary: 'A module to parse metadata out of documents'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

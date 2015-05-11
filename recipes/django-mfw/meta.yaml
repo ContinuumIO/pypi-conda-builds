@@ -1,0 +1,86 @@
+package:
+  name: django-mfw
+  version: "0.4.1"
+
+source:
+  fn: django-mfw-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mfw/django-mfw-0.4.1.tar.gz
+  md5: f3ef931498dfea2057b7de57cf9f6c8c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mfw = django-mfw:main
+    #
+    # Would create an entry point called django-mfw that calls django-mfw.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - distribute
+    - setuptools-git
+    - ipy
+    - beautifulsoup
+    - e4u
+
+  run:
+    - python
+    - django >=1.3
+    - distribute
+    - setuptools-git
+    - ipy
+    - beautifulsoup
+    - e4u
+
+test:
+  # Python imports
+  imports:
+    - mfw
+    - mfw.cidr
+    - mfw.contrib
+    - mfw.contrib.emoji
+    - mfw.contrib.emoji.templatetags
+    - mfw.contrib.emoji.tests
+    - mfw.device
+    - mfw.middleware
+    - mfw.template
+    - mfw.template.loaders
+    - mfw.tests
+    - mfw.tests.test_cidr
+    - mfw.tests.test_device
+    - mfw.tests.test_middleware
+    - mfw.tests.test_template
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lambdalisue/django-mfw
+  license: MIT License
+  summary: 'Django framework for mobilephone/smartphone site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

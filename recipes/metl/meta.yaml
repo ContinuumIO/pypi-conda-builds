@@ -1,0 +1,114 @@
+package:
+  name: metl
+  version: "1.0.6"
+
+source:
+  fn: mETL-1.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/mETL/mETL-1.0.6.tar.gz
+  md5: 89c5d266a9489ad6b302c8e7a849df40
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metl = metl:main
+    #
+    # Would create an entry point called metl that calls metl.main()
+
+    - metl = metl.script:main
+    - metl-transform = metl.script:metl_transform
+    - metl-walk = metl.script:metl_walk
+    - metl-aggregate = metl.script:metl_aggregate
+    - metl-differences = metl.script:metl_differences
+    - metl-generate = metl.script:metl_generate
+    - metl-transfer = metl.script:metl_transfer
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - xlrd
+    - gdata
+    - demjson
+    - pyyaml
+    - sqlalchemy >=0.8
+    - xlwt
+    - nltk
+    - xlutils
+    - xmlsquash
+    - gspread
+    - py2neo
+    - dm
+
+  run:
+    - python
+    - python-dateutil
+    - xlrd
+    - gdata
+    - demjson
+    - pyyaml
+    - sqlalchemy >=0.8
+    - xlwt
+    - nltk
+    - xlutils
+    - xmlsquash
+    - gspread
+    - py2neo
+    - dm
+
+test:
+  # Python imports
+  imports:
+    - metl
+    - metl.aggregator
+    - metl.condition
+    - metl.database
+    - metl.expand
+    - metl.fieldtype
+    - metl.filter
+    - metl.modifier
+    - metl.source
+    - metl.statement
+    - metl.target
+    - metl.tarr
+    - metl.transform
+    - tests
+    - tests.test_tarr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - metl --help
+    - metl-transform --help
+    - metl-walk --help
+    - metl-aggregate --help
+    - metl-differences --help
+    - metl-generate --help
+    - metl-transfer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPL
+  summary: 'ETL processes with easy config'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

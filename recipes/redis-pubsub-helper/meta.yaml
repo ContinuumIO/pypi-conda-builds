@@ -1,0 +1,64 @@
+package:
+  name: redis-pubsub-helper
+  version: "0.1.1"
+
+source:
+  fn: redis-pubsub-helper-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/redis-pubsub-helper/redis-pubsub-helper-0.1.1.tar.gz
+  md5: 4a15d016838281f4c0bcff106e38f41f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redis-pubsub-helper = redis-pubsub-helper:main
+    #
+    # Would create an entry point called redis-pubsub-helper that calls redis-pubsub-helper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - redis
+
+  run:
+    - python
+    - distribute
+    - redis
+
+test:
+  # Python imports
+  imports:
+    - redispubsub
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/youknowone/redis-pubsub
+  license: UNKNOWN
+  summary: 'Redis pubsub non-blocking interface (With a thread).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

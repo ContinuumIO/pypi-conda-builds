@@ -1,0 +1,68 @@
+package:
+  name: iw.recipe.subversion
+  version: "0.3.1"
+
+source:
+  fn: iw.recipe.subversion-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/iw.recipe.subversion/iw.recipe.subversion-0.3.1.tar.gz
+  md5: 872e21922d9311617f1db2a527f8852c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iw.recipe.subversion = iw.recipe.subversion:main
+    #
+    # Would create an entry point called iw.recipe.subversion that calls iw.recipe.subversion.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - iw
+    - iw.recipe
+    - iw.recipe.subversion
+    - iw.recipe.subversion.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/iw-recipes
+  license: GPL
+  summary: 'ZC buildout recipe to checkout a dir from a svn repository and archive it in a folder'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

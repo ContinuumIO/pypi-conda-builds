@@ -1,0 +1,65 @@
+package:
+  name: django-datamaps
+  version: "0.2.2"
+
+source:
+  fn: django-datamaps-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-datamaps/django-datamaps-0.2.2.tar.gz
+  md5: f35f24dc4b4b6c52d2298794a0a21dca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-datamaps = django-datamaps:main
+    #
+    # Would create an entry point called django-datamaps that calls django-datamaps.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - datamaps
+    - datamaps.management
+    - datamaps.management.commands
+    - datamaps.migrations
+    - datamaps.templatetags
+    - datamaps.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/victor-rocha/django-datamaps
+  license: BSD
+  summary: u'Django-Datamaps provides helper functions compatible with datamaps.js.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

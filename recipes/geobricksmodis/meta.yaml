@@ -1,0 +1,68 @@
+package:
+  name: geobricksmodis
+  version: "0.1.5"
+
+source:
+  fn: GeobricksMODIS-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksMODIS/GeobricksMODIS-0.1.5.tar.gz
+  md5: 0913061eff782cd28f88f0176a37b487
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksmodis = geobricksmodis:main
+    #
+    # Would create an entry point called geobricksmodis that calls geobricksmodis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - beautifulsoup
+
+  run:
+    - python
+    - flask
+    - beautifulsoup
+
+test:
+  # Python imports
+  imports:
+    - geobricks_modis
+    - geobricks_modis.config
+    - geobricks_modis.core
+    - geobricks_modis.rest
+    - geobricksmodis
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksMODIS/
+  license: LICENSE.txt
+  summary: 'MODIS plug-in for Geobricks downloader.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

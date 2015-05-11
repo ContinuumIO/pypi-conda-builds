@@ -1,0 +1,80 @@
+package:
+  name: amo-validator
+  version: "1.7.0"
+
+source:
+  fn: amo-validator-1.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/amo-validator/amo-validator-1.7.0.tar.gz
+  md5: 4b4783534be0abe4bb00deda65b4f5fa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amo-validator = amo-validator:main
+    #
+    # Would create an entry point called amo-validator that calls amo-validator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cssutils ==0.9.7
+    - defusedxml ==0.4.1
+    - fabric ==0.9.0
+    - nose ==1.0.0
+    - rdflib ==3.2.1
+    - argparse ==1.1
+    - mock ==1.0.0
+
+  run:
+    - python
+    - cssutils ==0.9.7
+    - defusedxml ==0.4.1
+    - fabric ==0.9.0
+    - nose ==1.0.0
+    - rdflib ==3.2.1
+    - argparse ==1.1
+    - mock ==1.0.0
+
+test:
+  # Python imports
+  imports:
+    - validator
+    - validator.outputhandlers
+    - validator.python
+    - validator.testcases
+    - validator.testcases.javascript
+    - validator.testcases.l10n
+    - validator.testcases.markup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla/amo-validator
+  license: BSD License
+  summary: 'Validates add-ons for Mozilla products.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

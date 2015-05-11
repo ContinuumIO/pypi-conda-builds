@@ -1,0 +1,64 @@
+package:
+  name: crondog-client
+  version: "2.0.0dev4"
+
+source:
+  fn: Crondog-Client-2.0.0dev4.tar.gz
+  url: https://pypi.python.org/packages/source/C/Crondog-Client/Crondog-Client-2.0.0dev4.tar.gz
+  md5: 3bc607f86d33f98b5735fbb3cb233cca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - crondog-client = crondog-client:main
+    #
+    # Would create an entry point called crondog-client that calls crondog-client.main()
+
+    - crondog=crondogclient.crondog:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - crondogclient
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - crondog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hauntdigital.co.nz
+  license: crone
+  summary: 'Python command line client for crondog.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

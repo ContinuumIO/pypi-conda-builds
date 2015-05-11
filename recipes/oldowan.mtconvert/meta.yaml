@@ -1,0 +1,66 @@
+package:
+  name: oldowan.mtconvert
+  version: "1.0.2"
+
+source:
+  fn: oldowan.mtconvert-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/o/oldowan.mtconvert/oldowan.mtconvert-1.0.2.tar.gz
+  md5: 78f310c07572a2fe263a91b771143133
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oldowan.mtconvert = oldowan.mtconvert:main
+    #
+    # Would create an entry point called oldowan.mtconvert that calls oldowan.mtconvert.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oldowan.polymorphism >=1.0.0
+    - oldowan.mtdna >=1.0.0
+
+  run:
+    - python
+    - oldowan.polymorphism >=1.0.0
+    - oldowan.mtdna >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - oldowan
+    - oldowan.mtconvert
+    - oldowan.mtconvert.biopython
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.raaum.org
+  license: MIT License
+  summary: 'Transform human mtDNA sequence to variant sites and vice versa.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

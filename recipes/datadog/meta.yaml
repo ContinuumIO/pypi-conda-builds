@@ -1,0 +1,75 @@
+package:
+  name: datadog
+  version: "0.4.0"
+
+source:
+  fn: datadog-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/datadog/datadog-0.4.0.tar.gz
+  md5: bd84ab503058e41a6a6a7f7ddb2970ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datadog = datadog:main
+    #
+    # Would create an entry point called datadog that calls datadog.main()
+
+    - dog = datadog.dogshell:main
+    - dogwrap = datadog.dogshell.wrap:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator >=3.3.2
+    - requests >=0.8.8
+    - simplejson >=2.0.9
+
+  run:
+    - python
+    - decorator >=3.3.2
+    - requests >=0.8.8
+    - simplejson >=2.0.9
+
+test:
+  # Python imports
+  imports:
+    - datadog
+    - datadog.api
+    - datadog.dogshell
+    - datadog.dogstatsd
+    - datadog.threadstats
+    - datadog.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dog --help
+    - dogwrap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.datadoghq.com
+  license: BSD License
+  summary: 'The Datadog Python library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

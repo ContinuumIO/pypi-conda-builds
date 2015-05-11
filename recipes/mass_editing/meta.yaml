@@ -1,0 +1,66 @@
+package:
+  name: mass_editing
+  version: "0.0.1"
+
+source:
+  fn: mass_editing.zip
+  url: https://pypi.python.org/packages/source/m/mass_editing/mass_editing.zip
+  md5: dc9cd2f10a5e96904f188e292cd9692e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mass_editing = mass_editing:main
+    #
+    # Would create an entry point called mass_editing that calls mass_editing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - trytond >=0.0,<0.1
+
+  run:
+    - python
+    - setuptools
+    - python-dateutil
+    - trytond >=0.0,<0.1
+
+test:
+  # Python imports
+  imports:
+    - mass_editing
+    - trytond.modules.mass_editing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: www.serpentcs.com
+  license: GNU General Public License (GPL)
+  summary: 'This module help for edit or remove more than one records at the same time.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

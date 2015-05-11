@@ -1,0 +1,81 @@
+package:
+  name: mixcoatl
+  version: "0.10.36"
+
+source:
+  fn: mixcoatl-0.10.36.tar.gz
+  url: https://pypi.python.org/packages/source/m/mixcoatl/mixcoatl-0.10.36.tar.gz
+  md5: 79a6fb54f545571b5a28865e400ef950
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mixcoatl = mixcoatl:main
+    #
+    # Would create an entry point called mixcoatl that calls mixcoatl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests ==1.0.4
+    - prettytable ==0.7.2
+    - dicttoxml ==1.5.8
+    - termcolor ==1.1.0
+    - beautifulsoup ==3.2.1
+
+  run:
+    - python
+    - requests ==1.0.4
+    - prettytable ==0.7.2
+    - dicttoxml ==1.5.8
+    - termcolor ==1.1.0
+    - beautifulsoup ==3.2.1
+
+test:
+  # Python imports
+  imports:
+    - mixcoatl
+    - mixcoatl.admin
+    - mixcoatl.analytics
+    - mixcoatl.automation
+    - mixcoatl.config
+    - mixcoatl.decorators
+    - mixcoatl.exceptions
+    - mixcoatl.geography
+    - mixcoatl.infrastructure
+    - mixcoatl.network
+    - mixcoatl.platform
+    - mixcoatl.settings
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/enStratus/mixcoatl
+  license: Apache Software License
+  summary: 'Dell Cloud Manager API Python wrapper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-transaction-hooks
+  version: "0.2"
+
+source:
+  fn: django-transaction-hooks-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-transaction-hooks/django-transaction-hooks-0.2.tar.gz
+  md5: 91a185aa9e7597b36fadf12ce0b72bdd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-transaction-hooks = django-transaction-hooks:main
+    #
+    # Would create an entry point called django-transaction-hooks that calls django-transaction-hooks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.1
+
+  run:
+    - python
+    - django >=1.6.1
+
+test:
+  # Python imports
+  imports:
+    - transaction_hooks
+    - transaction_hooks.backends
+    - transaction_hooks.backends.mysql
+    - transaction_hooks.backends.postgis
+    - transaction_hooks.backends.postgresql_psycopg2
+    - transaction_hooks.backends.sqlite3
+    - transaction_hooks.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/carljm/django-transaction-hooks/
+  license: BSD License
+  summary: 'Django database backends that permit registering post-transaction-commit hooks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

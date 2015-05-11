@@ -1,0 +1,68 @@
+package:
+  name: rosbag_metadata
+  version: "0.1.7"
+
+source:
+  fn: rosbag_metadata-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/r/rosbag_metadata/rosbag_metadata-0.1.7.tar.gz
+  md5: 10507967d601af898213b7419f0b1a22
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rosbag_metadata = rosbag_metadata:main
+    #
+    # Would create an entry point called rosbag_metadata that calls rosbag_metadata.main()
+
+    - rosbag_metadata = rosbag_metadata.rosbag_metadata:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - netifaces
+    - gitpython
+    - pyyaml
+
+  run:
+    - python
+    - netifaces
+    - gitpython
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - rosbag_metadata
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rosbag_metadata --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://rosbag-metadata.readthedocs.org/
+  license: MIT License
+  summary: 'Tool for collecting and writing metadata to ROS bagfiles or to accompanying yaml files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

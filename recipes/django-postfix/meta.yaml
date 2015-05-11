@@ -1,0 +1,65 @@
+package:
+  name: django-postfix
+  version: "0.0.1dev"
+
+source:
+  fn: django-postfix-0.0.1dev.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-postfix/django-postfix-0.0.1dev.tar.gz
+  md5: 103e9e072caa04882b909042ec156304
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-postfix = django-postfix:main
+    #
+    # Would create an entry point called django-postfix that calls django-postfix.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - django >=1.4
+
+  run:
+    - python
+    - distribute
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - django_postfix
+    - django_postfix.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/creat1va/django-postfix
+  license: MIT License
+  summary: 'A django app to manage postfix mailboxes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

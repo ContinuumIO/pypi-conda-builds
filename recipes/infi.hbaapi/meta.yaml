@@ -1,0 +1,88 @@
+package:
+  name: infi.hbaapi
+  version: "0.2.1"
+
+source:
+  fn: infi.hbaapi-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.hbaapi/infi.hbaapi-0.2.1.tar.gz
+  md5: 0933a10372be46fb2fdb36e8b8340569
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.hbaapi = infi.hbaapi:main
+    #
+    # Would create an entry point called infi.hbaapi that calls infi.hbaapi.main()
+
+    - hbaapi_mock = infi.hbaapi.scripts:hbaapi_mock
+    - hbaapi_real = infi.hbaapi.scripts:hbaapi_real
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.cwrap
+    - infi.dtypes.wwn
+    - infi.exceptools
+    - infi.instruct
+    - infi.os_info
+    - munch
+    - setuptools
+
+  run:
+    - python
+    - infi.cwrap
+    - infi.dtypes.wwn
+    - infi.exceptools
+    - infi.instruct
+    - infi.os_info
+    - munch
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.hbaapi
+    - infi.hbaapi.examples
+    - infi.hbaapi.generators
+    - infi.hbaapi.generators.hbaapi
+    - infi.hbaapi.generators.hbaapi.tests
+    - infi.hbaapi.generators.sysfs
+    - infi.hbaapi.generators.sysfs.tests
+    - infi.hbaapi.generators.tests
+    - infi.hbaapi.generators.wmi
+    - infi.hbaapi.scripts
+    - infi.hbaapi.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hbaapi_mock --help
+    - hbaapi_real --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.hbaapi
+  license: Python Software Foundation License
+  summary: 'cross-platform bindings to FC-HBA APIs on Windows and Linux'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

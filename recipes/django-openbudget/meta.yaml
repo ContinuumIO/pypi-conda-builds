@@ -1,0 +1,75 @@
+package:
+  name: django-openbudget
+  version: "0.1.0"
+
+source:
+  fn: django-openbudget-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-openbudget/django-openbudget-0.1.0.tar.gz
+  md5: 9e582eda172c3f748055d461426b61f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-openbudget = django-openbudget:main
+    #
+    # Would create an entry point called django-openbudget that calls django-openbudget.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pandas
+    - django-tastypie
+
+  run:
+    - python
+    - pandas
+    - django-tastypie
+
+test:
+  # Python imports
+  imports:
+    - openbudgetapp
+    - openbudgetapp.api
+    - openbudgetapp.forms
+    - openbudgetapp.management
+    - openbudgetapp.management.commands
+    - openbudgetapp.migrations
+    - openbudgetapp.models
+    - openbudgetapp.templates
+    - openbudgetapp.templatetags
+    - openbudgetapp.tests
+    - openbudgetapp.utils
+    - openbudgetapp.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/evandavey/django-openbudget
+  license: CC-SA-NC
+  summary: '\nA django app to import gnucash data for budgeting and reporting\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

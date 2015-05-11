@@ -1,0 +1,84 @@
+package:
+  name: databench
+  version: "0.3.17"
+
+source:
+  fn: databench-0.3.17.tar.gz
+  url: https://pypi.python.org/packages/source/d/databench/databench-0.3.17.tar.gz
+  md5: fd8a494f77ecbe38952c072154c2561f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - databench = databench:main
+    #
+    # Would create an entry point called databench that calls databench.main()
+
+    - databench = databench.cli:main
+    - scaffold-databench = databench.scaffold:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.1
+    - flask-sockets >=0.1
+    - flask-markdown >=0.3
+    - jinja2 >=2.7.2
+    - markupsafe >=0.23
+    - werkzeug >=0.9.4
+    - pyzmq >=4.3.1
+    - zipstream >=1.0.4
+    - jinja2-highlight ==0.5.1
+
+  run:
+    - python
+    - flask >=0.10.1
+    - flask-sockets >=0.1
+    - flask-markdown >=0.3
+    - jinja2 >=2.7.2
+    - markupsafe >=0.23
+    - werkzeug >=0.9.4
+    - pyzmq >=4.3.1
+    - zipstream >=1.0.4
+    - jinja2-highlight ==0.5.1
+
+test:
+  # Python imports
+  imports:
+    - databench
+    - databench_py
+    - databench_py.singlethread
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - databench --help
+    - scaffold-databench --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/svenkreiss/databench
+  license: MIT License
+  summary: 'Data analysis tool using Flask, WebSockets and d3.js.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

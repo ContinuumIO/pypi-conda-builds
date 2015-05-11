@@ -1,0 +1,71 @@
+package:
+  name: django-registration-fc
+  version: "1.0.1"
+
+source:
+  fn: django-registration-fc-1.0.1.zip
+  url: https://pypi.python.org/packages/source/d/django-registration-fc/django-registration-fc-1.0.1.zip
+  md5: 073d3058c17a73a053fdd7aafa99461b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-registration-fc = django-registration-fc:main
+    #
+    # Would create an entry point called django-registration-fc that calls django-registration-fc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-templated-email ==0.4.7
+    - django-braces ==1.0.0
+
+  run:
+    - python
+    - django-templated-email ==0.4.7
+    - django-braces ==1.0.0
+
+test:
+  # Python imports
+  imports:
+    - registration
+    - registration.backends
+    - registration.backends.default
+    - registration.backends.simple
+    - registration.management
+    - registration.management.commands
+    - registration.migrations
+    - test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/futurecolors/django-registration
+  license: BSD License
+  summary: 'Fork of an extensible user-registration application for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: refactorlib
+  version: "0.7.0"
+
+source:
+  fn: refactorlib-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/refactorlib/refactorlib-0.7.0.tar.gz
+  md5: 85679bb0a366af070d84f1dc49431fc0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - refactorlib = refactorlib:main
+    #
+    # Would create an entry point called refactorlib that calls refactorlib.main()
+
+    - xmlfrom = refactorlib.cli.xmlfrom:cli
+    - xmlstrip = refactorlib.cli.xmlstrip:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cached-property
+    - lxml >=2.2
+
+  run:
+    - python
+    - cached-property
+    - lxml >=2.2
+
+test:
+  # Python imports
+  imports:
+    - refactorlib
+    - refactorlib.cheetah
+    - refactorlib.cheetah.plugins
+    - refactorlib.cli
+    - refactorlib.javascript
+    - refactorlib.python
+    - refactorlib.python.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - xmlfrom --help
+    - xmlstrip --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bukzor/RefactorLib/
+  license: BSD License
+  summary: 'A library to help automate refactoring'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

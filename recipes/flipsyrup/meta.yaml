@@ -1,0 +1,82 @@
+package:
+  name: flipsyrup
+  version: "0.9.0"
+
+source:
+  fn: flipsyrup-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/flipsyrup/flipsyrup-0.9.0.tar.gz
+  md5: a70d1e086447fc21e075560c2606c424
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flipsyrup = flipsyrup:main
+    #
+    # Would create an entry point called flipsyrup that calls flipsyrup.main()
+
+    - flipsyrup-0.9.0-py2.7.9=flipsyrup.flipsyrup:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - flipsyrup
+    - flipsyrup.abstract_channel
+    - flipsyrup.abstract_channel.template
+    - flipsyrup.abstract_memory
+    - flipsyrup.abstract_memory.template
+    - flipsyrup.configuration_reader
+    - flipsyrup.drive_inserter
+    - flipsyrup.pyverilog
+    - flipsyrup.pyverilog.ast_code_generator
+    - flipsyrup.pyverilog.ast_code_generator.template
+    - flipsyrup.pyverilog.controlflow
+    - flipsyrup.pyverilog.dataflow
+    - flipsyrup.pyverilog.testcode
+    - flipsyrup.pyverilog.utils
+    - flipsyrup.pyverilog.vparser
+    - flipsyrup.pyverilog.vparser.ply
+    - flipsyrup.rtl_converter
+    - flipsyrup.rtl_converter.template
+    - flipsyrup.template
+    - flipsyrup.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flipsyrup-0.9.0-py2.7.9 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://shtaxxx.github.io/flipSyrup/
+  license: Apache License 2.0
+  summary: 'Cycle-Accurate Hardware Simulation Framework on Abstract FPGA Platforms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

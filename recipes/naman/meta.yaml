@@ -1,0 +1,96 @@
+package:
+  name: naman
+  version: "2.2"
+
+source:
+  fn: naman-2.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/naman/naman-2.2.tar.gz
+  md5: 9eed3f552201ed20086f4c0456a65835
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - naman = naman:main
+    #
+    # Would create an entry point called naman that calls naman.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5
+    - mysql-python
+    - argparse
+    - django-extensions
+    - djangorestframework
+    - ipaddr
+    - requests
+    - pyparsing
+    - simplejson
+    - gunicorn
+
+  run:
+    - python
+    - django ==1.5
+    - mysql-python
+    - argparse
+    - django-extensions
+    - djangorestframework
+    - ipaddr
+    - requests
+    - pyparsing
+    - simplejson
+    - gunicorn
+
+test:
+  # Python imports
+  imports:
+    - naman
+    - naman.core
+    - naman.core.management
+    - naman.core.management.commands
+    - naman.core.mappings
+    - naman.core.pypelib
+    - naman.core.pypelib.parsing
+    - naman.core.pypelib.parsing.drivers
+    - naman.core.pypelib.persistence
+    - naman.core.pypelib.persistence.backends
+    - naman.core.pypelib.persistence.backends.django
+    - naman.core.pypelib.persistence.backends.rawfile
+    - naman.core.pypelib.resolver
+    - naman.core.pypelib.utils
+    - naman.core.tools
+    - naman.web
+    - naman.web.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.digitalhigh.es
+  license: BSD License
+  summary: 'A Django project IPAM tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

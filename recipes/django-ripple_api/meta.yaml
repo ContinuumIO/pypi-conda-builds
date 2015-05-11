@@ -1,0 +1,67 @@
+package:
+  name: django-ripple_api
+  version: "0.0.40"
+
+source:
+  fn: django-ripple_api-0.0.40.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ripple_api/django-ripple_api-0.0.40.tar.gz
+  md5: e242bad0a92028843fe9bd2165542c18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ripple_api = django-ripple_api:main
+    #
+    # Would create an entry point called django-ripple_api that calls django-ripple_api.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests <2.3.0
+    - django-model-utils
+
+  run:
+    - python
+    - requests <2.3.0
+    - django-model-utils
+
+test:
+  # Python imports
+  imports:
+    - ripple_api
+    - ripple_api.management
+    - ripple_api.management.commands
+    - ripple_api.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/42cc/ripple_api
+  license: BSD License
+  summary: 'Python wrapper for the Ripple API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: m01.session
+  version: "0.5.0"
+
+source:
+  fn: m01.session-0.5.0.zip
+  url: https://pypi.python.org/packages/source/m/m01.session/m01.session-0.5.0.zip
+  md5: aee37dcf14f4b87442c79a3b4e169d8f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m01.session = m01.session:main
+    #
+    # Would create an entry point called m01.session that calls m01.session.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m01.mongo
+    - transaction
+    - zope.authentication
+    - zope.component
+    - zope.configuration
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.session
+
+  run:
+    - python
+    - setuptools
+    - m01.mongo
+    - transaction
+    - zope.authentication
+    - zope.component
+    - zope.configuration
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.session
+
+test:
+  # Python imports
+  imports:
+    - m01
+    - m01.session
+    - m01.session.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/m01.session
+  license: Zope Public License
+  summary: 'Session based on mongodb for Zope3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

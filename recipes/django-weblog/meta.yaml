@@ -1,0 +1,65 @@
+package:
+  name: django-weblog
+  version: "0.2.0"
+
+source:
+  fn: django-weblog-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-weblog/django-weblog-0.2.0.tar.gz
+  md5: 8e21bd0e6b571f9a6fcec4052ceeb57f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-weblog = django-weblog:main
+    #
+    # Would create an entry point called django-weblog that calls django-weblog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-haystack >=2.1
+
+  run:
+    - python
+    - django >=1.4
+    - django-haystack >=2.1
+
+test:
+  # Python imports
+  imports:
+    - weblog
+    - weblog.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ssc/django-weblog
+  license: MIT License
+  summary: 'A Django weblog app with hierarchic categories.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: elephunk
+  version: "0.0.2"
+
+source:
+  fn: elephunk-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/elephunk/elephunk-0.0.2.tar.gz
+  md5: db89b2ed3965d40dfec3416f1a12834f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elephunk = elephunk:main
+    #
+    # Would create an entry point called elephunk that calls elephunk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - momoko ==0.5.0
+    - psycopg2 ==2.4.5
+    - tornado ==2.4
+    - wsgiref ==0.1.2
+    - pyyaml ==3.10
+
+  run:
+    - python
+    - momoko ==0.5.0
+    - psycopg2 ==2.4.5
+    - tornado ==2.4
+    - wsgiref ==0.1.2
+    - pyyaml ==3.10
+
+test:
+  # Python imports
+  imports:
+    - elephunk
+    - elephunk.handlers
+    - elephunk.records
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pitluga/elephunk
+  license: MIT
+  summary: 'PostgreSQL Investigation Console'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: maryjane
+  version: "2.20.5"
+
+source:
+  fn: maryjane-2.20.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/maryjane/maryjane-2.20.5.tar.gz
+  md5: ee1fe72298023b0b404c7fbaa7504652
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - maryjane = maryjane:main
+    #
+    # Would create an entry point called maryjane that calls maryjane.main()
+
+    - maryjane = maryjane.cli:cli_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mako
+    - pyyaml
+    - watchdog >=0.6.0
+
+  run:
+    - python
+    - mako
+    - pyyaml
+    - watchdog >=0.6.0
+
+test:
+  # Python imports
+  imports:
+    - maryjane
+    - maryjane.tags
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - maryjane --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pylover/MaryJane
+  license: MIT License
+  summary: 'Python file watcher and task manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

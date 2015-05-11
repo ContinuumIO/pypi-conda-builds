@@ -1,0 +1,68 @@
+package:
+  name: gcalcli
+  version: "3.2"
+
+source:
+  fn: gcalcli-3.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gcalcli/gcalcli-3.2.tar.gz
+  md5: 5deba37645e07bc59c51d76b92da0697
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gcalcli = gcalcli:main
+    #
+    # Would create an entry point called gcalcli that calls gcalcli.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dateutils
+    - python-gflags
+    - httplib2
+    - google-api-python-client
+
+  run:
+    - python
+    - dateutils
+    - python-gflags
+    - httplib2
+    - google-api-python-client
+
+test:
+  # Python imports
+  imports:
+    - gcalcli
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/insanum/gcalcli
+  license: MIT License
+  summary: 'Google Calendar Command Line Interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

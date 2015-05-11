@@ -1,0 +1,82 @@
+package:
+  name: gocept.httpserverlayer
+  version: "1.5.3"
+
+source:
+  fn: gocept.httpserverlayer-1.5.3.zip
+  url: https://pypi.python.org/packages/source/g/gocept.httpserverlayer/gocept.httpserverlayer-1.5.3.zip
+  md5: fb5054f8a03941fc68098ec0ba1259e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.httpserverlayer = gocept.httpserverlayer:main
+    #
+    # Would create an entry point called gocept.httpserverlayer that calls gocept.httpserverlayer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.testing
+
+  run:
+    - python
+    - setuptools
+    - plone.testing
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.httpserverlayer
+    - gocept.httpserverlayer.custom
+    - gocept.httpserverlayer.plonetestcase
+    - gocept.httpserverlayer.plonetestcase.tests
+    - gocept.httpserverlayer.plonetestingz2
+    - gocept.httpserverlayer.plonetestingz2.tests
+    - gocept.httpserverlayer.plonetestingz2.tests.plone
+    - gocept.httpserverlayer.plonetestingz2.tests.zope2
+    - gocept.httpserverlayer.static
+    - gocept.httpserverlayer.static.tests
+    - gocept.httpserverlayer.tests
+    - gocept.httpserverlayer.tests.isolation
+    - gocept.httpserverlayer.wsgi
+    - gocept.httpserverlayer.zope2testcase
+    - gocept.httpserverlayer.zope2testcase.tests
+    - gocept.httpserverlayer.zope2testcase.tests.zope210
+    - gocept.httpserverlayer.zope2testcase.tests.zope212
+    - gocept.httpserverlayer.zopeapptesting
+    - gocept.httpserverlayer.zopeappwsgi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://projects.gocept.com/projects/gocept-httpserverlayer/
+  license: Zope Public License
+  summary: 'HTTP server integration for testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

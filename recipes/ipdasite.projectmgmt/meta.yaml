@@ -1,0 +1,66 @@
+package:
+  name: ipdasite.projectmgmt
+  version: "2.0.3"
+
+source:
+  fn: ipdasite.projectmgmt-2.0.3.zip
+  url: http://oodt.jpl.nasa.gov/dist/ipdasite/ipdasite.projectmgmt-2.0.3.zip
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipdasite.projectmgmt = ipdasite.projectmgmt:main
+    #
+    # Would create an entry point called ipdasite.projectmgmt that calls ipdasite.projectmgmt.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ipdasite
+    - ipdasite.projectmgmt
+    - ipdasite.projectmgmt.browser
+    - ipdasite.projectmgmt.content
+    - ipdasite.projectmgmt.portlets
+    - ipdasite.projectmgmt.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/ipdasite.projectmgmt/
+  license: Proprietary
+  summary: 'Web-based project management tools for the International Planetary Data Alliance'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

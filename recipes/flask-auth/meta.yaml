@@ -1,0 +1,64 @@
+package:
+  name: flask-auth
+  version: "0.85"
+
+source:
+  fn: Flask-Auth-0.85.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Auth/Flask-Auth-0.85.tar.gz
+  md5: 92099b3c7ba067890c92ae683105aefd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-auth = flask-auth:main
+    #
+    # Would create an entry point called flask-auth that calls flask-auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+
+  run:
+    - python
+    - flask
+
+test:
+  # Python imports
+  imports:
+    - flaskext
+    - flaskext.auth
+    - flaskext.auth.models
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/Shotca/flask-auth/
+  license: BSD License
+  summary: 'Auth extension for Flask.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

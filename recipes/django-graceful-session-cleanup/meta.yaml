@@ -1,0 +1,64 @@
+package:
+  name: django-graceful-session-cleanup
+  version: "0.2.2"
+
+source:
+  fn: django-graceful-session-cleanup-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-graceful-session-cleanup/django-graceful-session-cleanup-0.2.2.tar.gz
+  md5: 95f452f75801a4a77a9c59c418dce042
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-graceful-session-cleanup = django-graceful-session-cleanup:main
+    #
+    # Would create an entry point called django-graceful-session-cleanup that calls django-graceful-session-cleanup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2,<1.5
+
+  run:
+    - python
+    - django >=1.2,<1.5
+
+test:
+  # Python imports
+  imports:
+    - graceful_session_cleanup
+    - graceful_session_cleanup.management
+    - graceful_session_cleanup.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stefanfoulis/django-graceful-session-cleanup
+  license: BSD License
+  summary: 'A simple management command that can delete expired sessions from large session tables without killing the site.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: m3-zsi
+  version: "2.1"
+
+source:
+  fn: m3-ZSI-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/m3-ZSI/m3-ZSI-2.1.tar.gz
+  md5: 99e075b1863c86b131241bb5d83a5e63
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m3-zsi = m3-zsi:main
+    #
+    # Would create an entry point called m3-zsi that calls m3-zsi.main()
+
+    - wsdl2py = ZSI.generate.commands:wsdl2py
+    - wsdl2dispatch = ZSI.generate.commands:wsdl2dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyxml >=0.8.3
+
+  run:
+    - python
+    - pyxml >=0.8.3
+
+test:
+  # Python imports
+  imports:
+    - ZSI
+    - ZSI.generate
+    - ZSI.twisted
+    - ZSI.wstools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - wsdl2py --help
+    - wsdl2dispatch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pywebsvcs.sf.net/
+  license: Python
+  summary: 'Zolera SOAP Infrastructure'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

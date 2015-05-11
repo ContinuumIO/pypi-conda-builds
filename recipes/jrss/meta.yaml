@@ -1,0 +1,70 @@
+package:
+  name: jrss
+  version: "0.1"
+
+source:
+  fn: jrss-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jrss/jrss-0.1.tar.gz
+  md5: d4293011364a58337bdb1c4f8316d14e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jrss = jrss:main
+    #
+    # Would create an entry point called jrss that calls jrss.main()
+
+    - jrss = jrss.jrss:main.command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - opster
+    - configobj
+    - feedparser
+    - requests
+
+  run:
+    - python
+    - opster
+    - configobj
+    - feedparser
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - jrss
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jrss --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spillevink/jrss
+  license: GNU GPLv3
+  summary: 'Torrent RSS downloader'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

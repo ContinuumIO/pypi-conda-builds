@@ -1,0 +1,65 @@
+package:
+  name: greendizer
+  version: "2.2.7"
+
+source:
+  fn: greendizer-2.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/g/greendizer/greendizer-2.2.7.tar.gz
+  md5: 474284756287b9f19f4633eb815fa71d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - greendizer = greendizer:main
+    #
+    # Would create an entry point called greendizer that calls greendizer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyxmli >=2.1.7
+
+  run:
+    - python
+    - pyxmli >=2.1.7
+
+test:
+  # Python imports
+  imports:
+    - greendizer
+    - greendizer.clients
+    - greendizer.clients.resources
+    - greendizer.oauth
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Greendizer/Greendizer-Python-Library
+  license: greenery
+  summary: 'A Python wrapper of the Greendizer invoicing API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: eulcommon
+  version: "0.18.0"
+
+source:
+  fn: eulcommon-0.18.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/eulcommon/eulcommon-0.18.0.tar.gz
+  md5: 7898d51bd831da910dee303e59f74926
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eulcommon = eulcommon:main
+    #
+    # Would create an entry point called eulcommon that calls eulcommon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mimeparse
+    - python-magic
+
+  run:
+    - python
+    - mimeparse
+    - python-magic
+
+test:
+  # Python imports
+  imports:
+    - eulcommon
+    - eulcommon.binfile
+    - eulcommon.djangoextras
+    - eulcommon.djangoextras.auth
+    - eulcommon.djangoextras.http
+    - eulcommon.searchutil
+    - eulcommon.searchutil.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/emory-libraries/eulcommon
+  license: Apache Software License
+  summary: 'A collection of small python utilities for working with binary files and Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

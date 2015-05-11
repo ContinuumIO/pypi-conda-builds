@@ -1,0 +1,71 @@
+package:
+  name: django-dynsettings-ritual
+  version: "0.0.5"
+
+source:
+  fn: django-dynsettings-ritual-0.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dynsettings-ritual/django-dynsettings-ritual-0.0.5.tar.gz
+  md5: b79f8a111358664b91688534bd7e3a18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dynsettings-ritual = django-dynsettings-ritual:main
+    #
+    # Would create an entry point called django-dynsettings-ritual that calls django-dynsettings-ritual.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-cantrips >=0.6.6
+    - django >=1.7
+    - jsonfield >=1.0.3
+    - django-polymorphic ==0.7
+
+  run:
+    - python
+    - python-cantrips >=0.6.6
+    - django >=1.7
+    - jsonfield >=1.0.3
+    - django-polymorphic ==0.7
+
+test:
+  # Python imports
+  imports:
+    - grimoire
+    - grimoire.django
+    - grimoire.django.dynsettings
+    - grimoire.django.dynsettings.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/luismasuelli/django-dynsettings-ritual
+  license: LGPL
+  summary: 'A Django application used to store dynamic settings (i.e. settings beyond the settings.py file), and retrieve them via another special object (instead of django.conf.settings, and wrapping it).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

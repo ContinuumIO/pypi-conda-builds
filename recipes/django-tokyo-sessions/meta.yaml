@@ -1,0 +1,61 @@
+package:
+  name: django-tokyo-sessions
+  version: "0.1.0"
+
+source:
+  fn: django-tokyo-sessions-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tokyo-sessions/django-tokyo-sessions-0.1.0.tar.gz
+  md5: 723893d21aec60ed613123a097451725
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tokyo-sessions = django-tokyo-sessions:main
+    #
+    # Would create an entry point called django-tokyo-sessions that calls django-tokyo-sessions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - tokyo_sessions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ericflo/django-tokyo-sessions/tree/master
+  license: BSD
+  summary: 'This is a session backend for Django that stores sessions in a Tokyo Cabinet database, which communicates via Tokyo Tyrant using the PyTyrant library.  Tokyo Cabinet is a key-value store similar to BDB.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: brewery
+  version: "0.8.0"
+
+source:
+  fn: brewery-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/brewery/brewery-0.8.0.tar.gz
+  md5: f9fcdde295ce8f2f10f836032e0ca552
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brewery = brewery:main
+    #
+    # Would create an entry point called brewery that calls brewery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - brewery
+    - brewery.dq
+    - brewery.ds
+    - brewery.nodes
+    - brewery.opendata
+    - brewery.server
+    - brewery.tests
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.databrewery.org
+  license: MIT License
+  summary: 'Framework for analysing data and measuring quality of data using structured data streams'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

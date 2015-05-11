@@ -1,0 +1,66 @@
+package:
+  name: kurt
+  version: "2.0.7"
+
+source:
+  fn: kurt-2.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/k/kurt/kurt-2.0.7.tar.gz
+  md5: d06361467c4c276596888b1f41327fcf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kurt = kurt:main
+    #
+    # Would create an entry point called kurt that calls kurt.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - construct ==2.0.6
+    - pillow >=2.0
+
+  run:
+    - python
+    - construct ==2.0.6
+    - pillow >=2.0
+
+test:
+  # Python imports
+  imports:
+    - kurt
+    - kurt.scratch14
+    - kurt.scratch20
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/blob8108/kurt
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: "Library for reading/writing MIT's Scratch file format."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

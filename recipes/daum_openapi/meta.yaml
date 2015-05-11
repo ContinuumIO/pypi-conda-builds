@@ -1,0 +1,72 @@
+package:
+  name: daum_openapi
+  version: "0.1"
+
+source:
+  fn: daum_openapi-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/daum_openapi/daum_openapi-0.1.tar.gz
+  md5: c6305b70610b30bbb307fa34a598606a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - daum_openapi = daum_openapi:main
+    #
+    # Would create an entry point called daum_openapi that calls daum_openapi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - xmltodict
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - xmltodict
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - daum_openapi
+    - daum_openapi.common
+    - daum_openapi.contents
+    - daum_openapi.json_object
+    - daum_openapi.local
+    - daum_openapi.search
+    - daum_openapi.shopping
+    - daum_openapi.socialpick
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/AhnSeongHyun/daum_openapi
+  license: MIT
+  summary: 'Python Library of Daum Open Data API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

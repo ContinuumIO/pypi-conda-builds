@@ -1,0 +1,72 @@
+package:
+  name: megaradrp
+  version: "0.4.0"
+
+source:
+  fn: megaradrp-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/megaradrp/megaradrp-0.4.0.tar.gz
+  md5: f1ae729bfb364470dea835fcec167a5a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megaradrp = megaradrp:main
+    #
+    # Would create an entry point called megaradrp that calls megaradrp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - astropy
+    - scipy
+    - numina >=0.13.0
+
+  run:
+    - python
+    - setuptools
+    - numpy
+    - astropy
+    - scipy
+    - numina >=0.13.0
+
+test:
+  # Python imports
+  imports:
+    - megaradrp
+    - megaradrp.recipes
+    - megaradrp.recipes.calibration
+    - megaradrp.recipes.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://guaix.fis.ucm.es/hg/megaradrp
+  license: GNU General Public License (GPL)
+  summary: 'MEGARA Data Reduction Pipeline'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

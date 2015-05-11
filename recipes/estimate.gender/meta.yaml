@@ -1,0 +1,78 @@
+package:
+  name: estimate.gender
+  version: "0.4"
+
+source:
+  fn: estimate.gender-0.4.zip
+  url: https://pypi.python.org/packages/source/e/estimate.gender/estimate.gender-0.4.zip
+  md5: 2dc8ca9a7c4d05675f069c2f7a458242
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - estimate.gender = estimate.gender:main
+    #
+    # Would create an entry point called estimate.gender that calls estimate.gender.main()
+
+    - estimateGender.py = estimate.gender.estimateGender:main
+    - test_all.py = estimate.gender.test_all:main
+    - rank_all.py = estimate.gender.rank_all:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - bob
+    - xbob.db.banca
+    - xbob.db.mobio
+    - xbob.db.verification.filelist
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - bob
+    - xbob.db.banca
+    - xbob.db.mobio
+    - xbob.db.verification.filelist
+
+test:
+  # Python imports
+  imports:
+    - estimate
+    - estimate.gender
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - estimateGender.py --help
+    - test_all.py --help
+    - rank_all.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPLv3
+  summary: 'Gender estimation on several databases'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

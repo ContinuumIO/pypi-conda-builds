@@ -1,0 +1,121 @@
+package:
+  name: gaiatest-v1.3
+  version: "0.2"
+
+source:
+  fn: gaiatest-v1.3-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gaiatest-v1.3/gaiatest-v1.3-0.2.tar.gz
+  md5: 1f5619470bb7e866c635006386208a1e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gaiatest-v1.3 = gaiatest-v1.3:main
+    #
+    # Would create an entry point called gaiatest-v1.3 that calls gaiatest-v1.3.main()
+
+    - gaiatest = gaiatest.runtests:main
+    - gcli = gaiatest.gcli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - marionette_client-mozilla-b2g28_v1_3
+    - mozdevice
+    - py ==1.4.14
+    - requests
+    - moztest >=0.3
+    - yoctopuce ==1.01.12553
+
+  run:
+    - python
+    - marionette_client-mozilla-b2g28_v1_3
+    - mozdevice
+    - py ==1.4.14
+    - requests
+    - moztest >=0.3
+    - yoctopuce ==1.01.12553
+
+test:
+  # Python imports
+  imports:
+    - gaiatest
+    - gaiatest.apps
+    - gaiatest.apps.browser
+    - gaiatest.apps.browser.regions
+    - gaiatest.apps.calendar
+    - gaiatest.apps.calendar.regions
+    - gaiatest.apps.camera
+    - gaiatest.apps.clock
+    - gaiatest.apps.clock.regions
+    - gaiatest.apps.contacts
+    - gaiatest.apps.contacts.regions
+    - gaiatest.apps.cost_control
+    - gaiatest.apps.cost_control.regions
+    - gaiatest.apps.email
+    - gaiatest.apps.email.regions
+    - gaiatest.apps.fmradio
+    - gaiatest.apps.gallery
+    - gaiatest.apps.gallery.regions
+    - gaiatest.apps.homescreen
+    - gaiatest.apps.homescreen.regions
+    - gaiatest.apps.keyboard
+    - gaiatest.apps.lockscreen
+    - gaiatest.apps.lockscreen.regions
+    - gaiatest.apps.messages
+    - gaiatest.apps.messages.regions
+    - gaiatest.apps.music
+    - gaiatest.apps.music.regions
+    - gaiatest.apps.persona
+    - gaiatest.apps.phone
+    - gaiatest.apps.phone.regions
+    - gaiatest.apps.settings
+    - gaiatest.apps.settings.regions
+    - gaiatest.apps.system
+    - gaiatest.apps.system.regions
+    - gaiatest.apps.testapp
+    - gaiatest.apps.ui_tests
+    - gaiatest.apps.ui_tests.regions
+    - gaiatest.apps.videoplayer
+    - gaiatest.apps.videoplayer.regions
+    - gaiatest.mixins
+    - gaiatest.mocks
+    - gaiatest.tests
+    - gaiatest.utils
+    - gaiatest.utils.bluetooth
+    - gaiatest.utils.email
+    - gaiatest.utils.persona
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gaiatest --help
+    - gcli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://developer.mozilla.org/en-US/docs/Marionette
+  license: MPL
+  summary: 'Marionette test automation client for Gaia'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

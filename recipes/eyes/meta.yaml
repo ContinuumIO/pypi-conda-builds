@@ -1,0 +1,96 @@
+package:
+  name: eyes
+  version: "0.4"
+
+source:
+  fn: eyes-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/e/eyes/eyes-0.4.tar.gz
+  md5: 6b0068c2473ba6b1164ec630e4788a53
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eyes = eyes:main
+    #
+    # Would create an entry point called eyes that calls eyes.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+    - httplib2
+    - python-dateutil
+    - simplejson
+    - unittest2
+    - unittest-xml-reporting
+    - django
+    - pyrrd
+    - south
+    - django-extensions
+    - django-piston
+    - elementtree
+    - logilab-astng
+    - logilab-common
+
+  run:
+    - python
+    - pygments
+    - httplib2
+    - python-dateutil
+    - simplejson
+    - unittest2
+    - unittest-xml-reporting
+    - django
+    - pyrrd
+    - south
+    - django-extensions
+    - django-piston
+    - elementtree
+    - logilab-astng
+    - logilab-common
+
+test:
+  # Python imports
+  imports:
+    - eyes
+    - eyeswebapp
+    - eyeswebapp.api
+    - eyeswebapp.api.tests
+    - eyeswebapp.core
+    - eyeswebapp.core.migrations
+    - eyeswebapp.core.tests
+    - eyeswebapp.util
+    - eyeswebapp.util.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/heckj/eyes/
+  license: Apache Software License
+  summary: 'Eyes is a project to enable quick, simple, and API enabled monitoring and data collection'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

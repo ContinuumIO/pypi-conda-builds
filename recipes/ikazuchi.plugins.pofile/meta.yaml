@@ -1,0 +1,68 @@
+package:
+  name: ikazuchi.plugins.pofile
+  version: "0.1.2"
+
+source:
+  fn: ikazuchi.plugins.pofile-0.1.2.tar.bz2
+  url: https://pypi.python.org/packages/source/i/ikazuchi.plugins.pofile/ikazuchi.plugins.pofile-0.1.2.tar.bz2
+  md5: fb7b6a4e092aa5861f2382b9dd07b21a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ikazuchi.plugins.pofile = ikazuchi.plugins.pofile:main
+    #
+    # Would create an entry point called ikazuchi.plugins.pofile that calls ikazuchi.plugins.pofile.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - polib
+    - ikazuchi >=0.5.1
+
+  run:
+    - python
+    - setuptools
+    - distribute
+    - polib
+    - ikazuchi >=0.5.1
+
+test:
+  # Python imports
+  imports:
+    - ikazuchi
+    - ikazuchi.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://t2y.bitbucket.org/ikazuchi/build/html/index.html
+  license: Apache Software License
+  summary: 'Handle PO file with ikazuchi to translate msgid'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

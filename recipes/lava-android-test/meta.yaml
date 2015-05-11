@@ -1,0 +1,76 @@
+package:
+  name: lava-android-test
+  version: "0.16.2"
+
+source:
+  fn: lava-android-test-0.16.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-android-test/lava-android-test-0.16.2.tar.gz
+  md5: 904e0c8da9ca89458c8b3cbf918b31c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-android-test = lava-android-test:main
+    #
+    # Would create an entry point called lava-android-test that calls lava-android-test.main()
+
+    - lava-android-test=lava_android_test.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lava-tool >=0.2
+    - linaro_dashboard_bundle
+    - pexpect
+    - versiontools >=1.4
+
+  run:
+    - python
+    - setuptools
+    - lava-tool >=0.2
+    - linaro_dashboard_bundle
+    - pexpect
+    - versiontools >=1.4
+
+test:
+  # Python imports
+  imports:
+    - lava_android_test
+    - lava_android_test.test_definitions
+    - lava_android_test.test_definitions.commands
+    - lava_android_test.test_definitions.hostshells
+    - lava_android_test.test_definitions.instruments
+    - lava_android_test.test_definitions.shells
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lava-android-test --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lava-android-test
+  license: GNU General Public License (GPL)
+  summary: 'LAVA android test execution framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

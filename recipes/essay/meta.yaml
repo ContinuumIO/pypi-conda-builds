@@ -1,0 +1,70 @@
+package:
+  name: essay
+  version: "0.1"
+
+source:
+  fn: essay-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/essay/essay-0.1.tar.gz
+  md5: bd99ac5d39e6166e719387eaf3756914
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - essay = essay:main
+    #
+    # Would create an entry point called essay that calls essay.main()
+
+    - es = essay.main:main
+    - ep = essay.main:pip_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - jinja2
+
+  run:
+    - python
+    - fabric
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - essay
+    - essay.tasks
+    - fabfile
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - es --help
+    - ep --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/SohuTech/essay
+  license: UNKNOWN
+  summary: u'\u6301\u7eed\u90e8\u7f72\u5de5\u5177'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

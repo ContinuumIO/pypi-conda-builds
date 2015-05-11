@@ -1,0 +1,66 @@
+package:
+  name: django-rest-encrypted-lookup
+  version: "0.9.5"
+
+source:
+  fn: django-rest-encrypted-lookup-0.9.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rest-encrypted-lookup/django-rest-encrypted-lookup-0.9.5.tar.gz
+  md5: 78e92a2fba7ca38547699778a0a12c12
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rest-encrypted-lookup = django-rest-encrypted-lookup:main
+    #
+    # Would create an entry point called django-rest-encrypted-lookup that calls django-rest-encrypted-lookup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - djangorestframework >=3.0.0,<3.1.0
+    - pycrypto ==2.6.1
+
+  run:
+    - python
+    - django >=1.6
+    - djangorestframework >=3.0.0,<3.1.0
+    - pycrypto ==2.6.1
+
+test:
+  # Python imports
+  imports:
+    - rest_framework_encrypted_lookup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://intersis.org/
+  license: GNU General Public License v3 (GPLv3)
+  summary: "Replace Rest Framework's IntegerField pk or id lookups with encrypted strings."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

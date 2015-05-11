@@ -1,0 +1,69 @@
+package:
+  name: anybox.buildbot.openerp
+  version: "0.9"
+
+source:
+  fn: anybox.buildbot.openerp-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/a/anybox.buildbot.openerp/anybox.buildbot.openerp-0.9.tar.gz
+  md5: 7c04468f4c7bf8d337271d46d6d8f8f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anybox.buildbot.openerp = anybox.buildbot.openerp:main
+    #
+    # Would create an entry point called anybox.buildbot.openerp that calls anybox.buildbot.openerp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - buildbot >=0.8.7
+    - bzr
+
+  run:
+    - python
+    - setuptools
+    - buildbot >=0.8.7
+    - bzr
+
+test:
+  # Python imports
+  imports:
+    - anybox
+    - anybox.buildbot
+    - anybox.buildbot.openerp
+    - anybox.buildbot.openerp.subfactories
+    - anybox.buildbot.openerp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/anybox.buildbot.openerp
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'Buildbot setup for buildout based openerp installations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

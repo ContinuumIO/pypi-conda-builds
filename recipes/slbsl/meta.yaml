@@ -1,0 +1,66 @@
+package:
+  name: slbsl
+  version: "0.1.6"
+
+source:
+  fn: slbsl-0.1.6.zip
+  url: https://pypi.python.org/packages/source/s/slbsl/slbsl-0.1.6.zip
+  md5: e94a07d5a06107c4c25d04a7362f8528
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slbsl = slbsl:main
+    #
+    # Would create an entry point called slbsl that calls slbsl.main()
+
+    - sl=slbsl:sl
+    - bsl=slbsl:bsl
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyperclip
+
+  run:
+    - python
+    - pyperclip
+
+test:
+  # Python imports
+  imports:
+    - slbsl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sl --help
+    - bsl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://cb109@bitbucket.org/cb109/slbsl.git
+  license: UNKNOWN
+  summary: 'Convert slashes in text on commandline or in clipboard.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

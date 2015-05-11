@@ -1,0 +1,69 @@
+package:
+  name: marcxml_parser
+  version: "1.1.2"
+
+source:
+  fn: marcxml_parser-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/marcxml_parser/marcxml_parser-1.1.2.tar.gz
+  md5: 4158ad9a0d9e8510d39f353aafa3ab21
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marcxml_parser = marcxml_parser:main
+    #
+    # Would create an entry point called marcxml_parser that calls marcxml_parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pydhtmlparser >=2.0.7
+    - remove_hairs
+    - enum34
+
+  run:
+    - python
+    - setuptools
+    - pydhtmlparser >=2.0.7
+    - remove_hairs
+    - enum34
+
+test:
+  # Python imports
+  imports:
+    - marcxml_parser
+    - marcxml_parser.structures
+    - marcxml_parser.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edeposit/marcxml_parser
+  license: MIT License
+  summary: 'MARC XML / OAI parser, with few highlevel getters.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

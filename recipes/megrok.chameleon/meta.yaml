@@ -1,0 +1,72 @@
+package:
+  name: megrok.chameleon
+  version: "1.0rc2"
+
+source:
+  fn: megrok.chameleon-1.0rc2.tar.gz
+  url: https://pypi.python.org/packages/source/m/megrok.chameleon/megrok.chameleon-1.0rc2.tar.gz
+  md5: 5ba433e6262a7ec8a05e1d4a70418a31
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megrok.chameleon = megrok.chameleon:main
+    #
+    # Would create an entry point called megrok.chameleon that calls megrok.chameleon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - grokcore.component
+    - grokcore.view
+    - chameleon >=2.0-rc1
+    - z3c.pt >=2.0-rc1
+
+  run:
+    - python
+    - setuptools
+    - grokcore.component
+    - grokcore.view
+    - chameleon >=2.0-rc1
+    - z3c.pt >=2.0-rc1
+
+test:
+  # Python imports
+  imports:
+    - megrok
+    - megrok.chameleon
+    - megrok.chameleon.tests
+    - megrok.chameleon.tests.cpt_fixture
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/megrok.chameleon
+  license: Zope Public License
+  summary: 'Chameleon page template support for Grok'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

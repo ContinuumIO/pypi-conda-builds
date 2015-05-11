@@ -1,0 +1,87 @@
+package:
+  name: glueviz
+  version: "0.4.0"
+
+source:
+  fn: glueviz-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/glueviz/glueviz-0.4.0.tar.gz
+  md5: d0be9effce78358557993e914623ab62
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - glueviz = glueviz:main
+    #
+    # Would create an entry point called glueviz that calls glueviz.main()
+
+    - glue = glue.main:main
+    - glue-config = glue.config_gen:main
+    - glue-deps = glue._deps:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - glue
+    - glue.clients
+    - glue.clients.tests
+    - glue.core
+    - glue.core.tests
+    - glue.external
+    - glue.external.pvextractor
+    - glue.external.pvextractor.geometry
+    - glue.external.pvextractor.geometry.tests
+    - glue.external.pvextractor.utils
+    - glue.external.tests
+    - glue.external.wcsaxes
+    - glue.plugins
+    - glue.plugins.tests
+    - glue.qt
+    - glue.qt.icons
+    - glue.qt.tests
+    - glue.qt.ui
+    - glue.qt.widgets
+    - glue.qt.widgets.tests
+    - glue.tests
+    - glueviz
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - glue --help
+    - glue-config --help
+    - glue-deps --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://glueviz.org
+  license: BSD License
+  summary: 'Multidimensional data visualzation across files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

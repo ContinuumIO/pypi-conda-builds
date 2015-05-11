@@ -1,0 +1,63 @@
+package:
+  name: sftpman
+  version: "0.6.0"
+
+source:
+  fn: sftpman-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sftpman/sftpman-0.6.0.tar.gz
+  md5: 17a92897741544b7c592ad4a81373121
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sftpman = sftpman:main
+    #
+    # Would create an entry point called sftpman that calls sftpman.main()
+
+    - sftpman=sftpman.launcher:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - sftpman
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sftpman --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spantaleev/sftpman
+  license: BSD License
+  summary: 'A command-line application that helps you mount SFTP file systems.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: hangups-robobrowser
+  version: "0.5.2"
+
+source:
+  fn: hangups-robobrowser-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hangups-robobrowser/hangups-robobrowser-0.5.2.tar.gz
+  md5: 2232c870c2cae0d88a449e5cd252cc31
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hangups-robobrowser = hangups-robobrowser:main
+    #
+    # Would create an entry point called hangups-robobrowser that calls hangups-robobrowser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.2
+    - requests ==2.3.0
+    - six ==1.7.3
+    - werkzeug ==0.9.6
+
+  run:
+    - python
+    - beautifulsoup4 ==4.3.2
+    - requests ==2.3.0
+    - six ==1.7.3
+    - werkzeug ==0.9.6
+
+test:
+  # Python imports
+  imports:
+    - robobrowser
+    - robobrowser.forms
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jmcarp/robobrowser
+  license: BSD License
+  summary: 'Your friendly neighborhood web scraper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

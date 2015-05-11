@@ -1,0 +1,72 @@
+package:
+  name: edeposit.amqp.ftp
+  version: "1.0.2"
+
+source:
+  fn: edeposit.amqp.ftp-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/edeposit.amqp.ftp/edeposit.amqp.ftp-1.0.2.tar.gz
+  md5: 231903049b0c7395a8dabef1005ce365
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edeposit.amqp.ftp = edeposit.amqp.ftp:main
+    #
+    # Would create an entry point called edeposit.amqp.ftp that calls edeposit.amqp.ftp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sh >=1.09
+    - edeposit.amqp.aleph >=1.4.5
+    - pyyaml
+    - pydhtmlparser >=1.7.6
+
+  run:
+    - python
+    - setuptools
+    - sh >=1.09
+    - edeposit.amqp.aleph >=1.4.5
+    - pyyaml
+    - pydhtmlparser >=1.7.6
+
+test:
+  # Python imports
+  imports:
+    - edeposit
+    - edeposit.amqp
+    - edeposit.amqp.ftp
+    - edeposit.amqp.ftp.decoders
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edeposit/edeposit.amqp.ftp/
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: "E-Deposit's wrapper over ProFTPD."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

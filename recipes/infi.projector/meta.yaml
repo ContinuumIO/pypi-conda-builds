@@ -1,0 +1,99 @@
+package:
+  name: infi.projector
+  version: "0.6.39"
+
+source:
+  fn: infi.projector-0.6.39.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.projector/infi.projector-0.6.39.tar.gz
+  md5: c1a16a78db3f0860358aca0e409d2077
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.projector = infi.projector:main
+    #
+    # Would create an entry point called infi.projector that calls infi.projector.main()
+
+    - projector = infi.projector.scripts:projector
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - infi.execute
+    - gitflow
+    - zc.buildout
+    - infi.recipe.template.version
+    - setuptools
+    - infi.pyutils
+    - git-py
+    - docopt
+
+  run:
+    - python
+    - setuptools
+    - infi.execute
+    - gitflow
+    - zc.buildout
+    - infi.recipe.template.version
+    - setuptools
+    - infi.pyutils
+    - git-py
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.projector
+    - infi.projector.commandline_parser
+    - infi.projector.helper
+    - infi.projector.helper.assertions
+    - infi.projector.helper.utils
+    - infi.projector.helper.utils.package_sets
+    - infi.projector.plugins
+    - infi.projector.plugins.builtins
+    - infi.projector.plugins.builtins.console_scripts
+    - infi.projector.plugins.builtins.devenv
+    - infi.projector.plugins.builtins.gui_scripts
+    - infi.projector.plugins.builtins.isolated_python
+    - infi.projector.plugins.builtins.package_data
+    - infi.projector.plugins.builtins.package_scripts
+    - infi.projector.plugins.builtins.repository
+    - infi.projector.plugins.builtins.repository.skeleton
+    - infi.projector.plugins.builtins.requirements
+    - infi.projector.plugins.builtins.submodules
+    - infi.projector.plugins.builtins.version
+    - infi.projector.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - projector --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.projector
+  license: Python Software Foundation License
+  summary: 'Python, git-flow based project management tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: zc.z3monitor
+  version: "0.8.0"
+
+source:
+  fn: zc.z3monitor-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.z3monitor/zc.z3monitor-0.8.0.tar.gz
+  md5: 5669db32a8700975b755c51af55d956b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.z3monitor = zc.z3monitor:main
+    #
+    # Would create an entry point called zc.z3monitor that calls zc.z3monitor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.monitor
+    - zodb3
+    - zope.component
+    - zope.publisher
+    - zope.app.appsetup
+    - zope.testing
+    - mock
+
+  run:
+    - python
+    - setuptools
+    - zc.monitor
+    - zodb3
+    - zope.component
+    - zope.publisher
+    - zope.app.appsetup
+    - zope.testing
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.z3monitor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'A network-accessible command-line interface to monitor a Zope 3 process.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

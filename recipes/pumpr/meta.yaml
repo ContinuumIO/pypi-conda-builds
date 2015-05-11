@@ -1,0 +1,66 @@
+package:
+  name: pumpr
+  version: "0.1.1"
+
+source:
+  fn: pumpr-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pumpr/pumpr-0.1.1.tar.gz
+  md5: 00bdc4f8540bd7aaabda1446f4049bef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pumpr = pumpr:main
+    #
+    # Would create an entry point called pumpr that calls pumpr.main()
+
+    - pumpr = pumpr.pumpr:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - phidgets >=2.1.8
+    - docopt
+
+  run:
+    - python
+    - phidgets >=2.1.8
+    - docopt
+
+test:
+  # Python imports
+  imports:
+    - pumpr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pumpr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://seetravisblog.com
+  license: UNKNOWN
+  summary: "Fills syringepump.com syringes with water so you don't have to"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

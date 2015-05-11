@@ -1,0 +1,71 @@
+package:
+  name: easyblogger
+  version: "0.9.0"
+
+source:
+  fn: EasyBlogger-0.9.0.zip
+  url: https://pypi.python.org/packages/source/E/EasyBlogger/EasyBlogger-0.9.0.zip
+  md5: 421b5fb9fbe9a081d11b264b1f72b04d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easyblogger = easyblogger:main
+    #
+    # Would create an entry point called easyblogger that calls easyblogger.main()
+
+    - easyblogger = blogger.blogger:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pypandoc
+    - google-api-python-client
+    - python-gflags
+    - httplib2
+
+  run:
+    - python
+    - pypandoc
+    - google-api-python-client
+    - python-gflags
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - blogger
+    - easyblogger
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - easyblogger --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/raghur/easyblogger
+  license: BSD License
+  summary: 'A (very) easy CLI interface to Blogger blogs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

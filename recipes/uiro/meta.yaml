@@ -1,0 +1,75 @@
+package:
+  name: uiro
+  version: "0.2"
+
+source:
+  fn: uiro-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/u/uiro/uiro-0.2.tar.gz
+  md5: 9e1eace28f81f44cc860acb90e9e2f6d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - uiro = uiro:main
+    #
+    # Would create an entry point called uiro that calls uiro.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob ==1.2.3
+    - gearbox ==0.0.2
+    - mako ==0.9.0
+    - matcha ==0.3
+    - sqlalchemy ==0.8.3
+    - zope.sqlalchemy ==0.7.3
+
+  run:
+    - python
+    - setuptools
+    - webob ==1.2.3
+    - gearbox ==0.0.2
+    - mako ==0.9.0
+    - matcha ==0.3
+    - sqlalchemy ==0.8.3
+    - zope.sqlalchemy ==0.7.3
+
+test:
+  # Python imports
+  imports:
+    - uiro
+    - uiro.commands
+    - uiro.commands.create
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hirokiky/uiro/
+  license: MIT License
+  summary: 'le Web framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

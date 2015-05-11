@@ -1,0 +1,64 @@
+package:
+  name: deleuze
+  version: "0.9"
+
+source:
+  fn: deleuze-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/deleuze/deleuze-0.9.tar.gz
+  md5: f965d303848f4c56fea5c548ee662b4d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - deleuze = deleuze:main
+    #
+    # Would create an entry point called deleuze that calls deleuze.main()
+
+    - deleuze = deleuze.tool:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+
+  run:
+    - python
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - deleuze
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - deleuze --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/etscrivner/deleuze
+  license: BSD
+  summary: 'Simple python project creation tool - inspired by Leiningen.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

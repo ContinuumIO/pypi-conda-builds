@@ -1,0 +1,63 @@
+package:
+  name: geodjango-tigerline
+  version: "1.0"
+
+source:
+  fn: geodjango-tigerline-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/geodjango-tigerline/geodjango-tigerline-1.0.tar.gz
+  md5: a1870b29511aabd6742412ef347214df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geodjango-tigerline = geodjango-tigerline:main
+    #
+    # Would create an entry point called geodjango-tigerline that calls geodjango-tigerline.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - tigerline
+    - tigerline.management
+    - tigerline.management.commands
+    - tigerline.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/adamfast/geodjango-tigerline
+  license: BSD License
+  summary: 'A resuable app with the boilerplate necessary for getting TIGER/LINE data into a GeoDjango project.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

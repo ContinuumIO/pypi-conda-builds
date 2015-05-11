@@ -1,0 +1,66 @@
+package:
+  name: matip
+  version: "0.1.2"
+
+source:
+  fn: matip-0.1.2.zip
+  url: https://pypi.python.org/packages/source/m/matip/matip-0.1.2.zip
+  md5: 6cef16c1b16d58f90160338eeb8e26e5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - matip = matip:main
+    #
+    # Would create an entry point called matip that calls matip.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+
+  run:
+    - python
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - matip
+    - matip.lib
+    - matip.lib.android
+    - matip.lib.android.common
+    - matip.lib.android.server
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'Mobile application test automation framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

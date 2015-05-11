@@ -1,0 +1,87 @@
+package:
+  name: monscale
+  version: "0.12"
+
+source:
+  fn: monscale-0.12.tar.gz
+  url: https://pypi.python.org/packages/source/m/monscale/monscale-0.12.tar.gz
+  md5: dbef760a2e9b081e87d2a8f9b55f9e65
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - monscale = monscale:main
+    #
+    # Would create an entry point called monscale that calls monscale.main()
+
+    - evaluate_context = monscale.entrypoints:evaluate_context
+    - monscale_deploy = monscale.entrypoints:deploy
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.6
+    - simplejson
+    - suds
+    - pyparsing
+    - pytz
+    - redis
+    - boto
+
+  run:
+    - python
+    - django ==1.6
+    - simplejson
+    - suds
+    - pyparsing
+    - pytz
+    - redis
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - monscale
+    - monscale.management
+    - monscale.management.commands
+    - monscale.mappings
+    - monscale.pypelib
+    - monscale.pypelib.parsing
+    - monscale.pypelib.parsing.drivers
+    - monscale.pypelib.persistence
+    - monscale.pypelib.resolver
+    - monscale.pypelib.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - evaluate_context --help
+    - monscale_deploy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.digitalhigh.es
+  license: BSD License
+  summary: 'A Django app that monitor services and acts on them'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

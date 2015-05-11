@@ -1,0 +1,77 @@
+package:
+  name: django-libs
+  version: "1.66.1"
+
+source:
+  fn: django-libs-1.66.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-libs/django-libs-1.66.1.tar.gz
+  md5: 41fa7289debb028b9e26b3ff8dcf4a33
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-libs = django-libs:main
+    #
+    # Would create an entry point called django-libs that calls django-libs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - factory_boy >2.0.0
+    - beautifulsoup4 >4.0.0
+    - pillow
+    - south
+    - django-hvad
+
+  run:
+    - python
+    - factory_boy >2.0.0
+    - beautifulsoup4 >4.0.0
+    - pillow
+    - south
+    - django-hvad
+
+test:
+  # Python imports
+  imports:
+    - django_libs
+    - django_libs.management
+    - django_libs.management.commands
+    - django_libs.raven
+    - django_libs.settings
+    - django_libs.templatetags
+    - django_libs.tests
+    - django_libs.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-libs
+  license: The MIT License
+  summary: 'A collection of things that we re-use in every Django project, such as\ncustom middlewares, testrunner, templates, templatetags, test mixins,\ntest factories etc...\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

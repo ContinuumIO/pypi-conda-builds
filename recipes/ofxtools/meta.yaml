@@ -1,0 +1,63 @@
+package:
+  name: ofxtools
+  version: "0.3.7.2"
+
+source:
+  fn: ofxtools-0.3.7.2.tar.gz
+  url: https://pypi.python.org/packages/source/o/ofxtools/ofxtools-0.3.7.2.tar.gz
+  md5: 01291a8dad6c9e1ac41777845d354f1a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ofxtools = ofxtools:main
+    #
+    # Would create an entry point called ofxtools that calls ofxtools.main()
+
+    - ofxget=ofxtools.Client:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ofxtools
+    - ofxtools.ofxalchemy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ofxget --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/csingley/ofxtools
+  license: MIT License
+  summary: 'Library for working with Open Financial Exchange (OFX) formatted data used by financial institutions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

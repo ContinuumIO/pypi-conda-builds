@@ -1,0 +1,68 @@
+package:
+  name: allmychanges
+  version: "0.6.2"
+
+source:
+  fn: allmychanges-0.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/allmychanges/allmychanges-0.6.2.tar.gz
+  md5: 015419d450840e4554494b91e24793f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - allmychanges = allmychanges:main
+    #
+    # Would create an entry point called allmychanges that calls allmychanges.main()
+
+    - amch = allmychanges.client:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=2.2,<3.0
+    - tablib >=0.10.0,<0.11.0
+    - requests >=2.3.0,<3.0.0
+
+  run:
+    - python
+    - click >=2.2,<3.0
+    - tablib >=0.10.0,<0.11.0
+    - requests >=2.3.0,<3.0.0
+
+test:
+  # Python imports
+  imports:
+    - allmychanges
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - amch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/svetlyak40wt/allmychanges
+  license: BSD
+  summary: 'A command line client to AllMyChanges.com.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

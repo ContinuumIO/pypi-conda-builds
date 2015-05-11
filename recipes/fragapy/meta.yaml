@@ -1,0 +1,100 @@
+package:
+  name: fragapy
+  version: "1.2.5"
+
+source:
+  fn: fragapy-1.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/f/fragapy/fragapy-1.2.5.tar.gz
+  md5: 59e4b767f7d9636d5c09e3837c2b1d23
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fragapy = fragapy:main
+    #
+    # Would create an entry point called fragapy that calls fragapy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-positions ==0.4.3
+
+  run:
+    - python
+    - django-positions ==0.4.3
+
+test:
+  # Python imports
+  imports:
+    - fragapy
+    - fragapy.admin
+    - fragapy.admin.adminhelp
+    - fragapy.admin.adminhelp.templatetags
+    - fragapy.amazon
+    - fragapy.auth
+    - fragapy.cloneable_models
+    - fragapy.common
+    - fragapy.common.algorithms
+    - fragapy.common.encoding
+    - fragapy.common.models
+    - fragapy.common.templatetags
+    - fragapy.countries
+    - fragapy.currencies
+    - fragapy.currencies.templatetags
+    - fragapy.currencies.tests
+    - fragapy.cz_localflavour
+    - fragapy.fields
+    - fragapy.gmail
+    - fragapy.object_perms
+    - fragapy.odt
+    - fragapy.odt.templatetags
+    - fragapy.profiling
+    - fragapy.soft_delete_models
+    - fragapy.static_sitemaps
+    - fragapy.static_sitemaps.management
+    - fragapy.static_sitemaps.management.commands
+    - fragapy.system_models
+    - fragapy.templates
+    - fragapy.templates.templatetags
+    - fragapy.unix
+    - fragapy.versioning
+    - tests.test_cz_local_flavour
+    - tests.test_object_perms
+    - tests.test_object_perms.testapp
+    - tests.test_soft_delete_models
+    - tests.test_soft_delete_models.testapp
+    - tests.test_system_models
+    - tests.test_system_models.testapp
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fragaria/fragapy
+  license: BSD License
+  summary: 'Fragaria commons library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

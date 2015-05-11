@@ -1,0 +1,65 @@
+package:
+  name: docx2html
+  version: "0.2.3"
+
+source:
+  fn: docx2html-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/docx2html/docx2html-0.2.3.tar.gz
+  md5: 9b0cccedd833ab3332dff2ee15973e23
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docx2html = docx2html:main
+    #
+    # Would create an entry point called docx2html that calls docx2html.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml ==2.2.4
+    - pillow ==1.7.7
+
+  run:
+    - python
+    - lxml ==2.2.4
+    - pillow ==1.7.7
+
+test:
+  # Python imports
+  imports:
+    - docx2html
+    - docx2html.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/PolicyStat/docx2html/
+  license: BSD License
+  summary: 'docx (OOXML) to html converter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

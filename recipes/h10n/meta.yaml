@@ -1,0 +1,70 @@
+package:
+  name: h10n
+  version: "0.1b1"
+
+source:
+  fn: h10n-0.1b1.tar.gz
+  url: https://pypi.python.org/packages/source/h/h10n/h10n-0.1b1.tar.gz
+  md5: 8abf6261f52ecf67ca569b453b163e39
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - h10n = h10n:main
+    #
+    # Would create an entry point called h10n that calls h10n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - h10n
+    - h10n.helper
+    - h10n.tests
+    - h10n.tests.core_test
+    - h10n.tests.helper_test
+    - h10n.tests.source_test
+    - h10n.tests.translator_test
+    - h10n.tests.util_test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/kr41/h10n
+  license: BSD License
+  summary: 'Humanization: i18n & l10n framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

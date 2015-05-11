@@ -1,0 +1,93 @@
+package:
+  name: explauto
+  version: "1.1.1"
+
+source:
+  fn: explauto-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/explauto/explauto-1.1.1.tar.gz
+  md5: 725e9d2a31e60374065d76dec358d889
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - explauto = explauto:main
+    #
+    # Would create an entry point called explauto that calls explauto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - scikit-learn
+    - pandas
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - scikit-learn
+    - pandas
+
+test:
+  # Python imports
+  imports:
+    - explauto
+    - explauto.agent
+    - explauto.environment
+    - explauto.environment.diva
+    - explauto.environment.npendulum
+    - explauto.environment.pendulum
+    - explauto.environment.pypot
+    - explauto.environment.simple_arm
+    - explauto.environment.toys
+    - explauto.evaluation
+    - explauto.experiment
+    - explauto.interest_model
+    - explauto.io
+    - explauto.models
+    - explauto.sensorimotor_model
+    - explauto.third_party
+    - explauto.third_party.models
+    - explauto.third_party.models.models
+    - explauto.third_party.models.models.forward
+    - explauto.third_party.models.models.inverse
+    - explauto.third_party.models.models.plots
+    - explauto.third_party.models.models.samples
+    - explauto.third_party.models.models.testbed
+    - explauto.third_party.toolbox
+    - explauto.third_party.toolbox.toolbox
+    - explauto.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/flowersteam/explauto
+  license: GNU GENERAL PUBLIC LICENSE Version 3
+  summary: 'Python Library for Autonomous Exploration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

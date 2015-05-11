@@ -1,0 +1,68 @@
+package:
+  name: django-thumbnail
+  version: "11.13"
+
+source:
+  fn: django-thumbnail-11.13.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-thumbnail/django-thumbnail-11.13.tar.gz
+  md5: 49334370d5d0d5aabf6aa6446fcd5145
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-thumbnail = django-thumbnail:main
+    #
+    # Would create an entry point called django-thumbnail that calls django-thumbnail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sorl
+    - sorl.thumbnail
+    - sorl.thumbnail.admin
+    - sorl.thumbnail.conf
+    - sorl.thumbnail.engines
+    - sorl.thumbnail.kvstores
+    - sorl.thumbnail.management
+    - sorl.thumbnail.management.commands
+    - sorl.thumbnail.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pygeek/django-thumbnail
+  license: BSD License
+  summary: 'Thumbnailing in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

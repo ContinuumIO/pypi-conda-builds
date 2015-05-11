@@ -1,0 +1,76 @@
+package:
+  name: django-hero-slider
+  version: "1.2.1"
+
+source:
+  fn: django-hero-slider-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-hero-slider/django-hero-slider-1.2.1.tar.gz
+  md5: 1aac7317169858426534d31a4342815e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-hero-slider = django-hero-slider:main
+    #
+    # Would create an entry point called django-hero-slider that calls django-hero-slider.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - pillow
+    - django-hvad
+    - django-filer
+    - south
+    - django-libs
+
+  run:
+    - python
+    - django
+    - pillow
+    - django-hvad
+    - django-filer
+    - south
+    - django-libs
+
+test:
+  # Python imports
+  imports:
+    - hero_slider
+    - hero_slider.migrations
+    - hero_slider.templatetags
+    - hero_slider.tests
+    - hero_slider.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-hero-slider
+  license: The MIT License
+  summary: 'Django app to define images to be shown on a frontpage slider. They can link to any object.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

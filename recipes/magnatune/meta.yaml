@@ -1,0 +1,65 @@
+package:
+  name: magnatune
+  version: "0.2"
+
+source:
+  fn: magnatune-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/magnatune/magnatune-0.2.tar.gz
+  md5: c3f5df3172a939b4f336c686549f80b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - magnatune = magnatune:main
+    #
+    # Would create an entry point called magnatune that calls magnatune.main()
+
+    - magnatune = magnatune.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+
+  run:
+    - python
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - magnatune
+    - magnatune.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - magnatune --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/madjar/python-magnatune
+  license: GNU General Public License (GPL)
+  summary: 'Command line utility and lib to interact with the music website magnatune'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

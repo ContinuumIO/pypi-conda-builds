@@ -1,0 +1,64 @@
+package:
+  name: gondor
+  version: "1.2.5"
+
+source:
+  fn: gondor-1.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/gondor/gondor-1.2.5.tar.gz
+  md5: 22a21599933fc67bacb9df05fdc4a5b5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gondor = gondor:main
+    #
+    # Would create an entry point called gondor that calls gondor.main()
+
+    - gondor = gondor.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.3.0
+
+  run:
+    - python
+    - six >=1.3.0
+
+test:
+  # Python imports
+  imports:
+    - gondor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gondor --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eldarion/gondor-client
+  license: UNKNOWN
+  summary: 'official gondor.io command line client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

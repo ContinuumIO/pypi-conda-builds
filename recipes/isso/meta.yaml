@@ -1,0 +1,78 @@
+package:
+  name: isso
+  version: "0.9.10"
+
+source:
+  fn: isso-0.9.10.tar.gz
+  url: https://pypi.python.org/packages/source/i/isso/isso-0.9.10.tar.gz
+  md5: 7f76f892e85a2465425b4030af1bffe9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isso = isso:main
+    #
+    # Would create an entry point called isso that calls isso.main()
+
+    - isso = isso:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - itsdangerous
+    - misaka
+    - html5lib
+    - ipaddr >=2.1
+    - configparser
+    - werkzeug >=0.8
+
+  run:
+    - python
+    - itsdangerous
+    - misaka
+    - html5lib
+    - ipaddr >=2.1
+    - configparser
+    - werkzeug >=0.8
+
+test:
+  # Python imports
+  imports:
+    - isso
+    - isso.db
+    - isso.ext
+    - isso.utils
+    - isso.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - isso --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/posativ/isso/
+  license: MIT License
+  summary: u'lightweight Disqus alternative'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

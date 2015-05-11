@@ -1,0 +1,84 @@
+package:
+  name: lava-dispatcher
+  version: "0.32.2"
+
+source:
+  fn: lava-dispatcher-0.32.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-dispatcher/lava-dispatcher-0.32.2.tar.gz
+  md5: 07283f150d7d29c4ead9aa0c9d392174
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-dispatcher = lava-dispatcher:main
+    #
+    # Would create an entry point called lava-dispatcher that calls lava-dispatcher.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - json-schema-validator >=2.3
+    - lava-tool >=0.4
+    - lava-utils-interface
+    - linaro-dashboard-bundle
+    - pexpect >=2.3
+    - configglue
+    - pyyaml
+    - versiontools >=1.8
+
+  run:
+    - python
+    - setuptools
+    - json-schema-validator >=2.3
+    - lava-tool >=0.4
+    - lava-utils-interface
+    - linaro-dashboard-bundle
+    - pexpect >=2.3
+    - configglue
+    - pyyaml
+    - versiontools >=1.8
+
+test:
+  # Python imports
+  imports:
+    - lava
+    - lava.dispatcher
+    - lava_dispatcher
+    - lava_dispatcher.actions
+    - lava_dispatcher.client
+    - lava_dispatcher.device
+    - lava_dispatcher.signals
+    - lava_dispatcher.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lava-dispatcher
+  license: GPL v2 or later
+  summary: 'Part of the LAVA framework for dispatching test jobs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

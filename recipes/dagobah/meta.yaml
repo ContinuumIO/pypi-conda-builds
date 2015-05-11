@@ -1,0 +1,84 @@
+package:
+  name: dagobah
+  version: "0.3.1"
+
+source:
+  fn: dagobah-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dagobah/dagobah-0.3.1.tar.gz
+  md5: 801decc149f908dbee508673ac473e7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dagobah = dagobah:main
+    #
+    # Would create an entry point called dagobah that calls dagobah.main()
+
+    - dagobahd = dagobah.daemon.app:daemon_entrypoint
+    - echo_dagobah_conf = dagobah:print_standard_conf
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - croniter ==0.3.3
+    - python-dateutil ==2.1
+    - pyyaml ==3.10
+    - flask ==0.9
+    - premailer ==1.13
+    - flask-login ==0.2.6
+    - semantic_version ==2.3.0
+    - paramiko ==1.11.0
+
+  run:
+    - python
+    - croniter ==0.3.3
+    - python-dateutil ==2.1
+    - pyyaml ==3.10
+    - flask ==0.9
+    - premailer ==1.13
+    - flask-login ==0.2.6
+    - semantic_version ==2.3.0
+    - paramiko ==1.11.0
+
+test:
+  # Python imports
+  imports:
+    - dagobah
+    - dagobah.backend
+    - dagobah.core
+    - dagobah.daemon
+    - dagobah.email
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dagobahd --help
+    - echo_dagobah_conf --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tthieman/dagobah
+  license: WTFPL
+  summary: 'Simple DAG-based job scheduler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: django-trails
+  version: "0.2a2"
+
+source:
+  fn: django-trails-0.2a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-trails/django-trails-0.2a2.tar.gz
+  md5: 44e1f1dad4698cf9a4fd8827854eac3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-trails = django-trails:main
+    #
+    # Would create an entry point called django-trails that calls django-trails.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - django-jsonfield
+
+  run:
+    - python
+    - django >=1.3
+    - django-jsonfield
+
+test:
+  # Python imports
+  imports:
+    - trails
+    - trails.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://projects.ninemoreminutes.com/projects/django-trails/
+  license: BSD License
+  summary: 'Django app for audit logging.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

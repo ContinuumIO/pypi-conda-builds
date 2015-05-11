@@ -1,0 +1,63 @@
+package:
+  name: django-awesome-snippets
+  version: "0.4"
+
+source:
+  fn: django-awesome-snippets-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-awesome-snippets/django-awesome-snippets-0.4.tar.gz
+  md5: e1f4bef5fe792486987c09cbd74890bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-awesome-snippets = django-awesome-snippets:main
+    #
+    # Would create an entry point called django-awesome-snippets that calls django-awesome-snippets.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - setuptools
+    - django
+
+test:
+  # Python imports
+  imports:
+    - snippets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-awesome-snippets.rtfd.org
+  license: MIT
+  summary: 'A decorator to generate and cache html snippets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

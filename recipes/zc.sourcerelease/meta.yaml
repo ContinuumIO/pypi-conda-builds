@@ -1,0 +1,70 @@
+package:
+  name: zc.sourcerelease
+  version: "0.4.0"
+
+source:
+  fn: zc.sourcerelease-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.sourcerelease/zc.sourcerelease-0.4.0.tar.gz
+  md5: 7d756a7d039afd2a7a2fe02817317330
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.sourcerelease = zc.sourcerelease:main
+    #
+    # Would create an entry point called zc.sourcerelease that calls zc.sourcerelease.main()
+
+    - buildout-source-release=zc.sourcerelease:source_release
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.sourcerelease
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - buildout-source-release --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.python.org/pypi/zc.sourcerelease
+  license: ZPL 2.1
+  summary: 'Utility script to create source releases from buildouts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

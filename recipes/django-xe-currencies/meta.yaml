@@ -1,0 +1,65 @@
+package:
+  name: django-xe-currencies
+  version: "0.0.1"
+
+source:
+  fn: django-xe-currencies.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-xe-currencies/django-xe-currencies.tar.gz
+  md5: 41ce5d33020712cea29f52235a9623b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-xe-currencies = django-xe-currencies:main
+    #
+    # Would create an entry point called django-xe-currencies that calls django-xe-currencies.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-tastypie
+
+  run:
+    - python
+    - django-tastypie
+
+test:
+  # Python imports
+  imports:
+    - xe_currencies
+    - xe_currencies.api
+    - xe_currencies.management
+    - xe_currencies.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aisayko/django-xe-currencies
+  license: MIT License
+  summary: 'Django-based currency exchange app synced with XE currencies API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

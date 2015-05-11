@@ -1,0 +1,67 @@
+package:
+  name: dap.plugins.sql
+  version: "0.2.7"
+
+source:
+  fn: dap.plugins.sql-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/dap.plugins.sql/dap.plugins.sql-0.2.7.tar.gz
+  md5: ba99c1e8efa2d6f217361405db5d9f4f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dap.plugins.sql = dap.plugins.sql:main
+    #
+    # Would create an entry point called dap.plugins.sql that calls dap.plugins.sql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dap[server] >=2.2.6.4
+    - coards >=0.2.2
+
+  run:
+    - python
+    - setuptools
+    - dap[server] >=2.2.6.4
+    - coards >=0.2.2
+
+test:
+  # Python imports
+  imports:
+    - dap
+    - dap.plugins
+    - dap.plugins.sql
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pydap.org/plugins/sql.html
+  license: MIT License
+  summary: 'SQL plugin for pydap server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

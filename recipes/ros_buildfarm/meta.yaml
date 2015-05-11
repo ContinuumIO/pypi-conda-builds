@@ -1,0 +1,70 @@
+package:
+  name: ros_buildfarm
+  version: "0.2.0"
+
+source:
+  fn: ros_buildfarm-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/ros_buildfarm/ros_buildfarm-0.2.0.tar.gz
+  md5: fa6b2d0cb09e80c9528398a6eb9294bb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ros_buildfarm = ros_buildfarm:main
+    #
+    # Would create an entry point called ros_buildfarm that calls ros_buildfarm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - catkin-pkg >=0.2.6
+    - empy
+    - pyyaml
+    - rosdistro >=0.4.0
+
+  run:
+    - python
+    - catkin-pkg >=0.2.6
+    - empy
+    - pyyaml
+    - rosdistro >=0.4.0
+
+test:
+  # Python imports
+  imports:
+    - ros_buildfarm
+    - ros_buildfarm.config
+    - ros_buildfarm.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ros-infrastructure/ros_buildfarm
+  license: Apache Software License
+  summary: "Build farm used to build the ROS ecosystem's packages."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

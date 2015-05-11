@@ -1,0 +1,82 @@
+package:
+  name: cloudooo
+  version: "1.2.3"
+
+source:
+  fn: cloudooo-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudooo/cloudooo-1.2.3.tar.gz
+  md5: 724a761ed69e9dfbdaeb073b537cf017
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudooo = cloudooo:main
+    #
+    # Would create an entry point called cloudooo that calls cloudooo.main()
+
+    - cloudooo_tester=cloudooo.bin.cloudooo_tester:main
+    - echo_cloudooo_conf=cloudooo.bin.echo_cloudooo_conf:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - pastedeploy
+    - pastescript
+    - wsgiutils
+    - psutil >=0.2.0
+    - python-magic
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - pastedeploy
+    - pastescript
+    - wsgiutils
+    - psutil >=0.2.0
+    - python-magic
+
+test:
+  # Python imports
+  imports:
+    - cloudooo
+    - cloudooo.bin
+    - cloudooo.handler
+    - cloudooo.handler.tests
+    - cloudooo.interfaces
+    - cloudooo.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cloudooo_tester --help
+    - echo_cloudooo_conf --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://svn.erp5.org/repos/public/erp5/trunk/utils/cloudooo
+  license: GPLv3
+  summary: 'XML-RPC document conversion server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

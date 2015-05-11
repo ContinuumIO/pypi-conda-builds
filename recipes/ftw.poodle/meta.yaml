@@ -1,0 +1,81 @@
+package:
+  name: ftw.poodle
+  version: "1.5.0"
+
+source:
+  fn: ftw.poodle-1.5.0.zip
+  url: https://pypi.python.org/packages/source/f/ftw.poodle/ftw.poodle-1.5.0.zip
+  md5: 93ab367cfb5790243186289009ca0b81
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.poodle = ftw.poodle:main
+    #
+    # Would create an entry point called ftw.poodle that calls ftw.poodle.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.datagridfield >=1.9.0
+    - products.autocompletewidget
+    - plone.principalsource
+    - ftw.notification.email
+    - ftw.notification.base
+    - ftw.upgrade
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.datagridfield >=1.9.0
+    - products.autocompletewidget
+    - plone.principalsource
+    - ftw.notification.email
+    - ftw.notification.base
+    - ftw.upgrade
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.poodle
+    - ftw.poodle.browser
+    - ftw.poodle.content
+    - ftw.poodle.tests
+    - ftw.poodle.upgrades
+    - ftw.poodle.viewlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.poodle
+  license: GPL2
+  summary: 'A product to make polls to find out when to have a meeting'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

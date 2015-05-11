@@ -1,0 +1,93 @@
+package:
+  name: lava-dashboard
+  version: "0.29"
+
+source:
+  fn: lava-dashboard-0.29.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-dashboard/lava-dashboard-0.29.tar.gz
+  md5: d95fd6a84687f1fb8ca5c01711f3347f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-dashboard = lava-dashboard:main
+    #
+    # Would create an entry point called lava-dashboard that calls lava-dashboard.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-restricted-resource >=0.2.6
+    - django-staticfiles ==0.3.4
+    - docutils >=0.6
+    - lava-server >=0.8
+    - linaro-dashboard-bundle >=1.8
+    - linaro-django-pagination >=2.0.2
+    - linaro-django-xmlrpc >=0.4
+    - pygments >=1.2
+    - south >=0.7.3
+    - versiontools >=1.8
+
+  run:
+    - python
+    - setuptools
+    - django >=1.2
+    - django-restricted-resource >=0.2.6
+    - django-staticfiles ==0.3.4
+    - docutils >=0.6
+    - lava-server >=0.8
+    - linaro-dashboard-bundle >=1.8
+    - linaro-django-pagination >=2.0.2
+    - linaro-django-xmlrpc >=0.4
+    - pygments >=1.2
+    - south >=0.7.3
+    - versiontools >=1.8
+
+test:
+  # Python imports
+  imports:
+    - dashboard_app
+    - dashboard_app.migrations
+    - dashboard_app.repositories
+    - dashboard_app.templatetags
+    - dashboard_app.tests
+    - dashboard_app.tests.models
+    - dashboard_app.tests.other
+    - dashboard_app.tests.regressions
+    - dashboard_app.tests.views
+    - dashboard_app.views
+    - dashboard_app.views.filters
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lava-dashboard
+  license: GNU Affero General Public License v3
+  summary: 'Validation Dashboard for LAVA Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

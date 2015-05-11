@@ -1,0 +1,65 @@
+package:
+  name: gxargparse
+  version: "0.2.4"
+
+source:
+  fn: gxargparse-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gxargparse/gxargparse-0.2.4.tar.gz
+  md5: aa5053a3164cc2fbd28848263f6ab7be
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gxargparse = gxargparse:main
+    #
+    # Would create an entry point called gxargparse that calls gxargparse.main()
+
+    - gxargparse_check_path = gxargparse.check_path:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - galaxyxml
+
+  run:
+    - python
+    - galaxyxml
+
+test:
+  # Python imports
+  imports:
+    - argparse
+    - gxargparse
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gxargparse_check_path --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/erasche/gxargparse
+  license: Apache Software License
+  summary: 'Galaxy drop-in replacement for argparse'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

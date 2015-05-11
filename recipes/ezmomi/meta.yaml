@@ -1,0 +1,70 @@
+package:
+  name: ezmomi
+  version: "0.3.1"
+
+source:
+  fn: ezmomi-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/ezmomi/ezmomi-0.3.1.tar.gz
+  md5: 840955d6dfdb8a69e5750c8b39323987
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ezmomi = ezmomi:main
+    #
+    # Would create an entry point called ezmomi that calls ezmomi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml ==3.11
+    - argparse ==1.2.1
+    - netaddr ==0.7.11
+    - pyvmomi ==5.5.0
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - pyyaml ==3.11
+    - argparse ==1.2.1
+    - netaddr ==0.7.11
+    - pyvmomi ==5.5.0
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - ezmomi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/snobear/ezmomi
+  license: LICENSE.txt
+  summary: 'VMware vSphere Command line tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

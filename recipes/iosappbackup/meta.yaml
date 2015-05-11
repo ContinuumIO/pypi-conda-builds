@@ -1,0 +1,70 @@
+package:
+  name: iosappbackup
+  version: "3.0.dev10"
+
+source:
+  fn: iosappbackup-3.0.dev10.tar.gz
+  url: https://pypi.python.org/packages/source/i/iosappbackup/iosappbackup-3.0.dev10.tar.gz
+  md5: 913d486071d70573c939330f9f0d601c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iosappbackup = iosappbackup:main
+    #
+    # Would create an entry point called iosappbackup that calls iosappbackup.main()
+
+    - iosappbackup=iosappbackup:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - cfpropertylist
+    - simplejson
+    - iosapplist >=3.0dev27
+
+  run:
+    - python
+    - argparse
+    - cfpropertylist
+    - simplejson
+    - iosapplist >=3.0dev27
+
+test:
+  # Python imports
+  imports:
+    - iosappbackup
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iosappbackup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.s.zeid.me/appbackup
+  license: X11 License:  https://tldrlegal.com/license/x11-license
+  summary: 'Backs up and restores the saved data and settings of installed iOS App Store apps.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

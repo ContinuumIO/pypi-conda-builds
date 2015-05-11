@@ -1,0 +1,68 @@
+package:
+  name: gdash
+  version: "0.4"
+
+source:
+  fn: gdash-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gdash/gdash-0.4.tar.gz
+  md5: 887ac271f660bf84c9b2922a28e587b5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gdash = gdash:main
+    #
+    # Would create an entry point called gdash that calls gdash.main()
+
+    - gdash = gdash.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - flask
+    - flask-cache
+
+  run:
+    - python
+    - argparse
+    - flask
+    - flask-cache
+
+test:
+  # Python imports
+  imports:
+    - gdash
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gdash --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aravindavk/gdash
+  license: MIT License
+  summary: 'GlusterFS Dashboard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

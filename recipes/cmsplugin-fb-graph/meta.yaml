@@ -1,0 +1,66 @@
+package:
+  name: cmsplugin-fb-graph
+  version: "0.3"
+
+source:
+  fn: cmsplugin-fb-graph-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-fb-graph/cmsplugin-fb-graph-0.3.tar.gz
+  md5: e98e4e0352f264caec7fa8c98585003e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-fb-graph = cmsplugin-fb-graph:main
+    #
+    # Would create an entry point called cmsplugin-fb-graph that calls cmsplugin-fb-graph.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-cms
+    - facebook-sdk
+
+  run:
+    - python
+    - setuptools
+    - django-cms
+    - facebook-sdk
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_fb_graph
+    - cmsplugin_fb_graph.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lagunak.gisa-elkartea.org/projects/cmplugin-fb-graph
+  license: GPL
+  summary: 'several django-cms plugins using facebook graph api.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

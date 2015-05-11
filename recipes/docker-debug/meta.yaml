@@ -1,0 +1,64 @@
+package:
+  name: docker-debug
+  version: "1.1"
+
+source:
+  fn: docker-debug-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-debug/docker-debug-1.1.tar.gz
+  md5: 449e61d21cc380d811d126958e3eecc8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-debug = docker-debug:main
+    #
+    # Would create an entry point called docker-debug that calls docker-debug.main()
+
+    - docker-debug = dockerdebug.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-py >=0.5.3
+
+  run:
+    - python
+    - docker-py >=0.5.3
+
+test:
+  # Python imports
+  imports:
+    - dockerdebug
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - docker-debug --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://locationlabs.com
+  license: UNKNOWN
+  summary: 'Docker container debugging tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

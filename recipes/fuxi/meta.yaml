@@ -1,0 +1,71 @@
+package:
+  name: fuxi
+  version: "1.4.1.production"
+
+source:
+  fn: FuXi-1.4.1.production.tar.gz
+  url: https://pypi.python.org/packages/source/F/FuXi/FuXi-1.4.1.production.tar.gz
+  md5: 35c4795bbe4d356573608b720ba93eb3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fuxi = fuxi:main
+    #
+    # Would create an entry point called fuxi that calls fuxi.main()
+
+    - FuXi = FuXi.Rete.CommandLine:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rdflib <3a
+
+  run:
+    - python
+    - rdflib <3a
+
+test:
+  # Python imports
+  imports:
+    - FuXi
+    - FuXi.DLP
+    - FuXi.Horn
+    - FuXi.LP
+    - FuXi.Rete
+    - FuXi.SPARQL
+    - FuXi.Syntax
+    - fuxi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - FuXi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/python-dlp/wiki/FuXi
+  license: Apache
+  summary: 'An OWL / N3-based in-memory, logic reasoning system for RDF'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

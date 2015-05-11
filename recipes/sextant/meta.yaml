@@ -1,0 +1,67 @@
+package:
+  name: sextant
+  version: "2.0"
+
+source:
+  fn: Sextant-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/S/Sextant/Sextant-2.0.tar.gz
+  md5: 512a17d1abb10cdbc6fa0595d8246847
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sextant = sextant:main
+    #
+    # Would create an entry point called sextant that calls sextant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - neo4jrestclient
+    - twisted
+
+  run:
+    - python
+    - neo4jrestclient
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - etc
+    - resources
+    - sextant
+    - sextant.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://open.ensoft.co.uk/Sextant
+  license: Simplified BSD License
+  summary: 'Navigating the C'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

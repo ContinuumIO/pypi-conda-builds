@@ -1,0 +1,77 @@
+package:
+  name: koality_cli
+  version: "0.1.5"
+
+source:
+  fn: koality_cli-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/k/koality_cli/koality_cli-0.1.5.tar.gz
+  md5: a28c5da49fba78c64b8eb7730f54b467
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - koality_cli = koality_cli:main
+    #
+    # Would create an entry point called koality_cli that calls koality_cli.main()
+
+    - ko = koality_cli.scripts.koality:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - argparse
+    - pyyaml
+
+  run:
+    - python
+    - docopt
+    - argparse
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - koality_cli
+    - koality_cli.generators
+    - koality_cli.generators.section_generators
+    - koality_cli.generators.section_generators.java
+    - koality_cli.generators.section_generators.javascript
+    - koality_cli.generators.section_generators.nodejs
+    - koality_cli.generators.section_generators.python
+    - koality_cli.generators.section_generators.ruby
+    - koality_cli.repo_reflector
+    - koality_cli.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ko --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://koalitycode.com
+  license: Koality license and tos @ https://koalitycode.com/terms
+  summary: 'Koality client wrapper for git and hg'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

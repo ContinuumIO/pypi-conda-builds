@@ -1,0 +1,72 @@
+package:
+  name: mr.laforge
+  version: "0.6"
+
+source:
+  fn: mr.laforge-0.6.zip
+  url: https://pypi.python.org/packages/source/m/mr.laforge/mr.laforge-0.6.zip
+  md5: a061d72a5d8334cd67ae49e2be25b131
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.laforge = mr.laforge:main
+    #
+    # Would create an entry point called mr.laforge that calls mr.laforge.main()
+
+    - supervisorup=mr.laforge:up
+    - supervisordown=mr.laforge:down
+    - waitforports=mr.laforge:waitforports
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - supervisor
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - supervisor
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.laforge
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - supervisorup --help
+    - supervisordown --help
+    - waitforports --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fschulze/mr.laforge
+  license: BSD
+  summary: 'Plugins and utilities for supervisor'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: mozconfigwrapper
+  version: "0.3"
+
+source:
+  fn: mozconfigwrapper-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozconfigwrapper/mozconfigwrapper-0.3.tar.gz
+  md5: f8b13826feece2d9210261e3dd0a7ffd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozconfigwrapper = mozconfigwrapper:main
+    #
+    # Would create an entry point called mozconfigwrapper that calls mozconfigwrapper.main()
+
+    - mozconfig=mozconfigwrapper:mozconfig
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - mozconfigwrapper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozconfig --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ahal/mozconfigwrapper
+  license: Mozilla Public License 1.1 (MPL 1.1)
+  summary: 'Utility to make working with mozconfigs easier'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

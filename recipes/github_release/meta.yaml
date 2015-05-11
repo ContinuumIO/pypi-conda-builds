@@ -1,0 +1,64 @@
+package:
+  name: github_release
+  version: "0.1"
+
+source:
+  fn: github_release-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/github_release/github_release-0.1.tar.gz
+  md5: 77639335e989d3213f36f0f3c3adafac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github_release = github_release:main
+    #
+    # Would create an entry point called github_release that calls github_release.main()
+
+    - github_release = github_release:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - github3.py ==0.9.1
+
+  run:
+    - python
+    - github3.py ==0.9.1
+
+test:
+  # Python imports
+  imports:
+    - github_release
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - github_release --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dev.hubspot.com/
+  license: MIT
+  summary: 'Release to GitHub'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

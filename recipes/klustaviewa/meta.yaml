@@ -1,0 +1,85 @@
+package:
+  name: klustaviewa
+  version: "0.2.1"
+
+source:
+  fn: klustaviewa-0.2.1.zip
+  url: https://pypi.python.org/packages/source/k/klustaviewa/klustaviewa-0.2.1.zip
+  md5: b51a38afb74455ebc2d533d19b641db0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - klustaviewa = klustaviewa:main
+    #
+    # Would create an entry point called klustaviewa that calls klustaviewa.main()
+
+    - kwikkonvert = kwiklib.scripts.runkwikkonvert:main
+    - klustaviewa = klustaviewa.scripts.runklustaviewa:main
+    - kwikskope = klustaviewa.scripts.runkwikskope:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - galry
+    - galry.managers
+    - galry.processors
+    - galry.test
+    - galry.visuals
+    - galry.visuals.fontmaps
+    - klustaviewa
+    - klustaviewa.control
+    - klustaviewa.gui
+    - klustaviewa.scripts
+    - klustaviewa.stats
+    - klustaviewa.views
+    - klustaviewa.wizard
+    - kwiklib
+    - kwiklib.dataio
+    - kwiklib.scripts
+    - kwiklib.utils
+    - qtools
+    - qtools.qtpy
+    - qtools.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kwikkonvert --help
+    - klustaviewa --help
+    - kwikskope --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/klusta-team/klustaviewa
+  license: LICENSE.md
+  summary: 'Spike sorting graphical interface.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: django-zeropass
+  version: "0.0.6"
+
+source:
+  fn: django-zeropass-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-zeropass/django-zeropass-0.0.6.tar.gz
+  md5: 3ade7fd3aa484f15e5c69d9d40452e20
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-zeropass = django-zeropass:main
+    #
+    # Would create an entry point called django-zeropass that calls django-zeropass.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - zeropass
+    - zeropass.management
+    - zeropass.management.commands
+    - zeropass.templatetags
+    - zeropass.tests
+    - zeropass_example
+    - zeropass_example.example
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://django-zeropass.obscuremetaphor.co.uk
+  license: BSD 3 Clause
+  summary: 'An app to allow password free logins'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

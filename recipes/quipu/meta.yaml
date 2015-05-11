@@ -1,0 +1,60 @@
+package:
+  name: quipu
+  version: "0.1"
+
+source:
+  fn: quipu-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/q/quipu/quipu-0.1.tar.gz
+  md5: bf72ddb9aebde69ccb7567ea14407c97
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - quipu = quipu:main
+    #
+    # Would create an entry point called quipu that calls quipu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - quipu
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mgood/quipu
+  license: BSD
+  summary: 'Quipu\n=======\n\nEvaluate simple Python mathmatical and logical expressions\n\nhttp://en.wikipedia.org/wiki/Quipu\n\nAn attempt to make a safe evaluator of a subset of Python expressions.\n\nThis is mostly a proof-of-concept for getting feedback, it has not been\nthoroughly checked for safety, use at your own risk :)\n\nIt uses the Python ast module to parse the expression, but all evaluation is\ndone by walking the ast, it is not directly executed by the Python runtime.\n\nNosetests are provided below including coverage of supported and unsupported\noperations.\n\nKnown security considerations:\n\nThe variables are expected to be simple primitive types. Providing functions\nwith unsafe effects, or variables where the operator implementations can have\nunsafe effects is obviously unsafe.\n\nSome operations may also take a lot of time or memory and DOS the process. \n\nUsage::\n\n  import quipu\n  result = quipu.evaluate(\'2 + 2\')\n\n\nSee the list of "supported_expressions" in ``test_asteval.py`` for an example of\nwhat operations are implemented.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

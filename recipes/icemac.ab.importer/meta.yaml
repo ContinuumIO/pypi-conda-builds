@@ -1,0 +1,93 @@
+package:
+  name: icemac.ab.importer
+  version: "2.1.0"
+
+source:
+  fn: icemac.ab.importer-2.1.0.zip
+  url: https://pypi.python.org/packages/source/i/icemac.ab.importer/icemac.ab.importer-2.1.0.zip
+  md5: b2bd3ff34bc6d80171b7f3bb5e9f4965
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - icemac.ab.importer = icemac.ab.importer:main
+    #
+    # Would create an entry point called icemac.ab.importer that calls icemac.ab.importer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - gocept.cache
+    - icemac.ab.locales >=0.8
+    - icemac.addressbook >=2.5.0.dev0
+    - icemac.truncatetext >=0.2
+    - pytz
+    - setuptools
+    - z3c.wizard
+    - zc.sourcefactory
+    - zope.container
+    - zope.generations
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - gocept.cache
+    - icemac.ab.locales >=0.8
+    - icemac.addressbook >=2.5.0.dev0
+    - icemac.truncatetext >=0.2
+    - pytz
+    - setuptools
+    - z3c.wizard
+    - zc.sourcefactory
+    - zope.container
+    - zope.generations
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - icemac
+    - icemac.ab
+    - icemac.ab.importer
+    - icemac.ab.importer.browser
+    - icemac.ab.importer.browser.tests
+    - icemac.ab.importer.browser.wizard
+    - icemac.ab.importer.generations
+    - icemac.ab.importer.reader
+    - icemac.ab.importer.reader.csv
+    - icemac.ab.importer.reader.csv.tests
+    - icemac.ab.importer.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/icemac.ab.importer
+  license: Zope Public License
+  summary: 'Import infrastructure for icemac.addressbook'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

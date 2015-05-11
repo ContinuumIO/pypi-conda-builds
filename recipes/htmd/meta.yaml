@@ -1,0 +1,83 @@
+package:
+  name: htmd
+  version: "1.5.0"
+
+source:
+  fn: htmd-1.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/htmd/htmd-1.5.0.tar.gz
+  md5: e75e7f271ac9d9322f42175bd472b9d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htmd = htmd:main
+    #
+    # Would create an entry point called htmd that calls htmd.main()
+
+    - htmd=htmd.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup ==3.2.1
+    - flask ==0.10.1
+    - flask-flatpages ==0.5
+    - frozen-flask ==0.11
+    - pygments ==2.0.2
+    - click ==3.3
+    - html5print ==0.1
+    - htmlmin ==0.1.5
+    - jsmin ==2.1.0
+    - csscompressor ==0.9.3
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup ==3.2.1
+    - flask ==0.10.1
+    - flask-flatpages ==0.5
+    - frozen-flask ==0.11
+    - pygments ==2.0.2
+    - click ==3.3
+    - html5print ==0.1
+    - htmlmin ==0.1.5
+    - jsmin ==2.1.0
+    - csscompressor ==0.9.3
+
+test:
+  # Python imports
+  imports:
+    - htmd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - htmd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: html
+  summary: None
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

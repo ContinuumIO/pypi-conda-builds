@@ -1,0 +1,70 @@
+package:
+  name: langacore.kit.i18n
+  version: "0.1.6"
+
+source:
+  fn: langacore.kit.i18n-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/l/langacore.kit.i18n/langacore.kit.i18n-0.1.6.tar.gz
+  md5: 20a7affde21467b4bf393b82c3ef9c78
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - langacore.kit.i18n = langacore.kit.i18n:main
+    #
+    # Would create an entry point called langacore.kit.i18n that calls langacore.kit.i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - polib
+    - sphinx
+    - langacore.kit.common
+
+  run:
+    - python
+    - setuptools
+    - polib
+    - sphinx
+    - langacore.kit.common
+
+test:
+  # Python imports
+  imports:
+    - langacore
+    - langacore.kit
+    - langacore.kit.i18n
+    - langacore.kit.i18n.translit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'Various common i18n-related routines.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

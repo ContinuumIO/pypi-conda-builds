@@ -1,0 +1,68 @@
+package:
+  name: materialmodels
+  version: "1.2"
+
+source:
+  fn: materialModels-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/materialModels/materialModels-1.2.tar.gz
+  md5: 540b5f74cfd76961f9d14dec961763b9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - materialmodels = materialmodels:main
+    #
+    # Would create an entry point called materialmodels that calls materialmodels.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - foam >=8.2-hybrid
+
+  run:
+    - python
+    - foam >=8.2-hybrid
+
+test:
+  # Python imports
+  imports:
+    - materialModels
+    - materialModels.componentReference
+    - materialModels.fvPatchFields
+    - materialModels.fvPatchFields.tractionDisplacement
+    - materialModels.rheologyModel
+    - materialModels.rheologyModel.rheologyLaws
+    - materialmodels
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the materialModels from NewStressAnalysis( OpenFOAM-1.4.1-dev )'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

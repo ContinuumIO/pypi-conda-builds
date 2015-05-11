@@ -1,0 +1,63 @@
+package:
+  name: django-soapbox
+  version: "1.1"
+
+source:
+  fn: django-soapbox-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-soapbox/django-soapbox-1.1.tar.gz
+  md5: 98964a3160d942ad6796445b02be935f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-soapbox = django-soapbox:main
+    #
+    # Would create an entry point called django-soapbox that calls django-soapbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - soapbox
+    - soapbox.templates
+    - soapbox.templatetags
+    - soapbox.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ubernostrum/django-soapbox
+  license: BSD License
+  summary: 'Site-wide and page-specific announcements/messages for Django sites'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

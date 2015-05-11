@@ -1,0 +1,69 @@
+package:
+  name: django-shop-sofortpayment
+  version: "0.1.3"
+
+source:
+  fn: django-shop-sofortpayment-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shop-sofortpayment/django-shop-sofortpayment-0.1.3.tar.gz
+  md5: 44ed390bb598b83c802bbad96f49cb2a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shop-sofortpayment = django-shop-sofortpayment:main
+    #
+    # Would create an entry point called django-shop-sofortpayment that calls django-shop-sofortpayment.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-appconf
+    - requests
+    - xmltodict
+
+  run:
+    - python
+    - django >=1.4
+    - django-appconf
+    - requests
+    - xmltodict
+
+test:
+  # Python imports
+  imports:
+    - shop_sofortpayment
+    - shop_sofortpayment.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/piquadrat/django-shop-sofortpayment
+  license: BSD License
+  summary: 'A Sofort Bank payment backend for django SHOP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

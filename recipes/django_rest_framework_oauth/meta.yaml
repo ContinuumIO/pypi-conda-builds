@@ -1,0 +1,67 @@
+package:
+  name: django_rest_framework_oauth
+  version: "0.0.2"
+
+source:
+  fn: django_rest_framework_oauth-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_rest_framework_oauth/django_rest_framework_oauth-0.0.2.tar.gz
+  md5: 1521a3559dff9fc81a4b6ce2e7004d2d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_rest_framework_oauth = django_rest_framework_oauth:main
+    #
+    # Would create an entry point called django_rest_framework_oauth that calls django_rest_framework_oauth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-oauth-plus ==2.2.4
+    - oauth2 ==1.5.211
+    - django-oauth2-provider
+
+  run:
+    - python
+    - django-oauth-plus ==2.2.4
+    - oauth2 ==1.5.211
+    - django-oauth2-provider
+
+test:
+  # Python imports
+  imports:
+    - django_rest_framework_oauth
+    - rest_framework_oauth
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jlafon/django-rest-framework-oauth
+  license: BSD License
+  summary: 'OAuth Support for Django REST Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

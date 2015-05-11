@@ -1,0 +1,101 @@
+package:
+  name: gamification-engine
+  version: "0.1.17"
+
+source:
+  fn: gamification-engine-0.1.17.tar.gz
+  url: https://pypi.python.org/packages/source/g/gamification-engine/gamification-engine-0.1.17.tar.gz
+  md5: de38f4d1796981c39b65bdbd45c91810
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gamification-engine = gamification-engine:main
+    #
+    # Would create an entry point called gamification-engine that calls gamification-engine.main()
+
+    - initialize_gengine_db=gengine.scripts.initializedb:main
+    - gengine_quickstart=gengine.scripts.quickstart:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - pyramid_chameleon
+    - pyramid_debugtoolbar
+    - pyramid_tm
+    - sqlalchemy
+    - transaction
+    - zope.sqlalchemy
+    - waitress
+    - pytz
+    - dogpile.cache
+    - pyramid_dogpile_cache
+    - flask >=0.10.1
+    - flask-admin
+    - psycopg2
+    - pymemcache
+    - mock
+    - alembic
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - pyramid_chameleon
+    - pyramid_debugtoolbar
+    - pyramid_tm
+    - sqlalchemy
+    - transaction
+    - zope.sqlalchemy
+    - waitress
+    - pytz
+    - dogpile.cache
+    - pyramid_dogpile_cache
+    - flask >=0.10.1
+    - flask-admin
+    - psycopg2
+    - pymemcache
+    - mock
+    - alembic
+
+test:
+  # Python imports
+  imports:
+    - gengine
+    - gengine.scripts
+    - gengine_quickstart_template
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - initialize_gengine_db --help
+    - gengine_quickstart --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.gamification-software.com
+  license: GNU Affero General Public License v3
+  summary: 'gamification-engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

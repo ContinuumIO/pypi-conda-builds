@@ -1,0 +1,63 @@
+package:
+  name: chompack
+  version: "2.2.1"
+
+source:
+  fn: chompack-2.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/chompack/chompack-2.2.1.tar.gz
+  md5: 729240476e11df936aa932fe2400a729
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chompack = chompack:main
+    #
+    # Would create an entry point called chompack that calls chompack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cvxopt >=1.1.7
+
+  run:
+    - python
+    - cvxopt >=1.1.7
+
+test:
+  # Python imports
+  imports:
+    - chompack
+    - chompack.pybase
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cvxopt.github.io/chompack/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Library for chordal matrix computations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

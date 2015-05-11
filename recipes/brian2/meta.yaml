@@ -1,0 +1,91 @@
+package:
+  name: brian2
+  version: "2.0b3"
+
+source:
+  fn: Brian2-2.0b3.tar.bz2
+  url: https://pypi.python.org/packages/source/B/Brian2/Brian2-2.0b3.tar.bz2
+  md5: 8a4aead5936b1e33e9e9dc7609785710
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brian2 = brian2:main
+    #
+    # Would create an entry point called brian2 that calls brian2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.8.0
+    - sympy >=0.7.6
+    - pyparsing
+    - jinja2 >=2.7
+
+  run:
+    - python
+    - numpy >=1.8.0
+    - sympy >=0.7.6
+    - pyparsing
+    - jinja2 >=2.7
+
+test:
+  # Python imports
+  imports:
+    - brian2
+    - brian2.codegen
+    - brian2.codegen.generators
+    - brian2.codegen.runtime
+    - brian2.codegen.runtime.cython_rt
+    - brian2.codegen.runtime.numpy_rt
+    - brian2.codegen.runtime.weave_rt
+    - brian2.core
+    - brian2.devices
+    - brian2.devices.cpp_standalone
+    - brian2.equations
+    - brian2.groups
+    - brian2.input
+    - brian2.memory
+    - brian2.monitors
+    - brian2.parsing
+    - brian2.spatialneuron
+    - brian2.sphinxext
+    - brian2.stateupdaters
+    - brian2.synapses
+    - brian2.tests
+    - brian2.tests.features
+    - brian2.units
+    - brian2.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.briansimulator.org/
+  license: UNKNOWN
+  summary: 'A clock-driven simulator for spiking neural networks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

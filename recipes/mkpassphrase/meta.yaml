@@ -1,0 +1,62 @@
+package:
+  name: mkpassphrase
+  version: "0.7.0"
+
+source:
+  fn: mkpassphrase-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mkpassphrase/mkpassphrase-0.7.0.tar.gz
+  md5: 1495f83408886f84b1aa3c8aca8ce10e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mkpassphrase = mkpassphrase:main
+    #
+    # Would create an entry point called mkpassphrase that calls mkpassphrase.main()
+
+    - mkpassphrase = mkpassphrase.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mkpassphrase
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mkpassphrase --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eukaryote/mkpassphrase
+  license: MIT License
+  summary: 'Word-based passphrase generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

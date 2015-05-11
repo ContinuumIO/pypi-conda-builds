@@ -1,0 +1,68 @@
+package:
+  name: maclocate
+  version: "0.1.5"
+
+source:
+  fn: maclocate-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/maclocate/maclocate-0.1.5.tar.gz
+  md5: 3405a4161b6fa64fa7279a42517e66c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - maclocate = maclocate:main
+    #
+    # Would create an entry point called maclocate that calls maclocate.main()
+
+    - maclocate = maclocate:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplexmlapi
+    - twisted
+    - pyopenssl
+
+  run:
+    - python
+    - simplexmlapi
+    - twisted
+    - pyopenssl
+
+test:
+  # Python imports
+  imports:
+    - maclocate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - maclocate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://maclocate.googlecode.com
+  license: MIT License
+  summary: 'Python interface to the SkyHook wireless API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

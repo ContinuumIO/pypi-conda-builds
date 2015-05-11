@@ -1,0 +1,72 @@
+package:
+  name: ezfacebook
+  version: "0.87.0"
+
+source:
+  fn: ezfacebook-0.87.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/ezfacebook/ezfacebook-0.87.0.tar.gz
+  md5: 35e5cfaefc9fcf4788b56391d4f79ab0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ezfacebook = ezfacebook:main
+    #
+    # Would create an entry point called ezfacebook that calls ezfacebook.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ezfacebook
+    - ezfacebook.context
+    - ezfacebook.context.templatetags
+    - ezfacebook.helpers
+    - ezfacebook.lib
+    - ezfacebook.tests
+    - ezfacebook.tests.context
+    - ezfacebook.tests.context.templatetags
+    - ezfacebook.tests.helpers
+    - ezfacebook.tests.lib
+    - ezfacebook.tests.user
+    - ezfacebook.user
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/explodes/ezfacebook
+  license: Apache Software License
+  summary: 'Django Tools to use facebook seamlessly without having to build around it.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

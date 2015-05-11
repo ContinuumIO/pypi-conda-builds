@@ -1,0 +1,69 @@
+package:
+  name: sleipnir-restfulie
+  version: "0.19"
+
+source:
+  fn: sleipnir-restfulie-0.19.tar.gz
+  url: https://pypi.python.org/packages/source/s/sleipnir-restfulie/sleipnir-restfulie-0.19.tar.gz
+  md5: 9c558ac1b1c2f11314c14f2c9818a993
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sleipnir-restfulie = sleipnir-restfulie:main
+    #
+    # Would create an entry point called sleipnir-restfulie that calls sleipnir-restfulie.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oauth2 >=1.5
+    - tornado ==2.4.1
+    - hal-json >=0.1
+    - jsonpatch >=0.12
+
+  run:
+    - python
+    - oauth2 >=1.5
+    - tornado ==2.4.1
+    - hal-json >=0.1
+    - jsonpatch >=0.12
+
+test:
+  # Python imports
+  imports:
+    - restfulie
+    - restfulie.resources
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://restfulie.caelumobjects.com/
+  license: Apache Software License
+  summary: 'Write hypermedia aware resource based clients and servers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

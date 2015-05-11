@@ -1,0 +1,75 @@
+package:
+  name: gocept.bender
+  version: "1.0"
+
+source:
+  fn: gocept.bender-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.bender/gocept.bender-1.0.tar.gz
+  md5: 86e7bd4ab0e92589d5406a4608f4f2c7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.bender = gocept.bender:main
+    #
+    # Would create an entry point called gocept.bender that calls gocept.bender.main()
+
+    - bender-server = gocept.bender.bot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - dnspython
+    - jabberbot
+    - setuptools
+    - xmpppy
+    - zope.component
+    - zope.event
+
+  run:
+    - python
+    - dnspython
+    - jabberbot
+    - setuptools
+    - xmpppy
+    - zope.component
+    - zope.event
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.bender
+    - gocept.bender.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bender-server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/gocept.bender
+  license: ZPL
+  summary: 'A Jabber-Bot that can be told things to say via XML-RPC.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

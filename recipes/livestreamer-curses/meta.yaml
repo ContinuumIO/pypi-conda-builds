@@ -1,0 +1,64 @@
+package:
+  name: livestreamer-curses
+  version: "1.5.2"
+
+source:
+  fn: livestreamer-curses-1.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/livestreamer-curses/livestreamer-curses-1.5.2.tar.gz
+  md5: ea07058f327a3acdc62dc4301a4a6b85
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - livestreamer-curses = livestreamer-curses:main
+    #
+    # Would create an entry point called livestreamer-curses that calls livestreamer-curses.main()
+
+    - livestreamer-curses=livestreamer_curses.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - livestreamer
+
+  run:
+    - python
+    - livestreamer
+
+test:
+  # Python imports
+  imports:
+    - livestreamer_curses
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - livestreamer-curses --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/gapato/livestreamer-curses
+  license: MIT License
+  summary: 'Livestreamer-curses is a curses frontend to livestreamer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

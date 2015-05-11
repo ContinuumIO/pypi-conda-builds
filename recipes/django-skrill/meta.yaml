@@ -1,0 +1,64 @@
+package:
+  name: django-skrill
+  version: "0.3.0"
+
+source:
+  fn: django-skrill-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-skrill/django-skrill-0.3.0.tar.gz
+  md5: 0b642ec089a549affe234e0bce389b18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-skrill = django-skrill:main
+    #
+    # Would create an entry point called django-skrill that calls django-skrill.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-multiselectfield
+
+  run:
+    - python
+    - django-multiselectfield
+
+test:
+  # Python imports
+  imports:
+    - skrill
+    - skrill.migrations
+    - skrill.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/byteweaver/django-skrill
+  license: django-skwissh
+  summary: 'A reuseable Django application for integrating the Skrill (Moneybookers) payment API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

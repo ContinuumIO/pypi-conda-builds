@@ -1,0 +1,70 @@
+package:
+  name: mrrapi
+  version: "0.3.6"
+
+source:
+  fn: mrrapi-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/mrrapi/mrrapi-0.3.6.tar.gz
+  md5: 7aebb05bb4390c4183fa7da33cfef754
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mrrapi = mrrapi:main
+    #
+    # Would create an entry point called mrrapi that calls mrrapi.main()
+
+    - listmyrigs = mrrapi.tools.list_myrigs:main
+    - updaterigprice = mrrapi.tools.updaterigprice:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pytz
+
+  run:
+    - python
+    - requests
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - mrrapi
+    - mrrapi.helpers
+    - mrrapi.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - listmyrigs --help
+    - updaterigprice --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jcwoltz/mrrapi
+  license: UNKNOWN
+  summary: 'MinigRigRentals.com python API client and integration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

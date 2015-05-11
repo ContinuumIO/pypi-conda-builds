@@ -1,0 +1,64 @@
+package:
+  name: django-permanent
+  version: "1.0.10"
+
+source:
+  fn: django-permanent-1.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-permanent/django-permanent-1.0.10.tar.gz
+  md5: cb915f43c79252e2b59ad1165e463274
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-permanent = django-permanent:main
+    #
+    # Would create an entry point called django-permanent that calls django-permanent.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6.0
+
+  run:
+    - python
+    - django >=1.6.0
+
+test:
+  # Python imports
+  imports:
+    - django_permanent
+    - django_permanent.tests
+    - django_permanent.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/meteozond/django-permanent
+  license: BSD License
+  summary: 'Yet another approach to provide soft (logical) delete or masking (thrashing) django models instead of deleting them physically from db.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: envmgr
+  version: "0.0.3"
+
+source:
+  fn: envmgr-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/envmgr/envmgr-0.0.3.tar.gz
+  md5: 4ddb10fb289d0d57805744ac24dea81a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - envmgr = envmgr:main
+    #
+    # Would create an entry point called envmgr that calls envmgr.main()
+
+    - envmgr = envmgr.command:envmgr
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - envmgr
+    - test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - envmgr --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nickstenning/envmgr
+  license: MIT
+  summary: 'envmgr: control the environment of spawned programs with config files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

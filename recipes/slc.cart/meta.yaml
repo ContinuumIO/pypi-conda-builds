@@ -1,0 +1,77 @@
+package:
+  name: slc.cart
+  version: "1.1"
+
+source:
+  fn: slc.cart-1.1.zip
+  url: https://pypi.python.org/packages/source/s/slc.cart/slc.cart-1.1.zip
+  md5: 8092ee09a3788279b4ee5ee141e6f571
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slc.cart = slc.cart:main
+    #
+    # Would create an entry point called slc.cart that calls slc.cart.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - five.grok
+    - pillow
+    - plone
+    - plone.api
+    - setuptools
+    - z3c.jbot
+
+  run:
+    - python
+    - setuptools
+    - five.grok
+    - pillow
+    - plone
+    - plone.api
+    - setuptools
+    - z3c.jbot
+
+test:
+  # Python imports
+  imports:
+    - slc
+    - slc.cart
+    - slc.cart.actions
+    - slc.cart.browser
+    - slc.cart.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/syslabcom/slc.cart
+  license: BSD
+  summary: 'Cart-like end-user support for batching.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

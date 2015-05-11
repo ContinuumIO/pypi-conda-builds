@@ -1,0 +1,67 @@
+package:
+  name: django-flatcontent
+  version: "0.1.6"
+
+source:
+  fn: django-flatcontent-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-flatcontent/django-flatcontent-0.1.6.tar.gz
+  md5: 6f35aaf9f3f61533abb82f4ce16c8dc7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-flatcontent = django-flatcontent:main
+    #
+    # Would create an entry point called django-flatcontent that calls django-flatcontent.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-import-export ==0.2.3
+
+  run:
+    - python
+    - setuptools
+    - django-import-export ==0.2.3
+
+test:
+  # Python imports
+  imports:
+    - flatcontent
+    - flatcontent.migrations
+    - flatcontent.templatetags
+    - flatcontent.tests
+    - testproject
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/orcasgit/django-flatcontent
+  license: BSD License
+  summary: 'Django FlatContent is intended as a flatpages-like app but for smaller chunks of content that can be edited in the Django admin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

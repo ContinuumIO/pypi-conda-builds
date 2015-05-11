@@ -1,0 +1,68 @@
+package:
+  name: nysa
+  version: "0.8.05"
+
+source:
+  fn: nysa-0.8.05.tar.gz
+  url: https://pypi.python.org/packages/source/n/nysa/nysa-0.8.05.tar.gz
+  md5: c417ce7d4c549000d7752989f8a77431
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nysa = nysa:main
+    #
+    # Would create an entry point called nysa that calls nysa.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - nysa
+    - nysa.cbuilder
+    - nysa.common
+    - nysa.host
+    - nysa.host.driver
+    - nysa.ibuilder
+    - nysa.ibuilder.lib
+    - nysa.ibuilder.lib.gen_scripts
+    - nysa.tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://nysa.cospandesign.com
+  license: GNU General Public License v3 (GPLv3) or MIT License
+  summary: 'FPGA core/image generator and FPGA communication'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

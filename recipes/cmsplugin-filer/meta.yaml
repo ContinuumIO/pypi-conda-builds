@@ -1,0 +1,92 @@
+package:
+  name: cmsplugin-filer
+  version: "0.10.1"
+
+source:
+  fn: cmsplugin-filer-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-filer/cmsplugin-filer-0.10.1.tar.gz
+  md5: e2b9e60db49c0336de4560e406552ebc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-filer = cmsplugin-filer:main
+    #
+    # Would create an entry point called cmsplugin-filer that calls cmsplugin-filer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-cms >=3.0
+    - django-sekizai >=0.4.2
+    - easy_thumbnails >=1.0
+    - django-filer >=0.9
+    - django-appconf
+
+  run:
+    - python
+    - django >=1.4
+    - django-cms >=3.0
+    - django-sekizai >=0.4.2
+    - easy_thumbnails >=1.0
+    - django-filer >=0.9
+    - django-appconf
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_filer_file
+    - cmsplugin_filer_file.migrations
+    - cmsplugin_filer_file.migrations_django
+    - cmsplugin_filer_folder
+    - cmsplugin_filer_folder.migrations
+    - cmsplugin_filer_folder.migrations_django
+    - cmsplugin_filer_image
+    - cmsplugin_filer_image.integrations
+    - cmsplugin_filer_image.migrations
+    - cmsplugin_filer_image.migrations_django
+    - cmsplugin_filer_link
+    - cmsplugin_filer_link.migrations
+    - cmsplugin_filer_link.migrations_django
+    - cmsplugin_filer_teaser
+    - cmsplugin_filer_teaser.migrations
+    - cmsplugin_filer_teaser.migrations_django
+    - cmsplugin_filer_utils
+    - cmsplugin_filer_video
+    - cmsplugin_filer_video.migrations
+    - cmsplugin_filer_video.migrations_django
+    - cmsplugin_filer_video.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stefanfoulis/cmsplugin-filer
+  license: BSD License
+  summary: 'django-cms plugins for django-filer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

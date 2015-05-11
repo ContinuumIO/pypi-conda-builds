@@ -1,0 +1,66 @@
+package:
+  name: yould
+  version: "0.3.7"
+
+source:
+  fn: yould-0.3.7.tar.gz
+  url: https://pypi.python.org/packages/source/y/yould/yould-0.3.7.tar.gz
+  md5: 0580ad2b008f1d5d616b84bbcd12d088
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - yould = yould:main
+    #
+    # Would create an entry point called yould that calls yould.main()
+
+    - yould = yould.generate:main
+    - yould-train = yould.train:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - yould
+    - yould.data
+    - yould.data.trainsets
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - yould --help
+    - yould-train --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ygingras.net/b/tag/yould
+  license: GPL v3 or later
+  summary: 'a word generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,92 @@
+package:
+  name: largeblue.util
+  version: "0.1"
+
+source:
+  fn: largeblue.util-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/largeblue.util/largeblue.util-0.1.tar.gz
+  md5: 51fe3f71c7c17b77bb7fba3fbce5adb2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - largeblue.util = largeblue.util:main
+    #
+    # Would create an entry point called largeblue.util that calls largeblue.util.main()
+
+    - largeblue-debug=largeblue.startup:interactive_debug_prompt
+    - largeblue-ctl=largeblue.startup:zdaemon_controller
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - zope.app.appsetup
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.i18n
+    - zope.security
+    - zope.testing
+    - zope.sendmail
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - zope.app.appsetup
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.i18n
+    - zope.security
+    - zope.testing
+    - zope.sendmail
+
+test:
+  # Python imports
+  imports:
+    - largeblue
+    - largeblue.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - largeblue-debug --help
+    - largeblue-ctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pesto.largeblue.net/trac/browser/largeblue/devel/largeblue.util
+  license: Public Domain
+  summary: 'Some helpful web dev utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,73 @@
+package:
+  name: fmn.consumer
+  version: "0.6.2"
+
+source:
+  fn: fmn.consumer-0.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/fmn.consumer/fmn.consumer-0.6.2.tar.gz
+  md5: 4ac55efa9d2e649ff7e32abe9d45d10f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fmn.consumer = fmn.consumer:main
+    #
+    # Would create an entry point called fmn.consumer that calls fmn.consumer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fmn.lib
+    - fedmsg
+    - requests
+    - arrow
+    - bleach
+
+  run:
+    - python
+    - setuptools
+    - fmn.lib
+    - fedmsg
+    - requests
+    - arrow
+    - bleach
+
+test:
+  # Python imports
+  imports:
+    - fmn
+    - fmn.consumer
+    - fmn.consumer.backends
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fedora-infra/fmn.consumer/
+  license: LGPLv2+
+  summary: 'Backend worker daemon for Fedora Notifications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

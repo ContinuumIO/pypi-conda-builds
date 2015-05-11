@@ -1,0 +1,71 @@
+package:
+  name: django-utensils
+  version: "0.1"
+
+source:
+  fn: django-utensils-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-utensils/django-utensils-0.1.tar.gz
+  md5: 51dc00aeb6a1d059520066226d64029d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-utensils = django-utensils:main
+    #
+    # Would create an entry point called django-utensils that calls django-utensils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-bootstrap-form >=3.0
+    - django-braces <1.4.0
+    - django-countries-plus >=0.1.5
+    - django-storages >=1.1
+    - boto >=2.13.3
+
+  run:
+    - python
+    - django-bootstrap-form >=3.0
+    - django-braces <1.4.0
+    - django-countries-plus >=0.1.5
+    - django-storages >=1.1
+    - boto >=2.13.3
+
+test:
+  # Python imports
+  imports:
+    - utensils
+    - utensils.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/code-kitchen/django-utensils/
+  license: MIT License
+  summary: 'Useful Django snippets.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

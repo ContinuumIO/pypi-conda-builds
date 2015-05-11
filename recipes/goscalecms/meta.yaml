@@ -1,0 +1,100 @@
+package:
+  name: goscalecms
+  version: "0.6.a9"
+
+source:
+  fn: goscalecms-0.6.a9.tar.gz
+  url: https://pypi.python.org/packages/source/g/goscalecms/goscalecms-0.6.a9.tar.gz
+  md5: 5c4dc11365108e39ae3406da575a9ac6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - goscalecms = goscalecms:main
+    #
+    # Would create an entry point called goscalecms that calls goscalecms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+    - unidecode
+    - beautifulsoup
+    - feedparser
+    - gdata
+    - python-dateutil
+    - simplejson
+    - django >=1.4,<1.6
+    - django-cms ==2.4
+
+  run:
+    - python
+    - pytz
+    - unidecode
+    - beautifulsoup
+    - feedparser
+    - gdata
+    - python-dateutil
+    - simplejson
+    - django >=1.4,<1.6
+    - django-cms ==2.4
+
+test:
+  # Python imports
+  imports:
+    - goscale
+    - goscale.management
+    - goscale.management.commands
+    - goscale.management.commands.subcommands
+    - goscale.migrations
+    - goscale.plugins
+    - goscale.plugins.calendar
+    - goscale.plugins.calendar.migrations
+    - goscale.plugins.feeds
+    - goscale.plugins.feeds.migrations
+    - goscale.plugins.forms
+    - goscale.plugins.forms.migrations
+    - goscale.plugins.pictures
+    - goscale.plugins.pictures.migrations
+    - goscale.plugins.presentations
+    - goscale.plugins.presentations.migrations
+    - goscale.plugins.videos
+    - goscale.plugins.videos.migrations
+    - goscale.templatetags
+    - goscale.themes
+    - goscale.themes.migrations
+    - goscale.utils
+    - goscalecms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sternoru/goscalecms
+  license: BSD License
+  summary: "GoScale CMS is an extension of Django CMS. It's a set of unique plugins and useful tools for Django CMS that makes it very powerful by seamlessly integrating content from 3rd party websites to make mashups."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

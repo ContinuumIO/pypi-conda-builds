@@ -1,0 +1,68 @@
+package:
+  name: db_export
+  version: "0.0.2"
+
+source:
+  fn: db_export-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/db_export/db_export-0.0.2.tar.gz
+  md5: 3d9aa91e531015ee38c189e648316286
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - db_export = db_export:main
+    #
+    # Would create an entry point called db_export that calls db_export.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - shapely >=1.2.18
+    - fastkml >=0.3dev
+    - geojson >=1.0.1
+    - jsonpath >=0.54
+
+  run:
+    - python
+    - shapely >=1.2.18
+    - fastkml >=0.3dev
+    - geojson >=1.0.1
+    - jsonpath >=0.54
+
+test:
+  # Python imports
+  imports:
+    - db_export
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/redhog/swissarmykitchensink
+  license: GPL
+  summary: 'Swiss army kitchen sink for all things to do with database queries and data conversion / editing from the command line.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

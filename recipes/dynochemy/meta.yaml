@@ -1,0 +1,65 @@
+package:
+  name: dynochemy
+  version: "0.1.4"
+
+source:
+  fn: dynochemy-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/dynochemy/dynochemy-0.1.4.tar.gz
+  md5: 9475d684505d95a5f0c97084beacd5df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dynochemy = dynochemy:main
+    #
+    # Would create an entry point called dynochemy that calls dynochemy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - asyncdynamo >=0.2.6
+    - boto >=2.6.0
+    - sqlalchemy
+
+  run:
+    - python
+    - asyncdynamo >=0.2.6
+    - boto >=2.6.0
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - dynochemy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rhettg/dynochemy
+  license: ISC
+  summary: 'Clever pythonic and async interface to Amazon DynamoDB '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

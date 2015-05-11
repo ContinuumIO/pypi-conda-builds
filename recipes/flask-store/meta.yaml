@@ -1,0 +1,65 @@
+package:
+  name: flask-store
+  version: "0.0.4.1"
+
+source:
+  fn: Flask-Store-0.0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Store/Flask-Store-0.0.4.1.tar.gz
+  md5: 0a4ba4928b3d60cb69d374593b8cb269
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-store = flask-store:main
+    #
+    # Would create an entry point called flask-store that calls flask-store.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - shortuuid ==0.1
+
+  run:
+    - python
+    - flask ==0.10.1
+    - shortuuid ==0.1
+
+test:
+  # Python imports
+  imports:
+    - flask_store
+    - flask_store.providers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://flask-store.soon.build
+  license: MIT License
+  summary: 'Provides Django-Storages like file storage backends for Flask Applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: infi.exceptools
+  version: "0.2.10"
+
+source:
+  fn: infi.exceptools-0.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.exceptools/infi.exceptools-0.2.10.tar.gz
+  md5: 3b2069b39203331f175a819d552a3d09
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.exceptools = infi.exceptools:main
+    #
+    # Would create an entry point called infi.exceptools that calls infi.exceptools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.pyutils
+    - mock
+    - setuptools
+
+  run:
+    - python
+    - infi.pyutils
+    - mock
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.exceptools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.exceptools
+  license: Python Software Foundation License
+  summary: 'a mechanism for chaining exceptions, compatible with Python 2.x'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

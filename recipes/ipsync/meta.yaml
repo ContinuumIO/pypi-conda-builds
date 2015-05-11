@@ -1,0 +1,82 @@
+package:
+  name: ipsync
+  version: "0.1.0"
+
+source:
+  fn: ipsync-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipsync/ipsync-0.1.0.tar.gz
+  md5: 600e30a47104877e1e5ad0fb0944c745
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipsync = ipsync:main
+    #
+    # Would create an entry point called ipsync that calls ipsync.main()
+
+    - ipsync = ip_sync.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.11
+    - requests >=2.5.1
+    - ipaddress >=1.0.7
+    - mock
+    - six >=1.8.0
+    - docopt
+    - schema >=0.3.1
+    - apache-libcloud >=0.16.0
+    - beautifulsoup4 >=4.3.2
+
+  run:
+    - python
+    - pyyaml >=3.11
+    - requests >=2.5.1
+    - ipaddress >=1.0.7
+    - mock
+    - six >=1.8.0
+    - docopt
+    - schema >=0.3.1
+    - apache-libcloud >=0.16.0
+    - beautifulsoup4 >=4.3.2
+
+test:
+  # Python imports
+  imports:
+    - ip_sync
+    - ip_sync.test
+    - ipsync
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ipsync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jon-walton/ipsync
+  license: MIT
+  summary: 'ipsync is a script to update multiple cloud DNS providers with your external IP address'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

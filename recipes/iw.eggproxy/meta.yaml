@@ -1,0 +1,69 @@
+package:
+  name: iw.eggproxy
+  version: "0.2.0"
+
+source:
+  fn: iw.eggproxy-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/iw.eggproxy/iw.eggproxy-0.2.0.tar.gz
+  md5: d1596803186c22897fa4a155ff428837
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iw.eggproxy = iw.eggproxy:main
+    #
+    # Would create an entry point called iw.eggproxy that calls iw.eggproxy.main()
+
+    - eggproxy_update=iw.eggproxy.update_script:updateCache
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - iw
+    - iw.eggproxy
+    - iw.eggproxy.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eggproxy_update --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://ingeniweb.svn.sourceforge.net/svnroot/ingeniweb/iw.eggproxy
+  license: GPL
+  summary: 'An egg proxy for apache and mod_python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

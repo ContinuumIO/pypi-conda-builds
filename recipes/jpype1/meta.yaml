@@ -1,0 +1,65 @@
+package:
+  name: jpype1
+  version: "0.6.0"
+
+source:
+  fn: JPype1-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/J/JPype1/JPype1-0.6.0.tar.gz
+  md5: f0cbbe1d0c4b563f7e435d2bffc31736
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jpype1 = jpype1:main
+    #
+    # Would create an entry point called jpype1 that calls jpype1.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - jpype
+    - jpype.awt
+    - jpype.awt.event
+    - jpype1
+    - jpypex
+    - jpypex.swing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/originell/jpype/
+  license: License :: OSI Approved :: Apache Software License
+  summary: 'A Python to Java bridge.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

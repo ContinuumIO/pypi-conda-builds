@@ -1,0 +1,67 @@
+package:
+  name: htsql-mssql
+  version: "2.3.3"
+
+source:
+  fn: HTSQL-MSSQL-2.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/H/HTSQL-MSSQL/HTSQL-MSSQL-2.3.3.tar.gz
+  md5: 7ba6970858c8a39b67c6c03a1d99d240
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - htsql-mssql = htsql-mssql:main
+    #
+    # Would create an entry point called htsql-mssql that calls htsql-mssql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - htsql
+    - pymssql
+
+  run:
+    - python
+    - setuptools
+    - htsql
+    - pymssql
+
+test:
+  # Python imports
+  imports:
+    - htsql_mssql
+    - htsql_mssql.core
+    - htsql_mssql.core.tr
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://htsql.org/
+  license: Evaluation License
+  summary: 'A Database Query Language (Microsoft SQL Server backend)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

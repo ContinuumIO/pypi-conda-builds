@@ -1,0 +1,73 @@
+package:
+  name: fluiddyn
+  version: "0.0.9a0"
+
+source:
+  fn: fluiddyn-0.0.9a0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fluiddyn/fluiddyn-0.0.9a0.tar.gz
+  md5: d87ccbda607fa6ef6dbce45f1c38a9ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fluiddyn = fluiddyn:main
+    #
+    # Would create an entry point called fluiddyn that calls fluiddyn.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - matplotlib
+    - scipy
+    - psutil
+
+  run:
+    - python
+    - numpy
+    - matplotlib
+    - scipy
+    - psutil
+
+test:
+  # Python imports
+  imports:
+    - fluiddyn
+    - fluiddyn.io
+    - fluiddyn.output
+    - fluiddyn.output.test
+    - fluiddyn.util
+    - fluiddyn.util.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/fluiddyn/fluiddyn
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'framework for studying fluid dynamics.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

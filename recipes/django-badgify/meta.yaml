@@ -1,0 +1,74 @@
+package:
+  name: django-badgify
+  version: "0.1.5"
+
+source:
+  fn: django-badgify-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-badgify/django-badgify-0.1.5.tar.gz
+  md5: 950208954bd376d40be197bd5dcbc796
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-badgify = django-badgify:main
+    #
+    # Would create an entry point called django-badgify that calls django-badgify.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow ==2.4.0
+    - pytz
+
+  run:
+    - python
+    - pillow ==2.4.0
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - badgify
+    - badgify.management
+    - badgify.management.commands
+    - badgify.models
+    - badgify.models.base
+    - badgify.south_migrations
+    - badgify.templatetags
+    - badgify.tests
+    - example
+    - example.management
+    - example.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ulule/django-badgify
+  license: MIT License
+  summary: 'A reusable application to create your own badge engine using Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

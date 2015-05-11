@@ -1,0 +1,85 @@
+package:
+  name: ftw.shop
+  version: "2.0.6"
+
+source:
+  fn: ftw.shop-2.0.6.zip
+  url: https://pypi.python.org/packages/source/f/ftw.shop/ftw.shop-2.0.6.zip
+  md5: 04aee26b4032b08e85ceb048df01df0b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.shop = ftw.shop:main
+    #
+    # Would create an entry point called ftw.shop that calls ftw.shop.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.js.jqueryui
+    - collective.z3cform.wizard
+    - ftw.upgrade
+    - plone.api
+    - plone.app.registry
+    - plone.app.z3cform
+    - setuptools
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - collective.js.jqueryui
+    - collective.z3cform.wizard
+    - ftw.upgrade
+    - plone.api
+    - plone.app.registry
+    - plone.app.z3cform
+    - setuptools
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.shop
+    - ftw.shop.browser
+    - ftw.shop.browser.widgets
+    - ftw.shop.content
+    - ftw.shop.portlets
+    - ftw.shop.tests
+    - ftw.shop.tests.pages
+    - ftw.shop.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.shop
+  license: GPL2
+  summary: 'A web shop solution for Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

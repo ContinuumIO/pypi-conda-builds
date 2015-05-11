@@ -1,0 +1,86 @@
+package:
+  name: django-pages-cms
+  version: "0.1.1"
+
+source:
+  fn: django-pages-cms-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pages-cms/django-pages-cms-0.1.1.tar.gz
+  md5: 90d6cb9b2eda7198cb7497fcd9eff8fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pages-cms = django-pages-cms:main
+    #
+    # Would create an entry point called django-pages-cms that calls django-pages-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+    - django-appcore ==0.0.4
+    - django-mptt ==0.7.1
+    - django-guardian ==1.2.5
+    - django-image-cropping ==1.0.1
+    - django-markitup ==2.2.2
+    - easy-thumbnails ==2.2
+    - pyyaml ==3.11
+    - markdown ==2.6.1
+
+  run:
+    - python
+    - django >=1.6
+    - django-appcore ==0.0.4
+    - django-mptt ==0.7.1
+    - django-guardian ==1.2.5
+    - django-image-cropping ==1.0.1
+    - django-markitup ==2.2.2
+    - easy-thumbnails ==2.2
+    - pyyaml ==3.11
+    - markdown ==2.6.1
+
+test:
+  # Python imports
+  imports:
+    - pages
+    - pages.admin
+    - pages.managers
+    - pages.migrations
+    - pages.models
+    - pages.south_migrations
+    - pages.templatetags
+    - pages.tests
+    - pages.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dlancer/django-pages-cms
+  license: BSD License
+  summary: 'Simple content management system for Django 1.6+'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

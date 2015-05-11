@@ -1,0 +1,70 @@
+package:
+  name: fencepy
+  version: "0.5.0"
+
+source:
+  fn: fencepy-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fencepy/fencepy-0.5.0.tar.gz
+  md5: 82adce1333df4b19778dabac10b0a7f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fencepy = fencepy:main
+    #
+    # Would create an entry point called fencepy that calls fencepy.main()
+
+    - fencepy=fencepy:fence
+    - fencepy-2.7=fencepy:fence
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenv >=12.0.7
+    - psutil >=2.2.1
+    - docopt >=0.6.2
+
+  run:
+    - python
+    - virtualenv >=12.0.7
+    - psutil >=2.2.1
+    - docopt >=0.6.2
+
+test:
+  # Python imports
+  imports:
+    - fencepy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fencepy --help
+    - fencepy-2.7 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ajk8/fencepy
+  license: MIT License
+  summary: 'Standardized fencing off of python virtual environments on a per-project basis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

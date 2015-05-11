@@ -1,0 +1,72 @@
+package:
+  name: openerp-l10n-fr
+  version: "7.0.406"
+
+source:
+  fn: openerp-l10n-fr-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-l10n-fr/openerp-l10n-fr-7.0.406.tar.gz
+  md5: e966b39f53cb02f96808baf9a8d61180
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-l10n-fr = openerp-l10n-fr:main
+    #
+    # Would create an entry point called openerp-l10n-fr that calls openerp-l10n-fr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-base-iban
+    - openerp-account
+    - openerp-account-chart
+    - openerp-base-vat
+    - openerp-l10n-fr-rib
+
+  run:
+    - python
+    - openerp-base-iban
+    - openerp-account
+    - openerp-account-chart
+    - openerp-base-vat
+    - openerp-l10n-fr-rib
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.l10n_fr
+    - openerp.addons.l10n_fr.report
+    - openerp.addons.l10n_fr.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'France - Accounting'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

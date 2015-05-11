@@ -1,0 +1,63 @@
+package:
+  name: django-pdb
+  version: "0.4.1"
+
+source:
+  fn: django-pdb-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pdb/django-pdb-0.4.1.tar.gz
+  md5: 9671090a62392199197b363146c55890
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pdb = django-pdb:main
+    #
+    # Would create an entry point called django-pdb that calls django-pdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_pdb
+    - django_pdb.management
+    - django_pdb.management.commands
+    - django_pdb.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tomchristie/django-pdb
+  license: Public Domain
+  summary: 'Easier pdb debugging for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

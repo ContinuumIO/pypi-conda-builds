@@ -1,0 +1,71 @@
+package:
+  name: gocept.package
+  version: "1.3"
+
+source:
+  fn: gocept.package-1.3.zip
+  url: https://pypi.python.org/packages/source/g/gocept.package/gocept.package-1.3.zip
+  md5: 288d3d715b640ea516a5f4f40f1a44b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.package = gocept.package:main
+    #
+    # Would create an entry point called gocept.package that calls gocept.package.main()
+
+    - doc=gocept.package.doc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pastescript
+    - pkginfo >=0.9
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - pastescript
+    - pkginfo >=0.9
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.package
+    - gocept.package.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - doc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/gocept/gocept.package/
+  license: Zope Public License
+  summary: 'A paste.script template following gocept Python package conventions.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

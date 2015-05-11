@@ -1,0 +1,72 @@
+package:
+  name: edition1.twitterportletfix
+  version: "1.0"
+
+source:
+  fn: edition1.twitterportletfix-1.0.zip
+  url: https://pypi.python.org/packages/source/e/edition1.twitterportletfix/edition1.twitterportletfix-1.0.zip
+  md5: d387c958a95a3340aac303e1a4bdaabb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edition1.twitterportletfix = edition1.twitterportletfix:main
+    #
+    # Would create an entry point called edition1.twitterportletfix that calls edition1.twitterportletfix.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-twitter >=1.0
+    - collective.twitterportlet
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-twitter >=1.0
+    - collective.twitterportlet
+
+test:
+  # Python imports
+  imports:
+    - edition1
+    - edition1.twitterportletfix
+    - edition1.twitterportletfix.Extensions
+    - edition1.twitterportletfix.browser
+    - edition1.twitterportletfix.portlets
+    - edition1.twitterportletfix.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edition1/edition1.twitterportletfix
+  license: gpl
+  summary: 'Quick fix for collective.twitterportlet for Twitter API v1.1'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

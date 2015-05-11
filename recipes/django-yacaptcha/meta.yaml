@@ -1,0 +1,66 @@
+package:
+  name: django-yacaptcha
+  version: "0.0.6"
+
+source:
+  fn: django-yacaptcha-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-yacaptcha/django-yacaptcha-0.0.6.tar.gz
+  md5: ec366d7081025b316f8c5c91d3761201
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-yacaptcha = django-yacaptcha:main
+    #
+    # Would create an entry point called django-yacaptcha that calls django-yacaptcha.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3,<=1.4.5
+    - cleanweb
+
+  run:
+    - python
+    - django >=1.3,<=1.4.5
+    - cleanweb
+
+test:
+  # Python imports
+  imports:
+    - yacaptcha
+    - yacaptcha.backends
+    - yacaptcha.backends.default
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Atomic-Creative/django-yacaptcha
+  license: BSD License
+  summary: 'Simple captcha with Yandex API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

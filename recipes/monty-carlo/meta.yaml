@@ -1,0 +1,71 @@
+package:
+  name: monty-carlo
+  version: "0.1.2.dev"
+
+source:
+  fn: Monty Carlo-0.1.2.dev.tar.gz
+  url: https://pypi.python.org/packages/source/M/Monty-Carlo/Monty Carlo-0.1.2.dev.tar.gz
+  md5: 40edf65e8464294154689e644b70f25b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - monty-carlo = monty-carlo:main
+    #
+    # Would create an entry point called monty-carlo that calls monty-carlo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils >=0.3
+
+  run:
+    - python
+    - docutils >=0.3
+
+test:
+  # Python imports
+  imports:
+    - monty-carlo
+    - monty-carlo.atomic
+    - monty-carlo.exception_handler
+    - monty-carlo.lib
+    - monty-carlo.machine
+    - monty-carlo.objectdefs
+    - monty-carlo.pickler
+    - monty-carlo.probes
+    - monty-carlo.random_num_gen
+    - monty-carlo.visualizer
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/monty-carlo/monty-carlo/
+  license: LICENSE.txt
+  summary: 'Monty Carlo is a modular Monte Carlo engine, suitable for statistical systems.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

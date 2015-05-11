@@ -1,0 +1,63 @@
+package:
+  name: dictalchemy
+  version: "0.1.2.6"
+
+source:
+  fn: dictalchemy-0.1.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/dictalchemy/dictalchemy-0.1.2.6.tar.gz
+  md5: cce7da26876cb1835d6e16b6d6a9a3c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dictalchemy = dictalchemy:main
+    #
+    # Would create an entry point called dictalchemy that calls dictalchemy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.9.4
+
+  run:
+    - python
+    - sqlalchemy >=0.9.4
+
+test:
+  # Python imports
+  imports:
+    - dictalchemy
+    - dictalchemy.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/danielholmstrom/dictalchemy/
+  license: MIT License
+  summary: 'Contains asdict and fromdict methods for SQL-Alchemy declarative models'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

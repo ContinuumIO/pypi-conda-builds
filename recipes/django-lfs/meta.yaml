@@ -1,0 +1,170 @@
+package:
+  name: django-lfs
+  version: "0.10.2"
+
+source:
+  fn: django-lfs-0.10.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-lfs/django-lfs-0.10.2.tar.gz
+  md5: 03b0cc567b4f51d999ff7c811639ff64
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-lfs = django-lfs:main
+    #
+    # Would create an entry point called django-lfs that calls django-lfs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-compressor ==1.4
+    - django-localflavor ==1.1
+    - django-paypal ==0.1.2.lfs-2
+    - django-pagination ==1.0.7
+    - django-portlets ==1.3
+    - django-postal ==0.96
+    - django-reviews ==1.1
+    - lfs-contact ==1.2
+    - lfs-order-numbers ==1.1
+    - lfs-paypal ==1.3
+    - lfs-theme ==0.10.1
+    - pillow ==2.8.1
+
+  run:
+    - python
+    - setuptools
+    - django-compressor ==1.4
+    - django-localflavor ==1.1
+    - django-paypal ==0.1.2.lfs-2
+    - django-pagination ==1.0.7
+    - django-portlets ==1.3
+    - django-postal ==0.96
+    - django-reviews ==1.1
+    - lfs-contact ==1.2
+    - lfs-order-numbers ==1.1
+    - lfs-paypal ==1.3
+    - lfs-theme ==0.10.1
+    - pillow ==2.8.1
+
+test:
+  # Python imports
+  imports:
+    - lfs
+    - lfs.addresses
+    - lfs.addresses.management
+    - lfs.addresses.management.commands
+    - lfs.addresses.migrations
+    - lfs.caching
+    - lfs.cart
+    - lfs.cart.management
+    - lfs.cart.management.commands
+    - lfs.cart.migrations
+    - lfs.catalog
+    - lfs.catalog.migrations
+    - lfs.checkout
+    - lfs.checkout.tests
+    - lfs.core
+    - lfs.core.fields
+    - lfs.core.management
+    - lfs.core.management.commands
+    - lfs.core.migrations
+    - lfs.core.templatetags
+    - lfs.core.widgets
+    - lfs.criteria
+    - lfs.criteria.migrations
+    - lfs.customer
+    - lfs.customer.management
+    - lfs.customer.management.commands
+    - lfs.customer.migrations
+    - lfs.customer_tax
+    - lfs.customer_tax.migrations
+    - lfs.discounts
+    - lfs.discounts.migrations
+    - lfs.export
+    - lfs.export.migrations
+    - lfs.gross_price
+    - lfs.integrationtests
+    - lfs.mail
+    - lfs.manage
+    - lfs.manage.actions
+    - lfs.manage.categories
+    - lfs.manage.customer_tax
+    - lfs.manage.delivery_times
+    - lfs.manage.discounts
+    - lfs.manage.images
+    - lfs.manage.information
+    - lfs.manage.manufacturers
+    - lfs.manage.pages
+    - lfs.manage.product
+    - lfs.manage.product_taxes
+    - lfs.manage.property
+    - lfs.manage.property_groups
+    - lfs.manage.seo
+    - lfs.manage.shipping_methods
+    - lfs.manage.static_blocks
+    - lfs.manage.templatetags
+    - lfs.manage.views
+    - lfs.manage.views.marketing
+    - lfs.manage.voucher
+    - lfs.manufacturer
+    - lfs.manufacturer.migrations
+    - lfs.marketing
+    - lfs.marketing.migrations
+    - lfs.net_price
+    - lfs.order
+    - lfs.order.migrations
+    - lfs.page
+    - lfs.page.migrations
+    - lfs.payment
+    - lfs.payment.migrations
+    - lfs.portlet
+    - lfs.portlet.migrations
+    - lfs.portlet.models
+    - lfs.portlet.templatetags
+    - lfs.search
+    - lfs.shipping
+    - lfs.shipping.migrations
+    - lfs.supplier
+    - lfs.supplier.migrations
+    - lfs.tax
+    - lfs.tax.migrations
+    - lfs.tests
+    - lfs.utils
+    - lfs.utils.management
+    - lfs.utils.management.commands
+    - lfs.utils.templatetags
+    - lfs.voucher
+    - lfs.voucher.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.getlfs.com
+  license: BSD License
+  summary: 'LFS - Lightning Fast Shop'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

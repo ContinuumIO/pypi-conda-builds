@@ -1,0 +1,69 @@
+package:
+  name: django-xmail-ritual
+  version: "0.0.11"
+
+source:
+  fn: django-xmail-ritual-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-xmail-ritual/django-xmail-ritual-0.0.11.tar.gz
+  md5: 2ed126432fb63b0f43bb130b6b40d946
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-xmail-ritual = django-xmail-ritual:main
+    #
+    # Would create an entry point called django-xmail-ritual that calls django-xmail-ritual.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-cantrips >=0.6.6
+    - django >=1.7
+
+  run:
+    - python
+    - python-cantrips >=0.6.6
+    - django >=1.7
+
+test:
+  # Python imports
+  imports:
+    - grimoire
+    - grimoire.django
+    - grimoire.django.xmail
+    - grimoire.django.xmail.management
+    - grimoire.django.xmail.management.commands
+    - grimoire.django.xmail.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/luismasuelli/django-xmail-ritual
+  license: LGPL
+  summary: 'The xmail library is a mail dispatching library for Django 1.7. Mails are sent asynchronously by a management command'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

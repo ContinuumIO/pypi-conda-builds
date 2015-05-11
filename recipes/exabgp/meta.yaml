@@ -1,0 +1,94 @@
+package:
+  name: exabgp
+  version: "3.4.10"
+
+source:
+  fn: exabgp-3.4.10.tar.gz
+  url: https://pypi.python.org/packages/source/e/exabgp/exabgp-3.4.10.tar.gz
+  md5: 9e0fcc63b852742505c0a0365fe30276
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - exabgp = exabgp:main
+    #
+    # Would create an entry point called exabgp that calls exabgp.main()
+
+    - exabgp = exabgp.application:run_exabgp
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - exabgp
+    - exabgp.application
+    - exabgp.bgp
+    - exabgp.bgp.message
+    - exabgp.bgp.message.open
+    - exabgp.bgp.message.open.capability
+    - exabgp.bgp.message.update
+    - exabgp.bgp.message.update.attribute
+    - exabgp.bgp.message.update.attribute.community
+    - exabgp.bgp.message.update.attribute.community.extended
+    - exabgp.bgp.message.update.nlri
+    - exabgp.bgp.message.update.nlri.evpn
+    - exabgp.bgp.message.update.nlri.qualifier
+    - exabgp.bmp
+    - exabgp.configuration
+    - exabgp.configuration.bgp
+    - exabgp.configuration.bmp
+    - exabgp.configuration.engine
+    - exabgp.configuration.neighbor
+    - exabgp.configuration.show
+    - exabgp.data
+    - exabgp.dep
+    - exabgp.netlink
+    - exabgp.netlink.route
+    - exabgp.protocol
+    - exabgp.protocol.ip
+    - exabgp.protocol.ip.tcp
+    - exabgp.reactor
+    - exabgp.reactor.api
+    - exabgp.reactor.api.decoder
+    - exabgp.reactor.network
+    - exabgp.rib
+    - exabgp.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - exabgp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Exa-Networks/exabgp
+  license: BSD License
+  summary: 'BGP swiss army knife'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

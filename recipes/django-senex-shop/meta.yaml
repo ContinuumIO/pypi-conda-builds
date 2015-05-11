@@ -1,0 +1,101 @@
+package:
+  name: django-senex-shop
+  version: "0.2.2"
+
+source:
+  fn: django-senex-shop-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-senex-shop/django-senex-shop-0.2.2.tar.gz
+  md5: 6e8af065d3dfd40c64a5c37b4dcf2daa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-senex-shop = django-senex-shop:main
+    #
+    # Would create an entry point called django-senex-shop that calls django-senex-shop.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow
+    - south
+    - django-countries
+    - django-localflavor
+    - easy-thumbnails
+    - requests
+    - stripe
+
+  run:
+    - python
+    - pillow
+    - south
+    - django-countries
+    - django-localflavor
+    - easy-thumbnails
+    - requests
+    - stripe
+
+test:
+  # Python imports
+  imports:
+    - senex_shop
+    - senex_shop.cart
+    - senex_shop.cart.migrations
+    - senex_shop.cart.south_migrations
+    - senex_shop.checkout
+    - senex_shop.checkout.migrations
+    - senex_shop.checkout.south_migrations
+    - senex_shop.contact
+    - senex_shop.contact.migrations
+    - senex_shop.contact.south_migrations
+    - senex_shop.core
+    - senex_shop.core.migrations
+    - senex_shop.core.south_migrations
+    - senex_shop.custom
+    - senex_shop.custom.migrations
+    - senex_shop.custom.south_migrations
+    - senex_shop.discounts
+    - senex_shop.discounts.migrations
+    - senex_shop.discounts.south_migrations
+    - senex_shop.migrations
+    - senex_shop.news
+    - senex_shop.news.migrations
+    - senex_shop.news.south_migrations
+    - senex_shop.shipping
+    - senex_shop.shipping.migrations
+    - senex_shop.shipping.south_migrations
+    - senex_shop.south_migrations
+    - senex_shop.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/endthestart/django-senex-shop
+  license: BSD License
+  summary: 'Senex Shop'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

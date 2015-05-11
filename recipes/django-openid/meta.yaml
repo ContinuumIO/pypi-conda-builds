@@ -1,0 +1,71 @@
+package:
+  name: django-openid
+  version: "0.3a1"
+
+source:
+  fn: django-openid-0.3a1.tar.gz
+  url: http://dist.pinaxproject.com/alpha/django-openid/django-openid-0.3a1.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-openid = django-openid:main
+    #
+    # Would create an entry point called django-openid that calls django-openid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-openid
+
+  run:
+    - python
+    - python-openid
+
+test:
+  # Python imports
+  imports:
+    - django_openid
+    - django_openid.demos
+    - django_openid.demos.consumer
+    - django_openid.demos.consumer_django11
+    - django_openid.demos.provider
+    - django_openid.demos.provider.anon_provider
+    - django_openid.demos.registration_consumer
+    - django_openid.docs
+    - django_openid.docs.fake_project
+    - django_openid.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/simonw/django-openid/
+  license: BSD License
+  summary: 'OpenID tools for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

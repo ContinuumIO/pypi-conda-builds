@@ -1,0 +1,70 @@
+package:
+  name: mezzanine-donate
+  version: "0.1.6"
+
+source:
+  fn: mezzanine-donate-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-donate/mezzanine-donate-0.1.6.tar.gz
+  md5: 9f78d2b1c846b51af7d7e285ed513271
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-donate = mezzanine-donate:main
+    #
+    # Would create an entry point called mezzanine-donate that calls mezzanine-donate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mezzanine >=1.4.6
+    - south
+    - stripe >=1.9.8
+    - django-localflavor
+
+  run:
+    - python
+    - mezzanine >=1.4.6
+    - south
+    - stripe >=1.9.8
+    - django-localflavor
+
+test:
+  # Python imports
+  imports:
+    - mezzanine_donate
+    - mezzanine_donate.migrations
+    - mezzanine_donate.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Donate plugin for mezzanine using stripe for processing donations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

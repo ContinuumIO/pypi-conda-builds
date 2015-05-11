@@ -1,0 +1,68 @@
+package:
+  name: slugger
+  version: "0.2.1"
+
+source:
+  fn: slugger-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/slugger/slugger-0.2.1.tar.gz
+  md5: 71892b689bddf33a90a53291ec5b3825
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slugger = slugger:main
+    #
+    # Would create an entry point called slugger that calls slugger.main()
+
+    - glcp = slugger.glibcparse.cli:main [devtools]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - remember
+    - unihandecode >=0.50
+
+  run:
+    - python
+    - remember
+    - unihandecode >=0.50
+
+test:
+  # Python imports
+  imports:
+    - slugger
+    - slugger.glibcparse
+    - slugger.languages
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - glcp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mbr/slugger
+  license: LGPLv2.1
+  summary: 'Slugging done right. Tries to support close to 300 languages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

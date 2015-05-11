@@ -1,0 +1,74 @@
+package:
+  name: cloudflu
+  version: "0.28"
+
+source:
+  fn: cloudflu-0.28.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudflu/cloudflu-0.28.tar.gz
+  md5: 8aeb8c7e5398f51f3ed5b8a45c735596
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudflu = cloudflu:main
+    #
+    # Would create an entry point called cloudflu that calls cloudflu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.0rc1
+    - workerpool
+    - paramiko
+    - pexpect
+
+  run:
+    - python
+    - boto ==2.0rc1
+    - workerpool
+    - paramiko
+    - pexpect
+
+test:
+  # Python imports
+  imports:
+    - cloudflu
+    - cloudflu.amazon
+    - cloudflu.amazon.apps
+    - cloudflu.amazon.ec2
+    - cloudflu.amazon.ec2.ami
+    - cloudflu.common
+    - cloudflu.common.ssh
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/cloudflu
+  license: Apache Software License
+  summary: 'Delivers "Cloud Computing" commodities for OpenFOAM(R) users'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

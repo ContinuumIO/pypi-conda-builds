@@ -1,0 +1,73 @@
+package:
+  name: exreporter
+  version: "0.1.3"
+
+source:
+  fn: exreporter-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/exreporter/exreporter-0.1.3.tar.gz
+  md5: ccf51dbf0dcc05858d6fd97fd198d525
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - exreporter = exreporter:main
+    #
+    # Would create an entry point called exreporter that calls exreporter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pytz
+    - python-dateutil
+    - mock
+    - magicmock
+
+  run:
+    - python
+    - requests
+    - pytz
+    - python-dateutil
+    - mock
+    - magicmock
+
+test:
+  # Python imports
+  imports:
+    - exreporter
+    - exreporter.contrib
+    - exreporter.stores
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vedarthk/exreporter
+  license: MIT License
+  summary: 'Report Internal Server Errors as Issues'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

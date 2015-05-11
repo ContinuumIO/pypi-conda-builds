@@ -1,0 +1,73 @@
+package:
+  name: coinkit
+  version: "0.7.8"
+
+source:
+  fn: coinkit-0.7.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/coinkit/coinkit-0.7.8.tar.gz
+  md5: 739b7787ddd629b766bf04af86a196f9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coinkit = coinkit:main
+    #
+    # Would create an entry point called coinkit that calls coinkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ecdsa ==0.11
+    - utilitybelt >=0.2.1
+    - requests >=2.4.3
+    - pybitcointools ==1.1.15
+    - python-bitcoinrpc ==0.1
+
+  run:
+    - python
+    - ecdsa ==0.11
+    - utilitybelt >=0.2.1
+    - requests >=2.4.3
+    - pybitcointools ==1.1.15
+    - python-bitcoinrpc ==0.1
+
+test:
+  # Python imports
+  imports:
+    - coinkit
+    - coinkit.passphrases
+    - coinkit.services
+    - coinkit.transactions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/onenameio/coinkit
+  license: MIT License
+  summary: 'Tools for Bitcoin & other cryptocurrencies (incl. Namecoin, Litecoin, Dogecoin, etc.).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

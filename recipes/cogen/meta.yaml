@@ -1,0 +1,66 @@
+package:
+  name: cogen
+  version: "0.2.1"
+
+source:
+  fn: cogen-0.2.1.zip
+  url: https://pypi.python.org/packages/source/c/cogen/cogen-0.2.1.zip
+  md5: 6c765905e4bc0278d35dd5c0011d032d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cogen = cogen:main
+    #
+    # Would create an entry point called cogen that calls cogen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py-sendfile >=1.2.2
+
+  run:
+    - python
+    - setuptools
+    - py-sendfile >=1.2.2
+
+test:
+  # Python imports
+  imports:
+    - cogen
+    - cogen.core
+    - cogen.core.proactors
+    - cogen.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/cogen/
+  license: MIT License
+  summary: '\n        Coroutines and asynchronous I/O using enhanced generators \n        from python 2.5, including a enhanced WSGI server.\n    '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

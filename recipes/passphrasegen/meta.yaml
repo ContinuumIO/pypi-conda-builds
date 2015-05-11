@@ -1,0 +1,62 @@
+package:
+  name: passphrasegen
+  version: "1.1"
+
+source:
+  fn: passphrasegen-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/passphrasegen/passphrasegen-1.1.tar.gz
+  md5: 02ca7671da9dac9028a38785cc4bdc16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - passphrasegen = passphrasegen:main
+    #
+    # Would create an entry point called passphrasegen that calls passphrasegen.main()
+
+    - passphrasegen = passphrasegen:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - passphrasegen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - passphrasegen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rpatterson/passphrasegen
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Generate a passphrase consisting of words chosen from word list dictionaries.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

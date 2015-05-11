@@ -1,0 +1,77 @@
+package:
+  name: offlinedoc
+  version: "0.0.13"
+
+source:
+  fn: OfflineDoc-0.0.13.tar.gz
+  url: https://pypi.python.org/packages/source/O/OfflineDoc/OfflineDoc-0.0.13.tar.gz
+  md5: 2bd65257a17b01f623c0f23038f03412
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - offlinedoc = offlinedoc:main
+    #
+    # Would create an entry point called offlinedoc that calls offlinedoc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - jinja2 ==2.6
+    - pyyaml ==3.10
+    - pygments ==1.6
+    - sphinx ==1.1.3
+    - docutils ==0.10
+    - rst2pdf >0.92
+    - sphinx-bootstrap-theme ==0.3.4
+    - jsonschema ==2.3.0
+
+  run:
+    - python
+    - jinja2 ==2.6
+    - pyyaml ==3.10
+    - pygments ==1.6
+    - sphinx ==1.1.3
+    - docutils ==0.10
+    - rst2pdf >0.92
+    - sphinx-bootstrap-theme ==0.3.4
+    - jsonschema ==2.3.0
+
+test:
+  # Python imports
+  imports:
+    - offlinedoc
+    - offlinedoc.module
+    - offlinedoc.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ichuan/OfflineDoc
+  license: LICENSE.txt
+  summary: 'Offline documents generating tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

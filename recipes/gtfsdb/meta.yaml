@@ -1,0 +1,66 @@
+package:
+  name: gtfsdb
+  version: "0.1.5"
+
+source:
+  fn: gtfsdb-0.1.5.zip
+  url: https://pypi.python.org/packages/source/g/gtfsdb/gtfsdb-0.1.5.zip
+  md5: 5183a3487836bd330dbd801edc2dd31d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gtfsdb = gtfsdb:main
+    #
+    # Would create an entry point called gtfsdb that calls gtfsdb.main()
+
+    - gtfsdb-load = gtfsdb.scripts:gtfsdb_load
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.8
+
+  run:
+    - python
+    - sqlalchemy >=0.8
+
+test:
+  # Python imports
+  imports:
+    - gtfsdb
+    - gtfsdb.model
+    - gtfsdb.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gtfsdb-load --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'GTFS Database'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

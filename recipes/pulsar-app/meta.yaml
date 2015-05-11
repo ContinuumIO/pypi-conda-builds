@@ -1,0 +1,120 @@
+package:
+  name: pulsar-app
+  version: "0.4.0"
+
+source:
+  fn: pulsar-app-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pulsar-app/pulsar-app-0.4.0.tar.gz
+  md5: f702c2573afb423d68c36ae0e4906956
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pulsar-app = pulsar-app:main
+    #
+    # Would create an entry point called pulsar-app that calls pulsar-app.main()
+
+    - pulsar-main=pulsar.main:main
+    - pulsar-check=pulsar.client.test.check:main
+    - pulsar-config=pulsar.scripts.config:main
+    - pulsar-drmaa-launch=pulsar.scripts.drmaa_launch:main
+    - pulsar-drmaa-kill=pulsar.scripts.drmaa_kill:main
+    - pulsar-chown-working-directory=pulsar.scripts.chown_working_directory:main
+    - pulsar-submit=pulsar.scripts.submit:main
+    - pulsar-run=pulsar.scripts.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - webob
+    - psutil
+    - pyyaml
+    - pastescript
+    - paste
+
+  run:
+    - python
+    - setuptools
+    - six
+    - webob
+    - psutil
+    - pyyaml
+    - pastescript
+    - paste
+
+test:
+  # Python imports
+  imports:
+    - galaxy
+    - galaxy.jobs
+    - galaxy.jobs.metrics
+    - galaxy.jobs.metrics.collectl
+    - galaxy.jobs.metrics.instrumenters
+    - galaxy.objectstore
+    - galaxy.tools
+    - galaxy.tools.deps
+    - galaxy.tools.deps.resolvers
+    - galaxy.tools.linters
+    - galaxy.util
+    - pulsar
+    - pulsar.cache
+    - pulsar.client
+    - pulsar.client.staging
+    - pulsar.client.test
+    - pulsar.client.transport
+    - pulsar.managers
+    - pulsar.managers.base
+    - pulsar.managers.staging
+    - pulsar.managers.util
+    - pulsar.managers.util.cli
+    - pulsar.managers.util.cli.job
+    - pulsar.managers.util.cli.shell
+    - pulsar.managers.util.condor
+    - pulsar.managers.util.drmaa
+    - pulsar.managers.util.job_script
+    - pulsar.mesos
+    - pulsar.messaging
+    - pulsar.scripts
+    - pulsar.tools
+    - pulsar.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pulsar-main --help
+    - pulsar-check --help
+    - pulsar-config --help
+    - pulsar-drmaa-launch --help
+    - pulsar-drmaa-kill --help
+    - pulsar-chown-working-directory --help
+    - pulsar-submit --help
+    - pulsar-run --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/galaxyproject/pulsar
+  license: Apache Software License
+  summary: 'Distributed job execution application built for Galaxy (http://galaxyproject.org/).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

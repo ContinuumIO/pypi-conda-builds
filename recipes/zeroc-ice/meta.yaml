@@ -1,0 +1,69 @@
+package:
+  name: zeroc-ice
+  version: "3.6b"
+
+source:
+  fn: zeroc-ice-3.6b.tar.gz
+  url: https://pypi.python.org/packages/source/z/zeroc-ice/zeroc-ice-3.6b.tar.gz
+  md5: d6b1db0fe77f3540cdb5922b04bf9a39
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zeroc-ice = zeroc-ice:main
+    #
+    # Would create an entry point called zeroc-ice that calls zeroc-ice.main()
+
+    - slice2py=slice2py:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - 
+    - IceBox
+    - IceGrid
+    - IceMX
+    - IcePatch2
+    - IceStorm
+    - slice
+    - zeroc_ice.egg-info
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - slice2py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.zeroc.com
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Ice is a modern object-oriented toolkit that enables you to build distributed applications with minimal effort.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

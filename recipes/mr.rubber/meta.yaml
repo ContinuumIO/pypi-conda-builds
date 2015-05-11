@@ -1,0 +1,64 @@
+package:
+  name: mr.rubber
+  version: "1.0dev"
+
+source:
+  fn: mr.rubber-1.0dev.tar.gz
+  url: https://pypi.python.org/packages/source/m/mr.rubber/mr.rubber-1.0dev.tar.gz
+  md5: e3ae0523ae755eb3e955714a0ad67af7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.rubber = mr.rubber:main
+    #
+    # Would create an entry point called mr.rubber that calls mr.rubber.main()
+
+    - rubber = mrrubber.rubber:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - supervisor
+
+  run:
+    - python
+    - supervisor
+
+test:
+  # Python imports
+  imports:
+    - mrrubber
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rubber --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/mr.rubber
+  license: GPL
+  summary: 'your elastic friend to start supervisord processes based on cpu cores available'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

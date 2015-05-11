@@ -1,0 +1,67 @@
+package:
+  name: django-simple-avatar
+  version: "0.8.6"
+
+source:
+  fn: django-simple-avatar-0.8.6.zip
+  url: https://pypi.python.org/packages/source/d/django-simple-avatar/django-simple-avatar-0.8.6.zip
+  md5: 9eb2b7cfcf71da6aaf6c581307de55a5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-simple-avatar = django-simple-avatar:main
+    #
+    # Would create an entry point called django-simple-avatar that calls django-simple-avatar.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-helper >=0.8.1
+    - pil
+
+  run:
+    - python
+    - django-helper >=0.8.1
+    - pil
+
+test:
+  # Python imports
+  imports:
+    - simpleavatar
+    - simpleavatar.management
+    - simpleavatar.management.commands
+    - simpleavatar.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vicalloy/django-simple-avatar/
+  license: BSD
+  summary: 'django-simple-avatar'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

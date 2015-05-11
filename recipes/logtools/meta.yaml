@@ -1,0 +1,97 @@
+package:
+  name: logtools
+  version: "0.8.7"
+
+source:
+  fn: logtools-0.8.7.tar.gz
+  url: https://pypi.python.org/packages/source/l/logtools/logtools-0.8.7.tar.gz
+  md5: b91864c133cbb19c6a75ab11639f6552
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logtools = logtools:main
+    #
+    # Would create an entry point called logtools that calls logtools.main()
+
+    - filterbots = logtools:filterbots_main
+    - flattenjson = logtools:flattenjson_main
+    - geoip = logtools:geoip_main
+    - logparse = logtools:logparse_main
+    - logmerge = logtools:logmerge_main
+    - logjoin = logtools:logjoin_main
+    - logplot = logtools:logplot_main
+    - logsample = logtools:logsample_main
+    - logfilter = logtools:logfilter_main
+    - logtail = logtools:logtail_main
+    - qps = logtools:qps_main
+    - sumstat = logtools:sumstat_main
+    - urlparse = logtools:urlparse_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - prettytable >=0.5
+    - sqlalchemy >=0.7.9
+    - sqlsoup >=0.9.0
+    - acora >=1.7
+    - python-dateutil >=2.1
+
+  run:
+    - python
+    - prettytable >=0.5
+    - sqlalchemy >=0.7.9
+    - sqlsoup >=0.9.0
+    - acora >=1.7
+    - python-dateutil >=2.1
+
+test:
+  # Python imports
+  imports:
+    - logtools
+    - logtools.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - filterbots --help
+    - flattenjson --help
+    - geoip --help
+    - logparse --help
+    - logmerge --help
+    - logjoin --help
+    - logplot --help
+    - logsample --help
+    - logfilter --help
+    - logtail --help
+    - qps --help
+    - sumstat --help
+    - urlparse --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/adamhadani/logtools
+  license: Apache Software License
+  summary: 'Log analysis and filtering tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

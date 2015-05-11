@@ -1,0 +1,72 @@
+package:
+  name: zc.zservertracelog
+  version: "1.4.0"
+
+source:
+  fn: zc.zservertracelog-1.4.0.zip
+  url: https://pypi.python.org/packages/source/z/zc.zservertracelog/zc.zservertracelog-1.4.0.zip
+  md5: 327df01311739d5db4bec75a3f410243
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.zservertracelog = zc.zservertracelog:main
+    #
+    # Would create an entry point called zc.zservertracelog that calls zc.zservertracelog.main()
+
+    - tracereport = zc.zservertracelog.tracereport:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.appsetup
+    - zope.app.server
+    - zope.app.wsgi
+    - zope.server
+
+  run:
+    - python
+    - setuptools
+    - zope.app.appsetup
+    - zope.app.server
+    - zope.app.wsgi
+    - zope.server
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.zservertracelog
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tracereport --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zopefoundation/zc.zservertracelog
+  license: ZPL 2.1
+  summary: 'Zope 3 tracelog implementation for zserver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

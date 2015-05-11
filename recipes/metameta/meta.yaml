@@ -1,0 +1,68 @@
+package:
+  name: metameta
+  version: "0.0.0.16"
+
+source:
+  fn: metameta-0.0.0.16.tar.gz
+  url: https://pypi.python.org/packages/source/m/metameta/metameta-0.0.0.16.tar.gz
+  md5: 60021d225ce70d4e4494191f7d1da303
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - metameta = metameta:main
+    #
+    # Would create an entry point called metameta that calls metameta.main()
+
+    - metameta = metameta.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - pysam
+    - re
+
+  run:
+    - python
+    - argparse
+    - pysam
+    - re
+
+test:
+  # Python imports
+  imports:
+    - metameta
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - metameta --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Brazelton-Lab/metameta/
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Toolset for analyzingmetatranscriptome data mapped onto metagenomic data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

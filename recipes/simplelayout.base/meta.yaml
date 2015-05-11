@@ -1,0 +1,78 @@
+package:
+  name: simplelayout.base
+  version: "4.0.5"
+
+source:
+  fn: simplelayout.base-4.0.5.zip
+  url: https://pypi.python.org/packages/source/s/simplelayout.base/simplelayout.base-4.0.5.zip
+  md5: 8ea1ff16ac58365c83a05bfc1c342397
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - simplelayout.base = simplelayout.base:main
+    #
+    # Would create an entry point called simplelayout.base that calls simplelayout.base.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - archetypes.schemaextender
+    - simplelayout.ui.base >=3.0.1
+    - simplelayout.ui.dragndrop
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - archetypes.schemaextender
+    - simplelayout.ui.base >=3.0.1
+    - simplelayout.ui.dragndrop
+
+test:
+  # Python imports
+  imports:
+    - simplelayout
+    - simplelayout.base
+    - simplelayout.base.Extensions
+    - simplelayout.base.browser
+    - simplelayout.base.configlet
+    - simplelayout.base.tests
+    - simplelayout.base.upgrade
+    - simplelayout.base.upgrade.v30b2
+    - simplelayout.base.upgrade.v30b8
+    - simplelayout.base.viewlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/simplelayout.base
+  license: GPL2
+  summary: 'SimpleLayout is an easy to use plone package for creating content pages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

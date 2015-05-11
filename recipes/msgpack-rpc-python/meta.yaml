@@ -1,0 +1,65 @@
+package:
+  name: msgpack-rpc-python
+  version: "0.4"
+
+source:
+  fn: msgpack-rpc-python-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/msgpack-rpc-python/msgpack-rpc-python-0.4.tar.gz
+  md5: 08739b18ea9e9b2c299ad0e7e09258db
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - msgpack-rpc-python = msgpack-rpc-python:main
+    #
+    # Would create an entry point called msgpack-rpc-python that calls msgpack-rpc-python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - msgpack-python
+    - tornado >=3
+
+  run:
+    - python
+    - msgpack-python
+    - tornado >=3
+
+test:
+  # Python imports
+  imports:
+    - msgpackrpc
+    - msgpackrpc/transport
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/msgpack-rpc/msgpack-rpc-python
+  license: Apache Software License
+  summary: 'MessagePack RPC'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

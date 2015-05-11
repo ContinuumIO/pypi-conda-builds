@@ -1,0 +1,67 @@
+package:
+  name: interstat
+  version: "0.2.1"
+
+source:
+  fn: interstat-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/interstat/interstat-0.2.1.tar.gz
+  md5: 40fe41939ead786bde3989e68761155d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - interstat = interstat:main
+    #
+    # Would create an entry point called interstat that calls interstat.main()
+
+    - interstat=interstat.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - future
+    - jinja2
+
+  run:
+    - python
+    - future
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - interstat
+    - interstat.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - interstat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kxz/interstat
+  license: MIT License
+  summary: 'An HTML formatter for IRC log files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: redjack
+  version: "0.3.0"
+
+source:
+  fn: RedJack-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/R/RedJack/RedJack-0.3.0.tar.gz
+  md5: 90ed664b72602330f0ea887fe2e5e4a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redjack = redjack:main
+    #
+    # Would create an entry point called redjack that calls redjack.main()
+
+    - rjserver = redjack.server:main
+    - rjagent = redjack.agent:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >3.0
+    - mako
+
+  run:
+    - python
+    - pyyaml >3.0
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - redjack
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rjserver --help
+    - rjagent --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://redjacklab.net/
+  license: MIT License
+  summary: 'RedJack - continuous integration system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

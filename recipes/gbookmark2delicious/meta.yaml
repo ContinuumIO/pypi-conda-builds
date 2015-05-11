@@ -1,0 +1,72 @@
+package:
+  name: gbookmark2delicious
+  version: "3.3.1"
+
+source:
+  fn: gbookmark2delicious-3.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gbookmark2delicious/gbookmark2delicious-3.3.1.tar.gz
+  md5: ef032b3e9a5d9f3faf2a3d4685a57f16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gbookmark2delicious = gbookmark2delicious:main
+    #
+    # Would create an entry point called gbookmark2delicious that calls gbookmark2delicious.main()
+
+    - gbookmark2delicious = gbookmark2delicious:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup >=3.1.0.11
+    - python-commons ==0.7
+    - distribute
+    - mechanize >=0.2.5
+    - pydelicious >=0.5.0
+
+  run:
+    - python
+    - beautifulsoup >=3.1.0.11
+    - python-commons ==0.7
+    - distribute
+    - mechanize >=0.2.5
+    - pydelicious >=0.5.0
+
+test:
+  # Python imports
+  imports:
+    - gbookmark2delicious
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gbookmark2delicious --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gbookmark2delicious.googlecode.com/
+  license: MIT License
+  summary: 'Synchronize/share your Google Bookmarks to delicious.com'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

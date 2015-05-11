@@ -1,0 +1,112 @@
+package:
+  name: leap.bitmask
+  version: "0.8.1"
+
+source:
+  fn: leap.bitmask-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/leap.bitmask/leap.bitmask-0.8.1.tar.gz
+  md5: dbba6cfb2ff8bb7f87d16f2e0f4cb88f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - leap.bitmask = leap.bitmask:main
+    #
+    # Would create an entry point called leap.bitmask that calls leap.bitmask.main()
+
+    - bitmask=leap.bitmask.app:start_app
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - srp >=1.0.2
+    - pyopenssl
+    - python-dateutil
+    - psutil
+    - ipaddr
+    - twisted
+    - python-daemon ==1.6.1
+    - keyring
+    - zope.proxy
+    - pyzmq
+    - leap.common >=0.3.7
+    - leap.soledad.client >=0.6.0
+    - leap.keymanager >=0.3.8
+    - leap.mail >=0.3.9
+    - oauth
+
+  run:
+    - python
+    - requests >=1.1.0
+    - srp >=1.0.2
+    - pyopenssl
+    - python-dateutil
+    - psutil
+    - ipaddr
+    - twisted
+    - python-daemon ==1.6.1
+    - keyring
+    - zope.proxy
+    - pyzmq
+    - leap.common >=0.3.7
+    - leap.soledad.client >=0.6.0
+    - leap.keymanager >=0.3.8
+    - leap.mail >=0.3.9
+    - oauth
+
+test:
+  # Python imports
+  imports:
+    - leap
+    - leap.bitmask
+    - leap.bitmask.backend
+    - leap.bitmask.config
+    - leap.bitmask.crypto
+    - leap.bitmask.crypto.tests
+    - leap.bitmask.gui
+    - leap.bitmask.logs
+    - leap.bitmask.platform_init
+    - leap.bitmask.provider
+    - leap.bitmask.provider.tests
+    - leap.bitmask.services
+    - leap.bitmask.services.eip
+    - leap.bitmask.services.eip.tests
+    - leap.bitmask.services.mail
+    - leap.bitmask.services.soledad
+    - leap.bitmask.services.tests
+    - leap.bitmask.util
+    - leap.bitmask.util.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bitmask --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitmask.net
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'The Internet Encryption Toolkit: Encrypted Internet Proxy and Encrypted Mail.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: concurrentpandas
+  version: "0.1.2"
+
+source:
+  fn: ConcurrentPandas-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/ConcurrentPandas/ConcurrentPandas-0.1.2.tar.gz
+  md5: a7bc24ff34d9c5c4574e0494335830e5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - concurrentpandas = concurrentpandas:main
+    #
+    # Would create an entry point called concurrentpandas that calls concurrentpandas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - quandl
+    - pandas >=0.16.0
+    - beautifulsoup4
+
+  run:
+    - python
+    - quandl
+    - pandas >=0.16.0
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - concurrentpandas
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/briwilcox/Concurrent-Pandas
+  license: Apache Software License
+  summary: 'Download data using pandas with multi-threading and multi-processing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

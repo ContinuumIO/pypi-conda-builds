@@ -1,0 +1,72 @@
+package:
+  name: mantrid
+  version: "1.0.2"
+
+source:
+  fn: mantrid-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mantrid/mantrid-1.0.2.tar.gz
+  md5: 3b8300767ca3a6cc338ddb04f2d9cdd2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mantrid = mantrid:main
+    #
+    # Would create an entry point called mantrid that calls mantrid.main()
+
+    - mantrid=mantrid.loadbalancer:Balancer.main
+    - mantrid-client=mantrid.cli:MantridCli.main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - argparse
+    - eventlet >=0.9.16
+
+  run:
+    - python
+    - setuptools
+    - httplib2
+    - argparse
+    - eventlet >=0.9.16
+
+test:
+  # Python imports
+  imports:
+    - mantrid
+    - mantrid.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mantrid --help
+    - mantrid-client --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/epio/mantrid/
+  license: BSD License
+  summary: 'A pure-Python loadbalancer.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

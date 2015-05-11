@@ -1,0 +1,66 @@
+package:
+  name: django-synchro
+  version: "0.6"
+
+source:
+  fn: django-synchro-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-synchro/django-synchro-0.6.tar.gz
+  md5: 5ff242ded7f8e90072ad59a520f5310b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-synchro = django-synchro:main
+    #
+    # Would create an entry point called django-synchro that calls django-synchro.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-dbsettings >=0.7
+    - django >=1.4
+
+  run:
+    - python
+    - django-dbsettings >=0.7
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - synchro
+    - synchro.management
+    - synchro.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zlorf/django-synchro
+  license: MIT License
+  summary: 'Django app for database data synchronization.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

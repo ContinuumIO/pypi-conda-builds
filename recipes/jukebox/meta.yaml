@@ -1,0 +1,78 @@
+package:
+  name: jukebox
+  version: "0.4.1"
+
+source:
+  fn: jukebox-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jukebox/jukebox-0.4.1.tar.gz
+  md5: 2451323ef346229e3986ae2203232391
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jukebox = jukebox:main
+    #
+    # Would create an entry point called jukebox that calls jukebox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.4.5
+    - mutagen ==1.21
+    - django-social-auth ==0.7.20
+    - djangorestframework ==2.2.1
+    - simplejson ==3.1.0
+    - south ==0.7.6
+
+  run:
+    - python
+    - django ==1.4.5
+    - mutagen ==1.21
+    - django-social-auth ==0.7.20
+    - djangorestframework ==2.2.1
+    - simplejson ==3.1.0
+    - south ==0.7.6
+
+test:
+  # Python imports
+  imports:
+    - jukebox
+    - jukebox.jukebox_core
+    - jukebox.jukebox_core.management
+    - jukebox.jukebox_core.management.commands
+    - jukebox.jukebox_core.migrations
+    - jukebox.jukebox_core.tests
+    - jukebox.jukebox_web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://jensnistler.de/
+  license: MIT License
+  summary: 'Democratic Jukebox - your democratic music player'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: products.zctextindex
+  version: "2.13.5"
+
+source:
+  fn: Products.ZCTextIndex-2.13.5.zip
+  url: https://pypi.python.org/packages/source/P/Products.ZCTextIndex/Products.ZCTextIndex-2.13.5.zip
+  md5: 9a3717674b33d1d7c11b2c3728663d5b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.zctextindex = products.zctextindex:main
+    #
+    # Would create an entry point called products.zctextindex that calls products.zctextindex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - accesscontrol
+    - acquisition
+    - transaction
+    - persistence
+    - zexceptions
+    - zodb3
+    - zope2 >=2.13.0dev
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - accesscontrol
+    - acquisition
+    - transaction
+    - persistence
+    - zexceptions
+    - zodb3
+    - zope2 >=2.13.0dev
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.ZCTextIndex
+    - Products.ZCTextIndex.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.ZCTextIndex
+  license: ZPL 2.1
+  summary: 'Full text indexing for ZCatalog / Zope 2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

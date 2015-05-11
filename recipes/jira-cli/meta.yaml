@@ -1,0 +1,80 @@
+package:
+  name: jira-cli
+  version: "2.0.3"
+
+source:
+  fn: jira-cli-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/j/jira-cli/jira-cli-2.0.3.tar.gz
+  md5: 87c4b2f557d4ebac5f1a9113403b4eb7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jira-cli = jira-cli:main
+    #
+    # Would create an entry point called jira-cli that calls jira-cli.main()
+
+    - jira-cli = jiracli.interface:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - termcolor
+    - six
+    - jira
+    - requests
+    - argparse
+    - suds-jurko
+    - keyring
+    - argparse
+
+  run:
+    - python
+    - termcolor
+    - six
+    - jira
+    - requests
+    - argparse
+    - suds-jurko
+    - keyring
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - jiracli
+    - jiracli.bridge
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jira-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/alisaifee/jira-cli
+  license: MIT License
+  summary: 'command line utility for interacting with jira'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

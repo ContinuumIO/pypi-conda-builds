@@ -1,0 +1,67 @@
+package:
+  name: git-change
+  version: "0.2.0"
+
+source:
+  fn: git-change-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-change/git-change-0.2.0.tar.gz
+  md5: aead6cdb80d0760b99e9fba910cd66af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-change = git-change:main
+    #
+    # Would create an entry point called git-change that calls git-change.main()
+
+    - git-change = git_change.git_change:app
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - python-gflags
+    - setuptools
+    - simplejson
+
+  run:
+    - python
+    - python-gflags
+    - setuptools
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - git_change
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-change --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Nextdoor/git-change
+  license: Apache Software License
+  summary: 'Git command to create and manage Gerrit Code Review changes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

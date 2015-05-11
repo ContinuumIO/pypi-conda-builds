@@ -1,0 +1,65 @@
+package:
+  name: feed2zinnia
+  version: "1.0"
+
+source:
+  fn: feed2zinnia-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/feed2zinnia/feed2zinnia-1.0.tar.gz
+  md5: f42b971adaad8d3b18026e1b48649c73
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - feed2zinnia = feed2zinnia:main
+    #
+    # Would create an entry point called feed2zinnia that calls feed2zinnia.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser >=5.1.3
+
+  run:
+    - python
+    - feedparser >=5.1.3
+
+test:
+  # Python imports
+  imports:
+    - feed2zinnia
+    - zinnia_feed
+    - zinnia_feed.management
+    - zinnia_feed.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/django-blog-zinnia/feed2zinnia
+  license: BSD License
+  summary: 'Import your RSS or Atom feed into Zinnia'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

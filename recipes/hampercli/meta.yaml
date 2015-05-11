@@ -1,0 +1,71 @@
+package:
+  name: hampercli
+  version: "1.0.4"
+
+source:
+  fn: HamperCLI-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/H/HamperCLI/HamperCLI-1.0.4.tar.gz
+  md5: c7ae78340dc20c3d72c59f565d06fc53
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hampercli = hampercli:main
+    #
+    # Would create an entry point called hampercli that calls hampercli.main()
+
+    - hamper = hamper.hamper:pack
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - selenium
+    - docopt
+    - termcolor
+    - keyring
+
+  run:
+    - python
+    - selenium
+    - docopt
+    - termcolor
+    - keyring
+
+test:
+  # Python imports
+  imports:
+    - hamper
+    - hamper/helpers
+    - hampercli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hamper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/MobileXLabs/hamper/
+  license: LICENSE.txt
+  summary: 'A CLI for iOS app provisioning.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

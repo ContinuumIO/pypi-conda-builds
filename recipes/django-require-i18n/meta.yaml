@@ -1,0 +1,62 @@
+package:
+  name: django-require-i18n
+  version: "1.2.2"
+
+source:
+  fn: django-require-i18n-1.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-require-i18n/django-require-i18n-1.2.2.tar.gz
+  md5: 9bac5debe922557953dcce9c483ce0f9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-require-i18n = django-require-i18n:main
+    #
+    # Would create an entry point called django-require-i18n that calls django-require-i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - require_i18n
+    - require_i18n.management
+    - require_i18n.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collab-project/django-require-i18n
+  license: MIT License
+  summary: 'Django management command for extracting and compiling localization strings used in the require.js i18n plugin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

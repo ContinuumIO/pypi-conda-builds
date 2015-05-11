@@ -1,0 +1,108 @@
+package:
+  name: products.zcatalog
+  version: "3.1"
+
+source:
+  fn: Products.ZCatalog-3.1.zip
+  url: https://pypi.python.org/packages/source/P/Products.ZCatalog/Products.ZCatalog-3.1.zip
+  md5: e97d14fd581df8c598d9be0338212040
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.zcatalog = products.zcatalog:main
+    #
+    # Would create an entry point called products.zcatalog that calls products.zcatalog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - accesscontrol
+    - acquisition
+    - datetime
+    - documenttemplate
+    - extensionclass
+    - missing
+    - persistence
+    - products.zctextindex
+    - record
+    - restrictedpython
+    - zexceptions
+    - zodb3
+    - zope2
+    - zope.dottedname
+    - zope.interface
+    - zope.schema
+    - zope.testing
+
+  run:
+    - python
+    - setuptools
+    - accesscontrol
+    - acquisition
+    - datetime
+    - documenttemplate
+    - extensionclass
+    - missing
+    - persistence
+    - products.zctextindex
+    - record
+    - restrictedpython
+    - zexceptions
+    - zodb3
+    - zope2
+    - zope.dottedname
+    - zope.interface
+    - zope.schema
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.PluginIndexes
+    - Products.PluginIndexes.BooleanIndex
+    - Products.PluginIndexes.DateIndex
+    - Products.PluginIndexes.DateRangeIndex
+    - Products.PluginIndexes.FieldIndex
+    - Products.PluginIndexes.KeywordIndex
+    - Products.PluginIndexes.PathIndex
+    - Products.PluginIndexes.TopicIndex
+    - Products.PluginIndexes.UUIDIndex
+    - Products.PluginIndexes.common
+    - Products.PluginIndexes.common.tests
+    - Products.ZCatalog
+    - Products.ZCatalog.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.ZCatalog
+  license: Zope Public License
+  summary: "Zope 2's indexing and search solution."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

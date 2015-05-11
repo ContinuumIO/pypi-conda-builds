@@ -1,0 +1,66 @@
+package:
+  name: django-subdomains
+  version: "2.0.4"
+
+source:
+  fn: django-subdomains-2.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-subdomains/django-subdomains-2.0.4.tar.gz
+  md5: e331978c9a4b78607f1779286878e8ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-subdomains = django-subdomains:main
+    #
+    # Would create an entry point called django-subdomains that calls django-subdomains.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - subdomains
+    - subdomains.compat
+    - subdomains.templatetags
+    - subdomains.tests
+    - subdomains.tests.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tkaemming/django-subdomains/
+  license: MIT License
+  summary: 'Subdomain tools for the Django framework, including subdomain-based URL routing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

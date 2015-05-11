@@ -1,0 +1,78 @@
+package:
+  name: cloudooo.handler.ooo
+  version: "0.2"
+
+source:
+  fn: cloudooo.handler.ooo-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudooo.handler.ooo/cloudooo.handler.ooo-0.2.tar.gz
+  md5: fc14654a42f3dc0ccac6605f48798505
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudooo.handler.ooo = cloudooo.handler.ooo:main
+    #
+    # Would create an entry point called cloudooo.handler.ooo that calls cloudooo.handler.ooo.main()
+
+    - runooohandlerunittest=cloudooo.handler.ooo.tests.runOOoHandlerUnitTest:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - psutil >=0.2.0
+    - lxml
+    - cloudooo
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - psutil >=0.2.0
+    - lxml
+    - cloudooo
+
+test:
+  # Python imports
+  imports:
+    - cloudooo
+    - cloudooo.handler
+    - cloudooo.handler.ooo
+    - cloudooo.handler.ooo.application
+    - cloudooo.handler.ooo.helper
+    - cloudooo.handler.ooo.monitor
+    - cloudooo.handler.ooo.tests
+    - cloudooo.handler.ooo.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - runooohandlerunittest --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'Python Package to handler OpenOffice.org Documents'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

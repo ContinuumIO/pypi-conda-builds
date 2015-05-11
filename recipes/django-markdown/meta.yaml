@@ -1,0 +1,66 @@
+package:
+  name: django-markdown
+  version: "0.8.4"
+
+source:
+  fn: django-markdown-0.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-markdown/django-markdown-0.8.4.tar.gz
+  md5: 46b002d24797c7274e3b3106ecd1982e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-markdown = django-markdown:main
+    #
+    # Would create an entry point called django-markdown that calls django-markdown.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - markdown
+
+  run:
+    - python
+    - django
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - django_markdown
+    - django_markdown.templatetags
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/klen/django_markdown
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Django markdown support and wysiwyg.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

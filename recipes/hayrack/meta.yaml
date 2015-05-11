@@ -1,0 +1,63 @@
+package:
+  name: hayrack
+  version: "0.0.6"
+
+source:
+  fn: hayrack-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/h/hayrack/hayrack-0.0.6.tar.gz
+  md5: 2c6dc2858e453dbc2e9f96773214e9a0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hayrack = hayrack:main
+    #
+    # Would create an entry point called hayrack that calls hayrack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq ==2.2.0.1
+
+  run:
+    - python
+    - pyzmq ==2.2.0.1
+
+test:
+  # Python imports
+  imports:
+    - hayrack
+    - hayrack.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ProjectMeniscus/hayrack
+  license: UNKNOWN
+  summary: '\n    A tool for capturing messages from STDIN, such as when run as a program\n    destination by Syslog-NG, and then load balance these messages over ZeroMQ\n    to downstream worker nodes for processing.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

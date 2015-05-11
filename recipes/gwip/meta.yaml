@@ -1,0 +1,83 @@
+package:
+  name: gwip
+  version: "1.0.0"
+
+source:
+  fn: gwip-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gwip/gwip-1.0.0.tar.gz
+  md5: d329f6acffe5cef2d924728858b9cf16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gwip = gwip:main
+    #
+    # Would create an entry point called gwip that calls gwip.main()
+
+    - gwip-launcher=gwip.pipeline:main
+    - impute2-merger=gwip.tools.impute2_merger:main
+    - impute2-extractor=gwip.tools.impute2_extractor:main
+    - imputed-stats=gwip.tools.imputed_stats:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.8.2
+    - jinja2 >=2.7.3
+    - pandas >=0.15.2
+    - setuptools >=12.0.5
+
+  run:
+    - python
+    - numpy >=1.8.2
+    - jinja2 >=2.7.3
+    - pandas >=0.15.2
+    - setuptools >=12.0.5
+
+test:
+  # Python imports
+  imports:
+    - gwip
+    - gwip.config
+    - gwip.db
+    - gwip.formats
+    - gwip.reporting
+    - gwip.task
+    - gwip.tests
+    - gwip.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gwip-launcher --help
+    - impute2-merger --help
+    - impute2-extractor --help
+    - imputed-stats --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pgxcentre/gwip
+  license: CC BY-NC 4.0
+  summary: 'An automatic genome-wide imputation pipeline.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

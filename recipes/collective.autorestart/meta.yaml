@@ -1,0 +1,68 @@
+package:
+  name: collective.autorestart
+  version: "0.2.0"
+
+source:
+  fn: collective.autorestart-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.autorestart/collective.autorestart-0.2.0.tar.gz
+  md5: 940a9100b04d852c45be038d63a06634
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.autorestart = collective.autorestart:main
+    #
+    # Would create an entry point called collective.autorestart that calls collective.autorestart.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pyinotify
+    - plone.reload
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pyinotify
+    - plone.reload
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.autorestart
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.autorestart
+  license: GPL
+  summary: 'Automatically reloads changed code into Plone when you edit Python files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

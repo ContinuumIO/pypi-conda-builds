@@ -1,0 +1,71 @@
+package:
+  name: youdao
+  version: "0.3.0"
+
+source:
+  fn: youdao-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/y/youdao/youdao-0.3.0.tar.gz
+  md5: dc5a6ce1ba56965e1774976d89ab06e2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - youdao = youdao:main
+    #
+    # Would create an entry point called youdao that calls youdao.main()
+
+    - yd = youdao.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - termcolor
+    - requests
+    - beautifulsoup4
+    - peewee
+
+  run:
+    - python
+    - termcolor
+    - requests
+    - beautifulsoup4
+    - peewee
+
+test:
+  # Python imports
+  imports:
+    - youdao
+    - youdao.lib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - yd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/longcw/youdao
+  license: MIT
+  summary: '\xe5\x9f\xba\xe4\xba\x8e\xe6\x9c\x89\xe9\x81\x93API\xe5\x92\x8c\xe6\x9c\x89\xe9\x81\x93\xe8\xaf\x8d\xe5\x85\xb8web\xe7\x89\x88\xe7\x9a\x84\xe5\x9c\xa8terminal\xe6\x9f\xa5\xe8\xaf\xa2\xe8\xaf\x8d\xe7\x9a\x84\xe5\xb0\x8f\xe5\xb7\xa5\xe5\x85\xb7,\xe6\x94\xaf\xe6\x8c\x81\xe5\x8d\x95\xe8\xaf\x8d\xe5\x8f\x91\xe9\x9f\xb3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,94 @@
+package:
+  name: compmake
+  version: "3.5.1"
+
+source:
+  fn: compmake-3.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/compmake/compmake-3.5.1.tar.gz
+  md5: 7283065b9b7392ed96dc8c0687c28524
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - compmake = compmake:main
+    #
+    # Would create an entry point called compmake that calls compmake.main()
+
+    - compmake = compmake.scripts.master:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycontracts
+    - termcolor
+    - setproctitle
+    - pyyaml
+    - psutil
+    - decorator
+    - systemcmd
+
+  run:
+    - python
+    - pycontracts
+    - termcolor
+    - setproctitle
+    - pyyaml
+    - psutil
+    - decorator
+    - systemcmd
+
+test:
+  # Python imports
+  imports:
+    - compmake
+    - compmake.config
+    - compmake.events
+    - compmake.jobs
+    - compmake.jobs.syntax
+    - compmake.plugins
+    - compmake.plugins.backend_local
+    - compmake.plugins.backend_multyvac
+    - compmake.plugins.backend_pmake
+    - compmake.plugins.backend_sge
+    - compmake.plugins.backend_ssh_cluster
+    - compmake.plugins.execution_stats
+    - compmake.plugins.old_backend_multiprocessing
+    - compmake.scripts
+    - compmake.scripts.scripts_utils
+    - compmake.storage
+    - compmake.ui
+    - compmake.unittests
+    - compmake.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - compmake --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://compmake.org
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: "Compmake is a non-obtrusive module that provides 'make'-like facilities to your Python applications,including caching of results, robustness to jobs failure, and multiprocessing/multihost parallel processing."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

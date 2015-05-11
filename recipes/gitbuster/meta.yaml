@@ -1,0 +1,64 @@
+package:
+  name: gitbuster
+  version: "2.1b8"
+
+source:
+  fn: gitbuster-2.1b8.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitbuster/gitbuster-2.1b8.tar.gz
+  md5: be846ce2aab5b4eadd2add575a544260
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitbuster = gitbuster:main
+    #
+    # Would create an entry point called gitbuster that calls gitbuster.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gfbi_core ==0.5b6
+    - argparse
+
+  run:
+    - python
+    - gfbi_core ==0.5b6
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - gitbuster
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mike-perdide/gitbuster
+  license: GNU General Public License (GPL)
+  summary: 'Python Qt4 frontend for git filter-branch and git cherry-pick.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

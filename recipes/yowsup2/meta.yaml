@@ -1,0 +1,120 @@
+package:
+  name: yowsup2
+  version: "2.2.79"
+
+source:
+  fn: yowsup2-2.2.79.tar.gz
+  url: https://pypi.python.org/packages/source/y/yowsup2/yowsup2-2.2.79.tar.gz
+  md5: 77862fb4e5cb406f4374de93da401939
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - yowsup2 = yowsup2:main
+    #
+    # Would create an entry point called yowsup2 that calls yowsup2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - argparse
+    - python-axolotl >=0.1.7
+    - pillow
+
+  run:
+    - python
+    - python-dateutil
+    - argparse
+    - python-axolotl >=0.1.7
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - yowsup
+    - yowsup.common
+    - yowsup.common.http
+    - yowsup.demos
+    - yowsup.demos.cli
+    - yowsup.demos.echoclient
+    - yowsup.demos.sendclient
+    - yowsup.env
+    - yowsup.layers
+    - yowsup.layers.auth
+    - yowsup.layers.auth.protocolentities
+    - yowsup.layers.axolotl
+    - yowsup.layers.axolotl.protocolentities
+    - yowsup.layers.axolotl.store
+    - yowsup.layers.axolotl.store.sqlite
+    - yowsup.layers.coder
+    - yowsup.layers.interface
+    - yowsup.layers.logger
+    - yowsup.layers.network
+    - yowsup.layers.protocol_acks
+    - yowsup.layers.protocol_acks.protocolentities
+    - yowsup.layers.protocol_acks.protocolentities.xsd
+    - yowsup.layers.protocol_acks.protocolgen
+    - yowsup.layers.protocol_chatstate
+    - yowsup.layers.protocol_chatstate.protocolentities
+    - yowsup.layers.protocol_contacts
+    - yowsup.layers.protocol_contacts.protocolentities
+    - yowsup.layers.protocol_groups
+    - yowsup.layers.protocol_groups.protocolentities
+    - yowsup.layers.protocol_groups.structs
+    - yowsup.layers.protocol_ib
+    - yowsup.layers.protocol_ib.protocolentities
+    - yowsup.layers.protocol_iq
+    - yowsup.layers.protocol_iq.protocolentities
+    - yowsup.layers.protocol_media
+    - yowsup.layers.protocol_media.protocolentities
+    - yowsup.layers.protocol_messages
+    - yowsup.layers.protocol_messages.protocolentities
+    - yowsup.layers.protocol_notifications
+    - yowsup.layers.protocol_notifications.protocolentities
+    - yowsup.layers.protocol_presence
+    - yowsup.layers.protocol_presence.protocolentities
+    - yowsup.layers.protocol_privacy
+    - yowsup.layers.protocol_privacy.protocolentities
+    - yowsup.layers.protocol_profiles
+    - yowsup.layers.protocol_profiles.protocolentities
+    - yowsup.layers.protocol_receipts
+    - yowsup.layers.protocol_receipts.protocolentities
+    - yowsup.layers.stanzaregulator
+    - yowsup.registration
+    - yowsup.stacks
+    - yowsup.structs
+    - yowsup2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tgalal/yowsup/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'A WhatsApp python library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

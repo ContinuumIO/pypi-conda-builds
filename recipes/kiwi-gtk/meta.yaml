@@ -1,0 +1,68 @@
+package:
+  name: kiwi-gtk
+  version: "1.9.40"
+
+source:
+  fn: kiwi-gtk-1.9.40.tar.gz
+  url: https://pypi.python.org/packages/source/k/kiwi-gtk/kiwi-gtk-1.9.40.tar.gz
+  md5: 5ca7b139f963ba7e110714e306d0a8c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kiwi-gtk = kiwi-gtk:main
+    #
+    # Would create an entry point called kiwi-gtk that calls kiwi-gtk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygtk >=2.24.0
+    - setuptools >=0.8
+
+  run:
+    - python
+    - pygtk >=2.24.0
+    - setuptools >=0.8
+
+test:
+  # Python imports
+  imports:
+    - kiwi
+    - kiwi.i18n
+    - kiwi.ui
+    - kiwi.ui.test
+    - kiwi.ui.widgets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.async.com.br/projects/kiwi/
+  license: GNU LGPL 2.1 (see COPYING)
+  summary: 'A framework and a set of enhanced widgets based on PyGTK'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

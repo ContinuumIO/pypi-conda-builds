@@ -1,0 +1,87 @@
+package:
+  name: eke.site
+  version: "1.1.12"
+
+source:
+  fn: eke.site-1.1.12.zip
+  url: https://pypi.python.org/packages/source/e/eke.site/eke.site-1.1.12.zip
+  md5: 1f7eebd66d16d1c9d9ad0f33879a2d37
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eke.site = eke.site:main
+    #
+    # Would create an entry point called eke.site that calls eke.site.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - eea.facetednavigation
+    - rdflib <2.5.0
+    - products.cmfplone
+    - zope.globalrequest
+    - z3c.autoinclude
+    - eke.knowledge
+    - eke.study
+    - eke.publications
+    - eke.biomarker
+    - eke.ecas
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - eea.facetednavigation
+    - rdflib <2.5.0
+    - products.cmfplone
+    - zope.globalrequest
+    - z3c.autoinclude
+    - eke.knowledge
+    - eke.study
+    - eke.publications
+    - eke.biomarker
+    - eke.ecas
+
+test:
+  # Python imports
+  imports:
+    - eke
+    - eke.site
+    - eke.site.browser
+    - eke.site.content
+    - eke.site.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EDRN/eke.site
+  license: Apache Software License
+  summary: 'Site and staff information for the EDRN Knowledge Environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

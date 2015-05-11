@@ -1,0 +1,62 @@
+package:
+  name: hg-git
+  version: "0.8.0"
+
+source:
+  fn: hg-git-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/hg-git/hg-git-0.8.0.tar.gz
+  md5: f5c8e0f7ffede73436f8b16094bd0178
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hg-git = hg-git:main
+    #
+    # Would create an entry point called hg-git that calls hg-git.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dulwich >=0.9.7
+
+  run:
+    - python
+    - dulwich >=0.9.7
+
+test:
+  # Python imports
+  imports:
+    - hggit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg-git.github.com/
+  license: GPLv2
+  summary: 'push to and pull from a Git repository using Mercurial'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: cloudns
+  version: "1.2.0.2"
+
+source:
+  fn: cloudns-1.2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudns/cloudns-1.2.0.2.tar.gz
+  md5: 63fa8333518c39af60b21f612b509b36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudns = cloudns:main
+    #
+    # Would create an entry point called cloudns that calls cloudns.main()
+
+    - cloudns = cloudns.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - argparse >=1.2.1
+
+  run:
+    - python
+    - requests >=1.1.0
+    - argparse >=1.2.1
+
+test:
+  # Python imports
+  imports:
+    - cloudns
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cloudns --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/cloudns
+  license: Artistic License or GNU General Public License (GPL) or GNU General Public License v2 or later (GPLv2+)
+  summary: 'YY cloudns API python client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

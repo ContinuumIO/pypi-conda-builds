@@ -1,0 +1,105 @@
+package:
+  name: saga-bigjob
+  version: "0.50b-10-gfdf8243"
+
+source:
+  fn: saga-bigjob-0.50b-10-gfdf8243.tar.gz
+  url: https://pypi.python.org/packages/source/s/saga-bigjob/saga-bigjob-0.50b-10-gfdf8243.tar.gz
+  md5: e4b8e29a42cb9885984ef4dfbf6bec98
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - saga-bigjob = saga-bigjob:main
+    #
+    # Would create an entry point called saga-bigjob that calls saga-bigjob.main()
+
+    - test-bigjob = examples.example_local_single:main
+    - test-bigjob-dynamic = examples.example_manyjob_local:main
+    - pilot-cli = cli.pilot_cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - uuid
+    - threadpool
+    - virtualenv
+    - redis
+    - saga-python
+    - google-api-python-client
+    - python-hostlist
+    - globusonline-transfer-api-client
+    - boto >=2.2,<2.3
+    - simplejson <2.1
+    - pexpect
+    - tldextract
+
+  run:
+    - python
+    - uuid
+    - threadpool
+    - virtualenv
+    - redis
+    - saga-python
+    - google-api-python-client
+    - python-hostlist
+    - globusonline-transfer-api-client
+    - boto >=2.2,<2.3
+    - simplejson <2.1
+    - pexpect
+    - tldextract
+
+test:
+  # Python imports
+  imports:
+    - api
+    - bigjob
+    - bigjob.job_plugin
+    - bigjob_dynamic
+    - bootstrap
+    - cli
+    - coordination
+    - examples
+    - pilot
+    - pilot.api
+    - pilot.api.compute
+    - pilot.api.data
+    - pilot.coordination
+    - pilot.filemanagement
+    - pilot.impl
+    - pilot.scheduler
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - test-bigjob --help
+    - test-bigjob-dynamic --help
+    - pilot-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saga-project/BigJob
+  license: UNKNOWN
+  summary: 'P* Pilot-Job Implementation based on SAGA-Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: ftw.subsite
+  version: "1.4.2"
+
+source:
+  fn: ftw.subsite-1.4.2.zip
+  url: https://pypi.python.org/packages/source/f/ftw.subsite/ftw.subsite-1.4.2.zip
+  md5: 264786ddba0dae6498d2fc7f17edc51b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.subsite = ftw.subsite:main
+    #
+    # Would create an entry point called ftw.subsite that calls ftw.subsite.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ftw.upgrade
+    - plone.formwidget.contenttree
+    - plone.formwidget.namedfile
+    - plone.namedfile
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - ftw.upgrade
+    - plone.formwidget.contenttree
+    - plone.formwidget.namedfile
+    - plone.namedfile
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.subsite
+    - ftw.subsite.browser
+    - ftw.subsite.content
+    - ftw.subsite.portlets
+    - ftw.subsite.portlets.widget
+    - ftw.subsite.tests
+    - ftw.subsite.upgrades
+    - ftw.subsite.viewlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.subsite
+  license: GPL2
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: iniherit
+  version: "0.3.3"
+
+source:
+  fn: iniherit-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/iniherit/iniherit-0.3.3.tar.gz
+  md5: 4d299bb321242d210260870ea7887954
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iniherit = iniherit:main
+    #
+    # Would create an entry point called iniherit that calls iniherit.main()
+
+    - iniherit           = iniherit.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6.24
+    - six >=1.6.1
+
+  run:
+    - python
+    - distribute >=0.6.24
+    - six >=1.6.1
+
+test:
+  # Python imports
+  imports:
+    - iniherit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iniherit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cadithealth/iniherit
+  license: MIT License
+  summary: 'A ConfigParser subclass with file-specified inheritance.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

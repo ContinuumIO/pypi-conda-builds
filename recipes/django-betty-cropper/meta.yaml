@@ -1,0 +1,66 @@
+package:
+  name: django-betty-cropper
+  version: "0.1.8"
+
+source:
+  fn: django-betty-cropper-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-betty-cropper/django-betty-cropper-0.1.8.tar.gz
+  md5: 371c692793af976c970c6c1322d9a2be
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-betty-cropper = django-betty-cropper:main
+    #
+    # Would create an entry point called django-betty-cropper that calls django-betty-cropper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - requests >=2.0
+
+  run:
+    - python
+    - django >=1.5
+    - requests >=2.0
+
+test:
+  # Python imports
+  imports:
+    - djbetty
+    - djbetty/conf
+    - djbetty/templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/theonion/django-betty-cropper
+  license: MIT
+  summary: 'A Django app that provides fields for a betty-cropper server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

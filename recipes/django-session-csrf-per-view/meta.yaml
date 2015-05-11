@@ -1,0 +1,65 @@
+package:
+  name: django-session-csrf-per-view
+  version: "0.5.3"
+
+source:
+  fn: django-session-csrf-per-view-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-session-csrf-per-view/django-session-csrf-per-view-0.5.3.tar.gz
+  md5: 628534c585e37e4e0033a4c08c774686
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-session-csrf-per-view = django-session-csrf-per-view:main
+    #
+    # Would create an entry point called django-session-csrf-per-view that calls django-session-csrf-per-view.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - session_csrf
+    - session_csrf.migrations
+    - session_csrf.templatetags
+    - session_csrf.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla/django-session-csrf
+  license: BSD License
+  summary: 'CSRF protection for Django without cookies.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

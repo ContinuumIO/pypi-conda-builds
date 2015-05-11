@@ -1,0 +1,66 @@
+package:
+  name: ros-job_generation
+  version: "0.1.27"
+
+source:
+  fn: ros-job_generation-0.1.27.tar.gz
+  url: https://pypi.python.org/packages/source/r/ros-job_generation/ros-job_generation-0.1.27.tar.gz
+  md5: 0030e53a8ec85d516107f40b17ef5a6e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ros-job_generation = ros-job_generation:main
+    #
+    # Would create an entry point called ros-job_generation that calls ros-job_generation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-jenkins
+    - rospkg
+    - rosdep
+
+  run:
+    - python
+    - python-jenkins
+    - rospkg
+    - rosdep
+
+test:
+  # Python imports
+  imports:
+    - job_generation
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ros.org/wiki/job_generation
+  license: BSD License
+  summary: 'build farm job generation for dry jobs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

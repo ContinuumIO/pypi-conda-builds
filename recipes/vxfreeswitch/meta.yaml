@@ -1,0 +1,69 @@
+package:
+  name: vxfreeswitch
+  version: "0.1.4"
+
+source:
+  fn: vxfreeswitch-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/v/vxfreeswitch/vxfreeswitch-0.1.4.tar.gz
+  md5: cf44bb918e8c4099daa6597b711e1729
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - vxfreeswitch = vxfreeswitch:main
+    #
+    # Would create an entry point called vxfreeswitch that calls vxfreeswitch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - vumi
+    - confmodel >=0.2.0
+    - twisted >=13.1.0
+    - eventsocket ==0.1.4
+
+  run:
+    - python
+    - vumi
+    - confmodel >=0.2.0
+    - twisted >=13.1.0
+    - eventsocket ==0.1.4
+
+test:
+  # Python imports
+  imports:
+    - vxfreeswitch
+    - vxfreeswitch.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/vumi-freeswitch-esl
+  license: BSD License
+  summary: 'A Freeswitch eventsocket transport for Vumi.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

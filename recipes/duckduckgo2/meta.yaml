@@ -1,0 +1,62 @@
+package:
+  name: duckduckgo2
+  version: "0.242"
+
+source:
+  fn: duckduckgo2-0.242.tar.gz
+  url: https://pypi.python.org/packages/source/d/duckduckgo2/duckduckgo2-0.242.tar.gz
+  md5: d9668a03c41a34d7a43275303172cc3e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - duckduckgo2 = duckduckgo2:main
+    #
+    # Would create an entry point called duckduckgo2 that calls duckduckgo2.main()
+
+    - ddg = duckduckgo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - duckduckgo2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ddg --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/crazedpsyc/python-duckduckgo/
+  license: BSD License
+  summary: 'Library for querying the DuckDuckGo API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

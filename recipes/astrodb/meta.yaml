@@ -1,0 +1,66 @@
+package:
+  name: astrodb
+  version: "0.1.5"
+
+source:
+  fn: Astrodb-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/A/Astrodb/Astrodb-0.1.5.tar.gz
+  md5: 883de6374a65c6f39fb01e6d4d2518cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - astrodb = astrodb:main
+    #
+    # Would create an entry point called astrodb that calls astrodb.main()
+
+    - astrodb = astrodb.console_script:cli_frontend
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - astropy ==0.4.2
+    - psycopg2 ==2.4.5
+
+  run:
+    - python
+    - astropy ==0.4.2
+    - psycopg2 ==2.4.5
+
+test:
+  # Python imports
+  imports:
+    - astrodb
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - astrodb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EricDepagne/Astrodb
+  license: MIT License
+  summary: '\nPersonal Star Database\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

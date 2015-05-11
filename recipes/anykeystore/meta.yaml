@@ -1,0 +1,65 @@
+package:
+  name: anykeystore
+  version: "0.2"
+
+source:
+  fn: anykeystore-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/anykeystore/anykeystore-0.2.tar.gz
+  md5: cc331cc5aa6eea38e498cd9cd73e8241
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anykeystore = anykeystore:main
+    #
+    # Would create an entry point called anykeystore that calls anykeystore.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - anykeystore
+    - anykeystore.backends
+    - anykeystore.tests
+    - anykeystore.tests.integration
+    - anykeystore.tests.test_backends
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: MIT License
+  summary: 'A key-value store supporting multiple backends.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: fsnav
+  version: "0.9.2"
+
+source:
+  fn: fsnav-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/fsnav/fsnav-0.9.2.tar.gz
+  md5: c920ac6aad395c7bd331ecd554dfd2de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fsnav = fsnav:main
+    #
+    # Would create an entry point called fsnav that calls fsnav.main()
+
+    - count=fsnav.cmdl.count:main
+    - nav=fsnav.cmdl.nav:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+
+  run:
+    - python
+    - setuptools
+    - click
+
+test:
+  # Python imports
+  imports:
+    - fsnav
+    - fsnav.cmdl
+    - tests
+    - tests.test_cmdl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - count --help
+    - nav --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/geowurster/FS-Nav
+  license: BSD License
+  summary: 'FS Nav - File System Navigation shortcuts for the commandline'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

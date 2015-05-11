@@ -1,0 +1,65 @@
+package:
+  name: mezzanine-linkdump
+  version: "1.0.1"
+
+source:
+  fn: mezzanine-linkdump-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-linkdump/mezzanine-linkdump-1.0.1.tar.gz
+  md5: 70e842b8d4f5208b7e6dd344c2c1971b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-linkdump = mezzanine-linkdump:main
+    #
+    # Would create an entry point called mezzanine-linkdump that calls mezzanine-linkdump.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mezzanine
+    - django-mptt
+
+  run:
+    - python
+    - mezzanine
+    - django-mptt
+
+test:
+  # Python imports
+  imports:
+    - linkdump
+    - linkdump.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/prikhi/mezzanine-linkdump
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A Mezzanine app to create, display, and track links.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

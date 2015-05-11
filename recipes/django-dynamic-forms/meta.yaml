@@ -1,0 +1,66 @@
+package:
+  name: django-dynamic-forms
+  version: "0.4.0"
+
+source:
+  fn: django-dynamic-forms-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dynamic-forms/django-dynamic-forms-0.4.0.tar.gz
+  md5: b0e131c873b966f95a7d4c86ce59281d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dynamic-forms = django-dynamic-forms:main
+    #
+    # Would create an entry point called django-dynamic-forms that calls django-dynamic-forms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - six
+
+  run:
+    - python
+    - django >=1.4
+    - six
+
+test:
+  # Python imports
+  imports:
+    - dynamic_forms
+    - dynamic_forms.migrations
+    - dynamic_forms.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/MarkusH/django-dynamic-forms
+  license: BSD License
+  summary: 'django-dynamic-forms is a reusable Django application to create and configure forms through the admin.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

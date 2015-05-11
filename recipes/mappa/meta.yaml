@@ -1,0 +1,72 @@
+package:
+  name: mappa
+  version: "0.1.6"
+
+source:
+  fn: Mappa-0.1.6.zip
+  url: http://mappa.googlecode.com/files/Mappa-0.1.6.zip
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mappa = mappa:main
+    #
+    # Would create an entry point called mappa that calls mappa.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tm >=0.1.4
+    - tm.reader.xtm >=0.1.6
+
+  run:
+    - python
+    - setuptools
+    - tm >=0.1.4
+    - tm.reader.xtm >=0.1.6
+
+test:
+  # Python imports
+  imports:
+    - mappa
+    - mappa._internal
+    - mappa.backend
+    - mappa.backend.mem
+    - mappa.writer
+    - mappa.writer.cxtm
+    - mappa.writer.jtm
+    - mappa.writer.xtm
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mappa.semagia.com/
+  license: BSD License
+  summary: 'Mappa Topic Maps engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

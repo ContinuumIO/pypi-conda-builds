@@ -1,0 +1,62 @@
+package:
+  name: iotrelay
+  version: "1.0.1"
+
+source:
+  fn: iotrelay-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/iotrelay/iotrelay-1.0.1.tar.gz
+  md5: b4b291172fc4a8f1608ecccb6daef9dc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iotrelay = iotrelay:main
+    #
+    # Would create an entry point called iotrelay that calls iotrelay.main()
+
+    - iotrelay=iotrelay:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - iotrelay
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iotrelay --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eman/iotrelay
+  license: BSD License
+  summary: 'IoT Relay - Relay data between data sources and destinations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

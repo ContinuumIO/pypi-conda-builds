@@ -1,0 +1,101 @@
+package:
+  name: gocept.lms
+  version: "3.0a6"
+
+source:
+  fn: gocept.lms-3.0a6.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.lms/gocept.lms-3.0a6.tar.gz
+  md5: 080bf26265eac537de6e823967329417
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.lms = gocept.lms:main
+    #
+    # Would create an entry point called gocept.lms that calls gocept.lms.main()
+
+    - runscheduler = gocept.lms.runner:scheduler
+    - runchecker = gocept.lms.runner:checker
+    - runsyncer = gocept.lms.runner:syncer
+    - runnotifier = gocept.lms.runner:notifier
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - decorator
+    - gocept.reference >=0.4dev
+    - gocept.runner
+    - grok
+    - hurry.query
+    - pytz
+    - setuptools
+    - z3c.schema
+    - z3c.testsetup
+    - zc.catalog
+    - zc.queue
+    - zc.relation
+    - zc.sourcefactory
+    - zope.app.wsgi
+    - zope.sendmail
+    - zope.testing
+
+  run:
+    - python
+    - decorator
+    - gocept.reference >=0.4dev
+    - gocept.runner
+    - grok
+    - hurry.query
+    - pytz
+    - setuptools
+    - z3c.schema
+    - z3c.testsetup
+    - zc.catalog
+    - zc.queue
+    - zc.relation
+    - zc.sourcefactory
+    - zope.app.wsgi
+    - zope.sendmail
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.lms
+    - gocept.lms.generations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - runscheduler --help
+    - runchecker --help
+    - runsyncer --help
+    - runnotifier --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.lms
+  license: Zope Public License
+  summary: 'gocept Link Monitoring Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: happy
+  version: "1.2.0"
+
+source:
+  fn: happy-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/happy/happy-1.2.0.tar.gz
+  md5: 0910691ed0dc8933bd98c573084f613a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - happy = happy:main
+    #
+    # Would create an entry point called happy that calls happy.main()
+
+    - happy=happy.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - click
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - happy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - happy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/grampajoe/happy
+  license: UNKNOWN
+  summary: 'Quickly set up and tear down Heroku apps!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: interssection
+  version: "0.1.0"
+
+source:
+  fn: interssection-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/interssection/interssection-0.1.0.tar.gz
+  md5: 4dda437470203e57c8f9f6c85fd56326
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - interssection = interssection:main
+    #
+    # Would create an entry point called interssection that calls interssection.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - jinja2 ==2.5.2
+    - feedparser ==4.1
+
+  run:
+    - python
+    - jinja2 ==2.5.2
+    - feedparser ==4.1
+
+test:
+  # Python imports
+  imports:
+    - interssection
+    - interssection.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/narfdotpl/interssection
+  license: UNKNOWN
+  summary: 'treat Atom and RSS feeds like sets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

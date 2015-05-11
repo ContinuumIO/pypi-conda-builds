@@ -1,0 +1,71 @@
+package:
+  name: gulpless
+  version: "0.7.6"
+
+source:
+  fn: gulpless-0.7.6.zip
+  url: https://pypi.python.org/packages/source/g/gulpless/gulpless-0.7.6.zip
+  md5: f2ff0ecefe7276e65a3d7a4ebb15b0e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gulpless = gulpless:main
+    #
+    # Would create an entry point called gulpless that calls gulpless.main()
+
+    - gulpless=gulpless:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - watchdog
+    - termcolor
+    - colorama
+    - pathtools
+    - argparse
+
+  run:
+    - python
+    - watchdog
+    - termcolor
+    - colorama
+    - pathtools
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - gulpless
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gulpless --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/za-creature/gulpless
+  license: UNKNOWN
+  summary: 'Simple python build system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

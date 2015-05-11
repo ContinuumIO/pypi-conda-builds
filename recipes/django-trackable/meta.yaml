@@ -1,0 +1,69 @@
+package:
+  name: django-trackable
+  version: "0.3.8"
+
+source:
+  fn: django-trackable-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-trackable/django-trackable-0.3.8.tar.gz
+  md5: eb7044d1f9f279a8f0ee7181338d63a1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-trackable = django-trackable:main
+    #
+    # Would create an entry point called django-trackable that calls django-trackable.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-celery
+
+  run:
+    - python
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - trackable
+    - trackable.contrib
+    - trackable.management
+    - trackable.management.commands
+    - trackable.message
+    - trackable.message.backends
+    - trackable.message.backends.kombu
+    - trackable.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/yorkedork/django-trackable/tree/master
+  license: BSD License
+  summary: 'A Django application which provides tools for out-of-band capture of arbitrary tracking data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

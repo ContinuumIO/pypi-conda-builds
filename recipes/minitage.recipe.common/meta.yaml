@@ -1,0 +1,70 @@
+package:
+  name: minitage.recipe.common
+  version: "1.90"
+
+source:
+  fn: minitage.recipe.common-1.90.zip
+  url: https://pypi.python.org/packages/source/m/minitage.recipe.common/minitage.recipe.common-1.90.zip
+  md5: d43ae5e58480f19b0ea0f1d7c554e888
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minitage.recipe.common = minitage.recipe.common:main
+    #
+    # Would create an entry point called minitage.recipe.common that calls minitage.recipe.common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zc.buildout
+    - setuptools
+    - minitage.core
+    - iniparse
+
+  run:
+    - python
+    - zc.buildout
+    - setuptools
+    - minitage.core
+    - iniparse
+
+test:
+  # Python imports
+  imports:
+    - minitage
+    - minitage.recipe
+    - minitage.recipe.common
+    - minitage.recipe.common.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage.recipe.common
+  license: BSD License
+  summary: 'zc.buildout recipes to compile and install software or python packages and generate scripts or configuration files  sponsored by Makina Corpus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

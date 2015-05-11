@@ -1,0 +1,72 @@
+package:
+  name: django-guardian
+  version: "1.2.5"
+
+source:
+  fn: django-guardian-1.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-guardian/django-guardian-1.2.5.tar.gz
+  md5: be7d9443c72ee32be576480f91ad5200
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-guardian = django-guardian:main
+    #
+    # Would create an entry point called django-guardian that calls django-guardian.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - six
+
+  run:
+    - python
+    - django
+    - six
+
+test:
+  # Python imports
+  imports:
+    - guardian
+    - guardian.conf
+    - guardian.management
+    - guardian.management.commands
+    - guardian.migrations
+    - guardian.templatetags
+    - guardian.testapp
+    - guardian.testapp.migrations
+    - guardian.testapp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lukaszb/django-guardian
+  license: BSD License
+  summary: u'Implementation of per object permissions for Django 1.2 or later.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

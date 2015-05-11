@@ -1,0 +1,63 @@
+package:
+  name: odoo_gateway
+  version: "0.129"
+
+source:
+  fn: odoo_gateway-0.129.tar.gz
+  url: https://pypi.python.org/packages/source/o/odoo_gateway/odoo_gateway-0.129.tar.gz
+  md5: b4266dc049e73d48091ff6d7c8fad147
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - odoo_gateway = odoo_gateway:main
+    #
+    # Would create an entry point called odoo_gateway that calls odoo_gateway.main()
+
+    - odoosh=odoo_gateway:shell
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - odoo_gateway
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - odoosh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/panaetov/odoo_gateway/overview
+  license: BSD
+  summary: 'Simple and powerfull tools for programming in Odoo framework (f.e shell, reference to models in stand-alone applications, Mediator pattern for intermodel communications)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

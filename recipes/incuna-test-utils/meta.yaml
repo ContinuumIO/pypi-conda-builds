@@ -1,0 +1,72 @@
+package:
+  name: incuna-test-utils
+  version: "6.2.7"
+
+source:
+  fn: incuna-test-utils-6.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/i/incuna-test-utils/incuna-test-utils-6.2.7.tar.gz
+  md5: b128ddc32401bb79f67040b77c6fad0b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - incuna-test-utils = incuna-test-utils:main
+    #
+    # Would create an entry point called incuna-test-utils that calls incuna-test-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - incuna_test_utils
+    - incuna_test_utils.factories
+    - incuna_test_utils.factories.files
+    - incuna_test_utils.management
+    - incuna_test_utils.management.commands
+    - incuna_test_utils.testcases
+    - tests
+    - tests.complete_migrations
+    - tests.complete_migrations.migrations
+    - tests.factory_tests
+    - tests.partial_migrations
+    - tests.partial_migrations.migrations
+    - tests.testcases
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/incuna/incuna-test-utils/
+  license: BSD License
+  summary: 'Custom TestCases and other test helpers for Django apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

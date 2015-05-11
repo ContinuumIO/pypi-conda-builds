@@ -1,0 +1,65 @@
+package:
+  name: django-orgco
+  version: "0.1.0"
+
+source:
+  fn: django-orgco-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-orgco/django-orgco-0.1.0.tar.gz
+  md5: 33d9e5d9bc848854f67416c6186a7ecc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-orgco = django-orgco:main
+    #
+    # Would create an entry point called django-orgco that calls django-orgco.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - orgco >=0.0.11
+
+  run:
+    - python
+    - django
+    - orgco >=0.0.11
+
+test:
+  # Python imports
+  imports:
+    - django_orgco
+    - django_orgco.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paetzke/django-orgco
+  license: BSD License
+  summary: 'django-orgco implements a template tag to use orgco easily in django templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

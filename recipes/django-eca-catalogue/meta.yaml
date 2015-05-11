@@ -1,0 +1,75 @@
+package:
+  name: django-eca-catalogue
+  version: "0.0.3"
+
+source:
+  fn: django-eca-catalogue-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-eca-catalogue/django-eca-catalogue-0.0.3.tar.gz
+  md5: f7b118d350f9f19764312c94ab7e35cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-eca-catalogue = django-eca-catalogue:main
+    #
+    # Would create an entry point called django-eca-catalogue that calls django-eca-catalogue.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.5
+    - django-treebeard
+
+  run:
+    - python
+    - django ==1.5
+    - django-treebeard
+
+test:
+  # Python imports
+  imports:
+    - eca_catalogue
+    - eca_catalogue.categorization
+    - eca_catalogue.categorization.tests
+    - eca_catalogue.material
+    - eca_catalogue.material.tests
+    - eca_catalogue.measurement
+    - eca_catalogue.measurement.tests
+    - eca_catalogue.product
+    - eca_catalogue.product.tests
+    - eca_catalogue.tests
+    - eca_catalogue.text
+    - eca_catalogue.text.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/byteweaver/django-eca-catalogue
+  license: django-echelon
+  summary: 'A reusable django app providing a generic product catalog for eComerce projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,80 @@
+package:
+  name: nwdiag
+  version: "1.0.4"
+
+source:
+  fn: nwdiag-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/nwdiag/nwdiag-1.0.4.tar.gz
+  md5: 0d2ff1348aeff53aaf08838d0fa2c001
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nwdiag = nwdiag:main
+    #
+    # Would create an entry point called nwdiag that calls nwdiag.main()
+
+    - nwdiag=nwdiag.command:main
+    - rackdiag=rackdiag.command:main
+    - packetdiag=packetdiag.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - blockdiag >=1.5.0
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - blockdiag >=1.5.0
+
+test:
+  # Python imports
+  imports:
+    - nwdiag
+    - nwdiag.tests
+    - nwdiag.utils
+    - nwdiag.utils.rst
+    - packetdiag
+    - packetdiag.utils
+    - packetdiag.utils.rst
+    - rackdiag
+    - rackdiag.utils
+    - rackdiag.utils.rst
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - nwdiag --help
+    - rackdiag --help
+    - packetdiag --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blockdiag.com/
+  license: Apache Software License
+  summary: 'nwdiag generates network-diagram image from text'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

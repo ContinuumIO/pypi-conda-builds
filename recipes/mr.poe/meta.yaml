@@ -1,0 +1,110 @@
+package:
+  name: mr.poe
+  version: "3.1.16-3"
+
+source:
+  fn: mr.poe-3.1.16-3.zip
+  url: https://pypi.python.org/packages/source/m/mr.poe/mr.poe-3.1.16-3.zip
+  md5: 610be1def30cf03e8468617760814f26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.poe = mr.poe:main
+    #
+    # Would create an entry point called mr.poe that calls mr.poe.main()
+
+    - raven = raven.scripts.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - raven
+    - raven.conf
+    - raven.contrib
+    - raven.contrib.celery
+    - raven.contrib.django
+    - raven.contrib.django.celery
+    - raven.contrib.django.middleware
+    - raven.contrib.django.raven_compat
+    - raven.contrib.django.raven_compat.middleware
+    - raven.contrib.django.raven_compat.templatetags
+    - raven.contrib.django.templatetags
+    - raven.contrib.flask
+    - raven.contrib.pylons
+    - raven.contrib.tornado
+    - raven.contrib.transports
+    - raven.contrib.transports.zeromq
+    - raven.contrib.zerorpc
+    - raven.contrib.zope
+    - raven.handlers
+    - raven.scripts
+    - raven.transport
+    - raven.utils
+    - raven.utils.serializer
+    - tests.base
+    - tests.config
+    - tests.context
+    - tests.contrib
+    - tests.contrib.async
+    - tests.contrib.celery
+    - tests.contrib.django
+    - tests.contrib.django.templates
+    - tests.contrib.flask
+    - tests.contrib.pylons
+    - tests.contrib.tornado
+    - tests.contrib.zerorpc
+    - tests.events
+    - tests.handlers
+    - tests.handlers.logbook
+    - tests.handlers.logging
+    - tests.middleware
+    - tests.processors
+    - tests.transport
+    - tests.transport.threaded
+    - tests.utils
+    - tests.utils.encoding
+    - tests.utils.json
+    - tests.utils.stacks
+    - tests.utils.wsgi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - raven --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/mr.poe
+  license: UNKNOWN
+  summary: 'mr.poe is a fork of raven-python for ancient versions of Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

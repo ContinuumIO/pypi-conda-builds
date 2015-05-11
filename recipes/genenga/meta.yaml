@@ -1,0 +1,68 @@
+package:
+  name: genenga
+  version: "0.4.1"
+
+source:
+  fn: genenga-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/genenga/genenga-0.4.1.tar.gz
+  md5: bb5bd3f5eeaeebbd1571a54492660d29
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - genenga = genenga:main
+    #
+    # Would create an entry point called genenga that calls genenga.main()
+
+    - genenga=genenga.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - pystache
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - pystache
+
+test:
+  # Python imports
+  imports:
+    - genenga
+    - genenga.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - genenga --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mkouhei/GenNenga
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Generate Nengajo(Japanese new year card) pdf from address list.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: magic-wormhole
+  version: "0.2.0"
+
+source:
+  fn: magic-wormhole-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/magic-wormhole/magic-wormhole-0.2.0.tar.gz
+  md5: 69b9186913bb2722799a148276b3ec32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - magic-wormhole = magic-wormhole:main
+    #
+    # Would create an entry point called magic-wormhole that calls magic-wormhole.main()
+
+    - wormhole = wormhole.scripts.runner:entry
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - spake2 ==0.2
+    - pynacl
+    - requests
+    - argparse
+
+  run:
+    - python
+    - spake2 ==0.2
+    - pynacl
+    - requests
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - wormhole
+    - wormhole.blocking
+    - wormhole.scripts
+    - wormhole.servers
+    - wormhole.test
+    - wormhole.twisted
+    - wormhole.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - wormhole --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/warner/magic-wormhole
+  license: MIT
+  summary: 'Securely transfer data between computers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

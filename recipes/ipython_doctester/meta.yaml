@@ -1,0 +1,66 @@
+package:
+  name: ipython_doctester
+  version: "0.3.0"
+
+source:
+  fn: ipython_doctester-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython_doctester/ipython_doctester-0.3.0.tar.gz
+  md5: 5661bd6d834f45ac18a2d1e1250e2841
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipython_doctester = ipython_doctester:main
+    #
+    # Would create an entry point called ipython_doctester that calls ipython_doctester.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipython >=1.0
+    - pyzmq >=2.1.4
+    - requests
+
+  run:
+    - python
+    - ipython >=1.0
+    - pyzmq >=2.1.4
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - ipython_doctester
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/ipython_doctester/
+  license: MIT
+  summary: 'Run doctests in individual IPython Notebook cells'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

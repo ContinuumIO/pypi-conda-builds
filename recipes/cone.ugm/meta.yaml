@@ -1,0 +1,81 @@
+package:
+  name: cone.ugm
+  version: "0.9.7"
+
+source:
+  fn: cone.ugm-0.9.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cone.ugm/cone.ugm-0.9.7.tar.gz
+  md5: da75ce631bc4364f6246eec03f4d6c41
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cone.ugm = cone.ugm:main
+    #
+    # Would create an entry point called cone.ugm that calls cone.ugm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - cone.app
+    - yafowil.widget.array
+    - yafowil.widget.autocomplete
+    - yafowil.widget.datetime
+    - yafowil.widget.dict
+    - yafowil.widget.image
+    - node.ext.ldap
+
+  run:
+    - python
+    - setuptools
+    - lxml
+    - cone.app
+    - yafowil.widget.array
+    - yafowil.widget.autocomplete
+    - yafowil.widget.datetime
+    - yafowil.widget.dict
+    - yafowil.widget.image
+    - node.ext.ldap
+
+test:
+  # Python imports
+  imports:
+    - cone
+    - cone.ugm
+    - cone.ugm.browser
+    - cone.ugm.model
+    - cone.ugm.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bluedynamics/cone.ugm
+  license: GNU General Public Licence
+  summary: 'cone.ugm'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

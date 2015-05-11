@@ -1,0 +1,64 @@
+package:
+  name: cherrys
+  version: "0.4"
+
+source:
+  fn: cherrys-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/cherrys/cherrys-0.4.tar.gz
+  md5: ef8eee7684d646fec2933ac438465543
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cherrys = cherrys:main
+    #
+    # Would create an entry point called cherrys that calls cherrys.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=2.4.9
+    - cherrypy >=3.2
+
+  run:
+    - python
+    - redis >=2.4.9
+    - cherrypy >=3.2
+
+test:
+  # Python imports
+  imports:
+    - cherrys
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/3kwa/cherrys
+  license: MIT
+  summary: 'Redis backend for CherryPy sessions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

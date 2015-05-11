@@ -1,0 +1,87 @@
+package:
+  name: experimentdb
+  version: "0.2"
+
+source:
+  fn: experimentdb-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/experimentdb/experimentdb-0.2.tar.gz
+  md5: 93b9c0a6d8fcf96b4a549f169033af03
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - experimentdb = experimentdb:main
+    #
+    # Would create an entry point called experimentdb that calls experimentdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - biopython
+    - south
+    - django-ajax-selects
+    - pil
+    - django
+
+  run:
+    - python
+    - setuptools
+    - biopython
+    - south
+    - django-ajax-selects
+    - pil
+    - django
+
+test:
+  # Python imports
+  imports:
+    - cloning
+    - data
+    - data.urls
+    - datasets
+    - experimentdb
+    - external
+    - external.fixtures
+    - external.urls
+    - projects
+    - projects.urls
+    - proteins
+    - proteins.fixtures
+    - reagents
+    - reagents.fixtures
+    - reagents.urls
+    - sharing
+    - sharing.fixtures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/experimentdb/
+  license: BSD License
+  summary: 'A web based application for storage and organization of data regarding experimental data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

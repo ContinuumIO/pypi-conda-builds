@@ -1,0 +1,78 @@
+package:
+  name: mekk.rtm
+  version: "0.6.0"
+
+source:
+  fn: mekk.rtm-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mekk.rtm/mekk.rtm-0.6.0.tar.gz
+  md5: c1412cc4cf99937da5b1858cefb306ee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mekk.rtm = mekk.rtm:main
+    #
+    # Would create an entry point called mekk.rtm that calls mekk.rtm.main()
+
+    - rtmimport = mekk.rtm.helpers.run_import:run
+    - rtmtag = mekk.rtm.helpers.run_tag:run
+    - rtmmove = mekk.rtm.helpers.run_move:run
+    - rtmexport = mekk.rtm.helpers.run_export:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - keyring >=0.3
+    - python-dateutil
+
+  run:
+    - python
+    - simplejson
+    - keyring >=0.3
+    - python-dateutil
+
+test:
+  # Python imports
+  imports:
+    - mekk
+    - mekk.rtm
+    - mekk.rtm.exporters
+    - mekk.rtm.helpers
+    - mekk.rtm.importers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rtmimport --help
+    - rtmtag --help
+    - rtmmove --help
+    - rtmexport --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: LGPL
+  summary: 'RememberTheMilk client API and command line client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

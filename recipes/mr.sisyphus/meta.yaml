@@ -1,0 +1,70 @@
+package:
+  name: mr.sisyphus
+  version: "1.0"
+
+source:
+  fn: mr.sisyphus-1.0.zip
+  url: https://pypi.python.org/packages/source/m/mr.sisyphus/mr.sisyphus-1.0.zip
+  md5: b7fddb8922e83045405e93e779ad4ed1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.sisyphus = mr.sisyphus:main
+    #
+    # Would create an entry point called mr.sisyphus that calls mr.sisyphus.main()
+
+    - mr.sisyphus=mr.sisyphus.king:king
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - argparse
+    - github3.py
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - argparse
+    - github3.py
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.sisyphus
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mr.sisyphus --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/collective/mr.sisyphus
+  license: BSD
+  summary: 'His pointless toil will never end'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

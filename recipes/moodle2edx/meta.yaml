@@ -1,0 +1,69 @@
+package:
+  name: moodle2edx
+  version: "0.1.0"
+
+source:
+  fn: moodle2edx-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/moodle2edx/moodle2edx-0.1.0.tar.gz
+  md5: 5d2c1df7f0d2710805338ba3c643d05d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moodle2edx = moodle2edx:main
+    #
+    # Would create an entry point called moodle2edx that calls moodle2edx.main()
+
+    - moodle2edx = moodle2edx.main:CommandLine
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - path.py
+    - html2text
+
+  run:
+    - python
+    - lxml
+    - path.py
+    - html2text
+
+test:
+  # Python imports
+  imports:
+    - moodle2edx
+    - moodle2edx.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - moodle2edx --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/moodle2edx/
+  license: LICENSE.txt
+  summary: 'Converter from latex to edX XML format course content files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

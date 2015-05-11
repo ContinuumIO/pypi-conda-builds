@@ -1,0 +1,66 @@
+package:
+  name: poppy-torso
+  version: "1.0.2"
+
+source:
+  fn: poppy-torso-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/poppy-torso/poppy-torso-1.0.2.tar.gz
+  md5: 699766ade0df93c4c294882c5895aafd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - poppy-torso = poppy-torso:main
+    #
+    # Would create an entry point called poppy-torso that calls poppy-torso.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - poppy-creature >=1.0
+    - pypot >=2.2.2
+
+  run:
+    - python
+    - poppy-creature >=1.0
+    - pypot >=2.2.2
+
+test:
+  # Python imports
+  imports:
+    - poppy_torso
+    - poppy_torso.primitives
+    - poppy_torso.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/poppy-project/poppy-creature
+  license: GNU GENERAL PUBLIC LICENSE Version 3
+  summary: 'Poppy Torso Software Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

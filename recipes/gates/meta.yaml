@@ -1,0 +1,65 @@
+package:
+  name: gates
+  version: "v1.0.0.beta"
+
+source:
+  fn: Gates-v1.0.0.beta.tar.gz
+  url: https://pypi.python.org/packages/source/G/Gates/Gates-v1.0.0.beta.tar.gz
+  md5: d11f246a6212e4d96b67781b558799b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gates = gates:main
+    #
+    # Would create an entry point called gates that calls gates.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob ==1.1.1
+    - routes ==1.13
+
+  run:
+    - python
+    - webob ==1.1.1
+    - routes ==1.13
+
+test:
+  # Python imports
+  imports:
+    - gates
+    - gates.core
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/junery/gates
+  license: Apache Software License
+  summary: 'Minimal, fast and intuitive REST HTTP services in python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

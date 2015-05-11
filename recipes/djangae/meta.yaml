@@ -1,0 +1,74 @@
+package:
+  name: djangae
+  version: "0.8.0"
+
+source:
+  fn: djangae-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangae/djangae-0.8.0.tar.gz
+  md5: cd6d2cb3058291c2522c53ca46468591
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangae = djangae:main
+    #
+    # Would create an entry point called djangae that calls djangae.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - djangae
+    - djangae.contrib
+    - djangae.contrib.common
+    - djangae.contrib.gauth
+    - djangae.contrib.gauth.management
+    - djangae.contrib.security
+    - djangae.core
+    - djangae.core.management
+    - djangae.db
+    - djangae.db.backends
+    - djangae.db.backends.appengine
+    - djangae.forms
+    - djangae.lib
+    - djangae.management
+    - djangae.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/potatolondon/djangae
+  license: MIT License
+  summary: 'Django integration with Google App Engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

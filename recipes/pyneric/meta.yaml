@@ -1,0 +1,67 @@
+package:
+  name: pyneric
+  version: "1.2.1"
+
+source:
+  fn: pyneric-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyneric/pyneric-1.2.1.tar.gz
+  md5: 08ac81a9746cc2fab565251062105996
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyneric = pyneric:main
+    #
+    # Would create an entry point called pyneric that calls pyneric.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - future
+
+  run:
+    - python
+    - future
+
+test:
+  # Python imports
+  imports:
+    - pyneric
+    - pyneric.django
+    - pyneric.django.db
+    - pyneric.django.db.models
+    - pyneric.django.db.models.fields
+    - pyneric.future
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gnuworldman/pyneric
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'generic Python library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

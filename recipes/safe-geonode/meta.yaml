@@ -1,0 +1,70 @@
+package:
+  name: safe-geonode
+  version: "0.2.7"
+
+source:
+  fn: safe-geonode-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/s/safe-geonode/safe-geonode-0.2.7.tar.gz
+  md5: 8353262245f619c446d359166dcdeebb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - safe-geonode = safe-geonode:main
+    #
+    # Would create an entry point called safe-geonode that calls safe-geonode.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - python-safe >=0.5
+    - geonode
+    - django-leaflet >=0.2.0
+    - pygments
+
+  run:
+    - python
+    - python-safe >=0.5
+    - geonode
+    - django-leaflet >=0.2.0
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - safe_geonode
+    - safe_geonode.management
+    - safe_geonode.management.commands
+    - safe_geonode.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/safe/safe-geonode/
+  license: GPLv3
+  summary: 'GeoNode SAFE plugin'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

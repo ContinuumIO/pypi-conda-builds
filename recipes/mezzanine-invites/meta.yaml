@@ -1,0 +1,65 @@
+package:
+  name: mezzanine-invites
+  version: "0.2.3"
+
+source:
+  fn: mezzanine-invites-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-invites/mezzanine-invites-0.2.3.tar.gz
+  md5: 088af61ad0e7e5156ee33552d605726f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-invites = mezzanine-invites:main
+    #
+    # Would create an entry point called mezzanine-invites that calls mezzanine-invites.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - demo
+    - demo.settings
+    - invites
+    - invites.management
+    - invites.management.commands
+    - invites.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://pypi.python.org/pypi/mezzanine-invites
+  license: MIT License
+  summary: 'Authentication Backend for Mezzanine that allows site registration via alphanumeric invite codes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

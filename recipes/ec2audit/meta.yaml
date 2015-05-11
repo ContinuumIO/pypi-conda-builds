@@ -1,0 +1,66 @@
+package:
+  name: ec2audit
+  version: "0.2.0"
+
+source:
+  fn: ec2audit-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/ec2audit/ec2audit-0.2.0.tar.gz
+  md5: 66292bb1f05a1255f99f1bc38032689e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ec2audit = ec2audit:main
+    #
+    # Would create an entry point called ec2audit that calls ec2audit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.6.0
+    - docopt ==0.5.0
+    - pyyaml ==3.10
+
+  run:
+    - python
+    - boto ==2.6.0
+    - docopt ==0.5.0
+    - pyyaml ==3.10
+
+test:
+  # Python imports
+  imports:
+    - ec2audit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/RisingOak/ec2audit
+  license: Apache Software License
+  summary: 'Dump all EC2 information to a folder suitable for version control'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

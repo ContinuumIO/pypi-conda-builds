@@ -1,0 +1,83 @@
+package:
+  name: hangups
+  version: "0.2.7"
+
+source:
+  fn: hangups-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/h/hangups/hangups-0.2.7.tar.gz
+  md5: 02820f36a04bd6c1a1f3cc68d8e81310
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hangups = hangups:main
+    #
+    # Would create an entry point called hangups that calls hangups.main()
+
+    - hangups=hangups.ui.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configargparse ==0.9.3
+    - aiohttp ==0.15.1
+    - appdirs ==1.4.0
+    - purplex ==0.2.4
+    - requests ==2.6.0
+    - robobrowser ==0.5.2
+    - reparser >=1.4
+    - hangups-urwid ==1.2.2-dev
+    - enum34 ==1.0.4
+    - asyncio ==3.4.3
+
+  run:
+    - python
+    - configargparse ==0.9.3
+    - aiohttp ==0.15.1
+    - appdirs ==1.4.0
+    - purplex ==0.2.4
+    - requests ==2.6.0
+    - robobrowser ==0.5.2
+    - reparser >=1.4
+    - hangups-urwid ==1.2.2-dev
+    - enum34 ==1.0.4
+    - asyncio ==3.4.3
+
+test:
+  # Python imports
+  imports:
+    - hangups
+    - hangups.ui
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hangups --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tdryer/hangups
+  license: MIT License
+  summary: 'the first third-party instant messaging client for Google Hangouts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

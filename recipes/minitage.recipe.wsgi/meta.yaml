@@ -1,0 +1,72 @@
+package:
+  name: minitage.recipe.wsgi
+  version: "1.37"
+
+source:
+  fn: minitage.recipe.wsgi-1.37.tar.gz
+  url: https://pypi.python.org/packages/source/m/minitage.recipe.wsgi/minitage.recipe.wsgi-1.37.tar.gz
+  md5: ea717e0114f9e2e92a8368db8cbb9691
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minitage.recipe.wsgi = minitage.recipe.wsgi:main
+    #
+    # Would create an entry point called minitage.recipe.wsgi that calls minitage.recipe.wsgi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - minitage.core
+    - minitage.recipe.scripts
+    - iniparse
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - minitage.core
+    - minitage.recipe.scripts
+    - iniparse
+
+test:
+  # Python imports
+  imports:
+    - minitage
+    - minitage.recipe
+    - minitage.recipe.wsgi
+    - minitage.recipe.wsgi.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage.recipe.wsgi
+  license: BSD License
+  summary: 'zc.buildout recipes to compile and install software or python packages and generate scripts or configuration files sponsored by Makina Corpus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

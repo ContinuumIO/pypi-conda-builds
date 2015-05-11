@@ -1,0 +1,95 @@
+package:
+  name: mad2
+  version: "0.2.0"
+
+source:
+  fn: mad2-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mad2/mad2-0.2.0.tar.gz
+  md5: 7cc272bd81fc2af8f8b45621681ef42a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mad2 = mad2:main
+    #
+    # Would create an entry point called mad2 that calls mad2.main()
+
+    - mad = mad2.cli.main:dispatch
+    - sha1p = mad2.cli.sha1p:dispatch
+    - qdsum = mad2.cli.qdsum:dispatch
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - leip
+    - fantail
+    - xlrd
+    - jinja2
+    - lockfile
+    - python-dateutil
+    - pymongo
+    - colorlog
+    - arrow
+    - termcolor
+    - readline
+    - tomake
+    - iso8601
+
+  run:
+    - python
+    - leip
+    - fantail
+    - xlrd
+    - jinja2
+    - lockfile
+    - python-dateutil
+    - pymongo
+    - colorlog
+    - arrow
+    - termcolor
+    - readline
+    - tomake
+    - iso8601
+
+test:
+  # Python imports
+  imports:
+    - mad2
+    - mad2.cli
+    - mad2.plugin
+    - mad2.store
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mad --help
+    - sha1p --help
+    - qdsum --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mfiers.github.com/mad2
+  license: UNKNOWN
+  summary: '\nfile metadata tagger\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

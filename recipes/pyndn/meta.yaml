@@ -1,0 +1,78 @@
+package:
+  name: pyndn
+  version: "2.0b3"
+
+source:
+  fn: PyNDN-2.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyNDN/PyNDN-2.0b3.tar.gz
+  md5: 53a9946bbeeb9e2c1fa306d01bc24dd2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyndn = pyndn:main
+    #
+    # Would create an entry point called pyndn that calls pyndn.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+    - trollius
+    - protobuf
+
+  run:
+    - python
+    - pycrypto
+    - trollius
+    - protobuf
+
+test:
+  # Python imports
+  imports:
+    - pyndn
+    - pyndn.contrib
+    - pyndn.contrib.cocoapy
+    - pyndn.encoding
+    - pyndn.encoding.der
+    - pyndn.encoding.tlv
+    - pyndn.security
+    - pyndn.security.certificate
+    - pyndn.security.identity
+    - pyndn.security.policy
+    - pyndn.sync
+    - pyndn.transport
+    - pyndn.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/named-data/PyNDN2
+  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  summary: 'An NDN client library with TLV wire format support in native Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

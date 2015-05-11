@@ -1,0 +1,69 @@
+package:
+  name: infi.git_mirror
+  version: "0.0.9"
+
+source:
+  fn: infi.git_mirror-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.git_mirror/infi.git_mirror-0.0.9.tar.gz
+  md5: 53b6ab29740d4ceadd451e6e09384b0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.git_mirror = infi.git_mirror:main
+    #
+    # Would create an entry point called infi.git_mirror that calls infi.git_mirror.main()
+
+    - mirror_git_repository = infi.git_mirror.scripts:mirror_git_repository
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.execute
+    - infi.pyutils
+    - setuptools
+
+  run:
+    - python
+    - infi.execute
+    - infi.pyutils
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.git_mirror
+    - infi.git_mirror.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mirror_git_repository --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.git_mirror
+  license: Python Software Foundation License
+  summary: 'A simple console script for mirroring git repositories between two remotes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

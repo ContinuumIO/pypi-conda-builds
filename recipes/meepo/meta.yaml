@@ -1,0 +1,83 @@
+package:
+  name: meepo
+  version: "0.1.9"
+
+source:
+  fn: meepo-0.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/m/meepo/meepo-0.1.9.tar.gz
+  md5: 9da8a1c0f86b3f14f7d3a27cd5b3c042
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - meepo = meepo:main
+    #
+    # Would create an entry point called meepo that calls meepo.main()
+
+    - meventsourcing = meepo.apps.meventsourcing:main
+    - mnano = meepo.apps.mnano:main
+    - mprint = meepo.apps.mprint:main
+    - mreplicate = meepo.apps.mreplicate:main
+    - mzdevice = meepo.apps.mzdevice:main
+    - mzmq = meepo.apps.mzmq:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.9.0,<1.0.0
+    - blinker >=1.3,<2.0
+    - click >=3.3,<4.0
+    - pyzmq >=14.4.1,<15.0.0
+    - redis >=2.10.3,<2.11.0
+
+  run:
+    - python
+    - sqlalchemy >=0.9.0,<1.0.0
+    - blinker >=1.3,<2.0
+    - click >=3.3,<4.0
+    - pyzmq >=14.4.1,<15.0.0
+    - redis >=2.10.3,<2.11.0
+
+test:
+  # Python imports
+  imports:
+    - meepo
+    - meepo.apps
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - meventsourcing --help
+    - mnano --help
+    - mprint --help
+    - mreplicate --help
+    - mzdevice --help
+    - mzmq --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eleme/meepo
+  license: MIT License
+  summary: 'event sourcing for databases.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

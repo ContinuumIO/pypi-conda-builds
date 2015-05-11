@@ -1,0 +1,77 @@
+package:
+  name: django-ddp
+  version: "0.5.0"
+
+source:
+  fn: django-ddp-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ddp/django-ddp-0.5.0.tar.gz
+  md5: 937988e70aae43ecd3dadfa7ad17b31b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ddp = django-ddp:main
+    #
+    # Would create an entry point called django-ddp that calls django-ddp.main()
+
+    - dddp=dddp.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7,<1.8
+    - psycopg2 >=2.5.4
+    - gevent >=1.0
+    - gevent-websocket >=0.9
+    - meteor-ejson >=1.0
+    - psycogreen >=1.0
+    - django-dbarray >=0.2
+
+  run:
+    - python
+    - django >=1.7,<1.8
+    - psycopg2 >=2.5.4
+    - gevent >=1.0
+    - gevent-websocket >=0.9
+    - meteor-ejson >=1.0
+    - psycogreen >=1.0
+    - django-dbarray >=0.2
+
+test:
+  # Python imports
+  imports:
+    - dddp
+    - dddp.migrations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dddp --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/commoncode/django-ddp
+  license: MIT License
+  summary: 'Django/PostgreSQL implementation of the Meteor DDP service.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

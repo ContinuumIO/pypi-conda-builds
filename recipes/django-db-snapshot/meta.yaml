@@ -1,0 +1,65 @@
+package:
+  name: django-db-snapshot
+  version: "1.0.b"
+
+source:
+  fn: django-db-snapshot-1.0.b.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-db-snapshot/django-db-snapshot-1.0.b.tar.gz
+  md5: e29529ebcc3d45f44e9a5e81c1d20d44
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-db-snapshot = django-db-snapshot:main
+    #
+    # Would create an entry point called django-db-snapshot that calls django-db-snapshot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - dbsnapshot
+    - dbsnapshot.management
+    - dbsnapshot.management.commands
+    - dbsnapshot.migrations
+    - docs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/LPgenerator/django-db-snapshot
+  license: GNU General Public License (GPL)
+  summary: 'Reusable Django app for fully automatic database snapshots'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

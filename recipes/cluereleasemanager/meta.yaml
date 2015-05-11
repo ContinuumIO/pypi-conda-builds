@@ -1,0 +1,76 @@
+package:
+  name: cluereleasemanager
+  version: "0.3.3"
+
+source:
+  fn: ClueReleaseManager-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/C/ClueReleaseManager/ClueReleaseManager-0.3.3.tar.gz
+  md5: 0f092c858827026c239cc8dca4ba62fa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cluereleasemanager = cluereleasemanager:main
+    #
+    # Would create an entry point called cluereleasemanager that calls cluereleasemanager.main()
+
+    - cluerelmgr-server = clue.relmgr.main:main
+    - cluerelmgr-admin = clue.relmgr.cmdtool:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.5
+    - repoze.who >=1.0.8,<=1.0.999
+    - werkzeug >=0.4,<=0.4.999
+    - jinja2 >=2.1
+    - docutils >=0.5
+
+  run:
+    - python
+    - setuptools
+    - sqlalchemy >=0.5
+    - repoze.who >=1.0.8,<=1.0.999
+    - werkzeug >=0.4,<=0.4.999
+    - jinja2 >=2.1
+    - docutils >=0.5
+
+test:
+  # Python imports
+  imports:
+    - clue
+    - cluereleasemanager
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cluerelmgr-server --help
+    - cluerelmgr-admin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://projects.serverzen.com/pm/p/cluemapper/ClueReleaseManager
+  license: BSD
+  summary: 'An implementation of a PyPi server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

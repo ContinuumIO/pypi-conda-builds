@@ -1,0 +1,77 @@
+package:
+  name: django-inspectional-registration
+  version: "0.4.6"
+
+source:
+  fn: django-inspectional-registration-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-inspectional-registration/django-inspectional-registration-0.4.6.tar.gz
+  md5: 75ea76d0fa05eed270e429416d1cd4e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-inspectional-registration = django-inspectional-registration:main
+    #
+    # Would create an entry point called django-inspectional-registration that calls django-inspectional-registration.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - app_version >=0.1.1
+    - django-appconf
+
+  run:
+    - python
+    - app_version >=0.1.1
+    - django-appconf
+
+test:
+  # Python imports
+  imports:
+    - registration
+    - registration.admin
+    - registration.backends
+    - registration.backends.default
+    - registration.contrib
+    - registration.contrib.autologin
+    - registration.contrib.notification
+    - registration.contrib.notification.tests
+    - registration.management
+    - registration.management.commands
+    - registration.migrations
+    - registration.supplements
+    - registration.supplements.default
+    - registration.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lambdalisue/django-inspectional-registration
+  license: MIT License
+  summary: 'Django registration app which required inspection step before activation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

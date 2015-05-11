@@ -1,0 +1,63 @@
+package:
+  name: manifest_generator
+  version: "1.0.0"
+
+source:
+  fn: manifest_generator-1.0.0.zip
+  url: https://pypi.python.org/packages/source/m/manifest_generator/manifest_generator-1.0.0.zip
+  md5: 4e2f87200a4f16df4ae34a38ce1f2425
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - manifest_generator = manifest_generator:main
+    #
+    # Would create an entry point called manifest_generator that calls manifest_generator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - glob2
+
+  run:
+    - python
+    - glob2
+
+test:
+  # Python imports
+  imports:
+    - manifest_generator
+    - manifestgen
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kdahlhaus/manifest_generator
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'A utility to smartly generate an HTML5 application cache manifest'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

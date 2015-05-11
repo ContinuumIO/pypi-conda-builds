@@ -1,0 +1,71 @@
+package:
+  name: django-oscar-docdata
+  version: "1.2.4"
+
+source:
+  fn: django-oscar-docdata-1.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oscar-docdata/django-oscar-docdata-1.2.4.tar.gz
+  md5: 9bbdc13e18473a0912ad43bdbe4834f6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oscar-docdata = django-oscar-docdata:main
+    #
+    # Would create an entry point called django-oscar-docdata that calls django-oscar-docdata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - suds-jurko >=0.6
+    - django-oscar >=0.5
+    - django-polymorphic >=0.5.3
+
+  run:
+    - python
+    - suds-jurko >=0.6
+    - django-oscar >=0.5
+    - django-polymorphic >=0.5.3
+
+test:
+  # Python imports
+  imports:
+    - oscar_docdata
+    - oscar_docdata.dashboard
+    - oscar_docdata.management
+    - oscar_docdata.management.commands
+    - oscar_docdata.migrations
+    - oscar_docdata.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edoburu/django-oscar-docdata
+  license: Apache Software License
+  summary: 'Docdata Payments Gateway integration for django-oscar'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

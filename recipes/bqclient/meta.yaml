@@ -1,0 +1,72 @@
+package:
+  name: bqclient
+  version: "0.5.3"
+
+source:
+  fn: bqclient-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/bqclient/bqclient-0.5.3.tar.gz
+  md5: 5f5e82a4b910e539e8799598c37ba2a0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bqclient = bqclient:main
+    #
+    # Would create an entry point called bqclient that calls bqclient.main()
+
+    - bumblebee = bumblebee.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+    - pyserial
+    - requests-oauth
+    - beautifulsoup4
+
+  run:
+    - python
+    - pygments
+    - pyserial
+    - requests-oauth
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - bqclient
+    - bumblebee
+    - bumblebee.drivers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bumblebee --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Hoektronics/bumblebee/
+  license: UNKNOWN
+  summary: "BotQueue's client bumblebee"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

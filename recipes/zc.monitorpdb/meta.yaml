@@ -1,0 +1,64 @@
+package:
+  name: zc.monitorpdb
+  version: "1.0.0"
+
+source:
+  fn: zc.monitorpdb-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.monitorpdb/zc.monitorpdb-1.0.0.tar.gz
+  md5: 6fa47b2283cfe09d4ad9c9efbb3cf386
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.monitorpdb = zc.monitorpdb:main
+    #
+    # Would create an entry point called zc.monitorpdb that calls zc.monitorpdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.monitor
+
+  run:
+    - python
+    - setuptools
+    - zc.monitor
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.monitorpdb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'zc.monitor plugin to debug running processes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: backup_monkey
+  version: "1.0.0"
+
+source:
+  fn: backup_monkey-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/backup_monkey/backup_monkey-1.0.0.tar.gz
+  md5: ca4c2768ae5f1a45c6ddc1ba30413f78
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - backup_monkey = backup_monkey:main
+    #
+    # Would create an entry point called backup_monkey that calls backup_monkey.main()
+
+    - backup-monkey = backup_monkey.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.7
+
+  run:
+    - python
+    - boto >=2.7
+
+test:
+  # Python imports
+  imports:
+    - backup_monkey
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - backup-monkey --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Answers4AWS/backup-monkey
+  license: Apache Software License
+  summary: 'A service that makes sure you have snapshots of all your EBS volumes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

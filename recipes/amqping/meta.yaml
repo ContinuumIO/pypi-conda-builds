@@ -1,0 +1,64 @@
+package:
+  name: amqping
+  version: "0.2"
+
+source:
+  fn: amqping-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/amqping/amqping-0.2.tar.gz
+  md5: 91bc9edfa9ec3db4e628cd9613f917b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amqping = amqping:main
+    #
+    # Would create an entry point called amqping that calls amqping.main()
+
+    - amqping = amqping:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pika
+
+  run:
+    - python
+    - pika
+
+test:
+  # Python imports
+  imports:
+    - amqping
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - amqping --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hughsaunders/amqping
+  license: MIT
+  summary: 'simple package/command for tesitng if an amqp instance is responding'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

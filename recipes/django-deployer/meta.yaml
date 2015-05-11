@@ -1,0 +1,83 @@
+package:
+  name: django-deployer
+  version: "0.1.6"
+
+source:
+  fn: django-deployer-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-deployer/django-deployer-0.1.6.tar.gz
+  md5: c564eea6a2fbe2fe3afcec2493444d57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-deployer = django-deployer:main
+    #
+    # Would create an entry point called django-deployer that calls django-deployer.main()
+
+    - deployer-init = django_deployer.main:add_fabfile
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric ==1.6.0
+    - jinja2 ==2.6
+    - heroku ==0.1.2
+    - dotcloud ==0.9.4
+    - gondor ==1.2.2
+    - pyyaml ==3.10
+    - sphinx ==1.1.3
+    - requests ==0.14.2
+
+  run:
+    - python
+    - fabric ==1.6.0
+    - jinja2 ==2.6
+    - heroku ==0.1.2
+    - dotcloud ==0.9.4
+    - gondor ==1.2.2
+    - pyyaml ==3.10
+    - sphinx ==1.1.3
+    - requests ==0.14.2
+
+test:
+  # Python imports
+  imports:
+    - django_deployer
+    - django_deployer.paas_templates
+    - django_deployer.paas_templates.appengine
+    - django_deployer.paas_templates.dotcloud
+    - django_deployer.paas_templates.gondor
+    - django_deployer.paas_templates.stackato
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - deployer-init --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://natea.github.io/django-deployer
+  license: MIT License
+  summary: 'Django deployment tool for popular PaaS providers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: geofeed_validator
+  version: "0.5.1"
+
+source:
+  fn: geofeed_validator-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/geofeed_validator/geofeed_validator-0.5.1.tar.gz
+  md5: 7e948d6d7df8a9465b3b923c4d2a3d95
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geofeed_validator = geofeed_validator:main
+    #
+    # Would create an entry point called geofeed_validator that calls geofeed_validator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.6.1
+    - pycountry >=1.4
+    - netaddr >=0.7.11
+
+  run:
+    - python
+    - six >=1.6.1
+    - pycountry >=1.4
+    - netaddr >=0.7.11
+
+test:
+  # Python imports
+  imports:
+    - geofeed_validator
+    - geofeed_validator.fields
+    - geofeed_validator.validator
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/anexia-it/geofeed-validator
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'Validator library for self-published geo feeds'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

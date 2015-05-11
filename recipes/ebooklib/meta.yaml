@@ -1,0 +1,65 @@
+package:
+  name: ebooklib
+  version: "0.15"
+
+source:
+  fn: EbookLib-0.15.tar.gz
+  url: https://pypi.python.org/packages/source/E/EbookLib/EbookLib-0.15.tar.gz
+  md5: d29882a04477c3854b1af9f6a84dc160
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ebooklib = ebooklib:main
+    #
+    # Would create an entry point called ebooklib that calls ebooklib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - six
+
+  run:
+    - python
+    - lxml
+    - six
+
+test:
+  # Python imports
+  imports:
+    - ebooklib
+    - ebooklib.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aerkalov/ebooklib
+  license: GNU Affero General Public License
+  summary: 'Ebook library which can handle EPUB2/EPUB3 and Kindle format'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

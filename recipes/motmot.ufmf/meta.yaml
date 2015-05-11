@@ -1,0 +1,78 @@
+package:
+  name: motmot.ufmf
+  version: "0.3.5"
+
+source:
+  fn: motmot.ufmf-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/motmot.ufmf/motmot.ufmf-0.3.5.tar.gz
+  md5: a342bc6a8f8b5afc3fc2b98b9fa87d4c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - motmot.ufmf = motmot.ufmf:main
+    #
+    # Would create an entry point called motmot.ufmf that calls motmot.ufmf.main()
+
+    - ufmf2fmf = motmot.ufmf.ufmf2fmf:main
+    - ufmfcat = motmot.ufmf.ufmfcat:main
+    - playufmf = motmot.ufmf.playufmf:main
+    - fmf2ufmf = motmot.ufmf.fmf2ufmf:main
+    - ufmfstats = motmot.ufmf.ufmfstats:main
+    - ufmf_reindex = motmot.ufmf.reindex:main
+    - ufmf_1to3 = motmot.ufmf.ufmf_1to3:main
+    - ufmf_2to3 = motmot.ufmf.ufmf_2to3:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - motmot
+    - motmot.ufmf
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ufmf2fmf --help
+    - ufmfcat --help
+    - playufmf --help
+    - fmf2ufmf --help
+    - ufmfstats --help
+    - ufmf_reindex --help
+    - ufmf_1to3 --help
+    - ufmf_2to3 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'micro-fmf (.ufmf) format library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

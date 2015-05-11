@@ -1,0 +1,75 @@
+package:
+  name: django-rest-tzolkin
+  version: "0.3"
+
+source:
+  fn: django-rest-tzolkin-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rest-tzolkin/django-rest-tzolkin-0.3.tar.gz
+  md5: d1850cf0d148858001059480070cb71f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rest-tzolkin = django-rest-tzolkin:main
+    #
+    # Would create an entry point called django-rest-tzolkin that calls django-rest-tzolkin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.6
+    - djangorestframework ==2.3.14
+
+  run:
+    - python
+    - django ==1.6
+    - djangorestframework ==2.3.14
+
+test:
+  # Python imports
+  imports:
+    - test_tzolkin
+    - tzolkin
+    - tzolkin.libs
+    - tzolkin.libs.gregorian2tzolkin
+    - tzolkin.libs.haab
+    - tzolkin.libs.tzolkin
+    - tzolkin.libs.tzolkin2gregorian
+    - tzolkin.processor
+    - tzolkin.serializers
+    - tzolkin.subviews
+    - tzolkin.subviews.gregorian2tzolkin
+    - tzolkin.subviews.tzolkin2gregorian
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dimddev/django-rest-tzolkin
+  license: GNU General Public License (GPL)
+  summary: 'Django-Rest API for convert: Gregorian, Long Count, Haab and Tzolkin dates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

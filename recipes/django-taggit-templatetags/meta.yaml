@@ -1,0 +1,69 @@
+package:
+  name: django-taggit-templatetags
+  version: "0.4.6dev"
+
+source:
+  fn: django-taggit-templatetags-0.4.6dev.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-taggit-templatetags/django-taggit-templatetags-0.4.6dev.tar.gz
+  md5: d552e55626185e963d1d67dc81a4157d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-taggit-templatetags = django-taggit-templatetags:main
+    #
+    # Would create an entry point called django-taggit-templatetags that calls django-taggit-templatetags.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.1
+    - django-taggit >=0.8
+    - django-templatetag-sugar >=0.1
+
+  run:
+    - python
+    - setuptools
+    - django >=1.1
+    - django-taggit >=0.8
+    - django-templatetag-sugar >=0.1
+
+test:
+  # Python imports
+  imports:
+    - taggit_templatetags
+    - taggit_templatetags.templatetags
+    - taggit_templatetags.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/feuervogel/django-taggit-templatetags
+  license: BSD License
+  summary: 'Templatetags for django-taggit.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

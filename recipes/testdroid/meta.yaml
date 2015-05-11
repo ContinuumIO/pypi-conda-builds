@@ -1,0 +1,66 @@
+package:
+  name: testdroid
+  version: "2.5.0"
+
+source:
+  fn: testdroid-2.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/testdroid/testdroid-2.5.0.tar.gz
+  md5: 8ff1d347e1b84e4ce1ef5b88673acfc5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - testdroid = testdroid:main
+    #
+    # Would create an entry point called testdroid that calls testdroid.main()
+
+    - testdroid = testdroid:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pillow
+
+  run:
+    - python
+    - requests
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - testdroid
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - testdroid --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.testdroid.com
+  license: Apache License v2.0
+  summary: 'Testdroid API client for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

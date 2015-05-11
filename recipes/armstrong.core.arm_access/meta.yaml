@@ -1,0 +1,65 @@
+package:
+  name: armstrong.core.arm_access
+  version: "1.0.9"
+
+source:
+  fn: armstrong.core.arm_access-1.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/a/armstrong.core.arm_access/armstrong.core.arm_access-1.0.9.tar.gz
+  md5: 5e42d633116b485a1a3f660b2006fa70
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - armstrong.core.arm_access = armstrong.core.arm_access:main
+    #
+    # Would create an entry point called armstrong.core.arm_access that calls armstrong.core.arm_access.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django ==1.3.1,<=1.4.4
+
+  run:
+    - python
+    - django ==1.3.1,<=1.4.4
+
+test:
+  # Python imports
+  imports:
+    - armstrong.core.arm_access
+    - armstrong.core.arm_access.migrations
+    - armstrong.core.arm_access.paywalls
+    - armstrong.core.arm_access.tests
+    - armstrong.core.arm_access.tests.arm_access_support
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/armstrong/armstrong.core.arm_access/
+  license: Apache Software License
+  summary: 'Code for having different access levels for content'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

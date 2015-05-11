@@ -1,0 +1,63 @@
+package:
+  name: iris
+  version: "2.0"
+
+source:
+  fn: Iris-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/I/Iris/Iris-2.0.tar.gz
+  md5: f89b96ecf7a388e7f231ee04549c1000
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iris = iris:main
+    #
+    # Would create an entry point called iris that calls iris.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - iris
+    - iris.io
+    - tests
+    - tests.io
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/giancosta86/Iris
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A general-purpose library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

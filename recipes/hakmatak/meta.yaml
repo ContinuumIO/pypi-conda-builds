@@ -1,0 +1,68 @@
+package:
+  name: hakmatak
+  version: "1.1.2"
+
+source:
+  fn: hakmatak-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hakmatak/hakmatak-1.1.2.tar.gz
+  md5: dfe760c8991a90c74a234dc27f82a167
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hakmatak = hakmatak:main
+    #
+    # Would create an entry point called hakmatak that calls hakmatak.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hakmatak
+    - hakmatak/cli
+    - hakmatak/output
+    - hakmatak/output/html
+    - hakmatak/store
+    - hakmatak/store/read
+    - hakmatak/store/read/example
+    - hakmatak/store/write
+    - hakmatak/util
+    - hakmatak/wsgi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hakmatak.org
+  license: MIT License
+  summary: 'A webification (w10n) service enabler'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

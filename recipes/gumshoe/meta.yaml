@@ -1,0 +1,76 @@
+package:
+  name: gumshoe
+  version: "0.0.2"
+
+source:
+  fn: gumshoe-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gumshoe/gumshoe-0.0.2.tar.gz
+  md5: 57bc6625d168ea1267e7a42bb9f8cda7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gumshoe = gumshoe:main
+    #
+    # Would create an entry point called gumshoe that calls gumshoe.main()
+
+    - gumshoe=gumshoe.standalone.commands:gumshoe_manage
+    - gumshoe-init=gumshoe.standalone.commands:gumshoe_init_standalone
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+    - django ==1.6
+    - south
+    - djangorestframework
+
+  run:
+    - python
+    - pytz
+    - django ==1.6
+    - south
+    - djangorestframework
+
+test:
+  # Python imports
+  imports:
+    - gumshoe
+    - gumshoe.management
+    - gumshoe.management.commands
+    - gumshoe.south_migrations
+    - gumshoe.standalone
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gumshoe --help
+    - gumshoe-init --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nickswebsite/gumshoe
+  license: UNKNOWN
+  summary: 'Issue tracking app based on django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

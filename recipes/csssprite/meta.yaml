@@ -1,0 +1,64 @@
+package:
+  name: csssprite
+  version: "0.9"
+
+source:
+  fn: csssprite-0.9.zip
+  url: https://pypi.python.org/packages/source/c/csssprite/csssprite-0.9.zip
+  md5: db17a72245bca28bcbe523ed9a4a3bbe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - csssprite = csssprite:main
+    #
+    # Would create an entry point called csssprite that calls csssprite.main()
+
+    - csssprite = csssprite.csssprite:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pil
+
+  run:
+    - python
+    - pil
+
+test:
+  # Python imports
+  imports:
+    - csssprite
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - csssprite --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/knadh/csssprite
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'A simple class for merging images into a sprite with accompanying css'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

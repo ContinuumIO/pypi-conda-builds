@@ -1,0 +1,71 @@
+package:
+  name: lazr.config
+  version: "2.1"
+
+source:
+  fn: lazr.config-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazr.config/lazr.config-2.1.tar.gz
+  md5: dc4a9331c313061f95239aeec5448a91
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazr.config = lazr.config:main
+    #
+    # Would create an entry point called lazr.config that calls lazr.config.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - nose
+    - setuptools
+    - zope.interface
+    - lazr.delegates
+
+  run:
+    - python
+    - nose
+    - setuptools
+    - zope.interface
+    - lazr.delegates
+
+test:
+  # Python imports
+  imports:
+    - lazr
+    - lazr.config
+    - lazr.config.docs
+    - lazr.config.tests
+    - lazr.config.tests.testdata
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lazr.config
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Create configuration schemas, and process and validate configurations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

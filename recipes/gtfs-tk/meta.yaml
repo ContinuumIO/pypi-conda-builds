@@ -1,0 +1,66 @@
+package:
+  name: gtfs-tk
+  version: "0.12.0"
+
+source:
+  fn: gtfs-tk-0.12.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gtfs-tk/gtfs-tk-0.12.0.tar.gz
+  md5: b239b72630a6b4434d6bfaaeb5ea87d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gtfs-tk = gtfs-tk:main
+    #
+    # Would create an entry point called gtfs-tk that calls gtfs-tk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - shapely >=1.5.1
+    - pandas >=0.15.2
+    - utm >=0.3.1
+
+  run:
+    - python
+    - shapely >=1.5.1
+    - pandas >=0.15.2
+    - utm >=0.3.1
+
+test:
+  # Python imports
+  imports:
+    - gtfs_tk
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/araichev/gtfs-tk
+  license: LICENSE
+  summary: 'A Python 3.4 toolkit for processing General Transit Feed Specification (GTFS) data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

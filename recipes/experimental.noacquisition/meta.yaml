@@ -1,0 +1,69 @@
+package:
+  name: experimental.noacquisition
+  version: "1.0.0a5"
+
+source:
+  fn: experimental.noacquisition-1.0.0a5.zip
+  url: https://pypi.python.org/packages/source/e/experimental.noacquisition/experimental.noacquisition-1.0.0a5.zip
+  md5: 397f7db0c46a553ae654d4eb20d23fdd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - experimental.noacquisition = experimental.noacquisition:main
+    #
+    # Would create an entry point called experimental.noacquisition that calls experimental.noacquisition.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - zope2 >=2.13.4,<=2.13.22
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - zope2 >=2.13.4,<=2.13.22
+
+test:
+  # Python imports
+  imports:
+    - experimental
+    - experimental.noacquisition
+    - experimental.noacquisition.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.org/pypi/collective/experimental.noacquisition
+  license: BSD
+  summary: 'No acquistion during publish traverse'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

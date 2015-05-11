@@ -1,0 +1,85 @@
+package:
+  name: monolith.aggregator
+  version: "0.4.1"
+
+source:
+  fn: monolith.aggregator-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/monolith.aggregator/monolith.aggregator-0.4.1.tar.gz
+  md5: 928dee19370af7d541013303a3a8ceed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - monolith.aggregator = monolith.aggregator:main
+    #
+    # Would create an entry point called monolith.aggregator that calls monolith.aggregator.main()
+
+    - monolith-extract=monolith.aggregator.extract:main
+    - monolith-ga-oauth=tools.auth_google_analytics:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - oauth2client
+    - elasticsearch
+    - pymysql
+    - python-gflags
+    - sqlalchemy
+    - google-api-python-client
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - gevent
+    - oauth2client
+    - elasticsearch
+    - pymysql
+    - python-gflags
+    - sqlalchemy
+    - google-api-python-client
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - monolith
+    - monolith.aggregator
+    - monolith.aggregator.plugins
+    - monolith.aggregator.tests
+    - tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - monolith-extract --help
+    - monolith-ga-oauth --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozilla/monolith-aggregator
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Mozilla Monolith Aggregator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

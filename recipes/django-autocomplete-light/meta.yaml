@@ -1,0 +1,84 @@
+package:
+  name: django-autocomplete-light
+  version: "2.1.1"
+
+source:
+  fn: django-autocomplete-light-2.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-autocomplete-light/django-autocomplete-light-2.1.1.tar.gz
+  md5: a0712954ffaa1741600cc51c9ecf7a5a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-autocomplete-light = django-autocomplete-light:main
+    #
+    # Would create an entry point called django-autocomplete-light that calls django-autocomplete-light.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.4
+
+  run:
+    - python
+    - six >=1.4
+
+test:
+  # Python imports
+  imports:
+    - autocomplete_light
+    - autocomplete_light.autocomplete
+    - autocomplete_light.contrib
+    - autocomplete_light.example_apps
+    - autocomplete_light.example_apps.app_config_with_registry_file
+    - autocomplete_light.example_apps.app_config_without_registry_file
+    - autocomplete_light.example_apps.autocomplete_test_case_app
+    - autocomplete_light.example_apps.basic
+    - autocomplete_light.example_apps.charfield_autocomplete
+    - autocomplete_light.example_apps.create_choice_on_the_fly
+    - autocomplete_light.example_apps.dependant_autocomplete
+    - autocomplete_light.example_apps.music
+    - autocomplete_light.example_apps.navigation_autocomplete
+    - autocomplete_light.example_apps.non_admin_add_another
+    - autocomplete_light.example_apps.security_test
+    - autocomplete_light.example_apps.unuseable_virtualfield
+    - autocomplete_light.example_apps.x
+    - autocomplete_light.templatetags
+    - autocomplete_light.tests
+    - autocomplete_light.tests.autocomplete
+    - taggit
+    - taggit.migrations
+    - taggit.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-autocomplete-light.rtfd.org
+  license: MIT License
+  summary: 'Fresh autocompletes for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

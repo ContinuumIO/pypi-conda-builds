@@ -1,0 +1,70 @@
+package:
+  name: hwit-edit
+  version: "0.01-r00662"
+
+source:
+  fn: hwit-edit-0.01-r00662.tar.gz
+  url: https://pypi.python.org/packages/source/h/hwit-edit/hwit-edit-0.01-r00662.tar.gz
+  md5: ade4a5896b98a468c0d5bdf70c97fff1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hwit-edit = hwit-edit:main
+    #
+    # Would create an entry point called hwit-edit that calls hwit-edit.main()
+
+    - hwit-edit = hwit.edit.main:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hwit-core
+    - distribute >=0.6.14,!=0.6.17,!=0.6.26
+
+  run:
+    - python
+    - setuptools
+    - hwit-core
+    - distribute >=0.6.14,!=0.6.17,!=0.6.26
+
+test:
+  # Python imports
+  imports:
+    - hwit
+    - hwit.edit
+    - hwit.edit.doc
+    - hwit.edit.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hwit-edit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hwit.org
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: "Here's What I Think; GUI editor"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

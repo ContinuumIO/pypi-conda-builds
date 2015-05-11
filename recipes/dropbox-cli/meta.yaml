@@ -1,0 +1,66 @@
+package:
+  name: dropbox-cli
+  version: "0.00.01"
+
+source:
+  fn: dropbox-cli-0.00.01.tar.gz
+  url: https://pypi.python.org/packages/source/d/dropbox-cli/dropbox-cli-0.00.01.tar.gz
+  md5: b75982c89fb565351a555263ac5fab67
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dropbox-cli = dropbox-cli:main
+    #
+    # Would create an entry point called dropbox-cli that calls dropbox-cli.main()
+
+    - dbc = dbc.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clicore ==0.00.01
+    - dropbox ==1.5.1
+
+  run:
+    - python
+    - clicore ==0.00.01
+    - dropbox ==1.5.1
+
+test:
+  # Python imports
+  imports:
+    - dbc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dbc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/timofurrer/dropbox-cli
+  license: UNKNOWN
+  summary: 'cli to manage your dropbox account '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

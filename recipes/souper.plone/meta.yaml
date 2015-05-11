@@ -1,0 +1,67 @@
+package:
+  name: souper.plone
+  version: "1.2"
+
+source:
+  fn: souper.plone-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/souper.plone/souper.plone-1.2.tar.gz
+  md5: f772deda5d1b68325f242577d0b9d4d7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - souper.plone = souper.plone:main
+    #
+    # Would create an entry point called souper.plone that calls souper.plone.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - souper
+
+  run:
+    - python
+    - setuptools
+    - plone
+    - souper
+
+test:
+  # Python imports
+  imports:
+    - souper
+    - souper.plone
+    - souper.plone.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/souper.plone
+  license: BSD License
+  summary: 'Plone Souper Integration: Container for many lightweight queryable Records'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

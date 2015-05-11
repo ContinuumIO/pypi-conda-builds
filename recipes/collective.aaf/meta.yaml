@@ -1,0 +1,73 @@
+package:
+  name: collective.aaf
+  version: "1.4"
+
+source:
+  fn: collective.aaf-1.4.zip
+  url: https://pypi.python.org/packages/source/c/collective.aaf/collective.aaf-1.4.zip
+  md5: 20d1e4b003f41580b02d1aa8c44e35b0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.aaf = collective.aaf:main
+    #
+    # Would create an entry point called collective.aaf that calls collective.aaf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - collective.pluggablelogin >=1.1
+    - products.autousermakerpasplugin >=1.0dev
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.monkeypatcher
+    - collective.pluggablelogin >=1.1
+    - products.autousermakerpasplugin >=1.0dev
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.aaf
+    - collective.aaf.browser
+    - collective.aaf.portlets
+    - collective.aaf.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/collective.aaf
+  license: gpl
+  summary: 'Authentication integration layer for the Australian Access Federation (AAF) and Plone'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

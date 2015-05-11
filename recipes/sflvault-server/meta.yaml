@@ -1,0 +1,73 @@
+package:
+  name: sflvault-server
+  version: "0.8.0.0"
+
+source:
+  fn: SFLvault-server-0.8.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/S/SFLvault-server/SFLvault-server-0.8.0.0.tar.gz
+  md5: 8df0cf713567c3678b7838f0d5c30596
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sflvault-server = sflvault-server:main
+    #
+    # Would create an entry point called sflvault-server that calls sflvault-server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - venusian
+    - zope.sqlalchemy
+    - decorator
+    - pyopenssl
+
+  run:
+    - python
+    - sqlalchemy
+    - venusian
+    - zope.sqlalchemy
+    - decorator
+    - pyopenssl
+
+test:
+  # Python imports
+  imports:
+    - sflvault
+    - sflvault.lib
+    - sflvault.model
+    - sflvault.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sflvault.org
+  license: UNKNOWN
+  summary: 'Networked credentials store and authentification manager - Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

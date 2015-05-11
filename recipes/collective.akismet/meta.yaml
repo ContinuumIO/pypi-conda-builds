@@ -1,0 +1,70 @@
+package:
+  name: collective.akismet
+  version: "1.0b1"
+
+source:
+  fn: collective.akismet-1.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/c/collective.akismet/collective.akismet-1.0b1.tar.gz
+  md5: aaef27f2376eb64fbed903f8f8e15ebf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.akismet = collective.akismet:main
+    #
+    # Would create an entry point called collective.akismet that calls collective.akismet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - akismet
+    - plone.app.registry
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - akismet
+    - plone.app.registry
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.akismet
+    - collective.akismet.browser
+    - collective.akismet.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.akismet
+  license: GPL
+  summary: 'Akismet plugin for plone.app.discussion'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

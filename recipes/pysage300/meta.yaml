@@ -1,0 +1,66 @@
+package:
+  name: pysage300
+  version: "0.1.0"
+
+source:
+  fn: pySage300-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pySage300/pySage300-0.1.0.tar.gz
+  md5: 8932f3d1477d3805c9f9ac267ed0eca3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pysage300 = pysage300:main
+    #
+    # Would create an entry point called pysage300 that calls pysage300.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyodbc
+    - sqlalchemy
+
+  run:
+    - python
+    - pyodbc
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - pysage300
+    - sage300
+    - sage300.db
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SacNaturalFoods/pysage300
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: u'Python Interface to Sage 300 ERP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

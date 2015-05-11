@@ -1,0 +1,65 @@
+package:
+  name: dataflake.fakeldap
+  version: "1.1"
+
+source:
+  fn: dataflake.fakeldap-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dataflake.fakeldap/dataflake.fakeldap-1.1.tar.gz
+  md5: 84470ad5ef1f491a515c39a9a1e79e5c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dataflake.fakeldap = dataflake.fakeldap:main
+    #
+    # Would create an entry point called dataflake.fakeldap that calls dataflake.fakeldap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-ldap
+
+  run:
+    - python
+    - setuptools
+    - python-ldap
+
+test:
+  # Python imports
+  imports:
+    - dataflake
+    - dataflake.fakeldap
+    - dataflake.fakeldap.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/dataflake.fakeldap
+  license: Zope Public License
+  summary: 'LDAP connection library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

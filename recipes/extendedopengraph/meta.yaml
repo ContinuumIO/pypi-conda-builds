@@ -1,0 +1,66 @@
+package:
+  name: extendedopengraph
+  version: "0.3"
+
+source:
+  fn: ExtendedOpenGraph-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/E/ExtendedOpenGraph/ExtendedOpenGraph-0.3.tar.gz
+  md5: 3207cd3e232731820e76d2ea6877d1ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - extendedopengraph = extendedopengraph:main
+    #
+    # Would create an entry point called extendedopengraph that calls extendedopengraph.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - opengraph
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup4
+    - opengraph
+
+test:
+  # Python imports
+  imports:
+    - ExtendedOpenGraph
+    - extendedopengraph
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/AhnSeongHyun/ExtendedOpenGraphParser
+  license: MIT
+  summary: 'A module of parsing the open graph protocol and extracing the summary of the web page.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

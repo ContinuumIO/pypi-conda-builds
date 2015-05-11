@@ -1,0 +1,67 @@
+package:
+  name: hexagonit.recipe.download
+  version: "1.7"
+
+source:
+  fn: hexagonit.recipe.download-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/h/hexagonit.recipe.download/hexagonit.recipe.download-1.7.tar.gz
+  md5: 1b9aecd4b8d44ff2436c9581758b9230
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hexagonit.recipe.download = hexagonit.recipe.download:main
+    #
+    # Would create an entry point called hexagonit.recipe.download that calls hexagonit.recipe.download.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout >=1.4.0
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout >=1.4.0
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - hexagonit
+    - hexagonit.recipe
+    - hexagonit.recipe.download
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/hexagonit/hexagonit.recipe.download
+  license: Zope Public License
+  summary: 'zc.buildout recipe for downloading and extracting packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

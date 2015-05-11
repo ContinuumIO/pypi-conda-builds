@@ -1,0 +1,84 @@
+package:
+  name: ftw.testbrowser
+  version: "1.15.0"
+
+source:
+  fn: ftw.testbrowser-1.15.0.zip
+  url: https://pypi.python.org/packages/source/f/ftw.testbrowser/ftw.testbrowser-1.15.0.zip
+  md5: f59c861e9c7f7f4ba75a5e156b8c09bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.testbrowser = ftw.testbrowser:main
+    #
+    # Would create an entry point called ftw.testbrowser that calls ftw.testbrowser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - cssselect
+    - mechanize
+    - plone.testing
+    - requests
+    - setuptools
+    - zope.component
+    - zope.deprecation
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - lxml
+    - cssselect
+    - mechanize
+    - plone.testing
+    - requests
+    - setuptools
+    - zope.component
+    - zope.deprecation
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.testbrowser
+    - ftw.testbrowser.pages
+    - ftw.testbrowser.tests
+    - ftw.testbrowser.tests.views
+    - ftw.testbrowser.widgets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.testbrowser
+  license: GPL2
+  summary: 'A test browser for Zope and Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

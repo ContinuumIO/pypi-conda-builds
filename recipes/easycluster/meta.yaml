@@ -1,0 +1,62 @@
+package:
+  name: easycluster
+  version: "0.22.1"
+
+source:
+  fn: EasyCluster-0.22.1.tar.gz
+  url: https://pypi.python.org/packages/source/E/EasyCluster/EasyCluster-0.22.1.tar.gz
+  md5: 3434b7ea5827fa0fa5d09cdeabbd9808
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easycluster = easycluster:main
+    #
+    # Would create an entry point called easycluster that calls easycluster.main()
+
+    - easycluster = easycluster.server:server_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - easycluster
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - easycluster --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/EasyCluster
+  license: MIT License
+  summary: 'EasyCluster: a remote execution/clustering module for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

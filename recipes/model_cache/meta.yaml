@@ -1,0 +1,70 @@
+package:
+  name: model_cache
+  version: "0.0.9"
+
+source:
+  fn: model_cache-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/m/model_cache/model_cache-0.0.9.tar.gz
+  md5: ee7161b0f3b89e560e4c569a3f78aa1f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - model_cache = model_cache:main
+    #
+    # Would create an entry point called model_cache that calls model_cache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis_collections
+    - sqlitedict
+    - etl_utils
+    - forwardable.py ==0.0.11
+
+  run:
+    - python
+    - redis_collections
+    - sqlitedict
+    - etl_utils
+    - forwardable.py ==0.0.11
+
+test:
+  # Python imports
+  imports:
+    - model_cache
+    - model_cache/storage
+    - model_cache/tools
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/17zuoye/model_cache/
+  license: MIT
+  summary: 'model_cache'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: bootstrapper
+  version: "0.5"
+
+source:
+  fn: bootstrapper-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/bootstrapper/bootstrapper-0.5.tar.gz
+  md5: 373b70a4d538fa6981eeaf44343120ca
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bootstrapper = bootstrapper:main
+    #
+    # Would create an entry point called bootstrapper that calls bootstrapper.main()
+
+    - bootstrapper=bootstrapper:main
+    - bootstrapper-2.7=bootstrapper:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - virtualenv >=1.10
+
+  run:
+    - python
+    - virtualenv >=1.10
+
+test:
+  # Python imports
+  imports:
+    - bootstrapper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bootstrapper --help
+    - bootstrapper-2.7 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/playpauseandstop/bootstrapper
+  license: BSD License
+  summary: 'Bootstrap Python projects with virtualenv and pip.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

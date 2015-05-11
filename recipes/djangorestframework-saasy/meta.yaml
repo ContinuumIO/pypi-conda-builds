@@ -1,0 +1,69 @@
+package:
+  name: djangorestframework-saasy
+  version: "0.1"
+
+source:
+  fn: djangorestframework-saasy-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangorestframework-saasy/djangorestframework-saasy-0.1.tar.gz
+  md5: a7c5c078219d8ffb8ce3d46b68456983
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangorestframework-saasy = djangorestframework-saasy:main
+    #
+    # Would create an entry point called djangorestframework-saasy that calls djangorestframework-saasy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - djangorestframework >=2.3.14
+    - simplejson >=3.6.0
+
+  run:
+    - python
+    - django >=1.3
+    - djangorestframework >=2.3.14
+    - simplejson >=3.6.0
+
+test:
+  # Python imports
+  imports:
+    - rest_framework_saasy
+    - rest_framework_saasy.runtests
+    - rest_framework_saasy.tests
+    - rest_framework_saasy.tests.foo_bar-123
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/juannyg/django-rest-framework-saasy
+  license: MIT
+  summary: 'SaaS plugin for the django rest framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

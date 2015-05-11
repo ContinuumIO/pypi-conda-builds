@@ -1,0 +1,70 @@
+package:
+  name: dynamicmachine
+  version: "0.3.2"
+
+source:
+  fn: DynamicMachine-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/DynamicMachine/DynamicMachine-0.3.2.tar.gz
+  md5: a9fcf476308dee4476650819290976d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dynamicmachine = dynamicmachine:main
+    #
+    # Would create an entry point called dynamicmachine that calls dynamicmachine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - apache-libcloud
+    - pexpect
+    - jsonconfigfile
+    - pertinosdk
+
+  run:
+    - python
+    - apache-libcloud
+    - pexpect
+    - jsonconfigfile
+    - pertinosdk
+
+test:
+  # Python imports
+  imports:
+    - dynamic_machine
+    - dynamicmachine
+    - providers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Pipe-s/dynamic_machine
+  license: UNKNOWN
+  summary: 'Python package for running the Dynamic Machine application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

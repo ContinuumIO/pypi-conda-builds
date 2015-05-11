@@ -1,0 +1,76 @@
+package:
+  name: soundforest
+  version: "3.4.5"
+
+source:
+  fn: soundforest-3.4.5.tar.gz
+  url: https://pypi.python.org/packages/source/s/soundforest/soundforest-3.4.5.tar.gz
+  md5: 854cbdde8f8fe3c025be1fcbf73b5882
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - soundforest = soundforest:main
+    #
+    # Would create an entry point called soundforest that calls soundforest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setproctitle
+    - sqlalchemy
+    - requests
+    - lxml
+    - pytz
+    - mutagen
+    - pillow
+
+  run:
+    - python
+    - setproctitle
+    - sqlalchemy
+    - requests
+    - lxml
+    - pytz
+    - mutagen
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - soundforest
+    - soundforest.tags
+    - soundforest.tags.formats
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hile/soundforest
+  license: PSF
+  summary: 'Audio file library manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

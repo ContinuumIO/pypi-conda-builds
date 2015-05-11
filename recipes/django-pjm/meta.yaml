@@ -1,0 +1,67 @@
+package:
+  name: django-pjm
+  version: "0.2.4"
+
+source:
+  fn: django-pjm-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pjm/django-pjm-0.2.4.tar.gz
+  md5: 2fd4845db6649ffaa78f670bda699be8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pjm = django-pjm:main
+    #
+    # Would create an entry point called django-pjm that calls django-pjm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.0
+    - django-admin-steroids >=0.2.0
+
+  run:
+    - python
+    - django >=1.4.0
+    - django-admin-steroids >=0.2.0
+
+test:
+  # Python imports
+  imports:
+    - django_pjm
+    - django_pjm.management
+    - django_pjm.management.commands
+    - django_pjm.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrisspen/django-pjm
+  license: MIT License or GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'A Django app for managing public PJM energy pricing data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

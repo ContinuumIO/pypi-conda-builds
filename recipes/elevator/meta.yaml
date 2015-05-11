@@ -1,0 +1,86 @@
+package:
+  name: elevator
+  version: "0.5"
+
+source:
+  fn: Elevator-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/E/Elevator/Elevator-0.5.tar.gz
+  md5: 0b262618f3d67db1f6b86debb0ca6ed8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elevator = elevator:main
+    #
+    # Would create an entry point called elevator that calls elevator.main()
+
+    - elevator = elevator.server:main
+    - elevator-cli = elevator_cli.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lz4
+    - msgpack-python
+    - pyzmq
+    - unittest2
+    - ujson
+    - procname
+    - clint
+    - plyvel
+    - fabric
+
+  run:
+    - python
+    - lz4
+    - msgpack-python
+    - pyzmq
+    - unittest2
+    - ujson
+    - procname
+    - clint
+    - plyvel
+    - fabric
+
+test:
+  # Python imports
+  imports:
+    - elevator
+    - elevator.backend
+    - elevator.helpers
+    - elevator.utils
+    - elevator_cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - elevator --help
+    - elevator-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/oleiade/Elevator
+  license: MIT License
+  summary: 'On disk key/value store based on levelDB backend'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

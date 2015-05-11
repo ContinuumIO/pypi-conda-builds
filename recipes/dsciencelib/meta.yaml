@@ -1,0 +1,72 @@
+package:
+  name: dsciencelib
+  version: "1.0.1"
+
+source:
+  fn: dsciencelib-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dsciencelib/dsciencelib-1.0.1.tar.gz
+  md5: c196d8401326337fc1d350bf6be0dce3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dsciencelib = dsciencelib:main
+    #
+    # Would create an entry point called dsciencelib that calls dsciencelib.main()
+
+    - sample=sample:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - peppercorn
+    - pandas
+    - numpy
+    - networkx
+    - scikit-learn
+
+  run:
+    - python
+    - peppercorn
+    - pandas
+    - numpy
+    - networkx
+    - scikit-learn
+
+test:
+  # Python imports
+  imports:
+    - dsciencelib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sample --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pypa/dsciencelib
+  license: MIT License
+  summary: 'A toolset for Data Scientists'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

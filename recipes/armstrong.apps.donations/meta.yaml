@@ -1,0 +1,66 @@
+package:
+  name: armstrong.apps.donations
+  version: "1.2.3"
+
+source:
+  fn: armstrong.apps.donations-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/armstrong.apps.donations/armstrong.apps.donations-1.2.3.tar.gz
+  md5: e332f4f275bea484e68d6e9365f1354e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - armstrong.apps.donations = armstrong.apps.donations:main
+    #
+    # Would create an entry point called armstrong.apps.donations that calls armstrong.apps.donations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - authorize ==0.1.0
+    - django >=1.3,<=1.4.5
+    - armstrong.utils.backends >=1.0.0,<2.0
+
+  run:
+    - python
+    - authorize ==0.1.0
+    - django >=1.3,<=1.4.5
+    - armstrong.utils.backends >=1.0.0,<2.0
+
+test:
+  # Python imports
+  imports:
+    - armstrong.apps.donations
+    - armstrong.apps.donations.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/armstrong/armstrong.apps.donations/
+  license: Apache Software License
+  summary: 'Provides a framework for accepting donations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

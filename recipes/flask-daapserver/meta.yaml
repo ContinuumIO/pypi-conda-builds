@@ -1,0 +1,66 @@
+package:
+  name: flask-daapserver
+  version: "2.2.1"
+
+source:
+  fn: flask-daapserver-2.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-daapserver/flask-daapserver-2.2.1.tar.gz
+  md5: e6b32fd13fde04f68b3d3b9c03e831ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-daapserver = flask-daapserver:main
+    #
+    # Would create an entry point called flask-daapserver that calls flask-daapserver.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - zeroconf
+    - gevent
+
+  run:
+    - python
+    - flask
+    - zeroconf
+    - gevent
+
+test:
+  # Python imports
+  imports:
+    - daapserver
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/basilfx/flask-daapserver
+  license: MIT License
+  summary: 'DAAP server framework implemented with Flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

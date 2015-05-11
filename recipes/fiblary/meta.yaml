@@ -1,0 +1,78 @@
+package:
+  name: fiblary
+  version: "0.1.3"
+
+source:
+  fn: fiblary-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/fiblary/fiblary-0.1.3.tar.gz
+  md5: 1edd12e9b55994c5c07cdd13264535a9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fiblary = fiblary:main
+    #
+    # Would create an entry point called fiblary that calls fiblary.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonpatch
+    - netaddr
+    - prettytable
+    - python-dateutil
+    - requests
+    - six
+    - sphinx
+
+  run:
+    - python
+    - jsonpatch
+    - netaddr
+    - prettytable
+    - python-dateutil
+    - requests
+    - six
+    - sphinx
+
+test:
+  # Python imports
+  imports:
+    - fiblary
+    - fiblary.client
+    - fiblary.client.v3
+    - fiblary.common
+    - fiblary.external
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kstaniek/fiblary
+  license: Apache Software License
+  summary: 'Home Center 2 API Python Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

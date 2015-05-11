@@ -1,0 +1,81 @@
+package:
+  name: apex
+  version: "0.9.10dev"
+
+source:
+  fn: apex-0.9.10dev.tar.gz
+  url: https://pypi.python.org/packages/source/a/apex/apex-0.9.10dev.tar.gz
+  md5: 8c838c69a1e84c9e8c1feebb8d8e2952
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apex = apex:main
+    #
+    # Would create an entry point called apex that calls apex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cryptacular
+    - zope.sqlalchemy
+    - velruse >=1.0.3
+    - pyramid >1.1.2
+    - pyramid_mailer
+    - requests
+    - wtforms
+    - wtforms-recaptcha
+
+  run:
+    - python
+    - setuptools
+    - cryptacular
+    - zope.sqlalchemy
+    - velruse >=1.0.3
+    - pyramid >1.1.2
+    - pyramid_mailer
+    - requests
+    - wtforms
+    - wtforms-recaptcha
+
+test:
+  # Python imports
+  imports:
+    - apex
+    - apex.ext
+    - apex.lib
+    - apex.scaffolds
+    - apex.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://thesoftwarestudio.com/apex/
+  license: MIT License
+  summary: 'Pyramid toolkit to add Velruse, Flash Messages,CSRF, ReCaptcha and Sessions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

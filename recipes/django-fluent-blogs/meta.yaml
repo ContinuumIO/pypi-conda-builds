@@ -1,0 +1,86 @@
+package:
+  name: django-fluent-blogs
+  version: "1.0"
+
+source:
+  fn: django-fluent-blogs-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fluent-blogs/django-fluent-blogs-1.0.tar.gz
+  md5: 09ed826cf571f8d3c6402050eca35d9f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fluent-blogs = django-fluent-blogs:main
+    #
+    # Would create an entry point called django-fluent-blogs that calls django-fluent-blogs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-fluent-contents >=1.0
+    - django-fluent-utils >=1.1.4
+    - django-categories >=1.0.0
+    - django-parler >=1.4
+    - django-tag-parser >=2.1
+
+  run:
+    - python
+    - django-fluent-contents >=1.0
+    - django-fluent-utils >=1.1.4
+    - django-categories >=1.0.0
+    - django-parler >=1.4
+    - django-tag-parser >=2.1
+
+test:
+  # Python imports
+  imports:
+    - example
+    - example.example_fluent_comments
+    - example.example_fluent_pages
+    - example.example_multilingual
+    - example.example_standalone
+    - example.theme1
+    - fluent_blogs
+    - fluent_blogs.admin
+    - fluent_blogs.migrations
+    - fluent_blogs.models
+    - fluent_blogs.pagetypes
+    - fluent_blogs.pagetypes.blogpage
+    - fluent_blogs.pagetypes.blogpage.migrations
+    - fluent_blogs.pagetypes.blogpage.south_migrations
+    - fluent_blogs.south_migrations
+    - fluent_blogs.templatetags
+    - fluent_blogs.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edoburu/django-fluent-blogs
+  license: Apache Software License
+  summary: 'A blog engine with flexible block contents (based on django-fluent-contents).'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

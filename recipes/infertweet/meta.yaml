@@ -1,0 +1,78 @@
+package:
+  name: infertweet
+  version: "0.2"
+
+source:
+  fn: infertweet-0.2.zip
+  url: https://pypi.python.org/packages/source/i/infertweet/infertweet-0.2.zip
+  md5: 59e45f9b6cb8a5c27793b70edec0f776
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infertweet = infertweet:main
+    #
+    # Would create an entry point called infertweet that calls infertweet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tweepy >=2.0
+    - nltk >=2.0.3
+    - pyyaml >=3.09
+    - unidecode >=0.04.12
+    - infer ==0.1
+    - tornado >=3.0
+    - rpyc >=3.2.3
+
+  run:
+    - python
+    - tweepy >=2.0
+    - nltk >=2.0.3
+    - pyyaml >=3.09
+    - unidecode >=0.04.12
+    - infer ==0.1
+    - tornado >=3.0
+    - rpyc >=3.2.3
+
+test:
+  # Python imports
+  imports:
+    - infertweet
+    - infertweet.corpus
+    - infertweet.sentiment
+    - infertweet.tests
+    - infertweet.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.github.com/bwbaugh/infertweet
+  license: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+  summary: 'Infer information from Tweets. Useful for human-centered computing tasks, such as sentiment analysis, location prediction, authorship profiling and more!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

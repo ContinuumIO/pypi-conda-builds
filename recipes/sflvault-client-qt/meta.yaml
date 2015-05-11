@@ -1,0 +1,77 @@
+package:
+  name: sflvault-client-qt
+  version: "0.7.8.2"
+
+source:
+  fn: SFLvault-client-qt-0.7.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/S/SFLvault-client-qt/SFLvault-client-qt-0.7.8.2.tar.gz
+  md5: f091318e6d43393b27b115295c375a1e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sflvault-client-qt = sflvault-client-qt:main
+    #
+    # Would create an entry point called sflvault-client-qt that calls sflvault-client-qt.main()
+
+    - sflvault-client-qt=sflvault.clientqt:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sflvault-client ==0.7.8.2
+    - sflvault-common ==0.7.8.1
+
+  run:
+    - python
+    - setuptools
+    - sflvault-client ==0.7.8.2
+    - sflvault-common ==0.7.8.1
+
+test:
+  # Python imports
+  imports:
+    - sflvault
+    - sflvault.clientqt
+    - sflvault.clientqt.gui
+    - sflvault.clientqt.gui.bar
+    - sflvault.clientqt.gui.config
+    - sflvault.clientqt.gui.dialog
+    - sflvault.clientqt.gui.docks
+    - sflvault.clientqt.gui.tree
+    - sflvault.clientqt.gui.wizard
+    - sflvault.clientqt.images
+    - sflvault.clientqt.lib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sflvault-client-qt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sflvault.org
+  license: GPLv2
+  summary: 'Networked credentials store and authentication manager - Qt Client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

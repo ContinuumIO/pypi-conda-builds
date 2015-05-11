@@ -1,0 +1,76 @@
+package:
+  name: shakedown
+  version: "0.0.1"
+
+source:
+  fn: shakedown-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/shakedown/shakedown-0.0.1.tar.gz
+  md5: 124c1960b989ebf97f60f0a798bbc4c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shakedown = shakedown:main
+    #
+    # Would create an entry point called shakedown that calls shakedown.main()
+
+    - shake  = shakedown.frontend.main:main_entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - confetti >=2.0.0.dev2
+    - requests >=1.1.0
+    - six
+    - logbook
+    - raven
+
+  run:
+    - python
+    - confetti >=2.0.0.dev2
+    - requests >=1.1.0
+    - six
+    - logbook
+    - raven
+
+test:
+  # Python imports
+  imports:
+    - shakedown
+    - shakedown.frontend
+    - shakedown.plugins
+    - shakedown.plugins.builtin
+    - shakedown.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - shake --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'A Testing Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

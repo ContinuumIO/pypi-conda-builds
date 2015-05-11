@@ -1,0 +1,70 @@
+package:
+  name: infi.os_info
+  version: "0.1.6"
+
+source:
+  fn: infi.os_info-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.os_info/infi.os_info-0.1.6.tar.gz
+  md5: 86c19febc8a40a5c145ca29611fa8816
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.os_info = infi.os_info:main
+    #
+    # Would create an entry point called infi.os_info that calls infi.os_info.main()
+
+    - infi-git-short-version = infi.os_info.scripts:git_short_version
+    - infi-git-version = infi.os_info.scripts:git_version
+    - infi-uname = infi.os_info.scripts:uname
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - git-py
+    - setuptools
+
+  run:
+    - python
+    - git-py
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.os_info
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - infi-git-short-version --help
+    - infi-git-version --help
+    - infi-uname --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.os_info
+  license: Python Software Foundation License
+  summary: 'module for getting os information'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

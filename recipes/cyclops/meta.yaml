@@ -1,0 +1,87 @@
+package:
+  name: cyclops
+  version: "1.1.0"
+
+source:
+  fn: cyclops-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cyclops/cyclops-1.1.0.tar.gz
+  md5: 742d5fec91df46807a085d2fff335ace
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cyclops = cyclops:main
+    #
+    # Would create an entry point called cyclops that calls cyclops.main()
+
+    - cyclops=cyclops.server:main
+    - cyclops-init=cyclops.init:main
+    - cyclops-count=cyclops.count:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=3.0.0
+    - derpconf ==0.3.3
+    - pycurl ==7.19.0
+    - requests ==1.1.0
+    - ujson ==1.30
+    - msgpack-python ==0.3.0
+    - redis ==2.7.2
+    - redis-lock ==0.2.0
+    - argparse ==1.2.1
+
+  run:
+    - python
+    - tornado >=3.0.0
+    - derpconf ==0.3.3
+    - pycurl ==7.19.0
+    - requests ==1.1.0
+    - ujson ==1.30
+    - msgpack-python ==0.3.0
+    - redis ==2.7.2
+    - redis-lock ==0.2.0
+    - argparse ==1.2.1
+
+test:
+  # Python imports
+  imports:
+    - cyclops
+    - cyclops.handlers
+    - tests
+    - tests.handlers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cyclops --help
+    - cyclops-init --help
+    - cyclops-count --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/heynemann/cyclops
+  license: MIT License
+  summary: 'cyclops is a high-performance gateway for sentry.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

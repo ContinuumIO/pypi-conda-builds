@@ -1,0 +1,64 @@
+package:
+  name: gfwlist2privoxy
+  version: "1.0.2"
+
+source:
+  fn: gfwlist2privoxy-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gfwlist2privoxy/gfwlist2privoxy-1.0.2.tar.gz
+  md5: 4d91755deaed8fac3784ad6c19c8e2c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gfwlist2privoxy = gfwlist2privoxy:main
+    #
+    # Would create an entry point called gfwlist2privoxy that calls gfwlist2privoxy.main()
+
+    - gfwlist2privoxy=gfwlist2privoxy.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gfwlist2privoxy
+    - gfwlist2privoxy.resources
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gfwlist2privoxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/snachx/gfwlist2privoxy
+  license: MIT License
+  summary: 'convert gfwlist to privoxy action file'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

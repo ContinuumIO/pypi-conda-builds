@@ -1,0 +1,68 @@
+package:
+  name: destral
+  version: "0.2.1"
+
+source:
+  fn: destral-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/destral/destral-0.2.1.tar.gz
+  md5: 2777a1f87ff98bf769b3fc9289deb0d7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - destral = destral:main
+    #
+    # Would create an entry point called destral that calls destral.main()
+
+    - destral = destral.cli:destral
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - osconf
+    - expects
+    - click
+
+  run:
+    - python
+    - osconf
+    - expects
+    - click
+
+test:
+  # Python imports
+  imports:
+    - destral
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - destral --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gisce/destral
+  license: GNU GPLv3
+  summary: 'OpenERP testing framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

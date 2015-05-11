@@ -1,0 +1,73 @@
+package:
+  name: couchdbkit
+  version: "0.6.5"
+
+source:
+  fn: couchdbkit-0.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/couchdbkit/couchdbkit-0.6.5.tar.gz
+  md5: d5f6382665697b0f126f68a211c1a5a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - couchdbkit = couchdbkit:main
+    #
+    # Would create an entry point called couchdbkit that calls couchdbkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - restkit >=4.2.2
+
+  run:
+    - python
+    - setuptools
+    - restkit >=4.2.2
+
+test:
+  # Python imports
+  imports:
+    - couchdbkit
+    - couchdbkit.consumer
+    - couchdbkit.designer
+    - couchdbkit.ext
+    - couchdbkit.ext.django
+    - couchdbkit.ext.django.management
+    - couchdbkit.ext.django.management.commands
+    - couchdbkit.ext.pylons
+    - couchdbkit.ext.pylons.auth
+    - couchdbkit.schema
+    - couchdbkit.wsgi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://couchdbkit.org
+  license: Apache Software License
+  summary: 'Python couchdb kit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

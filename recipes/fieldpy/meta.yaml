@@ -1,0 +1,73 @@
+package:
+  name: fieldpy
+  version: "0.1.7"
+
+source:
+  fn: FieldPy-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/F/FieldPy/FieldPy-0.1.7.tar.gz
+  md5: 1d80404e51029aa1925d707e275b68e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fieldpy = fieldpy:main
+    #
+    # Would create an entry point called fieldpy that calls fieldpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - numpy >=1.8.0
+    - pandas >=0.14.0
+    - scipy >=0.14.0
+    - h5py >=2.2.1
+    - nose >=1.3.3
+
+  run:
+    - python
+    - numpy >=1.8.0
+    - pandas >=0.14.0
+    - scipy >=0.14.0
+    - h5py >=2.2.1
+    - nose >=1.3.3
+
+test:
+  # Python imports
+  imports:
+    - fieldpy
+    - fieldpy.analysis
+    - fieldpy.interpolation
+    - fieldpy.primitives
+    - fieldpy.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/FieldPy/
+  license: LICENSE.txt
+  summary: 'A collection of primitives and tools relating to the analysis and manipulation of 2D and 3D fields'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

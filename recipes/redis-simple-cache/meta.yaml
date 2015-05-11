@@ -1,0 +1,62 @@
+package:
+  name: redis-simple-cache
+  version: "0.0.7"
+
+source:
+  fn: redis-simple-cache-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/r/redis-simple-cache/redis-simple-cache-0.0.7.tar.gz
+  md5: 9dcded50da635db948122ff794aee184
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redis-simple-cache = redis-simple-cache:main
+    #
+    # Would create an entry point called redis-simple-cache that calls redis-simple-cache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=2.7.1
+
+  run:
+    - python
+    - redis >=2.7.1
+
+test:
+  # Python imports
+  imports:
+    - redis_cache
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vivekn/redis-simple-cache
+  license: BSD License
+  summary: 'redis-simple-cache is a pythonic interface for creating a cache over redis. It provides simple decorators that can be added to any function to cache its return values. '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

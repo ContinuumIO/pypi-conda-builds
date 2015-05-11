@@ -1,0 +1,62 @@
+package:
+  name: django-authy-admin
+  version: "0.0.2"
+
+source:
+  fn: django-authy-admin-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-authy-admin/django-authy-admin-0.0.2.tar.gz
+  md5: 4d85b81e56fef3aceb5d1dcd70871504
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-authy-admin = django-authy-admin:main
+    #
+    # Would create an entry point called django-authy-admin that calls django-authy-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - authy
+
+  run:
+    - python
+    - authy
+
+test:
+  # Python imports
+  imports:
+    - authy_admin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jhmaddox/django-authy-admin/
+  license: BSD
+  summary: "A drop in replacement for django's default admin site that provides two-factor authentication via authy's REST API."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

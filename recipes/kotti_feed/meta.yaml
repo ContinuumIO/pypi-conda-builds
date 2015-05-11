@@ -1,0 +1,74 @@
+package:
+  name: kotti_feed
+  version: "0.2"
+
+source:
+  fn: kotti_feed-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/k/kotti_feed/kotti_feed-0.2.tar.gz
+  md5: 8b827aba9deee08990f462e9f414ddb4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kotti_feed = kotti_feed:main
+    #
+    # Would create an entry point called kotti_feed that calls kotti_feed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - kotti >=1.0
+    - pyrss2gen
+    - webtest
+    - pytest-cov
+    - pytest
+    - wsgi_intercept
+    - zope.testbrowser
+
+  run:
+    - python
+    - kotti >=1.0
+    - pyrss2gen
+    - webtest
+    - pytest-cov
+    - pytest
+    - wsgi_intercept
+    - zope.testbrowser
+
+test:
+  # Python imports
+  imports:
+    - kotti_feed
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/teixas/kotti_feed
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'Add RSS feed generation to your Kotti site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

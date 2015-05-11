@@ -1,0 +1,74 @@
+package:
+  name: illuminate
+  version: "0.6.1"
+
+source:
+  fn: illuminate-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/illuminate/illuminate-0.6.1.tar.gz
+  md5: 5123720f887067acbc5fb43788dd1fc3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - illuminate = illuminate:main
+    #
+    # Would create an entry point called illuminate that calls illuminate.main()
+
+    - illuminate = illuminate.__main__:collect_args
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bitstring >=3.1.0
+    - docopt
+    - numpy >=1.6.2
+    - pandas >=0.14
+    - openpyxl ==1.8.6
+    - xmltodict
+
+  run:
+    - python
+    - bitstring >=3.1.0
+    - docopt
+    - numpy >=1.6.2
+    - pandas >=0.14
+    - openpyxl ==1.8.6
+    - xmltodict
+
+test:
+  # Python imports
+  imports:
+    - illuminate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - illuminate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/invitae/illuminate
+  license: MIT
+  summary: 'Analytics toolkit for Illumina sequencer metrics.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

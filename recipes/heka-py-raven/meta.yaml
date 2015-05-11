@@ -1,0 +1,62 @@
+package:
+  name: heka-py-raven
+  version: "0.7"
+
+source:
+  fn: heka-py-raven-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/h/heka-py-raven/heka-py-raven-0.7.tar.gz
+  md5: 86e9229cd3e5a22e6ae64b711d3d19f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - heka-py-raven = heka-py-raven:main
+    #
+    # Would create an entry point called heka-py-raven that calls heka-py-raven.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - heka-py >=0.30.3
+
+  run:
+    - python
+    - heka-py >=0.30.3
+
+test:
+  # Python imports
+  imports:
+    - heka_raven
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla-services/heka-py-raven
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'A heka-py plugin to send exceptions to Sentry'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

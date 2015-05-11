@@ -1,0 +1,66 @@
+package:
+  name: litex.cxpool
+  version: "1.0.2"
+
+source:
+  fn: litex.cxpool-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/litex.cxpool/litex.cxpool-1.0.2.tar.gz
+  md5: 25f8ae673f3b40e13486fb816a30f735
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - litex.cxpool = litex.cxpool:main
+    #
+    # Would create an entry point called litex.cxpool that calls litex.cxpool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cx_oracle
+    - sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - cx_oracle
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - litex
+    - litex.cxpool
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://code.launchpad.net/litex.cxpool
+  license: BSD like, see http://repoze.org/license.html
+  summary: 'Native Oracle Session Pool implementation for SQLAlchemy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

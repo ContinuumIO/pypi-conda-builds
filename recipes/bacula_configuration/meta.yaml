@@ -1,0 +1,85 @@
+package:
+  name: bacula_configuration
+  version: "0.8"
+
+source:
+  fn: bacula_configuration-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/b/bacula_configuration/bacula_configuration-0.8.tar.gz
+  md5: c6944358b759a57761c29198c494bf65
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bacula_configuration = bacula_configuration:main
+    #
+    # Would create an entry point called bacula_configuration that calls bacula_configuration.main()
+
+    - manage_clients = bacula_tools.client:main
+    - manage_catalogs = bacula_tools.catalog:main
+    - manage_devices = bacula_tools.device:main
+    - manage_filesets = bacula_tools.fileset:main
+    - manage_pools = bacula_tools.pool:main
+    - manage_storage = bacula_tools.storage:main
+    - manage_messages = bacula_tools.messages:main
+    - manage_schedules = bacula_tools.schedule:main
+    - manage_jobs = bacula_tools.job:main
+    - manage_directors = bacula_tools.directors:main
+    - manage_scripts = bacula_tools.scripts:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-python
+
+  run:
+    - python
+    - mysql-python
+
+test:
+  # Python imports
+  imports:
+    - bacula_configuration
+    - bacula_tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - manage_clients --help
+    - manage_catalogs --help
+    - manage_devices --help
+    - manage_filesets --help
+    - manage_pools --help
+    - manage_storage --help
+    - manage_messages --help
+    - manage_schedules --help
+    - manage_jobs --help
+    - manage_directors --help
+    - manage_scripts --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gallew.org/bacula_configuration
+  license: GNU General Public License (GPL)
+  summary: 'Bacula configuration management tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

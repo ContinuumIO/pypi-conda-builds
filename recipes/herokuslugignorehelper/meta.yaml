@@ -1,0 +1,62 @@
+package:
+  name: herokuslugignorehelper
+  version: "0.2"
+
+source:
+  fn: herokuslugignorehelper-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/herokuslugignorehelper/herokuslugignorehelper-0.2.tar.gz
+  md5: e6cf68ec6e8359f23a00984f3b48e55e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - herokuslugignorehelper = herokuslugignorehelper:main
+    #
+    # Would create an entry point called herokuslugignorehelper that calls herokuslugignorehelper.main()
+
+    - herokuslugignorehelper = herokuslugignorehelper.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - herokuslugignorehelper
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - herokuslugignorehelper --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/espenak/herokuslugignorehelper
+  license: BSD
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

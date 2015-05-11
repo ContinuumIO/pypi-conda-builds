@@ -1,0 +1,76 @@
+package:
+  name: geobricksdbms
+  version: "0.1.5"
+
+source:
+  fn: GeobricksDBMS-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksDBMS/GeobricksDBMS-0.1.5.tar.gz
+  md5: 02d20bb14a98f27590aff273c8f6e9f9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksdbms = geobricksdbms:main
+    #
+    # Would create an entry point called geobricksdbms that calls geobricksdbms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - flask
+    - flask-cors
+    - pymongo
+    - psycopg2
+    - simplejson
+
+  run:
+    - python
+    - watchdog
+    - flask
+    - flask-cors
+    - pymongo
+    - psycopg2
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - geobricks_dbms
+    - geobricks_dbms.config
+    - geobricks_dbms.core
+    - geobricks_dbms.rest
+    - geobricksdbms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksDBMS/
+  license: LICENSE.txt
+  summary: 'Geobricks DB Management System.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,133 @@
+package:
+  name: pootle
+  version: "2.5.1.1"
+
+source:
+  fn: Pootle-2.5.1.1.tar.bz2
+  url: https://pypi.python.org/packages/source/P/Pootle/Pootle-2.5.1.1.tar.bz2
+  md5: c2916cfa5de3a99d5fab4ad09f5e4f18
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pootle = pootle:main
+    #
+    # Would create an entry point called pootle that calls pootle.main()
+
+    - pootle = pootle.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4.10,<1.5
+    - django-voting ==0.1
+    - south >=0.7.6,<0.8
+    - django-assets >=0.8
+    - django-taggit >=0.10,<0.11.2
+    - argparse
+    - cssmin >=0.1.4
+    - lxml >=2.1.4
+    - translate-toolkit >=1.11.0
+
+  run:
+    - python
+    - django >=1.4.10,<1.5
+    - django-voting ==0.1
+    - south >=0.7.6,<0.8
+    - django-assets >=0.8
+    - django-taggit >=0.10,<0.11.2
+    - argparse
+    - cssmin >=0.1.4
+    - lxml >=2.1.4
+    - translate-toolkit >=1.11.0
+
+test:
+  # Python imports
+  imports:
+    - pootle
+    - pootle.apps
+    - pootle.apps.contact_form_i18n
+    - pootle.apps.djblets
+    - pootle.apps.djblets.siteconfig
+    - pootle.apps.djblets.util
+    - pootle.apps.djblets.util.templatetags
+    - pootle.apps.pootle_app
+    - pootle.apps.pootle_app.management
+    - pootle.apps.pootle_app.management.commands
+    - pootle.apps.pootle_app.migrations
+    - pootle.apps.pootle_app.models
+    - pootle.apps.pootle_app.views
+    - pootle.apps.pootle_app.views.admin
+    - pootle.apps.pootle_app.views.index
+    - pootle.apps.pootle_autonotices
+    - pootle.apps.pootle_language
+    - pootle.apps.pootle_language.migrations
+    - pootle.apps.pootle_misc
+    - pootle.apps.pootle_misc.templatetags
+    - pootle.apps.pootle_misc.upgrade
+    - pootle.apps.pootle_notifications
+    - pootle.apps.pootle_notifications.migrations
+    - pootle.apps.pootle_notifications.templatetags
+    - pootle.apps.pootle_profile
+    - pootle.apps.pootle_profile.migrations
+    - pootle.apps.pootle_profile.templatetags
+    - pootle.apps.pootle_project
+    - pootle.apps.pootle_project.migrations
+    - pootle.apps.pootle_statistics
+    - pootle.apps.pootle_statistics.migrations
+    - pootle.apps.pootle_store
+    - pootle.apps.pootle_store.migrations
+    - pootle.apps.pootle_store.templatetags
+    - pootle.apps.pootle_tagging
+    - pootle.apps.pootle_tagging.migrations
+    - pootle.apps.pootle_tagging.templatetags
+    - pootle.apps.pootle_terminology
+    - pootle.apps.pootle_terminology.templatetags
+    - pootle.apps.pootle_translationproject
+    - pootle.apps.pootle_translationproject.migrations
+    - pootle.apps.pootle_translationproject.templatetags
+    - pootle.apps.profiles
+    - pootle.apps.registration
+    - pootle.apps.staticpages
+    - pootle.apps.staticpages.migrations
+    - pootle.apps.staticpages.templatetags
+    - pootle.core
+    - pootle.core.auth
+    - pootle.core.markup
+    - pootle.i18n
+    - pootle.middleware
+    - pootle.scripts
+    - pootle.scripts.ext_actions
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pootle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pootle.translatehouse.org
+  license: GNU General Public License (GPL)
+  summary: 'An online collaborative localization tool.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

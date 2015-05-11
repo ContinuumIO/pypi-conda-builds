@@ -1,0 +1,77 @@
+package:
+  name: infi.run_as
+  version: "0.1.8"
+
+source:
+  fn: infi.run_as-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.run_as/infi.run_as-0.1.8.tar.gz
+  md5: b75d11b9a01f1c3e08a393fc702ff93f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.run_as = infi.run_as:main
+    #
+    # Would create an entry point called infi.run_as that calls infi.run_as.main()
+
+    - run_as = infi.run_as:run_as
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.cwrap
+    - infi.execute
+    - infi.instruct
+    - infi.pyutils
+    - infi.winver
+    - mock
+    - setuptools
+
+  run:
+    - python
+    - infi.cwrap
+    - infi.execute
+    - infi.instruct
+    - infi.pyutils
+    - infi.winver
+    - mock
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.run_as
+    - infi.run_as.c_api
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - run_as --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.run_as
+  license: Python Software Foundation License
+  summary: 'run_as utility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

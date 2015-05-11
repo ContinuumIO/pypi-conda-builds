@@ -1,0 +1,66 @@
+package:
+  name: shanbay-assistant
+  version: "0.2.6"
+
+source:
+  fn: shanbay-assistant-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/shanbay-assistant/shanbay-assistant-0.2.6.tar.gz
+  md5: e6dded46577a51a97aa8d2d944eaf06d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shanbay-assistant = shanbay-assistant:main
+    #
+    # Would create an entry point called shanbay-assistant that calls shanbay-assistant.main()
+
+    - shanbay_assistant = shanbay_assistant.assistant:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - shanbay ==0.3.2
+
+  run:
+    - python
+    - argparse
+    - shanbay ==0.3.2
+
+test:
+  # Python imports
+  imports:
+    - shanbay_assistant
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - shanbay_assistant --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mozillazg/python-shanbay-team-assistant
+  license: MIT License
+  summary: 'shanbay.com team assistant'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

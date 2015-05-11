@@ -1,0 +1,76 @@
+package:
+  name: lazr.sshserver
+  version: "0.1.1"
+
+source:
+  fn: lazr.sshserver-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazr.sshserver/lazr.sshserver-0.1.1.tar.gz
+  md5: ad75c3c0b37fe4d72bbe79e05321be02
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazr.sshserver = lazr.sshserver:main
+    #
+    # Would create an entry point called lazr.sshserver that calls lazr.sshserver.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pyasn1
+    - pycrypto
+    - setuptools
+    - twisted
+    - zope.component
+    - zope.event
+    - zope.interface
+
+  run:
+    - python
+    - pyasn1
+    - pycrypto
+    - setuptools
+    - twisted
+    - zope.component
+    - zope.event
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - lazr
+    - lazr.sshserver
+    - lazr.sshserver.docs
+    - lazr.sshserver.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lazr.sshserver
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'The Launchpad SSH server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,61 @@
+package:
+  name: saferedisqueue
+  version: "4.0b0"
+
+source:
+  fn: saferedisqueue-4.0b0.tar.gz
+  url: https://pypi.python.org/packages/source/s/saferedisqueue/saferedisqueue-4.0b0.tar.gz
+  md5: ee832b1b8de8228ddb7876514cedd6c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - saferedisqueue = saferedisqueue:main
+    #
+    # Would create an entry point called saferedisqueue that calls saferedisqueue.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - redis >=2.7.6,<2.11
+
+  run:
+    - python
+    - redis >=2.7.6,<2.11
+
+test:
+  # Python imports
+  imports:
+    - saferedisqueue
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hellp/saferedisqueue
+  license: BSD License
+  summary: 'A small wrapper around Redis that provides access to a FIFO queue.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

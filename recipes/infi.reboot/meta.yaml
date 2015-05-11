@@ -1,0 +1,67 @@
+package:
+  name: infi.reboot
+  version: "0.2.9"
+
+source:
+  fn: infi.reboot-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.reboot/infi.reboot-0.2.9.tar.gz
+  md5: a1c50d7cba1093998d2d99eca6aa3112
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.reboot = infi.reboot:main
+    #
+    # Would create an entry point called infi.reboot that calls infi.reboot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.execute
+    - infi.pyutils
+    - setuptools
+
+  run:
+    - python
+    - infi.execute
+    - infi.pyutils
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.reboot
+    - infi.reboot.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.reboot
+  license: Python Software Foundation License
+  summary: 'A cross-platform module for handling reboot-pending operations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

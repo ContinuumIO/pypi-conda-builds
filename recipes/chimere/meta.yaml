@@ -1,0 +1,86 @@
+package:
+  name: chimere
+  version: "2.0.3"
+
+source:
+  fn: chimere-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/chimere/chimere-2.0.3.tar.gz
+  md5: 36bb51623ea4b58e20da538ec142dbab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chimere = chimere:main
+    #
+    # Would create an entry point called chimere that calls chimere.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.4.99
+    - beautifulsoup
+    - psycopg2
+    - pil
+    - lxml
+    - south >=0.7.3,<0.7.99
+    - simplejson
+    - feedparser
+    - django-tinymce
+
+  run:
+    - python
+    - django >=1.4,<1.4.99
+    - beautifulsoup
+    - psycopg2
+    - pil
+    - lxml
+    - south >=0.7.3,<0.7.99
+    - simplejson
+    - feedparser
+    - django-tinymce
+
+test:
+  # Python imports
+  imports:
+    - chimere
+    - chimere.external_utils
+    - chimere.management
+    - chimere.management.commands
+    - chimere.migrations
+    - chimere.scripts
+    - chimere.templatetags
+    - chimere_brest
+    - chimere_quiberon
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.peacefrogs.net/nim/chimere/
+  license: GPL v3 licence, see COPYING
+  summary: 'Chimere is a kind of online \xe2\x80\x9cmashup\xe2\x80\x9d which is designed to aggregate geographic data from several sources. Chimere gets a map from OpenStreetMap and display other data added by users. Datas are freely submitted by visitors and then validated by an administrator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

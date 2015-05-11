@@ -1,0 +1,69 @@
+package:
+  name: cydrahgwebdir
+  version: "0.2.0"
+
+source:
+  fn: CydraHgWebdir-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/C/CydraHgWebdir/CydraHgWebdir-0.2.0.tar.gz
+  md5: 37b8d222d5f91614e522d351a445c7d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cydrahgwebdir = cydrahgwebdir:main
+    #
+    # Would create an entry point called cydrahgwebdir that calls cydrahgwebdir.main()
+
+    - cydra-hgwebdird = cydraplugins.hgwebdir:standalone_serve
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cydra >=0.1
+    - mercurial
+
+  run:
+    - python
+    - setuptools
+    - cydra >=0.1
+    - mercurial
+
+test:
+  # Python imports
+  imports:
+    - cydrahgwebdir
+    - cydraplugins
+    - cydraplugins.hgwebdir
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cydra-hgwebdird --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cydra.org
+  license: GPL
+  summary: 'Cydra plugin for hgwebdir'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

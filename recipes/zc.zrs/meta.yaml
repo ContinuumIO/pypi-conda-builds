@@ -1,0 +1,76 @@
+package:
+  name: zc.zrs
+  version: "2.5.3"
+
+source:
+  fn: zc.zrs-2.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.zrs/zc.zrs-2.5.3.tar.gz
+  md5: 3b65605174bd1bdb269916b7deeef2aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.zrs = zc.zrs:main
+    #
+    # Would create an entry point called zc.zrs that calls zc.zrs.main()
+
+    - zrsmonitor-script=zc.zrs.monitor:main
+    - last-zeo-transaction=zc.zrs.last:main
+    - zrs-nagios=zc.zrs.nagios:basic
+    - zkzrs-nagios=zc.zrs.nagios:zk
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zodb
+    - twisted
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zodb
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.zrs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zrsmonitor-script --help
+    - last-zeo-transaction --help
+    - zrs-nagios --help
+    - zkzrs-nagios --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'ZODB Replicated Storage'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

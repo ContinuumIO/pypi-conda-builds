@@ -1,0 +1,77 @@
+package:
+  name: django-multilingual-initiatives
+  version: "1.0"
+
+source:
+  fn: django-multilingual-initiatives-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-multilingual-initiatives/django-multilingual-initiatives-1.0.tar.gz
+  md5: d74f755d8e21e501164f8c255042f838
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-multilingual-initiatives = django-multilingual-initiatives:main
+    #
+    # Would create an entry point called django-multilingual-initiatives that calls django-multilingual-initiatives.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - south
+    - django-libs
+    - django-filer
+    - pillow
+    - django-multilingual-orgs
+    - django-people
+
+  run:
+    - python
+    - django
+    - south
+    - django-libs
+    - django-filer
+    - pillow
+    - django-multilingual-orgs
+    - django-people
+
+test:
+  # Python imports
+  imports:
+    - multilingual_initiatives
+    - multilingual_initiatives.migrations
+    - multilingual_initiatives.tests
+    - multilingual_initiatives.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bitmazk/django-multilingual-initiatives
+  license: The MIT License
+  summary: 'An app for showing localized versions of initiatives. E.g. as plugin in a blog\npost.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

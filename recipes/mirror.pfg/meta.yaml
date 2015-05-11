@@ -1,0 +1,66 @@
+package:
+  name: mirror.pfg
+  version: "0.2.2"
+
+source:
+  fn: mirror.pfg-0.2.2.zip
+  url: https://pypi.python.org/packages/source/m/mirror.pfg/mirror.pfg-0.2.2.zip
+  md5: c17ccad9014a6d5afc9cbca3ffb69d0e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mirror.pfg = mirror.pfg:main
+    #
+    # Would create an entry point called mirror.pfg that calls mirror.pfg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.testing
+    - ore.contentmirror
+
+  run:
+    - python
+    - setuptools
+    - zope.testing
+    - ore.contentmirror
+
+test:
+  # Python imports
+  imports:
+    - mirror
+    - mirror.pfg
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://contentmirror.googlecode.com
+  license: GPL
+  summary: 'Extension for Content Mirror to Support Plone Form Gen'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

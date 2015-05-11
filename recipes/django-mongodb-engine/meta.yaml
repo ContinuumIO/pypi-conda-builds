@@ -1,0 +1,68 @@
+package:
+  name: django-mongodb-engine
+  version: "0.5.1"
+
+source:
+  fn: django-mongodb-engine-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mongodb-engine/django-mongodb-engine-0.5.1.tar.gz
+  md5: 4f251075f976279e1e22ef51f3113f4f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-mongodb-engine = django-mongodb-engine:main
+    #
+    # Would create an entry point called django-mongodb-engine that calls django-mongodb-engine.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+    - djangotoolbox >=1.6.0
+
+  run:
+    - python
+    - pymongo
+    - djangotoolbox >=1.6.0
+
+test:
+  # Python imports
+  imports:
+    - django_mongodb_engine
+    - django_mongodb_engine.contrib
+    - django_mongodb_engine.contrib.search
+    - django_mongodb_engine.management
+    - django_mongodb_engine.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://django-nonrel.org
+  license: BSD License
+  summary: 'MongoDB backend for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

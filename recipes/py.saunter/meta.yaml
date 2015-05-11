@@ -1,0 +1,82 @@
+package:
+  name: py.saunter
+  version: "0.63"
+
+source:
+  fn: py.saunter-0.63.tar.gz
+  url: https://pypi.python.org/packages/source/p/py.saunter/py.saunter-0.63.tar.gz
+  md5: 8f1597b7cd9551a6bf44ba595c806436
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - py.saunter = py.saunter:main
+    #
+    # Would create an entry point called py.saunter that calls py.saunter.main()
+
+    - pysaunter = saunter.main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=2.3.5
+    - pytest-marks >=0.3
+    - pytest-xdist
+    - requests
+    - selenium >=2.33.0
+    - browsermob-proxy >=0.5.0
+    - harpy >=0.2.0
+
+  run:
+    - python
+    - pytest >=2.3.5
+    - pytest-marks >=0.3
+    - pytest-xdist
+    - requests
+    - selenium >=2.33.0
+    - browsermob-proxy >=0.5.0
+    - harpy >=0.2.0
+
+test:
+  # Python imports
+  imports:
+    - saunter
+    - saunter.generators
+    - saunter.po
+    - saunter.po.remotecontrol
+    - saunter.po.webdriver
+    - saunter.providers
+    - saunter.testcase
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pysaunter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Element-34/py.saunter
+  license: Apache Software License
+  summary: 'An opinionated Selenium framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

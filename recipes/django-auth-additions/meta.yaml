@@ -1,0 +1,64 @@
+package:
+  name: django-auth-additions
+  version: "0.7.3"
+
+source:
+  fn: django-auth-additions-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-auth-additions/django-auth-additions-0.7.3.tar.gz
+  md5: 7b7929b0283b454d11dddd428f281823
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-auth-additions = django-auth-additions:main
+    #
+    # Would create an entry point called django-auth-additions that calls django-auth-additions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django-admin-additions >=1.0.0
+
+  run:
+    - python
+    - django-admin-additions >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - auth_additions
+    - auth_additions.management
+    - auth_additions.management.commands
+    - auth_additions.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/schinckel/django-auth-additions
+  license: BSD License
+  summary: 'Additions (monkey-patches) to auth models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

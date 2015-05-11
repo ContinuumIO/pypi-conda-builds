@@ -1,0 +1,66 @@
+package:
+  name: openerp-hr-timesheet-invoice
+  version: "7.0.406"
+
+source:
+  fn: openerp-hr-timesheet-invoice-7.0.406.tar.gz
+  url: https://pypi.python.org/packages/source/o/openerp-hr-timesheet-invoice/openerp-hr-timesheet-invoice-7.0.406.tar.gz
+  md5: 0dacc52f643a3eb136f808b4bd6d879e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - openerp-hr-timesheet-invoice = openerp-hr-timesheet-invoice:main
+    #
+    # Would create an entry point called openerp-hr-timesheet-invoice that calls openerp-hr-timesheet-invoice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - openerp-account
+    - openerp-hr-timesheet
+
+  run:
+    - python
+    - openerp-account
+    - openerp-hr-timesheet
+
+test:
+  # Python imports
+  imports:
+    - openerp.addons.hr_timesheet_invoice
+    - openerp.addons.hr_timesheet_invoice.report
+    - openerp.addons.hr_timesheet_invoice.wizard
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.openerp.com
+  license: GNU Affero General Public License v3
+  summary: 'Invoice on Timesheets'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

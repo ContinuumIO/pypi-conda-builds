@@ -1,0 +1,71 @@
+package:
+  name: django-socketio
+  version: "0.3.9"
+
+source:
+  fn: django-socketio-0.3.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-socketio/django-socketio-0.3.9.tar.gz
+  md5: 8781a150d4b70856c2b571076ec400ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-socketio = django-socketio:main
+    #
+    # Would create an entry point called django-socketio that calls django-socketio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent-socketio ==0.2.1
+    - sphinx-me
+    - django >=1.4.8
+
+  run:
+    - python
+    - gevent-socketio ==0.2.1
+    - sphinx-me
+    - django >=1.4.8
+
+test:
+  # Python imports
+  imports:
+    - django_socketio
+    - django_socketio.example_project
+    - django_socketio.example_project.chat
+    - django_socketio.management
+    - django_socketio.management.commands
+    - django_socketio.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stephenmcd/django-socketio
+  license: BSD License
+  summary: 'A Django app providing the features required to use websockets with Django via Socket.IO'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

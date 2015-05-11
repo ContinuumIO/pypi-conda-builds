@@ -1,0 +1,63 @@
+package:
+  name: dipc
+  version: "0.4"
+
+source:
+  fn: dipc-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/dipc/dipc-0.4.tar.gz
+  md5: 653f95cca5d8219e127a9afa86d539ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dipc = dipc:main
+    #
+    # Would create an entry point called dipc that calls dipc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python_memcached >=1.48
+
+  run:
+    - python
+    - python_memcached >=1.48
+
+test:
+  # Python imports
+  imports:
+    - dipc
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/loucash/dipc
+  license: BSD License
+  summary: 'Distributed Inter-Process Communication Library implemented in Python and Memcache server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

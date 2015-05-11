@@ -1,0 +1,80 @@
+package:
+  name: mr.migrator
+  version: "1.0.1"
+
+source:
+  fn: mr.migrator-1.0.1.zip
+  url: https://pypi.python.org/packages/source/m/mr.migrator/mr.migrator-1.0.1.zip
+  md5: 49eabaddf1fd24dae1a1fd0d10992965
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.migrator = mr.migrator:main
+    #
+    # Would create an entry point called mr.migrator that calls mr.migrator.main()
+
+    - migrate = mr.migrator.runner:runner
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - collective.transmogrifier
+    - setuptools
+    - z3c.autoinclude
+    - zc.recipe.egg
+    - configparser
+    - zope.app.component
+
+  run:
+    - python
+    - setuptools
+    - collective.transmogrifier
+    - setuptools
+    - z3c.autoinclude
+    - zc.recipe.egg
+    - configparser
+    - zope.app.component
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.migrator
+    - mr.migrator.browser
+    - mr.migrator.recipe
+    - mr.migrator.recipe.tests
+    - mr.migrator.runner
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - migrate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/collective/mr.migrator
+  license: Zope Public License
+  summary: 'Drive-by transmogrifiction made easy!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

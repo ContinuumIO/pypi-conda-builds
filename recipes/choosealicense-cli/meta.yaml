@@ -1,0 +1,66 @@
+package:
+  name: choosealicense-cli
+  version: "0.2.0"
+
+source:
+  fn: choosealicense-cli-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/choosealicense-cli/choosealicense-cli-0.2.0.tar.gz
+  md5: c68c07fbb85faa80de12543ead2aff96
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - choosealicense-cli = choosealicense-cli:main
+    #
+    # Would create an entry point called choosealicense-cli that calls choosealicense-cli.main()
+
+    - license=choosealicense.main:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=4.0
+    - requests >=2.6.0
+
+  run:
+    - python
+    - click >=4.0
+    - requests >=2.6.0
+
+test:
+  # Python imports
+  imports:
+    - choosealicense
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - license --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lord63/choosealicense-cli
+  license: MIT License
+  summary: 'Bring http://choosealicense.com to your terminal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

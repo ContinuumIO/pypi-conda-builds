@@ -1,0 +1,65 @@
+package:
+  name: nx_spatial
+  version: "0.6dev"
+
+source:
+  fn: nx_spatial-0.6dev.tar.gz
+  url: https://pypi.python.org/packages/source/n/nx_spatial/nx_spatial-0.6dev.tar.gz
+  md5: e24c87702c6d6b597b4bd3d05df9a353
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nx_spatial = nx_spatial:main
+    #
+    # Would create an entry point called nx_spatial that calls nx_spatial.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - networkx >=1.2
+
+  run:
+    - python
+    - setuptools
+    - networkx >=1.2
+
+test:
+  # Python imports
+  imports:
+    - nx_spatial
+    - nx_spatial.algorithms
+    - nx_spatial.readwrite
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/gallipoli/nx_spatial
+  license: MPL
+  summary: 'Additional GIS focused functions for networkx graphs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

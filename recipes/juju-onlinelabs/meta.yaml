@@ -1,0 +1,66 @@
+package:
+  name: juju-onlinelabs
+  version: "0.0.2"
+
+source:
+  fn: juju-onlinelabs-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/juju-onlinelabs/juju-onlinelabs-0.0.2.tar.gz
+  md5: 754c5328448fa3344861897c836b1eb0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - juju-onlinelabs = juju-onlinelabs:main
+    #
+    # Would create an entry point called juju-onlinelabs that calls juju-onlinelabs.main()
+
+    - juju-onlinelabs = juju_onlinelabs.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - requests
+
+  run:
+    - python
+    - pyyaml
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - juju_onlinelabs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - juju-onlinelabs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://onlinelabs.net
+  license: BSD
+  summary: 'Online Labs integration with juju'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

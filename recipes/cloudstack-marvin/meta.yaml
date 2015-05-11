@@ -1,0 +1,78 @@
+package:
+  name: cloudstack-marvin
+  version: "4.4.0"
+
+source:
+  fn: cloudstack-marvin-4.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudstack-marvin/cloudstack-marvin-4.4.0.tar.gz
+  md5: ddc8adea6c9c7c835aeaf1f4e7b7104a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudstack-marvin = cloudstack-marvin:main
+    #
+    # Would create an entry point called cloudstack-marvin that calls cloudstack-marvin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql-connector-python
+    - requests
+    - paramiko
+    - nose
+    - ddt >=0.4.0
+
+  run:
+    - python
+    - setuptools
+    - mysql-connector-python
+    - requests
+    - paramiko
+    - nose
+    - ddt >=0.4.0
+
+test:
+  # Python imports
+  imports:
+    - marvin
+    - marvin.cloudstackAPI
+    - marvin.integration
+    - marvin.integration.lib
+    - marvin.sandbox
+    - marvin.sandbox.advanced
+    - marvin.sandbox.advancedsg
+    - marvin.sandbox.basic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://builds.apache.org/job/cloudstack-marvin/
+  license: LICENSE.txt
+  summary: 'Marvin - Python client for Apache CloudStack'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

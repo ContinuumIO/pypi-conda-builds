@@ -1,0 +1,64 @@
+package:
+  name: django-modelish
+  version: "0.1"
+
+source:
+  fn: django-modelish-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-modelish/django-modelish-0.1.tar.gz
+  md5: 220c1f4d5e917d09778debeeda85cd45
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-modelish = django-modelish:main
+    #
+    # Would create an entry point called django-modelish that calls django-modelish.main()
+
+    - modelish = modelish.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+
+  run:
+    - python
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - modelish
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - modelish --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ptone/django-modelish
+  license: BSD License
+  summary: 'A simple markup and processor to make initial models.py less tedious'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

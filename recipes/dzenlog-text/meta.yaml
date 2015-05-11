@@ -1,0 +1,65 @@
+package:
+  name: dzenlog-text
+  version: "0.2.4"
+
+source:
+  fn: dzenlog-text-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/dzenlog-text/dzenlog-text-0.2.4.tar.gz
+  md5: 52a3a8adc048a5fc34726d4a82b9f015
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dzenlog-text = dzenlog-text:main
+    #
+    # Would create an entry point called dzenlog-text that calls dzenlog-text.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-dzenlog >=0.2.0
+    - django-autolinks >=0.1.0
+
+  run:
+    - python
+    - django-dzenlog >=0.2.0
+    - django-autolinks >=0.1.0
+
+test:
+  # Python imports
+  imports:
+    - dzenlog_text
+    - dzenlog_text.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/svetlyak40wt/django-dzenlog-text/
+  license: BSD License
+  summary: 'This is a simple application for textual blog, based on the django-dzenlog application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

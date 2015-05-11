@@ -1,0 +1,79 @@
+package:
+  name: genemail
+  version: "0.1.13"
+
+source:
+  fn: genemail-0.1.13.tar.gz
+  url: https://pypi.python.org/packages/source/g/genemail/genemail-0.1.13.tar.gz
+  md5: e11bf4eb53e76ff5f07342f65d17bce5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - genemail = genemail:main
+    #
+    # Would create an entry point called genemail that calls genemail.main()
+
+    - genemail           = genemail.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6.24
+    - templatealchemy >=0.1.20
+    - cssutils >=0.9.10b1
+    - cssselect >=0.7.1
+    - py-dom-xpath >=0.1
+    - html2text >=3.200.3
+    - globre >=0.0.5
+    - asset >=0.0.4
+
+  run:
+    - python
+    - distribute >=0.6.24
+    - templatealchemy >=0.1.20
+    - cssutils >=0.9.10b1
+    - cssselect >=0.7.1
+    - py-dom-xpath >=0.1
+    - html2text >=3.200.3
+    - globre >=0.0.5
+    - asset >=0.0.4
+
+test:
+  # Python imports
+  imports:
+    - genemail
+    - genemail.modifier
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - genemail --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cadithealth/genemail
+  license: MIT License
+  summary: 'A templated email generation library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

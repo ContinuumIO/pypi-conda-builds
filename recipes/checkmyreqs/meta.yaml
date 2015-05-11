@@ -1,0 +1,63 @@
+package:
+  name: checkmyreqs
+  version: "0.3.1"
+
+source:
+  fn: checkmyreqs-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/checkmyreqs/checkmyreqs-0.3.1.tar.gz
+  md5: 4c9b09405c15e6166266eab7acfecb0f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkmyreqs = checkmyreqs:main
+    #
+    # Would create an entry point called checkmyreqs that calls checkmyreqs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blessings >=1.5,<1.6
+
+  run:
+    - python
+    - blessings >=1.5,<1.6
+
+test:
+  # Python imports
+  imports:
+    - checkmyreqs
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dustinmm80/checkmyreqs
+  license: MIT License
+  summary: 'Check your project requirements for Python version compatibility'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

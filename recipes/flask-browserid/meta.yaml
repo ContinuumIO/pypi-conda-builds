@@ -1,0 +1,67 @@
+package:
+  name: flask-browserid
+  version: "0.0.4"
+
+source:
+  fn: Flask-BrowserID-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-BrowserID/Flask-BrowserID-0.0.4.tar.gz
+  md5: 931cfcb3bcb57c4c4431281388c4b6e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-browserid = flask-browserid:main
+    #
+    # Would create an entry point called flask-browserid that calls flask-browserid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - flask-login
+    - requests
+
+  run:
+    - python
+    - flask
+    - flask-login
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - flaskext
+    - flaskext.browserid
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/garbados/flask-browserid
+  license: MIT
+  summary: 'Flask support for BrowserID authentication'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

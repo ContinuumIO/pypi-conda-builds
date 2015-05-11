@@ -1,0 +1,85 @@
+package:
+  name: frontera
+  version: "0.3.0.post0.dev2"
+
+source:
+  fn: frontera-0.3.0.post0.dev2.tar.gz
+  url: https://pypi.python.org/packages/source/f/frontera/frontera-0.3.0.post0.dev2.tar.gz
+  md5: cb3222075f824d6f0747f2ac572bf12c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - frontera = frontera:main
+    #
+    # Would create an entry point called frontera that calls frontera.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.8.0
+    - w3lib >=1.10.0
+    - tldextract >=1.5.1
+
+  run:
+    - python
+    - six >=1.8.0
+    - w3lib >=1.10.0
+    - tldextract >=1.5.1
+
+test:
+  # Python imports
+  imports:
+    - frontera
+    - frontera.contrib
+    - frontera.contrib.backends
+    - frontera.contrib.backends.memory
+    - frontera.contrib.backends.sqlalchemy
+    - frontera.contrib.middlewares
+    - frontera.contrib.requests
+    - frontera.contrib.scrapy
+    - frontera.contrib.scrapy.middlewares
+    - frontera.contrib.scrapy.middlewares.seeds
+    - frontera.contrib.scrapy.schedulers
+    - frontera.core
+    - frontera.logger
+    - frontera.logger.filters
+    - frontera.logger.formatters
+    - frontera.logger.handlers
+    - frontera.settings
+    - frontera.tests
+    - frontera.utils
+    - frontera.utils.graphs
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/scrapinghub/frontera
+  license: BSD License
+  summary: 'A flexible frontier for web crawlers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: django-stopwatch
+  version: "0.2"
+
+source:
+  fn: django-stopwatch-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-stopwatch/django-stopwatch-0.2.tar.gz
+  md5: 6d7ee75d7c57fa2600c6cb565ee6278f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-stopwatch = django-stopwatch:main
+    #
+    # Would create an entry point called django-stopwatch that calls django-stopwatch.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - python-statsd ==1.5.8
+
+  run:
+    - python
+    - django >=1.5
+    - python-statsd ==1.5.8
+
+test:
+  # Python imports
+  imports:
+    - stopwatch
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/z4r/django-stopwatch
+  license: GNU General Public License (GPL)
+  summary: 'Django Stopwatch\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

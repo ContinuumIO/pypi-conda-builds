@@ -1,0 +1,78 @@
+package:
+  name: cmsplugin-bootstrap
+  version: "0.1"
+
+source:
+  fn: cmsplugin-bootstrap-0.1.zip
+  url: https://pypi.python.org/packages/source/c/cmsplugin-bootstrap/cmsplugin-bootstrap-0.1.zip
+  md5: 4ba739e8e54c3131e60c395683af6f54
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-bootstrap = cmsplugin-bootstrap:main
+    #
+    # Would create an entry point called cmsplugin-bootstrap that calls cmsplugin-bootstrap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - django-cms >=3.0
+    - cmsplugin-filer
+
+  run:
+    - python
+    - django >=1.7
+    - django-cms >=3.0
+    - cmsplugin-filer
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_bootstrap
+    - cmsplugin_bootstrap.migrations
+    - cmsplugin_bootstrap.migrations_django
+    - cmsplugin_bootstrap.templatetags
+    - cmsplugin_bootstrap_carousel
+    - cmsplugin_bootstrap_carousel.migrations
+    - cmsplugin_bootstrap_carousel.migrations_django
+    - cmsplugin_bootstrap_grid
+    - cmsplugin_bootstrap_grid.migrations
+    - cmsplugin_bootstrap_grid.migrations_django
+    - cmsplugin_bootstrap_section
+    - cmsplugin_bootstrap_section.migrations
+    - cmsplugin_bootstrap_section.migrations_django
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/arkanister/cmsplugin-bootstrap
+  license: BSD License
+  summary: 'Bootstrap plugins to DjangoCMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

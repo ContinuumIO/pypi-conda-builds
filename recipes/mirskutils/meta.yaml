@@ -1,0 +1,78 @@
+package:
+  name: mirskutils
+  version: "0.2.0"
+
+source:
+  fn: mirskutils-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mirskutils/mirskutils-0.2.0.tar.gz
+  md5: 3b0bdf7fd8f82fda2bec25f538c23d8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mirskutils = mirskutils:main
+    #
+    # Would create an entry point called mirskutils that calls mirskutils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - jsonfield
+    - south
+    - django-compressor
+    - django-sekizai
+
+  run:
+    - python
+    - django
+    - jsonfield
+    - south
+    - django-compressor
+    - django-sekizai
+
+test:
+  # Python imports
+  imports:
+    - mirskutils
+    - mirskutils.api
+    - mirskutils.contentblocks
+    - mirskutils.contentblocks.templatetags
+    - mirskutils.management
+    - mirskutils.management.commands
+    - mirskutils.payments
+    - mirskutils.registration
+    - mirskutils.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mirskytech.github.io/mirskutils/
+  license: UNKNOWN
+  summary: 'Mirsky Utility Functions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

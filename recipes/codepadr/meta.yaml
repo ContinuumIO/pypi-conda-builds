@@ -1,0 +1,66 @@
+package:
+  name: codepadr
+  version: "0.9"
+
+source:
+  fn: codepadr-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/c/codepadr/codepadr-0.9.tar.gz
+  md5: 8e0e018e30b4236ef4561b16534a8d9d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codepadr = codepadr:main
+    #
+    # Would create an entry point called codepadr that calls codepadr.main()
+
+    - codepad = codepadr.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - requests
+
+  run:
+    - python
+    - argparse
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - codepadr
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - codepad --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/autoplectic/codepadr
+  license: LITL
+  summary: 'A tool for uploading to codepad.org'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

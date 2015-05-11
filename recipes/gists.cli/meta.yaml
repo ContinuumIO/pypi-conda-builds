@@ -1,0 +1,66 @@
+package:
+  name: gists.cli
+  version: "0.351"
+
+source:
+  fn: gists.cli-0.351.tar.gz
+  url: https://pypi.python.org/packages/source/g/gists.cli/gists.cli-0.351.tar.gz
+  md5: 481f64331e406fd719f7ea9f99cbb18a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gists.cli = gists.cli:main
+    #
+    # Would create an entry point called gists.cli that calls gists.cli.main()
+
+    - gists = gists_cli.gists:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - texttable
+
+  run:
+    - python
+    - requests
+    - texttable
+
+test:
+  # Python imports
+  imports:
+    - gists_cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gists --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/khilnani/gists.cli
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'A CLI to create, edit, view and list your GitHub Gists'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

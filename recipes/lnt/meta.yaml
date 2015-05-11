@@ -1,0 +1,80 @@
+package:
+  name: lnt
+  version: "0.4.0"
+
+source:
+  fn: LNT-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/L/LNT/LNT-0.4.0.tar.gz
+  md5: 86d9d6947fd1b1eda0d29d12dfcd3c82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lnt = lnt:main
+    #
+    # Would create an entry point called lnt that calls lnt.main()
+
+    - lnt = lnt.lnttool:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - flask
+
+  run:
+    - python
+    - sqlalchemy
+    - flask
+
+test:
+  # Python imports
+  imports:
+    - lnt
+    - lnt.db
+    - lnt.external
+    - lnt.external.stats
+    - lnt.formats
+    - lnt.lnttool
+    - lnt.server
+    - lnt.server.db
+    - lnt.server.reporting
+    - lnt.server.ui
+    - lnt.testing
+    - lnt.testing.util
+    - lnt.tests
+    - lnt.util
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lnt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://llvm.org
+  license: University of Illinois/NCSA Open Source License
+  summary: 'LLVM Nightly Test Infrastructure'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

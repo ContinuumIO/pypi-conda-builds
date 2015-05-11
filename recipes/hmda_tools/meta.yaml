@@ -1,0 +1,71 @@
+package:
+  name: hmda_tools
+  version: "0.1.4"
+
+source:
+  fn: hmda_tools-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/h/hmda_tools/hmda_tools-0.1.4.tar.gz
+  md5: 673b11783369b356d5fd20c2dd7ad967
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hmda_tools = hmda_tools:main
+    #
+    # Would create an entry point called hmda_tools that calls hmda_tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sh
+    - sqlalchemy
+    - sqlsoup
+    - requests
+    - argparse
+
+  run:
+    - python
+    - sh
+    - sqlalchemy
+    - sqlsoup
+    - requests
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - hmda_tools
+    - hmda_tools.data
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/cfpb/hmda-tools
+  license: Public domain
+  summary: 'Tools to make working with HMDA data easier.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

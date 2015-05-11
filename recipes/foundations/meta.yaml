@@ -1,0 +1,71 @@
+package:
+  name: foundations
+  version: "2.1.0"
+
+source:
+  fn: Foundations-2.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/Foundations/Foundations-2.1.0.tar.gz
+  md5: 4fc3a3b5c1899e70fae7002214b106cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - foundations = foundations:main
+    #
+    # Would create an entry point called foundations that calls foundations.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unittest2 >=0.5.1
+    - oncilla >=0.1.0
+
+  run:
+    - python
+    - unittest2 >=0.5.1
+    - oncilla >=0.1.0
+
+test:
+  # Python imports
+  imports:
+    - foundations
+    - foundations.globals
+    - foundations.tests
+    - foundations.tests.testsFoundations
+    - foundations.tests.testsFoundations.resources
+    - foundations.tests.testsFoundations.testsGlobals
+    - foundations.tests.testsFoundations.testsUi
+    - foundations.ui
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/KelSolaar/Foundations
+  license: GNU General Public License v3 (GPLv3)
+  summary: u'Foundations is the core package of Oncilla, Manager, Umbra, sIBL_GUI and sIBL_Reporter.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

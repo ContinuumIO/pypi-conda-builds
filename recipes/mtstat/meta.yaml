@@ -1,0 +1,64 @@
+package:
+  name: mtstat
+  version: "0.7.3"
+
+source:
+  fn: mtstat-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mtstat/mtstat-0.7.3.tar.gz
+  md5: 494e169c700de62ccb4b57bfdff4f665
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mtstat = mtstat:main
+    #
+    # Would create an entry point called mtstat that calls mtstat.main()
+
+    - mtstat = mtstat.mtstat:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - mtstat
+    - mtstat.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mtstat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://trac.inaugust.com/mtstat/
+  license: mtstat-mysql
+  summary: 'A versatile resource statistics tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

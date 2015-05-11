@@ -1,0 +1,96 @@
+package:
+  name: ionyweb
+  version: "0.3"
+
+source:
+  fn: ionyweb-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/ionyweb/ionyweb-0.3.tar.gz
+  md5: 770bcaf949ecce338ced2607aaf12945
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ionyweb = ionyweb:main
+    #
+    # Would create an entry point called ionyweb that calls ionyweb.main()
+
+    - ionyweb-manage = ionyweb.bin.manage:main
+    - ionyweb-quickstart = ionyweb.bin.quickstart:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - jinja2
+    - mysql-python
+    - pil
+    - pyyaml
+    - south
+    - django-floppyforms
+    - django-mptt
+    - django-tinymce ==1.5.1b2
+    - djangorestframework ==0.4.0
+    - dnspython
+    - python-magic
+    - requests
+    - django-less
+    - django-sekizai
+    - django-grappelli ==2.3.8
+
+  run:
+    - python
+    - django >=1.4
+    - jinja2
+    - mysql-python
+    - pil
+    - pyyaml
+    - south
+    - django-floppyforms
+    - django-mptt
+    - django-tinymce ==1.5.1b2
+    - djangorestframework ==0.4.0
+    - dnspython
+    - python-magic
+    - requests
+    - django-less
+    - django-sekizai
+    - django-grappelli ==2.3.8
+
+test:
+  # Python imports
+  imports:
+    - ionyweb
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ionyweb-manage --help
+    - ionyweb-quickstart --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ionyse/ionyweb
+  license: BSD License
+  summary: 'A javascript UI based on REST API CMS based on Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

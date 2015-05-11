@@ -1,0 +1,70 @@
+package:
+  name: jscribe
+  version: "0.2a5"
+
+source:
+  fn: JScribe-0.2a5.tar.gz
+  url: https://pypi.python.org/packages/source/J/JScribe/JScribe-0.2a5.tar.gz
+  md5: 67fde14a35ec10583490f3f63b63997b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jscribe = jscribe:main
+    #
+    # Would create an entry point called jscribe that calls jscribe.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - jscribe
+    - jscribe.conf
+    - jscribe.core
+    - jscribe.generators
+    - jscribe.generators.html
+    - jscribe.templates
+    - jscribe.templates.html
+    - jscribe.templates.html.default
+    - jscribe.test
+    - jscribe.test.tests_core
+    - jscribe.test.tests_utils
+    - jscribe.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mindbrave.com/jscribe/docs/
+  license: js.crossroads
+  summary: 'Documentation generator from source files, for any language.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

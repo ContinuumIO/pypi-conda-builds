@@ -1,0 +1,70 @@
+package:
+  name: infi.pyvmomi_wrapper
+  version: "0.1.10"
+
+source:
+  fn: infi.pyvmomi_wrapper-0.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.pyvmomi_wrapper/infi.pyvmomi_wrapper-0.1.10.tar.gz
+  md5: 50666012e86b2dc9d01b9b94b18a2a2f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.pyvmomi_wrapper = infi.pyvmomi_wrapper:main
+    #
+    # Would create an entry point called infi.pyvmomi_wrapper that calls infi.pyvmomi_wrapper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.pyutils
+    - munch
+    - pyvmomi
+    - setuptools
+
+  run:
+    - python
+    - infi.pyutils
+    - munch
+    - pyvmomi
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.pyvmomi_wrapper
+    - infi.pyvmomi_wrapper.esxcli
+    - infi.pyvmomi_wrapper.sms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.pyvmomi_wrapper
+  license: Python Software Foundation License
+  summary: 'Wrapper for pyvmomi'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

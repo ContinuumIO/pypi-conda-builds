@@ -1,0 +1,64 @@
+package:
+  name: django-pagelets
+  version: "0.10.0"
+
+source:
+  fn: django-pagelets-0.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pagelets/django-pagelets-0.10.0.tar.gz
+  md5: 275c32ac0246369d04baa8bfeca8c238
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pagelets = django-pagelets:main
+    #
+    # Would create an entry point called django-pagelets that calls django-pagelets.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pagelets
+    - pagelets.migrations
+    - pagelets.templatetags
+    - pagelets.tests
+    - pagelets.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/caktus/django-pagelets/
+  license: BSD License
+  summary: 'Simple, flexible app for integrating static, unstructured content in a Django site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

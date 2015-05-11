@@ -1,0 +1,87 @@
+package:
+  name: markwiki
+  version: "1.5"
+
+source:
+  fn: MarkWiki-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/M/MarkWiki/MarkWiki-1.5.tar.gz
+  md5: d1a70cd4276e415f792c24d27c1e78ab
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - markwiki = markwiki:main
+    #
+    # Would create an entry point called markwiki that calls markwiki.main()
+
+    - markwiki = markwiki.server:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse ==1.2.1
+    - flask ==0.10.1
+    - flask-login ==0.2.9
+    - flask-wtf ==0.9.4
+    - frozen-flask ==0.11
+    - markdown ==2.3.1
+    - pygments ==1.6
+    - requests ==2.6.0
+    - whoosh ==2.5.6
+
+  run:
+    - python
+    - argparse ==1.2.1
+    - flask ==0.10.1
+    - flask-login ==0.2.9
+    - flask-wtf ==0.9.4
+    - frozen-flask ==0.11
+    - markdown ==2.3.1
+    - pygments ==1.6
+    - requests ==2.6.0
+    - whoosh ==2.5.6
+
+test:
+  # Python imports
+  imports:
+    - markwiki
+    - markwiki.authn
+    - markwiki.models
+    - markwiki.search
+    - markwiki.storage
+    - markwiki.storage.fs
+    - markwiki.tests
+    - markwiki.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - markwiki --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mblayman/markwiki
+  license: BSD License
+  summary: 'A simple wiki using Markdown'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

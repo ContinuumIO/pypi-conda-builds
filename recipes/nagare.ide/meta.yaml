@@ -1,0 +1,68 @@
+package:
+  name: nagare.ide
+  version: "0.2.0"
+
+source:
+  fn: nagare.ide-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/nagare.ide/nagare.ide-0.2.0.tar.gz
+  md5: fa75796c05bfe21f78a61bfd505284c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nagare.ide = nagare.ide:main
+    #
+    # Would create an entry point called nagare.ide that calls nagare.ide.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments ==1.1
+    - nagare >=0.4.0
+
+  run:
+    - python
+    - setuptools
+    - pygments ==1.1
+    - nagare >=0.4.0
+
+test:
+  # Python imports
+  imports:
+    - conf
+    - nagare
+    - nagare.ide
+    - static
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.nagare.org
+  license: BSD License
+  summary: 'Nagare Web IDE'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

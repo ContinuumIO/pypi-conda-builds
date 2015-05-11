@@ -1,0 +1,64 @@
+package:
+  name: insecure_but_secure_enough
+  version: "0.0.4"
+
+source:
+  fn: insecure_but_secure_enough-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/insecure_but_secure_enough/insecure_but_secure_enough-0.0.4.tar.gz
+  md5: 6495e19610165be9aa1884f9139e06d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - insecure_but_secure_enough = insecure_but_secure_enough:main
+    #
+    # Would create an entry point called insecure_but_secure_enough that calls insecure_but_secure_enough.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto >=2.6
+    - simplejson
+
+  run:
+    - python
+    - pycrypto >=2.6
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - insecure_but_secure_enough
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jvanasco/insecure_but_secure_enough
+  license: MIT License
+  summary: "Lightweight tools for signing and encrypting cookies, urls and stuff. This package isn't really secure, but its secure enough for most needs."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

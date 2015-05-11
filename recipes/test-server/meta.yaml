@@ -1,0 +1,66 @@
+package:
+  name: test-server
+  version: "0.0.11"
+
+source:
+  fn: test-server-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/t/test-server/test-server-0.0.11.tar.gz
+  md5: 9bb48d26dde196969c1cb3ab353efec1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - test-server = test-server:main
+    #
+    # Would create an entry point called test-server that calls test-server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - six
+
+  run:
+    - python
+    - tornado
+    - six
+
+test:
+  # Python imports
+  imports:
+    - script
+    - test
+    - test_server
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Server to test HTTP clients'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: django-geojson-tiles
+  version: "0.1.2"
+
+source:
+  fn: django-geojson-tiles-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-geojson-tiles/django-geojson-tiles-0.1.2.tar.gz
+  md5: 58435c997f665a550ba3f37031326ceb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-geojson-tiles = django-geojson-tiles:main
+    #
+    # Would create an entry point called django-geojson-tiles that calls django-geojson-tiles.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - pil
+    - modestmaps ==1.4.1
+    - tilestache ==1.40.1
+
+  run:
+    - python
+    - django
+    - pil
+    - modestmaps ==1.4.1
+    - tilestache ==1.40.1
+
+test:
+  # Python imports
+  imports:
+    - geojson_tiles
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'GeoJSON tile view for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

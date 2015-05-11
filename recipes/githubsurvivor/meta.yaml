@@ -1,0 +1,84 @@
+package:
+  name: githubsurvivor
+  version: "0.0.1"
+
+source:
+  fn: githubsurvivor-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/githubsurvivor/githubsurvivor-0.0.1.tar.gz
+  md5: 6d3db58d5b9103a5b6c87945c6702417
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - githubsurvivor = githubsurvivor:main
+    #
+    # Would create an entry point called githubsurvivor that calls githubsurvivor.main()
+
+    - githubsurvivor=githubsurvivor.web:main
+    - githubsurvivor-sync=githubsurvivor.tasks.sync:main
+    - githubsurvivor-generate-config=githubsurvivor.config:generate
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.9
+    - mongoengine ==0.8.1
+    - python-dateutil ==2.1
+    - pygithub ==1.16.0
+    - iso8601 ==0.1.4
+    - jira-python ==0.13
+    - derpconf ==0.4.8
+
+  run:
+    - python
+    - flask ==0.9
+    - mongoengine ==0.8.1
+    - python-dateutil ==2.1
+    - pygithub ==1.16.0
+    - iso8601 ==0.1.4
+    - jira-python ==0.13
+    - derpconf ==0.4.8
+
+test:
+  # Python imports
+  imports:
+    - githubsurvivor
+    - githubsurvivor.backends
+    - githubsurvivor.models
+    - githubsurvivor.tasks
+    - githubsurvivor.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - githubsurvivor --help
+    - githubsurvivor-sync --help
+    - githubsurvivor-generate-config --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/99designs/githubsurvivor
+  license: MIT
+  summary: 'A retro-style bug leaderboard'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

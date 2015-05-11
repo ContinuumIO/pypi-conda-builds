@@ -1,0 +1,64 @@
+package:
+  name: cloudpool
+  version: "0.1.3"
+
+source:
+  fn: cloudpool-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudpool/cloudpool-0.1.3.tar.gz
+  md5: 6678c81a830424b4bd276c8c20f22b59
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudpool = cloudpool:main
+    #
+    # Would create an entry point called cloudpool that calls cloudpool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paramiko >=1.7.6
+    - threadpool >=1.2.7
+
+  run:
+    - python
+    - paramiko >=1.7.6
+    - threadpool >=1.2.7
+
+test:
+  # Python imports
+  imports:
+    - cloudpool
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/cloudpool/
+  license: New BSD
+  summary: 'pool of execution hosts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

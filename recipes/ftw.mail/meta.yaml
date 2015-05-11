@@ -1,0 +1,93 @@
+package:
+  name: ftw.mail
+  version: "2.3.1"
+
+source:
+  fn: ftw.mail-2.3.1.zip
+  url: https://pypi.python.org/packages/source/f/ftw.mail/ftw.mail-2.3.1.zip
+  md5: ffe36ab807a2e96569e94331b95ea181
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.mail = ftw.mail:main
+    #
+    # Would create an entry point called ftw.mail that calls ftw.mail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone.api
+    - plone.app.referenceablebehavior
+    - plone.registry
+    - plone.dexterity
+    - setuptools
+    - beautifulsoup !=4.0b
+    - plone.app.dexterity
+    - plone.app.registry
+    - plone.namedfile[blobs]
+    - collective.autopermission
+    - collective.dexteritytextindexer
+    - plone.directives.form
+    - ftw.upgrade >=1.11.0
+    - premailer
+
+  run:
+    - python
+    - setuptools
+    - plone.api
+    - plone.app.referenceablebehavior
+    - plone.registry
+    - plone.dexterity
+    - setuptools
+    - beautifulsoup !=4.0b
+    - plone.app.dexterity
+    - plone.app.registry
+    - plone.namedfile[blobs]
+    - collective.autopermission
+    - collective.dexteritytextindexer
+    - plone.directives.form
+    - ftw.upgrade >=1.11.0
+    - premailer
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.mail
+    - ftw.mail.tests
+    - ftw.mail.upgrades
+    - ftw.mail.upgrades.20150227185742_add_referenceablebehavior
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.mail
+  license: GPL2
+  summary: 'Provides a mail content type and a mail-in behavior'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

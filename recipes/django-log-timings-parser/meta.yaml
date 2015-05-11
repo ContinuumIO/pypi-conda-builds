@@ -1,0 +1,66 @@
+package:
+  name: django-log-timings-parser
+  version: "1.0.0"
+
+source:
+  fn: django-log-timings-parser-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-log-timings-parser/django-log-timings-parser-1.0.0.tar.gz
+  md5: 5c917b56ddab71ced2dbbeb804f3ffb1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-log-timings-parser = django-log-timings-parser:main
+    #
+    # Would create an entry point called django-log-timings-parser that calls django-log-timings-parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - apache-log-parser
+    - mock
+
+  run:
+    - python
+    - django
+    - apache-log-parser
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - log_timings_parser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPLv3
+  summary: 'Parses your web server access logs, resolves your URLs against your django project, and tells you what URLs take a long time'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

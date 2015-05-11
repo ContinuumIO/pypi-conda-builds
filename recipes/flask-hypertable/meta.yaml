@@ -1,0 +1,71 @@
+package:
+  name: flask-hypertable
+  version: "0.3.0"
+
+source:
+  fn: Flask-Hypertable-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Hypertable/Flask-Hypertable-0.3.0.tar.gz
+  md5: 21df031a208b688a547d95e19675b1ba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-hypertable = flask-hypertable:main
+    #
+    # Would create an entry point called flask-hypertable that calls flask-hypertable.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.1
+    - thrift >=0.9.1
+    - changelog >=0.3.4
+
+  run:
+    - python
+    - flask >=0.10.1
+    - thrift >=0.9.1
+    - changelog >=0.3.4
+
+test:
+  # Python imports
+  imports:
+    - flask_hypertable
+    - flask_hypertable.testsuite
+    - hypertable
+    - hyperthrift
+    - hyperthrift.gen
+    - hyperthrift.gen2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/coderfi/Flask-Hypertable
+  license: BSD License
+  summary: 'A Flask extension for Hypertable over Thrift.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

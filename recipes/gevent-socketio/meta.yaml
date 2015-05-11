@@ -1,0 +1,65 @@
+package:
+  name: gevent-socketio
+  version: "0.3.6"
+
+source:
+  fn: gevent-socketio-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/gevent-socketio/gevent-socketio-0.3.6.tar.gz
+  md5: 33f745d74885366a07da516c000854b6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gevent-socketio = gevent-socketio:main
+    #
+    # Would create an entry point called gevent-socketio that calls gevent-socketio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gevent
+    - gevent-websocket
+
+  run:
+    - python
+    - setuptools
+    - gevent
+    - gevent-websocket
+
+test:
+  # Python imports
+  imports:
+    - socketio
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/abourget/gevent-socketio
+  license: BSD License
+  summary: 'SocketIO server based on the Gevent pywsgi server, a Python network library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

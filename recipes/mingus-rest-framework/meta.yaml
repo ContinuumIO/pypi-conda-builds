@@ -1,0 +1,69 @@
+package:
+  name: mingus-rest-framework
+  version: "0.1"
+
+source:
+  fn: mingus-rest-framework-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mingus-rest-framework/mingus-rest-framework-0.1.tar.gz
+  md5: 20c9fad1826dda2b475abe1bfbb9533e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mingus-rest-framework = mingus-rest-framework:main
+    #
+    # Would create an entry point called mingus-rest-framework that calls mingus-rest-framework.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=4.0.2
+    - schematics >=1.0-0
+    - motor >=0.2
+
+  run:
+    - python
+    - tornado >=4.0.2
+    - schematics >=1.0-0
+    - motor >=0.2
+
+test:
+  # Python imports
+  imports:
+    - bckmodels
+    - mingus
+    - mingus.service
+    - services
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tgonzales/mingus
+  license: MIT License
+  summary: "Mingus is a small and flexible  restful framework on top of Tornado. It provides a simpler way to create RESTful API's."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

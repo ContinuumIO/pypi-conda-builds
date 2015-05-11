@@ -1,0 +1,98 @@
+package:
+  name: dimagi-utils
+  version: "1.2.1"
+
+source:
+  fn: dimagi-utils-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dimagi-utils/dimagi-utils-1.2.1.tar.gz
+  md5: 2e58cb97de3cc70d6f466f0f0f4c9930
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dimagi-utils = dimagi-utils:main
+    #
+    # Would create an entry point called dimagi-utils that calls dimagi-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonobject-couchdbkit
+    - django <1.7
+    - django-redis
+    - mock >=0.8.0
+    - openpyxl
+    - pillow
+    - python-dateutil
+    - pytz
+    - simplejson
+    - unittest2
+    - celery
+    - django-devserver
+
+  run:
+    - python
+    - jsonobject-couchdbkit
+    - django <1.7
+    - django-redis
+    - mock >=0.8.0
+    - openpyxl
+    - pillow
+    - python-dateutil
+    - pytz
+    - simplejson
+    - unittest2
+    - celery
+    - django-devserver
+
+test:
+  # Python imports
+  imports:
+    - dimagi
+    - dimagi.test_utils
+    - dimagi.utils
+    - dimagi.utils.couch
+    - dimagi.utils.couch.cache
+    - dimagi.utils.couch.cache.cache_core
+    - dimagi.utils.couch.debugdb
+    - dimagi.utils.data
+    - dimagi.utils.decorators
+    - dimagi.utils.dev
+    - dimagi.utils.django
+    - dimagi.utils.management
+    - dimagi.utils.management.commands
+    - dimagi.utils.tests
+    - dimagi.utils.timezones
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.dimagi.com/
+  license: UNKNOWN
+  summary: 'Dimagi Shared Utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,98 @@
+package:
+  name: folia-tools
+  version: "0.12.1.33"
+
+source:
+  fn: FoLiA-tools-0.12.1.33.tar.gz
+  url: https://pypi.python.org/packages/source/F/FoLiA-tools/FoLiA-tools-0.12.1.33.tar.gz
+  md5: b045027626715fa54081c8159442f291
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - folia-tools = folia-tools:main
+    #
+    # Would create an entry point called folia-tools that calls folia-tools.main()
+
+    - folia2txt = foliatools.folia2txt:main
+    - folia2annotatedtxt = foliatools.folia2annotatedtxt:main
+    - foliafreqlist = foliatools.foliafreqlist:main
+    - foliavalidator = foliatools.foliavalidator:main
+    - foliamerge = foliatools.foliamerge:main
+    - folia2columns = foliatools.folia2columns:main
+    - folia2dcoi = foliatools.folia2dcoi:main
+    - folia2html = foliatools.folia2html:main
+    - foliaquery = foliatools.foliaquery:main
+    - foliaquery1 = foliatools.foliaquery1:main
+    - foliatextcontent = foliatools.foliatextcontent:main
+    - dcoi2folia = foliatools.dcoi2folia:main
+    - rst2folia = foliatools.rst2folia:main
+    - foliacat = foliatools.foliacat:main
+    - folia2rst = foliatools.folia2rst:main
+    - foliacorrect = foliatools.foliacorrect:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pynlpl >=0.7.6
+    - lxml >=2.2
+    - docutils
+
+  run:
+    - python
+    - pynlpl >=0.7.6
+    - lxml >=2.2
+    - docutils
+
+test:
+  # Python imports
+  imports:
+    - foliatools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - folia2txt --help
+    - folia2annotatedtxt --help
+    - foliafreqlist --help
+    - foliavalidator --help
+    - foliamerge --help
+    - folia2columns --help
+    - folia2dcoi --help
+    - folia2html --help
+    - foliaquery --help
+    - foliaquery1 --help
+    - foliatextcontent --help
+    - dcoi2folia --help
+    - rst2folia --help
+    - foliacat --help
+    - folia2rst --help
+    - foliacorrect --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/proycon/folia
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'FoLiA-tools contains various Python-based command line tools for working with FoLiA XML (Format for Linguistic Annotation)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

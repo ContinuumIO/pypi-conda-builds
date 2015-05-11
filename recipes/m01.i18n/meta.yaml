@@ -1,0 +1,65 @@
+package:
+  name: m01.i18n
+  version: "0.5.0"
+
+source:
+  fn: m01.i18n-0.5.0.zip
+  url: https://pypi.python.org/packages/source/m/m01.i18n/m01.i18n-0.5.0.zip
+  md5: be20c61d37cd8df352650272f50b9718
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m01.i18n = m01.i18n:main
+    #
+    # Would create an entry point called m01.i18n that calls m01.i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - m01.mongo
+
+  run:
+    - python
+    - setuptools
+    - m01.mongo
+
+test:
+  # Python imports
+  imports:
+    - m01
+    - m01.i18n
+    - m01.i18n.testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/m01.i18n
+  license: Zope Public License
+  summary: 'i18n aware content base class for Zope3 using mongodb'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

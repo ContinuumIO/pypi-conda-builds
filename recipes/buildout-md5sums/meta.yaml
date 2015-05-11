@@ -1,0 +1,63 @@
+package:
+  name: buildout-md5sums
+  version: "0.1"
+
+source:
+  fn: buildout-md5sums-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildout-md5sums/buildout-md5sums-0.1.tar.gz
+  md5: fa376420d9659c62dd5d4088f6ba4e6c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildout-md5sums = buildout-md5sums:main
+    #
+    # Would create an entry point called buildout-md5sums that calls buildout-md5sums.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout <=1.5.1
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout <=1.5.1
+
+test:
+  # Python imports
+  imports:
+    - buildout_md5sums
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.python.org/pypi/buildout-md5sums
+  license: Beerware
+  summary: 'A zc.builout extension that allows you to specify and enforce md5 checksums for all downloads'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

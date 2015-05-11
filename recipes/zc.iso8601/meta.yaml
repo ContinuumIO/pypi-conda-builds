@@ -1,0 +1,66 @@
+package:
+  name: zc.iso8601
+  version: "0.2.0"
+
+source:
+  fn: zc.iso8601-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.iso8601/zc.iso8601-0.2.0.tar.gz
+  md5: b10c3cbe533f979db8ec9fd886a81ac0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.iso8601 = zc.iso8601:main
+    #
+    # Would create an entry point called zc.iso8601 that calls zc.iso8601.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pytz
+    - setuptools
+    - zope.testing
+
+  run:
+    - python
+    - pytz
+    - setuptools
+    - zope.testing
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.iso8601
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zc.iso8601/
+  license: Zope Public License
+  summary: 'ISO 8601 utility functions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

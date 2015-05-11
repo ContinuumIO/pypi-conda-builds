@@ -1,0 +1,68 @@
+package:
+  name: cotidia-import-export
+  version: "0.1.5"
+
+source:
+  fn: cotidia-import-export-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/cotidia-import-export/cotidia-import-export-0.1.5.tar.gz
+  md5: 3df63440ecc46b6f0ae0940059157226
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cotidia-import-export = cotidia-import-export:main
+    #
+    # Would create an entry point called cotidia-import-export that calls cotidia-import-export.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tablib
+    - django >=1.4.2
+    - diff-match-patch
+
+  run:
+    - python
+    - tablib
+    - django >=1.4.2
+    - diff-match-patch
+
+test:
+  # Python imports
+  imports:
+    - import_export
+    - import_export.formats
+    - import_export.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Cotidia/cotidia-import-export
+  license: BSD License
+  summary: 'Django application and library for importing and exportingdata with included admin integration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

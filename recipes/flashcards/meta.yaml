@@ -1,0 +1,66 @@
+package:
+  name: flashcards
+  version: "2.4"
+
+source:
+  fn: flashcards-2.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/flashcards/flashcards-2.4.tar.gz
+  md5: 2738a16186868d4ceb9b1436a97e82af
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flashcards = flashcards:main
+    #
+    # Would create an entry point called flashcards that calls flashcards.main()
+
+    - flashcards = flashcards.flashcards:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - configobj
+
+  run:
+    - python
+    - argparse
+    - configobj
+
+test:
+  # Python imports
+  imports:
+    - flashcards
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flashcards --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/pyflashcards
+  license: GNU General Public License (GPL)
+  summary: 'A simple command line flashcards utility, similar to physical flashcards.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

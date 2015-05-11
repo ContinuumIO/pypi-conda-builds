@@ -1,0 +1,64 @@
+package:
+  name: django-audiotracks
+  version: "0.2.4"
+
+source:
+  fn: django-audiotracks-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-audiotracks/django-audiotracks-0.2.4.tar.gz
+  md5: 139cf891b9c5c3b51a483a61e4134e95
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-audiotracks = django-audiotracks:main
+    #
+    # Would create an entry point called django-audiotracks that calls django-audiotracks.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mutagen ==1.22
+    - pillow
+
+  run:
+    - python
+    - mutagen ==1.22
+    - pillow
+
+test:
+  # Python imports
+  imports:
+    - audiotracks
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/amarandon/django-audiotracks
+  license: MIT License
+  summary: 'A pluggable Django app to publish audio tracks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

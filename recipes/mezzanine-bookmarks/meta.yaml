@@ -1,0 +1,70 @@
+package:
+  name: mezzanine-bookmarks
+  version: "0.1"
+
+source:
+  fn: mezzanine-bookmarks-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mezzanine-bookmarks/mezzanine-bookmarks-0.1.tar.gz
+  md5: 5b2b12a70a5ecd8b48f1fb4293ffd712
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mezzanine-bookmarks = mezzanine-bookmarks:main
+    #
+    # Would create an entry point called mezzanine-bookmarks that calls mezzanine-bookmarks.main()
+
+    - bookmarks = bookmarks.utils.runner:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mezzanine
+    - logan
+    - django
+
+  run:
+    - python
+    - mezzanine
+    - logan
+    - django
+
+test:
+  # Python imports
+  imports:
+    - bookmarks
+    - bookmarks.site
+    - bookmarks.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bookmarks --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/adieu/mezzanine-bookmarks
+  license: BSD
+  summary: 'Bookmark Service built on Django and Mezzanine.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

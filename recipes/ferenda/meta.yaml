@@ -1,0 +1,105 @@
+package:
+  name: ferenda
+  version: "0.3.0"
+
+source:
+  fn: ferenda-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/ferenda/ferenda-0.3.0.tar.gz
+  md5: 0dea0c445ffd871821fc58e67d8851c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ferenda = ferenda:main
+    #
+    # Would create an entry point called ferenda that calls ferenda.main()
+
+    - ferenda-setup = ferenda.manager:runsetup
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 >=4.3.0
+    - jsmin >=2.0.2
+    - cssmin >=0.2.0
+    - lxml >=3.2.0
+    - rdflib >=4.0.1
+    - html5lib >=1.0b1
+    - rdfextras >=0.4
+    - rdflib-jsonld >=0.2
+    - requests >=1.2.0
+    - whoosh >=2.4.1
+    - six >=1.4.0
+    - docutils >=0.11
+    - layeredconfig >=0.2.1
+    - responses >=0.3.0
+    - simpleparse >=2.1.1
+    - pyparsing <=1.5.7
+    - grako >=3.4.0
+
+  run:
+    - python
+    - beautifulsoup4 >=4.3.0
+    - jsmin >=2.0.2
+    - cssmin >=0.2.0
+    - lxml >=3.2.0
+    - rdflib >=4.0.1
+    - html5lib >=1.0b1
+    - rdfextras >=0.4
+    - rdflib-jsonld >=0.2
+    - requests >=1.2.0
+    - whoosh >=2.4.1
+    - six >=1.4.0
+    - docutils >=0.11
+    - layeredconfig >=0.2.1
+    - responses >=0.3.0
+    - simpleparse >=2.1.1
+    - pyparsing <=1.5.7
+    - grako >=3.4.0
+
+test:
+  # Python imports
+  imports:
+    - ferenda
+    - ferenda.elements
+    - ferenda.sources
+    - ferenda.sources.general
+    - ferenda.sources.legal
+    - ferenda.sources.legal.eu
+    - ferenda.sources.legal.se
+    - ferenda.sources.tech
+    - ferenda.thirdparty
+    - ferenda.thirdparty.mw
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ferenda-setup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/staffanm/ferenda/
+  license: BSD License
+  summary: 'Transform unstructured document collections to structured Linked Data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

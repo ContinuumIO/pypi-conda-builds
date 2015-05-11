@@ -1,0 +1,66 @@
+package:
+  name: buildout.recipe.uwsgi
+  version: "0.1.0"
+
+source:
+  fn: buildout.recipe.uwsgi-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/buildout.recipe.uwsgi/buildout.recipe.uwsgi-0.1.0.tar.gz
+  md5: 1a54287509cb4e6b410fa419de7e1091
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - buildout.recipe.uwsgi = buildout.recipe.uwsgi:main
+    #
+    # Would create an entry point called buildout.recipe.uwsgi that calls buildout.recipe.uwsgi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - zc.recipe.egg
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - buildout
+    - buildout.recipe
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lcosmin/buildout.recipe.uwsgi
+  license: BSD License
+  summary: 'Buildout recipe downloading, compiling and configuring uWSGI.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: isotoma.plone.defang
+  version: "1.0.3"
+
+source:
+  fn: isotoma.plone.defang-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/isotoma.plone.defang/isotoma.plone.defang-1.0.3.tar.gz
+  md5: e3b20608ebc4bae970bf4067db0006ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isotoma.plone.defang = isotoma.plone.defang:main
+    #
+    # Would create an entry point called isotoma.plone.defang that calls isotoma.plone.defang.main()
+
+    - defang=isotoma.plone.defang:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb3
+
+  run:
+    - python
+    - zodb3
+
+test:
+  # Python imports
+  imports:
+    - isotoma
+    - isotoma.plone
+    - isotoma.plone.defang
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - defang --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache Software License
+  summary: 'modify ZODBs for environment migration'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

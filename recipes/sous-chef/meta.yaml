@@ -1,0 +1,68 @@
+package:
+  name: sous-chef
+  version: "2.2.0"
+
+source:
+  fn: sous-chef-2.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sous-chef/sous-chef-2.2.0.tar.gz
+  md5: 0970df9475db2ad04454cb3e576c659e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sous-chef = sous-chef:main
+    #
+    # Would create an entry point called sous-chef that calls sous-chef.main()
+
+    - sous-chef = sous_chef:main
+    - sous-chef-debug = sous_chef:debug
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - pychef ==0.2.3
+
+  run:
+    - python
+    - flask ==0.10.1
+    - pychef ==0.2.3
+
+test:
+  # Python imports
+  imports:
+    - sous_chef
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sous-chef --help
+    - sous-chef-debug --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datasift/sous-chef
+  license: MIT
+  summary: 'A web frontend for the Chef server index'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

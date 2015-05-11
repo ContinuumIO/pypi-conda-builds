@@ -1,0 +1,64 @@
+package:
+  name: ioschedd
+  version: "0.1.1"
+
+source:
+  fn: ioschedd-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ioschedd/ioschedd-0.1.1.tar.gz
+  md5: 68715cd1a6183cb8d57fc919b8a78680
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ioschedd = ioschedd:main
+    #
+    # Would create an entry point called ioschedd that calls ioschedd.main()
+
+    - ioschedd=ioschedd.service:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyudev >=0.16
+
+  run:
+    - python
+    - pyudev >=0.16
+
+test:
+  # Python imports
+  imports:
+    - ioschedd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ioschedd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fzylogic/ioschedd
+  license: Apache2
+  summary: 'Daemon to control per-device IO Scheduler             options in the Linux kernel'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

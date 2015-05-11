@@ -1,0 +1,73 @@
+package:
+  name: okonomiyaki
+  version: "0.5.1"
+
+source:
+  fn: okonomiyaki-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/o/okonomiyaki/okonomiyaki-0.5.1.tar.gz
+  md5: 58d9f26066653798cda68eec7ca5247f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - okonomiyaki = okonomiyaki:main
+    #
+    # Would create an entry point called okonomiyaki that calls okonomiyaki.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  # Python imports
+  imports:
+    - okonomiyaki
+    - okonomiyaki.bundled
+    - okonomiyaki.bundled.traitlets
+    - okonomiyaki.file_formats
+    - okonomiyaki.file_formats.tests
+    - okonomiyaki.platforms
+    - okonomiyaki.platforms.tests
+    - okonomiyaki.repositories
+    - okonomiyaki.repositories.tests
+    - okonomiyaki.utils
+    - okonomiyaki.versions
+    - okonomiyaki.versions.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: None
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

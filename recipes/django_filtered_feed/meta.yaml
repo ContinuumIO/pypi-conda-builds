@@ -1,0 +1,63 @@
+package:
+  name: django_filtered_feed
+  version: "0.1.0"
+
+source:
+  fn: django_filtered_feed-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_filtered_feed/django_filtered_feed-0.1.0.tar.gz
+  md5: 1fe1a8c3abbc8b620f46ffd21c1735f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_filtered_feed = django_filtered_feed:main
+    #
+    # Would create an entry point called django_filtered_feed that calls django_filtered_feed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-filter ==0.7
+
+  run:
+    - python
+    - django-filter ==0.7
+
+test:
+  # Python imports
+  imports:
+    - django_filtered_feed
+    - filtered_feed
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alixedi/django_filtered_feed
+  license: BSD License
+  summary: 'Feeds sans noise.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

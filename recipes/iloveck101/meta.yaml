@@ -1,0 +1,70 @@
+package:
+  name: iloveck101
+  version: "0.5.2"
+
+source:
+  fn: iloveck101-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/iloveck101/iloveck101-0.5.2.tar.gz
+  md5: d7cc77fb6489956029a00f8bdfbdd72d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iloveck101 = iloveck101:main
+    #
+    # Would create an entry point called iloveck101 that calls iloveck101.main()
+
+    - iloveck101 = iloveck101.iloveck101:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml ==3.2.4
+    - requests ==2.0.1
+    - gevent ==1.0
+    - more-itertools ==2.2
+
+  run:
+    - python
+    - lxml ==3.2.4
+    - requests ==2.0.1
+    - gevent ==1.0
+    - more-itertools ==2.2
+
+test:
+  # Python imports
+  imports:
+    - iloveck101
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iloveck101 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tzangms/iloveck101
+  license: LICENSE.txt
+  summary: 'Download images from ck101 thread'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

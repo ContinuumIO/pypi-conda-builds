@@ -1,0 +1,68 @@
+package:
+  name: shallowwaterflux
+  version: "2.1"
+
+source:
+  fn: shallowWaterFlux-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/shallowWaterFlux/shallowWaterFlux-2.1.tar.gz
+  md5: cd31f8f5a0f0bb0decb998a3b0047024
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shallowwaterflux = shallowwaterflux:main
+    #
+    # Would create an entry point called shallowwaterflux that calls shallowwaterflux.main()
+
+    - shallowWaterFlux = shallowWaterFlux:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pythonflu >=9.0-porting
+
+  run:
+    - python
+    - pythonflu >=9.0-porting
+
+test:
+  # Python imports
+  imports:
+    - shallowWaterFlux
+    - shallowWaterFlux.r1_6
+    - shallowWaterFlux.r2_0_0
+    - shallowWaterFlux.r2_1_0
+    - shallowwaterflux
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - shallowWaterFlux --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sourceforge.net/projects/pythonFlu
+  license: GNU General Public License (GPL)
+  summary: 'Python front-end of the shallowWaterFoam'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

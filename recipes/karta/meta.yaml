@@ -1,0 +1,70 @@
+package:
+  name: karta
+  version: "0.4.4"
+
+source:
+  fn: karta-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/k/karta/karta-0.4.4.tar.gz
+  md5: 0a17242990154cb7027561d5492e83b7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - karta = karta:main
+    #
+    # Would create an entry point called karta that calls karta.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.6
+    - cython >=0.15
+    - pyproj >=1.9
+    - pyshp >=1.2
+
+  run:
+    - python
+    - numpy >=1.6
+    - cython >=0.15
+    - pyproj >=1.9
+    - pyshp >=1.2
+
+test:
+  # Python imports
+  imports:
+    - karta
+    - karta.raster
+    - karta.vector
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ironicmtn.com/karta.html
+  license: MIT License
+  summary: 'Geospatial analysis in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

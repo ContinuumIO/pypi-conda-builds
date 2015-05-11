@@ -1,0 +1,73 @@
+package:
+  name: m4us
+  version: "0.3.0"
+
+source:
+  fn: m4us-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/m4us/m4us-0.3.0.tar.gz
+  md5: 6e2b801acd2c13b552b76f86608b9948
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m4us = m4us:main
+    #
+    # Would create an entry point called m4us that calls m4us.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface >=3.8.0,<3.8.99
+    - decorator >=3.3.2,<3.3.99
+    - unittest2 >=0.5.1,<0.5.99
+    - mock >=0.8.0,<0.8.99
+
+  run:
+    - python
+    - zope.interface >=3.8.0,<3.8.99
+    - decorator >=3.3.2,<3.3.99
+    - unittest2 >=0.5.1,<0.5.99
+    - mock >=0.8.0,<0.8.99
+
+test:
+  # Python imports
+  imports:
+    - m4us
+    - m4us.core
+    - m4us.core.tests
+    - m4us.core.tests.integration
+    - m4us.tests
+    - m4us.tests.integration
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/m4us
+  license: GNU Affero General Public License v3
+  summary: 'A pythonic coroutine-based concurrent programming framework inspired by Kamaelia.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

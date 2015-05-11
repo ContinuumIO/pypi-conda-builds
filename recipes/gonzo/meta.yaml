@@ -1,0 +1,81 @@
+package:
+  name: gonzo
+  version: "0.4.0"
+
+source:
+  fn: gonzo-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gonzo/gonzo-0.4.0.tar.gz
+  md5: 7febda528bf42264df7266c5c4dfa710
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gonzo = gonzo:main
+    #
+    # Would create an entry point called gonzo that calls gonzo.main()
+
+    - gonzo = gonzo.scripts.base:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - apache-libcloud ==0.16.0
+    - jinja2 ==2.7.1
+    - argcomplete ==0.8.4
+    - fabric ==1.6
+    - prettytable ==0.7.2
+    - requests ==2.4.3
+
+  run:
+    - python
+    - apache-libcloud ==0.16.0
+    - jinja2 ==2.7.1
+    - argcomplete ==0.8.4
+    - fabric ==1.6
+    - prettytable ==0.7.2
+    - requests ==2.4.3
+
+test:
+  # Python imports
+  imports:
+    - gonzo
+    - gonzo.clouds
+    - gonzo.contrib
+    - gonzo.helpers
+    - gonzo.scripts
+    - gonzo.scripts.image
+    - gonzo.tasks
+    - gonzo.test_utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gonzo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/onefinestay/gonzo
+  license: UNKNOWN
+  summary: 'Instance and release management made easy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

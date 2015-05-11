@@ -1,0 +1,73 @@
+package:
+  name: django-permission
+  version: "0.8.7"
+
+source:
+  fn: django-permission-0.8.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-permission/django-permission-0.8.7.tar.gz
+  md5: a7cda7cf31b51faedf3ec0a6f1b35322
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-permission = django-permission:main
+    #
+    # Would create an entry point called django-permission that calls django-permission.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - app_version
+    - django-appconf
+
+  run:
+    - python
+    - app_version
+    - django-appconf
+
+test:
+  # Python imports
+  imports:
+    - permission
+    - permission.decorators
+    - permission.logics
+    - permission.templatetags
+    - permission.tests
+    - permission.tests.test_decorators
+    - permission.tests.test_logics
+    - permission.tests.test_templatetags
+    - permission.tests.test_utils
+    - permission.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lambdalisue/django-permission
+  license: MIT License
+  summary: 'A enhanced permission system which enable logical permissionsystems to complex permissions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

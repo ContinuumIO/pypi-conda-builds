@@ -1,0 +1,70 @@
+package:
+  name: isphere
+  version: "0.0.1"
+
+source:
+  fn: isphere-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/isphere/isphere-0.0.1.tar.gz
+  md5: a6c56c493a5e60b314512867fe802c10
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isphere = isphere:main
+    #
+    # Would create an entry point called isphere that calls isphere.main()
+
+    - isphere.exe = isphere.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cmd2
+    - docopt
+    - pyvmomi
+
+  run:
+    - python
+    - cmd2
+    - docopt
+    - pyvmomi
+
+test:
+  # Python imports
+  imports:
+    - isphere
+    - isphere.command
+    - thirdparty
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - isphere.exe --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mriehl/isphere
+  license: WTFPL
+  summary: 'interactive shell for vsphere'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

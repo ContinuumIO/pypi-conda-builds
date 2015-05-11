@@ -1,0 +1,90 @@
+package:
+  name: flask-appbuilder
+  version: "1.3.7"
+
+source:
+  fn: Flask-AppBuilder-1.3.7.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-AppBuilder/Flask-AppBuilder-1.3.7.tar.gz
+  md5: 86fe4a1574df1da30f800f802b18002d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-appbuilder = flask-appbuilder:main
+    #
+    # Would create an entry point called flask-appbuilder that calls flask-appbuilder.main()
+
+    - fabmanager = flask_appbuilder.console:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama >=0.3
+    - click >=3.0
+    - flask >=0.10
+    - flask-babelpkg >=0.9.4
+    - flask-login >=0.2.0
+    - flask-openid >=1.1.0
+    - flask-sqlalchemy >=0.16
+    - flask-wtf >=0.9.1
+
+  run:
+    - python
+    - colorama >=0.3
+    - click >=3.0
+    - flask >=0.10
+    - flask-babelpkg >=0.9.4
+    - flask-login >=0.2.0
+    - flask-openid >=1.1.0
+    - flask-sqlalchemy >=0.16
+    - flask-wtf >=0.9.1
+
+test:
+  # Python imports
+  imports:
+    - examples
+    - flask_appbuilder
+    - flask_appbuilder.babel
+    - flask_appbuilder.charts
+    - flask_appbuilder.models
+    - flask_appbuilder.models.generic
+    - flask_appbuilder.models.mongoengine
+    - flask_appbuilder.models.sqla
+    - flask_appbuilder.security
+    - flask_appbuilder.security.mongoengine
+    - flask_appbuilder.security.sqla
+    - flask_appbuilder.tests
+    - flask_appbuilder.translations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fabmanager --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dpgaspar/flask-appbuilder/
+  license: BSD License
+  summary: 'Simple and rapid application development framework, built on top of Flask. includes detailed security, auto CRUD generation for your models, google charts and much more.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

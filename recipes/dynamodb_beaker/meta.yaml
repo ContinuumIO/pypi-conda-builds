@@ -1,0 +1,65 @@
+package:
+  name: dynamodb_beaker
+  version: "0.2.0"
+
+source:
+  fn: dynamodb_beaker-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dynamodb_beaker/dynamodb_beaker-0.2.0.tar.gz
+  md5: ceab71d63c73dfe3d6547c84bc8c0584
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dynamodb_beaker = dynamodb_beaker:main
+    #
+    # Would create an entry point called dynamodb_beaker that calls dynamodb_beaker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.27.0
+    - beaker >=1.6.4
+
+  run:
+    - python
+    - setuptools
+    - boto >=2.27.0
+    - beaker >=1.6.4
+
+test:
+  # Python imports
+  imports:
+    - dynamodb_beaker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/xica/dynamodb-beaker
+  license: MIT License
+  summary: 'DynamoDB backend for Beaker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

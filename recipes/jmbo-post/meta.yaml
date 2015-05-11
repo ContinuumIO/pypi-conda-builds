@@ -1,0 +1,68 @@
+package:
+  name: jmbo-post
+  version: "2.0.0a2"
+
+source:
+  fn: jmbo-post-2.0.0a2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo-post/jmbo-post-2.0.0a2.tar.gz
+  md5: 2b1ddec7aa74992fff2684d039be71dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo-post = jmbo-post:main
+    #
+    # Would create an entry point called jmbo-post that calls jmbo-post.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-ckeditor >=4.2.1
+    - jmbo ==2.0.0a2
+    - beautifulsoup4
+
+  run:
+    - python
+    - django-ckeditor >=4.2.1
+    - jmbo ==2.0.0a2
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - post
+    - post.templatetags
+    - post.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/jmbo-post
+  license: BSD License
+  summary: 'Jmbo post application. Post is a synonym for article. It is the most common content type.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

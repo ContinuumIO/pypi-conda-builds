@@ -1,0 +1,88 @@
+package:
+  name: flikiss
+  version: "0.1"
+
+source:
+  fn: FliKISS-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/FliKISS/FliKISS-0.1.tar.gz
+  md5: 43bef0738d49ed061e011c9030c06d99
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flikiss = flikiss:main
+    #
+    # Would create an entry point called flikiss that calls flikiss.main()
+
+    - flikiss = flikiss.launcher:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cherrypy
+    - flask
+    - flask-wtf
+    - jinja2
+    - markdown
+    - markupsafe
+    - pygments
+    - wtforms
+    - werkzeug
+    - argparse
+    - itsdangerous
+    - lockfile
+    - wsgiref
+
+  run:
+    - python
+    - cherrypy
+    - flask
+    - flask-wtf
+    - jinja2
+    - markdown
+    - markupsafe
+    - pygments
+    - wtforms
+    - werkzeug
+    - argparse
+    - itsdangerous
+    - lockfile
+    - wsgiref
+
+test:
+  # Python imports
+  imports:
+    - flikiss
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flikiss --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://projects.joacodepel.tk/flikiss/
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Wiki engine based on Markdown flat files powered by Flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

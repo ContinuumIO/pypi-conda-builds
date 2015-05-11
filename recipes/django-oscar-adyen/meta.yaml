@@ -1,0 +1,70 @@
+package:
+  name: django-oscar-adyen
+  version: "0.2.6"
+
+source:
+  fn: django-oscar-adyen-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oscar-adyen/django-oscar-adyen-0.2.6.tar.gz
+  md5: a459dea299bef890fd922dd59d8ea43a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oscar-adyen = django-oscar-adyen:main
+    #
+    # Would create an entry point called django-oscar-adyen that calls django-oscar-adyen.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bleach ==1.4
+    - django-oscar >=0.7
+    - iptools ==0.6.1
+    - requests >=2.0,<3.0
+
+  run:
+    - python
+    - bleach ==1.4
+    - django-oscar >=0.7
+    - iptools ==0.6.1
+    - requests >=2.0,<3.0
+
+test:
+  # Python imports
+  imports:
+    - adyen
+    - adyen.migrations
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/oscaro/django-oscar-adyen
+  license: BSD License
+  summary: 'Adyen payment module for django-oscar'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

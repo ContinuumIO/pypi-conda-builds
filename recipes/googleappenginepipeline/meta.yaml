@@ -1,0 +1,65 @@
+package:
+  name: googleappenginepipeline
+  version: "1.9.17.0"
+
+source:
+  fn: GoogleAppEnginePipeline-1.9.17.0.tar.gz
+  url: https://pypi.python.org/packages/source/G/GoogleAppEnginePipeline/GoogleAppEnginePipeline-1.9.17.0.tar.gz
+  md5: 9fe87b281f4b0a7c110534df4e61b6ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - googleappenginepipeline = googleappenginepipeline:main
+    #
+    # Would create an entry point called googleappenginepipeline that calls googleappenginepipeline.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - googleappenginecloudstorageclient >=1.9.15
+    - simplejson >=3.6.5
+
+  run:
+    - python
+    - googleappenginecloudstorageclient >=1.9.15
+    - simplejson >=3.6.5
+
+test:
+  # Python imports
+  imports:
+    - googleappenginepipeline
+    - pipeline
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/GoogleCloudPlatform/appengine-pipelines
+  license: Apache License 2.0
+  summary: 'Enable asynchronous pipeline style data processing on App Engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

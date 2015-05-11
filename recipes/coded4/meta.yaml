@@ -1,0 +1,62 @@
+package:
+  name: coded4
+  version: "0.3.3"
+
+source:
+  fn: coded4-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/coded4/coded4-0.3.3.tar.gz
+  md5: 678539645cb7bef0cc5a311243c09ee3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coded4 = coded4:main
+    #
+    # Would create an entry point called coded4 that calls coded4.main()
+
+    - coded4 = coded4.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - coded4
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - coded4 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Xion/coded4
+  license: MIT License
+  summary: 'Time-based statistics for Git and Hg repositories'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: iti1480a-linux
+  version: "3.0"
+
+source:
+  fn: ITI1480A-linux-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/I/ITI1480A-linux/ITI1480A-linux-3.0.tar.gz
+  md5: 4b698d6d56cec59d48d6143cd0e90654
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iti1480a-linux = iti1480a-linux:main
+    #
+    # Would create an entry point called iti1480a-linux that calls iti1480a-linux.main()
+
+    - spt2hex=iti1480a.spt2hex:main
+    - iti1480a-capture=iti1480a.capture:main
+    - iti1480a-display=iti1480a.display:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - libusb1
+    - ply
+
+  run:
+    - python
+    - libusb1
+    - ply
+
+test:
+  # Python imports
+  imports:
+    - iti1480a
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - spt2hex --help
+    - iti1480a-capture --help
+    - iti1480a-display --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/vpelletier/ITI1480A-linux
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Tools for the ITI1480A usb protocol analyser'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

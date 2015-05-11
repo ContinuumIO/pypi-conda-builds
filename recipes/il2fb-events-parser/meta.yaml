@@ -1,0 +1,72 @@
+package:
+  name: il2fb-events-parser
+  version: "0.11.0"
+
+source:
+  fn: il2fb-events-parser-0.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/il2fb-events-parser/il2fb-events-parser-0.11.0.tar.gz
+  md5: a83d4c3d8887f652f2361443eac87c16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - il2fb-events-parser = il2fb-events-parser:main
+    #
+    # Would create an entry point called il2fb-events-parser that calls il2fb-events-parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - candv >=1.2.1
+    - il2fb-commons >=0.10.0
+    - pyparsing >=2.0.2
+    - six >=1.6.1
+    - verboselib >=0.2,<0.3
+
+  run:
+    - python
+    - candv >=1.2.1
+    - il2fb-commons >=0.10.0
+    - pyparsing >=2.0.2
+    - six >=1.6.1
+    - verboselib >=0.2,<0.3
+
+test:
+  # Python imports
+  imports:
+    - il2fb.parsers.events
+    - il2fb.parsers.events.grammar
+    - il2fb.parsers.events.structures
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/IL2HorusTeam/il2fb-events-parser
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Parse events from log produced by IL-2 FB Dedicated Server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

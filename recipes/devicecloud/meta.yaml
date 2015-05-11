@@ -1,0 +1,70 @@
+package:
+  name: devicecloud
+  version: "0.2"
+
+source:
+  fn: devicecloud-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/devicecloud/devicecloud-0.2.tar.gz
+  md5: 95f9a4752e52941f84201d4d19ac41cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - devicecloud = devicecloud:main
+    #
+    # Would create an entry point called devicecloud that calls devicecloud.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six ==1.8.0
+    - requests ==2.5.1
+    - arrow ==0.4.4
+
+  run:
+    - python
+    - six ==1.8.0
+    - requests ==2.5.1
+    - arrow ==0.4.4
+
+test:
+  # Python imports
+  imports:
+    - devicecloud
+    - devicecloud.examples
+    - devicecloud.test
+    - devicecloud.test.integration
+    - devicecloud.test.unit
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/etherios/python-devicecloud
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Python API to the Device Cloud by Etherios'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

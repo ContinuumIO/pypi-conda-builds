@@ -1,0 +1,88 @@
+package:
+  name: earwigbot
+  version: "0.1"
+
+source:
+  fn: earwigbot-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/earwigbot/earwigbot-0.1.tar.gz
+  md5: bb9b28de94219b53ad98d50227f7409b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - earwigbot = earwigbot:main
+    #
+    # Would create an entry point called earwigbot that calls earwigbot.main()
+
+    - earwigbot = earwigbot.util:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.10
+    - beautifulsoup4 >=4.1.1
+    - lxml >=2.3.5
+    - mwparserfromhell >=0.1
+    - nltk >=2.0.2
+    - oauth2 >=1.5.211
+    - oursql >=0.9.3.1
+    - py-bcrypt >=0.2
+    - pycrypto >=2.6
+    - pytz >=2012d
+
+  run:
+    - python
+    - pyyaml >=3.10
+    - beautifulsoup4 >=4.1.1
+    - lxml >=2.3.5
+    - mwparserfromhell >=0.1
+    - nltk >=2.0.2
+    - oauth2 >=1.5.211
+    - oursql >=0.9.3.1
+    - py-bcrypt >=0.2
+    - pycrypto >=2.6
+    - pytz >=2012d
+
+test:
+  # Python imports
+  imports:
+    - earwigbot
+    - earwigbot.commands
+    - earwigbot.config
+    - earwigbot.irc
+    - earwigbot.tasks
+    - earwigbot.wiki
+    - earwigbot.wiki.copyvios
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - earwigbot --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/earwig/earwigbot
+  license: MIT License
+  summary: 'EarwigBot is a Python robot that edits Wikipedia and interacts with people over IRC.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

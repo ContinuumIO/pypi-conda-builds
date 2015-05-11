@@ -1,0 +1,79 @@
+package:
+  name: django-tools
+  version: "0.28.0"
+
+source:
+  fn: django-tools-0.28.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tools/django-tools-0.28.0.tar.gz
+  md5: a67f0199e3b040bf6b71e3d534729410
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tools = django-tools:main
+    #
+    # Would create an entry point called django-tools that calls django-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5,<1.8
+
+  run:
+    - python
+    - django >=1.5,<1.8
+
+test:
+  # Python imports
+  imports:
+    - django_tools
+    - django_tools.auto_update_cache
+    - django_tools.cache
+    - django_tools.debug
+    - django_tools.dynamic_site
+    - django_tools.dynamic_site.test_app
+    - django_tools.fields
+    - django_tools.filemanager
+    - django_tools.local_sync_cache
+    - django_tools.middlewares
+    - django_tools.tagging_addon
+    - django_tools.template
+    - django_tools.tests
+    - django_tools.unittest_utils
+    - django_tools.utils
+    - django_tools.views
+    - django_tools_test_project
+    - django_tools_test_project.django_tools_test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/django-tools/
+  license: GNU General Public License (GPL)
+  summary: 'miscellaneous tools for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

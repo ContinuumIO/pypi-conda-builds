@@ -1,0 +1,70 @@
+package:
+  name: gwaportalpipeline
+  version: "0.2.4"
+
+source:
+  fn: gwaportalpipeline-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gwaportalpipeline/gwaportalpipeline-0.2.4.tar.gz
+  md5: 8a431174630a9be394744e2f2321b81b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gwaportalpipeline = gwaportalpipeline:main
+    #
+    # Would create an entry point called gwaportalpipeline that calls gwaportalpipeline.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery >=3.0.19
+    - requests >=1.1.0
+    - numpy >=1.6.1
+    - h5py >=2.1.3
+    - pygwas >=0.1.4
+
+  run:
+    - python
+    - celery >=3.0.19
+    - requests >=1.1.0
+    - numpy >=1.6.1
+    - h5py >=2.1.3
+    - pygwas >=0.1.4
+
+test:
+  # Python imports
+  imports:
+    - gwaportalpipeline
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/timeu/gwaportal-analysis-pipeline
+  license: MIT License
+  summary: 'Analysis-pipeline for GWA-Portal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

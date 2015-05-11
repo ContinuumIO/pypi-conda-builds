@@ -1,0 +1,76 @@
+package:
+  name: importkit
+  version: "0.5.0"
+
+source:
+  fn: importkit-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/importkit/importkit-0.5.0.tar.gz
+  md5: 7d9b0f23bcc83d9dc3e337829bc6999b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - importkit = importkit:main
+    #
+    # Would create an entry point called importkit that calls importkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.11
+
+  run:
+    - python
+    - pyyaml >=3.11
+
+test:
+  # Python imports
+  imports:
+    - importkit
+    - importkit.import_
+    - importkit.import_.tests
+    - importkit.import_.tests.testdata
+    - importkit.python
+    - importkit.python.tests
+    - importkit.utils
+    - importkit.yaml
+    - importkit.yaml.tests
+    - importkit.yaml.tests.testdata
+    - importkit.yaml.validator
+    - importkit.yaml.validator.tests
+    - importkit.yaml.validator.tests.ymls
+    - importkit.yaml.validator.types
+    - importkit.yaml.validator.types.scalars
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/sprymix/importkit
+  license: MIT License
+  summary: 'Importkit is a Python library for making anything importable as a Python module.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

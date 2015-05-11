@@ -1,0 +1,72 @@
+package:
+  name: modoboa-admin
+  version: "1.0.2"
+
+source:
+  fn: modoboa-admin-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/modoboa-admin/modoboa-admin-1.0.2.tar.gz
+  md5: d52e7b6965540976a17d39d85f6571cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - modoboa-admin = modoboa-admin:main
+    #
+    # Would create an entry point called modoboa-admin that calls modoboa-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - modoboa >=1.3.0
+    - rfc6266
+
+  run:
+    - python
+    - modoboa >=1.3.0
+    - rfc6266
+
+test:
+  # Python imports
+  imports:
+    - modoboa_admin
+    - modoboa_admin.forms
+    - modoboa_admin.management
+    - modoboa_admin.management.commands
+    - modoboa_admin.migrations
+    - modoboa_admin.models
+    - modoboa_admin.templatetags
+    - modoboa_admin.tests
+    - modoboa_admin.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://modoboa.org/
+  license: MIT License
+  summary: 'The administration panel of Modoboa'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

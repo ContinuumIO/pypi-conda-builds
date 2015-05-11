@@ -1,0 +1,64 @@
+package:
+  name: django-s3-storage
+  version: "0.9.0"
+
+source:
+  fn: django-s3-storage-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-s3-storage/django-s3-storage-0.9.0.tar.gz
+  md5: aeb2668b8671a7486c0e6fece80f6855
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-s3-storage = django-s3-storage:main
+    #
+    # Would create an entry point called django-s3-storage that calls django-s3-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - boto >=2.35
+
+  run:
+    - python
+    - django >=1.7
+    - boto >=2.35
+
+test:
+  # Python imports
+  imports:
+    - django_s3_storage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/etianen/django-s3-storage
+  license: BSD License
+  summary: 'Django Amazon S3 file storage.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

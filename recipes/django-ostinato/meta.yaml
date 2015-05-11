@@ -1,0 +1,74 @@
+package:
+  name: django-ostinato
+  version: "1.1"
+
+source:
+  fn: django-ostinato-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ostinato/django-ostinato-1.1.tar.gz
+  md5: 49be72184d031f119e8abaf8f38b1e81
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ostinato = django-ostinato:main
+    #
+    # Would create an entry point called django-ostinato that calls django-ostinato.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-mptt ==0.6.0
+    - django-appregister ==0.3.1
+
+  run:
+    - python
+    - setuptools
+    - django-mptt ==0.6.0
+    - django-appregister ==0.3.1
+
+test:
+  # Python imports
+  imports:
+    - ostinato
+    - ostinato.blog
+    - ostinato.contentfilters
+    - ostinato.contentfilters.templatetags
+    - ostinato.pages
+    - ostinato.pages.templatetags
+    - ostinato.statemachine
+    - ostinato.statemachine.management
+    - ostinato.statemachine.management.commands
+    - ostinato.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-ostinato.readthedocs.org/en/latest/index.html
+  license: MIT License
+  summary: 'Django-ostinato brings cms-like features to your django projects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

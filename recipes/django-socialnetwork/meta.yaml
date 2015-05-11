@@ -1,0 +1,69 @@
+package:
+  name: django-socialnetwork
+  version: "0.0.6"
+
+source:
+  fn: django-socialnetwork-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-socialnetwork/django-socialnetwork-0.0.6.tar.gz
+  md5: e257f6a5a2ded869577233eeb5d86135
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-socialnetwork = django-socialnetwork:main
+    #
+    # Would create an entry point called django-socialnetwork that calls django-socialnetwork.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - requests
+    - requests_oauthlib
+
+  run:
+    - python
+    - django >=1.4
+    - requests
+    - requests_oauthlib
+
+test:
+  # Python imports
+  imports:
+    - socialnetwork
+    - socialnetwork.base
+    - socialnetwork.facebook
+    - socialnetwork.facebook.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gGonz/django-socialnetwork
+  license: Apache Software License
+  summary: 'Provides functionality to login and share with social networks to Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

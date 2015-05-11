@@ -1,0 +1,67 @@
+package:
+  name: enumerator
+  version: "0.1.4"
+
+source:
+  fn: enumerator-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/e/enumerator/enumerator-0.1.4.tar.gz
+  md5: e9b7a00de830d1704aeb4f5f1ee9c811
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - enumerator = enumerator:main
+    #
+    # Would create an entry point called enumerator that calls enumerator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - blinker ==1.3
+
+  run:
+    - python
+    - blinker ==1.3
+
+test:
+  # Python imports
+  imports:
+    - enumerator
+    - enumerator.lib
+    - enumerator.lib.ftp
+    - enumerator.lib.http
+    - enumerator.lib.nbt
+    - enumerator.lib.rpc
+    - enumerator.lib.ssh
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/enumerator/
+  license: LICENSE.txt
+  summary: 'enumerator is a tool built to assist in automating the often tedious task of enumerating a target or list of targets during a penetration test.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

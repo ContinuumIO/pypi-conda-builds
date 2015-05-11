@@ -1,0 +1,64 @@
+package:
+  name: gitime
+  version: "1.0.1"
+
+source:
+  fn: gitime-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitime/gitime-1.0.1.tar.gz
+  md5: 743cb9cb5aeeed20de4a79b2d51b3df8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitime = gitime:main
+    #
+    # Would create an entry point called gitime that calls gitime.main()
+
+    - gitime = gitime.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - xlsxwriter
+
+  run:
+    - python
+    - xlsxwriter
+
+test:
+  # Python imports
+  imports:
+    - gitime
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gitime --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jongoodnow/gitime
+  license: MIT License
+  summary: 'Build an invoice with your tasks and hours worked from your commit messages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,112 @@
+package:
+  name: apidev-sanza
+  version: "3.0.9"
+
+source:
+  fn: apidev-sanza-3.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/a/apidev-sanza/apidev-sanza-3.0.9.tar.gz
+  md5: f7dd3a15279a7e59ba2a66683c77202f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apidev-sanza = apidev-sanza:main
+    #
+    # Would create an entry point called apidev-sanza that calls apidev-sanza.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.6.10
+    - apidev-coop_cms
+    - beautifulsoup4
+    - beautifulsoup
+    - django-wkhtmltopdf
+    - django-form-utils
+    - xlwt
+    - xlrd
+    - django-simple-captcha
+    - django-registration
+    - model_mommy
+    - django-tastypie
+
+  run:
+    - python
+    - django ==1.6.10
+    - apidev-coop_cms
+    - beautifulsoup4
+    - beautifulsoup
+    - django-wkhtmltopdf
+    - django-form-utils
+    - xlwt
+    - xlrd
+    - django-simple-captcha
+    - django-registration
+    - model_mommy
+    - django-tastypie
+
+test:
+  # Python imports
+  imports:
+    - sanza
+    - sanza.Apis
+    - sanza.Crm
+    - sanza.Crm.management
+    - sanza.Crm.management.commands
+    - sanza.Crm.migrations
+    - sanza.Crm.templatetags
+    - sanza.Crm.tests
+    - sanza.Crm.views
+    - sanza.Emailing
+    - sanza.Emailing.backends
+    - sanza.Emailing.management
+    - sanza.Emailing.management.commands
+    - sanza.Emailing.migrations
+    - sanza.Emailing.templatetags
+    - sanza.Emailing.tests
+    - sanza.Profile
+    - sanza.Profile.migrations
+    - sanza.Profile.templatetags
+    - sanza.Profile.tests
+    - sanza.Search
+    - sanza.Search.migrations
+    - sanza.Search.templatetags
+    - sanza.Search.tests
+    - sanza.Users
+    - sanza.Users.management
+    - sanza.Users.management.commands
+    - sanza.Users.migrations
+    - sanza.Users.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ljean/apidev-sanza
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Contacts management'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

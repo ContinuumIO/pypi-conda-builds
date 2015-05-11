@@ -1,0 +1,111 @@
+package:
+  name: freezes
+  version: "1.0.15"
+
+source:
+  fn: Freezes-1.0.15.tar.gz
+  url: https://pypi.python.org/packages/source/F/Freezes/Freezes-1.0.15.tar.gz
+  md5: f6b61c060916f3479c3c4ffe6985d6f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - freezes = freezes:main
+    #
+    # Would create an entry point called freezes that calls freezes.main()
+
+    - freezes=freezes.server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argh ==0.26.1
+    - backports.ssl-match-hostname ==3.4.0.2
+    - certifi ==14.5.14
+    - cssmin ==0.2.0
+    - cssprefixer ==1.4.1
+    - cssutils ==1.0
+    - flask ==0.10.1
+    - flask-assets ==0.10
+    - flask-bootstrap ==3.3.2.1
+    - flask-flatpages ==0.6
+    - flask-script ==2.0.5
+    - frozen-flask ==0.11
+    - flask-babel ==0.9
+    - itsdangerous ==0.24
+    - jinja2 ==2.7.3
+    - jsmin ==2.1.1
+    - livereload ==2.3.2
+    - markdown >2.6
+    - markupsafe ==0.23
+    - pathtools ==0.1.2
+    - pyyaml ==3.11
+    - tornado ==4.1
+    - webassets ==0.10.1
+    - werkzeug ==0.10.1
+
+  run:
+    - python
+    - setuptools
+    - argh ==0.26.1
+    - backports.ssl-match-hostname ==3.4.0.2
+    - certifi ==14.5.14
+    - cssmin ==0.2.0
+    - cssprefixer ==1.4.1
+    - cssutils ==1.0
+    - flask ==0.10.1
+    - flask-assets ==0.10
+    - flask-bootstrap ==3.3.2.1
+    - flask-flatpages ==0.6
+    - flask-script ==2.0.5
+    - frozen-flask ==0.11
+    - flask-babel ==0.9
+    - itsdangerous ==0.24
+    - jinja2 ==2.7.3
+    - jsmin ==2.1.1
+    - livereload ==2.3.2
+    - markdown >2.6
+    - markupsafe ==0.23
+    - pathtools ==0.1.2
+    - pyyaml ==3.11
+    - tornado ==4.1
+    - webassets ==0.10.1
+    - werkzeug ==0.10.1
+
+test:
+  # Python imports
+  imports:
+    - freezes
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - freezes --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://freezes.dotnetage.com
+  license: BSD License
+  summary: 'Transform the plain text or blog to static website'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

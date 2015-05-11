@@ -1,0 +1,70 @@
+package:
+  name: orbited
+  version: "0.7.10"
+
+source:
+  fn: orbited-0.7.10.tar.gz
+  url: https://pypi.python.org/packages/source/o/orbited/orbited-0.7.10.tar.gz
+  md5: 4f4e85d197466c141b1af466782445c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - orbited = orbited:main
+    #
+    # Would create an entry point called orbited that calls orbited.main()
+
+    - orbited=orbited.start:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - demjson
+    - morbid >=0.8.7.1
+
+  run:
+    - python
+    - setuptools
+    - demjson
+    - morbid >=0.8.7.1
+
+test:
+  # Python imports
+  imports:
+    - orbited
+    - orbited.servers
+    - orbited.system
+    - orbited.transports
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - orbited --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.orbited.org
+  license: MIT License
+  summary: 'A browser(javascript)->tcp bridge; Comet is used to emulate TCP connections in the browser; Allows you to connect a web browser directly to an IRC or XMPP server, for instance.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

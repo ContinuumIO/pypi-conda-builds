@@ -1,0 +1,67 @@
+package:
+  name: shaker
+  version: "0.2.2"
+
+source:
+  fn: shaker-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/shaker/shaker-0.2.2.tar.gz
+  md5: b546d068cf8b16bbabe514ffeb13a827
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shaker = shaker:main
+    #
+    # Would create an entry point called shaker that calls shaker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - boto >=2.0
+    - jinja2
+    - pyyaml
+    - m2crypto
+
+  run:
+    - python
+    - boto >=2.0
+    - jinja2
+    - pyyaml
+    - m2crypto
+
+test:
+  # Python imports
+  imports:
+    - shaker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rubic/shaker
+  license: BSD License
+  summary: 'EC2 Salt Minion Launcher'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

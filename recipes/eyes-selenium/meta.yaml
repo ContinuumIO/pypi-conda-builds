@@ -1,0 +1,70 @@
+package:
+  name: eyes-selenium
+  version: "2.11"
+
+source:
+  fn: eyes-selenium-2.11.tar.gz
+  url: https://pypi.python.org/packages/source/e/eyes-selenium/eyes-selenium-2.11.tar.gz
+  md5: 187efe45f904319ecfb39a6001bc5d10
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eyes-selenium = eyes-selenium:main
+    #
+    # Would create an entry point called eyes-selenium that calls eyes-selenium.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.1.0
+    - pypng >=0.0.16
+    - selenium >=2.43.0
+    - appium-python-client >=0.13
+
+  run:
+    - python
+    - setuptools
+    - requests >=2.1.0
+    - pypng >=0.0.16
+    - selenium >=2.43.0
+    - appium-python-client >=0.13
+
+test:
+  # Python imports
+  imports:
+    - applitools
+    - applitools.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.applitools.com
+  license: Apache Software License
+  summary: 'Applitools Eyes SDK For Selenium Python WebDriver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

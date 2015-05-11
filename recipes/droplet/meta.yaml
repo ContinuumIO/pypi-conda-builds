@@ -1,0 +1,79 @@
+package:
+  name: droplet
+  version: "0.1"
+
+source:
+  fn: droplet-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/droplet/droplet-0.1.tar.gz
+  md5: 0fc5eaf8549978c55e4480796b075bbb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - droplet = droplet:main
+    #
+    # Would create an entry point called droplet that calls droplet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-achilles
+    - django-forms-bootstrap
+    - six
+    - python-ldap
+
+  run:
+    - python
+    - setuptools
+    - django
+    - django-achilles
+    - django-forms-bootstrap
+    - six
+    - python-ldap
+
+test:
+  # Python imports
+  imports:
+    - droplet
+    - droplet.core
+    - droplet.interfaces
+    - droplet.management
+    - droplet.management.commands
+    - droplet.network
+    - droplet.samba
+    - droplet.tests
+    - droplet.web
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/exekias/droplet
+  license: GNU Affero General Public License v3
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

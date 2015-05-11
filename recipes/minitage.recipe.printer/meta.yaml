@@ -1,0 +1,70 @@
+package:
+  name: minitage.recipe.printer
+  version: "1.39"
+
+source:
+  fn: minitage.recipe.printer-1.39.zip
+  url: https://pypi.python.org/packages/source/m/minitage.recipe.printer/minitage.recipe.printer-1.39.zip
+  md5: 872f558001c2502a80cfa4d352da3c90
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minitage.recipe.printer = minitage.recipe.printer:main
+    #
+    # Would create an entry point called minitage.recipe.printer that calls minitage.recipe.printer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - iniparse
+    - minitage.recipe.scripts
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - iniparse
+    - minitage.recipe.scripts
+
+test:
+  # Python imports
+  imports:
+    - minitage
+    - minitage.recipe
+    - minitage.recipe.printer
+    - minitage.recipe.printer.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage.recipe.printer
+  license: BSD License
+  summary: 'zc.buildout recipes to compile and install software or python packages and generate scripts or configuration files sponsored by Makina Corpus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

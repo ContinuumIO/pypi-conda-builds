@@ -1,0 +1,74 @@
+package:
+  name: ftw.notification.base
+  version: "1.2.6"
+
+source:
+  fn: ftw.notification.base-1.2.6.zip
+  url: https://pypi.python.org/packages/source/f/ftw.notification.base/ftw.notification.base-1.2.6.zip
+  md5: c9255cc46029b9333ff0b0182038a4db
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.notification.base = ftw.notification.base:main
+    #
+    # Would create an entry point called ftw.notification.base that calls ftw.notification.base.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - ftw.table
+    - plone.principalsource
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - ftw.table
+    - plone.principalsource
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.notification
+    - ftw.notification.base
+    - ftw.notification.base.adapters
+    - ftw.notification.base.browser
+    - ftw.notification.base.events
+    - ftw.notification.base.tests
+    - ftw.notification.base.viewlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.notification.base
+  license: GNU General Public License (GPL)
+  summary: 'Send notifications when editing a plone content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

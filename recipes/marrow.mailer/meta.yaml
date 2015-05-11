@@ -1,0 +1,68 @@
+package:
+  name: marrow.mailer
+  version: "4.0.0"
+
+source:
+  fn: marrow.mailer-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/marrow.mailer/marrow.mailer-4.0.0.tar.gz
+  md5: c86e0baac5bab0a4e889dcc7c92db72d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marrow.mailer = marrow.mailer:main
+    #
+    # Would create an entry point called marrow.mailer that calls marrow.mailer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - marrow.util <2.0
+    - marrow.interface <2.0
+
+  run:
+    - python
+    - setuptools
+    - marrow.util <2.0
+    - marrow.interface <2.0
+
+test:
+  # Python imports
+  imports:
+    - marrow
+    - marrow.mailer
+    - marrow.mailer.manager
+    - marrow.mailer.transport
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/marrow/marrow.mailer
+  license: MIT License
+  summary: 'A highly efficient and modular mail delivery framework for Python 2.6+ and 3.1+, formerly called TurboMail.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

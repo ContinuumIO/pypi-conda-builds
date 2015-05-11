@@ -1,0 +1,68 @@
+package:
+  name: binstarsolver
+  version: "0.1.3"
+
+source:
+  fn: binstarsolver-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/b/binstarsolver/binstarsolver-0.1.3.tar.gz
+  md5: 3ee3ef8fd0de105c824bcb7a34987396
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - binstarsolver = binstarsolver:main
+    #
+    # Would create an entry point called binstarsolver that calls binstarsolver.main()
+
+    - binstarsolver=binstarsolver.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.8.2
+    - scipy >=0.14.0
+    - matplotlib >=1.4.0
+
+  run:
+    - python
+    - numpy >=1.8.2
+    - scipy >=0.14.0
+    - matplotlib >=1.4.0
+
+test:
+  # Python imports
+  imports:
+    - binstarsolver
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - binstarsolver --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://binstarsolver.readthedocs.org
+  license: MIT License
+  summary: 'Estimate physical quantities of a binary star system from observed quantities.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

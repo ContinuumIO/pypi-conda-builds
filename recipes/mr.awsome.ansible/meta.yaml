@@ -1,0 +1,68 @@
+package:
+  name: mr.awsome.ansible
+  version: "1.0b5"
+
+source:
+  fn: mr.awsome.ansible-1.0b5.zip
+  url: https://pypi.python.org/packages/source/m/mr.awsome.ansible/mr.awsome.ansible-1.0b5.zip
+  md5: 799fd10315c0331b9d73875b7fc6e67c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr.awsome.ansible = mr.awsome.ansible:main
+    #
+    # Would create an entry point called mr.awsome.ansible that calls mr.awsome.ansible.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - mr.awsome >=1.0rc8
+    - execnet
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - mr.awsome >=1.0rc8
+    - execnet
+
+test:
+  # Python imports
+  imports:
+    - mr
+    - mr.awsome_ansible
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fschulze/mr.awsome.ansible
+  license: UNKNOWN
+  summary: 'A plugin for mr.awsome providing integration with Ansible.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

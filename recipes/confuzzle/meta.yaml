@@ -1,0 +1,68 @@
+package:
+  name: confuzzle
+  version: "0.2.0"
+
+source:
+  fn: confuzzle-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/confuzzle/confuzzle-0.2.0.tar.gz
+  md5: dbbfec7eff557b08388e70b4d48c4782
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - confuzzle = confuzzle:main
+    #
+    # Would create an entry point called confuzzle that calls confuzzle.main()
+
+    - confuzzle = confuzzle:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - pyyaml
+    - argparse
+
+  run:
+    - python
+    - jinja2
+    - pyyaml
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - confuzzle
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - confuzzle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/j4mie/confuzzle
+  license: Public Domain
+  summary: 'A tiny tool for generating templated config files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

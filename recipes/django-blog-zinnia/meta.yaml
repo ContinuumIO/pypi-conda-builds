@@ -1,0 +1,92 @@
+package:
+  name: django-blog-zinnia
+  version: "0.15.1"
+
+source:
+  fn: django-blog-zinnia-0.15.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-blog-zinnia/django-blog-zinnia-0.15.1.tar.gz
+  md5: e8271dc8b0758fb409da43d7f3c2e06c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-blog-zinnia = django-blog-zinnia:main
+    #
+    # Would create an entry point called django-blog-zinnia that calls django-blog-zinnia.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 >=4.3.2
+    - django-contrib-comments >=1.5
+    - django-mptt >=0.6.1
+    - django-tagging >=0.3.4
+    - django-xmlrpc >=0.1.5
+    - pyparsing >=2.0.3
+    - pytz >=2014.10
+
+  run:
+    - python
+    - beautifulsoup4 >=4.3.2
+    - django-contrib-comments >=1.5
+    - django-mptt >=0.6.1
+    - django-tagging >=0.3.4
+    - django-xmlrpc >=0.1.5
+    - pyparsing >=2.0.3
+    - pytz >=2014.10
+
+test:
+  # Python imports
+  imports:
+    - zinnia
+    - zinnia.admin
+    - zinnia.management
+    - zinnia.management.commands
+    - zinnia.migrations
+    - zinnia.models
+    - zinnia.models_bases
+    - zinnia.spam_checker
+    - zinnia.spam_checker.backends
+    - zinnia.templatetags
+    - zinnia.tests
+    - zinnia.tests.implementations
+    - zinnia.tests.implementations.urls
+    - zinnia.url_shortener
+    - zinnia.url_shortener.backends
+    - zinnia.urls
+    - zinnia.views
+    - zinnia.views.mixins
+    - zinnia.xmlrpc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Fantomas42/django-blog-zinnia
+  license: BSD License
+  summary: 'A clear and powerfull weblog application powered with Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

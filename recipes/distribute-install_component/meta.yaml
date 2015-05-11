@@ -1,0 +1,61 @@
+package:
+  name: distribute-install_component
+  version: "0.1"
+
+source:
+  fn: distribute-install_component-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/distribute-install_component/distribute-install_component-0.1.tar.gz
+  md5: dc7e8051658cefeefc267430674bb0cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - distribute-install_component = distribute-install_component:main
+    #
+    # Would create an entry point called distribute-install_component that calls distribute-install_component.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - install_component
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/lordmauve/distribute-install_component
+  license: UNKNOWN
+  summary: 'Distribute extension to install components listed in extras_require'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

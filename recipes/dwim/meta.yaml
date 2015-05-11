@@ -1,0 +1,70 @@
+package:
+  name: dwim
+  version: "0.2"
+
+source:
+  fn: dwim-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dwim/dwim-0.2.tar.gz
+  md5: da74a4665e1913e90b0352bdc0f68b17
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dwim = dwim:main
+    #
+    # Would create an entry point called dwim that calls dwim.main()
+
+    - dwim = dwim:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - coloredlogs >=0.8
+    - executor >=1.6
+    - verboselogs >=1.0.1
+    - flufl.enum >=4.0.1
+
+  run:
+    - python
+    - coloredlogs >=0.8
+    - executor >=1.6
+    - verboselogs >=1.0.1
+    - flufl.enum >=4.0.1
+
+test:
+  # Python imports
+  imports:
+    - dwim
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dwim --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://dwim.readthedocs.org/en/latest/
+  license: MIT License
+  summary: 'Location aware application launcher'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

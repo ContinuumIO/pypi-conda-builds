@@ -1,0 +1,62 @@
+package:
+  name: json-regex-difftool
+  version: "0.2"
+
+source:
+  fn: json-regex-difftool-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/json-regex-difftool/json-regex-difftool-0.2.tar.gz
+  md5: 8caaddb5d342636a8a8a9c388221554b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - json-regex-difftool = json-regex-difftool:main
+    #
+    # Would create an entry point called json-regex-difftool that calls json-regex-difftool.main()
+
+    - json-regex-difftool=jsondiff:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - json_regex_diff
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - json-regex-difftool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bazaarvoice/json-regex-difftool.git
+  license: Apache Software License
+  summary: 'A tool for doing a comparison or difference of JSON documentswith regular expression support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

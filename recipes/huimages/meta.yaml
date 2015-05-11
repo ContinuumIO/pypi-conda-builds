@@ -1,0 +1,68 @@
+package:
+  name: huimages
+  version: "2.2p3"
+
+source:
+  fn: huImages-2.2p3.tar.gz
+  url: https://pypi.python.org/packages/source/h/huImages/huImages-2.2p3.tar.gz
+  md5: 2b9efee7150f9687be8ab795b3aa281f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - huimages = huimages:main
+    #
+    # Would create an entry point called huimages that calls huimages.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - couchdb
+    - hutools
+    - boto
+
+  run:
+    - python
+    - couchdb
+    - hutools
+    - boto
+
+test:
+  # Python imports
+  imports:
+    - demo
+    - huimages
+    - huimages.imagebrowser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/hudora/huImages/
+  license: BSD License
+  summary: 'Image storage & scaling in CouchDB.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

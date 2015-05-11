@@ -1,0 +1,116 @@
+package:
+  name: gaphor
+  version: "0.17.2"
+
+source:
+  fn: gaphor-0.17.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gaphor/gaphor-0.17.2.tar.gz
+  md5: f42e27a082a0890baf626dd70e17ca95
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gaphor = gaphor:main
+    #
+    # Would create an entry point called gaphor that calls gaphor.main()
+
+    - gaphor = gaphor:main
+    - gaphorconvert = gaphor.tools.gaphorconvert:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gaphas >=0.7.2
+    - etk.docking >=0.2
+    - zope.component >=3.4.0
+
+  run:
+    - python
+    - setuptools
+    - gaphas >=0.7.2
+    - etk.docking >=0.2
+    - zope.component >=3.4.0
+
+test:
+  # Python imports
+  imports:
+    - gaphor
+    - gaphor.UML
+    - gaphor.UML.tests
+    - gaphor.adapters
+    - gaphor.adapters.actions
+    - gaphor.adapters.actions.tests
+    - gaphor.adapters.classes
+    - gaphor.adapters.classes.tests
+    - gaphor.adapters.components
+    - gaphor.adapters.components.tests
+    - gaphor.adapters.interactions
+    - gaphor.adapters.interactions.tests
+    - gaphor.adapters.profiles
+    - gaphor.adapters.profiles.tests
+    - gaphor.adapters.states
+    - gaphor.adapters.states.tests
+    - gaphor.adapters.tests
+    - gaphor.adapters.usecases
+    - gaphor.adapters.usecases.tests
+    - gaphor.diagram
+    - gaphor.diagram.actions
+    - gaphor.diagram.classes
+    - gaphor.diagram.classes.tests
+    - gaphor.diagram.components
+    - gaphor.diagram.components.tests
+    - gaphor.diagram.profiles
+    - gaphor.diagram.states
+    - gaphor.diagram.states.tests
+    - gaphor.diagram.tests
+    - gaphor.misc
+    - gaphor.plugins
+    - gaphor.plugins.alignment
+    - gaphor.plugins.checkmetamodel
+    - gaphor.plugins.diagramlayout
+    - gaphor.plugins.diagramlayout.tests
+    - gaphor.plugins.liveobjectbrowser
+    - gaphor.plugins.pynsource
+    - gaphor.plugins.xmiexport
+    - gaphor.services
+    - gaphor.services.tests
+    - gaphor.storage
+    - gaphor.storage.tests
+    - gaphor.tests
+    - gaphor.tools
+    - gaphor.ui
+    - gaphor.ui.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gaphor --help
+    - gaphorconvert --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gaphor.sourceforge.net
+  license: GNU General Public License (GPL)
+  summary: 'Gaphor is a UML modeling tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

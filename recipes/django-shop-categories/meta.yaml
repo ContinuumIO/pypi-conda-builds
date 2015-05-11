@@ -1,0 +1,74 @@
+package:
+  name: django-shop-categories
+  version: "1.0"
+
+source:
+  fn: django-shop-categories-1.0.zip
+  url: https://pypi.python.org/packages/source/d/django-shop-categories/django-shop-categories-1.0.zip
+  md5: 6dd6590bb19c09915718304d0a7a3b4f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shop-categories = django-shop-categories:main
+    #
+    # Would create an entry point called django-shop-categories that calls django-shop-categories.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-shop
+    - django-mptt
+    - django-treeadmin
+
+  run:
+    - python
+    - django-shop
+    - django-mptt
+    - django-treeadmin
+
+test:
+  # Python imports
+  imports:
+    - shop_categories
+    - shop_categories.models
+    - shop_categories.models.defaults
+    - shop_categories.models.defaults.category
+    - shop_categories.models.defaults.product
+    - shop_categories.test_utils
+    - shop_categories.test_utils.project
+    - shop_categories.test_utils.project.models
+    - shop_categories.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fivethreeo/django-shop-categories/
+  license: BSD License
+  summary: 'A extendable category app using django-mptt for django-shop'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

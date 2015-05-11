@@ -1,0 +1,71 @@
+package:
+  name: elfcloud-weasel
+  version: "1.2.2"
+
+source:
+  fn: elfcloud-weasel-1.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/elfcloud-weasel/elfcloud-weasel-1.2.2.tar.gz
+  md5: 6b37eedf3a57697db0c17578c81f6ea4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elfcloud-weasel = elfcloud-weasel:main
+    #
+    # Would create an entry point called elfcloud-weasel that calls elfcloud-weasel.main()
+
+    - ecw=elfcloud.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator
+    - pycrypto
+    - argparse
+
+  run:
+    - python
+    - setuptools
+    - decorator
+    - pycrypto
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - elfcloud
+    - elfcloud.cli
+    - elfcloud.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ecw --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://elfcloud.fi/
+  license: Apache Software License
+  summary: 'elfcloud.fi Weasel'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

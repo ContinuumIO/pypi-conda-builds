@@ -1,0 +1,75 @@
+package:
+  name: eke.committees
+  version: "1.0.9"
+
+source:
+  fn: eke.committees-1.0.9.zip
+  url: https://pypi.python.org/packages/source/e/eke.committees/eke.committees-1.0.9.zip
+  md5: 521ab9b37cbf970a09618ef3e446aeae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eke.committees = eke.committees:main
+    #
+    # Would create an entry point called eke.committees that calls eke.committees.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - zope.globalrequest
+    - edrnsite.collaborations
+    - z3c.autoinclude
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - zope.globalrequest
+    - edrnsite.collaborations
+    - z3c.autoinclude
+
+test:
+  # Python imports
+  imports:
+    - eke
+    - eke.committees
+    - eke.committees.browser
+    - eke.committees.content
+    - eke.committees.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EDRN/eke.committees
+  license: Apache Software License
+  summary: 'EDRN Committee list and membership information for the EDRN Knowledge Environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: imposm.geocoder
+  version: "0.1.3"
+
+source:
+  fn: imposm.geocoder-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/imposm.geocoder/imposm.geocoder-0.1.3.tar.gz
+  md5: 1e5ed562a2fa2daf73a2f6876b28ae47
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - imposm.geocoder = imposm.geocoder:main
+    #
+    # Would create an entry point called imposm.geocoder that calls imposm.geocoder.main()
+
+    - imposm-geocoder = imposm.geocoder.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+    - geoalchemy
+    - psycopg2
+    - imposm >=2.3.3
+
+  run:
+    - python
+    - sqlalchemy
+    - geoalchemy
+    - psycopg2
+    - imposm >=2.3.3
+
+test:
+  # Python imports
+  imports:
+    - imposm
+    - imposm.geocoder
+    - imposm.geocoder.config
+    - imposm.geocoder.db
+    - imposm.geocoder.model
+    - imposm.geocoder.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - imposm-geocoder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://geocoder.imposm.org
+  license: Apache Software License
+  summary: 'Imposm Geocoder for OSM-Data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

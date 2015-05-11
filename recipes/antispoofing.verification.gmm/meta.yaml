@@ -1,0 +1,88 @@
+package:
+  name: antispoofing.verification.gmm
+  version: "1.0.2"
+
+source:
+  fn: antispoofing.verification.gmm-1.0.2.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.verification.gmm/antispoofing.verification.gmm-1.0.2.zip
+  md5: 838967ad3788a7bbed14939ae9073b6a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.verification.gmm = antispoofing.verification.gmm:main
+    #
+    # Would create an entry point called antispoofing.verification.gmm that calls antispoofing.verification.gmm.main()
+
+    - feature_extract.py = antispoofing.verification.gmm.script.feature_extract:main
+    - train_ubm.py = antispoofing.verification.gmm.script.train_ubm:main
+    - generate_statistics.py = antispoofing.verification.gmm.script.generate_statistics:main
+    - enrol.py = antispoofing.verification.gmm.script.enrol:main
+    - score.py = antispoofing.verification.gmm.script.score:main
+    - build_score_files.py = antispoofing.verification.gmm.script.build_score_files:main
+    - apply_threshold.py = bob.measure.script.apply_threshold:main
+    - eval_threshold.py = bob.measure.script.eval_threshold:main
+    - compute_perf.py = bob.measure.script.compute_perf:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bob >=1.0.0,<1.1.0
+
+  run:
+    - python
+    - setuptools
+    - bob >=1.0.0,<1.1.0
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.verification
+    - antispoofing.verification.faceloc
+    - antispoofing.verification.features
+    - antispoofing.verification.gmm
+    - antispoofing.verification.gmm.config
+    - antispoofing.verification.gmm.script
+    - antispoofing.verification.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - feature_extract.py --help
+    - train_ubm.py --help
+    - generate_statistics.py --help
+    - enrol.py --help
+    - score.py --help
+    - build_score_files.py --help
+    - apply_threshold.py --help
+    - eval_threshold.py --help
+    - compute_perf.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/antispoofing.verification.gmm
+  license: GPLv3
+  summary: 'Replay-Attack Face Verification Package Based on a Parts-Based Gaussian Mixture Models'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

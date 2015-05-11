@@ -1,0 +1,77 @@
+package:
+  name: file-comparison-panda
+  version: "0.4.0"
+
+source:
+  fn: file-comparison-panda-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/file-comparison-panda/file-comparison-panda-0.4.0.tar.gz
+  md5: 10512cc382986345b47031ce4b03b213
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - file-comparison-panda = file-comparison-panda:main
+    #
+    # Would create an entry point called file-comparison-panda that calls file-comparison-panda.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.7.2
+    - markupsafe ==0.18
+    - pygments ==1.6
+    - sphinx ==1.2
+    - docutils ==0.11
+    - py ==1.4.19
+    - pytest ==2.5.1
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - jinja2 ==2.7.2
+    - markupsafe ==0.18
+    - pygments ==1.6
+    - sphinx ==1.2
+    - docutils ==0.11
+    - py ==1.4.19
+    - pytest ==2.5.1
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - file_comparison_panda
+    - file_comparison_panda.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eikonomega/file-comparison-panda
+  license: UNKNOWN
+  summary: 'The file-comparison-panda library provides easy comparisons of csv file contents.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

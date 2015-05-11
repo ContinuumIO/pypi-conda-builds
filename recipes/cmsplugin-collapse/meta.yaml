@@ -1,0 +1,68 @@
+package:
+  name: cmsplugin-collapse
+  version: "0.2.5"
+
+source:
+  fn: cmsplugin-collapse-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmsplugin-collapse/cmsplugin-collapse-0.2.5.tar.gz
+  md5: 9e2e5c8788480f464c823dbbf1600530
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmsplugin-collapse = cmsplugin-collapse:main
+    #
+    # Would create an entry point called cmsplugin-collapse that calls cmsplugin-collapse.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-cms >=3.0
+    - django-sekizai
+
+  run:
+    - python
+    - django
+    - django-cms >=3.0
+    - django-sekizai
+
+test:
+  # Python imports
+  imports:
+    - cmsplugin_collapse
+    - cmsplugin_collapse.migrations
+    - cmsplugin_collapse.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/nimbis/cmsplugin-collapse
+  license: BSD License
+  summary: 'A simple bootstrap accordion plugin for django-cms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

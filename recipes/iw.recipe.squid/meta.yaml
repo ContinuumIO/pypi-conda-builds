@@ -1,0 +1,74 @@
+package:
+  name: iw.recipe.squid
+  version: "1.0"
+
+source:
+  fn: iw.recipe.squid-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/iw.recipe.squid/iw.recipe.squid-1.0.tar.gz
+  md5: cf70d5892c003224cd8621b827db0973
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iw.recipe.squid = iw.recipe.squid:main
+    #
+    # Would create an entry point called iw.recipe.squid that calls iw.recipe.squid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+    - zc.buildout
+    - cheetah
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope.testing
+    - zc.buildout
+    - cheetah
+
+test:
+  # Python imports
+  imports:
+    - iw
+    - iw.recipe
+    - iw.recipe.squid
+    - iw.recipe.squid.templates
+    - iw.recipe.squid.templates.squid
+    - iw.recipe.squid.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/iw-recipes
+  license: GPL
+  summary: 'ZC buildout recipe to configure an squid proxy for zope'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

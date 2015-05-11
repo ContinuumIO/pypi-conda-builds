@@ -1,0 +1,67 @@
+package:
+  name: imdbpy
+  version: "5.0"
+
+source:
+  fn: IMDbPY-5.0.tar.gz
+  url: https://pypi.python.org/packages/source/I/IMDbPY/IMDbPY-5.0.tar.gz
+  md5: f0b87950a943762db9e45c1a7c3a5cce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - imdbpy = imdbpy:main
+    #
+    # Would create an entry point called imdbpy that calls imdbpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - imdb
+    - imdb.locale
+    - imdb.parser
+    - imdb.parser.http
+    - imdb.parser.http.bsouplxml
+    - imdb.parser.mobile
+    - imdb.parser.sql
+    - imdbpy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://imdbpy.sf.net/
+  license: GNU General Public License (GPL)
+  summary: "Python package to access the IMDb's database"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: oar-utils
+  version: "0.1.2"
+
+source:
+  fn: oar-utils-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/o/oar-utils/oar-utils-0.1.2.tar.gz
+  md5: 95d17581ad772b2b827658252cd3ec9d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oar-utils = oar-utils:main
+    #
+    # Would create an entry point called oar-utils that calls oar-utils.main()
+
+    - oar-database-migrate=oar_utils.db.migrate:cli
+    - oar-database-archive=oar_utils.db.archive:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oar-lib
+    - sqlalchemy-utils
+    - tabulate
+    - click
+
+  run:
+    - python
+    - setuptools
+    - oar-lib
+    - sqlalchemy-utils
+    - tabulate
+    - click
+
+test:
+  # Python imports
+  imports:
+    - oar_utils
+    - oar_utils.db
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - oar-database-migrate --help
+    - oar-database-archive --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/oar-team/python-oar-utils
+  license: BSD License or GNU General Public License (GPL)
+  summary: 'Custom scripts and various utility functions for OAR.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

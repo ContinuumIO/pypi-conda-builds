@@ -1,0 +1,71 @@
+package:
+  name: mongo-mail-server
+  version: "0.1.1"
+
+source:
+  fn: mongo-mail-server-0.1.1.zip
+  url: https://pypi.python.org/packages/source/m/mongo-mail-server/mongo-mail-server-0.1.1.zip
+  md5: 19437c0eef9265b654ddf5bdc28de11f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongo-mail-server = mongo-mail-server:main
+    #
+    # Would create an entry point called mongo-mail-server that calls mongo-mail-server.main()
+
+    - mongo-mail-server = mongo_mail_server:main
+    - mongo-mail-reader = mongo_mail_server:main_reader
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - gevent >=1.0
+    - python-decouple
+    - pymongo >=2.8
+
+  run:
+    - python
+    - python-dateutil
+    - gevent >=1.0
+    - python-decouple
+    - pymongo >=2.8
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mongo-mail-server --help
+    - mongo-mail-reader --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/radical-software/mongo-mail-server
+  license: BSD License
+  summary: 'Python SMTP server with Gevent for recording messages in MongoDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: odata2avro
+  version: "1.0.0"
+
+source:
+  fn: odata2avro-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/odata2avro/odata2avro-1.0.0.tar.gz
+  md5: 64676f7d623a715d4954b4bbae3c50cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - odata2avro = odata2avro:main
+    #
+    # Would create an entry point called odata2avro that calls odata2avro.main()
+
+    - odata2avro=odata2avro.main:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - avro ==1.7.7
+    - click ==3.3
+
+  run:
+    - python
+    - avro ==1.7.7
+    - click ==3.3
+
+test:
+  # Python imports
+  imports:
+    - odata2avro
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - odata2avro --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/datadudes/odata2avro
+  license: MIT License
+  summary: 'Convert OData datasets to Avro'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

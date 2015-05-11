@@ -1,0 +1,76 @@
+package:
+  name: gitfs
+  version: "0.3.1"
+
+source:
+  fn: gitfs-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitfs/gitfs-0.3.1.tar.gz
+  md5: b5bea0051a1ddfba111ba0f819861e27
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitfs = gitfs:main
+    #
+    # Would create an entry point called gitfs that calls gitfs.main()
+
+    - gitfs = gitfs:mount
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fusepy ==2.0.2
+    - pygit2 ==0.22.0
+    - atomiclong
+
+  run:
+    - python
+    - fusepy ==2.0.2
+    - pygit2 ==0.22.0
+    - atomiclong
+
+test:
+  # Python imports
+  imports:
+    - gitfs
+    - gitfs.cache
+    - gitfs.cache.decorators
+    - gitfs.events
+    - gitfs.merges
+    - gitfs.utils
+    - gitfs.utils.decorators
+    - gitfs.views
+    - gitfs.worker
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gitfs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.presslabs.com/gitfs/
+  license: UNKNOWN
+  summary: 'Version controlled file system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

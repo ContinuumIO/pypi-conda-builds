@@ -1,0 +1,70 @@
+package:
+  name: cloudify-agent-packager
+  version: "3.2a8"
+
+source:
+  fn: cloudify-agent-packager-3.2a8.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudify-agent-packager/cloudify-agent-packager-3.2a8.tar.gz
+  md5: e5b78bd87137bf6fb7d538f35a682763
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudify-agent-packager = cloudify-agent-packager:main
+    #
+    # Would create an entry point called cloudify-agent-packager that calls cloudify-agent-packager.main()
+
+    - cfy-ap = agent_packager.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt ==.0.6.1
+    - pyyaml ==3.10
+    - virtualenv ==1.11.4
+    - requests ==2.4.1
+
+  run:
+    - python
+    - docopt ==.0.6.1
+    - pyyaml ==3.10
+    - virtualenv ==1.11.4
+    - requests ==2.4.1
+
+test:
+  # Python imports
+  imports:
+    - agent_packager
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cfy-ap --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cloudify-cosmo/cloudify-agent-packager
+  license: LICENSE
+  summary: 'Creates Cloudify Agent Packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

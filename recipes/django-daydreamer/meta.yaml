@@ -1,0 +1,88 @@
+package:
+  name: django-daydreamer
+  version: "0.0.3a"
+
+source:
+  fn: django-daydreamer-0.0.3a.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-daydreamer/django-daydreamer-0.0.3a.tar.gz
+  md5: db79a8426b9c7285eb1122c690677754
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-daydreamer = django-daydreamer:main
+    #
+    # Would create an entry point called django-daydreamer that calls django-daydreamer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+
+  run:
+    - python
+    - django >=1.6
+
+test:
+  # Python imports
+  imports:
+    - daydreamer
+    - daydreamer.core
+    - daydreamer.core.handlers
+    - daydreamer.models
+    - daydreamer.test
+    - daydreamer.test.views
+    - daydreamer.test.views.generic
+    - daydreamer.tests
+    - daydreamer.tests.views
+    - daydreamer.tests.views.behaviors
+    - daydreamer.tests.views.behaviors.auth
+    - daydreamer.tests.views.behaviors.cache
+    - daydreamer.tests.views.behaviors.clickjacking
+    - daydreamer.tests.views.behaviors.csrf
+    - daydreamer.tests.views.behaviors.debug
+    - daydreamer.tests.views.behaviors.gzip
+    - daydreamer.tests.views.behaviors.http
+    - daydreamer.tests.views.behaviors.vary
+    - daydreamer.tests.views.core
+    - daydreamer.tests.views.core.base
+    - daydreamer.tests.views.core.behaviors
+    - daydreamer.tests.views.core.http
+    - daydreamer.tests.views.generic
+    - daydreamer.views
+    - daydreamer.views.behaviors
+    - daydreamer.views.core
+    - daydreamer.views.generic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/skibblenybbles/django-daydreamer
+  license: MIT License
+  summary: 'A Django class-based view utility library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

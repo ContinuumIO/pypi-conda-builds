@@ -1,0 +1,75 @@
+package:
+  name: evogrid
+  version: "0.1.0"
+
+source:
+  fn: evogrid-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/evogrid/evogrid-0.1.0.tar.gz
+  md5: 93554f967a27a45c37332eea34ad8bd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - evogrid = evogrid:main
+    #
+    # Would create an entry point called evogrid that calls evogrid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.component
+    - numpy
+    - python-memcached
+
+  run:
+    - python
+    - zope.interface
+    - zope.component
+    - numpy
+    - python-memcached
+
+test:
+  # Python imports
+  imports:
+    - evogrid
+    - evogrid.caching
+    - evogrid.common
+    - evogrid.common.tests
+    - evogrid.mo
+    - evogrid.numeric
+    - evogrid.numeric.tests
+    - evogrid.sharing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://champiland.homelinux.net/evogrid/doc
+  license: GNU General Public License (GPL)
+  summary: 'Distributed Evolutionary Computation framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: archelonc
+  version: "0.5.0"
+
+source:
+  fn: archelonc-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/archelonc/archelonc-0.5.0.tar.gz
+  md5: 4bd3075a8a4b593bcd3dd94b9ea0fd0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - archelonc = archelonc:main
+    #
+    # Would create an entry point called archelonc that calls archelonc.main()
+
+    - archelonf = archelonc.command:search_form
+    - archelon_update = archelonc.command:update
+    - archelon_import = archelonc.command:import_history
+    - archelon_export = archelonc.command:export_history
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - npyscreen
+    - requests
+
+  run:
+    - python
+    - npyscreen
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - archelonc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - archelonf --help
+    - archelon_update --help
+    - archelon_import --help
+    - archelon_export --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/carsongee/archelon
+  license: GNU Affero General Public License v3
+  summary: 'Client connected to archelonc for Web shell history'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

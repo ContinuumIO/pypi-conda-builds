@@ -1,0 +1,66 @@
+package:
+  name: eve-elastic
+  version: "0.2.8"
+
+source:
+  fn: Eve-Elastic-0.2.8.tar.gz
+  url: https://pypi.python.org/packages/source/E/Eve-Elastic/Eve-Elastic-0.2.8.tar.gz
+  md5: 795fdd69cfcfd6e4786b2bfc4ff525f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eve-elastic = eve-elastic:main
+    #
+    # Would create an entry point called eve-elastic that calls eve-elastic.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elasticsearch >=1.2.0
+    - arrow >=0.4.2
+    - eve >=0.4
+
+  run:
+    - python
+    - elasticsearch >=1.2.0
+    - arrow >=0.4.2
+    - eve >=0.4
+
+test:
+  # Python imports
+  imports:
+    - eve_elastic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/petrjasek/eve-elastic
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Elasticsearch data layer for eve rest framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

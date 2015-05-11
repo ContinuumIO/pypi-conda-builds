@@ -1,0 +1,66 @@
+package:
+  name: flask-limiter
+  version: "0.7.9"
+
+source:
+  fn: Flask-Limiter-0.7.9.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Limiter/Flask-Limiter-0.7.9.tar.gz
+  md5: 9cfe7e66ce8f2b07aaae43e2c9409696
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-limiter = flask-limiter:main
+    #
+    # Would create an entry point called flask-limiter that calls flask-limiter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - limits
+    - flask >=0.8
+    - six >=1.4.1
+
+  run:
+    - python
+    - limits
+    - flask >=0.8
+    - six >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - flask_limiter
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://flask-limiter.readthedocs.org
+  license: MIT License
+  summary: 'Rate limiting for flask applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

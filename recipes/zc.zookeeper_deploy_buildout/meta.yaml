@@ -1,0 +1,66 @@
+package:
+  name: zc.zookeeper_deploy_buildout
+  version: "0.2.0"
+
+source:
+  fn: zc.zookeeper_deploy_buildout-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.zookeeper_deploy_buildout/zc.zookeeper_deploy_buildout-0.2.0.tar.gz
+  md5: 42b6714f8dd9a7aff5a027dddbd581c6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.zookeeper_deploy_buildout = zc.zookeeper_deploy_buildout:main
+    #
+    # Would create an entry point called zc.zookeeper_deploy_buildout that calls zc.zookeeper_deploy_buildout.main()
+
+    - zookeeper-deploy=zc.zookeeper_deploy_buildout:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.zookeeper_deploy_buildout
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zookeeper-deploy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

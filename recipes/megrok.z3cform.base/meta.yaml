@@ -1,0 +1,79 @@
+package:
+  name: megrok.z3cform.base
+  version: "0.5"
+
+source:
+  fn: megrok.z3cform.base-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/megrok.z3cform.base/megrok.z3cform.base-0.5.tar.gz
+  md5: 8c6d4997e3d19c0d90e126c2d9f397c5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megrok.z3cform.base = megrok.z3cform.base:main
+    #
+    # Would create an entry point called megrok.z3cform.base that calls megrok.z3cform.base.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - grokcore.component
+    - grokcore.viewlet
+    - grokcore.view
+    - grokcore.formlib
+    - z3c.form >=2.1
+    - megrok.pagetemplate >=0.3
+    - rwproperty
+
+  run:
+    - python
+    - setuptools
+    - grokcore.component
+    - grokcore.viewlet
+    - grokcore.view
+    - grokcore.formlib
+    - z3c.form >=2.1
+    - megrok.pagetemplate >=0.3
+    - rwproperty
+
+test:
+  # Python imports
+  imports:
+    - megrok
+    - megrok.z3cform
+    - megrok.z3cform.base
+    - megrok.z3cform.base.tests
+    - megrok.z3cform.base.tests.layout
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: Zope Public License
+  summary: 'megrok extension for z3cform'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: incuna-auth
+  version: "2.5.0"
+
+source:
+  fn: incuna-auth-2.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/incuna-auth/incuna-auth-2.5.0.tar.gz
+  md5: 98c0fad2fe2cfe16f40b23a37b1ea7c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - incuna-auth = incuna-auth:main
+    #
+    # Would create an entry point called incuna-auth that calls incuna-auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-admin-sso
+    - django-crispy-forms
+
+  run:
+    - python
+    - django-admin-sso
+    - django-crispy-forms
+
+test:
+  # Python imports
+  imports:
+    - incuna_auth
+    - incuna_auth.middleware
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/incuna/incuna-auth
+  license: UNKNOWN
+  summary: 'Provides authentication parts.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

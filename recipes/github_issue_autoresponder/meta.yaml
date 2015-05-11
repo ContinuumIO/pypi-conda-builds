@@ -1,0 +1,66 @@
+package:
+  name: github_issue_autoresponder
+  version: "1.0.2"
+
+source:
+  fn: github_issue_autoresponder-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/github_issue_autoresponder/github_issue_autoresponder-1.0.2.tar.gz
+  md5: 1823e725e21106a8418e795e3bc4a575
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github_issue_autoresponder = github_issue_autoresponder:main
+    #
+    # Would create an entry point called github_issue_autoresponder that calls github_issue_autoresponder.main()
+
+    - github_issue_autoresponder=github_issue_autoresponder:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clihelper
+    - requests
+
+  run:
+    - python
+    - clihelper
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - github_issue_autoresponder
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - github_issue_autoresponder --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gmr/github_issue_autoresponder
+  license: BSD License
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

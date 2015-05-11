@@ -1,0 +1,71 @@
+package:
+  name: memecli
+  version: "0.4"
+
+source:
+  fn: memecli-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/memecli/memecli-0.4.tar.gz
+  md5: 5d5aa04ae025c963cfeb9228527d16b8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - memecli = memecli:main
+    #
+    # Would create an entry point called memecli that calls memecli.main()
+
+    - memecli=memecli.main:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - memeapi
+    - pyyaml
+    - tabulate
+
+  run:
+    - python
+    - setuptools
+    - click
+    - memeapi
+    - pyyaml
+    - tabulate
+
+test:
+  # Python imports
+  imports:
+    - memecli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - memecli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/surrealists/memecli
+  license: MIT License
+  summary: 'Command line wrapper over http://memegenerator.net API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

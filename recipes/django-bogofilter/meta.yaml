@@ -1,0 +1,64 @@
+package:
+  name: django-bogofilter
+  version: "0.1"
+
+source:
+  fn: django-bogofilter-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-bogofilter/django-bogofilter-0.1.tar.gz
+  md5: f873a8e51f2df8d69239afbc4f16138f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-bogofilter = django-bogofilter:main
+    #
+    # Would create an entry point called django-bogofilter that calls django-bogofilter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-contrib-comments
+
+  run:
+    - python
+    - django
+    - django-contrib-comments
+
+test:
+  # Python imports
+  imports:
+    - bogofilter
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stefantalpalaru/django-bogofilter
+  license: BSD License
+  summary: 'Bayesian spam filtering for django_comments using bogofilter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

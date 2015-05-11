@@ -1,0 +1,73 @@
+package:
+  name: jmbo-twitter
+  version: "0.4.3"
+
+source:
+  fn: jmbo-twitter-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo-twitter/jmbo-twitter-0.4.3.tar.gz
+  md5: 494fb8ed1fbefcce573593778382e1d8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo-twitter = jmbo-twitter:main
+    #
+    # Would create an entry point called jmbo-twitter that calls jmbo-twitter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-twitter >=1.1
+    - jmbo >=1.1.1
+    - jmbo-foundry >=1.1.20
+    - django-celery
+    - requests
+
+  run:
+    - python
+    - python-twitter >=1.1
+    - jmbo >=1.1.1
+    - jmbo-foundry >=1.1.20
+    - django-celery
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - jmbo_twitter
+    - jmbo_twitter.migrations
+    - jmbo_twitter.templatetags
+    - jmbo_twitter.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/jmbo-twitter
+  license: BSD License
+  summary: 'Pull, cache, display tweets.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

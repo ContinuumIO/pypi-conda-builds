@@ -1,0 +1,66 @@
+package:
+  name: more.static
+  version: "0.7"
+
+source:
+  fn: more.static-0.7.zip
+  url: https://pypi.python.org/packages/source/m/more.static/more.static-0.7.zip
+  md5: 6bea188641d823099cb77e04d12d64fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - more.static = more.static:main
+    #
+    # Would create an entry point called more.static that calls more.static.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - morepath >=0.8
+    - bowerstatic >=0.8
+
+  run:
+    - python
+    - setuptools
+    - morepath >=0.8
+    - bowerstatic >=0.8
+
+test:
+  # Python imports
+  imports:
+    - more
+    - more.static
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/more.static
+  license: BSD
+  summary: 'BowerStatic integration for Morepath'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

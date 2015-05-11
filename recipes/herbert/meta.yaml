@@ -1,0 +1,64 @@
+package:
+  name: herbert
+  version: "0.2"
+
+source:
+  fn: herbert-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/herbert/herbert-0.2.tar.gz
+  md5: 979cf58c8123c091ef712f60e4d11a82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - herbert = herbert:main
+    #
+    # Would create an entry point called herbert that calls herbert.main()
+
+    - herbert=herbert.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rply
+
+  run:
+    - python
+    - rply
+
+test:
+  # Python imports
+  imports:
+    - herbert
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - herbert --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'An implmentation of herbert language'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

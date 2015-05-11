@@ -1,0 +1,66 @@
+package:
+  name: mbdata
+  version: "2015.01.10"
+
+source:
+  fn: mbdata-2015.01.10.tar.gz
+  url: https://pypi.python.org/packages/source/m/mbdata/mbdata-2015.01.10.tar.gz
+  md5: ccaf334b58bcca062b3874d4bfa30e60
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mbdata = mbdata:main
+    #
+    # Would create an entry point called mbdata that calls mbdata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - mbdata
+    - mbdata.api
+    - mbdata.api.blueprints
+    - mbdata.api.tests
+    - mbdata.tests
+    - mbdata.tools
+    - mbdata.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/lalinsky/mbdata
+  license: MIT
+  summary: 'MusicBrainz Database Tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

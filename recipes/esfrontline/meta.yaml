@@ -1,0 +1,67 @@
+package:
+  name: esfrontline
+  version: "1.1.14230"
+
+source:
+  fn: esFrontLine-1.1.14230.zip
+  url: https://pypi.python.org/packages/source/e/esFrontLine/esFrontLine-1.1.14230.zip
+  md5: fa25ee8844fde1de32646539d040b6f0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - esfrontline = esfrontline:main
+    #
+    # Would create an entry point called esfrontline that calls esfrontline.main()
+
+    - esFrontLine = esFrontLine.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.9
+    - requests ==1.2.3
+
+  run:
+    - python
+    - flask ==0.9
+    - requests ==1.2.3
+
+test:
+  # Python imports
+  imports:
+    - esFrontLine
+    - esfrontline
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - esFrontLine --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/klahnakoski/esFrontLine
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Limit restful requests to backend ElasticSearch cluster:  Queries only.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

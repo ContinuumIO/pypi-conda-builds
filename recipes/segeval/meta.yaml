@@ -1,0 +1,67 @@
+package:
+  name: segeval
+  version: "2.0.11"
+
+source:
+  fn: segeval-2.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/s/segeval/segeval-2.0.11.tar.gz
+  md5: 0ad78aa3239eca35069bc5578fb229b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - segeval = segeval:main
+    #
+    # Would create an entry point called segeval that calls segeval.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - segeval
+    - segeval.agreement
+    - segeval.data
+    - segeval.ml
+    - segeval.similarity
+    - segeval.similarity.distance
+    - segeval.util
+    - segeval.window
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://segeval.readthedocs.org/
+  license: BSD License
+  summary: 'A package providing text segmentation evaluation metrics and utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

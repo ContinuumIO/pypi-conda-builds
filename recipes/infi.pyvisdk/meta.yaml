@@ -1,0 +1,90 @@
+package:
+  name: infi.pyvisdk
+  version: "0.9.45"
+
+source:
+  fn: infi.pyvisdk-0.9.45.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.pyvisdk/infi.pyvisdk-0.9.45.tar.gz
+  md5: e2acc1ce26cfc0e583ff47e31c6ec995
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.pyvisdk = infi.pyvisdk:main
+    #
+    # Would create an entry point called infi.pyvisdk that calls infi.pyvisdk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - suds-jurko
+    - enum
+    - brownie
+    - lxml
+    - munch
+    - infi.pyutils
+    - jinja2
+    - python-cjson
+
+  run:
+    - python
+    - suds-jurko
+    - enum
+    - brownie
+    - lxml
+    - munch
+    - infi.pyutils
+    - jinja2
+    - python-cjson
+
+test:
+  # Python imports
+  imports:
+    - pyvisdk
+    - pyvisdk.base
+    - pyvisdk.do
+    - pyvisdk.enums
+    - pyvisdk.esxcli
+    - pyvisdk.esxcli.base
+    - pyvisdk.esxcli.executer
+    - pyvisdk.esxcli.generator
+    - pyvisdk.esxcli.handlers
+    - pyvisdk.facade
+    - pyvisdk.facade.extension
+    - pyvisdk.facade.property_collector
+    - pyvisdk.facade.task
+    - pyvisdk.mo
+    - pyvisdk.thirdparty
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/pyvisdk
+  license: MIT License
+  summary: 'vSphere SDK for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

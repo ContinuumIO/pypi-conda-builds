@@ -1,0 +1,664 @@
+package:
+  name: invenio
+  version: "2.0.2"
+
+source:
+  fn: invenio-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/i/invenio/invenio-2.0.2.tar.gz
+  md5: ce12ecdea9c5ea2f7ff8835f11884466
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - invenio = invenio:main
+    #
+    # Would create an entry point called invenio that calls invenio.main()
+
+    - inveniomanage = invenio.base.manage:main
+    - plotextractor = invenio.utils.scripts.plotextractor:main
+    - alertengine = invenio.legacy.webalert.scripts.alertengine:main
+    - batchuploader = invenio.legacy.bibupload.scripts.batchuploader
+    - bibcheck = invenio.legacy.bibcheck.scripts.bibcheck:main
+    - bibcircd = invenio.legacy.bibcirculation.scripts.bibcircd:main
+    - bibauthorid =  invenio.legacy.bibauthorid.scripts.bibauthorid:main
+    - bibcatalog = invenio.legacy.bibcatalog.scripts.bibcatalog:main
+    - bibclassify = invenio.modules.classifier.scripts.classifier:main
+    - bibconvert = invenio.legacy.bibconvert.scripts.bibconvert:main
+    - bibdocfile = invenio.legacy.bibdocfile.scripts.bibdocfile:main
+    - bibedit = invenio.legacy.bibedit.scripts.bibedit:main
+    - bibencode = invenio.modules.encoder.scripts.encoder:main
+    - bibexport = invenio.legacy.bibexport.scripts.bibexport:main
+    - bibindex = invenio.legacy.bibindex.scripts.bibindex:main
+    - bibmatch = invenio.legacy.bibmatch.scripts.bibmatch:main
+    - bibrank = invenio.legacy.bibrank.scripts.bibrank:main
+    - bibrankgkb = invenio.legacy.bibrank.scripts.bibrankgkb:main
+    - bibreformat = invenio.legacy.bibformat.scripts.bibreformat:main
+    - bibsort = invenio.legacy.bibsort.scripts.bibsort:main
+    - bibsched = invenio.legacy.bibsched.scripts.bibsched:main
+    - bibstat = invenio.legacy.bibindex.scripts.bibstat:main
+    - bibtaskex = invenio.legacy.bibsched.scripts.bibtaskex:main
+    - bibtasklet = invenio.legacy.bibsched.scripts.bibtasklet:main
+    - bibtex = invenio.modules.sequencegenerator.scripts.bibtex:main
+    - bibupload = invenio.legacy.bibupload.scripts.bibupload:main
+    - convert_journals =  invenio.legacy.docextract.scripts.convert_journals:main
+    - dbexec = invenio.legacy.miscutil.scripts.dbexec:main
+    - dbdump = invenio.legacy.miscutil.scripts.dbdump:main
+    - docextract = invenio.legacy.docextract.scripts.docextract:main
+    - elmsubmit = invenio.legacy.elmsubmit.scripts.elmsubmit:main
+    - gotoadmin = invenio.modules.redirector.scripts.redirector:main
+    - hepdataharvest =  invenio.utils.hepdata.scripts.hepdataharvest:main
+    - inveniocfg = invenio.legacy.inveniocfg:main
+    - inveniogc = invenio.legacy.websession.scripts.inveniogc:main
+    - inveniounoconv =  invenio.legacy.websubmit.scripts.inveniounoconv:main
+    - oaiharvest = invenio.legacy.oaiharvest.scripts.oaiharvest:main
+    - oairepositoryupdater =  invenio.legacy.oairepository.scripts.oairepositoryupdater:main
+    - arxiv-pdf-checker = invenio.legacy.pdfchecker:main
+    - refextract = invenio.legacy.refextract.scripts.refextract:main
+    - textmarc2xmlmarc =  invenio.legacy.bibrecord.scripts.textmarc2xmlmarc:main
+    - webaccessadmin =  invenio.modules.access.scripts.webaccessadmin:main
+    - webauthorprofile =  invenio.legacy.webauthorprofile.scripts.webauthorprofile:main
+    - webcoll = invenio.legacy.websearch.scripts.webcoll:main
+    - webmessageadmin =  invenio.legacy.webmessage.scripts.webmessageadmin:main
+    - webstatadmin = invenio.legacy.webstat.scripts.webstatadmin:main
+    - websubmitadmin =  invenio.legacy.websubmit.scripts.websubmitadmin:main
+    - xmlmarc2textmarc =  invenio.legacy.bibrecord.scripts.xmlmarc2textmarc:main
+    - xmlmarclint = invenio.legacy.bibrecord.scripts.xmlmarclint:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - alembic >=0.6.6
+    - babel >=1.3
+    - bagit >=1.5.1
+    - beautifulsoup >=3.2.1
+    - beautifulsoup4 >=4.3.2
+    - celery >=3.1.8
+    - cerberus >=0.7,<0.7.1
+    - chardet >=2.3.0
+    - datacite >=0.1.0
+    - dictdiffer >=0.0.3
+    - feedparser >=5.1
+    - fixture >=1.5
+    - flask >=0.10.1
+    - flask-admin >=1.0.9
+    - flask-assets >=0.10
+    - flask-babel >=0.9
+    - flask-breadcrumbs >=0.2
+    - flask-cache >=0.12
+    - flask-collect >=1.1.1
+    - flask-email >=1.4.4
+    - flask-gravatar >=0.4.2
+    - flask-login >=0.2.7
+    - flask-menu >=0.2
+    - flask-oauthlib >=0.6.0,<0.7
+    - flask-principal >=0.4
+    - flask-registry >=0.2
+    - flask-restful >=0.2.12
+    - flask-script >=2.0.5
+    - flask-sqlalchemy >=2.0
+    - flask-wtf >=0.10.2
+    - fs >=0.4
+    - intbitset >=2.0
+    - invenio-client >=0.1.0
+    - jellyfish >=0.3.2
+    - jinja2 >=2.7
+    - libmagic >=1.0
+    - lxml >=3.3
+    - mechanize >=0.2.5
+    - mistune >=0.4.1
+    - msgpack-python >=0.3
+    - mysql-python >=1.2.5
+    - numpy >=1.7
+    - nydus >=0.10.8
+    - pyparsing >=2.0.1,<2.0.2
+    - python-twitter >=2.0
+    - pypdf >=1.13
+    - pypdf2
+    - pyld >=0.5.2
+    - pystemmer >=1.3
+    - python-dateutil >=1.5
+    - python-magic >=0.4.6
+    - pytz
+    - rauth
+    - raven >=5.0.0
+    - rdflib >=4.1.2
+    - redis >=2.8.0
+    - reportlab >=2.7,<3.2
+    - requests >=2.3,<2.4
+    - setuptools >=2.2
+    - six >=1.7.2
+    - sphinx
+    - sqlalchemy >=0.9.8,<1.0
+    - sqlalchemy-utils[encrypted] >=0.28.2,<0.30
+    - unidecode
+    - workflow >=1.2.0
+    - wtforms >=2.0.1
+    - wtforms-alchemy >=0.12.6
+
+  run:
+    - python
+    - setuptools
+    - alembic >=0.6.6
+    - babel >=1.3
+    - bagit >=1.5.1
+    - beautifulsoup >=3.2.1
+    - beautifulsoup4 >=4.3.2
+    - celery >=3.1.8
+    - cerberus >=0.7,<0.7.1
+    - chardet >=2.3.0
+    - datacite >=0.1.0
+    - dictdiffer >=0.0.3
+    - feedparser >=5.1
+    - fixture >=1.5
+    - flask >=0.10.1
+    - flask-admin >=1.0.9
+    - flask-assets >=0.10
+    - flask-babel >=0.9
+    - flask-breadcrumbs >=0.2
+    - flask-cache >=0.12
+    - flask-collect >=1.1.1
+    - flask-email >=1.4.4
+    - flask-gravatar >=0.4.2
+    - flask-login >=0.2.7
+    - flask-menu >=0.2
+    - flask-oauthlib >=0.6.0,<0.7
+    - flask-principal >=0.4
+    - flask-registry >=0.2
+    - flask-restful >=0.2.12
+    - flask-script >=2.0.5
+    - flask-sqlalchemy >=2.0
+    - flask-wtf >=0.10.2
+    - fs >=0.4
+    - intbitset >=2.0
+    - invenio-client >=0.1.0
+    - jellyfish >=0.3.2
+    - jinja2 >=2.7
+    - libmagic >=1.0
+    - lxml >=3.3
+    - mechanize >=0.2.5
+    - mistune >=0.4.1
+    - msgpack-python >=0.3
+    - mysql-python >=1.2.5
+    - numpy >=1.7
+    - nydus >=0.10.8
+    - pyparsing >=2.0.1,<2.0.2
+    - python-twitter >=2.0
+    - pypdf >=1.13
+    - pypdf2
+    - pyld >=0.5.2
+    - pystemmer >=1.3
+    - python-dateutil >=1.5
+    - python-magic >=0.4.6
+    - pytz
+    - rauth
+    - raven >=5.0.0
+    - rdflib >=4.1.2
+    - redis >=2.8.0
+    - reportlab >=2.7,<3.2
+    - requests >=2.3,<2.4
+    - setuptools >=2.2
+    - six >=1.7.2
+    - sphinx
+    - sqlalchemy >=0.9.8,<1.0
+    - sqlalchemy-utils[encrypted] >=0.28.2,<0.30
+    - unidecode
+    - workflow >=1.2.0
+    - wtforms >=2.0.1
+    - wtforms-alchemy >=0.12.6
+
+test:
+  # Python imports
+  imports:
+    - invenio
+    - invenio.base
+    - invenio.base.scripts
+    - invenio.base.setuptools
+    - invenio.base.testsuite
+    - invenio.celery
+    - invenio.celery.testsuite
+    - invenio.ext
+    - invenio.ext.admin
+    - invenio.ext.arxiv
+    - invenio.ext.assets
+    - invenio.ext.babel
+    - invenio.ext.cache
+    - invenio.ext.collect
+    - invenio.ext.collect.storage
+    - invenio.ext.crossref
+    - invenio.ext.debug_toolbar
+    - invenio.ext.elasticsearch
+    - invenio.ext.elasticsearch.config
+    - invenio.ext.elasticsearch.jsonext
+    - invenio.ext.elasticsearch.jsonext.parsers
+    - invenio.ext.elasticsearch.recordext
+    - invenio.ext.email
+    - invenio.ext.email.backends
+    - invenio.ext.fixtures
+    - invenio.ext.fs
+    - invenio.ext.fs.cloudfs
+    - invenio.ext.gravatar
+    - invenio.ext.jasmine
+    - invenio.ext.jasmine.testsuite
+    - invenio.ext.legacy
+    - invenio.ext.logging
+    - invenio.ext.logging.backends
+    - invenio.ext.login
+    - invenio.ext.mixer
+    - invenio.ext.principal
+    - invenio.ext.registry
+    - invenio.ext.restful
+    - invenio.ext.script
+    - invenio.ext.session
+    - invenio.ext.session.backends
+    - invenio.ext.sqlalchemy
+    - invenio.ext.sqlalchemy.engines
+    - invenio.ext.sqlalchemy.types
+    - invenio.ext.sslify
+    - invenio.ext.sso
+    - invenio.ext.template
+    - invenio.legacy
+    - invenio.legacy.authorextract
+    - invenio.legacy.authorlist
+    - invenio.legacy.batchuploader
+    - invenio.legacy.bibauthority
+    - invenio.legacy.bibcatalog
+    - invenio.legacy.bibcatalog.scripts
+    - invenio.legacy.bibcatalog.ticket_templates
+    - invenio.legacy.bibcheck
+    - invenio.legacy.bibcheck.plugins
+    - invenio.legacy.bibcheck.web
+    - invenio.legacy.bibcheck.web.admin
+    - invenio.legacy.bibcirculation
+    - invenio.legacy.bibcirculation.scripts
+    - invenio.legacy.bibcirculation.web
+    - invenio.legacy.bibcirculation.web.admin
+    - invenio.legacy.bibclassify
+    - invenio.legacy.bibconvert
+    - invenio.legacy.bibconvert.scripts
+    - invenio.legacy.bibdocfile
+    - invenio.legacy.bibdocfile.plugins
+    - invenio.legacy.bibdocfile.scripts
+    - invenio.legacy.bibedit
+    - invenio.legacy.bibeditmulti
+    - invenio.legacy.bibexport
+    - invenio.legacy.bibexport.scripts
+    - invenio.legacy.bibformat
+    - invenio.legacy.bibformat.scripts
+    - invenio.legacy.bibindex
+    - invenio.legacy.bibindex.scripts
+    - invenio.legacy.bibindex.web
+    - invenio.legacy.bibindex.web.admin
+    - invenio.legacy.bibingest
+    - invenio.legacy.bibingest.ingestion_packages
+    - invenio.legacy.bibingest.storage_engines
+    - invenio.legacy.bibknowledge
+    - invenio.legacy.bibmatch
+    - invenio.legacy.bibmatch.scripts
+    - invenio.legacy.bibmerge
+    - invenio.legacy.bibrank
+    - invenio.legacy.bibrank.scripts
+    - invenio.legacy.bibrank.web
+    - invenio.legacy.bibrank.web.admin
+    - invenio.legacy.bibrecord
+    - invenio.legacy.bibrecord.data
+    - invenio.legacy.bibrecord.scripts
+    - invenio.legacy.bibsched
+    - invenio.legacy.bibsched.scripts
+    - invenio.legacy.bibsort
+    - invenio.legacy.bibsort.scripts
+    - invenio.legacy.bibsort.web
+    - invenio.legacy.bibsort.web.admin
+    - invenio.legacy.bibsword
+    - invenio.legacy.bibupload
+    - invenio.legacy.bibupload.scripts
+    - invenio.legacy.ckeditor
+    - invenio.legacy.docextract
+    - invenio.legacy.docextract.scripts
+    - invenio.legacy.elmsubmit
+    - invenio.legacy.elmsubmit.scripts
+    - invenio.legacy.errorlib
+    - invenio.legacy.external_authentication
+    - invenio.legacy.goto
+    - invenio.legacy.httptest
+    - invenio.legacy.miscutil
+    - invenio.legacy.miscutil.scripts
+    - invenio.legacy.oaiharvest
+    - invenio.legacy.oaiharvest.scripts
+    - invenio.legacy.oaiharvest.web
+    - invenio.legacy.oaiharvest.web.admin
+    - invenio.legacy.oairepository
+    - invenio.legacy.oairepository.scripts
+    - invenio.legacy.oairepository.web
+    - invenio.legacy.oairepository.web.admin
+    - invenio.legacy.pdfchecker
+    - invenio.legacy.ping
+    - invenio.legacy.refextract
+    - invenio.legacy.refextract.scripts
+    - invenio.legacy.search_engine
+    - invenio.legacy.webaccess
+    - invenio.legacy.webaccess.web
+    - invenio.legacy.webaccess.web.admin
+    - invenio.legacy.webalert
+    - invenio.legacy.webalert.scripts
+    - invenio.legacy.webbasket
+    - invenio.legacy.webcomment
+    - invenio.legacy.webcomment.web
+    - invenio.legacy.webcomment.web.admin
+    - invenio.legacy.webdoc
+    - invenio.legacy.webdoc_info
+    - invenio.legacy.webhelp
+    - invenio.legacy.webjournal
+    - invenio.legacy.webjournal.web
+    - invenio.legacy.webjournal.web.admin
+    - invenio.legacy.weblinkback
+    - invenio.legacy.weblinkback.web
+    - invenio.legacy.weblinkback.web.admin
+    - invenio.legacy.webmessage
+    - invenio.legacy.webmessage.scripts
+    - invenio.legacy.websearch
+    - invenio.legacy.websearch.scripts
+    - invenio.legacy.websearch.web
+    - invenio.legacy.websearch.web.admin
+    - invenio.legacy.websearch_external_collections
+    - invenio.legacy.websession
+    - invenio.legacy.websession.scripts
+    - invenio.legacy.webstat
+    - invenio.legacy.webstat.scripts
+    - invenio.legacy.webstyle
+    - invenio.legacy.webstyle.scripts
+    - invenio.legacy.websubmit
+    - invenio.legacy.websubmit.file_metadata_plugins
+    - invenio.legacy.websubmit.functions
+    - invenio.legacy.websubmit.scripts
+    - invenio.legacy.websubmit.web
+    - invenio.legacy.websubmit.web.admin
+    - invenio.legacy.wsgi
+    - invenio.modules
+    - invenio.modules.access
+    - invenio.modules.access.jsonext
+    - invenio.modules.access.scripts
+    - invenio.modules.access.testsuite
+    - invenio.modules.access.views
+    - invenio.modules.accounts
+    - invenio.modules.accounts.testsuite
+    - invenio.modules.accounts.upgrades
+    - invenio.modules.accounts.user_settings
+    - invenio.modules.accounts.views
+    - invenio.modules.alerts
+    - invenio.modules.alerts.testsuite
+    - invenio.modules.annotations
+    - invenio.modules.annotations.annotationsext
+    - invenio.modules.annotations.annotationsext.contexts
+    - invenio.modules.annotations.annotationsext.functions
+    - invenio.modules.annotations.testsuite
+    - invenio.modules.apikeys
+    - invenio.modules.apikeys.testsuite
+    - invenio.modules.archiver
+    - invenio.modules.archiver.documentext
+    - invenio.modules.authorlist
+    - invenio.modules.authorprofiles
+    - invenio.modules.authors
+    - invenio.modules.authors.recordext
+    - invenio.modules.authors.testsuite
+    - invenio.modules.baskets
+    - invenio.modules.bulletin
+    - invenio.modules.bulletin.format_elements
+    - invenio.modules.checker
+    - invenio.modules.circulation
+    - invenio.modules.classifier
+    - invenio.modules.classifier.scripts
+    - invenio.modules.classifier.tasks
+    - invenio.modules.classifier.testsuite
+    - invenio.modules.cloudconnector
+    - invenio.modules.cloudconnector.fsopeners
+    - invenio.modules.comments
+    - invenio.modules.communities
+    - invenio.modules.communities.admin
+    - invenio.modules.communities.output_formats
+    - invenio.modules.communities.testsuite
+    - invenio.modules.communities.upgrades
+    - invenio.modules.converter
+    - invenio.modules.converter.converterext
+    - invenio.modules.converter.testsuite
+    - invenio.modules.dashboard
+    - invenio.modules.deposit
+    - invenio.modules.deposit.fields
+    - invenio.modules.deposit.testsuite
+    - invenio.modules.deposit.types
+    - invenio.modules.deposit.views
+    - invenio.modules.documentation
+    - invenio.modules.documents
+    - invenio.modules.documents.documentext
+    - invenio.modules.documents.recordext
+    - invenio.modules.documents.recordext.functions
+    - invenio.modules.documents.testsuite
+    - invenio.modules.editor
+    - invenio.modules.editor.editorext
+    - invenio.modules.editor.editorext.ticket_templates
+    - invenio.modules.editor.record_editor
+    - invenio.modules.editor.testsuite
+    - invenio.modules.encoder
+    - invenio.modules.encoder.scripts
+    - invenio.modules.exporter
+    - invenio.modules.exporter.exporterext
+    - invenio.modules.exporter.testsuite
+    - invenio.modules.formatter
+    - invenio.modules.formatter.engines
+    - invenio.modules.formatter.format_elements
+    - invenio.modules.formatter.format_templates
+    - invenio.modules.formatter.output_formats
+    - invenio.modules.formatter.template_context_functions
+    - invenio.modules.formatter.testsuite
+    - invenio.modules.formatter.testsuite.format_elements
+    - invenio.modules.formatter.testsuite.format_templates
+    - invenio.modules.formatter.testsuite.output_formats
+    - invenio.modules.formatter.testsuite.overlay
+    - invenio.modules.formatter.testsuite.overlay.format_elements
+    - invenio.modules.formatter.upgrades
+    - invenio.modules.groups
+    - invenio.modules.groups.testsuite
+    - invenio.modules.indexer
+    - invenio.modules.indexer.testsuite
+    - invenio.modules.indexer.tokenizers
+    - invenio.modules.jsonalchemy
+    - invenio.modules.jsonalchemy.jsonext
+    - invenio.modules.jsonalchemy.jsonext.engines
+    - invenio.modules.jsonalchemy.jsonext.functions
+    - invenio.modules.jsonalchemy.jsonext.parsers
+    - invenio.modules.jsonalchemy.jsonext.producers
+    - invenio.modules.jsonalchemy.jsonext.readers
+    - invenio.modules.jsonalchemy.testsuite
+    - invenio.modules.jsonalchemy.testsuite.functions
+    - invenio.modules.knowledge
+    - invenio.modules.knowledge.testsuite
+    - invenio.modules.knowledge.upgrades
+    - invenio.modules.linkbacks
+    - invenio.modules.linkbacks.testsuite
+    - invenio.modules.matcher
+    - invenio.modules.matcher.testsuite
+    - invenio.modules.merger
+    - invenio.modules.messages
+    - invenio.modules.messages.testsuite
+    - invenio.modules.messages.upgrades
+    - invenio.modules.multimedia
+    - invenio.modules.multimedia.testsuite
+    - invenio.modules.oaiharvester
+    - invenio.modules.oaiharvester.tasks
+    - invenio.modules.oaiharvester.testsuite
+    - invenio.modules.oaiharvester.upgrades
+    - invenio.modules.oaiharvester.workflows
+    - invenio.modules.oairepository
+    - invenio.modules.oairepository.testsuite
+    - invenio.modules.oauth2server
+    - invenio.modules.oauth2server.testsuite
+    - invenio.modules.oauth2server.upgrades
+    - invenio.modules.oauth2server.views
+    - invenio.modules.oauthclient
+    - invenio.modules.oauthclient.contrib
+    - invenio.modules.oauthclient.testsuite
+    - invenio.modules.oauthclient.upgrades
+    - invenio.modules.oauthclient.views
+    - invenio.modules.pages
+    - invenio.modules.pages.testsuite
+    - invenio.modules.pages.upgrades
+    - invenio.modules.pdfchecker
+    - invenio.modules.pidstore
+    - invenio.modules.pidstore.providers
+    - invenio.modules.pidstore.tasks
+    - invenio.modules.pidstore.testsuite
+    - invenio.modules.pidstore.upgrades
+    - invenio.modules.previewer
+    - invenio.modules.previewer.previewerext
+    - invenio.modules.ranker
+    - invenio.modules.ranker.rankext
+    - invenio.modules.ranker.testsuite
+    - invenio.modules.records
+    - invenio.modules.records.documentext
+    - invenio.modules.records.recordext
+    - invenio.modules.records.recordext.functions
+    - invenio.modules.records.testsuite
+    - invenio.modules.records.testsuite.functions
+    - invenio.modules.records.upgrades
+    - invenio.modules.redirector
+    - invenio.modules.redirector.redirect_methods
+    - invenio.modules.refextract
+    - invenio.modules.scheduler
+    - invenio.modules.scheduler.tasklets
+    - invenio.modules.scheduler.upgrades
+    - invenio.modules.search
+    - invenio.modules.search.facets
+    - invenio.modules.search.searchext
+    - invenio.modules.search.searchext.services
+    - invenio.modules.search.template_context_functions
+    - invenio.modules.search.testsuite
+    - invenio.modules.search.upgrades
+    - invenio.modules.search.views
+    - invenio.modules.sequencegenerator
+    - invenio.modules.sequencegenerator.scripts
+    - invenio.modules.sequencegenerator.upgrades
+    - invenio.modules.sorter
+    - invenio.modules.sorter.testsuite
+    - invenio.modules.statistics
+    - invenio.modules.submit
+    - invenio.modules.sword
+    - invenio.modules.tags
+    - invenio.modules.tags.template_context_functions
+    - invenio.modules.tags.testsuite
+    - invenio.modules.tags.upgrades
+    - invenio.modules.textminer
+    - invenio.modules.textminer.testsuite
+    - invenio.modules.tickets
+    - invenio.modules.tickets.testsuite
+    - invenio.modules.upgrader
+    - invenio.modules.upgrader.testsuite
+    - invenio.modules.upgrader.upgrades
+    - invenio.modules.uploader
+    - invenio.modules.uploader.recordext
+    - invenio.modules.uploader.workflows
+    - invenio.modules.webhooks
+    - invenio.modules.webhooks.testsuite
+    - invenio.modules.webhooks.upgrades
+    - invenio.modules.workflows
+    - invenio.modules.workflows.actions
+    - invenio.modules.workflows.tasks
+    - invenio.modules.workflows.testsuite
+    - invenio.modules.workflows.testsuite.workflows
+    - invenio.modules.workflows.upgrades
+    - invenio.modules.workflows.views
+    - invenio.modules.workflows.workers
+    - invenio.modules.workflows.workflows
+    - invenio.testsuite
+    - invenio.testsuite.test_apps
+    - invenio.testsuite.test_apps.first
+    - invenio.testsuite.test_apps.last
+    - invenio.utils
+    - invenio.utils.autodiscovery
+    - invenio.utils.data
+    - invenio.utils.hepdata
+    - invenio.utils.hepdata.scripts
+    - invenio.utils.plotextractor
+    - invenio.utils.remote_debugger
+    - invenio.utils.scripts
+    - invenio.utils.vcs
+    - invenio_docs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - inveniomanage --help
+    - plotextractor --help
+    - alertengine --help
+    - batchuploader --help
+    - bibcheck --help
+    - bibcircd --help
+    - bibauthorid --help
+    - bibcatalog --help
+    - bibclassify --help
+    - bibconvert --help
+    - bibdocfile --help
+    - bibedit --help
+    - bibencode --help
+    - bibexport --help
+    - bibindex --help
+    - bibmatch --help
+    - bibrank --help
+    - bibrankgkb --help
+    - bibreformat --help
+    - bibsort --help
+    - bibsched --help
+    - bibstat --help
+    - bibtaskex --help
+    - bibtasklet --help
+    - bibtex --help
+    - bibupload --help
+    - convert_journals --help
+    - dbexec --help
+    - dbdump --help
+    - docextract --help
+    - elmsubmit --help
+    - gotoadmin --help
+    - hepdataharvest --help
+    - inveniocfg --help
+    - inveniogc --help
+    - inveniounoconv --help
+    - oaiharvest --help
+    - oairepositoryupdater --help
+    - arxiv-pdf-checker --help
+    - refextract --help
+    - textmarc2xmlmarc --help
+    - webaccessadmin --help
+    - webauthorprofile --help
+    - webcoll --help
+    - webmessageadmin --help
+    - webstatadmin --help
+    - websubmitadmin --help
+    - xmlmarc2textmarc --help
+    - xmlmarclint --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/inveniosoftware/invenio
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Invenio digital library framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

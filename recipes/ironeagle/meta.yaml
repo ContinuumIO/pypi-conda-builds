@@ -1,0 +1,65 @@
+package:
+  name: ironeagle
+  version: "0.4"
+
+source:
+  fn: ironeagle-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/ironeagle/ironeagle-0.4.tar.gz
+  md5: 37b2a4e454ac1828aa98891ef6b7c873
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ironeagle = ironeagle:main
+    #
+    # Would create an entry point called ironeagle that calls ironeagle.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cassandra-driver >=2.1.0
+    - pandas >=0.15.0
+
+  run:
+    - python
+    - cassandra-driver >=2.1.0
+    - pandas >=0.15.0
+
+test:
+  # Python imports
+  imports:
+    - ironeagle
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rustyrazorblade/ironeagle
+  license: BSD License
+  summary: 'Helper library for working with Pandas and the Cassandra Native Driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

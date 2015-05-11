@@ -1,0 +1,66 @@
+package:
+  name: frigg-common
+  version: "0.2.0"
+
+source:
+  fn: frigg-common-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/frigg-common/frigg-common-0.2.0.tar.gz
+  md5: 889c1ff1b25c2061cd3c8762b77990a1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - frigg-common = frigg-common:main
+    #
+    # Would create an entry point called frigg-common that calls frigg-common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - frigg-coverage
+    - pyyaml
+    - requests
+
+  run:
+    - python
+    - frigg-coverage
+    - pyyaml
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - frigg
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/frigg/frigg-common
+  license: MIT
+  summary: 'Utils for frigg apps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

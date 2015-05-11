@@ -1,0 +1,67 @@
+package:
+  name: django-oscar-easyrec
+  version: "0.0.9"
+
+source:
+  fn: django-oscar-easyrec-0.0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oscar-easyrec/django-oscar-easyrec-0.0.9.tar.gz
+  md5: d16bf8eeba12a2f3c13106f24dd924fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oscar-easyrec = django-oscar-easyrec:main
+    #
+    # Would create an entry point called django-oscar-easyrec that calls django-oscar-easyrec.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-oscar >=0.5,<0.8
+    - requests >=1.1.0
+
+  run:
+    - python
+    - django-oscar >=0.5,<0.8
+    - requests >=1.1.0
+
+test:
+  # Python imports
+  imports:
+    - easyrec
+    - easyrec.management
+    - easyrec.management.commands
+    - easyrec.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tangentlabs/django-oscar-easyrec
+  license: BSD License
+  summary: 'easyrec recommendations module for django-oscar'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

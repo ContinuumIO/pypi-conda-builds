@@ -1,0 +1,80 @@
+package:
+  name: gocept.fssyncz2
+  version: "1.6"
+
+source:
+  fn: gocept.fssyncz2-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.fssyncz2/gocept.fssyncz2-1.6.tar.gz
+  md5: 94efb8234685377ce5197fdf31abd747
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.fssyncz2 = gocept.fssyncz2:main
+    #
+    # Would create an entry point called gocept.fssyncz2 that calls gocept.fssyncz2.main()
+
+    - fssync = gocept.fssyncz2.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.app.fssync
+    - zope.component
+    - zope.fssync
+    - zope.i18nmessageid
+    - zope.security
+    - zope.traversing
+    - zope.xmlpickle
+    - zope2
+
+  run:
+    - python
+    - setuptools
+    - zope.app.fssync
+    - zope.component
+    - zope.fssync
+    - zope.i18nmessageid
+    - zope.security
+    - zope.traversing
+    - zope.xmlpickle
+    - zope2
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.fssyncz2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fssync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.fssyncz2
+  license: Zope Public License
+  summary: 'zope.app.fssync integration for Zope2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

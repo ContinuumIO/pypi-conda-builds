@@ -1,0 +1,98 @@
+package:
+  name: checkmate
+  version: "0.0.2"
+
+source:
+  fn: checkmate-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/checkmate/checkmate-0.0.2.tar.gz
+  md5: c9fb18a666f17e95c609a84043b463bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - checkmate = checkmate:main
+    #
+    # Would create an entry point called checkmate that calls checkmate.main()
+
+    - checkmate = checkmate.scripts.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylint
+    - pyflakes
+    - pep8
+    - six
+    - blitzdb
+    - pyyaml
+
+  run:
+    - python
+    - pylint
+    - pyflakes
+    - pep8
+    - six
+    - blitzdb
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - checkmate
+    - checkmate.contrib
+    - checkmate.contrib.plugins
+    - checkmate.contrib.plugins.git
+    - checkmate.contrib.plugins.git.commands
+    - checkmate.contrib.plugins.git.lib
+    - checkmate.contrib.plugins.git.test
+    - checkmate.contrib.plugins.git.test.lib
+    - checkmate.contrib.plugins.javascript
+    - checkmate.contrib.plugins.javascript.jshint
+    - checkmate.contrib.plugins.python
+    - checkmate.contrib.plugins.python.metrics
+    - checkmate.contrib.plugins.python.pep8
+    - checkmate.contrib.plugins.python.pyflakes
+    - checkmate.contrib.plugins.python.pylint
+    - checkmate.lib
+    - checkmate.lib.analysis
+    - checkmate.lib.code
+    - checkmate.lib.stats
+    - checkmate.management
+    - checkmate.management.commands
+    - checkmate.management.commands.props
+    - checkmate.scripts
+    - checkmate.settings
+    - checkmate.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - checkmate --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/quantifiedcode/checkmate
+  license: Affero GPL (AGPL)
+  summary: 'A meta-code checker written in Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: homebrew-pypi-poet
+  version: "0.4.0"
+
+source:
+  fn: homebrew-pypi-poet-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/homebrew-pypi-poet/homebrew-pypi-poet-0.4.0.tar.gz
+  md5: c0f3004158ade811e37f3d195a77135a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - homebrew-pypi-poet = homebrew-pypi-poet:main
+    #
+    # Would create an entry point called homebrew-pypi-poet that calls homebrew-pypi-poet.main()
+
+    - poet=poet:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - networkx
+    - pip
+    - tl.eggdeps
+
+  run:
+    - python
+    - jinja2
+    - networkx
+    - pip
+    - tl.eggdeps
+
+test:
+  # Python imports
+  imports:
+    - poet
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - poet --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tdsmith/homebrew-pypi-poet
+  license: MIT License
+  summary: 'Writes Homebrew stanzas for pypi packages'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

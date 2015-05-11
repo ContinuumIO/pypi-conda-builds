@@ -1,0 +1,86 @@
+package:
+  name: zc.resumelb
+  version: "1.0.2"
+
+source:
+  fn: zc.resumelb-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.resumelb/zc.resumelb-1.0.2.tar.gz
+  md5: 22dacb3e01943c2fbea4feb5ffa9649d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.resumelb = zc.resumelb:main
+    #
+    # Would create an entry point called zc.resumelb that calls zc.resumelb.main()
+
+    - resumelb=zc.resumelb.lb:main
+    - zkresumelb=zc.resumelb.zk:lbmain
+    - get-worker-resume=zc.resumelb.worker:get_resume_main
+    - get-lb-status=zc.resumelb.zk:get_lb_status
+    - rlb-nagios=zc.resumelb.nagios:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - gevent >=1.0b1
+    - webob
+    - zc.thread
+    - zc.parse_addr
+    - zc.mappingobject
+    - llist
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - gevent >=1.0b1
+    - webob
+    - zc.thread
+    - zc.parse_addr
+    - zc.mappingobject
+    - llist
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.resumelb
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - resumelb --help
+    - zkresumelb --help
+    - get-worker-resume --help
+    - get-lb-status --help
+    - rlb-nagios --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'R\xc3\xa9sum\xc3\xa9-based WSGI load balancer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

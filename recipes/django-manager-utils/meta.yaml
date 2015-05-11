@@ -1,0 +1,65 @@
+package:
+  name: django-manager-utils
+  version: "0.8.2"
+
+source:
+  fn: django-manager-utils-0.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-manager-utils/django-manager-utils-0.8.2.tar.gz
+  md5: 47f2400fb96175443412cbc5b39f1af6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-manager-utils = django-manager-utils:main
+    #
+    # Would create an entry point called django-manager-utils that calls django-manager-utils.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - django-query-builder >=0.6.1
+
+  run:
+    - python
+    - django >=1.7
+    - django-query-builder >=0.6.1
+
+test:
+  # Python imports
+  imports:
+    - manager_utils
+    - manager_utils.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ambitioninc/django-manager-utils/
+  license: MIT License
+  summary: 'Model manager utilities for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

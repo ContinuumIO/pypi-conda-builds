@@ -1,0 +1,74 @@
+package:
+  name: python-limelight
+  version: "1.1"
+
+source:
+  fn: python-limelight-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-limelight/python-limelight-1.1.tar.gz
+  md5: 86ffc1201c17c38d1f304671d664fbd9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-limelight = python-limelight:main
+    #
+    # Would create an entry point called python-limelight that calls python-limelight.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - validate-email-address >=1
+    - requests
+    - ipaddress
+    - voluptuous
+    - pycountry
+    - six
+
+  run:
+    - python
+    - validate-email-address >=1
+    - requests
+    - ipaddress
+    - voluptuous
+    - pycountry
+    - six
+
+test:
+  # Python imports
+  imports:
+    - limelight
+    - limelight.membership
+    - limelight.transaction
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/heropunch/python-limelight
+  license: MIT License
+  summary: 'A pythonic Lime Light API wrapper'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

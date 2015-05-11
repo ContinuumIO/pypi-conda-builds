@@ -1,0 +1,70 @@
+package:
+  name: zest.stabilizer
+  version: "1.4"
+
+source:
+  fn: zest.stabilizer-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/z/zest.stabilizer/zest.stabilizer-1.4.tar.gz
+  md5: 617b3f6804bdd8fd6f018370b76e69a4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zest.stabilizer = zest.stabilizer:main
+    #
+    # Would create an entry point called zest.stabilizer that calls zest.stabilizer.main()
+
+    - stabilize = zest.stabilizer.stabilize:main
+    - needrelease = zest.stabilizer.needrelease:main
+    - unstable_fixup = zest.stabilizer.unstable:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zest.releaser >=2.0
+
+  run:
+    - python
+    - setuptools
+    - zest.releaser >=2.0
+
+test:
+  # Python imports
+  imports:
+    - zest
+    - zest.stabilizer
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - stabilize --help
+    - needrelease --help
+    - unstable_fixup --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zest.stabilizer
+  license: GPL
+  summary: 'Script to help move a buildout from unstable to stable'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

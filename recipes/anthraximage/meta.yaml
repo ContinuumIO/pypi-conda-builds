@@ -1,0 +1,67 @@
+package:
+  name: anthraximage
+  version: "0.0.3"
+
+source:
+  fn: AnthraxImage-0.0.3.tar.bz2
+  url: https://pypi.python.org/packages/source/A/AnthraxImage/AnthraxImage-0.0.3.tar.bz2
+  md5: 46db9e7c6cd5045d8ced2293745715ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anthraximage = anthraximage:main
+    #
+    # Would create an entry point called anthraximage that calls anthraximage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - anthrax
+    - pystacia
+
+  run:
+    - python
+    - setuptools
+    - anthrax
+    - pystacia
+
+test:
+  # Python imports
+  imports:
+    - anthrax
+    - anthrax.image
+    - anthraximage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Anthrax - tools for HTML input'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,63 @@
+package:
+  name: memcached_memoize
+  version: "0.2.1"
+
+source:
+  fn: memcached_memoize-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/memcached_memoize/memcached_memoize-0.2.1.tar.gz
+  md5: 4315b3fc8b330baba57575da5fc9afeb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - memcached_memoize = memcached_memoize:main
+    #
+    # Would create an entry point called memcached_memoize that calls memcached_memoize.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - memcached_memoize
+    - memcached_memoize.decorators
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/globocom/memcached_memoize
+  license: BSD License
+  summary: "memcached_memoize is decorator to make easy to use Django's cache backends to memoize python functions."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

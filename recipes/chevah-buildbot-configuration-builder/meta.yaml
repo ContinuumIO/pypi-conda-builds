@@ -1,0 +1,65 @@
+package:
+  name: chevah-buildbot-configuration-builder
+  version: "0.1.0"
+
+source:
+  fn: chevah-buildbot-configuration-builder-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/chevah-buildbot-configuration-builder/chevah-buildbot-configuration-builder-0.1.0.tar.gz
+  md5: f7d1dbfbef1cdde09512664fbd7ab813
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chevah-buildbot-configuration-builder = chevah-buildbot-configuration-builder:main
+    #
+    # Would create an entry point called chevah-buildbot-configuration-builder that calls chevah-buildbot-configuration-builder.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - txgithub >=15.0.0
+    - buildbot
+
+  run:
+    - python
+    - txgithub >=15.0.0
+    - buildbot
+
+test:
+  # Python imports
+  imports:
+    - chevah
+    - chevah.buildbot_configuration_builder
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chevah/buildbot-configuration-builder
+  license: MIT
+  summary: 'Configuration layer on top of Buildbot dict.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

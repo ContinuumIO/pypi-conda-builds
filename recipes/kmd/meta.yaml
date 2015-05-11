@@ -1,0 +1,66 @@
+package:
+  name: kmd
+  version: "2.2"
+
+source:
+  fn: kmd-2.2.zip
+  url: https://pypi.python.org/packages/source/k/kmd/kmd-2.2.zip
+  md5: 5bed21a34e3ae80df7b9583aa659aa58
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kmd = kmd:main
+    #
+    # Would create an entry point called kmd that calls kmd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rl >=2.2
+
+  run:
+    - python
+    - setuptools
+    - rl >=2.2
+
+test:
+  # Python imports
+  imports:
+    - kmd
+    - kmd.completions
+    - kmd.examples
+    - kmd.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/kmd
+  license: GNU General Public License (GPL) or Python Software Foundation License
+  summary: 'An interpreter framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,62 @@
+package:
+  name: nust
+  version: "dev-20110623-01"
+
+source:
+  fn: nust-dev-20110623-01.tar.gz
+  url: https://pypi.python.org/packages/source/n/nust/nust-dev-20110623-01.tar.gz
+  md5: 359e42ea31cca88637798482c9badf29
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nust = nust:main
+    #
+    # Would create an entry point called nust that calls nust.main()
+
+    - nust=nust:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - nust
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - nust --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dev.telemost.net/wiki/nginx_uwsgi_starter
+  license: GPL
+  summary: "This is a nginx's config parser and starter for uwsgi workers (tested on uwsgi 0.9.8)"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: safarisync
+  version: "1.0"
+
+source:
+  fn: safarisync-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/safarisync/safarisync-1.0.tar.gz
+  md5: 2131b7582ea5d92b60d696e405998d4c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - safarisync = safarisync:main
+    #
+    # Would create an entry point called safarisync that calls safarisync.main()
+
+    - safarisync=safarisync.safarisync:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+
+  run:
+    - python
+    - setuptools
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - safarisync
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - safarisync --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://douglas.mayle.org
+  license: MIT
+  summary: 'Tool for web scraping and syncing safari downloads library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

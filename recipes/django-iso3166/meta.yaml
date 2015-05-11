@@ -1,0 +1,65 @@
+package:
+  name: django-iso3166
+  version: "10.1.1"
+
+source:
+  fn: django-iso3166-10.1.1.tar.bz2
+  url: https://pypi.python.org/packages/source/d/django-iso3166/django-iso3166-10.1.1.tar.bz2
+  md5: cf41bbce5b4786f36474c4909ce0dd88
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-iso3166 = django-iso3166:main
+    #
+    # Would create an entry point called django-iso3166 that calls django-iso3166.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - iso3166
+    - iso3166.forms
+    - iso3166.management
+    - iso3166.management.commands
+    - iso3166.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://trac.co-capacity.biz/trac/cocap/wiki/django-ISO3166
+  license: BSD License
+  summary: 'This is a application for Django projects providing list of world countries based on ISO3166.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

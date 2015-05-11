@@ -1,0 +1,63 @@
+package:
+  name: geobricksdeployment
+  version: "0.0.14"
+
+source:
+  fn: GeobricksDeployment-0.0.14.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksDeployment/GeobricksDeployment-0.0.14.tar.gz
+  md5: 850acdde4d6a956825a2704247b56d88
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksdeployment = geobricksdeployment:main
+    #
+    # Would create an entry point called geobricksdeployment that calls geobricksdeployment.main()
+
+    - geobricksdeploy = geobricks_deployment.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - geobricks_deployment
+    - geobricksdeployment
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - geobricksdeploy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksDeployment/
+  license: LICENSE.txt
+  summary: 'Geobricks Deployment.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

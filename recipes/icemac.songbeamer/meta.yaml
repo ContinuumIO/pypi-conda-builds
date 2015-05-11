@@ -1,0 +1,67 @@
+package:
+  name: icemac.songbeamer
+  version: "0.2.0"
+
+source:
+  fn: icemac.songbeamer-0.2.0.zip
+  url: https://pypi.python.org/packages/source/i/icemac.songbeamer/icemac.songbeamer-0.2.0.zip
+  md5: af73e915c1177cdb7860551bd289b9cd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - icemac.songbeamer = icemac.songbeamer:main
+    #
+    # Would create an entry point called icemac.songbeamer that calls icemac.songbeamer.main()
+
+    - sng2sng=icemac.songbeamer.sng:sng2sng
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - icemac
+    - icemac.songbeamer
+    - icemac.songbeamer.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sng2sng --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/icemac.songbeamer
+  license: Zope Public License
+  summary: 'Python 3 library to import from and export to SongBeamer format.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

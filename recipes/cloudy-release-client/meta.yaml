@@ -1,0 +1,74 @@
+package:
+  name: cloudy-release-client
+  version: "0.6.6"
+
+source:
+  fn: cloudy-release-client-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudy-release-client/cloudy-release-client-0.6.6.tar.gz
+  md5: 3bfe25c4de27165e2383445b3335eba6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudy-release-client = cloudy-release-client:main
+    #
+    # Would create an entry point called cloudy-release-client that calls cloudy-release-client.main()
+
+    - cloudy=cloudyclient.cli.base:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pyyaml
+    - jinja2
+    - argparse
+    - click
+
+  run:
+    - python
+    - requests
+    - pyyaml
+    - jinja2
+    - argparse
+    - click
+
+test:
+  # Python imports
+  imports:
+    - cloudyclient
+    - cloudyclient.api
+    - cloudyclient.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cloudy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/flupke/cloudy-release-client
+  license: MIT
+  summary: 'Client program and library for cloudy-release.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

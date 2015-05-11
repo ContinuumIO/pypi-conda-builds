@@ -1,0 +1,66 @@
+package:
+  name: punt
+  version: "v1.8.2"
+
+source:
+  fn: punt-v1.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/punt/punt-v1.8.2.tar.gz
+  md5: 48403e01fe69e5c5f33d3899c1d285d2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - punt = punt:main
+    #
+    # Would create an entry point called punt that calls punt.main()
+
+    - punt = punt:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - watchdog
+
+  run:
+    - python
+    - docopt
+    - watchdog
+
+test:
+  # Python imports
+  imports:
+    - punt
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - punt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/colinta/punt
+  license: BSD License
+  summary: 'A straightforward python static site generator.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

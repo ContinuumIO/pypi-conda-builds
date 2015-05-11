@@ -1,0 +1,64 @@
+package:
+  name: memplot
+  version: "0.3.0"
+
+source:
+  fn: memplot-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/memplot/memplot-0.3.0.tar.gz
+  md5: 9b5e7b03e822562adbf4bf322905cffe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - memplot = memplot:main
+    #
+    # Would create an entry point called memplot that calls memplot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - matplotlib ==1.1.1
+    - psutil ==2.1.1
+
+  run:
+    - python
+    - matplotlib ==1.1.1
+    - psutil ==2.1.1
+
+test:
+  # Python imports
+  imports:
+    - memplot
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EricChiang/memplot
+  license: MIT
+  summary: 'Plot the mememory usage of a process'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

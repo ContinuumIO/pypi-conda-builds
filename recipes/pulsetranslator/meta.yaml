@@ -1,0 +1,65 @@
+package:
+  name: pulsetranslator
+  version: "0.1"
+
+source:
+  fn: pulsetranslator-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pulsetranslator/pulsetranslator-0.1.tar.gz
+  md5: bc967f1fcd4dfd4d53e00df3e1afe2a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pulsetranslator = pulsetranslator:main
+    #
+    # Would create an entry point called pulsetranslator that calls pulsetranslator.main()
+
+    - runtranslator=pulsetranslator.runservice:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mozillapulse
+
+  run:
+    - python
+    - setuptools
+    - mozillapulse
+
+test:
+  # Python imports
+  imports:
+    - pulsetranslator
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - runtranslator --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hg.mozilla.org/users/jgriffin_mozilla.com/pulsetranslator
+  license: MPL
+  summary: 'Service for translating rawa buildbot pulse messages into a standard format'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

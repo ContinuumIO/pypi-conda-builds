@@ -1,0 +1,70 @@
+package:
+  name: feedjack
+  version: "15.5.1"
+
+source:
+  fn: Feedjack-15.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Feedjack/Feedjack-15.5.1.tar.gz
+  md5: 5c443ec85d4fccd4888cc2de92b15eaa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - feedjack = feedjack:main
+    #
+    # Would create an entry point called feedjack that calls feedjack.main()
+
+    - feedjack_update=feedjack.fjupdate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - feedparser
+    - django >=1.8
+
+  run:
+    - python
+    - feedparser
+    - django >=1.8
+
+test:
+  # Python imports
+  imports:
+    - feedjack
+    - feedjack.management
+    - feedjack.management.commands
+    - feedjack.migrations
+    - feedjack.templatetags
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - feedjack_update --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mk-fg/feedjack
+  license: BSD License
+  summary: 'Multisite Feed Agregator (Planet) or personal feed reader'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

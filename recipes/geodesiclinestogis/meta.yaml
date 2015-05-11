@@ -1,0 +1,67 @@
+package:
+  name: geodesiclinestogis
+  version: "0.3.2"
+
+source:
+  fn: GeodesicLinesToGIS-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeodesicLinesToGIS/GeodesicLinesToGIS-0.3.2.tar.gz
+  md5: 2c8d9920e371b5e01fe8d6a0b7908807
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geodesiclinestogis = geodesiclinestogis:main
+    #
+    # Would create an entry point called geodesiclinestogis that calls geodesiclinestogis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyproj >=1.9.3,<1.10
+    - fiona >=1.5.0,<2.0
+    - shapely >=1.5.0,<2.0
+
+  run:
+    - python
+    - pyproj >=1.9.3,<1.10
+    - fiona >=1.5.0,<2.0
+    - shapely >=1.5.0,<2.0
+
+test:
+  # Python imports
+  imports:
+    - geodesiclinestogis
+    - test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/GeographicaGS/GeodesicLinesToGIS
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'Computes geodesic lines from start point to end point and stores them in a GIS file (Shapefile and GeoJSON). The problem of geodesic lines crossing antimeridian is solved.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

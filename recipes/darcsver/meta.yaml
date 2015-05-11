@@ -1,0 +1,65 @@
+package:
+  name: darcsver
+  version: "1.7.4"
+
+source:
+  fn: darcsver-1.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/darcsver/darcsver-1.7.4.tar.gz
+  md5: e38aecd1343ab8447888a479ab12cb59
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - darcsver = darcsver:main
+    #
+    # Would create an entry point called darcsver that calls darcsver.main()
+
+    - darcsver = scripts.darcsverscript:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - darcsver
+    - darcsver.test
+    - scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - darcsver --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://tahoe-lafs.org/trac/darcsver
+  license: BSD License
+  summary: 'generate a version number from darcs history'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

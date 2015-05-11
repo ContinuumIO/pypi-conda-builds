@@ -1,0 +1,62 @@
+package:
+  name: django-metamodel
+  version: "1.0"
+
+source:
+  fn: django-metamodel-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-metamodel/django-metamodel-1.0.tar.gz
+  md5: 542b03b7f0bd4fc83972e27fdc40a2c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-metamodel = django-metamodel:main
+    #
+    # Would create an entry point called django-metamodel that calls django-metamodel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - metamodel
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ryanmark/django-meta/
+  license: MIT
+  summary: 'Add arbitrary data to your django users. This app adds `user.meta` which acts like a dictionary and stores whatever the hell you want. But you could add `.meta` to any of your models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

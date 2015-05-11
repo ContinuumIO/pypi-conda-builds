@@ -1,0 +1,72 @@
+package:
+  name: config-gen
+  version: "1.0-alpha6"
+
+source:
+  fn: Config-gen-1.0-alpha6.tar.gz
+  url: https://pypi.python.org/packages/source/C/Config-gen/Config-gen-1.0-alpha6.tar.gz
+  md5: 74e88890e3e96022655fd3ad5551acba
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - config-gen = config-gen:main
+    #
+    # Would create an entry point called config-gen that calls config-gen.main()
+
+    - confgen-render = config_gen.commands.render:command
+    - confgen-quickstart = config_gen.commands.quickstart:command
+    - confgen-render-file = config_gen.commands.render_file:command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cool_logging
+    - jinja2
+
+  run:
+    - python
+    - cool_logging
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - config_gen
+    - config_gen.commands
+    - config_gen.readers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - confgen-render --help
+    - confgen-quickstart --help
+    - confgen-render-file --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rshk/config-gen
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Utility to generate configuration files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

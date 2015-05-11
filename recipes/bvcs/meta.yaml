@@ -1,0 +1,63 @@
+package:
+  name: bvcs
+  version: "0.0.1.dev0"
+
+source:
+  fn: bvcs-0.0.1.dev0.tar.gz
+  url: https://pypi.python.org/packages/source/b/bvcs/bvcs-0.0.1.dev0.tar.gz
+  md5: 8ec803cafcf3e1e9982c0a12164f8bb9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bvcs = bvcs:main
+    #
+    # Would create an entry point called bvcs that calls bvcs.main()
+
+    - bvcs = bvcs.cli:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - bvcs
+    - bvcs.methods
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bvcs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT License
+  summary: 'Asynchronous VCS command runner'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

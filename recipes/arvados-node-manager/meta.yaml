@@ -1,0 +1,72 @@
+package:
+  name: arvados-node-manager
+  version: "0.1.20150506205742"
+
+source:
+  fn: arvados-node-manager-0.1.20150506205742.tar.gz
+  url: https://pypi.python.org/packages/source/a/arvados-node-manager/arvados-node-manager-0.1.20150506205742.tar.gz
+  md5: a5139a0c58fdc151e0d4eb86c14467e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - arvados-node-manager = arvados-node-manager:main
+    #
+    # Would create an entry point called arvados-node-manager that calls arvados-node-manager.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - apache-libcloud >=0.16
+    - arvados-python-client >=0.1.20150206225333
+    - pykka
+    - python-daemon
+
+  run:
+    - python
+    - apache-libcloud >=0.16
+    - arvados-python-client >=0.1.20150206225333
+    - pykka
+    - python-daemon
+
+test:
+  # Python imports
+  imports:
+    - arvnodeman
+    - arvnodeman.computenode
+    - arvnodeman.computenode.dispatch
+    - arvnodeman.computenode.driver
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://arvados.org
+  license: GNU Affero General Public License, version 3.0
+  summary: 'Arvados compute node manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

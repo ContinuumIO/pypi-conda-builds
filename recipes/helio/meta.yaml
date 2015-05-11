@@ -1,0 +1,73 @@
+package:
+  name: helio
+  version: "1.0.0b1"
+
+source:
+  fn: helio-1.0.0b1.tar.gz
+  url: https://pypi.python.org/packages/source/h/helio/helio-1.0.0b1.tar.gz
+  md5: c48d70012c2360983925b1828b96a042
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - helio = helio:main
+    #
+    # Would create an entry point called helio that calls helio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - coverage
+    - mock
+    - nose
+    - wsgiref
+
+  run:
+    - python
+    - coverage
+    - mock
+    - nose
+    - wsgiref
+
+test:
+  # Python imports
+  imports:
+    - helio
+    - helio.controller
+    - helio.heliodjango
+    - helio.helioflask
+    - helio.javascript
+    - helio.views
+    - helio.viewstate
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yellowpagesgroup/Helio
+  license: UNKNOWN
+  summary: 'Componentised, hierarchical, notification driven Python web framework.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

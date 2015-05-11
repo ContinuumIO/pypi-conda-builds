@@ -1,0 +1,79 @@
+package:
+  name: zest.releaser
+  version: "3.56"
+
+source:
+  fn: zest.releaser-3.56.tar.gz
+  url: https://pypi.python.org/packages/source/z/zest.releaser/zest.releaser-3.56.tar.gz
+  md5: b83d32a03ba2d3efff581b7b8f9d83fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zest.releaser = zest.releaser:main
+    #
+    # Would create an entry point called zest.releaser that calls zest.releaser.main()
+
+    - release = zest.releaser.release:main
+    - prerelease = zest.releaser.prerelease:main
+    - postrelease = zest.releaser.postrelease:main
+    - fullrelease = zest.releaser.fullrelease:main
+    - longtest = zest.releaser.longtest:main
+    - lasttagdiff = zest.releaser.lasttagdiff:main
+    - lasttaglog = zest.releaser.lasttaglog:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zest
+    - zest.releaser
+    - zest.releaser.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - release --help
+    - prerelease --help
+    - postrelease --help
+    - fullrelease --help
+    - longtest --help
+    - lasttagdiff --help
+    - lasttaglog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://zestreleaser.readthedocs.org
+  license: GNU General Public License (GPL)
+  summary: 'Software releasing made easy and repeatable'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

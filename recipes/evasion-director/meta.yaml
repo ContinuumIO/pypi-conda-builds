@@ -1,0 +1,81 @@
+package:
+  name: evasion-director
+  version: "1.1.6"
+
+source:
+  fn: evasion-director-1.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/e/evasion-director/evasion-director-1.1.6.tar.gz
+  md5: aef77b88376e5aa759bc9f7bb15c8797
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - evasion-director = evasion-director:main
+    #
+    # Would create an entry point called evasion-director that calls evasion-director.main()
+
+    - director = evasion.director.scripts.main:main
+    - viewpointdirect = evasion.director.viewpointdirect:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configobj
+    - mako
+
+  run:
+    - python
+    - configobj
+    - mako
+
+test:
+  # Python imports
+  imports:
+    - evasion
+    - evasion.agency
+    - evasion.agency.agents
+    - evasion.agency.agents.base
+    - evasion.agency.agents.testing
+    - evasion.agency.agents.tests
+    - evasion.agency.tests
+    - evasion.director
+    - evasion.director.controllers
+    - evasion.director.docs
+    - evasion.director.scripts
+    - evasion.director.templatecfg
+    - evasion.director.tests
+    - evasion.director.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - director --help
+    - viewpointdirect --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/oisinmulvihill/evasion-director/tarball/master#egg=evasion_director
+  license: Evasion Project CDDL License
+  summary: 'The evasion-director allows the creation of programs from configuration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: python-libnessus
+  version: "1.0.0.0"
+
+source:
+  fn: python-libnessus-1.0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-libnessus/python-libnessus-1.0.0.0.tar.gz
+  md5: d9572fd778bed2affd195db2c5f5eb0d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-libnessus = python-libnessus:main
+    #
+    # Would create an entry point called python-libnessus that calls python-libnessus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonpickle
+
+  run:
+    - python
+    - jsonpickle
+
+test:
+  # Python imports
+  imports:
+    - libnessus
+    - libnessus.objects
+    - libnessus.plugins
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bmx0r/python-libnessus
+  license: Creative Common "Attribution" license (CC-BY) v3
+  summary: 'Python Nessus module to parse, chat with XMLRPC API, ...'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

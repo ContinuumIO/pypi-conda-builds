@@ -1,0 +1,136 @@
+package:
+  name: jflow
+  version: "0.4_pre-alpha"
+
+source:
+  fn: jflow-0.4_pre-alpha.tar.gz
+  url: https://pypi.python.org/packages/source/j/jflow/jflow-0.4_pre-alpha.tar.gz
+  md5: 8841f98a80869b38470266d3ebc84f4b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jflow = jflow:main
+    #
+    # Would create an entry point called jflow that calls jflow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - ccy ==0.3.2
+    - ply >=3.3
+    - python-stdnet
+    - python-dateutil >=1.4.1
+
+  run:
+    - python
+    - ccy ==0.3.2
+    - ply >=3.3
+    - python-stdnet
+    - python-dateutil >=1.4.1
+
+test:
+  # Python imports
+  imports:
+    - jflow
+    - jflow.conf
+    - jflow.core
+    - jflow.core.cashflow
+    - jflow.core.datavendor
+    - jflow.core.dates
+    - jflow.core.finins
+    - jflow.core.finins.base
+    - jflow.core.finins.base.rates
+    - jflow.core.math
+    - jflow.core.math.data
+    - jflow.core.pricers
+    - jflow.core.rates
+    - jflow.core.rates.factory
+    - jflow.core.rates.objects
+    - jflow.core.tests
+    - jflow.core.timeseries
+    - jflow.core.timeseries.operators
+    - jflow.core.timeseries.operators.baseoper
+    - jflow.core.timeseries.serialize
+    - jflow.core.timeseries.tests
+    - jflow.core.timeseries.tscript
+    - jflow.core.timeseries.tscript.language
+    - jflow.db
+    - jflow.db.geo
+    - jflow.db.geo._geo
+    - jflow.db.instdata
+    - jflow.db.instdata._models
+    - jflow.db.instdata.management
+    - jflow.db.instdata.management.commands
+    - jflow.db.instdata.pricers
+    - jflow.db.instdata.tests
+    - jflow.db.trade
+    - jflow.db.trade._models
+    - jflow.db.trade.aggregate
+    - jflow.db.trade.djpcms
+    - jflow.db.trade.management
+    - jflow.db.trade.management.commands
+    - jflow.db.trade.tests
+    - jflow.gui
+    - jflow.gui.consol
+    - jflow.gui.frames
+    - jflow.jfsite
+    - jflow.jfsite.allsettings
+    - jflow.jfsite.cms
+    - jflow.jfsite.cms.applications
+    - jflow.jfsite.cms.plugins
+    - jflow.lib
+    - jflow.rates
+    - jflow.rates.factory
+    - jflow.servers
+    - jflow.servers.dataport
+    - jflow.testing
+    - jflow.testing.tools
+    - jflow.testing.tools.extra
+    - jflow.testing.ts
+    - jflow.tests
+    - jflow.utils
+    - jflow.utils.dblite
+    - jflow.utils.decorators
+    - jflow.utils.files
+    - jflow.utils.observer
+    - jflow.utils.python
+    - jflow.utils.serialize
+    - jflow.utils.servers
+    - jflow.utils.tx
+    - jflow.vendors
+    - jflow.vendors.bloomberg
+    - jflow.vendors.bloomberg.pb
+    - jflow.vendors.ecbrates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lsbardel/jflow
+  license: BSD License
+  summary: 'Quantitative finance and econometric analysis'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

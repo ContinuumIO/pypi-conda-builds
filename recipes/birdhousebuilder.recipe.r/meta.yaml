@@ -1,0 +1,72 @@
+package:
+  name: birdhousebuilder.recipe.r
+  version: "0.1.4"
+
+source:
+  fn: birdhousebuilder.recipe.r-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/birdhousebuilder.recipe.r/birdhousebuilder.recipe.r-0.1.4.tar.gz
+  md5: a6fa1d65cc58e92ed4f7858e04600e7f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - birdhousebuilder.recipe.r = birdhousebuilder.recipe.r:main
+    #
+    # Would create an entry point called birdhousebuilder.recipe.r that calls birdhousebuilder.recipe.r.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - mako
+    - birdhousebuilder.recipe.conda
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.buildout
+    - mako
+    - birdhousebuilder.recipe.conda
+
+test:
+  # Python imports
+  imports:
+    - birdhousebuilder
+    - birdhousebuilder.recipe
+    - birdhousebuilder.recipe.r
+    - birdhousebuilder.recipe.r.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bird-house/birdhousebuilder.recipe.r
+  license: BSD License
+  summary: 'A Buildout recipe to install R packages with Anaconda.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

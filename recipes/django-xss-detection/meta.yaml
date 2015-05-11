@@ -1,0 +1,66 @@
+package:
+  name: django-xss-detection
+  version: "0.4.16"
+
+source:
+  fn: django-xss-detection-0.4.16.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-xss-detection/django-xss-detection-0.4.16.tar.gz
+  md5: ee44b947af5f54d375bcb5b7d6dac317
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-xss-detection = django-xss-detection:main
+    #
+    # Would create an entry point called django-xss-detection that calls django-xss-detection.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - lxml
+
+  run:
+    - python
+    - django >=1.5
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - django_xss_detection
+    - django_xss_detection.loaders
+    - django_xss_detection.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/atlassian/django_xss_detection
+  license: BSD License
+  summary: '# django xss detection\nThis package contains a django template parser that can be used to find templates\nthat contain variables that will not be escaped. This package currently has\nno knowledge of custom filters, custom tags, and python code (e.g. uses of\nmark safe). The code has only been tested against django versions >= 1.5 and <= 1.7(beta 1).\n\n## Requirements\n\t* django >= 1.5\n\t* lxml\n## Usage\nThis package can be used on the command line by running\n> `python -m django_xss_detection.cli`\n\n## How does it work?\nThe code works by monkey patching django template code and providing through \na callback function to VariableNode that ends up referring to the\n`CompileStringWrapper.handle_callback` method. The callback function is used\nlater when the code `renders` a given template and encounters a variable node\nthat will not be escaped. The implementation of detecting unquoted variable nodes \nin element attributes and variable nodes in a javascript context lacking \njavascript escaping are not implemented through callbacks, see\n`get_non_quoted_attr_vars_for_template` and \n`get_non_js_escaped_results_for_template` in parse_template.py respectively.\n\nAdditionally, the code has modified versions of built in conditional tags,\nsuch as `{% if %}` and `{% ifequal %}`, so as to `render` all possible template\ncode. If this package does not work on your custom template tags then\nyou can add support for them similar to how `waffle` template tags are\nimplemented (see `templatetags/waffle.py` and the `patch` method in `util.py`).\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

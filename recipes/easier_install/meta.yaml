@@ -1,0 +1,62 @@
+package:
+  name: easier_install
+  version: "0.1"
+
+source:
+  fn: easier_install-0.1.zip
+  url: https://pypi.python.org/packages/source/e/easier_install/easier_install-0.1.zip
+  md5: e075781a152fbd83cfd5325b9a01a3e6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easier_install = easier_install:main
+    #
+    # Would create an entry point called easier_install that calls easier_install.main()
+
+    - easier_install = easier_install:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - easier_install
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - easier_install --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://opensvn.csie.org/vvprj/trunk/easier_install/
+  license: MIT Open Source License
+  summary: 'Create setup.py files for a number of modules and scripts quickly'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

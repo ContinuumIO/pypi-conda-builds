@@ -1,0 +1,63 @@
+package:
+  name: django-recaptcha-mailhide
+  version: "1.1"
+
+source:
+  fn: django-recaptcha-mailhide-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-recaptcha-mailhide/django-recaptcha-mailhide-1.1.tar.gz
+  md5: 6491702841c5e7f6333273901314002b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-recaptcha-mailhide = django-recaptcha-mailhide:main
+    #
+    # Would create an entry point called django-recaptcha-mailhide that calls django-recaptcha-mailhide.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+
+  run:
+    - python
+    - pycrypto
+
+test:
+  # Python imports
+  imports:
+    - recaptcha_mailhide
+    - recaptcha_mailhide.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bgryszko/django-recaptcha-mailhide
+  license: MIT License
+  summary: 'ReCAPTCHA Mailhide is an app for hiding mails from spammers. To use with Django templates.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

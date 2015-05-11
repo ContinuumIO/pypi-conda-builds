@@ -1,0 +1,70 @@
+package:
+  name: izverifier
+  version: "0.0.4.1"
+
+source:
+  fn: IzVerifier-0.0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/I/IzVerifier/IzVerifier-0.0.4.1.tar.gz
+  md5: 104b480a05aac7908e5048dbc59d7a39
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - izverifier = izverifier:main
+    #
+    # Would create an entry point called izverifier that calls izverifier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - beautifulsoup4 >=4.3.2
+    - lxml >=3.3.5
+
+  run:
+    - python
+    - beautifulsoup4 >=4.3.2
+    - lxml >=3.3.5
+
+test:
+  # Python imports
+  imports:
+    - IzVerifier
+    - IzVerifier.exceptions
+    - IzVerifier.izspecs
+    - IzVerifier.izspecs.containers
+    - IzVerifier.izspecs.verifiers
+    - IzVerifier.logging
+    - IzVerifier.test
+    - izverifier
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/izv/IzVerifier
+  license: LICENSE.txt
+  summary: 'Static specification file verification for IzPack installers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

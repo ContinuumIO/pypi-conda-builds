@@ -1,0 +1,64 @@
+package:
+  name: cloudfs_sdk
+  version: "1.0.1"
+
+source:
+  fn: cloudfs_sdk-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudfs_sdk/cloudfs_sdk-1.0.1.tar.gz
+  md5: b917cf453f3e43d168f50bfef7e1fbb5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudfs_sdk = cloudfs_sdk:main
+    #
+    # Would create an entry point called cloudfs_sdk that calls cloudfs_sdk.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.4.3
+
+  run:
+    - python
+    - requests >=2.4.3
+
+test:
+  # Python imports
+  imports:
+    - cloudfs
+    - cloudfs.private
+    - cloudfs_sdk
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.bitcasa.com/cloudfs
+  license: MIT License
+  summary: 'Python SDK for CloudFS cloud storage file system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

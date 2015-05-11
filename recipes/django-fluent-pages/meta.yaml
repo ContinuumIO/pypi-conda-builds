@@ -1,0 +1,105 @@
+package:
+  name: django-fluent-pages
+  version: "0.9"
+
+source:
+  fn: django-fluent-pages-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-fluent-pages/django-fluent-pages-0.9.tar.gz
+  md5: 09e3a8821f99ea4f914cc6e868bb7a94
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-fluent-pages = django-fluent-pages:main
+    #
+    # Would create an entry point called django-fluent-pages that calls django-fluent-pages.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-fluent-utils >=1.1.4
+    - django-mptt >=0.5.5
+    - django-parler >=1.4
+    - django-polymorphic >=0.7
+    - django-polymorphic-tree >=1.1
+    - django-tag-parser >=2.1
+    - future >=0.12.2
+    - six >=1.5.2
+
+  run:
+    - python
+    - django-fluent-utils >=1.1.4
+    - django-mptt >=0.5.5
+    - django-parler >=1.4
+    - django-polymorphic >=0.7
+    - django-polymorphic-tree >=1.1
+    - django-tag-parser >=2.1
+    - future >=0.12.2
+    - six >=1.5.2
+
+test:
+  # Python imports
+  imports:
+    - fluent_pages
+    - fluent_pages.admin
+    - fluent_pages.adminui
+    - fluent_pages.extensions
+    - fluent_pages.forms
+    - fluent_pages.integration
+    - fluent_pages.integration.fluent_contents
+    - fluent_pages.management
+    - fluent_pages.management.commands
+    - fluent_pages.migrations
+    - fluent_pages.models
+    - fluent_pages.pagetypes
+    - fluent_pages.pagetypes.flatpage
+    - fluent_pages.pagetypes.flatpage.migrations
+    - fluent_pages.pagetypes.flatpage.south_migrations
+    - fluent_pages.pagetypes.fluentpage
+    - fluent_pages.pagetypes.fluentpage.migrations
+    - fluent_pages.pagetypes.fluentpage.south_migrations
+    - fluent_pages.pagetypes.redirectnode
+    - fluent_pages.pagetypes.redirectnode.migrations
+    - fluent_pages.pagetypes.redirectnode.south_migrations
+    - fluent_pages.pagetypes.textfile
+    - fluent_pages.pagetypes.textfile.migrations
+    - fluent_pages.pagetypes.textfile.south_migrations
+    - fluent_pages.south_migrations
+    - fluent_pages.templatetags
+    - fluent_pages.tests
+    - fluent_pages.tests.testapp
+    - fluent_pages.tests.testapp.migrations
+    - fluent_pages.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edoburu/django-fluent-pages
+  license: Apache Software License
+  summary: 'A flexible, scalable CMS with custom node types, and flexible block content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

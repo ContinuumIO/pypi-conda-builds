@@ -1,0 +1,64 @@
+package:
+  name: django-tiamat
+  version: "0.9.8"
+
+source:
+  fn: django-tiamat-0.9.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tiamat/django-tiamat-0.9.8.tar.gz
+  md5: 7c8cf17f9c2eb3b832f161ff2e156caf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tiamat = django-tiamat:main
+    #
+    # Would create an entry point called django-tiamat that calls django-tiamat.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+
+  run:
+    - python
+    - django >=1.4
+
+test:
+  # Python imports
+  imports:
+    - tiamat
+    - tiamat.templatetags
+    - tiamat.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rvause/django-tiamat
+  license: BSD License
+  summary: '\nA collection of utilities to help in Django Projects\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

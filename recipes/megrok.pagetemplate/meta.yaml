@@ -1,0 +1,77 @@
+package:
+  name: megrok.pagetemplate
+  version: "0.7"
+
+source:
+  fn: megrok.pagetemplate-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/m/megrok.pagetemplate/megrok.pagetemplate-0.7.tar.gz
+  md5: dd867e839622b8fad5c4839d75eca4f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - megrok.pagetemplate = megrok.pagetemplate:main
+    #
+    # Would create an entry point called megrok.pagetemplate that calls megrok.pagetemplate.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - grokcore.component
+    - grokcore.view >=2.2
+    - martian
+    - setuptools
+    - zope.component >=3.9.1
+    - zope.pagetemplate
+    - zope.publisher
+
+  run:
+    - python
+    - setuptools
+    - grokcore.component
+    - grokcore.view >=2.2
+    - martian
+    - setuptools
+    - zope.component >=3.9.1
+    - zope.pagetemplate
+    - zope.publisher
+
+test:
+  # Python imports
+  imports:
+    - megrok
+    - megrok.pagetemplate
+    - megrok.pagetemplate.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/megrok.pagetemplate
+  license: GPL
+  summary: 'Page template component for Grok, based on zope.pagetemplate'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

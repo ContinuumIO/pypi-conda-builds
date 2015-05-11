@@ -1,0 +1,85 @@
+package:
+  name: cloudmesh_base
+  version: "2.5.15"
+
+source:
+  fn: cloudmesh_base-2.5.15.tar.bz2
+  url: https://pypi.python.org/packages/source/c/cloudmesh_base/cloudmesh_base-2.5.15.tar.bz2
+  md5: 473a43f673e615a3b6bbaeff2743aa8e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudmesh_base = cloudmesh_base:main
+    #
+    # Would create an entry point called cloudmesh_base that calls cloudmesh_base.main()
+
+    - cm-incr-version = cloudmesh_base.version_incr:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - future
+    - sh
+    - docopt
+    - pyaml
+    - simplejson
+    - nose
+    - python-hostlist
+    - prettytable
+    - pytimeparse
+    - pymongo ==2.8
+    - mongoengine
+
+  run:
+    - python
+    - future
+    - sh
+    - docopt
+    - pyaml
+    - simplejson
+    - nose
+    - python-hostlist
+    - prettytable
+    - pytimeparse
+    - pymongo ==2.8
+    - mongoengine
+
+test:
+  # Python imports
+  imports:
+    - cloudmesh_base
+    - cloudmesh_database
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cm-incr-version --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.org/cloudmesh/base
+  license: Apache Software License
+  summary: 'A set of simple base functions and classes useful for cloudmesh and other programs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

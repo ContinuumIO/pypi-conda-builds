@@ -1,0 +1,71 @@
+package:
+  name: flawless
+  version: "0.3.1"
+
+source:
+  fn: flawless-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/flawless/flawless-0.3.1.tar.gz
+  md5: bde9a0553d82f13e6ce4025bb571ea49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flawless = flawless:main
+    #
+    # Would create an entry point called flawless that calls flawless.main()
+
+    - flawless=flawless.server.manage:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - flawless
+    - flawless.client
+    - flawless.lib
+    - flawless.lib.config
+    - flawless.lib.data_structures
+    - flawless.lib.storage
+    - flawless.lib.version_control
+    - flawless.server
+    - flawless.server.api
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flawless --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/shopkick/flawless
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Python Error Monitoring and Reporting'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

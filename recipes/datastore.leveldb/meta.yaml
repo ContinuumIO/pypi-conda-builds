@@ -1,0 +1,65 @@
+package:
+  name: datastore.leveldb
+  version: "0.0.1"
+
+source:
+  fn: datastore.leveldb-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/datastore.leveldb/datastore.leveldb-0.0.1.tar.gz
+  md5: ded13740fdb61c5c2fa7dc90f71ea17a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datastore.leveldb = datastore.leveldb:main
+    #
+    # Would create an entry point called datastore.leveldb that calls datastore.leveldb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - datastore >=0.3.3
+    - leveldb >=0.19
+
+  run:
+    - python
+    - datastore >=0.3.3
+    - leveldb >=0.19
+
+test:
+  # Python imports
+  imports:
+    - datastore
+    - datastore.leveldb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/datastore/datastore.leveldb
+  license: MIT License
+  summary: 'leveldb datastore implementation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

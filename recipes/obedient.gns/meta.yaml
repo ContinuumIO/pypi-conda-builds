@@ -1,0 +1,66 @@
+package:
+  name: obedient.gns
+  version: "2.0"
+
+source:
+  fn: obedient.gns-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/obedient.gns/obedient.gns-2.0.tar.gz
+  md5: 92efd983099c7d91f204efc13663f042
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - obedient.gns = obedient.gns:main
+    #
+    # Would create an entry point called obedient.gns that calls obedient.gns.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dominator >=4,<5
+    - obedient.zookeeper
+    - obedient.exim
+
+  run:
+    - python
+    - dominator >=4,<5
+    - obedient.zookeeper
+    - obedient.exim
+
+test:
+  # Python imports
+  imports:
+    - obedient.gns
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yandex-sysmon/obedient-gns
+  license: GPLv3
+  summary: 'GNS obedient for Dominator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

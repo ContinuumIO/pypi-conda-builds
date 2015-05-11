@@ -1,0 +1,67 @@
+package:
+  name: poretools
+  version: "0.5.1"
+
+source:
+  fn: poretools-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/poretools/poretools-0.5.1.tar.gz
+  md5: e66c01bb5c2504ba20301440a3917f84
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - poretools = poretools:main
+    #
+    # Would create an entry point called poretools that calls poretools.main()
+
+    - poretools = poretools.poretools_main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - h5py >=2.0.0
+    - rpy2 >=2.4.2
+
+  run:
+    - python
+    - h5py >=2.0.0
+    - rpy2 >=2.4.2
+
+test:
+  # Python imports
+  imports:
+    - poretools
+    - poretools.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - poretools --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://poretools.readthedocs.org
+  license: GNU General Public License (GPL)
+  summary: 'A toolset for working with nanopore sequencing data'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

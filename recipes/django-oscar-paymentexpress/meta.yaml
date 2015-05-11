@@ -1,0 +1,65 @@
+package:
+  name: django-oscar-paymentexpress
+  version: "0.1.1"
+
+source:
+  fn: django-oscar-paymentexpress-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-oscar-paymentexpress/django-oscar-paymentexpress-0.1.1.tar.gz
+  md5: 3c976dfb7f993d8899356e77a334cbd7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-oscar-paymentexpress = django-oscar-paymentexpress:main
+    #
+    # Would create an entry point called django-oscar-paymentexpress that calls django-oscar-paymentexpress.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-oscar >=0.3
+    - requests >=0.13.5
+
+  run:
+    - python
+    - django-oscar >=0.3
+    - requests >=0.13.5
+
+test:
+  # Python imports
+  imports:
+    - paymentexpress
+    - paymentexpress.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tangentlabs/django-oscar-paymentexpress
+  license: BSD License
+  summary: 'PaymentExpress payment module for django-oscar'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

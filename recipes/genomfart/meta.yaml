@@ -1,0 +1,68 @@
+package:
+  name: genomfart
+  version: "0.29"
+
+source:
+  fn: genomfart-0.29.tar.gz
+  url: https://pypi.python.org/packages/source/g/genomfart/genomfart-0.29.tar.gz
+  md5: a7b9bfbfd13a968d206f5af34f98ab7b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - genomfart = genomfart:main
+    #
+    # Would create an entry point called genomfart that calls genomfart.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - genomfart
+    - genomfart.data
+    - genomfart.parsers
+    - genomfart.popgen
+    - genomfart.test
+    - genomfart.test.parsers
+    - genomfart.test.utils
+    - genomfart.utils
+    - genomfart.utils.scripts
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/er432/genomfart
+  license: BSD License
+  summary: 'A Genomics package for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

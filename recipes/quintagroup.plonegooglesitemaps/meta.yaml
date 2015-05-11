@@ -1,0 +1,76 @@
+package:
+  name: quintagroup.plonegooglesitemaps
+  version: "1.8.2"
+
+source:
+  fn: quintagroup.plonegooglesitemaps-1.8.2.zip
+  url: https://pypi.python.org/packages/source/q/quintagroup.plonegooglesitemaps/quintagroup.plonegooglesitemaps-1.8.2.zip
+  md5: aa31ec5cf522f3f8fa4eea4040500c83
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - quintagroup.plonegooglesitemaps = quintagroup.plonegooglesitemaps:main
+    #
+    # Would create an entry point called quintagroup.plonegooglesitemaps that calls quintagroup.plonegooglesitemaps.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.browserlayer
+    - quintagroup.canonicalpath >=0.7
+    - quintagroup.catalogupdater
+    - archetypes.schemaextender
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.browserlayer
+    - quintagroup.canonicalpath >=0.7
+    - quintagroup.catalogupdater
+    - archetypes.schemaextender
+
+test:
+  # Python imports
+  imports:
+    - quintagroup
+    - quintagroup.plonegooglesitemaps
+    - quintagroup.plonegooglesitemaps.Extensions
+    - quintagroup.plonegooglesitemaps.browser
+    - quintagroup.plonegooglesitemaps.content
+    - quintagroup.plonegooglesitemaps.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.quintagroup.com/products/quintagroup.plonegooglesitemaps
+  license: GNU General Public License (GPL)
+  summary: 'Allows Plone websites to get better visibility for Google search engine'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

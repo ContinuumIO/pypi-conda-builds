@@ -1,0 +1,65 @@
+package:
+  name: django-treemenu
+  version: "0.1.1"
+
+source:
+  fn: django-treemenu-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-treemenu/django-treemenu-0.1.1.tar.gz
+  md5: 7d60c67a58136a60c8398aa649265368
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-treemenu = django-treemenu:main
+    #
+    # Would create an entry point called django-treemenu that calls django-treemenu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-mptt >=0.6.0
+    - feincms ==1.7.7
+
+  run:
+    - python
+    - django-mptt >=0.6.0
+    - feincms ==1.7.7
+
+test:
+  # Python imports
+  imports:
+    - treemenu
+    - treemenu.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/artofhuman/django-treemenu
+  license: UNKNOWN
+  summary: 'Another reusable app for organize tree menus on django site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

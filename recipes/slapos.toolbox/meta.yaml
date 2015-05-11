@@ -1,0 +1,170 @@
+package:
+  name: slapos.toolbox
+  version: "0.48"
+
+source:
+  fn: slapos.toolbox-0.48.tar.gz
+  url: https://pypi.python.org/packages/source/s/slapos.toolbox/slapos.toolbox-0.48.tar.gz
+  md5: d509a7b044f18f618a44681f7d3f3417
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - slapos.toolbox = slapos.toolbox:main
+    #
+    # Would create an entry point called slapos.toolbox that calls slapos.toolbox.main()
+
+    - agent = slapos.agent.agent:main [agent]
+    - check-web-page-http-cache-hit = slapos.promise.check_web_page_http_cache_hit:main
+    - clouddestroy = slapos.cloudmgr.destroy:main
+    - cloudgetprivatekey = slapos.cloudmgr.getprivatekey:main
+    - cloudgetpubliciplist = slapos.cloudmgr.getpubliciplist:main
+    - cloudlist = slapos.cloudmgr.list:main
+    - cloudmgr = slapos.cloudmgr.cloudmgr:main
+    - cloudstart = slapos.cloudmgr.start:main
+    - cloudstop = slapos.cloudmgr.stop:main
+    - equeue = slapos.equeue:main
+    - htpasswd = slapos.htpasswd:main
+    - is-local-tcp-port-opened = slapos.promise.is_local_tcp_port_opened:main
+    - killpidfromfile = slapos.systool:killpidfromfile
+    - runResiliencyUnitTestTestNode = slapos.resiliencytest:runUnitTest
+    - runResiliencyScalabilityTestNode = slapos.resiliencytest:runResiliencyTest
+    - runStandaloneResiliencyTest = slapos.resiliencytest:runStandaloneResiliencyTest
+    - lampconfigure = slapos.lamp:run [lampconfigure]
+    - onetimedownload = slapos.onetimedownload:main
+    - onetimeupload = slapos.onetimeupload:main
+    - pubsubnotifier = slapos.pubsub.notifier:main
+    - pubsubserver = slapos.pubsub:main
+    - qemu-qmp-client = slapos.qemuqmpclient:main
+    - shacache = slapos.shacache:main
+    - slapbuilder = slapos.builder:main
+    - slapcontainer = slapos.container:main
+    - slapmonitor = slapos.monitor:run_slapmonitor
+    - slapmonitor-xml = slapos.monitor:run_slapmonitor_xml
+    - slapos-kill = slapos.systool:kill
+    - slapreport = slapos.monitor:run_slapreport
+    - slaprunnertest = slapos.runner.runnertest:main
+    - slaprunnerteststandalone = slapos.runner.runnertest:runStandaloneUnitTest
+    - zodbpack = slapos.zodbpack:run [zodbpack]
+    - networkbench = slapos.networkbench:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - flask
+    - atomize
+    - feedparser
+    - apache_libcloud >=0.4.0
+    - lockfile
+    - lxml
+    - paramiko
+    - psutil
+    - setuptools
+    - slapos.core
+    - xml_marshaller
+    - gitpython
+    - netifaces
+    - rpdb
+
+  run:
+    - python
+    - flask
+    - atomize
+    - feedparser
+    - apache_libcloud >=0.4.0
+    - lockfile
+    - lxml
+    - paramiko
+    - psutil
+    - setuptools
+    - slapos.core
+    - xml_marshaller
+    - gitpython
+    - netifaces
+    - rpdb
+
+test:
+  # Python imports
+  imports:
+    - slapos
+    - slapos.agent
+    - slapos.builder
+    - slapos.cloudmgr
+    - slapos.container
+    - slapos.equeue
+    - slapos.lamp
+    - slapos.onetimedownload
+    - slapos.onetimeupload
+    - slapos.promise
+    - slapos.promise.check_web_page_http_cache_hit
+    - slapos.promise.is_local_tcp_port_opened
+    - slapos.pubsub
+    - slapos.qemuqmpclient
+    - slapos.resiliencytest
+    - slapos.resiliencytest.suites
+    - slapos.runner
+    - slapos.shacache
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - agent --help
+    - check-web-page-http-cache-hit --help
+    - clouddestroy --help
+    - cloudgetprivatekey --help
+    - cloudgetpubliciplist --help
+    - cloudlist --help
+    - cloudmgr --help
+    - cloudstart --help
+    - cloudstop --help
+    - equeue --help
+    - htpasswd --help
+    - is-local-tcp-port-opened --help
+    - killpidfromfile --help
+    - runResiliencyUnitTestTestNode --help
+    - runResiliencyScalabilityTestNode --help
+    - runStandaloneResiliencyTest --help
+    - lampconfigure --help
+    - onetimedownload --help
+    - onetimeupload --help
+    - pubsubnotifier --help
+    - pubsubserver --help
+    - qemu-qmp-client --help
+    - shacache --help
+    - slapbuilder --help
+    - slapcontainer --help
+    - slapmonitor --help
+    - slapmonitor-xml --help
+    - slapos-kill --help
+    - slapreport --help
+    - slaprunnertest --help
+    - slaprunnerteststandalone --help
+    - zodbpack --help
+    - networkbench --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GPLv3
+  summary: 'SlapOS toolbox.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

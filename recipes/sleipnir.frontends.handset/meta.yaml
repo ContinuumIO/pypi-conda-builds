@@ -1,0 +1,72 @@
+package:
+  name: sleipnir.frontends.handset
+  version: "0.0.91"
+
+source:
+  fn: sleipnir.frontends.handset-0.0.91.tar.gz
+  url: https://pypi.python.org/packages/source/s/sleipnir.frontends.handset/sleipnir.frontends.handset-0.0.91.tar.gz
+  md5: 9e0271ea7295ce1e63c4fe5bd7e7192f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sleipnir.frontends.handset = sleipnir.frontends.handset:main
+    #
+    # Would create an entry point called sleipnir.frontends.handset that calls sleipnir.frontends.handset.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sleipnir.core >=0.1.90
+    - sleipnir.components >=0.1.90
+    - sleipnir.shell >=0.0.93
+
+  run:
+    - python
+    - setuptools
+    - sleipnir.core >=0.1.90
+    - sleipnir.components >=0.1.90
+    - sleipnir.shell >=0.0.93
+
+test:
+  # Python imports
+  imports:
+    - sleipnir
+    - sleipnir.frontends
+    - sleipnir.frontends.handset
+    - sleipnir.frontends.handset.flows
+    - sleipnir.frontends.handset.interfaces
+    - sleipnir.frontends.handset.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sleipnir.liberalia.net/
+  license: GNU General Public License (GPL)
+  summary: 'UX experience for Nokia N900 (Handset) and Meego'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

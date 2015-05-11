@@ -1,0 +1,66 @@
+package:
+  name: easybuild
+  version: "2.1.0"
+
+source:
+  fn: easybuild-2.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/easybuild/easybuild-2.1.0.tar.gz
+  md5: 850dbf33f52e533483c05e373a620365
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - easybuild = easybuild:main
+    #
+    # Would create an entry point called easybuild that calls easybuild.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - easybuild-easyconfigs ==2.1.0
+    - easybuild-easyblocks ==2.1.0
+    - easybuild-framework ==2.1.0
+
+  run:
+    - python
+    - easybuild-easyconfigs ==2.1.0
+    - easybuild-easyblocks ==2.1.0
+    - easybuild-framework ==2.1.0
+
+test:
+  # Python imports
+  imports:
+    - easybuild
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hpcugent.github.com/easybuild
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'EasyBuild is a software build\nand installation framework that allows you to manage (scientific) software\non High Performance Computing (HPC) systems in an efficient way.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

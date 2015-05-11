@@ -1,0 +1,78 @@
+package:
+  name: gwas_benchmark
+  version: "0.1.2"
+
+source:
+  fn: GWAS_benchmark-0.1.2.zip
+  url: https://pypi.python.org/packages/source/G/GWAS_benchmark/GWAS_benchmark-0.1.2.zip
+  md5: a6a210d7c1b7d368a4f54b4e018857c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gwas_benchmark = gwas_benchmark:main
+    #
+    # Would create an entry point called gwas_benchmark that calls gwas_benchmark.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - pandas
+    - scikit-learn
+    - matplotlib
+    - pysnptools
+    - fastlmm
+    - fastcluster
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - pandas
+    - scikit-learn
+    - matplotlib
+    - pysnptools
+    - fastlmm
+    - fastcluster
+
+test:
+  # Python imports
+  imports:
+    - GWAS_benchmark
+    - GWAS_benchmark/tests
+    - gwas_benchmark
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://research.microsoft.com/en-us/um/redmond/projects/mscompbio/
+  license: Apache 2.0
+  summary: 'GWAS benchmark'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,79 @@
+package:
+  name: netvisor
+  version: "0.3.2"
+
+source:
+  fn: netvisor-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/netvisor/netvisor-0.3.2.tar.gz
+  md5: ea04ce42a5da58c953d6b16179da1bb8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - netvisor = netvisor:main
+    #
+    # Would create an entry point called netvisor that calls netvisor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - inflection
+    - marshmallow >=2.0.0b1
+    - requests
+    - xmltodict
+
+  run:
+    - python
+    - inflection
+    - marshmallow >=2.0.0b1
+    - requests
+    - xmltodict
+
+test:
+  # Python imports
+  imports:
+    - netvisor
+    - netvisor.requests
+    - netvisor.responses
+    - netvisor.schemas
+    - netvisor.schemas.companies
+    - netvisor.schemas.customers
+    - netvisor.schemas.products
+    - netvisor.schemas.sales_invoices
+    - netvisor.schemas.sales_payments
+    - netvisor.services
+    - tests
+    - tests.services
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fastmonkeys/netvisor.py
+  license: MIT License
+  summary: 'Python wrapper for the Netvisor API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

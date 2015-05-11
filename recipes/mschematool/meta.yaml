@@ -1,0 +1,65 @@
+package:
+  name: mschematool
+  version: "0.6.5"
+
+source:
+  fn: mschematool-0.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/mschematool/mschematool-0.6.5.tar.gz
+  md5: 53543b368c397ac9be67fb718c15a530
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mschematool = mschematool:main
+    #
+    # Would create an entry point called mschematool that calls mschematool.main()
+
+    - mschematool = mschematool.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click ==3.3
+
+  run:
+    - python
+    - click ==3.3
+
+test:
+  # Python imports
+  imports:
+    - mschematool
+    - mschematool.executors
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mschematool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aartur/mschematool
+  license: BSD License
+  summary: 'Minimal database schema migrations tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

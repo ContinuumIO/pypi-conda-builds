@@ -1,0 +1,87 @@
+package:
+  name: django-super-cms
+  version: "0.1a2"
+
+source:
+  fn: django-super-cms-0.1a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-super-cms/django-super-cms-0.1a2.tar.gz
+  md5: ec57b4f58d22ede5f76064d44c9f4cc2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-super-cms = django-super-cms:main
+    #
+    # Would create an entry point called django-super-cms that calls django-super-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - unidecode
+    - django-laravel-validator
+    - django-flash-message
+    - django-simple-captcha
+    - python-cjson
+    - sorl-thumbnail
+
+  run:
+    - python
+    - setuptools
+    - django >=1.7
+    - unidecode
+    - django-laravel-validator
+    - django-flash-message
+    - django-simple-captcha
+    - python-cjson
+    - sorl-thumbnail
+
+test:
+  # Python imports
+  imports:
+    - django_super_cms
+    - django_super_cms.actions
+    - django_super_cms.init
+    - django_super_cms.migrations
+    - django_super_cms.project
+    - django_super_cms.project.media
+    - django_super_cms.project.project
+    - django_super_cms.project.static
+    - django_super_cms.project.templates
+    - django_super_cms.static
+    - django_super_cms.templates
+    - django_super_cms.templates.admin-ext
+    - django_super_cms.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/majia-tech/django-super-cms
+  license: MIT License
+  summary: 'a simple cms app for django , just for small site usage'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

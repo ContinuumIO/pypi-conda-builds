@@ -1,0 +1,62 @@
+package:
+  name: hghudson
+  version: "0.1.1dev"
+
+source:
+  fn: hghudson-0.1.1dev.tar.gz
+  url: https://pypi.python.org/packages/source/h/hghudson/hghudson-0.1.1dev.tar.gz
+  md5: cd8a7fff68a15c71b1ec51e639ce5d6a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hghudson = hghudson:main
+    #
+    # Would create an entry point called hghudson that calls hghudson.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - hghudson
+    - hghudson.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.gitorious.org/hghudson
+  license: MIT License
+  summary: 'Mercurial integration with Hudson'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

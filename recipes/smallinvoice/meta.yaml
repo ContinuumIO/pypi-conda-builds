@@ -1,0 +1,64 @@
+package:
+  name: smallinvoice
+  version: "0.2.0"
+
+source:
+  fn: smallinvoice-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/smallinvoice/smallinvoice-0.2.0.tar.gz
+  md5: fc28e8ea46fcec5c2f42ab776dfb866c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - smallinvoice = smallinvoice:main
+    #
+    # Would create an entry point called smallinvoice that calls smallinvoice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - requests
+    - jsonpickle
+
+  run:
+    - python
+    - requests
+    - jsonpickle
+
+test:
+  # Python imports
+  imports:
+    - smallinvoice
+    - smallinvoice.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Smallinvoice/
+  license: LICENSE.txt
+  summary: 'A simple client wrapper for the smallinvoice.ch web api'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

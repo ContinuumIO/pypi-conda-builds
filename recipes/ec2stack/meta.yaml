@@ -1,0 +1,83 @@
+package:
+  name: ec2stack
+  version: "0.7.1"
+
+source:
+  fn: ec2stack-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/ec2stack/ec2stack-0.7.1.tar.gz
+  md5: cfbffcbf4d4904a73c1ed0b49354b6d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ec2stack = ec2stack:main
+    #
+    # Would create an entry point called ec2stack that calls ec2stack.main()
+
+    - ec2stack=ec2stack.__main__:main
+    - ec2stack-configure=ec2stack.configure:main
+    - ec2stack-register=ec2stack.secretkey_manager:register
+    - ec2stack-remove=ec2stack.secretkey_manager:remove
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask-sqlalchemy
+    - flask
+    - requests
+    - alembic
+
+  run:
+    - python
+    - setuptools
+    - flask-sqlalchemy
+    - flask
+    - requests
+    - alembic
+
+test:
+  # Python imports
+  imports:
+    - ec2stack
+    - ec2stack.controllers
+    - ec2stack.models
+    - ec2stack.models.users
+    - ec2stack.providers
+    - ec2stack.providers.cloudstack
+    - migrations
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ec2stack --help
+    - ec2stack-configure --help
+    - ec2stack-register --help
+    - ec2stack-remove --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/imduffy15/ec2stack
+  license: Apache Software License
+  summary: 'EC2 compatibility interface for Apache Cloudstack'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

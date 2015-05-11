@@ -1,0 +1,64 @@
+package:
+  name: linkins
+  version: "0.0.7.4"
+
+source:
+  fn: linkins-0.0.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/l/linkins/linkins-0.0.7.4.tar.gz
+  md5: bc48a81e13cfad9b7acbd4cc188c3f47
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - linkins = linkins:main
+    #
+    # Would create an entry point called linkins that calls linkins.main()
+
+    - linkins = linkins.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - linkins
+    - linkins.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - linkins --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thelinuxkid/linkins
+  license: MIT License
+  summary: 'Links a directory structure and optionally executes user-defined scripts at each level of the directory hierarchy'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

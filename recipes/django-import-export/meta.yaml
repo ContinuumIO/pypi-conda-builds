@@ -1,0 +1,66 @@
+package:
+  name: django-import-export
+  version: "0.2.7"
+
+source:
+  fn: django-import-export-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-import-export/django-import-export-0.2.7.tar.gz
+  md5: 5d85ec8495c2c76c859cc7152338e3e0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-import-export = django-import-export:main
+    #
+    # Would create an entry point called django-import-export that calls django-import-export.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tablib
+    - diff-match-patch
+
+  run:
+    - python
+    - tablib
+    - diff-match-patch
+
+test:
+  # Python imports
+  imports:
+    - import_export
+    - import_export.formats
+    - import_export.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bmihelac/django-import-export
+  license: BSD License
+  summary: 'Django application and library for importing and exportingdata with included admin integration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

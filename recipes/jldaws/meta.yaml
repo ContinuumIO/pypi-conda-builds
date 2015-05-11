@@ -1,0 +1,65 @@
+package:
+  name: jldaws
+  version: "0.4.27"
+
+source:
+  fn: jldaws-0.4.27.tar.gz
+  url: https://pypi.python.org/packages/source/j/jldaws/jldaws-0.4.27.tar.gz
+  md5: 569ad8865e7e95f867c3bcd7a9d7a66a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jldaws = jldaws:main
+    #
+    # Would create an entry point called jldaws that calls jldaws.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyfnc >=0.1.2
+
+  run:
+    - python
+    - pyfnc >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - jldaws
+    - jldaws.db
+    - jldaws.mocks
+    - jldaws.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.systemical.com/doc/opensource/jldaws
+  license: UNKNOWN
+  summary: 'Collection of Amazon AWS related scripts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

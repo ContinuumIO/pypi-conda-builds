@@ -1,0 +1,69 @@
+package:
+  name: fexpect
+  version: "0.2.post17"
+
+source:
+  fn: fexpect-0.2.post17.tar.gz
+  url: https://pypi.python.org/packages/source/f/fexpect/fexpect-0.2.post17.tar.gz
+  md5: 4caeeaf7a82828af2b338f5dd6a20a63
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fexpect = fexpect:main
+    #
+    # Would create an entry point called fexpect that calls fexpect.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - fabric
+    - pexpect
+    - shortuuid
+    - setuptools
+
+  run:
+    - python
+    - fabric
+    - pexpect
+    - shortuuid
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - fexpect
+    - ilogue
+    - ilogue.fexpect
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ilogue.com
+  license: BSD License
+  summary: 'extension of fabric for handling prompts with pexpect'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

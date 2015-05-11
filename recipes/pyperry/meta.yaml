@@ -1,0 +1,69 @@
+package:
+  name: pyperry
+  version: "1.2.11"
+
+source:
+  fn: pyperry-1.2.11.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyperry/pyperry-1.2.11.tar.gz
+  md5: 687c819ac859418c9aac8a333ab19c6a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyperry = pyperry:main
+    #
+    # Would create an entry point called pyperry that calls pyperry.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - insight-bert >=1.0.1,<=1.1.0
+    - insight-bertrpc >=0.1.2,<0.2.0
+    - simplejson >=2.1.0,<2.2
+
+  run:
+    - python
+    - insight-bert >=1.0.1,<=1.1.0
+    - insight-bertrpc >=0.1.2,<0.2.0
+    - simplejson >=2.1.0,<2.2
+
+test:
+  # Python imports
+  imports:
+    - pyperry
+    - pyperry.adapter
+    - pyperry.middlewares
+    - pyperry.processors
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tpett/pyperry
+  license: MIT License
+  summary: 'Python library for querying and mapping data through generic interfaces (this is a port of the Ruby "perry" library)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

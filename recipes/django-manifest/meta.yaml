@@ -1,0 +1,74 @@
+package:
+  name: django-manifest
+  version: "0.1b5"
+
+source:
+  fn: django-manifest-0.1b5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-manifest/django-manifest-0.1b5.tar.gz
+  md5: 076a2313970f7fb6f42f2de9a83a0551
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-manifest = django-manifest:main
+    #
+    # Would create an entry point called django-manifest that calls django-manifest.main()
+
+    - manifest-admin = manifest.core.management:execute_from_command_line
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - manifest
+    - manifest.accounts
+    - manifest.accounts.management
+    - manifest.accounts.management.commands
+    - manifest.accounts.tests
+    - manifest.accounts.tests.profiles
+    - manifest.bootstrap
+    - manifest.bootstrap.templatetags
+    - manifest.core
+    - manifest.core.templatetags
+    - manifest.facebook
+    - manifest.facebook.templatetags
+    - manifest.profiles
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - manifest-admin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ozgurgunes/django-manifest/
+  license: MIT License
+  summary: 'A kickstarter for Django Web Framework projects.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

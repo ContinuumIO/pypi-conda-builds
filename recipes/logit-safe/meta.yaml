@@ -1,0 +1,68 @@
+package:
+  name: logit-safe
+  version: "0.7.1"
+
+source:
+  fn: logit-safe-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/logit-safe/logit-safe-0.7.1.tar.gz
+  md5: ac090239ca3b5b706847b95c20dd2ffd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logit-safe = logit-safe:main
+    #
+    # Would create an entry point called logit-safe that calls logit-safe.main()
+
+    - logit = logit.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+    - boto
+    - pyyaml
+
+  run:
+    - python
+    - pycrypto
+    - boto
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - logit
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - logit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wbbradley/logit
+  license: CC0
+  summary: 'A private log for humans'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

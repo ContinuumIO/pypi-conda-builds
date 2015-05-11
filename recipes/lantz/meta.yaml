@@ -1,0 +1,113 @@
+package:
+  name: lantz
+  version: "0.3"
+
+source:
+  fn: Lantz-0.3.zip
+  url: https://pypi.python.org/packages/source/L/Lantz/Lantz-0.3.zip
+  md5: c078575de3a4c096961e8abef236ec21
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lantz = lantz:main
+    #
+    # Would create an entry point called lantz that calls lantz.main()
+
+    - lantz-sim = lantz.simulators:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pint >=0.6
+    - pyvisa >=1.6.2
+    - stringparser
+    - enum34
+
+  run:
+    - python
+    - setuptools
+    - pint >=0.6
+    - pyvisa >=1.6.2
+    - stringparser
+    - enum34
+
+test:
+  # Python imports
+  imports:
+    - lantz
+    - lantz.drivers
+    - lantz.drivers.aa
+    - lantz.drivers.aeroflex
+    - lantz.drivers.andor
+    - lantz.drivers.cobolt
+    - lantz.drivers.coherent
+    - lantz.drivers.examples
+    - lantz.drivers.kentech
+    - lantz.drivers.labjack
+    - lantz.drivers.legacy
+    - lantz.drivers.legacy.aa
+    - lantz.drivers.legacy.aeroflex
+    - lantz.drivers.legacy.andor
+    - lantz.drivers.legacy.cobolt
+    - lantz.drivers.legacy.coherent
+    - lantz.drivers.legacy.kentech
+    - lantz.drivers.legacy.labjack
+    - lantz.drivers.legacy.mpb
+    - lantz.drivers.legacy.newport
+    - lantz.drivers.legacy.ni
+    - lantz.drivers.legacy.olympus
+    - lantz.drivers.legacy.pco
+    - lantz.drivers.legacy.prior
+    - lantz.drivers.legacy.rgblasersystems
+    - lantz.drivers.legacy.stanford
+    - lantz.drivers.legacy.sutter
+    - lantz.drivers.legacy.tektronix
+    - lantz.drivers.mpb
+    - lantz.drivers.newport
+    - lantz.drivers.ni
+    - lantz.drivers.olympus
+    - lantz.drivers.pco
+    - lantz.drivers.prior
+    - lantz.drivers.rgblasersystems
+    - lantz.drivers.rigol
+    - lantz.drivers.stanford
+    - lantz.drivers.sutter
+    - lantz.drivers.tektronix
+    - lantz.simulators
+    - lantz.ui
+    - lantz.ui.blocks
+    - lantz.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lantz-sim --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lantz.glugcen.dc.uba.ar/
+  license: BSD License
+  summary: 'Instrumentation framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

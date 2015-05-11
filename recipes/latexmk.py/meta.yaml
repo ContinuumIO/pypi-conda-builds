@@ -1,0 +1,61 @@
+package:
+  name: latexmk.py
+  version: "0.4"
+
+source:
+  fn: latexmk.py-0.4.zip
+  url: https://pypi.python.org/packages/source/l/latexmk.py/latexmk.py-0.4.zip
+  md5: 095c0af87992d914231d6baf83d6a9b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - latexmk.py = latexmk.py:main
+    #
+    # Would create an entry point called latexmk.py that calls latexmk.py.main()
+
+    - latexmk.py = latexmake:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - latexmk.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/schlamar/latexmk.py
+  license: MIT License
+  summary: 'Latexmk.py completely automates the process of generating a LaTeX document.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: flask-excel
+  version: "0.0.1"
+
+source:
+  fn: Flask-Excel-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Excel/Flask-Excel-0.0.1.tar.gz
+  md5: 2a4e87754faeb4430b3b92c791818bb7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-excel = flask-excel:main
+    #
+    # Would create an entry point called flask-excel that calls flask-excel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyexcel >=0.1.2
+    - pyexcel-webio >=0.0.1
+    - flask >=0.10.1
+
+  run:
+    - python
+    - pyexcel >=0.1.2
+    - pyexcel-webio >=0.0.1
+    - flask >=0.10.1
+
+test:
+  # Python imports
+  imports:
+    - flask_excel
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chfw/Flask-Excel
+  license: BSD License or GNU General Public License v3 (GPLv3)
+  summary: 'A flask extension using pyexcel to read, manipulate and write data in different excel formats: csv, ods, xls, xlsx and xlsm.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

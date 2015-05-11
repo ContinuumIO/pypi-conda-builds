@@ -1,0 +1,88 @@
+package:
+  name: ks.installtool
+  version: "1.0.2"
+
+source:
+  fn: ks.installtool-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/k/ks.installtool/ks.installtool-1.0.2.tar.gz
+  md5: f1dd1ba128eccbb0fe750217316fdca1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ks.installtool = ks.installtool:main
+    #
+    # Would create an entry point called ks.installtool that calls ks.installtool.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.cachedescriptors
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.app.folder
+    - zope.exceptions
+    - ks.lib
+
+  run:
+    - python
+    - setuptools
+    - zope.cachedescriptors
+    - zope.component
+    - zope.i18nmessageid
+    - zope.interface
+    - zope.publisher
+    - zope.schema
+    - zope.app.folder
+    - zope.exceptions
+    - ks.lib
+
+test:
+  # Python imports
+  imports:
+    - ks
+    - ks.installtool
+    - ks.installtool.demo
+    - ks.installtool.factory
+    - ks.installtool.factory.browser
+    - ks.installtool.installerregistry
+    - ks.installtool.installscript
+    - ks.installtool.zcmlfactoryform
+    - ks.installtool.zcmlinstall
+    - ks.installtool.zcmlscript
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.keysolutionscorp.com/downloads/public/pypi/ks.installtool
+  license: Zope Public License
+  summary: 'Install zope sites content in seconds with ks.installtool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

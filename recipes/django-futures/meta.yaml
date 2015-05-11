@@ -1,0 +1,70 @@
+package:
+  name: django-futures
+  version: "0.1.0.dev1"
+
+source:
+  fn: django-futures-0.1.0.dev1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-futures/django-futures-0.1.0.dev1.tar.gz
+  md5: e5270d8ac1ea37b38ea21d3a9a60c402
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-futures = django-futures:main
+    #
+    # Would create an entry point called django-futures that calls django-futures.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado
+    - django
+
+  run:
+    - python
+    - tornado
+    - django
+
+test:
+  # Python imports
+  imports:
+    - django_futures
+    - django_futures.core
+    - django_futures.core.handlers
+    - django_futures.core.handlers.tv32
+    - django_futures.core.handlers.tv40
+    - django_futures.management
+    - django_futures.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: MIT
+  summary: 'Django asynchronous views and Tornado integration made easy.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

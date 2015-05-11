@@ -1,0 +1,63 @@
+package:
+  name: log4mongo
+  version: "1.4.3"
+
+source:
+  fn: log4mongo-1.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/log4mongo/log4mongo-1.4.3.tar.gz
+  md5: 2cd5eefd1f37f8debf4ce3f2ca4ac9c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - log4mongo = log4mongo:main
+    #
+    # Would create an entry point called log4mongo that calls log4mongo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+
+  run:
+    - python
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - log4mongo
+    - log4mongo.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://log4mongo.org/display/PUB/Log4mongo+for+Python
+  license: BSD License
+  summary: 'mongo database handler for python logging'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: evasion-messenger
+  version: "1.2.0"
+
+source:
+  fn: evasion-messenger-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/evasion-messenger/evasion-messenger-1.2.0.tar.gz
+  md5: 156b2cfc66cbcbba719f92cfffe90a83
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - evasion-messenger = evasion-messenger:main
+    #
+    # Would create an entry point called evasion-messenger that calls evasion-messenger.main()
+
+    - messagehub=evasion.messenger.hub:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq
+    - evasion-common ==1.0.2
+
+  run:
+    - python
+    - setuptools
+    - pyzmq
+    - evasion-common ==1.0.2
+
+test:
+  # Python imports
+  imports:
+    - evasion
+    - evasion.messenger
+    - evasion.messenger.testing
+    - evasion.messenger.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - messagehub --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: Evasion Project CDDL License
+  summary: 'Messaging library used to package and delivery events'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

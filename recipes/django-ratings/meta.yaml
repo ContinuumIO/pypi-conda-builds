@@ -1,0 +1,66 @@
+package:
+  name: django-ratings
+  version: "0.3.7"
+
+source:
+  fn: django-ratings-0.3.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ratings/django-ratings-0.3.7.tar.gz
+  md5: 2395b2b7e0a397f06896b9f2004aa34b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ratings = django-ratings:main
+    #
+    # Would create an entry point called django-ratings that calls django-ratings.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - djangoratings
+    - djangoratings.management
+    - djangoratings.management.commands
+    - djangoratings.migrations
+    - djangoratings.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dcramer/django-ratings
+  license: UNKNOWN
+  summary: 'Generic Ratings in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

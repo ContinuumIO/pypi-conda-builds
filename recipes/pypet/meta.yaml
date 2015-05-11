@@ -1,0 +1,77 @@
+package:
+  name: pypet
+  version: "0.1b.10"
+
+source:
+  fn: pypet-0.1b.10.tar.gz
+  url: https://pypi.python.org/packages/source/p/pypet/pypet-0.1b.10.tar.gz
+  md5: 6f9c7d25a22e2a20bcf973008c8f9c24
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pypet = pypet:main
+    #
+    # Would create an entry point called pypet that calls pypet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tables >=2.3.1
+    - pandas >=0.12.0
+    - numpy >=1.6.1
+    - scipy >=0.9.0
+
+  run:
+    - python
+    - tables >=2.3.1
+    - pandas >=0.12.0
+    - numpy >=1.6.1
+    - scipy >=0.9.0
+
+test:
+  # Python imports
+  imports:
+    - pypet
+    - pypet.brian
+    - pypet.tests
+    - pypet.tests.integration
+    - pypet.tests.integration.briantests
+    - pypet.tests.profiling
+    - pypet.tests.testutils
+    - pypet.tests.unittests
+    - pypet.tests.unittests.briantests
+    - pypet.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SmokinCaterpillar/pypet
+  license: BSD License
+  summary: 'A toolkit for numerical simulations to allow easy parameter exploration and storage of results.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

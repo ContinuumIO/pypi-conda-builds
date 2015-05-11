@@ -1,0 +1,87 @@
+package:
+  name: products.genericsetup
+  version: "1.7.5"
+
+source:
+  fn: Products.GenericSetup-1.7.5.zip
+  url: https://pypi.python.org/packages/source/P/Products.GenericSetup/Products.GenericSetup-1.7.5.zip
+  md5: c573c49888d0fb30541bbb0419c59930
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - products.genericsetup = products.genericsetup:main
+    #
+    # Would create an entry point called products.genericsetup that calls products.genericsetup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zope2 >=2.12.3
+    - five.localsitemanager
+    - zope.formlib
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zope2 >=2.12.3
+    - five.localsitemanager
+    - zope.formlib
+
+test:
+  # Python imports
+  imports:
+    - Products
+    - Products.GenericSetup
+    - Products.GenericSetup.MailHost
+    - Products.GenericSetup.MailHost.tests
+    - Products.GenericSetup.OFSP
+    - Products.GenericSetup.OFSP.tests
+    - Products.GenericSetup.PageTemplates
+    - Products.GenericSetup.PageTemplates.tests
+    - Products.GenericSetup.PluginIndexes
+    - Products.GenericSetup.PluginIndexes.tests
+    - Products.GenericSetup.PythonScripts
+    - Products.GenericSetup.PythonScripts.tests
+    - Products.GenericSetup.ZCTextIndex
+    - Products.GenericSetup.ZCTextIndex.tests
+    - Products.GenericSetup.ZCatalog
+    - Products.GenericSetup.ZCatalog.tests
+    - Products.GenericSetup.bbb
+    - Products.GenericSetup.browser
+    - Products.GenericSetup.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Products.GenericSetup
+  license: Zope Public License
+  summary: 'Read Zope configuration state from profile dirs / tarballs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: m2wsgid
+  version: "0.7.1"
+
+source:
+  fn: m2wsgid-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/m2wsgid/m2wsgid-0.7.1.tar.gz
+  md5: ed610266c0981cbe9347ad8ddf953420
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - m2wsgid = m2wsgid:main
+    #
+    # Would create an entry point called m2wsgid that calls m2wsgid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plugnplay ==0.5.1
+    - pyzmq ==2.1.10
+    - python-daemon ==1.6
+    - simplejson ==2.3.0
+    - argparse ==1.2.1
+
+  run:
+    - python
+    - plugnplay ==0.5.1
+    - pyzmq ==2.1.10
+    - python-daemon ==1.6
+    - simplejson ==2.3.0
+    - argparse ==1.2.1
+
+test:
+  # Python imports
+  imports:
+    - m2wsgid
+    - wsgid
+    - wsgid.loaders
+    - wsgid/commands
+    - wsgid/core
+    - wsgid/interfaces
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/daltonmatos/wsgid
+  license: BSD License
+  summary: 'A complete WSGI environment for mongrel2 handlers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

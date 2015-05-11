@@ -1,0 +1,63 @@
+package:
+  name: gtimelog
+  version: "0.9.2"
+
+source:
+  fn: gtimelog-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gtimelog/gtimelog-0.9.2.tar.gz
+  md5: 13c2a3432fd78445905e7021582a4d8c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gtimelog = gtimelog:main
+    #
+    # Would create an entry point called gtimelog that calls gtimelog.main()
+
+    - gtimelog=gtimelog.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - gtimelog
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gtimelog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mg.pov.lt/gtimelog/
+  license: GNU General Public License (GPL)
+  summary: 'A Gtk+ time tracking application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

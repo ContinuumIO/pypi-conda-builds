@@ -1,0 +1,70 @@
+package:
+  name: drum
+  version: "0.2.2"
+
+source:
+  fn: Drum-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/Drum/Drum-0.2.2.tar.gz
+  md5: e7eaee8bf77cfdb8c699af573e7e590c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drum = drum:main
+    #
+    # Would create an entry point called drum that calls drum.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mezzanine >=3.0
+    - sphinx-me
+
+  run:
+    - python
+    - mezzanine >=3.0
+    - sphinx-me
+
+test:
+  # Python imports
+  imports:
+    - drum
+    - drum.links
+    - drum.links.management
+    - drum.links.management.commands
+    - drum.links.migrations
+    - drum.links.templatetags
+    - drum.project_template
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://drum.jupo.org/
+  license: BSD License
+  summary: 'A Reddit / Hacker News clone for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: json2xls
+  version: "0.1.3c"
+
+source:
+  fn: json2xls-0.1.3c.tar.gz
+  url: https://pypi.python.org/packages/source/j/json2xls/json2xls-0.1.3c.tar.gz
+  md5: 86fb4cafd5786345b009d07ace1094eb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - json2xls = json2xls:main
+    #
+    # Would create an entry point called json2xls that calls json2xls.main()
+
+    - json2xls = json2xls.json2xls:make
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+    - requests
+    - xlwt
+
+  run:
+    - python
+    - click
+    - requests
+    - xlwt
+
+test:
+  # Python imports
+  imports:
+    - json2xls
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - json2xls --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/axiaoxin/json2xls
+  license: BSD License
+  summary: 'generate excel by json'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

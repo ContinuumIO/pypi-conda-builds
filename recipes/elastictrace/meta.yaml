@@ -1,0 +1,69 @@
+package:
+  name: elastictrace
+  version: "0.4.7.3"
+
+source:
+  fn: elastictrace-0.4.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/elastictrace/elastictrace-0.4.7.3.tar.gz
+  md5: 4b1f65e44943616269dcadd89ec2dda4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elastictrace = elastictrace:main
+    #
+    # Would create an entry point called elastictrace that calls elastictrace.main()
+
+    - elastictrace-agent = elastictrace.agent:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - psutil
+
+  run:
+    - python
+    - requests
+    - psutil
+
+test:
+  # Python imports
+  imports:
+    - elastictrace
+    - elastictrace.lib
+    - elastictrace.lib.queuelib
+    - elastictrace.plugin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - elastictrace-agent --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://elastictrace.com/
+  license: UNKNOWN
+  summary: 'elasticTrace Agent for getting server metrics upstream'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

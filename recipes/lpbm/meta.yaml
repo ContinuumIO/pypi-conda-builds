@@ -1,0 +1,72 @@
+package:
+  name: lpbm
+  version: "2.0.0a9"
+
+source:
+  fn: lpbm-2.0.0a9.tar.gz
+  url: https://pypi.python.org/packages/source/l/lpbm/lpbm-2.0.0a9.tar.gz
+  md5: f83dfe7fbe4ca9a7ce746f1bb7881aa7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lpbm = lpbm:main
+    #
+    # Would create an entry point called lpbm that calls lpbm.main()
+
+    - lpbm = lpbm.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 >=2.6
+    - markdown >=2.2.0
+    - pyrss2gen >=1.1
+    - pygments >=1.5
+
+  run:
+    - python
+    - jinja2 >=2.6
+    - markdown >=2.2.0
+    - pyrss2gen >=1.1
+    - pygments >=1.5
+
+test:
+  # Python imports
+  imports:
+    - lpbm
+    - lpbm.models
+    - lpbm.modules
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lpbm --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/kushou/lpbm
+  license: BSD License
+  summary: 'Lightweight personal blog maker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

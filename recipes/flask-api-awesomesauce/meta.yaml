@@ -1,0 +1,67 @@
+package:
+  name: flask-api-awesomesauce
+  version: "0.1"
+
+source:
+  fn: Flask-Api-Awesomesauce-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Api-Awesomesauce/Flask-Api-Awesomesauce-0.1.tar.gz
+  md5: 1b79c52959a6349db6c7ddf989df5714
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-api-awesomesauce = flask-api-awesomesauce:main
+    #
+    # Would create an entry point called flask-api-awesomesauce that calls flask-api-awesomesauce.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - pytest
+    - pytest-cov
+
+  run:
+    - python
+    - flask
+    - pytest
+    - pytest-cov
+
+test:
+  # Python imports
+  imports:
+    - flask_api_awesomesauce
+    - flask_api_awesomesauce.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eikonomega/flask-api-awesomesauce
+  license: MIT License
+  summary: 'Flask Api Awesomesauce!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: kwant
+  version: "1.0.3"
+
+source:
+  fn: kwant-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/k/kwant/kwant-1.0.3.tar.gz
+  md5: 69d47918dc4674567a97e90cba927ce8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kwant = kwant:main
+    #
+    # Would create an entry point called kwant that calls kwant.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - kwant
+    - kwant.graph
+    - kwant.graph.tests
+    - kwant.linalg
+    - kwant.linalg.tests
+    - kwant.physics
+    - kwant.physics.tests
+    - kwant.solvers
+    - kwant.solvers.tests
+    - kwant.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kwant-project.org/
+  license: BSD
+  summary: 'Package for numerical quantum transport calculations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

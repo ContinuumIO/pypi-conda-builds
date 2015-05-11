@@ -1,0 +1,80 @@
+package:
+  name: django-proxylist-for-grab
+  version: "0.5.1"
+
+source:
+  fn: django-proxylist-for-grab-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-proxylist-for-grab/django-proxylist-for-grab-0.5.1.tar.gz
+  md5: b412894473006d81091deb777e093962
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-proxylist-for-grab = django-proxylist-for-grab:main
+    #
+    # Would create an entry point called django-proxylist-for-grab that calls django-proxylist-for-grab.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-countries >=1.5
+    - python-dateutil
+    - multiprocessing
+    - pygeoip
+    - celery
+    - pycurl
+    - lxml
+    - grab
+
+  run:
+    - python
+    - django-countries >=1.5
+    - python-dateutil
+    - multiprocessing
+    - pygeoip
+    - celery
+    - pycurl
+    - lxml
+    - grab
+
+test:
+  # Python imports
+  imports:
+    - docs
+    - proxylist
+    - proxylist.management
+    - proxylist.management.commands
+    - proxylist.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gotlium/django-proxylist
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Proxy-list management application for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

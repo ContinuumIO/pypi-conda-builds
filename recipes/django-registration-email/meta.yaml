@@ -1,0 +1,63 @@
+package:
+  name: django-registration-email
+  version: "0.9"
+
+source:
+  fn: django-registration-email-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-registration-email/django-registration-email-0.9.tar.gz
+  md5: 74d76b45e491d4c9e68587acc6b0146c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-registration-email = django-registration-email:main
+    #
+    # Would create an entry point called django-registration-email that calls django-registration-email.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - registration_email
+    - registration_email.backends
+    - registration_email.backends.default
+    - registration_email.backends.simple
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bitmazk/django-registration-email
+  license: UNKNOWN
+  summary: 'Provides a custom authentication backend so that users can signup to the site\nvia their email address instead of a username. Also provides a set of standard\ntemplates and sane URL mappings for the whole registration workflow.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

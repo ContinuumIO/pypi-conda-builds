@@ -1,0 +1,70 @@
+package:
+  name: hgsvn
+  version: "0.3.6"
+
+source:
+  fn: hgsvn-0.3.6.zip
+  url: https://pypi.python.org/packages/source/h/hgsvn/hgsvn-0.3.6.zip
+  md5: 0ea23740135f9dea1f7d046d3f1c1d3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hgsvn = hgsvn:main
+    #
+    # Would create an entry point called hgsvn that calls hgsvn.main()
+
+    - hgimportsvn = hgsvn.run.hgimportsvn:main
+    - hgpullsvn = hgsvn.run.hgpullsvn:main
+    - hgpushsvn = hgsvn.run.hgpushsvn:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-hglib
+
+  run:
+    - python
+    - python-hglib
+
+test:
+  # Python imports
+  imports:
+    - hgsvn
+    - hgsvn.run
+    - hgsvn.unittests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hgimportsvn --help
+    - hgpullsvn --help
+    - hgpushsvn --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/alexrayne/hgsvn
+  license: GNU General Public License (GPL)
+  summary: 'A set of scripts to work locally on Subversion checkouts using Mercurial'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

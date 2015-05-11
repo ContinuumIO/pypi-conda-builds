@@ -1,0 +1,80 @@
+package:
+  name: soundscrape
+  version: "0.16.1"
+
+source:
+  fn: soundscrape-0.16.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/soundscrape/soundscrape-0.16.1.tar.gz
+  md5: cbc1e6cbbd342601424866dc15dd1d5d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - soundscrape = soundscrape:main
+    #
+    # Would create an entry point called soundscrape that calls soundscrape.main()
+
+    - soundscrape = soundscrape.soundscrape:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - args >=0.1.0
+    - clint >=0.3.2
+    - demjson ==2.2.2
+    - fudge ==1.0.3
+    - mutagen ==1.22
+    - requests >=2.1.0
+    - simplejson ==3.3.1
+    - soundcloud >=0.4.1
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - args >=0.1.0
+    - clint >=0.3.2
+    - demjson ==2.2.2
+    - fudge ==1.0.3
+    - mutagen ==1.22
+    - requests >=2.1.0
+    - simplejson ==3.3.1
+    - soundcloud >=0.4.1
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - soundscrape
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - soundscrape --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Miserlou/SoundScrape
+  license: Apache Software License
+  summary: 'Scrape an artist from SoundCloud'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: ulif.openoffice
+  version: "1.0"
+
+source:
+  fn: ulif.openoffice-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/u/ulif.openoffice/ulif.openoffice-1.0.tar.gz
+  md5: 39634545501cb1d378597d25f96f02ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ulif.openoffice = ulif.openoffice:main
+    #
+    # Would create an entry point called ulif.openoffice that calls ulif.openoffice.main()
+
+    - oooctl=ulif.openoffice.oooctl:main
+    - oooclient=ulif.openoffice.client:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - argparse
+    - beautifulsoup4
+    - cssutils
+    - routes
+    - webob
+    - paste
+    - pastedeploy
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - argparse
+    - beautifulsoup4
+    - cssutils
+    - routes
+    - webob
+    - paste
+    - pastedeploy
+
+test:
+  # Python imports
+  imports:
+    - ulif
+    - ulif.openoffice
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - oooctl --help
+    - oooclient --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/ulif.openoffice
+  license: GNU General Public License (GPL)
+  summary: 'Run OpenOffice as web service.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

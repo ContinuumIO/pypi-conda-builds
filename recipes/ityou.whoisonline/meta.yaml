@@ -1,0 +1,72 @@
+package:
+  name: ityou.whoisonline
+  version: "1.1rc6"
+
+source:
+  fn: ityou.whoisonline-1.1rc6.tar.gz
+  url: https://pypi.python.org/packages/source/i/ityou.whoisonline/ityou.whoisonline-1.1rc6.tar.gz
+  md5: bdd8e42f645654cd885907dba8d2905a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ityou.whoisonline = ityou.whoisonline:main
+    #
+    # Would create an entry point called ityou.whoisonline that calls ityou.whoisonline.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.portlets
+    - pysqlite
+    - sqlalchemy
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.app.portlets
+    - pysqlite
+    - sqlalchemy
+
+test:
+  # Python imports
+  imports:
+    - ityou
+    - ityou.whoisonline
+    - ityou.whoisonline.Extensions
+    - ityou.whoisonline.portlets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.ityou.de/esi/ityou.whoisonline
+  license: GPL
+  summary: 'Plone Product - Show users who are online'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

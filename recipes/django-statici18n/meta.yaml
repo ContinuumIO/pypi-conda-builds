@@ -1,0 +1,67 @@
+package:
+  name: django-statici18n
+  version: "1.1.3"
+
+source:
+  fn: django-statici18n-1.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-statici18n/django-statici18n-1.1.3.tar.gz
+  md5: 1639cfb2bbd6e43aa4ceedd60319795e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-statici18n = django-statici18n:main
+    #
+    # Would create an entry point called django-statici18n that calls django-statici18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-appconf >=0.6
+
+  run:
+    - python
+    - django >=1.4
+    - django-appconf >=0.6
+
+test:
+  # Python imports
+  imports:
+    - statici18n
+    - statici18n.management
+    - statici18n.management.commands
+    - statici18n.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-statici18n.readthedocs.org/
+  license: BSD License
+  summary: 'A Django app that provides helper for generating Javascript catalog to static files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

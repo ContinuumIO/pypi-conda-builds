@@ -1,0 +1,64 @@
+package:
+  name: django-userservice
+  version: "1.0.2"
+
+source:
+  fn: Django-UserService-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django-UserService/Django-UserService-1.0.2.tar.gz
+  md5: dd0bc50044f374ee4375364e68c3e47c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-userservice = django-userservice:main
+    #
+    # Would create an entry point called django-userservice that calls django-userservice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - authz-group
+
+  run:
+    - python
+    - django
+    - authz-group
+
+test:
+  # Python imports
+  imports:
+    - userservice
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vegitron/django-userservice
+  license: Apache 2.0
+  summary: 'User abstraction and impersonation for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

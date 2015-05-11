@@ -1,0 +1,73 @@
+package:
+  name: cocaine-cli
+  version: "0.12.0-alpha19"
+
+source:
+  fn: cocaine-cli-0.12.0-alpha19.tar.gz
+  url: https://pypi.python.org/packages/source/c/cocaine-cli/cocaine-cli-0.12.0-alpha19.tar.gz
+  md5: c9955cbbd8845d57ea23888e05ded0f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cocaine-cli = cocaine-cli:main
+    #
+    # Would create an entry point called cocaine-cli that calls cocaine-cli.main()
+
+    - coke=cocaine.cli.webcli:cli
+    - cocaine=cocaine.cli.webcli:cli
+    - coke0=cocaine.cli.webcli0:cli
+    - cocaine0=cocaine.cli.webcli0:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=3.3
+    - requests >=2.2.1
+
+  run:
+    - python
+    - click >=3.3
+    - requests >=2.2.1
+
+test:
+  # Python imports
+  imports:
+    - cocaine
+    - cocaine.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - coke --help
+    - cocaine --help
+    - coke0 --help
+    - cocaine0 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cocaine/cocaine-pipeline
+  license: LGPLv3+
+  summary: 'Cocaine Cloud Management Tool.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

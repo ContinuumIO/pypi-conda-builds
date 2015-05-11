@@ -1,0 +1,75 @@
+package:
+  name: foneastra
+  version: "3.0.1"
+
+source:
+  fn: FoneAstra-3.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/FoneAstra/FoneAstra-3.0.1.tar.gz
+  md5: 98566551620ea191623ae6a32afee160
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - foneastra = foneastra:main
+    #
+    # Would create an entry point called foneastra that calls foneastra.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-nose
+    - djtables
+    - djappsettings
+    - django-celery
+    - south
+    - supervisor
+
+  run:
+    - python
+    - django
+    - django-nose
+    - djtables
+    - djappsettings
+    - django-celery
+    - south
+    - supervisor
+
+test:
+  # Python imports
+  imports:
+    - fa
+    - foneastra
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/pittsw/foneastra-base
+  license: BSD
+  summary: 'Django package necessary for running a FoneAstra server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

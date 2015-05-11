@@ -1,0 +1,64 @@
+package:
+  name: django-janitor
+  version: "0.4.0"
+
+source:
+  fn: django-janitor-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-janitor/django-janitor-0.4.0.tar.gz
+  md5: ba84474b99882a112d1c798fb616c9c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-janitor = django-janitor:main
+    #
+    # Would create an entry point called django-janitor that calls django-janitor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - bleach
+
+  run:
+    - python
+    - django
+    - bleach
+
+test:
+  # Python imports
+  imports:
+    - janitor
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bradmontgomery/django-janitor
+  license: MIT License
+  summary: "django-janitor allows you to use bleach to clean HTML stored in a Model's field."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

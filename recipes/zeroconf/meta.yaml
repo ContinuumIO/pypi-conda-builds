@@ -1,0 +1,66 @@
+package:
+  name: zeroconf
+  version: "0.17.1"
+
+source:
+  fn: zeroconf-0.17.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zeroconf/zeroconf-0.17.1.tar.gz
+  md5: ec8a97fc803a49c96079f36a29e6133c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zeroconf = zeroconf:main
+    #
+    # Would create an entry point called zeroconf that calls zeroconf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - enum34
+    - netifaces
+    - six
+
+  run:
+    - python
+    - enum34
+    - netifaces
+    - six
+
+test:
+  # Python imports
+  imports:
+    - zeroconf
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jstasiak/python-zeroconf
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

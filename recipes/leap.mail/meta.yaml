@@ -1,0 +1,80 @@
+package:
+  name: leap.mail
+  version: "0.3.10"
+
+source:
+  fn: leap.mail-0.3.10.tar.gz
+  url: https://pypi.python.org/packages/source/l/leap.mail/leap.mail-0.3.10.tar.gz
+  md5: 966fe954da373a250f58196e77d2a77b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - leap.mail = leap.mail:main
+    #
+    # Would create an entry point called leap.mail that calls leap.mail.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - leap.soledad.client >=0.4.5
+    - leap.common >=0.3.7
+    - leap.keymanager >=0.3.8
+    - twisted
+    - zope.proxy
+    - enum
+
+  run:
+    - python
+    - zope.interface
+    - leap.soledad.client >=0.4.5
+    - leap.common >=0.3.7
+    - leap.keymanager >=0.3.8
+    - twisted
+    - zope.proxy
+    - enum
+
+test:
+  # Python imports
+  imports:
+    - leap
+    - leap.mail
+    - leap.mail.imap
+    - leap.mail.imap.service
+    - leap.mail.imap.tests
+    - leap.mail.smtp
+    - leap.mail.smtp.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://leap.se/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Mail Services provided by Bitmask, the LEAP Client.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

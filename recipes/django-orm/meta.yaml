@@ -1,0 +1,82 @@
+package:
+  name: django-orm
+  version: "2.0.5"
+
+source:
+  fn: django-orm-2.0.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-orm/django-orm-2.0.5.tar.gz
+  md5: dd28ef7ad67d33a69753224a8e3c318c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-orm = django-orm:main
+    #
+    # Would create an entry point called django-orm that calls django-orm.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - psycopg2 >=2.4
+
+  run:
+    - python
+    - distribute
+    - psycopg2 >=2.4
+
+test:
+  # Python imports
+  imports:
+    - django_orm
+    - django_orm.backends
+    - django_orm.backends.mysql
+    - django_orm.backends.postgresql_psycopg2
+    - django_orm.backends.sqlite3
+    - django_orm.cache
+    - django_orm.fields
+    - django_orm.gis
+    - django_orm.gis.db
+    - django_orm.gis.db.backends
+    - django_orm.gis.db.backends.postgis
+    - django_orm.mysql
+    - django_orm.postgresql
+    - django_orm.postgresql.fields
+    - django_orm.postgresql.fts
+    - django_orm.postgresql.geometric
+    - django_orm.postgresql.hstore
+    - django_orm.sqlite3
+    - django_orm.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/niwibe/django-orm
+  license: BSD License
+  summary: 'Advanced improvement of django-orm with a lot of third-party plugins for use different parts of databases are\nnot covered by the standard orm.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

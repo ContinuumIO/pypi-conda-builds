@@ -1,0 +1,64 @@
+package:
+  name: hgwin
+  version: "1.0d"
+
+source:
+  fn: hgwin-1.0d.zip
+  url: https://pypi.python.org/packages/source/h/hgwin/hgwin-1.0d.zip
+  md5: 70b3a3cf4c113aabfaa0a825f845a140
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hgwin = hgwin:main
+    #
+    # Would create an entry point called hgwin that calls hgwin.main()
+
+    - hgwin = hgwin.hgwin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wxpython >=2.8.4.0
+
+  run:
+    - python
+    - wxpython >=2.8.4.0
+
+test:
+  # Python imports
+  imports:
+    - hgwin
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hgwin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'hg serve manager for Windows using wxPython'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

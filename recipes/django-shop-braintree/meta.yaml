@@ -1,0 +1,69 @@
+package:
+  name: django-shop-braintree
+  version: "0.1"
+
+source:
+  fn: django-shop-braintree-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shop-braintree/django-shop-braintree-0.1.tar.gz
+  md5: b74a39e6815de2932129ed447c74e6d1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shop-braintree = django-shop-braintree:main
+    #
+    # Would create an entry point called django-shop-braintree that calls django-shop-braintree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-shop
+    - braintree
+    - south
+
+  run:
+    - python
+    - django
+    - django-shop
+    - braintree
+    - south
+
+test:
+  # Python imports
+  imports:
+    - shop_braintree
+    - shop_braintree.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/derek-schultz/django-shop-braintree
+  license: MIT
+  summary: 'A Braintree payment backend for django-shop'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

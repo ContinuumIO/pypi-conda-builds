@@ -1,0 +1,66 @@
+package:
+  name: django-rest-hooks-delivery
+  version: "0.2.1"
+
+source:
+  fn: django-rest-hooks-delivery-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rest-hooks-delivery/django-rest-hooks-delivery-0.2.1.tar.gz
+  md5: 9445bde29f7141852219a0e91852d2be
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rest-hooks-delivery = django-rest-hooks-delivery:main
+    #
+    # Would create an entry point called django-rest-hooks-delivery that calls django-rest-hooks-delivery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.7
+    - requests
+    - django-jsonfield
+
+  run:
+    - python
+    - django >=1.7
+    - requests
+    - django-jsonfield
+
+test:
+  # Python imports
+  imports:
+    - rest_hooks_delivery
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/PressLabs/django-rest-hooks-delivery
+  license: MIT License
+  summary: 'Various webhook deliverers for django-rest-hooks and django-rest-hooks-ng.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

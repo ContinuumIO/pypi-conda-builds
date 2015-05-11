@@ -1,0 +1,64 @@
+package:
+  name: geogig-py
+  version: "1.0"
+
+source:
+  fn: geogig-py-1.0.zip
+  url: https://pypi.python.org/packages/source/g/geogig-py/geogig-py-1.0.zip
+  md5: e7fb0dae9cb98f8d57ef3812afedbe53
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geogig-py = geogig-py:main
+    #
+    # Would create an entry point called geogig-py that calls geogig-py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py4j >=0.8
+    - requests >=2.2.1
+
+  run:
+    - python
+    - py4j >=0.8
+    - requests >=2.2.1
+
+test:
+  # Python imports
+  imports:
+    - geogigpy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/boundlessgeo/geogig-py
+  license: BSD
+  summary: 'Python bindings for GeoGig'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: hotworker
+  version: "0.2.0"
+
+source:
+  fn: hotworker-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/hotworker/hotworker-0.2.0.tar.gz
+  md5: d4d825467f5207d0f4e1010b73a50283
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hotworker = hotworker:main
+    #
+    # Would create an entry point called hotworker that calls hotworker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hotqueue
+    - simplesignals
+
+  run:
+    - python
+    - hotqueue
+    - simplesignals
+
+test:
+  # Python imports
+  imports:
+    - hotworker
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/j4mie/hotworker
+  license: Public Domain
+  summary: 'Unix-friendly HotQueue worker processes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

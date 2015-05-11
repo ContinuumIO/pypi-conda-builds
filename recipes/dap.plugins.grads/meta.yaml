@@ -1,0 +1,67 @@
+package:
+  name: dap.plugins.grads
+  version: "0.1.1"
+
+source:
+  fn: dap.plugins.grads-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dap.plugins.grads/dap.plugins.grads-0.1.1.tar.gz
+  md5: fa6be47348158869f1003fc108bba904
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dap.plugins.grads = dap.plugins.grads:main
+    #
+    # Would create an entry point called dap.plugins.grads that calls dap.plugins.grads.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dap[server] >=2.2.4
+    - arrayterator >=0.2.4
+
+  run:
+    - python
+    - setuptools
+    - dap[server] >=2.2.4
+    - arrayterator >=0.2.4
+
+test:
+  # Python imports
+  imports:
+    - dap
+    - dap.plugins
+    - dap.plugins.grads
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pydap.org/plugins/grads.html
+  license: MIT License
+  summary: 'GrADS/GRIB plugin for pydap server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

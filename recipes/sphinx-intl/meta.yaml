@@ -1,0 +1,71 @@
+package:
+  name: sphinx-intl
+  version: "0.9.5"
+
+source:
+  fn: sphinx-intl-0.9.5.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinx-intl/sphinx-intl-0.9.5.tar.gz
+  md5: 4e7dffde660dad03f4254c6b23f9ab36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sphinx-intl = sphinx-intl:main
+    #
+    # Would create an entry point called sphinx-intl that calls sphinx-intl.main()
+
+    - sphinx-intl=sphinx_intl.commands:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - polib
+    - sphinx
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - six
+    - polib
+    - sphinx
+
+test:
+  # Python imports
+  imports:
+    - sphinx_intl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sphinx-intl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/shimizukawa/sphinx-intl
+  license: BSD License
+  summary: 'Sphinx utility that make it easy to translate and to apply translation.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

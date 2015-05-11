@@ -1,0 +1,81 @@
+package:
+  name: credo_manager
+  version: "0.3.1"
+
+source:
+  fn: credo_manager-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/credo_manager/credo_manager-0.3.1.tar.gz
+  md5: 671480c89cf474a0604c32d8bab658d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - credo_manager = credo_manager:main
+    #
+    # Would create an entry point called credo_manager that calls credo_manager.main()
+
+    - credo = credo.executor:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rainbow_logging_handler ==2.2.0
+    - pycrypto ==2.6.1
+    - paramiko ==1.14.0
+    - requests ==2.2.1
+    - keyring ==3.5
+    - boto >=2.32.1
+    - delfick_error ==1.6
+
+  run:
+    - python
+    - rainbow_logging_handler ==2.2.0
+    - pycrypto ==2.6.1
+    - paramiko ==1.14.0
+    - requests ==2.2.1
+    - keyring ==3.5
+    - boto >=2.32.1
+    - delfick_error ==1.6
+
+test:
+  # Python imports
+  imports:
+    - credo
+    - credo.cred_types
+    - credo.server
+    - credo.structure
+    - credo.versioning
+    - credo_manager
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - credo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/delfick/credo
+  license: MIT
+  summary: 'Manager for aws credentials'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

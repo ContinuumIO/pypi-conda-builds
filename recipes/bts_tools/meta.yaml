@@ -1,0 +1,83 @@
+package:
+  name: bts_tools
+  version: "0.2.2"
+
+source:
+  fn: bts_tools-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/bts_tools/bts_tools-0.2.2.tar.gz
+  md5: 0e4bb079e0334e541f21e8f3eb9b1af1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bts_tools = bts_tools:main
+    #
+    # Would create an entry point called bts_tools that calls bts_tools.main()
+
+    - bts = bts_tools.cmdline:main_bts
+    - dvs = bts_tools.cmdline:main_dvs
+    - pts = bts_tools.cmdline:main_pts
+    - pls = bts_tools.cmdline:main_pls
+    - bts-rpc = bts_tools.cmdline:main_rpc_call
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - requests
+    - psutil
+    - arrow
+    - pyyaml
+    - dogpile.cache
+
+  run:
+    - python
+    - flask
+    - requests
+    - psutil
+    - arrow
+    - pyyaml
+    - dogpile.cache
+
+test:
+  # Python imports
+  imports:
+    - bts_tools
+    - bts_tools.monitoring
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bts --help
+    - dvs --help
+    - pts --help
+    - pls --help
+    - bts-rpc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/wackou/bts_tools
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'BitShares delegate tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

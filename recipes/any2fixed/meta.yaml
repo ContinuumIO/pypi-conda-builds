@@ -1,0 +1,63 @@
+package:
+  name: any2fixed
+  version: "0.3"
+
+source:
+  fn: any2fixed-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/any2fixed/any2fixed-0.3.tar.gz
+  md5: 4a733c0568de1fd29d2ce9bbcc16d2a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - any2fixed = any2fixed:main
+    #
+    # Would create an entry point called any2fixed that calls any2fixed.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyjon.utils
+
+  run:
+    - python
+    - setuptools
+    - pyjon.utils
+
+test:
+  # Python imports
+  imports:
+    - any2fixed
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: BSD License
+  summary: 'A tool to generate fixed length files from a list of python instances'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

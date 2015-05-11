@@ -1,0 +1,76 @@
+package:
+  name: isotoma.recipe.zeo
+  version: "2.0.4"
+
+source:
+  fn: isotoma.recipe.zeo-2.0.4.zip
+  url: https://pypi.python.org/packages/source/i/isotoma.recipe.zeo/isotoma.recipe.zeo-2.0.4.zip
+  md5: cfc0998bbfbd718c3a87781af9d8e6c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - isotoma.recipe.zeo = isotoma.recipe.zeo:main
+    #
+    # Would create an entry point called isotoma.recipe.zeo that calls isotoma.recipe.zeo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - zc.recipe.egg
+    - zope.mkzeoinstance
+    - zodb3 >=3.8
+    - zopeundo
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - zc.recipe.egg
+    - zope.mkzeoinstance
+    - zodb3 >=3.8
+    - zopeundo
+
+test:
+  # Python imports
+  imports:
+    - isotoma
+    - isotoma.recipe
+    - isotoma.recipe.zeo
+    - isotoma.recipe.zeo.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/isotoma.recipe.zeo
+  license: Zope Public License
+  summary: 'Custom version of plone.recipe.zeoserver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

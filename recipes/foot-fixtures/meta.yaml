@@ -1,0 +1,62 @@
+package:
+  name: foot-fixtures
+  version: "1.0.3"
+
+source:
+  fn: foot-fixtures-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/foot-fixtures/foot-fixtures-1.0.3.tar.gz
+  md5: 325a82d00e6bda0dabef273e5569c6bd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - foot-fixtures = foot-fixtures:main
+    #
+    # Would create an entry point called foot-fixtures that calls foot-fixtures.main()
+
+    - foot-fixtures = fixtures:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - colorama ==0.3.1
+
+  run:
+    - python
+    - colorama ==0.3.1
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - foot-fixtures --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/supercr7/foot-fixtures
+  license: MIT License
+  summary: 'Utility to find schedule for a football club'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

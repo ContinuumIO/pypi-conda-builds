@@ -1,0 +1,69 @@
+package:
+  name: gitless
+  version: "0.7"
+
+source:
+  fn: gitless-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/g/gitless/gitless-0.7.tar.gz
+  md5: 37301ed61ff2c3257f278704dedc7201
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitless = gitless:main
+    #
+    # Would create an entry point called gitless that calls gitless.main()
+
+    - gl = gitless.cli.gl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygit2 ==0.22.0
+    - sh ==1.11
+    - clint ==0.3.6
+
+  run:
+    - python
+    - pygit2 ==0.22.0
+    - sh ==1.11
+    - clint ==0.3.6
+
+test:
+  # Python imports
+  imports:
+    - gitless
+    - gitless.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gitless.com
+  license: GNU General Public License v2 (GPLv2)
+  summary: 'A version control system built on top of Git'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

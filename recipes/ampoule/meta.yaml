@@ -1,0 +1,66 @@
+package:
+  name: ampoule
+  version: "0.2.0"
+
+source:
+  fn: ampoule-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/ampoule/ampoule-0.2.0.tar.gz
+  md5: 3b408c37577a827a36968d997de85a13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ampoule = ampoule:main
+    #
+    # Would create an entry point called ampoule that calls ampoule.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=8.0.1
+    - pyopenssl
+
+  run:
+    - python
+    - twisted >=8.0.1
+    - pyopenssl
+
+test:
+  # Python imports
+  imports:
+    - ampoule
+    - ampoule.test
+    - twisted
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/ampoule
+  license: MIT License
+  summary: 'A process pool implementation in Twisted Matrix and AMP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

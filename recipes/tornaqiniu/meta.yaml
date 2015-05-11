@@ -1,0 +1,69 @@
+package:
+  name: tornaqiniu
+  version: "7.0.4"
+
+source:
+  fn: tornaqiniu-7.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornaqiniu/tornaqiniu-7.0.4.tar.gz
+  md5: d32cd619d207c4a7bea7f526759c0ad7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornaqiniu = tornaqiniu:main
+    #
+    # Would create an entry point called tornaqiniu that calls tornaqiniu.main()
+
+    - qiniupy = tornaqiniu.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - tornado
+
+  run:
+    - python
+    - requests
+    - tornado
+
+test:
+  # Python imports
+  imports:
+    - tornaqiniu
+    - tornaqiniu.services
+    - tornaqiniu.services.processing
+    - tornaqiniu.services.storage
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - qiniupy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/weilaihui/tornado-qiniu
+  license: MIT License
+  summary: 'Qiniu Resource Storage SDK With Tornado'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

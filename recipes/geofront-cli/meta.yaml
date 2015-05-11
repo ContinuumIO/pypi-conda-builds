@@ -1,0 +1,71 @@
+package:
+  name: geofront-cli
+  version: "0.2.2"
+
+source:
+  fn: geofront-cli-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/geofront-cli/geofront-cli-0.2.2.tar.gz
+  md5: 054ba2dd44693da022ee3eb55406bbff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geofront-cli = geofront-cli:main
+    #
+    # Would create an entry point called geofront-cli that calls geofront-cli.main()
+
+    - geofront-cli=geofrontcli.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - enum34
+    - keyring >=3.7
+
+  run:
+    - python
+    - setuptools
+    - six
+    - enum34
+    - keyring >=3.7
+
+test:
+  # Python imports
+  imports:
+    - dirspec
+    - dirspec.tests
+    - geofrontcli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - geofront-cli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spoqa/geofront-cli
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'CLI client for Geofront, a simple SSH key management server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

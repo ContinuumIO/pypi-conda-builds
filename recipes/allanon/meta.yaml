@@ -1,0 +1,70 @@
+package:
+  name: allanon
+  version: "0.2"
+
+source:
+  fn: Allanon-0.2.zip
+  url: https://pypi.python.org/packages/source/A/Allanon/Allanon-0.2.zip
+  md5: 14619dbf30151b42c1aa13e7eca550f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - allanon = allanon:main
+    #
+    # Would create an entry point called allanon that calls allanon.main()
+
+    - allanon = allanon.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyquery
+    - requests >=1.0.0
+    - progress
+
+  run:
+    - python
+    - setuptools
+    - pyquery
+    - requests >=1.0.0
+    - progress
+
+test:
+  # Python imports
+  imports:
+    - allanon
+    - allanon.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - allanon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/keul/Allanon
+  license: GNU General Public License (GPL)
+  summary: 'A Web crawler that visit a predictable set of URLs, and automatically download resources you want from them'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

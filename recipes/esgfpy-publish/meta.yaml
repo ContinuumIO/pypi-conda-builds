@@ -1,0 +1,72 @@
+package:
+  name: esgfpy-publish
+  version: "0.9"
+
+source:
+  fn: esgfpy-publish-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/e/esgfpy-publish/esgfpy-publish-0.9.tar.gz
+  md5: 901ac95068f5d04205203ed7ad9e9fd8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - esgfpy-publish = esgfpy-publish:main
+    #
+    # Would create an entry point called esgfpy-publish that calls esgfpy-publish.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - pil
+    - h5py
+    - netcdf4
+
+  run:
+    - python
+    - python-dateutil
+    - pil
+    - h5py
+    - netcdf4
+
+test:
+  # Python imports
+  imports:
+    - esgfpy
+    - esgfpy.publish
+    - esgfpy.publish.drivers
+    - esgfpy.publish.factories
+    - esgfpy.publish.parsers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EarthSystemCoG/esgfpy-publish
+  license: Apache Software License
+  summary: 'Python client-side package for publishing data to the Earth System Grid Federation (ESGF)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

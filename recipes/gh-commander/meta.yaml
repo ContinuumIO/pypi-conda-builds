@@ -1,0 +1,68 @@
+package:
+  name: gh-commander
+  version: "0.1.0.dev68"
+
+source:
+  fn: gh-commander-0.1.0.dev68.zip
+  url: https://pypi.python.org/packages/source/g/gh-commander/gh-commander-0.1.0.dev68.zip
+  md5: c2e5437793fb215d140f62ec57597d20
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gh-commander = gh-commander:main
+    #
+    # Would create an entry point called gh-commander that calls gh-commander.main()
+
+    - gh = gh_commander.__main__:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click ==3.3
+    - colorama ==0.3.3
+    - pygithub ==1.25.2
+
+  run:
+    - python
+    - click ==3.3
+    - colorama ==0.3.3
+    - pygithub ==1.25.2
+
+test:
+  # Python imports
+  imports:
+    - gh_commander
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gh --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jhermann/gh-commander
+  license: Apache Software License
+  summary: u'GitHub Commander \u2013 A tool to access the GitHub APIv3 from the CLI and automate otherwise tedious tasks.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

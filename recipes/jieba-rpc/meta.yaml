@@ -1,0 +1,66 @@
+package:
+  name: jieba-rpc
+  version: "0.0.4"
+
+source:
+  fn: jieba-rpc-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/j/jieba-rpc/jieba-rpc-0.0.4.tar.gz
+  md5: 8a5593139f2e366f1e25a2befe96da24
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jieba-rpc = jieba-rpc:main
+    #
+    # Would create an entry point called jieba-rpc that calls jieba-rpc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - msgpack-rpc-python
+    - six
+    - jieba
+
+  run:
+    - python
+    - msgpack-rpc-python
+    - six
+    - jieba
+
+test:
+  # Python imports
+  imports:
+    - jiebarpc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/messense/jieba-rpc
+  license: MIT License
+  summary: 'jieba RPC server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

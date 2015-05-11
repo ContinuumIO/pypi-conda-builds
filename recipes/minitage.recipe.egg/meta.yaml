@@ -1,0 +1,76 @@
+package:
+  name: minitage.recipe.egg
+  version: "1.107"
+
+source:
+  fn: minitage.recipe.egg-1.107.zip
+  url: https://pypi.python.org/packages/source/m/minitage.recipe.egg/minitage.recipe.egg-1.107.zip
+  md5: c9f1d07dcba73bfb41521df46607465d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - minitage.recipe.egg = minitage.recipe.egg:main
+    #
+    # Would create an entry point called minitage.recipe.egg that calls minitage.recipe.egg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - minitage.core
+    - minitage.recipe.common
+    - iniparse
+    - ordereddict
+
+  run:
+    - python
+    - setuptools
+    - zc.buildout
+    - setuptools
+    - minitage.core
+    - minitage.recipe.common
+    - iniparse
+    - ordereddict
+
+test:
+  # Python imports
+  imports:
+    - minitage
+    - minitage.recipe
+    - minitage.recipe.egg
+    - minitage.recipe.egg.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage.recipe.egg
+  license: BSD License
+  summary: 'zc.buildout recipes to compile and install software or python packages and generate scripts or configuration files sponsored by Makina Corpus.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

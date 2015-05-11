@@ -1,0 +1,87 @@
+package:
+  name: django-easymode
+  version: "1.4b5"
+
+source:
+  fn: django-easymode-1.4b5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-easymode/django-easymode-1.4b5.tar.gz
+  md5: 0183c14c6fe43a790ba0768d3e4527e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-easymode = django-easymode:main
+    #
+    # Would create an entry point called django-easymode that calls django-easymode.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - polib
+
+  run:
+    - python
+    - setuptools
+    - django >=1.4
+    - polib
+
+test:
+  # Python imports
+  imports:
+    - easymode
+    - easymode.admin
+    - easymode.admin.forms
+    - easymode.admin.models
+    - easymode.debug
+    - easymode.i18n
+    - easymode.i18n.admin
+    - easymode.i18n.meta
+    - easymode.management
+    - easymode.management.commands
+    - easymode.templatetags
+    - easymode.tests
+    - easymode.tests.testcases
+    - easymode.tests.testutils
+    - easymode.tree
+    - easymode.tree.admin
+    - easymode.tree.admin.widgets
+    - easymode.tree.xml
+    - easymode.utils
+    - easymode.xslt
+    - example
+    - example.foobar
+    - example.foobar.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/specialunderwear/django-easymode
+  license: GNU General Public License (GPL)
+  summary: 'Quickly build backends for flash/flex websites with django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

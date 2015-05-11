@@ -1,0 +1,70 @@
+package:
+  name: jstestnetlib
+  version: "0.3"
+
+source:
+  fn: jstestnetlib-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/j/jstestnetlib/jstestnetlib-0.3.tar.gz
+  md5: 1ea573bef0ca89427e3f62421008089c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jstestnetlib = jstestnetlib:main
+    #
+    # Would create an entry point called jstestnetlib that calls jstestnetlib.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+    - httplib2
+    - psutil >=0.2.0
+    - fudge
+
+  run:
+    - python
+    - setuptools
+    - nose
+    - httplib2
+    - psutil >=0.2.0
+    - fudge
+
+test:
+  # Python imports
+  imports:
+    - jstestnetlib
+    - jstestnetlib.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kumar303/jstestnetlib
+  license: Apache License
+  summary: 'Client library to execute JavaScript tests against a JS TestNet\n                   server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

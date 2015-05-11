@@ -1,0 +1,70 @@
+package:
+  name: codeshow
+  version: "0.2.2"
+
+source:
+  fn: CodeShow-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/CodeShow/CodeShow-0.2.2.tar.gz
+  md5: 419e380a625ab63272b32d301d22ffa7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codeshow = codeshow:main
+    #
+    # Would create an entry point called codeshow that calls codeshow.main()
+
+    - codeshow = codeshow.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.6
+    - markdown ==2.2.0
+    - pygments ==1.5
+    - glob2 ==0.3
+
+  run:
+    - python
+    - jinja2 ==2.6
+    - markdown ==2.2.0
+    - pygments ==1.5
+    - glob2 ==0.3
+
+test:
+  # Python imports
+  imports:
+    - codeshow
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - codeshow --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://codeshow.site44.com
+  license: CodeSkel
+  summary: 'CodeShow turns a directory of code into a static website suitable for use in presentations.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

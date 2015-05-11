@@ -1,0 +1,67 @@
+package:
+  name: ftw.maintenanceserver
+  version: "1.0.2"
+
+source:
+  fn: ftw.maintenanceserver-1.0.2.zip
+  url: https://pypi.python.org/packages/source/f/ftw.maintenanceserver/ftw.maintenanceserver-1.0.2.zip
+  md5: 4f753d083b49e5d0a99df0fac42f8398
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.maintenanceserver = ftw.maintenanceserver:main
+    #
+    # Would create an entry point called ftw.maintenanceserver that calls ftw.maintenanceserver.main()
+
+    - maintenance = ftw.maintenanceserver.server:command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - setuptools
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.maintenanceserver
+    - ftw.maintenanceserver.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - maintenance --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.maintenanceserver
+  license: GPL2
+  summary: 'Maintenance HTTP server, serving a static directory.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

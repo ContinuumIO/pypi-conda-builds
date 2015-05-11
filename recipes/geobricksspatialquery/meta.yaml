@@ -1,0 +1,79 @@
+package:
+  name: geobricksspatialquery
+  version: "0.0.8"
+
+source:
+  fn: GeobricksSpatialQuery-0.0.8.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksSpatialQuery/GeobricksSpatialQuery-0.0.8.tar.gz
+  md5: 8f3e2ae1d5e4bb729438136c0ea79808
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksspatialquery = geobricksspatialquery:main
+    #
+    # Would create an entry point called geobricksspatialquery that calls geobricksspatialquery.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - flask
+    - flask-cors
+    - simplejson
+    - pyproj
+    - geobrickscommon
+    - geobricksdbms
+
+  run:
+    - python
+    - watchdog
+    - flask
+    - flask-cors
+    - simplejson
+    - pyproj
+    - geobrickscommon
+    - geobricksdbms
+
+test:
+  # Python imports
+  imports:
+    - geobricks_spatial_query
+    - geobricks_spatial_query.config
+    - geobricks_spatial_query.core
+    - geobricks_spatial_query.rest
+    - geobricks_spatial_query.utils
+    - geobricksspatialquery
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksSpatialQuery/
+  license: LICENSE.txt
+  summary: 'Geobricks library to handle spatial queries.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

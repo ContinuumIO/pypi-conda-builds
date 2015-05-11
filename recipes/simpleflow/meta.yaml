@@ -1,0 +1,71 @@
+package:
+  name: simpleflow
+  version: "0.6.1"
+
+source:
+  fn: simpleflow-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/simpleflow/simpleflow-0.6.1.tar.gz
+  md5: b4853ec7bee274d660f56caa3dac4bb1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - simpleflow = simpleflow:main
+    #
+    # Would create an entry point called simpleflow that calls simpleflow.main()
+
+    - simpleflow = simpleflow.command:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simple-workflow >=0.1.47
+
+  run:
+    - python
+    - simple-workflow >=0.1.47
+
+test:
+  # Python imports
+  imports:
+    - simpleflow
+    - simpleflow.local
+    - simpleflow.swf
+    - simpleflow.swf.process
+    - simpleflow.swf.process.decider
+    - simpleflow.swf.process.worker
+    - simpleflow.swf.stats
+    - simpleflow.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - simpleflow --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/botify-labs/simpleflow
+  license: MIT License
+  summary: 'Python library for dataflow programming with Amazon SWF'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: eulxml
+  version: "0.21.2"
+
+source:
+  fn: eulxml-0.21.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/eulxml/eulxml-0.21.2.tar.gz
+  md5: 46f9ee3d86629433e02fbf55a00a6aed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eulxml = eulxml:main
+    #
+    # Would create an entry point called eulxml that calls eulxml.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply
+    - lxml
+
+  run:
+    - python
+    - ply
+    - lxml
+
+test:
+  # Python imports
+  imports:
+    - eulxml
+    - eulxml.forms
+    - eulxml.xmlmap
+    - eulxml.xpath
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/emory-libraries/eulxml
+  license: Apache Software License
+  summary: 'XPath-based XML data binding, with Django form support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

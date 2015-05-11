@@ -1,0 +1,68 @@
+package:
+  name: hurry.jquery
+  version: "1.4.3.1"
+
+source:
+  fn: hurry.jquery-1.4.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/hurry.jquery/hurry.jquery-1.4.3.1.tar.gz
+  md5: 74193bf3b7631c037d3da3f32b6ff6d3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.jquery = hurry.jquery:main
+    #
+    # Would create an entry point called hurry.jquery that calls hurry.jquery.main()
+
+    - jqueryprepare = hurry.jquery.prepare:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.resource >=0.10
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.resource >=0.10
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.jquery
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jqueryprepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'hurry.resource style resources for jQuery.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

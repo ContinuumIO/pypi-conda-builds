@@ -1,0 +1,65 @@
+package:
+  name: klout-to-graphite
+  version: "0.0.3"
+
+source:
+  fn: klout-to-graphite-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/k/klout-to-graphite/klout-to-graphite-0.0.3.tar.gz
+  md5: 3b2f55af6765fa088b45641bcffda902
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - klout-to-graphite = klout-to-graphite:main
+    #
+    # Would create an entry point called klout-to-graphite that calls klout-to-graphite.main()
+
+    - klout-to-graphite=klout_to_graphite:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - klout ==0.1.0
+
+  run:
+    - python
+    - setuptools
+    - klout ==0.1.0
+
+test:
+  # Python imports
+  imports:
+    - klout_to_graphite
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - klout-to-graphite --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/philipcristiano/klout-to-graphite
+  license: BSD
+  summary: 'A tool to send Klout scores to Graphite'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

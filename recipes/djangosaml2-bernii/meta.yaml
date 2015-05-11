@@ -1,0 +1,68 @@
+package:
+  name: djangosaml2-bernii
+  version: "0.11.2"
+
+source:
+  fn: djangosaml2-bernii-0.11.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangosaml2-bernii/djangosaml2-bernii-0.11.2.tar.gz
+  md5: 8144029820c893244b0d1aff78367f7c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangosaml2-bernii = djangosaml2-bernii:main
+    #
+    # Would create an entry point called djangosaml2-bernii that calls djangosaml2-bernii.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pysaml2 ==2.0.0
+    - python-memcached ==1.48
+
+  run:
+    - python
+    - pysaml2 ==2.0.0
+    - python-memcached ==1.48
+
+test:
+  # Python imports
+  imports:
+    - djangosaml2
+    - djangosaml2.templatetags
+    - djangosaml2.tests
+    - tests
+    - tests.testprofiles
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bernii/djangosaml2
+  license: Apache 2.0
+  summary: 'pysaml2 integration in Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

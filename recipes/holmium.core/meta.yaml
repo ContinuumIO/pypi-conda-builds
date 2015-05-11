@@ -1,0 +1,72 @@
+package:
+  name: holmium.core
+  version: "0.7.8"
+
+source:
+  fn: holmium.core-0.7.8.tar.gz
+  url: https://pypi.python.org/packages/source/h/holmium.core/holmium.core-0.7.8.tar.gz
+  md5: b44746cbeed8a65923845451f43af174
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - holmium.core = holmium.core:main
+    #
+    # Would create an entry point called holmium.core that calls holmium.core.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - selenium
+    - ordereddict
+    - nose
+    - six
+    - jinja2
+
+  run:
+    - python
+    - setuptools
+    - selenium
+    - ordereddict
+    - nose
+    - six
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - holmium
+    - holmium.core
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://holmiumcore.readthedocs.org/en/latest/
+  license: MIT License
+  summary: 'selenium page objects and other utilities for test creation'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

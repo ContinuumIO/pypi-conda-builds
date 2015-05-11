@@ -1,0 +1,72 @@
+package:
+  name: google_cl
+  version: "0.9.15"
+
+source:
+  fn: google_cl-0.9.15.tar.gz
+  url: https://pypi.python.org/packages/source/g/google_cl/google_cl-0.9.15.tar.gz
+  md5: 3b992013311bfb2b0b3b5395a116007a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google_cl = google_cl:main
+    #
+    # Would create an entry point called google_cl that calls google_cl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gdata ==2.0.18
+
+  run:
+    - python
+    - gdata ==2.0.18
+
+test:
+  # Python imports
+  imports:
+    - google_cl
+    - googlecl
+    - googlecl.blogger
+    - googlecl.calendar
+    - googlecl.config
+    - googlecl.contacts
+    - googlecl.discovery
+    - googlecl.docs
+    - googlecl.finance
+    - googlecl.picasa
+    - googlecl.youtube
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/vinitkumar/googlecl
+  license: Apache Software License
+  summary: 'Use (some) Google services from the command line'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

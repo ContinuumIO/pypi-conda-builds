@@ -1,0 +1,76 @@
+package:
+  name: anybox.recipe.openerp
+  version: "1.9.1"
+
+source:
+  fn: anybox.recipe.openerp-1.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/anybox.recipe.openerp/anybox.recipe.openerp-1.9.1.tar.gz
+  md5: 9c6f78fa6fb65aa1033369761bb9484d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anybox.recipe.openerp = anybox.recipe.openerp:main
+    #
+    # Would create an entry point called anybox.recipe.openerp that calls anybox.recipe.openerp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.recipe.egg
+    - zc.buildout
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.recipe.egg
+    - zc.buildout
+
+test:
+  # Python imports
+  imports:
+    - anybox
+    - anybox.recipe
+    - anybox.recipe.openerp
+    - anybox.recipe.openerp.runtime
+    - anybox.recipe.openerp.runtime.backports
+    - anybox.recipe.openerp.runtime.backports.cli
+    - anybox.recipe.openerp.runtime.tests
+    - anybox.recipe.openerp.tests
+    - anybox.recipe.openerp.vcs
+    - anybox.recipe.openerp.vcs.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/anybox.recipe.openerp
+  license: GNU Affero General Public License v3 or later (AGPLv3+)
+  summary: 'A buildout recipe to install and configure OpenERP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

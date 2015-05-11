@@ -1,0 +1,74 @@
+package:
+  name: drums-daemon
+  version: "0.9.2"
+
+source:
+  fn: drums-daemon-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/drums-daemon/drums-daemon-0.9.2.tar.gz
+  md5: 153ab3f311665b27adeb618c84c28dcd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drums-daemon = drums-daemon:main
+    #
+    # Would create an entry point called drums-daemon that calls drums-daemon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pcapy ==0.10.8
+    - psutil >=2.0
+    - setproctitle
+    - bottle >=0.10.1
+    - pyzmq >=2.2
+    - msgpack-python
+    - python-daemon ==1.6
+
+  run:
+    - python
+    - pcapy ==0.10.8
+    - psutil >=2.0
+    - setproctitle
+    - bottle >=0.10.1
+    - pyzmq >=2.2
+    - msgpack-python
+    - python-daemon ==1.6
+
+test:
+  # Python imports
+  imports:
+    - drums
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://autonomylab.org/drums/
+  license: Apache License 2.0
+  summary: 'drums is a system monitoring tool. It provides an easy to use async API to register system monitoring tasks.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

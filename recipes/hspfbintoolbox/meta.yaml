@@ -1,0 +1,70 @@
+package:
+  name: hspfbintoolbox
+  version: "0.3.4"
+
+source:
+  fn: hspfbintoolbox-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/h/hspfbintoolbox/hspfbintoolbox-0.3.4.tar.gz
+  md5: dd5385360276e9101512344df2583dce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hspfbintoolbox = hspfbintoolbox:main
+    #
+    # Would create an entry point called hspfbintoolbox that calls hspfbintoolbox.main()
+
+    - hspfbintoolbox=hspfbintoolbox.hspfbintoolbox:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - baker >=1.3
+    - python-dateutil >=2.1
+    - pandas >=0.9.0
+    - tstoolbox >=0.8.5
+
+  run:
+    - python
+    - baker >=1.3
+    - python-dateutil >=2.1
+    - pandas >=0.9.0
+    - tstoolbox >=0.8.5
+
+test:
+  # Python imports
+  imports:
+    - hspfbintoolbox
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hspfbintoolbox --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/hsbfbintoolbox
+  license: BSD License
+  summary: 'Reads Hydrological Simulation Program - FORTRAN binary files and prints to screen.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

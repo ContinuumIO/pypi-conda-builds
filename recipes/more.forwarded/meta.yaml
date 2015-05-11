@@ -1,0 +1,65 @@
+package:
+  name: more.forwarded
+  version: "0.1"
+
+source:
+  fn: more.forwarded-0.1.zip
+  url: https://pypi.python.org/packages/source/m/more.forwarded/more.forwarded-0.1.zip
+  md5: 3efb930098587b8ed29a2ff0c411984a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - more.forwarded = more.forwarded:main
+    #
+    # Would create an entry point called more.forwarded that calls more.forwarded.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - morepath >=0.9
+
+  run:
+    - python
+    - setuptools
+    - morepath >=0.9
+
+test:
+  # Python imports
+  imports:
+    - more
+    - more.forwarded
+    - more.forwarded.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/more.static
+  license: BSD
+  summary: 'Forwarded header support for Morepath'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

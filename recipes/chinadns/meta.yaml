@@ -1,0 +1,65 @@
+package:
+  name: chinadns
+  version: "0.2.3"
+
+source:
+  fn: chinadns-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/chinadns/chinadns-0.2.3.tar.gz
+  md5: 7242664b49dabea779d8842e8cf35c01
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chinadns = chinadns:main
+    #
+    # Would create an entry point called chinadns that calls chinadns.main()
+
+    - chinadns=chinadns.dnsrelay:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - shadowsocks >=2.2
+
+  run:
+    - python
+    - setuptools
+    - shadowsocks >=2.2
+
+test:
+  # Python imports
+  imports:
+    - chinadns
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - chinadns --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/clowwindy/ChinaDNS
+  license: MIT License
+  summary: 'A DNS forwarder that ignore incorrect responses'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

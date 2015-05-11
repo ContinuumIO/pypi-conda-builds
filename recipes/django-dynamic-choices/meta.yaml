@@ -1,0 +1,64 @@
+package:
+  name: django-dynamic-choices
+  version: "1.1.0"
+
+source:
+  fn: django-dynamic-choices-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-dynamic-choices/django-dynamic-choices-1.1.0.tar.gz
+  md5: aa1d60f26085ba09fac9c22521120814
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-dynamic-choices = django-dynamic-choices:main
+    #
+    # Would create an entry point called django-dynamic-choices that calls django-dynamic-choices.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4,<1.8
+
+  run:
+    - python
+    - django >=1.4,<1.8
+
+test:
+  # Python imports
+  imports:
+    - dynamic_choices
+    - dynamic_choices.db
+    - dynamic_choices.forms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/charettes/django-dynamic-choices
+  license: MIT License
+  summary: 'Django admin fk and m2m dynamic choices by providing callback support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

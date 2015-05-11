@@ -1,0 +1,75 @@
+package:
+  name: ldaptor
+  version: "14.0"
+
+source:
+  fn: ldaptor-14.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/ldaptor/ldaptor-14.0.tar.gz
+  md5: 7c76ef8a499bc5909f881a3edc276488
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ldaptor = ldaptor:main
+    #
+    # Would create an entry point called ldaptor that calls ldaptor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - twisted
+    - pyparsing
+    - pyopenssl
+    - pycrypto
+
+  run:
+    - python
+    - zope.interface
+    - twisted
+    - pyparsing
+    - pyopenssl
+    - pycrypto
+
+test:
+  # Python imports
+  imports:
+    - ldaptor
+    - ldaptor.protocols
+    - ldaptor.protocols.ldap
+    - ldaptor.protocols.ldap.autofill
+    - ldaptor.samba
+    - ldaptor.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/twisted/ldaptor
+  license: MIT License
+  summary: 'A Pure-Python Twisted library for LDAP'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

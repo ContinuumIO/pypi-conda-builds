@@ -1,0 +1,91 @@
+package:
+  name: antispoofing.clientspec
+  version: "1.0.1"
+
+source:
+  fn: antispoofing.clientspec-1.0.1.zip
+  url: https://pypi.python.org/packages/source/a/antispoofing.clientspec/antispoofing.clientspec-1.0.1.zip
+  md5: e2706c90c94d775baea3d16ae3a874ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - antispoofing.clientspec = antispoofing.clientspec:main
+    #
+    # Would create an entry point called antispoofing.clientspec that calls antispoofing.clientspec.main()
+
+    - svm_clientspec_train.py = antispoofing.clientspec.script.svm_clientspec_train:main
+    - svm_clientspec_eval.py = antispoofing.clientspec.script.svm_clientspec_eval:main
+    - naive_modelling.py = antispoofing.clientspec.script.naive_modelling:main
+    - naive_likelihood.py = antispoofing.clientspec.script.naive_likelihood:main
+    - naive_likelihood_ratio.py = antispoofing.clientspec.script.naive_likelihood_ratio:main
+    - map_adapt_per_client.py = antispoofing.clientspec.script.map_adapt_per_client:main
+    - naive_likelihood_clientspecmodel.py = antispoofing.clientspec.script.naive_likelihood_clientspecmodel:main
+    - naive_likelihood_cohortmodels.py = antispoofing.clientspec.script.naive_likelihood_cohortmodels:main
+    - score_evaluation_crossdb.py = antispoofing.clientspec.script.score_evaluation_crossdb:main
+    - scores_box_plot.py = antispoofing.clientspec.script.scores_box_plot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+    - bob.db.replay
+    - bob.db.casia_fasd
+    - antispoofing.utils
+
+  run:
+    - python
+    - argparse
+    - bob.db.replay
+    - bob.db.casia_fasd
+    - antispoofing.utils
+
+test:
+  # Python imports
+  imports:
+    - antispoofing
+    - antispoofing.clientspec
+    - antispoofing.clientspec.helpers
+    - antispoofing.clientspec.script
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - svm_clientspec_train.py --help
+    - svm_clientspec_eval.py --help
+    - naive_modelling.py --help
+    - naive_likelihood.py --help
+    - naive_likelihood_ratio.py --help
+    - map_adapt_per_client.py --help
+    - naive_likelihood_clientspecmodel.py --help
+    - naive_likelihood_cohortmodels.py --help
+    - score_evaluation_crossdb.py --help
+    - scores_box_plot.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bioidiap/antispoofing.clientspec
+  license: LICENSE.txt
+  summary: 'Building client-specific models for anti-spoofing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

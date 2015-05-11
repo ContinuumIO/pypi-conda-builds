@@ -1,0 +1,79 @@
+package:
+  name: cloudinitd
+  version: "1.3.1"
+
+source:
+  fn: cloudinitd-1.3.1.tar.gz
+  url: http://www.nimbusproject.org/downloads/cloudinitd-1.3.1.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudinitd = cloudinitd:main
+    #
+    # Would create an entry point called cloudinitd that calls cloudinitd.main()
+
+    - cloudinitd = cloudinitd.cli.boot:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto >=2.6
+    - sqlalchemy >=0.7.6
+    - fabric ==1.3
+    - simplejson >=2.1
+    - apache-libcloud >=0.11.1
+    - uuid
+    - pycrypto >=2.1,<2.4
+
+  run:
+    - python
+    - boto >=2.6
+    - sqlalchemy >=0.7.6
+    - fabric ==1.3
+    - simplejson >=2.1
+    - apache-libcloud >=0.11.1
+    - uuid
+    - pycrypto >=2.1,<2.4
+
+test:
+  # Python imports
+  imports:
+    - cloudinitd
+    - cloudinitd.cli
+    - cloudinitd.nosetests
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cloudinitd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.nimbusproject.org/
+  license: Apache Software License
+  summary: 'An Open Source bootstrap tool for services in the cloud.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

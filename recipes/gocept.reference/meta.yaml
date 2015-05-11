@@ -1,0 +1,85 @@
+package:
+  name: gocept.reference
+  version: "0.9.1"
+
+source:
+  fn: gocept.reference-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gocept.reference/gocept.reference-0.9.1.tar.gz
+  md5: 597dd31dde9c1c73e1b95d2a0b588692
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gocept.reference = gocept.reference:main
+    #
+    # Would create an entry point called gocept.reference that calls gocept.reference.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - zodb3
+    - setuptools
+    - transaction
+    - zope.annotation
+    - zope.component
+    - zope.container
+    - zope.deferredimport
+    - zope.generations
+    - zope.interface
+    - zope.schema >=3.6.0
+    - zope.site
+    - zope.traversing
+
+  run:
+    - python
+    - zodb3
+    - setuptools
+    - transaction
+    - zope.annotation
+    - zope.component
+    - zope.container
+    - zope.deferredimport
+    - zope.generations
+    - zope.interface
+    - zope.schema >=3.6.0
+    - zope.site
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - gocept
+    - gocept.reference
+    - gocept.reference.generations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/gocept.reference
+  license: Zope Public License
+  summary: 'Intrinsic references for Zope/ZODB applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

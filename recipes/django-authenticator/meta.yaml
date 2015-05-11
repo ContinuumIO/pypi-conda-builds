@@ -1,0 +1,77 @@
+package:
+  name: django-authenticator
+  version: "0.1.5"
+
+source:
+  fn: django-authenticator-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-authenticator/django-authenticator-0.1.5.tar.gz
+  md5: a4d03d4c4c0d1dcd81a36b2b9039953b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-authenticator = django-authenticator:main
+    #
+    # Would create an entry point called django-authenticator that calls django-authenticator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-extra-form-fields
+    - django-registration
+    - import-utils
+    - multi-registry
+    - south
+    - oauth2
+    - python-openid
+    - python-wordpress-xmlrpc
+
+  run:
+    - python
+    - django-extra-form-fields
+    - django-registration
+    - import-utils
+    - multi-registry
+    - south
+    - oauth2
+    - python-openid
+    - python-wordpress-xmlrpc
+
+test:
+  # Python imports
+  imports:
+    - django_authenticator
+    - django_authenticator.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GPLv3
+  summary: 'authentication client for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

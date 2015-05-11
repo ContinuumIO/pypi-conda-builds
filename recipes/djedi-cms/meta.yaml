@@ -1,0 +1,77 @@
+package:
+  name: djedi-cms
+  version: "1.0.2"
+
+source:
+  fn: djedi-cms-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/djedi-cms/djedi-cms-1.0.2.tar.gz
+  md5: fd5b5cb6c03ba09607a0c4416891fb51
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djedi-cms = djedi-cms:main
+    #
+    # Would create an entry point called djedi-cms that calls djedi-cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - content-io >=1.0.2
+    - simplejson >=3.2.0
+
+  run:
+    - python
+    - django >=1.4
+    - content-io >=1.0.2
+    - simplejson >=3.2.0
+
+test:
+  # Python imports
+  imports:
+    - djedi
+    - djedi.admin
+    - djedi.auth
+    - djedi.backends
+    - djedi.backends.django
+    - djedi.backends.django.cache
+    - djedi.backends.django.db
+    - djedi.middleware
+    - djedi.migrations
+    - djedi.plugins
+    - djedi.templatetags
+    - djedi.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/5monkeys/djedi-cms
+  license: BSD License
+  summary: 'Django content management as it should be'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

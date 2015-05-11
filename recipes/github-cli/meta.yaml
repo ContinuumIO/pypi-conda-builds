@@ -1,0 +1,67 @@
+package:
+  name: github-cli
+  version: "1.0.0"
+
+source:
+  fn: github-cli-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/github-cli/github-cli-1.0.0.tar.gz
+  md5: 213b8d3de60fd28ed73cedff2751a04a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - github-cli = github-cli:main
+    #
+    # Would create an entry point called github-cli that calls github-cli.main()
+
+    - ghi=github.issues:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - github
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ghi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/github-cli
+  license: BSD License
+  summary: 'A command-line interface to the GitHub Issues API v2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

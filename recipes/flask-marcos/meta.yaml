@@ -1,0 +1,80 @@
+package:
+  name: flask-marcos
+  version: "0.0.7dev"
+
+source:
+  fn: Flask-Marcos-0.0.7dev.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Marcos/Flask-Marcos-0.0.7dev.tar.gz
+  md5: 9515dbe3ed42d8acb0e5920239f08c97
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-marcos = flask-marcos:main
+    #
+    # Would create an entry point called flask-marcos that calls flask-marcos.main()
+
+    - marcos-project=flask_marcos.bin.marcos_project:create_project
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.9
+    - wtforms-alchemy >=0.2.5
+    - flask-sqlalchemy >=0.16
+    - flask-security >=1.5.4
+    - flask-restless >=0.9.3
+    - flask-wtf >=0.8.2
+    - flask-script >=0.5.3
+
+  run:
+    - python
+    - setuptools
+    - flask >=0.9
+    - wtforms-alchemy >=0.2.5
+    - flask-sqlalchemy >=0.16
+    - flask-security >=1.5.4
+    - flask-restless >=0.9.3
+    - flask-wtf >=0.8.2
+    - flask-script >=0.5.3
+
+test:
+  # Python imports
+  imports:
+    - docs
+    - flask_marcos
+    - flask_marcos.bin
+    - flask_marcos.core
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - marcos-project --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://marcos.org.do
+  license: BSD License
+  summary: 'ERP apps Flask container'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

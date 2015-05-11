@@ -1,0 +1,65 @@
+package:
+  name: dynamo3
+  version: "0.3.2"
+
+source:
+  fn: dynamo3-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/dynamo3/dynamo3-0.3.2.tar.gz
+  md5: 031815a70c62c6fcc7af21a3a3f29821
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dynamo3 = dynamo3:main
+    #
+    # Would create an entry point called dynamo3 that calls dynamo3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - botocore >=0.85.0
+    - six
+
+  run:
+    - python
+    - setuptools
+    - botocore >=0.85.0
+    - six
+
+test:
+  # Python imports
+  imports:
+    - dynamo3
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stevearc/dynamo3
+  license: MIT License
+  summary: 'Python 3 compatible library for DynamoDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

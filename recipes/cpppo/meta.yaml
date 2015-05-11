@@ -1,0 +1,76 @@
+package:
+  name: cpppo
+  version: "3.6.1"
+
+source:
+  fn: cpppo-3.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cpppo/cpppo-3.6.1.tar.gz
+  md5: c9b247778826f71f3b5c324164de7cee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cpppo = cpppo:main
+    #
+    # Would create an entry point called cpppo that calls cpppo.main()
+
+    - enip_server	= cpppo.server.enip.main:main
+    - enip_client	= cpppo.server.enip.client:main
+    - modbus_sim	= cpppo.bin.modbus_sim:main
+    - modbus_poll	= cpppo.bin.modbus_poll:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - greenery >=2.0
+
+  run:
+    - python
+    - greenery >=2.0
+
+test:
+  # Python imports
+  imports:
+    - cpppo
+    - cpppo/bin
+    - cpppo/history
+    - cpppo/remote
+    - cpppo/server
+    - cpppo/server/enip
+    - cpppo/tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - enip_server --help
+    - enip_client --help
+    - modbus_sim --help
+    - modbus_poll --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pjkundert/cpppo
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Cpppo is a Communication Protocol Python Parser and Originator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

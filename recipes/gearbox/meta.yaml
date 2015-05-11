@@ -1,0 +1,72 @@
+package:
+  name: gearbox
+  version: "0.0.7"
+
+source:
+  fn: gearbox-0.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/g/gearbox/gearbox-0.0.7.tar.gz
+  md5: 541416d2a5858a180b392d3099df4c3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gearbox = gearbox:main
+    #
+    # Would create an entry point called gearbox that calls gearbox.main()
+
+    - gearbox = gearbox.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cliff
+    - tempita
+    - pastedeploy
+
+  run:
+    - python
+    - setuptools
+    - cliff
+    - tempita
+    - pastedeploy
+
+test:
+  # Python imports
+  imports:
+    - gearbox
+    - gearbox.commands
+    - gearbox.commands.basic_package
+    - gearbox.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gearbox --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/TurboGears/gearbox
+  license: MIT License
+  summary: 'Command line toolkit born as a PasteScript replacement for the TurboGears2 web framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

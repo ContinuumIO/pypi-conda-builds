@@ -1,0 +1,66 @@
+package:
+  name: flynnid
+  version: "0.3"
+
+source:
+  fn: FlynnID-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/F/FlynnID/FlynnID-0.3.tar.gz
+  md5: 26be8c2044e53360398049094313fd51
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flynnid = flynnid:main
+    #
+    # Would create an entry point called flynnid that calls flynnid.main()
+
+    - flynnid = flynnid:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - termcolor
+    - colorama
+
+  run:
+    - python
+    - termcolor
+    - colorama
+
+test:
+  # Python imports
+  imports:
+    - flynnid
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flynnid --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/davehunt/flynnid
+  license: Mozilla Public License 2.0 (MPL 2.0)
+  summary: 'Registers Selenium nodes to a Selenium Grid hub.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

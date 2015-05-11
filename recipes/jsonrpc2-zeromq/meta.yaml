@@ -1,0 +1,65 @@
+package:
+  name: jsonrpc2-zeromq
+  version: "2.0.1"
+
+source:
+  fn: jsonrpc2-zeromq-2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jsonrpc2-zeromq/jsonrpc2-zeromq-2.0.1.tar.gz
+  md5: fcee069accdcb2f78b2f830a9e2a6b95
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jsonrpc2-zeromq = jsonrpc2-zeromq:main
+    #
+    # Would create an entry point called jsonrpc2-zeromq that calls jsonrpc2-zeromq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyzmq >=2.1.11,<15
+    - future >=0.14.3
+
+  run:
+    - python
+    - setuptools
+    - pyzmq >=2.1.11,<15
+    - future >=0.14.3
+
+test:
+  # Python imports
+  imports:
+    - jsonrpc2_zeromq
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dwb/python-jsonrpc2-zeromq
+  license: BSD License
+  summary: 'Library for JSON-RPC 2.0 over ZeroMQ'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

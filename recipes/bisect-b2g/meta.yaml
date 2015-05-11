@@ -1,0 +1,64 @@
+package:
+  name: bisect-b2g
+  version: "1"
+
+source:
+  fn: bisect-b2g-1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bisect-b2g/bisect-b2g-1.tar.gz
+  md5: 3599b9131e15e6af52f50e38129475d6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bisect-b2g = bisect-b2g:main
+    #
+    # Would create an entry point called bisect-b2g that calls bisect-b2g.main()
+
+    - bisect = bisect_b2g.driver:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - isodate
+
+  run:
+    - python
+    - isodate
+
+test:
+  # Python imports
+  imports:
+    - bisect_b2g
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bisect --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mozilla-b2g/b2g_bisect
+  license: MPL2
+  summary: 'This program is used to bisect multiple repositories'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

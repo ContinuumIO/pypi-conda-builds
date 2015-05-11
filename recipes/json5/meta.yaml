@@ -1,0 +1,62 @@
+package:
+  name: json5
+  version: "0.2.0"
+
+source:
+  fn: json5-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/j/json5/json5-0.2.0.tar.gz
+  md5: 874328c80568956f243a4a3e72e15c50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - json5 = json5:main
+    #
+    # Would create an entry point called json5 that calls json5.main()
+
+    - pyjson5=json5.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - json5
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyjson5 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/dpranke/pyjson5
+  license: Apache Software License
+  summary: 'A Python implementation of the JSON5 data format.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

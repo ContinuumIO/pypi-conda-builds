@@ -1,0 +1,67 @@
+package:
+  name: django-ftpserver
+  version: "0.3.1"
+
+source:
+  fn: django-ftpserver-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ftpserver/django-ftpserver-0.3.1.tar.gz
+  md5: cf704d15df9f74f361cee4b2172c22c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ftpserver = django-ftpserver:main
+    #
+    # Would create an entry point called django-ftpserver that calls django-ftpserver.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - pyftpdlib
+
+  run:
+    - python
+    - django >=1.4
+    - pyftpdlib
+
+test:
+  # Python imports
+  imports:
+    - django_ftpserver
+    - django_ftpserver.management
+    - django_ftpserver.management.commands
+    - django_ftpserver.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tokibito/django-ftpserver
+  license: MIT License
+  summary: 'FTP server application for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

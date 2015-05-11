@@ -1,0 +1,64 @@
+package:
+  name: gumtool
+  version: "0.0.6"
+
+source:
+  fn: gumtool-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/g/gumtool/gumtool-0.0.6.tar.gz
+  md5: 80df9fd5bc46255f1ecf413ed90ac955
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gumtool = gumtool:main
+    #
+    # Would create an entry point called gumtool that calls gumtool.main()
+
+    - gumtool = gumtool.cli:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argh
+
+  run:
+    - python
+    - argh
+
+test:
+  # Python imports
+  imports:
+    - gumtool
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gumtool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jidar/gnome-ubuntu-multi-tool
+  license: Apache Software License
+  summary: 'A simple collection of tools that make running Gnome (3.10+) Ubuntu (14.04+) a little easier, especially on high-dpi hardware like the Retina MacbookPro.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

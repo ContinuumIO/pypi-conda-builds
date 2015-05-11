@@ -1,0 +1,75 @@
+package:
+  name: quintagroup.transmogrifier
+  version: "0.5"
+
+source:
+  fn: quintagroup.transmogrifier-0.5.zip
+  url: https://pypi.python.org/packages/source/q/quintagroup.transmogrifier/quintagroup.transmogrifier-0.5.zip
+  md5: 43c31d7e83e3cd7fcdf28b90b9f5cd3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - quintagroup.transmogrifier = quintagroup.transmogrifier:main
+    #
+    # Would create an entry point called quintagroup.transmogrifier that calls quintagroup.transmogrifier.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - collective.transmogrifier <1.5
+    - lxml
+    - plone.app.transmogrifier
+    - zope.container
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - collective.transmogrifier <1.5
+    - lxml
+    - plone.app.transmogrifier
+    - zope.container
+
+test:
+  # Python imports
+  imports:
+    - quintagroup
+    - quintagroup.transmogrifier
+    - quintagroup.transmogrifier.adapters
+    - quintagroup.transmogrifier.namespaces
+    - quintagroup.transmogrifier.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://quintagroup.com
+  license: GNU General Public License (GPL)
+  summary: 'Plone blueprints for collective.transmogrifier pipelines.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

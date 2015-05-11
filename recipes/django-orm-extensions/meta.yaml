@@ -1,0 +1,76 @@
+package:
+  name: django-orm-extensions
+  version: "3.0b3"
+
+source:
+  fn: django-orm-extensions-3.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-orm-extensions/django-orm-extensions-3.0b3.tar.gz
+  md5: 9011b8c22a2b9e0eeebe823201104ecb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-orm-extensions = django-orm-extensions:main
+    #
+    # Would create an entry point called django-orm-extensions that calls django-orm-extensions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2 >=2.4
+
+  run:
+    - python
+    - psycopg2 >=2.4
+
+test:
+  # Python imports
+  imports:
+    - django_orm
+    - django_orm.cache
+    - django_orm.core
+    - django_orm.core.sql
+    - django_orm.gis
+    - django_orm.mysql
+    - django_orm.postgresql
+    - django_orm.postgresql.composite
+    - django_orm.postgresql.fields
+    - django_orm.postgresql.fulltext
+    - django_orm.postgresql.geometric
+    - django_orm.postgresql.hstore
+    - django_orm.postgresql.sql
+    - django_orm.sqlite3
+    - django_orm.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/niwibe/django-orm-extensions
+  license: BSD License
+  summary: 'Advanced improvement of django-orm with a lot of third-party plugins for use different parts of databases are\nnot covered by the standard orm.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: oauth-flow
+  version: "1.0.3"
+
+source:
+  fn: oauth-flow-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/o/oauth-flow/oauth-flow-1.0.3.tar.gz
+  md5: d885940e1ba2e91bf9dd82c35e3ecdb5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oauth-flow = oauth-flow:main
+    #
+    # Would create an entry point called oauth-flow that calls oauth-flow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - oauth2
+
+  run:
+    - python
+    - httplib2
+    - oauth2
+
+test:
+  # Python imports
+  imports:
+    - oauth_flow
+    - oauth_flow.handlers
+    - oauth_flow.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zen4ever/oauth-flow
+  license: MIT License
+  summary: 'Authenticate and make calls to OAuth 1.0, OAuth 2.0 services'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

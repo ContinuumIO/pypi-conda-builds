@@ -1,0 +1,65 @@
+package:
+  name: django-vkontakte-video
+  version: "0.7.1"
+
+source:
+  fn: django-vkontakte-video-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-vkontakte-video/django-vkontakte-video-0.7.1.tar.gz
+  md5: 6caa8a577c6ed40c4021b6bf15566d0f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-vkontakte-video = django-vkontakte-video:main
+    #
+    # Would create an entry point called django-vkontakte-video that calls django-vkontakte-video.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-vkontakte-api >=0.7.8
+    - django-vkontakte-comments >=0.7.0
+
+  run:
+    - python
+    - django-vkontakte-api >=0.7.8
+    - django-vkontakte-comments >=0.7.0
+
+test:
+  # Python imports
+  imports:
+    - vkontakte_video
+    - vkontakte_video.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-vkontakte-video
+  license: BSD License
+  summary: 'Django implementation for vkontakte API video'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

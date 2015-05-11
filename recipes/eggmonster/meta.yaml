@@ -1,0 +1,94 @@
+package:
+  name: eggmonster
+  version: "6.0"
+
+source:
+  fn: eggmonster-6.0.zip
+  url: https://pypi.python.org/packages/source/e/eggmonster/eggmonster-6.0.zip
+  md5: cdea824c8a711b3f2b8ac57a4e8db7be
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eggmonster = eggmonster:main
+    #
+    # Would create an entry point called eggmonster that calls eggmonster.main()
+
+    - emget = eggmonster.emget:run
+    - emup = eggmonster.emup:run
+    - em = eggmonster.commands.em:run
+    - emi = eggmonster.commands.emi:run
+    - monster_debug = eggmonster.commands.monster_debug:run
+    - monster_eggserver = eggmonster.commands.monster_eggserver:run
+    - monster_launchd = eggmonster.commands.monster_launchd:run
+    - monster_logd = eggmonster.commands.monster_logd:run
+    - monster_run = eggmonster.commands.monster_run:run
+    - monster_server = eggmonster.commands.monster_server:run
+    - fake-monster = eggmonster.runner:FakeMonster.run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.0.9
+    - yg.lockfile
+    - requests
+    - jaraco.util >=8.3,<11dev
+
+  run:
+    - python
+    - pyyaml >=3.0.9
+    - yg.lockfile
+    - requests
+    - jaraco.util >=8.3,<11dev
+
+test:
+  # Python imports
+  imports:
+    - eggmonster
+    - eggmonster.client
+    - eggmonster.commands
+    - eggmonster.control
+    - eggmonster.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - emget --help
+    - emup --help
+    - em --help
+    - emi --help
+    - monster_debug --help
+    - monster_eggserver --help
+    - monster_launchd --help
+    - monster_logd --help
+    - monster_run --help
+    - monster_server --help
+    - fake-monster --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/yougov/eggmonster
+  license: UNKNOWN
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

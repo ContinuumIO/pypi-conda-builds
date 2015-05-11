@@ -1,0 +1,73 @@
+package:
+  name: django-groups-manager
+  version: "0.2.1"
+
+source:
+  fn: django-groups-manager-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-groups-manager/django-groups-manager-0.2.1.tar.gz
+  md5: 726ed3554645ab3fb98bdc5f1bfd29c2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-groups-manager = django-groups-manager:main
+    #
+    # Would create an entry point called django-groups-manager that calls django-groups-manager.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - awesome-slugify
+    - django >=1.4
+    - django-braces
+    - django-guardian
+    - django-mptt
+    - jsonfield
+
+  run:
+    - python
+    - awesome-slugify
+    - django >=1.4
+    - django-braces
+    - django-guardian
+    - django-mptt
+    - jsonfield
+
+test:
+  # Python imports
+  imports:
+    - groups_manager
+    - groups_manager.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/vittoriozamboni/django-groups-manager
+  license: MIT License
+  summary: 'Django groups manager through django-mptt.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

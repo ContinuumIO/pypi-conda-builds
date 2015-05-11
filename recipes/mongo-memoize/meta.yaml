@@ -1,0 +1,63 @@
+package:
+  name: mongo-memoize
+  version: "0.0.4"
+
+source:
+  fn: mongo-memoize-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongo-memoize/mongo-memoize-0.0.4.tar.gz
+  md5: 377cbaa6b104e63e10b73421c01ea935
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mongo-memoize = mongo-memoize:main
+    #
+    # Would create an entry point called mongo-memoize that calls mongo-memoize.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+
+  run:
+    - python
+    - pymongo
+
+test:
+  # Python imports
+  imports:
+    - mongo_memoize
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ikuyamada/mongo-memoize/
+  license: Apache Software License
+  summary: 'A Python decorator library for caching function results in MongoDB'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

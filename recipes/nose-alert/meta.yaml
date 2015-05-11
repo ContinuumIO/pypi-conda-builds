@@ -1,0 +1,62 @@
+package:
+  name: nose-alert
+  version: "0.9.1"
+
+source:
+  fn: nose-alert-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose-alert/nose-alert-0.9.1.tar.gz
+  md5: 52634af895d0f5096e4629b9e0426345
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nose-alert = nose-alert:main
+    #
+    # Would create an entry point called nose-alert that calls nose-alert.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - nosealert
+    - nosealert.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lukaszb/nose-alert
+  license: MIT License
+  summary: '\nA nose plugin showing success/failure status notification.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,67 @@
+package:
+  name: anybox.funkload.openerp
+  version: "0.2"
+
+source:
+  fn: anybox.funkload.openerp-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/anybox.funkload.openerp/anybox.funkload.openerp-0.2.tar.gz
+  md5: be7c51cf3c2c23e4d5fbbecd2e80df90
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anybox.funkload.openerp = anybox.funkload.openerp:main
+    #
+    # Would create an entry point called anybox.funkload.openerp that calls anybox.funkload.openerp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - funkload
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - funkload
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - anybox
+    - anybox.funkload
+    - anybox.funkload.openerp
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/anybox.funkload.openerp
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Base classes for functional and load testing of OpenERP with Funkload'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

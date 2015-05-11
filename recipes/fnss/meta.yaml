@@ -1,0 +1,70 @@
+package:
+  name: fnss
+  version: "0.6.0"
+
+source:
+  fn: fnss-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fnss/fnss-0.6.0.tar.gz
+  md5: 1c72b69bee6449bc5da7bf0756fca99d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fnss = fnss:main
+    #
+    # Would create an entry point called fnss that calls fnss.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - networkx >=1.6
+    - numpy >=1.4
+    - mako >=0.4
+
+  run:
+    - python
+    - networkx >=1.6
+    - numpy >=1.4
+    - mako >=0.4
+
+test:
+  # Python imports
+  imports:
+    - fnss
+    - fnss.adapters
+    - fnss.netconfig
+    - fnss.topologies
+    - fnss.traffic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://fnss.github.io/
+  license: BSD License
+  summary: 'Fast creation and configuration of topologies, traffic matrices and event schedules for network experiments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

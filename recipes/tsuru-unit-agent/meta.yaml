@@ -1,0 +1,69 @@
+package:
+  name: tsuru-unit-agent
+  version: "0.3.8"
+
+source:
+  fn: tsuru-unit-agent-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/t/tsuru-unit-agent/tsuru-unit-agent-0.3.8.tar.gz
+  md5: 99934f77eb00be2633de6bd0fa3fc0e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tsuru-unit-agent = tsuru-unit-agent:main
+    #
+    # Would create an entry point called tsuru-unit-agent that calls tsuru-unit-agent.main()
+
+    - tsuru_unit_agent = tsuru_unit_agent.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - pyyaml
+    - honcho ==0.5.0
+
+  run:
+    - python
+    - requests
+    - pyyaml
+    - honcho ==0.5.0
+
+test:
+  # Python imports
+  imports:
+    - tests
+    - tsuru_unit_agent
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - tsuru_unit_agent --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tsuru/tsuru-unit-agent
+  license: UNKNOWN
+  summary: 'Tsuru unit agent.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

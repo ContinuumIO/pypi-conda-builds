@@ -1,0 +1,84 @@
+package:
+  name: lava-scheduler
+  version: "0.28"
+
+source:
+  fn: lava-scheduler-0.28.tar.gz
+  url: https://pypi.python.org/packages/source/l/lava-scheduler/lava-scheduler-0.28.tar.gz
+  md5: b3f81febf60bc73b6b68cc8dd7e387cc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lava-scheduler = lava-scheduler:main
+    #
+    # Would create an entry point called lava-scheduler that calls lava-scheduler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-restricted-resource >=0.2.7
+    - django-tables2 >=0.9.4
+    - lava-dashboard
+    - lava-dispatcher >=0.5.9
+    - lava-server >=0.11
+    - simplejson
+    - south >=0.7.3
+    - twisted
+    - versiontools >=1.8
+
+  run:
+    - python
+    - setuptools
+    - django-restricted-resource >=0.2.7
+    - django-tables2 >=0.9.4
+    - lava-dashboard
+    - lava-dispatcher >=0.5.9
+    - lava-server >=0.11
+    - simplejson
+    - south >=0.7.3
+    - twisted
+    - versiontools >=1.8
+
+test:
+  # Python imports
+  imports:
+    - lava_scheduler_app
+    - lava_scheduler_app.management
+    - lava_scheduler_app.management.commands
+    - lava_scheduler_app.migrations
+    - lava_scheduler_daemon
+    - lava_scheduler_daemon.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: AGPL
+  summary: 'LAVA Scheduler Application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

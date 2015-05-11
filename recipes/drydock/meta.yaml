@@ -1,0 +1,70 @@
+package:
+  name: drydock
+  version: "0.6.10"
+
+source:
+  fn: drydock-0.6.10.tar.gz
+  url: https://pypi.python.org/packages/source/d/drydock/drydock-0.6.10.tar.gz
+  md5: 7bdaed364a1054d4b5b617c256058f56
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drydock = drydock:main
+    #
+    # Would create an entry point called drydock that calls drydock.main()
+
+    - drydock = drydock.drydock:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.10
+    - docopt >=0.6.1
+    - six >=1.5.2
+    - docker-py >=0.3.0
+
+  run:
+    - python
+    - pyyaml >=3.10
+    - docopt >=0.6.1
+    - six >=1.5.2
+    - docker-py >=0.3.0
+
+test:
+  # Python imports
+  imports:
+    - drydock
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - drydock --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Nekroze/drydock
+  license: MIT License
+  summary: 'A Docker cluster construction utility.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: machinist
+  version: "0.2.0"
+
+source:
+  fn: machinist-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/machinist/machinist-0.2.0.tar.gz
+  md5: 6c3fea58c77a463ddf0cc8df0533df48
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - machinist = machinist:main
+    #
+    # Would create an entry point called machinist that calls machinist.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface >=3.6.0
+    - twisted >=13.1
+
+  run:
+    - python
+    - zope.interface >=3.6.0
+    - twisted >=13.1
+
+test:
+  # Python imports
+  imports:
+    - machinist
+    - machinist.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ClusterHQ/machinist
+  license: Apache Software License
+  summary: 'Machinist is a tool for building finite state machines.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

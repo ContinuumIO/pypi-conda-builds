@@ -1,0 +1,66 @@
+package:
+  name: django-webtopay
+  version: "1.0.1"
+
+source:
+  fn: django-webtopay-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-webtopay/django-webtopay-1.0.1.tar.gz
+  md5: fb1ce51b396189c728140249e71f48ed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-webtopay = django-webtopay:main
+    #
+    # Would create an entry point called django-webtopay that calls django-webtopay.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+    - m2crypto
+
+  run:
+    - python
+    - django >=1.3
+    - m2crypto
+
+test:
+  # Python imports
+  imports:
+    - webtopay
+    - webtopay.migrations
+    - webtopay.urls
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Motiejus/django-webtopay
+  license: MIT License
+  summary: 'A pluggable Django application for integrating WebToPay Payments'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

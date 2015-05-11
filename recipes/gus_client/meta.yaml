@@ -1,0 +1,68 @@
+package:
+  name: gus_client
+  version: "0.5.15"
+
+source:
+  fn: gus_client-0.5.15.tar.gz
+  url: https://pypi.python.org/packages/source/g/gus_client/gus_client-0.5.15.tar.gz
+  md5: 488f6460cd11a46066730dacab24c519
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gus_client = gus_client:main
+    #
+    # Would create an entry point called gus_client that calls gus_client.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sf_client >=0.1.5
+    - sc_pylibs >=0.1.4
+
+  run:
+    - python
+    - sf_client >=0.1.5
+    - sc_pylibs >=0.1.4
+
+test:
+  # Python imports
+  imports:
+    - agile
+    - agile.test
+    - gus
+    - gus.test
+    - gus_client
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Keep it real
+  summary: 'Connect to GUS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

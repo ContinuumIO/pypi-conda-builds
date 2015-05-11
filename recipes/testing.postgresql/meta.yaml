@@ -1,0 +1,62 @@
+package:
+  name: testing.postgresql
+  version: "1.1.2"
+
+source:
+  fn: testing.postgresql-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/testing.postgresql/testing.postgresql-1.1.2.tar.gz
+  md5: 084607d3b93f26cbdfb73ff29f2d673e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - testing.postgresql = testing.postgresql:main
+    #
+    # Would create an entry point called testing.postgresql that calls testing.postgresql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - psycopg2 >=2.5
+
+  run:
+    - python
+    - psycopg2 >=2.5
+
+test:
+  # Python imports
+  imports:
+    - testing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/tk0miya/testing.postgresql
+  license: Apache Software License
+  summary: 'automatically setups a postgresql instance in a temporary directory, and destroys it after testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

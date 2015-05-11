@@ -1,0 +1,70 @@
+package:
+  name: flask_siilo
+  version: "0.1.1"
+
+source:
+  fn: flask_siilo-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask_siilo/flask_siilo-0.1.1.tar.gz
+  md5: c7873d85ae8dad7cc0ebdb17f676e3b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask_siilo = flask_siilo:main
+    #
+    # Would create an entry point called flask_siilo that calls flask_siilo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wheel ==0.24.0
+    - flask >=0.10.1
+    - six >=1.7.3
+    - apache-libcloud ==0.15.1
+    - siilo ==0.1.0
+
+  run:
+    - python
+    - wheel ==0.24.0
+    - flask >=0.10.1
+    - six >=1.7.3
+    - apache-libcloud ==0.15.1
+    - siilo ==0.1.0
+
+test:
+  # Python imports
+  imports:
+    - flask_siilo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/s-m-i-t-a/flask_siilo
+  license: BSD License
+  summary: 'A simple storage for Flask based on siilo.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

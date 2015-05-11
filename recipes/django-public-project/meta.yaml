@@ -1,0 +1,80 @@
+package:
+  name: django-public-project
+  version: "0.6.3"
+
+source:
+  fn: django-public-project-0.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-public-project/django-public-project-0.6.3.tar.gz
+  md5: f56023175a91c668ce1d4b663c3e72c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-public-project = django-public-project:main
+    #
+    # Would create an entry point called django-public-project that calls django-public-project.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5,<1.6
+    - pdfminer ==20110515
+    - pillow
+    - django-tastypie >=0.9,<1.0
+    - south
+
+  run:
+    - python
+    - django >=1.5,<1.6
+    - pdfminer ==20110515
+    - pillow
+    - django-tastypie >=0.9,<1.0
+    - south
+
+test:
+  # Python imports
+  imports:
+    - example_project
+    - example_project.ep_setup_app
+    - example_project.ep_setup_app.management
+    - example_project.ep_setup_app.management.commands
+    - example_project.example_project
+    - public_project
+    - public_project.management
+    - public_project.management.commands
+    - public_project.migrations
+    - public_project.templatetags
+    - public_project.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/holgerd77/django-public-project
+  license: BSD License
+  summary: 'CMS for building an information website around public projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: django-getpaid
+  version: "1.6.0"
+
+source:
+  fn: django-getpaid-1.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-getpaid/django-getpaid-1.6.0.tar.gz
+  md5: aaac6957db5afc8faa8b1df1dc48d4c1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-getpaid = django-getpaid:main
+    #
+    # Would create an entry point called django-getpaid that calls django-getpaid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - getpaid
+    - getpaid.backends
+    - getpaid.backends.dotpay
+    - getpaid.backends.dummy
+    - getpaid.backends.moip
+    - getpaid.backends.paymill
+    - getpaid.backends.payu
+    - getpaid.backends.payu.management
+    - getpaid.backends.payu.management.commands
+    - getpaid.backends.przelewy24
+    - getpaid.backends.przelewy24.management
+    - getpaid.backends.przelewy24.management.commands
+    - getpaid.backends.transferuj
+    - getpaid.backends.transferuj.management
+    - getpaid.backends.transferuj.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cypreess/django-getpaid
+  license: MIT
+  summary: 'Multi-broker payment processor for django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

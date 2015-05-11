@@ -1,0 +1,79 @@
+package:
+  name: fedbadges
+  version: "0.5.1"
+
+source:
+  fn: fedbadges-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fedbadges/fedbadges-0.5.1.tar.gz
+  md5: b4a4ad0d4266f67cc6d943e8044edd7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fedbadges = fedbadges:main
+    #
+    # Would create an entry point called fedbadges that calls fedbadges.main()
+
+    - fedmsg-badges=fedbadges.commands:badges
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tahrir-api
+    - fedmsg
+    - fedmsg_meta_fedora_infrastructure
+    - pyyaml
+    - datanommer.models
+    - zope.sqlalchemy
+    - requests
+    - dogpile.cache
+
+  run:
+    - python
+    - setuptools
+    - tahrir-api
+    - fedmsg
+    - fedmsg_meta_fedora_infrastructure
+    - pyyaml
+    - datanommer.models
+    - zope.sqlalchemy
+    - requests
+    - dogpile.cache
+
+test:
+  # Python imports
+  imports:
+    - fedbadges
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fedmsg-badges --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fedora-infra/fedbadges
+  license: GPLv2+
+  summary: 'fedmsg consumer for awarding open badges'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

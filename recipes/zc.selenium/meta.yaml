@@ -1,0 +1,70 @@
+package:
+  name: zc.selenium
+  version: "1.2.1"
+
+source:
+  fn: zc.selenium-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.selenium/zc.selenium-1.2.1.tar.gz
+  md5: 0f230eb5a0f02a78e7d8f008bd2e7396
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.selenium = zc.selenium:main
+    #
+    # Would create an entry point called zc.selenium that calls zc.selenium.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.component
+    - zope.publisher
+    - z3c.zrtresource
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.component
+    - zope.publisher
+    - z3c.zrtresource
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.selenium
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://svn.zope.org/zc.seleinum
+  license: ZPL 2.1
+  summary: 'Selenium integration for Zope 3'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

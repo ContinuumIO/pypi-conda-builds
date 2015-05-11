@@ -1,0 +1,64 @@
+package:
+  name: dj-libcloud
+  version: "0.2.0"
+
+source:
+  fn: dj-libcloud-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/dj-libcloud/dj-libcloud-0.2.0.tar.gz
+  md5: fc088bb10214c1295677d63a9a94f700
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dj-libcloud = dj-libcloud:main
+    #
+    # Would create an entry point called dj-libcloud that calls dj-libcloud.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - apache-libcloud >=0.14.1
+    - django >=1.6.0
+
+  run:
+    - python
+    - apache-libcloud >=0.14.1
+    - django >=1.6.0
+
+test:
+  # Python imports
+  imports:
+    - djlibcloud
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pydanny/dj-libcloud
+  license: BSD License
+  summary: 'Adds easy python 3 and 2.7 support to Django for management of static assets.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

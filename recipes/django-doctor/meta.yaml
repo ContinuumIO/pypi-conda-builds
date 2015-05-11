@@ -1,0 +1,63 @@
+package:
+  name: django-doctor
+  version: "0.2.6"
+
+source:
+  fn: django-doctor-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-doctor/django-doctor-0.2.6.tar.gz
+  md5: 353bbef2e4754e1a0c12f2678f1e93ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-doctor = django-doctor:main
+    #
+    # Would create an entry point called django-doctor that calls django-doctor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - doctor
+    - doctor.management
+    - doctor.management.commands
+    - doctor.services
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/funkbit/django-doctor
+  license: BSD License
+  summary: 'Django health check and test-that-it-works application.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

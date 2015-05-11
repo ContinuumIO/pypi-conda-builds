@@ -1,0 +1,74 @@
+package:
+  name: oldowan.mitotype
+  version: "1.0.1"
+
+source:
+  fn: oldowan.mitotype-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/o/oldowan.mitotype/oldowan.mitotype-1.0.1.tar.gz
+  md5: f65e89c9a11d6a8cbba60c5c1a100f32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oldowan.mitotype = oldowan.mitotype:main
+    #
+    # Would create an entry point called oldowan.mitotype that calls oldowan.mitotype.main()
+
+    - mitotype = oldowan.mitotype.commandline:run_command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - oldowan.polymorphism >=1.0.0
+    - oldowan.mtconvert >=1.0.0
+    - oldowan.fasta >=1.0.0
+    - pyyaml
+    - networkx
+
+  run:
+    - python
+    - oldowan.polymorphism >=1.0.0
+    - oldowan.mtconvert >=1.0.0
+    - oldowan.fasta >=1.0.0
+    - pyyaml
+    - networkx
+
+test:
+  # Python imports
+  imports:
+    - oldowan
+    - oldowan.mitotype
+    - oldowan.mitotype.externals
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mitotype --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.raaum.org/software/oldowan
+  license: MIT License
+  summary: 'Utilities to identify human mtDNA haplotypes.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

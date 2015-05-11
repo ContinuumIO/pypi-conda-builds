@@ -1,0 +1,94 @@
+package:
+  name: saga-python
+  version: "0.28"
+
+source:
+  fn: saga-python-0.28.tar.gz
+  url: https://pypi.python.org/packages/source/s/saga-python/saga-python-0.28.tar.gz
+  md5: ca1e7c1207beb865358f61e88afce5ec
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - saga-python = saga-python:main
+    #
+    # Would create an entry point called saga-python that calls saga-python.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - apache-libcloud
+    - radical.utils
+
+  run:
+    - python
+    - apache-libcloud
+    - radical.utils
+
+test:
+  # Python imports
+  imports:
+    - saga
+    - saga.adaptors
+    - saga.adaptors.aws
+    - saga.adaptors.condor
+    - saga.adaptors.context
+    - saga.adaptors.cpi
+    - saga.adaptors.cpi.advert
+    - saga.adaptors.cpi.filesystem
+    - saga.adaptors.cpi.job
+    - saga.adaptors.cpi.namespace
+    - saga.adaptors.cpi.replica
+    - saga.adaptors.cpi.resource
+    - saga.adaptors.globus_online
+    - saga.adaptors.http
+    - saga.adaptors.irods
+    - saga.adaptors.loadl
+    - saga.adaptors.lsf
+    - saga.adaptors.pbs
+    - saga.adaptors.redis
+    - saga.adaptors.sge
+    - saga.adaptors.shell
+    - saga.adaptors.slurm
+    - saga.advert
+    - saga.engine
+    - saga.filesystem
+    - saga.job
+    - saga.namespace
+    - saga.replica
+    - saga.resource
+    - saga.utils
+    - saga.utils.job
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://radical-cybertools.github.io/saga-python/
+  license: MIT License
+  summary: 'A light-weight access layer for distributed computing infrastructure(http://radical.rutgers.edu/)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

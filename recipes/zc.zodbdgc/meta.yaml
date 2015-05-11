@@ -1,0 +1,70 @@
+package:
+  name: zc.zodbdgc
+  version: "0.6.1"
+
+source:
+  fn: zc.zodbdgc-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.zodbdgc/zc.zodbdgc-0.6.1.tar.gz
+  md5: 75e431ba28994398f7b2f4b5f569393c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.zodbdgc = zc.zodbdgc:main
+    #
+    # Would create an entry point called zc.zodbdgc that calls zc.zodbdgc.main()
+
+    - multi-zodb-gc=zc.zodbdgc:gc_command
+    - multi-zodb-check-refs=zc.zodbdgc:check_command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.9.0b2
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.9.0b2
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.zodbdgc
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - multi-zodb-gc --help
+    - multi-zodb-check-refs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'ZODB Distributed Garbage Collection'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

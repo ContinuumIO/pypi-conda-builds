@@ -1,0 +1,79 @@
+package:
+  name: datagristle
+  version: "0.58"
+
+source:
+  fn: datagristle-0.58.tar.gz
+  url: https://pypi.python.org/packages/source/d/datagristle/datagristle-0.58.tar.gz
+  md5: 420b924400d137eb45c45223805fb051
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - datagristle = datagristle:main
+    #
+    # Would create an entry point called datagristle that calls datagristle.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs >=1.2.0
+    - sqlalchemy >=0.8.4
+    - envoy >=0.0.2
+    - pytest >=2.5.2
+    - tox >=1.7.0
+    - validictory >=0.9.3
+    - pyyaml >=3.10
+    - cletus
+    - unittest2
+
+  run:
+    - python
+    - appdirs >=1.2.0
+    - sqlalchemy >=0.8.4
+    - envoy >=0.0.2
+    - pytest >=2.5.2
+    - tox >=1.7.0
+    - validictory >=0.9.3
+    - pyyaml >=3.10
+    - cletus
+    - unittest2
+
+test:
+  # Python imports
+  imports:
+    - datagristle
+    - gristle
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/kenfar/DataGristle
+  license: BSD License
+  summary: 'A toolbox and library of ETL, data quality, and data analysis tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

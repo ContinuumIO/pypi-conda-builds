@@ -1,0 +1,64 @@
+package:
+  name: bertha
+  version: "0.1.1"
+
+source:
+  fn: bertha-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bertha/bertha-0.1.1.tar.gz
+  md5: cbc76126647b3d4d4845955de5c6849f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bertha = bertha:main
+    #
+    # Would create an entry point called bertha that calls bertha.main()
+
+    - bertha = bertha.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils >=0.3
+
+  run:
+    - python
+    - docutils >=0.3
+
+test:
+  # Python imports
+  imports:
+    - bertha
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bertha --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bwesterb/py-bertha/
+  license: UNKNOWN
+  summary: 'Python client library and console util for BerthaD'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

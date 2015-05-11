@@ -1,0 +1,65 @@
+package:
+  name: icemac.ab.locales
+  version: "2.7"
+
+source:
+  fn: icemac.ab.locales-2.7.zip
+  url: https://pypi.python.org/packages/source/i/icemac.ab.locales/icemac.ab.locales-2.7.zip
+  md5: 1b089ce63d283cbb4bd0c6d6d465e1a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - icemac.ab.locales = icemac.ab.locales:main
+    #
+    # Would create an entry point called icemac.ab.locales that calls icemac.ab.locales.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.i18n
+
+  run:
+    - python
+    - setuptools
+    - zope.i18n
+
+test:
+  # Python imports
+  imports:
+    - icemac
+    - icemac.ab
+    - icemac.ab.locales
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/icemac.ab.locales
+  license: Zope Public License
+  summary: 'Translations for icemac.addressbook and icemac.ab.* packages.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

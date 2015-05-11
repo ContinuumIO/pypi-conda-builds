@@ -1,0 +1,69 @@
+package:
+  name: icemac.callonchange
+  version: "0.7.0"
+
+source:
+  fn: icemac.callonchange-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/icemac.callonchange/icemac.callonchange-0.7.0.tar.gz
+  md5: fb83b5fbc18773a8eee1c8773c8bf414
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - icemac.callonchange = icemac.callonchange:main
+    #
+    # Would create an entry point called icemac.callonchange that calls icemac.callonchange.main()
+
+    - callonchange=icemac.callonchange.script:callonchange
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - macfsevents >0.2.2
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - macfsevents >0.2.2
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - icemac
+    - icemac.callonchange
+    - icemac.callonchange.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - callonchange --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/icemac.callonchange
+  license: Zope Public License
+  summary: 'Call a command when a directory or file has changed. (Mac OS only)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

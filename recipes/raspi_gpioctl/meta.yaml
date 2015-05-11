@@ -1,0 +1,66 @@
+package:
+  name: raspi_gpioctl
+  version: "0.0.1"
+
+source:
+  fn: raspi_gpioctl-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/raspi_gpioctl/raspi_gpioctl-0.0.1.tar.gz
+  md5: 911ea83177af983f8f095cf97b2c7ef8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - raspi_gpioctl = raspi_gpioctl:main
+    #
+    # Would create an entry point called raspi_gpioctl that calls raspi_gpioctl.main()
+
+    - gpioctl            = raspi_gpioctl.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute >=0.6.24
+    - rpi.gpio >=0.5.5
+
+  run:
+    - python
+    - distribute >=0.6.24
+    - rpi.gpio >=0.5.5
+
+test:
+  # Python imports
+  imports:
+    - raspi_gpioctl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gpioctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/metagriffin/raspi-gpioctl
+  license: GNU General Public License v3 or later (GPLv3+)
+  summary: 'Raspberry Pi GPIO pin state controller'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

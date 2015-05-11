@@ -1,0 +1,76 @@
+package:
+  name: docta
+  version: "0.2.1"
+
+source:
+  fn: Docta-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/D/Docta/Docta-0.2.1.tar.gz
+  md5: 671c3268396a417e3f90ad8e28def936
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docta = docta:main
+    #
+    # Would create an entry point called docta that calls docta.main()
+
+    - docta = docta.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - future
+    - misaka
+    - watchdog
+    - jinja2
+    - pyyaml
+    - pygments
+
+  run:
+    - python
+    - future
+    - misaka
+    - watchdog
+    - jinja2
+    - pyyaml
+    - pygments
+
+test:
+  # Python imports
+  imports:
+    - docta
+    - docta.renderers
+    - docta.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - docta --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/05bit/python-docta
+  license: BSD License
+  summary: 'Docta is a new healing docs kit.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

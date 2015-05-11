@@ -1,0 +1,74 @@
+package:
+  name: guessit
+  version: "0.10.3"
+
+source:
+  fn: guessit-0.10.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/guessit/guessit-0.10.3.tar.gz
+  md5: 11e658f9b0473d61d681579c03c196c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - guessit = guessit:main
+    #
+    # Would create an entry point called guessit that calls guessit.main()
+
+    - guessit = guessit.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - babelfish >=0.5.4
+    - stevedore >=0.14
+    - requests
+    - python-dateutil >=2.1
+
+  run:
+    - python
+    - babelfish >=0.5.4
+    - stevedore >=0.14
+    - requests
+    - python-dateutil >=2.1
+
+test:
+  # Python imports
+  imports:
+    - guessit
+    - guessit.patterns
+    - guessit.plugins
+    - guessit.test
+    - guessit.transfo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - guessit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://guessit.readthedocs.org/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'GuessIt - a library for guessing information from video files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

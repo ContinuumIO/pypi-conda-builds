@@ -1,0 +1,63 @@
+package:
+  name: shadetree
+  version: "0.1"
+
+source:
+  fn: shadetree-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/shadetree/shadetree-0.1.tar.gz
+  md5: d4d04731c2e3e1eea33b6e319874e534
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shadetree = shadetree:main
+    #
+    # Would create an entry point called shadetree that calls shadetree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyserial >=2.7
+
+  run:
+    - python
+    - pyserial >=2.7
+
+test:
+  # Python imports
+  imports:
+    - shadetree
+    - shadetree.obd
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hub-ology.org
+  license: MIT License
+  summary: 'ShadeTree OBD'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

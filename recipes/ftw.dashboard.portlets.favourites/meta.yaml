@@ -1,0 +1,75 @@
+package:
+  name: ftw.dashboard.portlets.favourites
+  version: "3.3.0"
+
+source:
+  fn: ftw.dashboard.portlets.favourites-3.3.0.zip
+  url: https://pypi.python.org/packages/source/f/ftw.dashboard.portlets.favourites/ftw.dashboard.portlets.favourites-3.3.0.zip
+  md5: 6d3e18f8063b63b40a1e15c10c4fc07d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.dashboard.portlets.favourites = ftw.dashboard.portlets.favourites:main
+    #
+    # Would create an entry point called ftw.dashboard.portlets.favourites that calls ftw.dashboard.portlets.favourites.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - ftw.dashboard.dragndrop
+    - ftw.upgrade
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - ftw.dashboard.dragndrop
+    - ftw.upgrade
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.dashboard
+    - ftw.dashboard.portlets
+    - ftw.dashboard.portlets.favourites
+    - ftw.dashboard.portlets.favourites.browser
+    - ftw.dashboard.portlets.favourites.locales
+    - ftw.dashboard.portlets.favourites.portlets
+    - ftw.dashboard.portlets.favourites.tests
+    - ftw.dashboard.portlets.favourites.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.dashboard.portlets.favourites
+  license: GNU General Public License (GPL)
+  summary: 'A favourite Portlet'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

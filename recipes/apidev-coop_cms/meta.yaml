@@ -1,0 +1,106 @@
+package:
+  name: apidev-coop_cms
+  version: "1.0.13"
+
+source:
+  fn: apidev-coop_cms-1.0.13.tar.gz
+  url: https://pypi.python.org/packages/source/a/apidev-coop_cms/apidev-coop_cms-1.0.13.tar.gz
+  md5: 11129b8bb5d24bc658f96e7d1fff52d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apidev-coop_cms = apidev-coop_cms:main
+    #
+    # Would create an entry point called apidev-coop_cms that calls apidev-coop_cms.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django ==1.6.10
+    - south
+    - django-floppyforms ==1.3.0
+    - django-extensions
+    - sorl-thumbnail
+    - apidev-coop_colorbox
+    - apidev-coop_bar >=1.1.0
+    - apidev-djaloha >=1.0.2
+    - django-pagination
+    - feedparser
+    - beautifulsoup4
+    - django-filetransfers
+    - model_mommy
+
+  run:
+    - python
+    - django ==1.6.10
+    - south
+    - django-floppyforms ==1.3.0
+    - django-extensions
+    - sorl-thumbnail
+    - apidev-coop_colorbox
+    - apidev-coop_bar >=1.1.0
+    - apidev-djaloha >=1.0.2
+    - django-pagination
+    - feedparser
+    - beautifulsoup4
+    - django-filetransfers
+    - model_mommy
+
+test:
+  # Python imports
+  imports:
+    - coop_cms
+    - coop_cms.apps
+    - coop_cms.apps.basic_cms
+    - coop_cms.apps.basic_cms.migrations
+    - coop_cms.apps.coop_bootstrap
+    - coop_cms.apps.coop_bootstrap.templatetags
+    - coop_cms.apps.demo_cms
+    - coop_cms.apps.demo_cms.migrations
+    - coop_cms.apps.email_auth
+    - coop_cms.apps.newsletter_example
+    - coop_cms.apps.rss_sync
+    - coop_cms.apps.rss_sync.management
+    - coop_cms.apps.rss_sync.management.commands
+    - coop_cms.apps.rss_sync.migrations
+    - coop_cms.apps.test_app
+    - coop_cms.management
+    - coop_cms.management.commands
+    - coop_cms.migrations
+    - coop_cms.templatetags
+    - coop_cms.tests
+    - coop_cms.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ljean/coop_cms/
+  license: BSD License
+  summary: 'Small CMS built around a tree navigation open to any django models'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,70 @@
+package:
+  name: la-gachette
+  version: "0.0.6"
+
+source:
+  fn: la-gachette-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/l/la-gachette/la-gachette-0.0.6.tar.gz
+  md5: 2e15295da5354da45d9d225a35ebad6b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - la-gachette = la-gachette:main
+    #
+    # Would create an entry point called la-gachette that calls la-gachette.main()
+
+    - gachette = gachette.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fabric
+    - nose
+    - mock
+    - pyyaml
+
+  run:
+    - python
+    - fabric
+    - nose
+    - mock
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - gachette
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gachette --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: 
+  license: GNU Affero General Public License v3
+  summary: 'Module to handle working copy and build of project.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

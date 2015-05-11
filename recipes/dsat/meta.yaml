@@ -1,0 +1,67 @@
+package:
+  name: dsat
+  version: "0.5.3"
+
+source:
+  fn: dsat-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/dsat/dsat-0.5.3.tar.gz
+  md5: 5f13ce2f639d62d303e140291710dc5c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dsat = dsat:main
+    #
+    # Would create an entry point called dsat that calls dsat.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - circus
+    - anyjson >=0.3.3
+    - configparser
+
+  run:
+    - python
+    - circus
+    - anyjson >=0.3.3
+    - configparser
+
+test:
+  # Python imports
+  imports:
+    - dsat
+    - dsat.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dsat.readthedocs.org/
+  license: BSD License
+  summary: "\nWelcome to DSAT's documentation!\n================================\n\nDSAT is a framework for handling and connecting distributed writers and producers.\n\nIt focuses on using topological indications in order to connect components\nand apply some basic ZMQ pattern (push/pull pubsub).\n\nIt also provides an integration with circus a way to monitor and handle  your processes. \n\nIt has an explicit focus on debugging\n\n"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

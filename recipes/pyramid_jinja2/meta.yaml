@@ -1,0 +1,72 @@
+package:
+  name: pyramid_jinja2
+  version: "2.5"
+
+source:
+  fn: pyramid_jinja2-2.5.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_jinja2/pyramid_jinja2-2.5.tar.gz
+  md5: 07cb6547204ac5e6f0b22a954ccee928
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyramid_jinja2 = pyramid_jinja2:main
+    #
+    # Would create an entry point called pyramid_jinja2 that calls pyramid_jinja2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid >=1.0.2
+    - zope.deprecation
+    - jinja2 >=2.5.0
+    - markupsafe
+
+  run:
+    - python
+    - setuptools
+    - pyramid >=1.0.2
+    - zope.deprecation
+    - jinja2 >=2.5.0
+    - markupsafe
+
+test:
+  # Python imports
+  imports:
+    - pyramid_jinja2
+    - pyramid_jinja2.demo
+    - pyramid_jinja2.scaffolds
+    - pyramid_jinja2.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Pylons/pyramid_jinja2
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: 'Jinja2 template bindings for the Pyramid web framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

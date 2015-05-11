@@ -1,0 +1,62 @@
+package:
+  name: django-trap
+  version: "0.5.0"
+
+source:
+  fn: django-trap-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-trap/django-trap-0.5.0.tar.gz
+  md5: ad96f732e1d4a1905451fe6acf5f9965
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-trap = django-trap:main
+    #
+    # Would create an entry point called django-trap that calls django-trap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - django_trap
+    - django_trap.migrations
+    - test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mvasilkov/django-trap
+  license: MIT License
+  summary: 'A fake Django admin login screen to notify admins of attempted unauthorized access.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

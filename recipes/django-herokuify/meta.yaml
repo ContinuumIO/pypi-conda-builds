@@ -1,0 +1,75 @@
+package:
+  name: django-herokuify
+  version: "1.0.pre3"
+
+source:
+  fn: django-herokuify-1.0.pre3.zip
+  url: https://pypi.python.org/packages/source/d/django-herokuify/django-herokuify-1.0.pre3.zip
+  md5: 9b0ebd6ae7d4029e008e52deabdcb2f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-herokuify = django-herokuify:main
+    #
+    # Would create an entry point called django-herokuify that calls django-herokuify.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylibmc >=1.2.3
+    - django-pylibmc-sasl >=0.2.4
+    - django-heroku-memcacheify >=0.4
+    - dj-database-url >=0.1.2
+    - django-heroku-postgresify >=0.3
+    - django-storages >=1.1.5
+    - boto >=2.6.0
+
+  run:
+    - python
+    - pylibmc >=1.2.3
+    - django-pylibmc-sasl >=0.2.4
+    - django-heroku-memcacheify >=0.4
+    - dj-database-url >=0.1.2
+    - django-heroku-postgresify >=0.3
+    - django-storages >=1.1.5
+    - boto >=2.6.0
+
+test:
+  # Python imports
+  imports:
+    - herokuify
+    - herokuify.mail
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nigma/django-herokuify
+  license: BSD License
+  summary: 'Automatic Django configuration and utilities for Heroku.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: solution
+  version: "3.0.11"
+
+source:
+  fn: Solution-3.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/S/Solution/Solution-3.0.11.tar.gz
+  md5: dac0efb851a63fef532127fc7eabbf4d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - solution = solution:main
+    #
+    # Would create an entry point called solution that calls solution.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - markupsafe
+
+  run:
+    - python
+    - markupsafe
+
+test:
+  # Python imports
+  imports:
+    - solution
+    - solution.fields
+    - solution.fields.file
+    - solution.validators
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/lucuma/solution
+  license: BSD License
+  summary: 'An amazing form solution'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

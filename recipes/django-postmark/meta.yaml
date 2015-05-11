@@ -1,0 +1,65 @@
+package:
+  name: django-postmark
+  version: "0.1.6"
+
+source:
+  fn: django-postmark-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-postmark/django-postmark-0.1.6.tar.gz
+  md5: 63cd52f48e966562521680b22b5326fd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-postmark = django-postmark:main
+    #
+    # Would create an entry point called django-postmark that calls django-postmark.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - pytz
+
+  run:
+    - python
+    - httplib2
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - postmark
+    - postmark.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/dstufft/django-postmark/
+  license: BSD License
+  summary: 'A Django reusable app to send email with postmark, as well as models and views to handle bounce integration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

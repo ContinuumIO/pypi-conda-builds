@@ -1,0 +1,66 @@
+package:
+  name: django-static-underscore-i18n
+  version: "1.9.1"
+
+source:
+  fn: django-static-underscore-i18n-1.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-static-underscore-i18n/django-static-underscore-i18n-1.9.1.tar.gz
+  md5: e2b4c6607baca6e11a051b50aa25dacb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-static-underscore-i18n = django-static-underscore-i18n:main
+    #
+    # Would create an entry point called django-static-underscore-i18n that calls django-static-underscore-i18n.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - django-appconf >=0.4
+
+  run:
+    - python
+    - django >=1.4
+    - django-appconf >=0.4
+
+test:
+  # Python imports
+  imports:
+    - staticunderscorei18n
+    - staticunderscorei18n.management
+    - staticunderscorei18n.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://django-static-underscore-i18n.readthedocs.org/
+  license: BSD License
+  summary: 'A Django app that provides helper for generating Javascript Underscore templates to static files with i18n support.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

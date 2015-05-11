@@ -1,0 +1,75 @@
+package:
+  name: flask-velox
+  version: "2014.04.25"
+
+source:
+  fn: Flask-Velox-2014.04.25.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Velox/Flask-Velox-2014.04.25.tar.gz
+  md5: c1a3ed9d55be980bc224cf355f8fa35e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-velox = flask-velox:main
+    #
+    # Would create an entry point called flask-velox that calls flask-velox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - flask-wtf ==0.9.5
+    - pytz ==2014.2
+
+  run:
+    - python
+    - flask ==0.10.1
+    - flask-wtf ==0.9.5
+    - pytz ==2014.2
+
+test:
+  # Python imports
+  imports:
+    - flask_velox
+    - flask_velox.admin
+    - flask_velox.admin.mixins
+    - flask_velox.admin.mixins.sqla
+    - flask_velox.admin.views
+    - flask_velox.admin.views.sqla
+    - flask_velox.mixins
+    - flask_velox.mixins.sqla
+    - flask_velox.views
+    - flask_velox.views.sqla
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thisissoon/Flask-Velox
+  license: MIT License
+  summary: 'Velox is a set of classes & mixins to help rapidly build Flask applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

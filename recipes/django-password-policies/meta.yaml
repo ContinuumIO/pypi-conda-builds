@@ -1,0 +1,68 @@
+package:
+  name: django-password-policies
+  version: "0.3.1"
+
+source:
+  fn: django-password-policies-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-password-policies/django-password-policies-0.3.1.tar.gz
+  md5: 2ba64412eb5ead7feb88aa7409abf87f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-password-policies = django-password-policies:main
+    #
+    # Would create an entry point called django-password-policies that calls django-password-policies.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5
+    - django-easysettings
+    - pytz
+
+  run:
+    - python
+    - django >=1.5
+    - django-easysettings
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - password_policies
+    - password_policies.forms
+    - password_policies.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tarak/django-password-policies
+  license: BSD License
+  summary: 'A Django application to implent password policies.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

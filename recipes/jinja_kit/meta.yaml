@@ -1,0 +1,64 @@
+package:
+  name: jinja_kit
+  version: "0.0.14"
+
+source:
+  fn: jinja_kit-0.0.14.tar.gz
+  url: https://pypi.python.org/packages/source/j/jinja_kit/jinja_kit-0.0.14.tar.gz
+  md5: 2b77030dcc3a27cd050e6de8cc0317f6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jinja_kit = jinja_kit:main
+    #
+    # Would create an entry point called jinja_kit that calls jinja_kit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.6
+
+  run:
+    - python
+    - jinja2 ==2.6
+
+test:
+  # Python imports
+  imports:
+    - jinja_kit
+    - jinja_kit.contrib
+    - jinja_kit.contrib.django
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lispython/jinja-kit
+  license: BSD License
+  summary: 'Collection of utilities and extenstion for jinja2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

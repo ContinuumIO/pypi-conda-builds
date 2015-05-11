@@ -1,0 +1,67 @@
+package:
+  name: django-demo
+  version: "1.0.0-beta-1"
+
+source:
+  fn: django-demo-1.0.0-beta-1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-demo/django-demo-1.0.0-beta-1.tar.gz
+  md5: 37b5abb94de57cac49671ae9ad18d66c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-demo = django-demo:main
+    #
+    # Would create an entry point called django-demo that calls django-demo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - demo
+    - demo.backends
+    - demo.backends.mysql
+    - demo.backends.postgresql_psycopg2
+    - demo.backends.sqlite3
+    - demo.management
+    - demo.management.commands
+    - demo.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ojii/django-demo
+  license: BSD License
+  summary: 'Helper app to build a demo page for your django app'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

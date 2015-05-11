@@ -1,0 +1,68 @@
+package:
+  name: hurry.raphael
+  version: "1.4.3.2"
+
+source:
+  fn: hurry.raphael-1.4.3.2.zip
+  url: https://pypi.python.org/packages/source/h/hurry.raphael/hurry.raphael-1.4.3.2.zip
+  md5: 3c2388388157c3ff370884566b2f2b2a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hurry.raphael = hurry.raphael:main
+    #
+    # Would create an entry point called hurry.raphael that calls hurry.raphael.main()
+
+    - raphaelprepare = hurry.raphael.prepare:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.resource >=0.10
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - hurry.resource >=0.10
+
+test:
+  # Python imports
+  imports:
+    - hurry
+    - hurry.raphael
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - raphaelprepare --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jmichiel/hurry.raphael
+  license: UNKNOWN
+  summary: 'hurry.resource style resources for Raphael.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

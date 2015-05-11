@@ -1,0 +1,65 @@
+package:
+  name: marrow.server
+  version: "0.9"
+
+source:
+  fn: marrow.server-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/m/marrow.server/marrow.server-0.9.tar.gz
+  md5: fcf8eae12c4d781e717f860eeaf9f3a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marrow.server = marrow.server:main
+    #
+    # Would create an entry point called marrow.server that calls marrow.server.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - marrow.io
+    - marrow.util
+
+  run:
+    - python
+    - marrow.io
+    - marrow.util
+
+test:
+  # Python imports
+  imports:
+    - marrow
+    - marrow.server
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pulp/marrow.server
+  license: MIT License
+  summary: 'Abstract asynchronous, multi-process socket server API.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

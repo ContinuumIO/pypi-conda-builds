@@ -1,0 +1,64 @@
+package:
+  name: riak-statsd
+  version: "0.1.0"
+
+source:
+  fn: riak-statsd-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/riak-statsd/riak-statsd-0.1.0.tar.gz
+  md5: 01776b94dcb603ad6102eb0c1d3f625a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - riak-statsd = riak-statsd:main
+    #
+    # Would create an entry point called riak-statsd that calls riak-statsd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - statsd >=0.5.1
+    - riak >=1.3.0
+
+  run:
+    - python
+    - statsd >=0.5.1
+    - riak >=1.3.0
+
+test:
+  # Python imports
+  imports:
+    - riak_statsd
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aluzzardi/riak-statsd-python
+  license: MIT License
+  summary: 'Transport proxy for instrumenting Riak clients'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

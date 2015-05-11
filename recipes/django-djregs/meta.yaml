@@ -1,0 +1,66 @@
+package:
+  name: django-djregs
+  version: "1.0.1c1"
+
+source:
+  fn: django-djregs-1.0.1c1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-djregs/django-djregs-1.0.1c1.tar.gz
+  md5: 52d9d2601116d6630692888571bdd6ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-djregs = django-djregs:main
+    #
+    # Would create an entry point called django-djregs that calls django-djregs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - registration
+    - registration.backends
+    - registration.backends.custom
+    - registration.backends.default
+    - registration.backends.simple
+    - registration.management
+    - registration.management.commands
+    - registration.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mypebble/djregs
+  license: BSD License
+  summary: 'Handle user registration and email verification with Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

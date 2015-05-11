@@ -1,0 +1,65 @@
+package:
+  name: externalator
+  version: "0.7.0"
+
+source:
+  fn: externalator-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/externalator/externalator-0.7.0.tar.gz
+  md5: 42df7a9004795c7eda363b465c37b01d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - externalator = externalator:main
+    #
+    # Would create an entry point called externalator that calls externalator.main()
+
+    - externalator=externalator:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - topp.utils
+
+  run:
+    - python
+    - setuptools
+    - topp.utils
+
+test:
+  # Python imports
+  imports:
+    - externalator
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - externalator --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://openplans.org/
+  license: GPL
+  summary: 'svn bundle manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

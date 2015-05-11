@@ -1,0 +1,110 @@
+package:
+  name: fotochest
+  version: "3.0.4-Alpha"
+
+source:
+  fn: fotochest-3.0.4-Alpha.tar.gz
+  url: https://pypi.python.org/packages/source/f/fotochest/fotochest-3.0.4-Alpha.tar.gz
+  md5: 3ee41b5c883ef7f111f4348d009b5fbc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fotochest = fotochest:main
+    #
+    # Would create an entry point called fotochest that calls fotochest.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hadrian ==1.1.5
+    - pil ==1.1.7
+    - sorl-thumbnail ==11.12
+    - django-celery ==2.5.5
+    - django-kombu ==0.9.4
+    - django-tastypie ==0.9.11
+    - python-memcached ==1.48
+    - django-api-docs ==1.1.1
+    - django-mail-queue ==1.1.0
+    - django-taggit ==0.9.3
+    - django-crispy-forms ==1.1.4
+    - django-haystack ==1.2.7
+    - whoosh ==2.4.1
+    - celery ==2.5.5
+    - django-bootstrap-static ==2.0.2
+    - django-braces ==0.1.7
+    - django-constance[database]
+
+  run:
+    - python
+    - hadrian ==1.1.5
+    - pil ==1.1.7
+    - sorl-thumbnail ==11.12
+    - django-celery ==2.5.5
+    - django-kombu ==0.9.4
+    - django-tastypie ==0.9.11
+    - python-memcached ==1.48
+    - django-api-docs ==1.1.1
+    - django-mail-queue ==1.1.0
+    - django-taggit ==0.9.3
+    - django-crispy-forms ==1.1.4
+    - django-haystack ==1.2.7
+    - whoosh ==2.4.1
+    - celery ==2.5.5
+    - django-bootstrap-static ==2.0.2
+    - django-braces ==0.1.7
+    - django-constance[database]
+
+test:
+  # Python imports
+  imports:
+    - example
+    - fotochest
+    - fotochest.administrator
+    - fotochest.administrator.migrations
+    - fotochest.administrator.templatetags
+    - fotochest.administrator.tests
+    - fotochest.administrator.views
+    - fotochest.conf
+    - fotochest.photo_manager
+    - fotochest.photo_manager.api
+    - fotochest.photo_manager.management
+    - fotochest.photo_manager.management.commands
+    - fotochest.photo_manager.migrations
+    - fotochest.photo_manager.tests
+    - fotochest.photo_manager.tests.selenium
+    - fotochest.settings
+    - fotochest.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/fotochest/fotochest
+  license: MIT License
+  summary: 'A Django driven Photo Sharing application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,76 @@
+package:
+  name: hexagonit.testing
+  version: "1.2.2"
+
+source:
+  fn: hexagonit.testing-1.2.2.zip
+  url: https://pypi.python.org/packages/source/h/hexagonit.testing/hexagonit.testing-1.2.2.zip
+  md5: 78e6a901fdfca8777962a81bd44d40c7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hexagonit.testing = hexagonit.testing:main
+    #
+    # Would create an entry point called hexagonit.testing that calls hexagonit.testing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - manuel
+    - mock
+    - plone.app.testing
+    - plone.testing
+    - setuptools
+    - unittest2
+
+  run:
+    - python
+    - setuptools
+    - manuel
+    - mock
+    - plone.app.testing
+    - plone.testing
+    - setuptools
+    - unittest2
+
+test:
+  # Python imports
+  imports:
+    - hexagonit
+    - hexagonit.testing
+    - hexagonit.testing.tests
+    - hexagonit.testing.tests.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/hexagonit.testing/
+  license: BSD
+  summary: 'Plone4 test helper which uses plone.testing and manuel.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

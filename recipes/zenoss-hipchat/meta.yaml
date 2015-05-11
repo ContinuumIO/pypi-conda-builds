@@ -1,0 +1,64 @@
+package:
+  name: zenoss-hipchat
+  version: "0.2.0"
+
+source:
+  fn: zenoss-hipchat-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zenoss-hipchat/zenoss-hipchat-0.2.0.tar.gz
+  md5: d45682747f6c0a39a8c4e541697869f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zenoss-hipchat = zenoss-hipchat:main
+    #
+    # Would create an entry point called zenoss-hipchat that calls zenoss-hipchat.main()
+
+    - zenoss-hipchat = zenoss_hipchat.command:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - zenoss_hipchat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - zenoss-hipchat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/carsongee/zenoss-hipchat
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Command suitable in use for Zenoss notification commands for sending events to hipchat.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: linkuxit-portafolio
+  version: "0.14"
+
+source:
+  fn: linkuxit-portafolio-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/l/linkuxit-portafolio/linkuxit-portafolio-0.14.tar.gz
+  md5: 8ac8bc8f9d91a11d7f7331a649f91230
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - linkuxit-portafolio = linkuxit-portafolio:main
+    #
+    # Would create an entry point called linkuxit-portafolio that calls linkuxit-portafolio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-filer
+    - djangocms_text_ckeditor ==2.1.2
+    - django-modeltranslation >=0.7
+
+  run:
+    - python
+    - django-filer
+    - djangocms_text_ckeditor ==2.1.2
+    - django-modeltranslation >=0.7
+
+test:
+  # Python imports
+  imports:
+    - linkuxit
+    - linkuxit.portafolio
+    - linkuxit.portafolio.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD License
+  summary: 'Portafolio with Team Addon for Aldryn'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

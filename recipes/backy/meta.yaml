@@ -1,0 +1,70 @@
+package:
+  name: backy
+  version: "2.0b1"
+
+source:
+  fn: backy-2.0b1.zip
+  url: https://pypi.python.org/packages/source/b/backy/backy-2.0b1.zip
+  md5: f9d46260af796d26209c3f24da2f195f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - backy = backy:main
+    #
+    # Would create an entry point called backy that calls backy.main()
+
+    - backy=backy.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - prettytable
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - prettytable
+
+test:
+  # Python imports
+  imports:
+    - backy
+    - backy.sources
+    - backy.sources.ceph
+    - backy.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - backy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ctheune/backy/
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Backup and restore for block devices.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

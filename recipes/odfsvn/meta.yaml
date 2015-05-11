@@ -1,0 +1,63 @@
+package:
+  name: odfsvn
+  version: "1.0a1"
+
+source:
+  fn: odfsvn-1.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/o/odfsvn/odfsvn-1.0a1.tar.gz
+  md5: c53852e7c9a3ce62a03721fdb5f93d78
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - odfsvn = odfsvn:main
+    #
+    # Would create an entry point called odfsvn that calls odfsvn.main()
+
+    - odfsvn = odfsvn.scripts.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - odfsvn
+    - odfsvn.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - odfsvn --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sourceforge.net/projects/odfsvn/
+  license: GNU General Public License (GPL)
+  summary: 'Manage ODF files in SubVersioN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

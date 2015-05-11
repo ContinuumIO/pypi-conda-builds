@@ -1,0 +1,78 @@
+package:
+  name: geobricksdistribution
+  version: "0.1.15"
+
+source:
+  fn: GeobricksDistribution-0.1.15.tar.gz
+  url: https://pypi.python.org/packages/source/G/GeobricksDistribution/GeobricksDistribution-0.1.15.tar.gz
+  md5: 9d530d55c2bfbbe8b2a952c822cfaa8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - geobricksdistribution = geobricksdistribution:main
+    #
+    # Would create an entry point called geobricksdistribution that calls geobricksdistribution.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - flask
+    - flask-cors
+    - geobrickscommon
+    - geobricksspatialquery
+    - geobricksgisraster
+    - geobricksgisvector
+
+  run:
+    - python
+    - watchdog
+    - flask
+    - flask-cors
+    - geobrickscommon
+    - geobricksspatialquery
+    - geobricksgisraster
+    - geobricksgisvector
+
+test:
+  # Python imports
+  imports:
+    - geobricks_distribution
+    - geobricks_distribution.config
+    - geobricks_distribution.core
+    - geobricks_distribution.rest
+    - geobricksdistribution
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/GeobricksDistribution/
+  license: LICENSE.txt
+  summary: 'Geobricks geospatial data distribution library.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

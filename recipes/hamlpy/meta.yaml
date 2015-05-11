@@ -1,0 +1,71 @@
+package:
+  name: hamlpy
+  version: "0.82.2"
+
+source:
+  fn: hamlpy-0.82.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hamlpy/hamlpy-0.82.2.tar.gz
+  md5: 92c911ab6cabda9036f0d9862af6ed21
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hamlpy = hamlpy:main
+    #
+    # Would create an entry point called hamlpy that calls hamlpy.main()
+
+    - hamlpy = hamlpy.hamlpy:convert_files
+    - hamlpy-watcher = hamlpy.hamlpy_watcher:watch_folder
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - pygments
+    - markdown
+
+  run:
+    - python
+    - django
+    - pygments
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - hamlpy
+    - hamlpy.template
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hamlpy --help
+    - hamlpy-watcher --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jessemiller/HamlPy
+  license: MIT
+  summary: 'HAML like syntax for Django templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

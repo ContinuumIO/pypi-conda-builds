@@ -1,0 +1,92 @@
+package:
+  name: brasil.gov.facetada
+  version: "1.0a1"
+
+source:
+  fn: brasil.gov.facetada-1.0a1.zip
+  url: https://pypi.python.org/packages/source/b/brasil.gov.facetada/brasil.gov.facetada-1.0a1.zip
+  md5: 1e734bac1ef1ce9720c604ddcdff3492
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - brasil.gov.facetada = brasil.gov.facetada:main
+    #
+    # Would create an entry point called brasil.gov.facetada that calls brasil.gov.facetada.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - eea.facetednavigation
+    - five.pt
+    - plone.api
+    - plone.app.contenttypes
+    - plone.app.upgrade
+    - products.cmfplone >=4.3
+    - products.genericsetup
+    - setuptools
+    - zope.i18nmessageid
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - eea.facetednavigation
+    - five.pt
+    - plone.api
+    - plone.app.contenttypes
+    - plone.app.upgrade
+    - products.cmfplone >=4.3
+    - products.genericsetup
+    - setuptools
+    - zope.i18nmessageid
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - brasil
+    - brasil.gov
+    - brasil.gov.facetada
+    - brasil.gov.facetada.browser
+    - brasil.gov.facetada.browser.faceted
+    - brasil.gov.facetada.browser.scaleimage
+    - brasil.gov.facetada.faceted
+    - brasil.gov.facetada.faceted.widgets
+    - brasil.gov.facetada.faceted.widgets.banner
+    - brasil.gov.facetada.faceted.widgets.ordenar
+    - brasil.gov.facetada.tests
+    - brasil.gov.facetada.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plonegovbr/brasil.gov.facetada
+  license: GNU General Public License v2 (GPLv2)
+  summary: u'Suporte \xe0 busca multifacetada para Portal Padr\xe3o'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

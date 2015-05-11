@@ -1,0 +1,64 @@
+package:
+  name: lanyon
+  version: "6"
+
+source:
+  fn: lanyon-6.tar.gz
+  url: https://pypi.python.org/packages/source/l/lanyon/lanyon-6.tar.gz
+  md5: 3c8b72677669e7a01b1452923fb89c65
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lanyon = lanyon:main
+    #
+    # Would create an entry point called lanyon that calls lanyon.main()
+
+    - lanyon = lanyon.app:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+
+  run:
+    - python
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - lanyon
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lanyon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/arthurk/lanyon/
+  license: BSD
+  summary: 'Static Site Generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

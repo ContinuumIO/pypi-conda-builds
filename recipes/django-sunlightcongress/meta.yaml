@@ -1,0 +1,65 @@
+package:
+  name: django-sunlightcongress
+  version: "0.1"
+
+source:
+  fn: django-sunlightcongress-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sunlightcongress/django-sunlightcongress-0.1.tar.gz
+  md5: 44590303abfe1e250a7ad8383d1a056c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sunlightcongress = django-sunlightcongress:main
+    #
+    # Would create an entry point called django-sunlightcongress that calls django-sunlightcongress.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sunlight ==1.1.5
+
+  run:
+    - python
+    - sunlight ==1.1.5
+
+test:
+  # Python imports
+  imports:
+    - sunlightcongress
+    - sunlightcongress.management
+    - sunlightcongress.management.commands
+    - sunlightcongress.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chuckharmston/django-sunlightcongress
+  license: MIT License
+  summary: 'A Django interface to the Sunlight Foundation Congress API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

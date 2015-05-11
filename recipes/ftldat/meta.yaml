@@ -1,0 +1,62 @@
+package:
+  name: ftldat
+  version: "r7-2-g3370"
+
+source:
+  fn: ftldat-r7-2-g3370.tar.gz
+  url: https://pypi.python.org/packages/source/f/ftldat/ftldat-r7-2-g3370.tar.gz
+  md5: b6d342a442e494d3ce83c6354142887e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftldat = ftldat:main
+    #
+    # Would create an entry point called ftldat that calls ftldat.main()
+
+    - ftldat = ftldat.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ftldat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ftldat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/bwesterb/ftldat/
+  license: UNKNOWN
+  summary: 'CLI tool to pack and unpack FTL .dat files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

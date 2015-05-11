@@ -1,0 +1,66 @@
+package:
+  name: django-saladoplayer
+  version: "0.3.6"
+
+source:
+  fn: django-saladoplayer-0.3.6.tgz
+  url: https://pypi.python.org/packages/source/d/django-saladoplayer/django-saladoplayer-0.3.6.tgz
+  md5: 38e070fd1e6432353a70ac0a650abbdb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-saladoplayer = django-saladoplayer:main
+    #
+    # Would create an entry point called django-saladoplayer that calls django-saladoplayer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-photologue >=2.5
+
+  run:
+    - python
+    - django-photologue >=2.5
+
+test:
+  # Python imports
+  imports:
+    - saladoplayer
+    - saladoplayer.management
+    - saladoplayer.management.commands
+    - saladoplayer.migrations
+    - saladoplayer.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/franckinux/django-saladoplayer
+  license: GNU General Public License (GPL)
+  summary: 'Django application for displaying spherical panoramas using SaladoPlayer flash viewer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

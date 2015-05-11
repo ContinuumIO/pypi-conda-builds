@@ -1,0 +1,62 @@
+package:
+  name: dbghelper
+  version: "0.3"
+
+source:
+  fn: dbghelper-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/dbghelper/dbghelper-0.3.tar.gz
+  md5: f352f884cd88c8d64082a9f10646bca4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dbghelper = dbghelper:main
+    #
+    # Would create an entry point called dbghelper that calls dbghelper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - winpdb
+
+  run:
+    - python
+    - winpdb
+
+test:
+  # Python imports
+  imports:
+    - dbghelper
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/davidfraser/dbghelper
+  license: BSD
+  summary: 'Cross-debugger inline debugging tracepoints for pdb/winpdb/pydevd/pycharm'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

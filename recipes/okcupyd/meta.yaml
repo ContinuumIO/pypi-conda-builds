@@ -1,0 +1,85 @@
+package:
+  name: okcupyd
+  version: "0.9.0"
+
+source:
+  fn: okcupyd-0.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/okcupyd/okcupyd-0.9.0.tar.gz
+  md5: e6835584a444705ec91910b5f0f8f96d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - okcupyd = okcupyd:main
+    #
+    # Would create an entry point called okcupyd that calls okcupyd.main()
+
+    - okcupyd=okcupyd:interactive
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - requests >=2.4.1
+    - simplejson
+    - sqlalchemy >=0.9.0
+    - ipython >=2.2.0
+    - wrapt >=1.10.0
+    - coloredlogs >=0.8
+    - invoke >=0.9
+    - six >=1.8.0
+
+  run:
+    - python
+    - lxml
+    - requests >=2.4.1
+    - simplejson
+    - sqlalchemy >=0.9.0
+    - ipython >=2.2.0
+    - wrapt >=1.10.0
+    - coloredlogs >=0.8
+    - invoke >=0.9
+    - six >=1.8.0
+
+test:
+  # Python imports
+  imports:
+    - okcupyd
+    - okcupyd.db
+    - okcupyd.db.model
+    - okcupyd.tasks
+    - okcupyd.util
+    - okcupyd_testing
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - okcupyd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/IvanMalison/okcupyd
+  license: MIT License
+  summary: 'A package for interacting with okcupid.com'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

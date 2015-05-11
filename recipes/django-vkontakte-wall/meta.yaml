@@ -1,0 +1,69 @@
+package:
+  name: django-vkontakte-wall
+  version: "0.7.3"
+
+source:
+  fn: django-vkontakte-wall-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-vkontakte-wall/django-vkontakte-wall-0.7.3.tar.gz
+  md5: 09b5d49519a1b729021064d91c331b0c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-vkontakte-wall = django-vkontakte-wall:main
+    #
+    # Would create an entry point called django-vkontakte-wall that calls django-vkontakte-wall.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-m2m-history
+    - django-vkontakte-api >=0.7.6
+    - django-vkontakte-users >=0.5.5
+    - django-vkontakte-groups >=0.3.8
+
+  run:
+    - python
+    - django-m2m-history
+    - django-vkontakte-api >=0.7.6
+    - django-vkontakte-users >=0.5.5
+    - django-vkontakte-groups >=0.3.8
+
+test:
+  # Python imports
+  imports:
+    - vkontakte_wall
+    - vkontakte_wall.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ramusus/django-vkontakte-wall
+  license: BSD License
+  summary: 'Django implementation for vkontakte API Wall'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

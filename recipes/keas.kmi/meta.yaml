@@ -1,0 +1,78 @@
+package:
+  name: keas.kmi
+  version: "3.0.0"
+
+source:
+  fn: keas.kmi-3.0.0.zip
+  url: https://pypi.python.org/packages/source/k/keas.kmi/keas.kmi-3.0.0.zip
+  md5: f5058499d6d2cf5f7c51a33d68257702
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - keas.kmi = keas.kmi:main
+    #
+    # Would create an entry point called keas.kmi that calls keas.kmi.main()
+
+    - testclient=keas.kmi.testclient:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pycrypto
+    - pyramid
+    - pyramid_zcml
+    - setuptools
+    - transaction
+    - zope.interface
+    - zope.schema
+
+  run:
+    - python
+    - setuptools
+    - pycrypto
+    - pyramid
+    - pyramid_zcml
+    - setuptools
+    - transaction
+    - zope.interface
+    - zope.schema
+
+test:
+  # Python imports
+  imports:
+    - keas
+    - keas.kmi
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - testclient --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/keas.kmi
+  license: Zope Public License
+  summary: 'A Key Management Infrastructure'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

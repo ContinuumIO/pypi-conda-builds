@@ -1,0 +1,66 @@
+package:
+  name: chef_hat
+  version: "0.2.0"
+
+source:
+  fn: chef_hat-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/chef_hat/chef_hat-0.2.0.tar.gz
+  md5: 6707d930174f775ba3a0ec80397eda15
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - chef_hat = chef_hat:main
+    #
+    # Would create an entry point called chef_hat that calls chef_hat.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rpi.gpio
+    - energenie
+    - w1thermsensor
+
+  run:
+    - python
+    - rpi.gpio
+    - energenie
+    - w1thermsensor
+
+test:
+  # Python imports
+  imports:
+    - chef_hat
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bennuttall/chef-hat
+  license: BSD License
+  summary: 'Sous vide cooking with the Raspberry Pi'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

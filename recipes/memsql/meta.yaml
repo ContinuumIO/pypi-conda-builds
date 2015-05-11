@@ -1,0 +1,72 @@
+package:
+  name: memsql
+  version: "2.14.4"
+
+source:
+  fn: memsql-2.14.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/memsql/memsql-2.14.4.tar.gz
+  md5: 95dc2254c363ec213dfaaf97da12644a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - memsql = memsql:main
+    #
+    # Would create an entry point called memsql that calls memsql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wraptor
+    - simplejson
+    - python-dateutil ==2.2
+    - six ==1.8.0
+    - mysql-python ==1.2.5
+
+  run:
+    - python
+    - wraptor
+    - simplejson
+    - python-dateutil ==2.2
+    - six ==1.8.0
+    - mysql-python ==1.2.5
+
+test:
+  # Python imports
+  imports:
+    - memsql
+    - memsql.common
+    - memsql.common.sql_step_queue
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/memsql/memsql-python
+  license: MIT License
+  summary: 'Useful utilities and plugins for MemSQL integration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

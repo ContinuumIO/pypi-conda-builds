@@ -1,0 +1,64 @@
+package:
+  name: figaro
+  version: "0.1"
+
+source:
+  fn: figaro-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/figaro/figaro-0.1.tar.gz
+  md5: 2b95082415e921c76a3b7e29bb4e9238
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - figaro = figaro:main
+    #
+    # Would create an entry point called figaro that calls figaro.main()
+
+    - figaro = figaro.main:entry_point
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - fig
+
+  run:
+    - python
+    - fig
+
+test:
+  # Python imports
+  imports:
+    - figaro
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - figaro --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pywizard.com/figaro/
+  license: Apache Software License
+  summary: 'Production cloud deployments of fig infrastructure with docker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

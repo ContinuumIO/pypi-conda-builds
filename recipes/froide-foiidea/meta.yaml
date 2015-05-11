@@ -1,0 +1,72 @@
+package:
+  name: froide-foiidea
+  version: "0.0.1"
+
+source:
+  fn: froide-foiidea-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/froide-foiidea/froide-foiidea-0.0.1.tar.gz
+  md5: 238d96ed821f71a98d8ea81260b5d69c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - froide-foiidea = froide-foiidea:main
+    #
+    # Would create an entry point called froide-foiidea that calls froide-foiidea.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - requests
+    - celery
+    - south
+
+  run:
+    - python
+    - django
+    - requests
+    - celery
+    - south
+
+test:
+  # Python imports
+  imports:
+    - foiidea
+    - foiidea.crawlers
+    - foiidea.management
+    - foiidea.management.commands
+    - foiidea.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/stefanw/froide-foiidea
+  license: BSD License
+  summary: 'Discovering FOI ideas in news articles'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

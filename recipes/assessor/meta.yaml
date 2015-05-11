@@ -1,0 +1,71 @@
+package:
+  name: assessor
+  version: "0.2.13"
+
+source:
+  fn: Assessor-0.2.13.tar.bz2
+  url: https://pypi.python.org/packages/source/A/Assessor/Assessor-0.2.13.tar.bz2
+  md5: 680b03c7c3a81fe5b317fa3facc30f77
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - assessor = assessor:main
+    #
+    # Would create an entry point called assessor that calls assessor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django
+    - uwsgi
+
+  run:
+    - python
+    - django
+    - uwsgi
+
+test:
+  # Python imports
+  imports:
+    - Assessor
+    - assessor
+    - tastypie
+    - tastypie.contrib
+    - tastypie.contrib.gis
+    - tastypie.management
+    - tastypie.management.commands
+    - tastypie.migrations
+    - tastypie.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.justinzane.com/
+  license: GNU Affero General Public License v3 or GNU General Public License v3 (GPLv3)
+  summary: 'Django Assessment App'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

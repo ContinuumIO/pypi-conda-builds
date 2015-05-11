@@ -1,0 +1,78 @@
+package:
+  name: jeeves-framework
+  version: "0.4.0"
+
+source:
+  fn: jeeves-framework-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/j/jeeves-framework/jeeves-framework-0.4.0.tar.gz
+  md5: 086c88db24d88ed843d1635d685298b5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jeeves-framework = jeeves-framework:main
+    #
+    # Would create an entry point called jeeves-framework that calls jeeves-framework.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted
+    - requests
+
+  run:
+    - python
+    - twisted
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - jeeves
+    - jeeves.bin
+    - jeeves.conf
+    - jeeves.conf.project_template
+    - jeeves.conf.project_template.plugins
+    - jeeves.contrib
+    - jeeves.contrib.plugins
+    - jeeves.core
+    - jeeves.core.cache
+    - jeeves.core.cache.backends
+    - jeeves.core.handlers
+    - jeeves.core.management
+    - jeeves.core.plugins
+    - jeeves.utils
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://procrastinatingdev.com/jeeves/
+  license: BSD License
+  summary: 'A Python IRC Bot Framework. Easily create IRC bots with a single command'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

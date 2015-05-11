@@ -1,0 +1,66 @@
+package:
+  name: django-metaredirect
+  version: "0.1.3"
+
+source:
+  fn: django-metaredirect-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-metaredirect/django-metaredirect-0.1.3.tar.gz
+  md5: 391eac16caadbe4169378f88a16f3610
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-metaredirect = django-metaredirect:main
+    #
+    # Would create an entry point called django-metaredirect that calls django-metaredirect.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - httpagentparser
+
+  run:
+    - python
+    - django
+    - httpagentparser
+
+test:
+  # Python imports
+  imports:
+    - metaredirect
+    - metaredirect.templatetags
+    - metaredirect.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/disqus/django-metaredirect/
+  license: Apache License 2.0
+  summary: 'META-tag and JavaScript based generic redirect views for maintaining HTTP referrers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

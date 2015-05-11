@@ -1,0 +1,70 @@
+package:
+  name: armstrong.apps.images
+  version: "1.1.4"
+
+source:
+  fn: armstrong.apps.images-1.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/armstrong.apps.images/armstrong.apps.images-1.1.4.tar.gz
+  md5: b238c3d7b5244a225121361b1eec5d45
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - armstrong.apps.images = armstrong.apps.images:main
+    #
+    # Would create an entry point called armstrong.apps.images that calls armstrong.apps.images.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.3,<=1.4.5
+    - armstrong.apps.content >=1.0.2,<2.0
+    - sorl-thumbnail ==11.05.2
+    - pil ==1.1.7
+
+  run:
+    - python
+    - django >=1.3,<=1.4.5
+    - armstrong.apps.content >=1.0.2,<2.0
+    - sorl-thumbnail ==11.05.2
+    - pil ==1.1.7
+
+test:
+  # Python imports
+  imports:
+    - armstrong.apps.images
+    - armstrong.apps.images.migrations
+    - armstrong.apps.images.tests
+    - armstrong.apps.images.tests.support
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/armstrong/armstrong.apps.images/
+  license: Apache Software License
+  summary: 'This packages provides images for the Armstrong CMS'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

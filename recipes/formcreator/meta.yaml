@@ -1,0 +1,78 @@
+package:
+  name: formcreator
+  version: "0.1.1"
+
+source:
+  fn: formcreator-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/formcreator/formcreator-0.1.1.tar.gz
+  md5: 70aaeb52fc65f44291695ac286d364f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - formcreator = formcreator:main
+    #
+    # Would create an entry point called formcreator that calls formcreator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.1
+    - flask-login >=0.2.7
+    - sqlalchemy >=0.8.2
+    - flask-sqlalchemy >=1.0
+    - wtforms >=1.0.3
+    - markdown >=2.2.1
+    - ordereddict >=1.1
+
+  run:
+    - python
+    - flask >=0.10.1
+    - flask-login >=0.2.7
+    - sqlalchemy >=0.8.2
+    - flask-sqlalchemy >=1.0
+    - wtforms >=1.0.3
+    - markdown >=2.2.1
+    - ordereddict >=1.1
+
+test:
+  # Python imports
+  imports:
+    - formcreator
+    - formcreator.blocks
+    - formcreator.fields
+    - formcreator.static
+    - formcreator.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/aivuk/formcreator
+  license: BSD 2-Clause
+  summary: 'Create web forms for command line programs or python functions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

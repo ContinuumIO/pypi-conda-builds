@@ -1,0 +1,65 @@
+package:
+  name: flyingrat
+  version: "0.1.0"
+
+source:
+  fn: flyingrat-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/flyingrat/flyingrat-0.1.0.tar.gz
+  md5: b85a2d1d8a62d9e68e4cdf6656c145f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flyingrat = flyingrat:main
+    #
+    # Would create an entry point called flyingrat that calls flyingrat.main()
+
+    - flyingrat=flyingrat.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click
+
+  run:
+    - python
+    - setuptools
+    - click
+
+test:
+  # Python imports
+  imports:
+    - flyingrat
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flyingrat --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/roam/flyingrat/
+  license: BSD License
+  summary: 'Simple mail server for local development'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

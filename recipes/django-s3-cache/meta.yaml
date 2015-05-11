@@ -1,0 +1,66 @@
+package:
+  name: django-s3-cache
+  version: "1.4.2"
+
+source:
+  fn: django-s3-cache-1.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-s3-cache/django-s3-cache-1.4.2.tar.gz
+  md5: 3a731275a95b920e23d7bc5b1eea566e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-s3-cache = django-s3-cache:main
+    #
+    # Would create an entry point called django-s3-cache that calls django-s3-cache.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto
+    - django-storages >=1.1.8
+    - django
+
+  run:
+    - python
+    - boto
+    - django-storages >=1.1.8
+    - django
+
+test:
+  # Python imports
+  imports:
+    - s3cache
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/atodorov/django-s3-cache
+  license: BSD License
+  summary: 'Amazon Simple Storage Service (S3) cache backend for Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

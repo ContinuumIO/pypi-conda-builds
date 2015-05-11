@@ -1,0 +1,79 @@
+package:
+  name: jsonstore
+  version: "1.3.1"
+
+source:
+  fn: jsonstore-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/j/jsonstore/jsonstore-1.3.1.tar.gz
+  md5: 75312e3431565a834b6075fa088e5afd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jsonstore = jsonstore:main
+    #
+    # Would create an entry point called jsonstore that calls jsonstore.main()
+
+    - jsonstore=jsonstore.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - simplejson
+    - uuid
+    - requests >=0.12.1
+    - iso8601
+    - docopt >=0.4.1
+    - sqlalchemy
+    - werkzeug
+
+  run:
+    - python
+    - setuptools
+    - webob
+    - simplejson
+    - uuid
+    - requests >=0.12.1
+    - iso8601
+    - docopt >=0.4.1
+    - sqlalchemy
+    - werkzeug
+
+test:
+  # Python imports
+  imports:
+    - jsonstore
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jsonstore --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.dealmeida.net/jsonstore
+  license: MIT
+  summary: 'JSONStore is a lightweight database for JSON documents exposed through HTTP.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,80 @@
+package:
+  name: giotto
+  version: "0.10.5"
+
+source:
+  fn: giotto-0.10.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/giotto/giotto-0.10.5.tar.gz
+  md5: 971b6a1673915628396fa7e662d06469
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - giotto = giotto:main
+    #
+    # Would create an entry point called giotto that calls giotto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob ==1.2.3
+    - six ==1.2.0
+    - irc ==5.0.1
+    - jinja2 ==2.6
+    - py-bcrypt ==0.2
+    - python-mimeparse ==0.1.4
+    - sqlalchemy ==0.7.9
+
+  run:
+    - python
+    - webob ==1.2.3
+    - six ==1.2.0
+    - irc ==5.0.1
+    - jinja2 ==2.6
+    - py-bcrypt ==0.2
+    - python-mimeparse ==0.1.4
+    - sqlalchemy ==0.7.9
+
+test:
+  # Python imports
+  imports:
+    - giotto
+    - giotto.contrib
+    - giotto.contrib.auth
+    - giotto.contrib.static
+    - giotto.controllers
+    - giotto.programs
+    - giotto.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/priestc/giotto
+  license: BSD License
+  summary: 'Web development simplified. An MVC framework supporting Python 3.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

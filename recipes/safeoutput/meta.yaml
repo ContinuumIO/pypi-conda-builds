@@ -1,0 +1,60 @@
+package:
+  name: safeoutput
+  version: "0.2"
+
+source:
+  fn: safeoutput-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/safeoutput/safeoutput-0.2.tar.gz
+  md5: ec402cbdcecf98f28a68cbbbb5d19cde
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - safeoutput = safeoutput:main
+    #
+    # Would create an entry point called safeoutput that calls safeoutput.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - safeoutput
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/andrewguy9/safeoutput
+  license: MIT
+  summary: 'Tool to facilitate console script output redirection. When scripts run, often they have an output file option. If no output option is specified, its common to write to stdout. Its common to use tempfiles as output, and then rename the tempfile to the output name as the last step of the program so that the flip of output is atomic and partial/truncated/corrupt output is not confused as successful output. This is especially true when dealing with make, as exiting with error will stop make, but subsequent runs will assume that partial output files left in the workspace are complete.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

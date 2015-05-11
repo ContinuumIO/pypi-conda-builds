@@ -1,0 +1,69 @@
+package:
+  name: mamba
+  version: "0.8.4"
+
+source:
+  fn: mamba-0.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mamba/mamba-0.8.4.tar.gz
+  md5: f67ecd34a28d30513f444e95bb544489
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mamba = mamba:main
+    #
+    # Would create an entry point called mamba that calls mamba.main()
+
+    - mamba = mamba.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - clint ==0.3.1
+    - coverage ==3.7.1
+    - watchdog ==0.8.1
+
+  run:
+    - python
+    - clint ==0.3.1
+    - coverage ==3.7.1
+    - watchdog ==0.8.1
+
+test:
+  # Python imports
+  imports:
+    - mamba
+    - mamba.infrastructure
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mamba --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://nestorsalceda.github.io/mamba
+  license: MIT License
+  summary: 'The definitive testing tool for Python. Born under the banner of Behavior Driven Development.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

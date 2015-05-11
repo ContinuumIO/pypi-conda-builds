@@ -1,0 +1,86 @@
+package:
+  name: esteele.manager
+  version: "1.1"
+
+source:
+  fn: esteele.manager-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/esteele.manager/esteele.manager-1.1.tar.gz
+  md5: 16a664380217732d51b6cac5b9dbeb27
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - esteele.manager = esteele.manager:main
+    #
+    # Would create an entry point called esteele.manager that calls esteele.manager.main()
+
+    - manage = esteele.manager.manage:manage
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - argh
+    - gitpython >=0.3
+    - configparser
+    - argcomplete
+    - progress
+    - pygithub
+    - keyring
+    - zest.releaser
+    - docutils
+    - launchpadlib
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - argh
+    - gitpython >=0.3
+    - configparser
+    - argcomplete
+    - progress
+    - pygithub
+    - keyring
+    - zest.releaser
+    - docutils
+    - launchpadlib
+
+test:
+  # Python imports
+  imports:
+    - esteele
+    - esteele.manager
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - manage --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/plone/esteele.manager
+  license: GPL
+  summary: 'Plone release management utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

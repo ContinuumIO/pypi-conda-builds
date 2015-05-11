@@ -1,0 +1,62 @@
+package:
+  name: django-remplacer
+  version: "0.1.1"
+
+source:
+  fn: django-remplacer-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-remplacer/django-remplacer-0.1.1.tar.gz
+  md5: e8d6e86be4b384a2d567e2f70c7da0b8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-remplacer = django-remplacer:main
+    #
+    # Would create an entry point called django-remplacer that calls django-remplacer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - remplacer
+    - remplacer.management
+    - remplacer.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/tomatohater/django-remplacer
+  license: BSD License
+  summary: 'Easy search and replace in database fields via Django model introspection.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

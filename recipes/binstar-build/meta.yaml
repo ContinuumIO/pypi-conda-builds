@@ -1,0 +1,79 @@
+package:
+  name: binstar-build
+  version: "0.10.5"
+
+source:
+  fn: binstar-build-0.10.5.tar.gz
+  url: https://pypi.python.org/packages/source/b/binstar-build/binstar-build-0.10.5.tar.gz
+  md5: 4a775ad789341c865effb82b1a45462e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - binstar-build = binstar-build:main
+    #
+    # Would create an entry point called binstar-build that calls binstar-build.main()
+
+    - binstar-build = binstar_build_client.scripts.build:main
+    - conda-clean-build-dir = binstar_build_client.scripts.conda_clean_build_dir:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - binstar
+    - jinja2
+    - psutil
+
+  run:
+    - python
+    - binstar
+    - jinja2
+    - psutil
+
+test:
+  # Python imports
+  imports:
+    - binstar_build_client
+    - binstar_build_client.commands
+    - binstar_build_client.mixins
+    - binstar_build_client.scripts
+    - binstar_build_client.tests
+    - binstar_build_client.utils
+    - binstar_build_client.utils.tests
+    - binstar_build_client.worker
+    - binstar_build_client.worker.tests
+    - binstar_build_client.worker.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - binstar-build --help
+    - conda-clean-build-dir --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Binstar/binstar_client
+  license: UNKNOWN
+  summary: 'UNKNOWN'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

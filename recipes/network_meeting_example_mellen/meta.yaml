@@ -1,0 +1,63 @@
+package:
+  name: network_meeting_example_mellen
+  version: "2.0.501"
+
+source:
+  fn: network_meeting_example_mellen-2.0.501.tar.gz
+  url: https://pypi.python.org/packages/source/n/network_meeting_example_mellen/network_meeting_example_mellen-2.0.501.tar.gz
+  md5: 7e3f6c24fa4ea0d5d277e0c9fa10cc9a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - network_meeting_example_mellen = network_meeting_example_mellen:main
+    #
+    # Would create an entry point called network_meeting_example_mellen that calls network_meeting_example_mellen.main()
+
+    - rogers = rogers.neighborhood:smain
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - network_meeting_example_mellen
+    - rogers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rogers --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: tbd
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'this is a short de'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

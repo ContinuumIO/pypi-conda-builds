@@ -1,0 +1,72 @@
+package:
+  name: digimat.gapi
+  version: "0.1.14"
+
+source:
+  fn: digimat.gapi-0.1.14.zip
+  url: https://pypi.python.org/packages/source/d/digimat.gapi/digimat.gapi-0.1.14.zip
+  md5: ea0d94b6d719318b8f350bbd77580e4d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - digimat.gapi = digimat.gapi:main
+    #
+    # Would create an entry point called digimat.gapi that calls digimat.gapi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - gspread
+    - requests
+    - strict_rfc3339
+    - httplib2
+    - google-api-python-client
+    - setuptools
+
+  run:
+    - python
+    - gspread
+    - requests
+    - strict_rfc3339
+    - httplib2
+    - google-api-python-client
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - digimat
+    - digimat.gapi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: PSF
+  summary: 'Digimat Google API tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,69 @@
+package:
+  name: djeese-fs
+  version: "0.1.20"
+
+source:
+  fn: djeese-fs-0.1.20.tar.gz
+  url: https://pypi.python.org/packages/source/d/djeese-fs/djeese-fs-0.1.20.tar.gz
+  md5: bae0ece2974a732ccee1959dc0b6d118
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djeese-fs = djeese-fs:main
+    #
+    # Would create an entry point called djeese-fs that calls djeese-fs.main()
+
+    - djeesefs=fs.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - certifi >=0.0.8
+    - chardet >=1.0.1
+
+  run:
+    - python
+    - setuptools
+    - argparse >=1.2.1
+    - certifi >=0.0.8
+    - chardet >=1.0.1
+
+test:
+  # Python imports
+  imports:
+    - fs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - djeesefs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/aldryncore/djeese-fs
+  license: BSD
+  summary: 'A twisted based daemon file system.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

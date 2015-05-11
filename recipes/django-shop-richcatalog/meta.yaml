@@ -1,0 +1,73 @@
+package:
+  name: django-shop-richcatalog
+  version: "1.0.0"
+
+source:
+  fn: django-shop-richcatalog-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-shop-richcatalog/django-shop-richcatalog-1.0.0.tar.gz
+  md5: 15957460f44a9110f36581bd6d4f0bb5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-shop-richcatalog = django-shop-richcatalog:main
+    #
+    # Would create an entry point called django-shop-richcatalog that calls django-shop-richcatalog.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - django-shop >=0.2.0
+    - django-cms
+    - django-shop-richproduct
+    - django-mptt
+    - image
+
+  run:
+    - python
+    - django
+    - django-shop >=0.2.0
+    - django-cms
+    - django-shop-richproduct
+    - django-mptt
+    - image
+
+test:
+  # Python imports
+  imports:
+    - shop_richcatalog
+    - shop_richcatalog.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: 'Rich catalog functionality for django shop.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

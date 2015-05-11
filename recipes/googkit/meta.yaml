@@ -1,0 +1,76 @@
+package:
+  name: googkit
+  version: "0.2.0"
+
+source:
+  fn: googkit-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/googkit/googkit-0.2.0.tar.gz
+  md5: 29fd4068b5819e547c10d8a24edee6de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - googkit = googkit:main
+    #
+    # Would create an entry point called googkit that calls googkit.main()
+
+    - googkit=googkit:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - closure_linter
+
+  run:
+    - python
+    - closure_linter
+
+test:
+  # Python imports
+  imports:
+    - googkit
+    - googkit/commands
+    - googkit/compat
+    - googkit/compat/configparser
+    - googkit/compat/unittest
+    - googkit/compat/urllib
+    - googkit/compat/urllib/request
+    - googkit/lib
+    - googkit/plugins
+    - googkit_data
+    - googkit_data/template
+    - googkit_data/template/development
+    - googkit_data/template/development/js_dev
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - googkit --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/googkit/googkit
+  license: MIT License
+  summary: 'Easier way to develop your web app with Google Closure Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,74 @@
+package:
+  name: lazr.batchnavigator
+  version: "1.2.11"
+
+source:
+  fn: lazr.batchnavigator-1.2.11.tar.gz
+  url: https://pypi.python.org/packages/source/l/lazr.batchnavigator/lazr.batchnavigator-1.2.11.tar.gz
+  md5: 74eb49503ed5de8ebcff77168cf6ef57
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lazr.batchnavigator = lazr.batchnavigator:main
+    #
+    # Would create an entry point called lazr.batchnavigator that calls lazr.batchnavigator.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - fixtures
+    - setuptools
+    - testtools
+    - zope.cachedescriptors
+    - zope.interface
+    - zope.publisher
+
+  run:
+    - python
+    - fixtures
+    - setuptools
+    - testtools
+    - zope.cachedescriptors
+    - zope.interface
+    - zope.publisher
+
+test:
+  # Python imports
+  imports:
+    - lazr
+    - lazr.batchnavigator
+    - lazr.batchnavigator.tests
+    - lazr.batchnavigator.z3batching
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/lazr.batchnavigator
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A helper to navigate batched results in a web page.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

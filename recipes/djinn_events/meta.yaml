@@ -1,0 +1,71 @@
+package:
+  name: djinn_events
+  version: "1.0.7"
+
+source:
+  fn: djinn_events-1.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/djinn_events/djinn_events-1.0.7.tar.gz
+  md5: c78cbe2428ce5cdf840f80b907283050
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djinn_events = djinn_events:main
+    #
+    # Would create an entry point called djinn_events that calls djinn_events.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - pgintranet
+    - djinn_contenttypes >=1.4.0
+
+  run:
+    - python
+    - setuptools
+    - django
+    - pgintranet
+    - djinn_contenttypes >=1.4.0
+
+test:
+  # Python imports
+  imports:
+    - djinn_events
+    - djinn_events.forms
+    - djinn_events.management
+    - djinn_events.models
+    - djinn_events.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/PythonUnited/djinn_events
+  license: beer-ware
+  summary: 'Djinn Intranet Events'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

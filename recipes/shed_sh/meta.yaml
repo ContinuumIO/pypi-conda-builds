@@ -1,0 +1,64 @@
+package:
+  name: shed_sh
+  version: "1.0.0"
+
+source:
+  fn: shed_sh-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/shed_sh/shed_sh-1.0.0.tar.gz
+  md5: 71c6aed8d9b92f4ea78d07d8e78ec33d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shed_sh = shed_sh:main
+    #
+    # Would create an entry point called shed_sh that calls shed_sh.main()
+
+    - shed = shed:main
+    - bashed = shed:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - shed_sh
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - shed --help
+    - bashed --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mplewis/shed
+  license: MIT License
+  summary: 'Don\'t run "curl | sh" again. Use "curl | shed" to verify scripts before running.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

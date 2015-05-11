@@ -1,0 +1,68 @@
+package:
+  name: iac-protocol
+  version: "0.301"
+
+source:
+  fn: iac-protocol-0.301.tar.gz
+  url: https://pypi.python.org/packages/source/i/iac-protocol/iac-protocol-0.301.tar.gz
+  md5: 02cb4589b36674894735a5c3f1f5fe1a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iac-protocol = iac-protocol:main
+    #
+    # Would create an entry point called iac-protocol that calls iac-protocol.main()
+
+    - iacs=iac.server:main
+    - iaci=iac.interpreter:main
+    - iacmodify=iac.modify_interfaces:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - iac
+    - iac.app
+    - iac.app.libreoffice
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - iacs --help
+    - iaci --help
+    - iacmodify --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Risto-Stevcev/iac-protocol
+  license: BSD License
+  summary: 'An interface/protocol that provides inter-application communication and scripting.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

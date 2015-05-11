@@ -1,0 +1,66 @@
+package:
+  name: hand_evaluator
+  version: "0.0.1a"
+
+source:
+  fn: hand_evaluator-0.0.1a.tar.gz
+  url: https://pypi.python.org/packages/source/h/hand_evaluator/hand_evaluator-0.0.1a.tar.gz
+  md5: eb4ecc1a770cf3efd0ad1ecbecf4306e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hand_evaluator = hand_evaluator:main
+    #
+    # Would create an entry point called hand_evaluator that calls hand_evaluator.main()
+
+    - hand_evaluator = evaluator.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cliff
+
+  run:
+    - python
+    - setuptools
+    - cliff
+
+test:
+  # Python imports
+  imports:
+    - evaluator
+    - hand_evaluator
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hand_evaluator --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: git.darkhorse.com/jbeedy/hand_evaluator
+  license: Apache Software License
+  summary: 'hand_evaluator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

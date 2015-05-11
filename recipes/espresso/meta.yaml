@@ -1,0 +1,74 @@
+package:
+  name: espresso
+  version: "1.0.19"
+
+source:
+  fn: espresso-1.0.19.tar.gz
+  url: https://pypi.python.org/packages/source/e/espresso/espresso-1.0.19.tar.gz
+  md5: 4ea6329abf3a4ba3792c634a1f7f32f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - espresso = espresso:main
+    #
+    # Would create an entry point called espresso that calls espresso.main()
+
+    - setup-espresso = espresso.cli:setup
+    - espresso = espresso.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - configparser >=3.2
+    - argparse
+    - distribute
+    - fstab
+    - sh
+
+  run:
+    - python
+    - configparser >=3.2
+    - argparse
+    - distribute
+    - fstab
+    - sh
+
+test:
+  # Python imports
+  imports:
+    - espresso
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - setup-espresso --help
+    - espresso --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/jorgeecardona/espresso
+  license: BSD License
+  summary: 'Manage the configuration of your servers easily.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

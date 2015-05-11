@@ -1,0 +1,87 @@
+package:
+  name: goodjob
+  version: "0.0.0"
+
+source:
+  fn: Goodjob-0.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/G/Goodjob/Goodjob-0.0.0.tar.gz
+  md5: 3a172a5b1e99f1fb5e0c9a7d9a6ddc4e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - goodjob = goodjob:main
+    #
+    # Would create an entry point called goodjob that calls goodjob.main()
+
+    - gj-api = goodjob.cli.api:main
+    - gj-executor = goodjob.cli.executor:main
+    - gj-notifier = goodjob.cli.notifier:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+    - celery ==3.1.17
+    - redis ==2.10.3
+    - pymongo ==2.7.2
+    - mongoengine ==0.9.0
+    - jsonpatch ==1.9
+    - resource >=0.1.8
+    - click ==4.0
+
+  run:
+    - python
+    - flask ==0.10.1
+    - celery ==3.1.17
+    - redis ==2.10.3
+    - pymongo ==2.7.2
+    - mongoengine ==0.9.0
+    - jsonpatch ==1.9
+    - resource >=0.1.8
+    - click ==4.0
+
+test:
+  # Python imports
+  imports:
+    - goodjob
+    - goodjob.celery
+    - goodjob.cli
+    - goodjob.config
+    - goodjob.jobs
+    - goodjob.logs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gj-api --help
+    - gj-executor --help
+    - gj-notifier --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/RussellLuo/goodjob
+  license: MIT
+  summary: 'A service for executing asynchronous jobs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

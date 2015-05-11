@@ -1,0 +1,107 @@
+package:
+  name: ebdata
+  version: "1.2"
+
+source:
+  fn: ebdata-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/ebdata/ebdata-1.2.tar.gz
+  md5: b63e44221f004feb8f03babfb1b6d129
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ebdata = ebdata:main
+    #
+    # Would create an entry point called ebdata that calls ebdata.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3.1
+    - ebpub >=1.2
+    - lxml
+    - beautifulsoup
+    - chardet
+    - feedparser
+    - httplib2
+    - xlrd
+
+  run:
+    - python
+    - setuptools
+    - django >=1.3.1
+    - ebpub >=1.2
+    - lxml
+    - beautifulsoup
+    - chardet
+    - feedparser
+    - httplib2
+    - xlrd
+
+test:
+  # Python imports
+  imports:
+    - ebdata
+    - ebdata.blobs
+    - ebdata.blobs.migrations
+    - ebdata.geotagger
+    - ebdata.nlp
+    - ebdata.nlp.tests
+    - ebdata.parsing
+    - ebdata.retrieval
+    - ebdata.retrieval.scrapers
+    - ebdata.retrieval.updaterdaemon
+    - ebdata.scrapers
+    - ebdata.scrapers.general
+    - ebdata.scrapers.general.flickr
+    - ebdata.scrapers.general.georss
+    - ebdata.scrapers.general.meetup
+    - ebdata.scrapers.general.open311
+    - ebdata.scrapers.general.seeclickfix
+    - ebdata.scrapers.general.spreadsheet
+    - ebdata.scrapers.us
+    - ebdata.scrapers.us.ma
+    - ebdata.scrapers.us.ma.boston
+    - ebdata.scrapers.us.ma.boston.building_permits
+    - ebdata.scrapers.us.ma.boston.businesses
+    - ebdata.scrapers.us.ma.boston.events
+    - ebdata.scrapers.us.ma.boston.police_reports
+    - ebdata.scrapers.us.ma.boston.restaurants
+    - ebdata.templatemaker
+    - ebdata.templatemaker.tests
+    - ebdata.textmining
+    - ebdata.textmining.tests
+    - ebdata.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://openblockproject.org/docs
+  license: GNU General Public License (GPL)
+  summary: 'Data scraper infrastructure for OpenBlock (hyperlocal news for Django)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

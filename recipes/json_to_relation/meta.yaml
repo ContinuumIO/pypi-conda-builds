@@ -1,0 +1,86 @@
+package:
+  name: json_to_relation
+  version: "0.4"
+
+source:
+  fn: json_to_relation-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/j/json_to_relation/json_to_relation-0.4.tar.gz
+  md5: 4836102072840a147809a70bf7721ded
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - json_to_relation = json_to_relation:main
+    #
+    # Would create an entry point called json_to_relation that calls json_to_relation.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ijson >=1.0
+    - pymongo >=2.6.2
+    - pymysql_utils >=0.49
+    - configparser >=3.3.0r2
+    - argparse >=1.2.1
+    - unidecode >=0.04.14
+    - boto >=2.16.0
+    - python-daemon >=1.5.5
+    - mongomock >=1.0.1
+    - sentinels >=0.0.6
+    - nose >=1.0
+    - python-dateutil >=2.2
+
+  run:
+    - python
+    - ijson >=1.0
+    - pymongo >=2.6.2
+    - pymysql_utils >=0.49
+    - configparser >=3.3.0r2
+    - argparse >=1.2.1
+    - unidecode >=0.04.14
+    - boto >=2.16.0
+    - python-daemon >=1.5.5
+    - mongomock >=1.0.1
+    - sentinels >=0.0.6
+    - nose >=1.0
+    - python-dateutil >=2.2
+
+test:
+  # Python imports
+  imports:
+    - json_to_relation
+    - json_to_relation.test
+    - scripts
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paepcke/json_to_relation
+  license: BSD
+  summary: 'Converts file with multiple JSON objects to one relational table.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

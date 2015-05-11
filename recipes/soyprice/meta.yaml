@@ -1,0 +1,75 @@
+package:
+  name: soyprice
+  version: "0.0.2"
+
+source:
+  fn: soyprice-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/soyprice/soyprice-0.0.2.tar.gz
+  md5: 65b3b0ef3fc181e9307d192239eabcf7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - soyprice = soyprice:main
+    #
+    # Would create an entry point called soyprice that calls soyprice.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy ==1.8.0
+    - requests ==2.5.0
+    - beautifulsoup4 ==4.3.2
+    - twython ==3.2.0
+    - pillow ==2.6.1
+    - matplotlib ==1.4.2
+    - translate ==0.0.6
+
+  run:
+    - python
+    - numpy ==1.8.0
+    - requests ==2.5.0
+    - beautifulsoup4 ==4.3.2
+    - twython ==3.2.0
+    - pillow ==2.6.1
+    - matplotlib ==1.4.2
+    - translate ==0.0.6
+
+test:
+  # Python imports
+  imports:
+    - soyprice
+    - soyprice.model
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/limiear/soyprice
+  license: GNU/GPLv3
+  summary: 'A python library to show the soy price in a twitter timeline.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,85 @@
+package:
+  name: eke.publications
+  version: "1.1.13"
+
+source:
+  fn: eke.publications-1.1.13.zip
+  url: https://pypi.python.org/packages/source/e/eke.publications/eke.publications-1.1.13.zip
+  md5: 351e87419dda0d750d9a09859f2c5d88
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eke.publications = eke.publications:main
+    #
+    # Would create an entry point called eke.publications that calls eke.publications.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - collective.monkeypatcher
+    - eea.facetednavigation
+    - z3c.autoinclude
+    - zope.globalrequest
+    - biopython
+    - plone.api
+    - eke.site
+    - eke.knowledge
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - products.cmfplone
+    - collective.monkeypatcher
+    - eea.facetednavigation
+    - z3c.autoinclude
+    - zope.globalrequest
+    - biopython
+    - plone.api
+    - eke.site
+    - eke.knowledge
+
+test:
+  # Python imports
+  imports:
+    - eke
+    - eke.publications
+    - eke.publications.browser
+    - eke.publications.content
+    - eke.publications.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/EDRN/eke.publications
+  license: Apache Software License
+  summary: 'Publications Management for the EDRN Knowledge Environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

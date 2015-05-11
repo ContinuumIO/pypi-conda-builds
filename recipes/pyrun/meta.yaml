@@ -1,0 +1,66 @@
+package:
+  name: pyrun
+  version: "0.2.1a.dev"
+
+source:
+  fn: pyrun-0.2.1a.dev.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyrun/pyrun-0.2.1a.dev.tar.gz
+  md5: 086449d65bf06b8187ff211b4086d307
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyrun = pyrun:main
+    #
+    # Would create an entry point called pyrun that calls pyrun.main()
+
+    - pyrun = pyrun:runex
+    - pyrunscripts = pyrunscripts:run
+    - eggtool = eggtool:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pyrun
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pyrun --help
+    - pyrunscripts --help
+    - eggtool --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://trac.wiretooth.com/public/wiki/pyrun
+  license: MIT License
+  summary: 'A convenient way to run python modules, packages and scripts with a dynamically discovered sys.path. Particularly useful when you want to make use of packages without installing them first, or to circumvent bootstrapping issues with complicated collections of python software.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

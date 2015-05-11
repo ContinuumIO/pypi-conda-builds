@@ -1,0 +1,67 @@
+package:
+  name: asv_txt
+  version: "dev-20121101-01"
+
+source:
+  fn: asv_txt-dev-20121101-01.tar.gz
+  url: https://pypi.python.org/packages/source/a/asv_txt/asv_txt-dev-20121101-01.tar.gz
+  md5: ffcfb25b662691e229e7f004bde9cf88
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - asv_txt = asv_txt:main
+    #
+    # Would create an entry point called asv_txt that calls asv_txt.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - asv_utils >=dev-20121101-01
+    - asv_imgs >=dev-20121101-01
+    - creoleparser >=0.7.3
+
+  run:
+    - python
+    - asv_utils >=dev-20121101-01
+    - asv_imgs >=dev-20121101-01
+    - creoleparser >=0.7.3
+
+test:
+  # Python imports
+  imports:
+    - asv_txt
+    - asv_txt.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/xenolog/asv_txt/wiki/Home
+  license: GPL
+  summary: '\nThis module helps you for attaching text fields\nto any django models trought ContentType.\nIn this fields You may use Creole wiki markup and some \nadditional macroses, as <<img NNN>> <<yt key>>\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

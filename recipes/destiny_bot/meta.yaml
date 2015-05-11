@@ -1,0 +1,70 @@
+package:
+  name: destiny_bot
+  version: "0.0.17"
+
+source:
+  fn: destiny_bot-0.0.17.tar.gz
+  url: https://pypi.python.org/packages/source/d/destiny_bot/destiny_bot-0.0.17.tar.gz
+  md5: af411cdcf038beadeac6eb10f373d3c0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - destiny_bot = destiny_bot:main
+    #
+    # Would create an entry point called destiny_bot that calls destiny_bot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.2
+    - requests ==2.2.1
+    - helga
+    - pytz
+
+  run:
+    - python
+    - setuptools
+    - beautifulsoup4 ==4.3.2
+    - requests ==2.2.1
+    - helga
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - destiny_bot
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: UNKNOWN
+  summary: 'Set of commands that scrape destinytracker.com for info.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

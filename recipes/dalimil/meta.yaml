@@ -1,0 +1,65 @@
+package:
+  name: dalimil
+  version: "1.1"
+
+source:
+  fn: dalimil-1.1.zip
+  url: https://pypi.python.org/packages/source/d/dalimil/dalimil-1.1.zip
+  md5: d4bc7a4ee8e8a0956b7e6d080e8422fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dalimil = dalimil:main
+    #
+    # Would create an entry point called dalimil that calls dalimil.main()
+
+    - dalimil=dalimil.dalimil:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - dalimil
+    - dalimil.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dalimil --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/vlcinsky/dalimil
+  license: BSD License
+  summary: 'Command line tool for organizing files into time related containers (directories or archives)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

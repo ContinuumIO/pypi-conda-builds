@@ -1,0 +1,66 @@
+package:
+  name: pyphant.fmf
+  version: "1.0b3"
+
+source:
+  fn: pyphant.fmf-1.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyphant.fmf/pyphant.fmf-1.0b3.tar.gz
+  md5: 2d1bf4c6328c9716f5aa67453ee60704
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyphant.fmf = pyphant.fmf:main
+    #
+    # Would create an entry point called pyphant.fmf that calls pyphant.fmf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyphant >=1.0b3
+    - wxpython
+
+  run:
+    - python
+    - setuptools
+    - pyphant >=1.0b3
+    - wxpython
+
+test:
+  # Python imports
+  imports:
+    - fmfile
+    - fmfile.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: BSD
+  summary: '\nPyphant Full Meta File Toolbox\nVisit http://pyphant.sourceforge.net for more information.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

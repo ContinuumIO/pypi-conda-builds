@@ -1,0 +1,64 @@
+package:
+  name: jmbo-competition
+  version: "0.1.8"
+
+source:
+  fn: jmbo-competition-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/j/jmbo-competition/jmbo-competition-0.1.8.tar.gz
+  md5: f791f3d4578ea005b1ff799bcba426cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jmbo-competition = jmbo-competition:main
+    #
+    # Would create an entry point called jmbo-competition that calls jmbo-competition.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jmbo-foundry >=1.0
+
+  run:
+    - python
+    - jmbo-foundry >=1.0
+
+test:
+  # Python imports
+  imports:
+    - competition
+    - competition.migrations
+    - competition.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/praekelt/jmbo-competition
+  license: BSD License
+  summary: 'Jmbo competition app.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

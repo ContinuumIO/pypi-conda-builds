@@ -1,0 +1,70 @@
+package:
+  name: infi.pkgmgr
+  version: "0.1.10"
+
+source:
+  fn: infi.pkgmgr-0.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/i/infi.pkgmgr/infi.pkgmgr-0.1.10.tar.gz
+  md5: 940007967e675d1fccc614c04143e912
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - infi.pkgmgr = infi.pkgmgr:main
+    #
+    # Would create an entry point called infi.pkgmgr that calls infi.pkgmgr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - infi.execute
+    - infi.pyutils
+    - infi.run_as_root
+    - munch
+    - setuptools
+
+  run:
+    - python
+    - infi.execute
+    - infi.pyutils
+    - infi.run_as_root
+    - munch
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - infi
+    - infi.pkgmgr
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Infinidat/infi.pkgmgr
+  license: Python Software Foundation License
+  summary: 'A simple wrapper for some Linux package managers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

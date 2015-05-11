@@ -1,0 +1,67 @@
+package:
+  name: defi_trainer
+  version: "1.1b"
+
+source:
+  fn: defi_trainer-1.1b.tar.gz
+  url: https://pypi.python.org/packages/source/d/defi_trainer/defi_trainer-1.1b.tar.gz
+  md5: f4d87ab59a949c1303f8006766d7c2fb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - defi_trainer = defi_trainer:main
+    #
+    # Would create an entry point called defi_trainer that calls defi_trainer.main()
+
+    - defi_trainer = defi_trainer:start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils >=0.3
+
+  run:
+    - python
+    - docutils >=0.3
+
+test:
+  # Python imports
+  imports:
+    - defi_trainer
+    - defi_trainer.parser
+    - defi_trainer.ui
+    - defi_trainer.ui.dialogs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - defi_trainer --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.stevenmohr.de/projects/defitrainer/
+  license: GPL v3
+  summary: 'DefiTrainer is a light-weight definition and fact trainer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

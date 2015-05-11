@@ -1,0 +1,84 @@
+package:
+  name: moves-event
+  version: "0.1.0"
+
+source:
+  fn: moves-event-0.1.0.tar.gz
+  url: https://github.com/francxk/moves-event/archive/moves-event-0.1.0.tar.gz
+  #md5: 
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moves-event = moves-event:main
+    #
+    # Would create an entry point called moves-event that calls moves-event.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.5.4
+    - argparse ==1.2.1
+    - django-extensions >=1.2.5
+    - django-grappelli >=2.4.7
+    - docutils >=0.11
+    - moves >=0.1
+    - pygraphviz >=1.2
+    - requests >=2.0.0
+    - six >=1.4.1
+    - wsgiref >=0.1.2
+
+  run:
+    - python
+    - django >=1.5.4
+    - argparse ==1.2.1
+    - django-extensions >=1.2.5
+    - django-grappelli >=2.4.7
+    - docutils >=0.11
+    - moves >=0.1
+    - pygraphviz >=1.2
+    - requests >=2.0.0
+    - six >=1.4.1
+    - wsgiref >=0.1.2
+
+test:
+  # Python imports
+  imports:
+    - movesevent
+    - movesevent.admin
+    - movesevent.models
+    - movesevent.movesHelper
+    - movesevent.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/francxk/moves-event/
+  license: MIT License
+  summary: 'Generate Django Moves Signal'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

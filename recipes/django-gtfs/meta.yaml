@@ -1,0 +1,63 @@
+package:
+  name: django-gtfs
+  version: "0.0.2"
+
+source:
+  fn: django-gtfs-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-gtfs/django-gtfs-0.0.2.tar.gz
+  md5: 77ca443c9e394114e80f070af0e8a99a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-gtfs = django-gtfs:main
+    #
+    # Would create an entry point called django-gtfs that calls django-gtfs.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - gtfs
+    - gtfs.management
+    - gtfs.management.commands
+    - gtfs.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ssaboum/django-gtfs
+  license: BSD License
+  summary: 'Django application to load/dump and more generally handle GTFS transit data specification'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

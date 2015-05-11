@@ -1,0 +1,71 @@
+package:
+  name: anz.casclient
+  version: "1.0.1"
+
+source:
+  fn: anz.casclient-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/anz.casclient/anz.casclient-1.0.1.tar.gz
+  md5: c45d02f8bda4cfb66b9d41b8dd192636
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anz.casclient = anz.casclient:main
+    #
+    # Would create an entry point called anz.casclient that calls anz.casclient.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.8.3
+    - zope.proxy >=3.4.1
+    - zope.bforest
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zodb3 >=3.8.3
+    - zope.proxy >=3.4.1
+    - zope.bforest
+
+test:
+  # Python imports
+  imports:
+    - anz
+    - anz.casclient
+    - anz.casclient.proxyauthexample
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://plone.org/products/anz.casclient/
+  license: GPL
+  summary: 'This is a Zope PAS plugin that authenticates users against a CAS (Central Authentication Service) server.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

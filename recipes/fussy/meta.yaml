@@ -1,0 +1,82 @@
+package:
+  name: fussy
+  version: "1.0.7"
+
+source:
+  fn: fussy-1.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/f/fussy/fussy-1.0.7.tar.gz
+  md5: e840f0d75728d229e2ad8c17796bd9d9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fussy = fussy:main
+    #
+    # Would create an entry point called fussy that calls fussy.main()
+
+    - fussy-install=fussy.install:main
+    - fussy-install-bytes=fussy.install:install_bytes_main
+    - fussy-clean=fussy.install:clean_main
+    - fussy-unpack=fussy.unpack:main
+    - fussy-pack=fussy.pack:main
+    - fussy-south-rollback=fussy.southrollback:main
+    - fussy-link-tree=fussy.linktree:main
+    - fussy-log-server=fussy.jsonlogserver:main
+    - fussy-format-log=fussy.jsonlogserver:format_log_main
+    - json-format=fussy.jsonformat:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - fussy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fussy-install --help
+    - fussy-install-bytes --help
+    - fussy-clean --help
+    - fussy-unpack --help
+    - fussy-pack --help
+    - fussy-south-rollback --help
+    - fussy-link-tree --help
+    - fussy-log-server --help
+    - fussy-format-log --help
+    - json-format --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.vrplumber.com
+  license: GNU Lesser General Public License v2 (LGPLv2)
+  summary: 'Field-Upgradable Software Support'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

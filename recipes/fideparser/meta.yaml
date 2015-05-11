@@ -1,0 +1,66 @@
+package:
+  name: fideparser
+  version: "0.4.1"
+
+source:
+  fn: fideparser-0.4.1.zip
+  url: https://pypi.python.org/packages/source/f/fideparser/fideparser-0.4.1.zip
+  md5: 45de504fb76fa4fdfb77c12c89420c66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fideparser = fideparser:main
+    #
+    # Would create an entry point called fideparser that calls fideparser.main()
+
+    - export_fide_tournaments = fideparser.main:main
+    - merge_csv_files = fideparser.mergecsv:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beautifulsoup4
+
+  run:
+    - python
+    - beautifulsoup4
+
+test:
+  # Python imports
+  imports:
+    - fideparser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - export_fide_tournaments --help
+    - merge_csv_files --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/erral/fideparser
+  license: GPL
+  summary: 'A package to export tournament info from FIDE site'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

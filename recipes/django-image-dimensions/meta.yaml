@@ -1,0 +1,63 @@
+package:
+  name: django-image-dimensions
+  version: "0.0.4"
+
+source:
+  fn: django-image-dimensions-0.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-image-dimensions/django-image-dimensions-0.0.4.tar.gz
+  md5: dd0d2f3494620305fd91410522f40610
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-image-dimensions = django-image-dimensions:main
+    #
+    # Would create an entry point called django-image-dimensions that calls django-image-dimensions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-celery
+
+  run:
+    - python
+    - django-celery
+
+test:
+  # Python imports
+  imports:
+    - imagedimensions
+    - imagedimensions.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/InviteBox/django-image-dimensions
+  license: BSD License
+  summary: 'Automatically add dimension attributes to all <img> tags in a response to improve rendering speed on the client. '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

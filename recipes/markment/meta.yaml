@@ -1,0 +1,81 @@
+package:
+  name: markment
+  version: "0.2.21"
+
+source:
+  fn: markment-0.2.21.tar.gz
+  url: https://pypi.python.org/packages/source/m/markment/markment-0.2.21.tar.gz
+  md5: 1275f87fb4ce2b7bc43e3fb28aa7afb7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - markment = markment:main
+    #
+    # Would create an entry point called markment that calls markment.main()
+
+    - markment = markment.bin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2 ==2.6
+    - pyyaml ==3.10
+    - pygments ==1.6
+    - lxml ==3.1.2
+    - misaka ==1.0.2
+    - cssselect ==0.8
+    - flask ==0.9
+    - speakers ==0.0.3
+    - couleur ==0.5.0
+
+  run:
+    - python
+    - jinja2 ==2.6
+    - pyyaml ==3.10
+    - pygments ==1.6
+    - lxml ==3.1.2
+    - misaka ==1.0.2
+    - cssselect ==0.8
+    - flask ==0.9
+    - speakers ==0.0.3
+    - couleur ==0.5.0
+
+test:
+  # Python imports
+  imports:
+    - markment
+    - markment.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - markment --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/gabrielfalcao/markment
+  license: UNKNOWN
+  summary: u'Structured documentation generator for markdown'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

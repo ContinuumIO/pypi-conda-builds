@@ -1,0 +1,87 @@
+package:
+  name: mitmproxy
+  version: "0.11.3"
+
+source:
+  fn: mitmproxy-0.11.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mitmproxy/mitmproxy-0.11.3.tar.gz
+  md5: 220650c20189af22179112fe0d20a94e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mitmproxy = mitmproxy:main
+    #
+    # Would create an entry point called mitmproxy that calls mitmproxy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - urwid >=1.1
+    - pyasn1 >0.1.2
+    - tornado >=4.0.2
+    - lxml >=3.3.6
+    - pyopenssl >=0.14
+    - pillow >=2.3.0
+    - configargparse >=0.9.3
+    - netlib >=0.11,<0.12
+
+  run:
+    - python
+    - urwid >=1.1
+    - pyasn1 >0.1.2
+    - tornado >=4.0.2
+    - lxml >=3.3.6
+    - pyopenssl >=0.14
+    - pillow >=2.3.0
+    - configargparse >=0.9.3
+    - netlib >=0.11,<0.12
+
+test:
+  # Python imports
+  imports:
+    - libmproxy
+    - libmproxy.console
+    - libmproxy.contrib
+    - libmproxy.contrib.jsbeautifier
+    - libmproxy.contrib.jsbeautifier.unpackers
+    - libmproxy.contrib.wbxml
+    - libmproxy.onboarding
+    - libmproxy.platform
+    - libmproxy.protocol
+    - libmproxy.proxy
+    - libmproxy.web
+    - mitmproxy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mitmproxy.org
+  license: MIT License
+  summary: 'An interactive, SSL-capable, man-in-the-middle HTTP proxy for penetration testers and software developers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

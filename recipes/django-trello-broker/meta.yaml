@@ -1,0 +1,68 @@
+package:
+  name: django-trello-broker
+  version: "0.1b0"
+
+source:
+  fn: django-trello-broker-0.1b0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-trello-broker/django-trello-broker-0.1b0.tar.gz
+  md5: d0d839f82dab95f901ba9f62b6a1f2c7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-trello-broker = django-trello-broker:main
+    #
+    # Would create an entry point called django-trello-broker that calls django-trello-broker.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - django >=1.7.0
+    - trello >=0.9.1
+    - requests
+
+  run:
+    - python
+    - django >=1.7.0
+    - trello >=0.9.1
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - trello_broker
+    - trello_broker.management
+    - trello_broker.management.commands
+    - trello_broker.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/netlandish/django-trello-broker/
+  license: BSD License
+  summary: 'Django app that integrats BitBucket POST hook calls and your Trello boards.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

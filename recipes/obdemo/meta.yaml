@@ -1,0 +1,73 @@
+package:
+  name: obdemo
+  version: "1.2"
+
+source:
+  fn: obdemo-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/o/obdemo/obdemo-1.2.tar.gz
+  md5: 0f9cebde92456670f52eb27a9a6f9a04
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - obdemo = obdemo:main
+    #
+    # Would create an entry point called obdemo that calls obdemo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ebpub >=1.2
+    - ebdata >=1.2
+    - obadmin >=1.2
+    - flickrapi >=1.4.2
+
+  run:
+    - python
+    - setuptools
+    - ebpub >=1.2
+    - ebdata >=1.2
+    - obadmin >=1.2
+    - flickrapi >=1.4.2
+
+test:
+  # Python imports
+  imports:
+    - obdemo
+    - obdemo.management
+    - obdemo.management.commands
+    - obdemo.migrations
+    - obdemo.scrapers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://openblockproject.org/docs
+  license: GNU General Public License (GPL)
+  summary: 'Demo website configuration for OpenBlock (hyperlocal news for Django)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

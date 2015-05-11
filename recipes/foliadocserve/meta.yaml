@@ -1,0 +1,70 @@
+package:
+  name: foliadocserve
+  version: "0.3.0"
+
+source:
+  fn: foliadocserve-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/foliadocserve/foliadocserve-0.3.0.tar.gz
+  md5: 77ea6e56faa73adc4629ca84bebd720f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - foliadocserve = foliadocserve:main
+    #
+    # Would create an entry point called foliadocserve that calls foliadocserve.main()
+
+    - foliadocserve = foliadocserve.foliadocserve:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml >=2.2
+    - pynlpl >=0.7.5
+    - cherrypy
+    - jinja2
+
+  run:
+    - python
+    - lxml >=2.2
+    - pynlpl >=0.7.5
+    - cherrypy
+    - jinja2
+
+test:
+  # Python imports
+  imports:
+    - foliadocserve
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - foliadocserve --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/proycon/foliadocserve
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'The FoLiA Document Server is a backend HTTP service to interact with documents in the FoLiA format, a rich XML-based format for linguistic annotation (http://proycon.github.io/folia). It provides an interface to efficiently edit FoLiA documents through the FoLiA Query Language (FQL). '
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

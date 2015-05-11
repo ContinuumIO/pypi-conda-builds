@@ -1,0 +1,71 @@
+package:
+  name: django-rinvoices
+  version: "0.0.25"
+
+source:
+  fn: django-rinvoices-0.0.25.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-rinvoices/django-rinvoices-0.0.25.tar.gz
+  md5: 72476d92fe10d83019fdc1e747891e77
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-rinvoices = django-rinvoices:main
+    #
+    # Would create an entry point called django-rinvoices that calls django-rinvoices.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django <1.5
+    - south ==0.7.5
+    - sorl-thumbnail ==11.12
+    - django-compressor ==1.1.2
+    - django-wkhtmltopdf ==1.2.2
+
+  run:
+    - python
+    - django <1.5
+    - south ==0.7.5
+    - sorl-thumbnail ==11.12
+    - django-compressor ==1.1.2
+    - django-wkhtmltopdf ==1.2.2
+
+test:
+  # Python imports
+  imports:
+    - rinvoices
+    - rinvoices.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/r0sk/django-rinvoices
+  license: BSD License
+  summary: 'Yet another Django Invoicing App'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

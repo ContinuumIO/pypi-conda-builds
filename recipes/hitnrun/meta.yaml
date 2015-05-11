@@ -1,0 +1,66 @@
+package:
+  name: hitnrun
+  version: "0.3.1dev"
+
+source:
+  fn: hitnrun-0.3.1dev.tar.gz
+  url: https://pypi.python.org/packages/source/h/hitnrun/hitnrun-0.3.1dev.tar.gz
+  md5: 083c4d5297b462a8b737a44cbe1b27aa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hitnrun = hitnrun:main
+    #
+    # Would create an entry point called hitnrun that calls hitnrun.main()
+
+    - hitnrun = hitnrun:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - watchdog
+    - logbook
+
+  run:
+    - python
+    - watchdog
+    - logbook
+
+test:
+  # Python imports
+  imports:
+    - hitnrun
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hitnrun --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mbr/hitnrun
+  license: MIT
+  summary: 'Rerun scons on changed build dependencies.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

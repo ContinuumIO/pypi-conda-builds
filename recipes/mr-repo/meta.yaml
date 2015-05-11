@@ -1,0 +1,66 @@
+package:
+  name: mr-repo
+  version: "0.2.10"
+
+source:
+  fn: Mr-Repo-0.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/M/Mr-Repo/Mr-Repo-0.2.10.tar.gz
+  md5: 876a6a3fc76e06fdcc2579a50ad15ffe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mr-repo = mr-repo:main
+    #
+    # Would create an entry point called mr-repo that calls mr-repo.main()
+
+    - mr_repo = mr_repo.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - gitpython
+
+  run:
+    - python
+    - pyyaml
+    - gitpython
+
+test:
+  # Python imports
+  imports:
+    - mr_repo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mr_repo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/Mr-Repo/0.2.10
+  license: UNKNOWN
+  summary: 'Mr. Repo - A simple repo management system'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

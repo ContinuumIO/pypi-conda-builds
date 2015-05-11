@@ -1,0 +1,64 @@
+package:
+  name: django_trees
+  version: "2.0.1"
+
+source:
+  fn: django_trees-2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_trees/django_trees-2.0.1.tar.gz
+  md5: d9a6f8d7258678641b0f5285d6479079
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django_trees = django_trees:main
+    #
+    # Would create an entry point called django_trees that calls django_trees.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - django_trees
+    - django_trees.tests
+    - django_trees.tests.test_app
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/imtapps/django_trees
+  license: MIT License
+  summary: 'Simple way to create, persist and manipulate reliable tree structures using Django models.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: django-auth-remember
+  version: "0.3"
+
+source:
+  fn: django-auth-remember-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-auth-remember/django-auth-remember-0.3.tar.gz
+  md5: 8e3d42f8e48fd765e210b8fc01648651
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-auth-remember = django-auth-remember:main
+    #
+    # Would create an entry point called django-auth-remember that calls django-auth-remember.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.3
+
+  run:
+    - python
+    - django >=1.3
+
+test:
+  # Python imports
+  imports:
+    - auth_remember
+    - auth_remember.management
+    - auth_remember.management.commands
+    - auth_remember.migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ailabs/django-auth-remember/
+  license: MIT License
+  summary: 'Django app for remember-me functionality (using a token)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

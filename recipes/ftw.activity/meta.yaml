@@ -1,0 +1,78 @@
+package:
+  name: ftw.activity
+  version: "1.1.4"
+
+source:
+  fn: ftw.activity-1.1.4.zip
+  url: https://pypi.python.org/packages/source/f/ftw.activity/ftw.activity-1.1.4.zip
+  md5: d182fe70cd03ac9ac3d75d4f266418f1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftw.activity = ftw.activity:main
+    #
+    # Would create an entry point called ftw.activity that calls ftw.activity.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - collective.lastmodifier >=1.1.0
+    - collective.prettydate
+    - ftw.upgrade
+    - setuptools
+    - plone.api
+
+  run:
+    - python
+    - setuptools
+    - plone
+    - collective.lastmodifier >=1.1.0
+    - collective.prettydate
+    - ftw.upgrade
+    - setuptools
+    - plone.api
+
+test:
+  # Python imports
+  imports:
+    - ftw
+    - ftw.activity
+    - ftw.activity.browser
+    - ftw.activity.tests
+    - ftw.activity.tests.pages
+    - ftw.activity.upgrades
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/4teamwork/ftw.activity
+  license: GPL2
+  summary: 'An activity feed for Plone.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

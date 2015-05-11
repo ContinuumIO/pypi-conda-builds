@@ -1,0 +1,70 @@
+package:
+  name: django-polymorphic-tree
+  version: "1.1"
+
+source:
+  fn: django-polymorphic-tree-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-polymorphic-tree/django-polymorphic-tree-1.1.tar.gz
+  md5: 0101b62c1061a841ec56de4cf4894ab1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-polymorphic-tree = django-polymorphic-tree:main
+    #
+    # Would create an entry point called django-polymorphic-tree that calls django-polymorphic-tree.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-polymorphic >=0.7
+    - django-mptt >=0.6.0
+    - django-tag-parser >=2.1
+    - future >=0.12.2
+
+  run:
+    - python
+    - django-polymorphic >=0.7
+    - django-mptt >=0.6.0
+    - django-tag-parser >=2.1
+    - future >=0.12.2
+
+test:
+  # Python imports
+  imports:
+    - polymorphic_tree
+    - polymorphic_tree.admin
+    - polymorphic_tree.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/edoburu/django-polymorphic-tree
+  license: Apache Software License
+  summary: 'A polymorphic mptt structure to display content in a tree.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

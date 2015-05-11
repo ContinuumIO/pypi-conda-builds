@@ -1,0 +1,64 @@
+package:
+  name: django-inline-media
+  version: "1.2"
+
+source:
+  fn: django-inline-media-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-inline-media/django-inline-media-1.2.tar.gz
+  md5: 622b42da116b5369b41e778396906268
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-inline-media = django-inline-media:main
+    #
+    # Would create an entry point called django-inline-media that calls django-inline-media.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - inline_media
+    - inline_media.conf
+    - inline_media.migrations
+    - inline_media.templatetags
+    - inline_media.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/django-inline-media/
+  license: MIT License
+  summary: 'Simple Django app that allows insertion of inline media objects in text fields, with support for rich text editor Wysihtml5.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

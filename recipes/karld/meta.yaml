@@ -1,0 +1,64 @@
+package:
+  name: karld
+  version: "0.2.10"
+
+source:
+  fn: karld-0.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/k/karld/karld-0.2.10.tar.gz
+  md5: 621b32d0aaec133760f331c8dd3faf36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - karld = karld:main
+    #
+    # Would create an entry point called karld that calls karld.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - futures ==2.1.6
+
+  run:
+    - python
+    - futures ==2.1.6
+
+test:
+  # Python imports
+  imports:
+    - karld
+    - karld.record_reader
+    - karld.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/johnwlockwood/karl_data
+  license: Apache Software License
+  summary: 'Doing some data things in a memory efficient manner'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

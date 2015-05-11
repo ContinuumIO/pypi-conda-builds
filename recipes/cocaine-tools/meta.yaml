@@ -1,0 +1,69 @@
+package:
+  name: cocaine-tools
+  version: "0.11.7.5"
+
+source:
+  fn: cocaine-tools-0.11.7.5.tar.gz
+  url: https://pypi.python.org/packages/source/c/cocaine-tools/cocaine-tools-0.11.7.5.tar.gz
+  md5: aaaf16d4663eee9910b12780398186fc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cocaine-tools = cocaine-tools:main
+    #
+    # Would create an entry point called cocaine-tools that calls cocaine-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cocaine >=0.11.1.6,<0.12
+    - opster >=4.0
+
+  run:
+    - python
+    - cocaine >=0.11.1.6,<0.12
+    - opster >=4.0
+
+test:
+  # Python imports
+  imports:
+    - cocaine
+    - cocaine.proxy
+    - cocaine.tools
+    - cocaine.tools.actions
+    - cocaine.tools.helpers
+    - cocaine.tools.interactive
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cocaine/cocaine-tools
+  license: LGPLv3+
+  summary: 'Cocaine Tools for Cocaine Application Cloud.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

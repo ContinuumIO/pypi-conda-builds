@@ -1,0 +1,66 @@
+package:
+  name: zc.zlibstorage
+  version: "0.1.1"
+
+source:
+  fn: zc.zlibstorage-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.zlibstorage/zc.zlibstorage-0.1.1.tar.gz
+  md5: f336d8b3376cc590acf421e80d17b1f5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zc.zlibstorage = zc.zlibstorage:main
+    #
+    # Would create an entry point called zc.zlibstorage that calls zc.zlibstorage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zodb3 >=3.10.0b1
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+    - zodb3 >=3.10.0b1
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - zc
+    - zc.zlibstorage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: ZPL 2.1
+  summary: 'ZODB storage wrapper for zlib compression of database records'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

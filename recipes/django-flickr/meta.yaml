@@ -1,0 +1,74 @@
+package:
+  name: django-flickr
+  version: "0.3.5"
+
+source:
+  fn: django-flickr-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-flickr/django-flickr-0.3.5.tar.gz
+  md5: f7260b0696235cc44f6693a0b20cbd98
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-flickr = django-flickr:main
+    #
+    # Would create an entry point called django-flickr that calls django-flickr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - bunch >=1.0
+    - django-taggit >=0.9
+    - django-taggit-templatetags >=0.4
+    - oauth2
+
+  run:
+    - python
+    - django >=1.4
+    - bunch >=1.0
+    - django-taggit >=0.9
+    - django-taggit-templatetags >=0.4
+    - oauth2
+
+test:
+  # Python imports
+  imports:
+    - flickr
+    - flickr.management
+    - flickr.management.commands
+    - flickr.migrations
+    - flickr.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/zalew/django-flickr
+  license: BSD License
+  summary: 'Mirror your Flickr into Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

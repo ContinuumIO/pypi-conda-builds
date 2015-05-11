@@ -1,0 +1,75 @@
+package:
+  name: sflvault-client
+  version: "0.7.8.2"
+
+source:
+  fn: SFLvault-client-0.7.8.2.tar.gz
+  url: https://pypi.python.org/packages/source/S/SFLvault-client/SFLvault-client-0.7.8.2.tar.gz
+  md5: 88f2eeb3ed1f6326f3bfb6e997404eed
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sflvault-client = sflvault-client:main
+    #
+    # Would create an entry point called sflvault-client that calls sflvault-client.main()
+
+    - sflvault=sflvault.client.commands:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sflvault-common ==0.7.8.1
+    - pycrypto
+    - decorator
+    - urwid >=0.9.8.1
+    - pexpect >=2.3
+
+  run:
+    - python
+    - setuptools
+    - sflvault-common ==0.7.8.1
+    - pycrypto
+    - decorator
+    - urwid >=0.9.8.1
+    - pexpect >=2.3
+
+test:
+  # Python imports
+  imports:
+    - sflvault
+    - sflvault.client
+    - sflvault.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sflvault --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sflvault.org
+  license: GPLv3
+  summary: 'Networked credentials store and authentication manager - Client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

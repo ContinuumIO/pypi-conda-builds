@@ -1,0 +1,72 @@
+package:
+  name: ioflo
+  version: "1.2.1"
+
+source:
+  fn: ioflo-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ioflo/ioflo-1.2.1.tar.gz
+  md5: 5a2c68c5264081d02f6e172393198093
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ioflo = ioflo:main
+    #
+    # Would create an entry point called ioflo that calls ioflo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ioflo
+    - ioflo.app
+    - ioflo.app.test
+    - ioflo.base
+    - ioflo.base.test
+    - ioflo.test
+    - ioflo.trim
+    - ioflo.trim.exterior
+    - ioflo.trim.interior
+    - ioflo.trim.interior.fancy
+    - ioflo.trim.interior.fancy.test
+    - ioflo.trim.interior.plain
+    - ioflo.trim.interior.plain.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ioflo/ioflo
+  license: Apache 2.0
+  summary: 'Flow Based Programming Automated Reasoning Engine and Automation Operation System'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,65 @@
+package:
+  name: ibmm2gv
+  version: "0.0.1"
+
+source:
+  fn: ibmm2gv-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ibmm2gv/ibmm2gv-0.0.1.tar.gz
+  md5: 7c45d0ed144e1006e84f869621c1c684
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ibmm2gv = ibmm2gv:main
+    #
+    # Would create an entry point called ibmm2gv that calls ibmm2gv.main()
+
+    - ibmm2gv=ibmm2gv.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse
+
+  run:
+    - python
+    - setuptools
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - ibmm2gv
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ibmm2gv --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/ibmm
+  license: mit
+  summary: 'indentation-based mind map in Python, render by graphviz.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

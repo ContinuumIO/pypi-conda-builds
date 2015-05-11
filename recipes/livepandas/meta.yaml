@@ -1,0 +1,68 @@
+package:
+  name: livepandas
+  version: "0.1.7"
+
+source:
+  fn: livepandas-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/l/livepandas/livepandas-0.1.7.tar.gz
+  md5: a3316c8e4c31bf1d177efff6182c5529
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - livepandas = livepandas:main
+    #
+    # Would create an entry point called livepandas that calls livepandas.main()
+
+    - livepandas = livepandas.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+    - decorator
+    - tornado
+
+  run:
+    - python
+    - requests
+    - decorator
+    - tornado
+
+test:
+  # Python imports
+  imports:
+    - livepandas
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - livepandas --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.livepandas.com/package
+  license: PSF
+  summary: 'Give a little life to your data.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

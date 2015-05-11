@@ -1,0 +1,65 @@
+package:
+  name: linaro-django-pagination
+  version: "2.0.2"
+
+source:
+  fn: linaro-django-pagination-2.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/l/linaro-django-pagination/linaro-django-pagination-2.0.2.tar.gz
+  md5: 071934cbafa1db34ba88f2824b3fee8a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - linaro-django-pagination = linaro-django-pagination:main
+    #
+    # Would create an entry point called linaro-django-pagination that calls linaro-django-pagination.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.2
+
+  run:
+    - python
+    - django >=1.2
+
+test:
+  # Python imports
+  imports:
+    - linaro_django_pagination
+    - linaro_django_pagination.templatetags
+    - linaro_django_pagination.test_project
+    - linaro_django_pagination.test_project.example
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/zyga/django-pagination
+  license: BSD License
+  summary: 'linaro-django-pagination'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

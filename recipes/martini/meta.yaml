@@ -1,0 +1,78 @@
+package:
+  name: martini
+  version: "0.4"
+
+source:
+  fn: martINI-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/martINI/martINI-0.4.tar.gz
+  md5: 356f4943bff2411493563642ddd48eae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - martini = martini:main
+    #
+    # Would create an entry point called martini that calls martini.main()
+
+    - ini-get=martini.main:get
+    - ini-set=martini.main:set
+    - ini-delete=martini.main:delete
+    - ini-munge=martini.main:munge
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - paste
+    - pastescript
+    - genshi
+
+  run:
+    - python
+    - setuptools
+    - webob
+    - paste
+    - pastescript
+    - genshi
+
+test:
+  # Python imports
+  imports:
+    - martini
+    - martini.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ini-get --help
+    - ini-set --help
+    - ini-delete --help
+    - ini-munge --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://k0s.org/hg/martINI
+  license: GPL
+  summary: 'edit .ini files from the command line'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

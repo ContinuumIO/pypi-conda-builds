@@ -1,0 +1,108 @@
+package:
+  name: elita
+  version: "0.64.1"
+
+source:
+  fn: elita-0.64.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/elita/elita-0.64.1.tar.gz
+  md5: 1c38c4e5fc4e9674d29adc6242031d95
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - elita = elita:main
+    #
+    # Would create an entry point called elita that calls elita.main()
+
+    - elita_install=elita_install:Install
+    - elita=elita_cli:Command_Line_Client
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyramid
+    - gunicorn
+    - gevent
+    - salt <=2014.1.10
+    - celery
+    - pymongo
+    - glob2
+    - gitpython >=0.3.2.RC1
+    - requests
+    - python-slugify
+    - simplejson
+    - pyyaml
+    - lockfile
+    - sh
+    - clint
+    - jsonpatch
+    - nose
+    - mock
+
+  run:
+    - python
+    - setuptools
+    - pyramid
+    - gunicorn
+    - gevent
+    - salt <=2014.1.10
+    - celery
+    - pymongo
+    - glob2
+    - gitpython >=0.3.2.RC1
+    - requests
+    - python-slugify
+    - simplejson
+    - pyyaml
+    - lockfile
+    - sh
+    - clint
+    - jsonpatch
+    - nose
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - elita
+    - elita.actions
+    - elita.crypto
+    - elita.dataservice
+    - elita.deployment
+    - elita.util
+    - elita_cli
+    - elita_install
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - elita_install --help
+    - elita --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/scorebig/elita
+  license: Apache
+  summary: 'Continuous deployment (continuous delivery) and infrastructure management REST framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

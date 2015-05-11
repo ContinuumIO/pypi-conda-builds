@@ -1,0 +1,67 @@
+package:
+  name: mk.recipe.pip
+  version: "0.3"
+
+source:
+  fn: mk.recipe.pip-0.3.zip
+  url: https://pypi.python.org/packages/source/m/mk.recipe.pip/mk.recipe.pip-0.3.zip
+  md5: b67d082bf53c2ccdc1bd3bc09b46d2f2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mk.recipe.pip = mk.recipe.pip:main
+    #
+    # Would create an entry point called mk.recipe.pip that calls mk.recipe.pip.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zc.recipe.egg
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zc.recipe.egg
+
+test:
+  # Python imports
+  imports:
+    - mk
+    - mk.recipe
+    - mk.recipe.pip
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/k4ml/mk.recipe.pip
+  license: Zope Public License
+  summary: 'Use pip from buildout'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

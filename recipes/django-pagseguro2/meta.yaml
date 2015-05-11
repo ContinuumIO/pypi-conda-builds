@@ -1,0 +1,75 @@
+package:
+  name: django-pagseguro2
+  version: "1.0.10"
+
+source:
+  fn: django-pagseguro2-1.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pagseguro2/django-pagseguro2-1.0.10.tar.gz
+  md5: 579a5ba3071b8f53b47bb7bf5b62d61c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-pagseguro2 = django-pagseguro2:main
+    #
+    # Would create an entry point called django-pagseguro2 that calls django-pagseguro2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - six
+    - requests
+    - httpretty <0.8.7
+    - python-dateutil
+    - xmltodict
+
+  run:
+    - python
+    - django >=1.4
+    - six
+    - requests
+    - httpretty <0.8.7
+    - python-dateutil
+    - xmltodict
+
+test:
+  # Python imports
+  imports:
+    - pagseguro
+    - pagseguro.migrations
+    - pagseguro.south_migrations
+    - pagseguro.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/allisson/django-pagseguro2
+  license: MIT
+  summary: 'Integra\xc3\xa7\xc3\xa3o da API v2 do PagSeguro com o Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

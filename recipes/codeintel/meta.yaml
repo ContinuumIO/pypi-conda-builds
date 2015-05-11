@@ -1,0 +1,75 @@
+package:
+  name: codeintel
+  version: "0.1.7"
+
+source:
+  fn: CodeIntel-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/C/CodeIntel/CodeIntel-0.1.7.tar.gz
+  md5: 49ec354e0c6361fab34a6c89c5ec88ff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - codeintel = codeintel:main
+    #
+    # Would create an entry point called codeintel that calls codeintel.main()
+
+    - codeintel = codeintel:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - zope.cachedescriptors
+    - inflector
+    - subprocess32
+
+  run:
+    - python
+    - six
+    - zope.cachedescriptors
+    - inflector
+    - subprocess32
+
+test:
+  # Python imports
+  imports:
+    - codeintel
+    - codeintel.SilverCity
+    - codeintel.codeintel2
+    - codeintel.codeintel2.database
+    - codeintel.codeintel2.oop
+    - codeintel.elementtree
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - codeintel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: GNU General Public License (GPL)
+  summary: 'Komodo Edit CodeIntel'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

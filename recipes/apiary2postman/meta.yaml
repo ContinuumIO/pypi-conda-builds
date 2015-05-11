@@ -1,0 +1,61 @@
+package:
+  name: apiary2postman
+  version: "0.4.4"
+
+source:
+  fn: apiary2postman-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/apiary2postman/apiary2postman-0.4.4.tar.gz
+  md5: 91d9a36ce4ea4b8549773e0f2d57c5c5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - apiary2postman = apiary2postman:main
+    #
+    # Would create an entry point called apiary2postman that calls apiary2postman.main()
+
+    - apiary2postman = apiary2postman.apiary2postman:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - apiary2postman
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - apiary2postman --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thecopy/apiary2postman
+  license: UNKNOWN
+  summary: 'A tool for converting Blueman API markup from Apiary.io to Postman collection/dumps'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

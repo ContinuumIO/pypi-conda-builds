@@ -1,0 +1,71 @@
+package:
+  name: solvebio
+  version: "1.7.11"
+
+source:
+  fn: solvebio-1.7.11.tar.gz
+  url: https://pypi.python.org/packages/source/s/solvebio/solvebio-1.7.11.tar.gz
+  md5: 2adfbcca1d48d3588647717ba872e75e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - solvebio = solvebio:main
+    #
+    # Would create an entry point called solvebio that calls solvebio.main()
+
+    - solvebio = solvebio.cli.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.0.0
+
+  run:
+    - python
+    - requests >=2.0.0
+
+test:
+  # Python imports
+  imports:
+    - solvebio
+    - solvebio.cli
+    - solvebio.contrib
+    - solvebio.contrib.django_solvebio
+    - solvebio.contrib.django_solvebio.migrations
+    - solvebio.resource
+    - solvebio.test
+    - solvebio.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - solvebio --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/solvebio/solvebio-python
+  license: UNKNOWN
+  summary: 'The SolveBio Python client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

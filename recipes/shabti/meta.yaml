@@ -1,0 +1,67 @@
+package:
+  name: shabti
+  version: "0.4.4"
+
+source:
+  fn: Shabti-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/S/Shabti/Shabti-0.4.4.tar.gz
+  md5: 204efb479ad3fb6b68ee1d91a7188223
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shabti = shabti:main
+    #
+    # Would create an entry point called shabti that calls shabti.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylons ==1.0
+    - elixir >=0.6
+    - sqlalchemy >=0.5.8
+
+  run:
+    - python
+    - setuptools
+    - pylons ==1.0
+    - elixir >=0.6
+    - sqlalchemy >=0.5.8
+
+test:
+  # Python imports
+  imports:
+    - shabti
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.bitbucket.org/gjhiggins/shabti
+  license: MIT License
+  summary: 'Pylons template with Elixir ORM bindings'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

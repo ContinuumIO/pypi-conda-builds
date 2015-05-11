@@ -1,0 +1,68 @@
+package:
+  name: invenio-query-parser
+  version: "0.2.0"
+
+source:
+  fn: invenio-query-parser-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/invenio-query-parser/invenio-query-parser-0.2.0.tar.gz
+  md5: 56ee55e1cd355c86d1d41e2bef169903
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - invenio-query-parser = invenio-query-parser:main
+    #
+    # Would create an entry point called invenio-query-parser that calls invenio-query-parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pypeg2
+    - ordereddict
+
+  run:
+    - python
+    - pypeg2
+    - ordereddict
+
+test:
+  # Python imports
+  imports:
+    - invenio_query_parser
+    - invenio_query_parser.contrib
+    - invenio_query_parser.contrib.spires
+    - invenio_query_parser.contrib.spires.walkers
+    - invenio_query_parser.walkers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/inveniosoftware/invenio-query-parser
+  license: MIT License
+  summary: 'Search query parser supporting Invenio and SPIRES search syntax.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

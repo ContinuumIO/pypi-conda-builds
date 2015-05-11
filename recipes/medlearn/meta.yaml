@@ -1,0 +1,69 @@
+package:
+  name: medlearn
+  version: "0.0.1"
+
+source:
+  fn: medlearn-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/medlearn/medlearn-0.0.1.tar.gz
+  md5: 0a1c33ad6c0c9a029f46e9663d0b9523
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - medlearn = medlearn:main
+    #
+    # Would create an entry point called medlearn that calls medlearn.main()
+
+    - medlearn = medlearn.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pandas
+    - beautifulsoup4
+    - requests
+
+  run:
+    - python
+    - pandas
+    - beautifulsoup4
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - medlearn
+    - tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - medlearn --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  #home: The package home page
+  license: Apache Software License
+  summary: '\nUnderstand medical school admissions with machine learning\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

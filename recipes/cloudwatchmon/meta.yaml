@@ -1,0 +1,69 @@
+package:
+  name: cloudwatchmon
+  version: "2.0.3"
+
+source:
+  fn: cloudwatchmon-2.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudwatchmon/cloudwatchmon-2.0.3.tar.gz
+  md5: d758b7ba67f4099fb796eddbc4eecb75
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloudwatchmon = cloudwatchmon:main
+    #
+    # Would create an entry point called cloudwatchmon that calls cloudwatchmon.main()
+
+    - mon-get-instance-stats.py=cloudwatchmon.cli.get_instance_stats:main
+    - mon-put-instance-stats.py=cloudwatchmon.cli.put_instance_stats:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - boto ==2.38.0
+    - wsgiref ==0.1.2
+
+  run:
+    - python
+    - boto ==2.38.0
+    - wsgiref ==0.1.2
+
+test:
+  # Python imports
+  imports:
+    - cloudwatchmon
+    - cloudwatchmon.cli
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mon-get-instance-stats.py --help
+    - mon-put-instance-stats.py --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/osiegmar/cloudwatch-mon-scripts-python
+  license: Apache Software License
+  summary: 'Linux monitoring scripts for CloudWatch'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

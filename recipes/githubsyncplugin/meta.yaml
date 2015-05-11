@@ -1,0 +1,64 @@
+package:
+  name: githubsyncplugin
+  version: "0.1.4"
+
+source:
+  fn: GitHubSyncPlugin-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/G/GitHubSyncPlugin/GitHubSyncPlugin-0.1.4.tar.gz
+  md5: 768283dc68fa1bfe0e0d0e741b462cae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - githubsyncplugin = githubsyncplugin:main
+    #
+    # Would create an entry point called githubsyncplugin that calls githubsyncplugin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - iptools >=0.6.1
+
+  run:
+    - python
+    - setuptools
+    - iptools >=0.6.1
+
+test:
+  # Python imports
+  imports:
+    - githubsync
+    - githubsyncplugin
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mitar.tnode.com/
+  license: AGPLv3
+  summary: 'Sync GitHub repository with local repository used by Trac.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

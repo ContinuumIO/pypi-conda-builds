@@ -1,0 +1,74 @@
+package:
+  name: django-yaba
+  version: "0.2.7"
+
+source:
+  fn: django-yaba-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-yaba/django-yaba-0.2.7.tar.gz
+  md5: 80a6c4ced87b9b83a13738fc4c6c6d26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-yaba = django-yaba:main
+    #
+    # Would create an entry point called django-yaba that calls django-yaba.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-twitter
+    - twitter
+    - simplejson
+    - feedparser
+    - django-disqus
+    - django-tagging
+
+  run:
+    - python
+    - setuptools
+    - python-twitter
+    - twitter
+    - simplejson
+    - feedparser
+    - django-disqus
+    - django-tagging
+
+test:
+  # Python imports
+  imports:
+    - django_yaba
+    - django_yaba.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.f4ntasmic.com
+  license: BSD License
+  summary: 'Yet Another Blog Application'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

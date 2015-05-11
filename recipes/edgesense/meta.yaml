@@ -1,0 +1,84 @@
+package:
+  name: edgesense
+  version: "0.14.0"
+
+source:
+  fn: edgesense-0.14.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/edgesense/edgesense-0.14.0.tar.gz
+  md5: d7f637d73c334e325a4934f31308455c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - edgesense = edgesense:main
+    #
+    # Would create an entry point called edgesense that calls edgesense.main()
+
+    - edgesense_drupal=edgesense.drupal_script:main
+    - edgesense_build_network=edgesense.build_network:main
+    - edgesense_catalyst_server=edgesense.catalyst_server:main
+    - edgesense_parse_catalyst=edgesense.parse_catalyst:main
+    - edgesense_parse_tweets=edgesense.parse_tweets:main
+    - edgesense_parse_mailinglist=edgesense.parse_mailinglist:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - networkx ==1.8.1
+    - python-louvain ==0.3
+
+  run:
+    - python
+    - networkx ==1.8.1
+    - python-louvain ==0.3
+
+test:
+  # Python imports
+  imports:
+    - edgesense
+    - edgesense.catalyst
+    - edgesense.catalyst.extract
+    - edgesense.content
+    - edgesense.mailinglist
+    - edgesense.metrics
+    - edgesense.network
+    - edgesense.twitter
+    - edgesense.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - edgesense_drupal --help
+    - edgesense_build_network --help
+    - edgesense_catalyst_server --help
+    - edgesense_parse_catalyst --help
+    - edgesense_parse_tweets --help
+    - edgesense_parse_mailinglist --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Wikitalia/edgesense/python
+  license: MIT License
+  summary: 'Edgesense Social Network Analysis and Visualization'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

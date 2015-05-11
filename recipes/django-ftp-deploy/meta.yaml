@@ -1,0 +1,76 @@
+package:
+  name: django-ftp-deploy
+  version: "2.0.0"
+
+source:
+  fn: django-ftp-deploy-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ftp-deploy/django-ftp-deploy-2.0.0.tar.gz
+  md5: 2dc4e4949b1ba2f9550d5a3144096d80
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ftp-deploy = django-ftp-deploy:main
+    #
+    # Would create an entry point called django-ftp-deploy that calls django-ftp-deploy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - pycurl ==7.19.5
+    - certifi ==0.0.8
+    - django-braces ==1.4.0
+    - django-crispy-forms ==1.4.0
+    - celery ==3.1.8
+
+  run:
+    - python
+    - pycurl ==7.19.5
+    - certifi ==0.0.8
+    - django-braces ==1.4.0
+    - django-crispy-forms ==1.4.0
+    - celery ==3.1.8
+
+test:
+  # Python imports
+  imports:
+    - ftp_deploy
+    - ftp_deploy.migrations
+    - ftp_deploy.models
+    - ftp_deploy.server
+    - ftp_deploy.server.forms
+    - ftp_deploy.server.templatetags
+    - ftp_deploy.server.views
+    - ftp_deploy.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lpakula/django-ftp-deploy
+  license: LICENSE.txt
+  summary: 'Auto FTP deployment for django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: djangomarkup
+  version: "0.1.8"
+
+source:
+  fn: djangomarkup-0.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangomarkup/djangomarkup-0.1.8.tar.gz
+  md5: 59b89aeb68bef1d9868b92d1dddaf7df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - djangomarkup = djangomarkup:main
+    #
+    # Would create an entry point called djangomarkup that calls djangomarkup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools >=0.6b1
+    - django
+    - markdown2
+
+  run:
+    - python
+    - setuptools >=0.6b1
+    - django
+    - markdown2
+
+test:
+  # Python imports
+  imports:
+    - djangomarkup
+    - djangomarkup.management
+    - djangomarkup.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ella/django-markup
+  license: BSD License
+  summary: 'Support for various markup languages in Django applications'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,68 @@
+package:
+  name: launchbox
+  version: "0.1.1"
+
+source:
+  fn: launchbox-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/launchbox/launchbox-0.1.1.tar.gz
+  md5: dedf46de9b9fa6aa7352e814437a5054
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - launchbox = launchbox:main
+    #
+    # Would create an entry point called launchbox that calls launchbox.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml ==3.10
+    - docopt ==0.4.0
+    - requests ==0.13.1
+    - boto ==2.5.1
+
+  run:
+    - python
+    - pyyaml ==3.10
+    - docopt ==0.4.0
+    - requests ==0.13.1
+    - boto ==2.5.1
+
+test:
+  # Python imports
+  imports:
+    - launchbox
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/RisingOak/launchbox
+  license: Apache Software License
+  summary: 'Packaging and dependency resolution for chef-solo cookbooks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

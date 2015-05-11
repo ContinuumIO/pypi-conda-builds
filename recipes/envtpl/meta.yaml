@@ -1,0 +1,66 @@
+package:
+  name: envtpl
+  version: "0.3.2"
+
+source:
+  fn: envtpl-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/envtpl/envtpl-0.3.2.tar.gz
+  md5: c0939b7d15ffb5d0f0143579a42e6ba5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - envtpl = envtpl:main
+    #
+    # Would create an entry point called envtpl that calls envtpl.main()
+
+    - envtpl = envtpl.envtpl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse >=1.0
+    - jinja2 >=2.7
+
+  run:
+    - python
+    - argparse >=1.0
+    - jinja2 >=2.7
+
+test:
+  # Python imports
+  imports:
+    - envtpl
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - envtpl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/andreasjansson/envtpl
+  license: GPL v3
+  summary: 'Render jinja2 templates on the command line using shell environment variables'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

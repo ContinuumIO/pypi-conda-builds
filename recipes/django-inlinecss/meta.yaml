@@ -1,0 +1,71 @@
+package:
+  name: django-inlinecss
+  version: "0.1.1"
+
+source:
+  fn: django-inlinecss-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-inlinecss/django-inlinecss-0.1.1.tar.gz
+  md5: 124472afa6747e9bc5b48493b0a0d10a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-inlinecss = django-inlinecss:main
+    #
+    # Would create an entry point called django-inlinecss that calls django-inlinecss.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - cssutils
+    - beautifulsoup
+    - mock
+
+  run:
+    - python
+    - django
+    - cssutils
+    - beautifulsoup
+    - mock
+
+test:
+  # Python imports
+  imports:
+    - django_inlinecss
+    - django_inlinecss.pynliner
+    - django_inlinecss.templatetags
+    - django_inlinecss.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/roverdotcom/django-inlinecss
+  license: BSD License
+  summary: 'A Django app useful for inlining CSS (primarily for e-mails)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

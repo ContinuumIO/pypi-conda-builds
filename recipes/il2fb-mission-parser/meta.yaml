@@ -1,0 +1,64 @@
+package:
+  name: il2fb-mission-parser
+  version: "1.0.0"
+
+source:
+  fn: il2fb-mission-parser-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/il2fb-mission-parser/il2fb-mission-parser-1.0.0.tar.gz
+  md5: c261ae0ceddd7542d49d23ff786e54d5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - il2fb-mission-parser = il2fb-mission-parser:main
+    #
+    # Would create an entry point called il2fb-mission-parser that calls il2fb-mission-parser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - il2fb-commons >=0.9.7
+    - six >=1.6.1
+
+  run:
+    - python
+    - il2fb-commons >=0.9.7
+    - six >=1.6.1
+
+test:
+  # Python imports
+  imports:
+    - il2fb.parsers.mission
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/IL2HorusTeam/il2fb-mission-parser
+  license: GNU Lesser General Public License v3 (LGPLv3)
+  summary: 'Parse IL-2 FB mission file and produce detailed information about mission'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

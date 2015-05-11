@@ -1,0 +1,65 @@
+package:
+  name: docker-registry-driver-cassandra
+  version: "1.0.1"
+
+source:
+  fn: docker-registry-driver-cassandra-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/docker-registry-driver-cassandra/docker-registry-driver-cassandra-1.0.1.tar.gz
+  md5: 286e2b6ddd52f25983b51f05e112bfa2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - docker-registry-driver-cassandra = docker-registry-driver-cassandra:main
+    #
+    # Would create an entry point called docker-registry-driver-cassandra that calls docker-registry-driver-cassandra.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docker-registry-core >=2,<3
+    - cassandra-driver
+
+  run:
+    - python
+    - docker-registry-core >=2,<3
+    - cassandra-driver
+
+test:
+  # Python imports
+  imports:
+    - docker_registry
+    - docker_registry.drivers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/milaw/docker-registry-driver-cassandra
+  license: docker-registry-driver-elliptics
+  summary: 'Docker registry driver for cassandra'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

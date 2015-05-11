@@ -1,0 +1,64 @@
+package:
+  name: hooked
+  version: "0.2"
+
+source:
+  fn: hooked-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/h/hooked/hooked-0.2.tar.gz
+  md5: d59ae73404058a26bd47c2afbc12824d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hooked = hooked:main
+    #
+    # Would create an entry point called hooked that calls hooked.main()
+
+    - hooked=hooked.server:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - bottle
+
+  run:
+    - python
+    - bottle
+
+test:
+  # Python imports
+  imports:
+    - hooked
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - hooked --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/bbinet/hooked
+  license: MIT License
+  summary: 'Run command on GitHub and BitBucket POST request hooks'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

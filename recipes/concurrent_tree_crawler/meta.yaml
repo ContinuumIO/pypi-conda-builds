@@ -1,0 +1,72 @@
+package:
+  name: concurrent_tree_crawler
+  version: "0.8.8"
+
+source:
+  fn: concurrent_tree_crawler-0.8.8.tar.gz
+  url: https://pypi.python.org/packages/source/c/concurrent_tree_crawler/concurrent_tree_crawler-0.8.8.tar.gz
+  md5: 10fc011f21c7f9892bcdb636fb7ac42d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - concurrent_tree_crawler = concurrent_tree_crawler:main
+    #
+    # Would create an entry point called concurrent_tree_crawler that calls concurrent_tree_crawler.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+    - mechanize
+
+  run:
+    - python
+    - nose
+    - mechanize
+
+test:
+  # Python imports
+  imports:
+    - concurrent_tree_crawler
+    - concurrent_tree_crawler.common
+    - concurrent_tree_crawler.common.test
+    - concurrent_tree_crawler.common.threads
+    - concurrent_tree_crawler.common.threads.test
+    - concurrent_tree_crawler.html_multipage_navigator
+    - concurrent_tree_crawler.html_multipage_navigator.cmdln
+    - concurrent_tree_crawler.html_multipage_navigator.test
+    - concurrent_tree_crawler.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mkobos/tree_crawler
+  license: MIT License
+  summary: 'A generic concurrent tree crawling algorithm with a sample implementation for website crawling.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

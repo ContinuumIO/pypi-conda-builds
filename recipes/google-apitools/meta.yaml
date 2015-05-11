@@ -1,0 +1,75 @@
+package:
+  name: google-apitools
+  version: "0.4.4"
+
+source:
+  fn: google-apitools-0.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/google-apitools/google-apitools-0.4.4.tar.gz
+  md5: 7f99d6042dad2341d40742b2c0ccada4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - google-apitools = google-apitools:main
+    #
+    # Would create an entry point called google-apitools that calls google-apitools.main()
+
+    - gen_client = apitools.gen.gen_client:run_main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2 >=0.8
+    - oauth2client >=1.2
+    - protorpc >=0.9.1
+    - six >=1.8.0
+
+  run:
+    - python
+    - httplib2 >=0.8
+    - oauth2client >=1.2
+    - protorpc >=0.9.1
+    - six >=1.8.0
+
+test:
+  # Python imports
+  imports:
+    - apitools
+    - apitools.base
+    - apitools.base.py
+    - apitools.base.py.testing
+    - apitools.base.py.testing.testclient
+    - apitools.gen
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gen_client --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/craigcitro/apitools
+  license: Apache Software License
+  summary: 'client libraries for humans'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

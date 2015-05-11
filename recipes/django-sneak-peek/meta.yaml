@@ -1,0 +1,66 @@
+package:
+  name: django-sneak-peek
+  version: "0.0.1"
+
+source:
+  fn: django-sneak-peek-0.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sneak-peek/django-sneak-peek-0.0.1.tar.gz
+  md5: b26e02e73e70bfe864f5faeb7b5a15c4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-sneak-peek = django-sneak-peek:main
+    #
+    # Would create an entry point called django-sneak-peek that calls django-sneak-peek.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - south
+
+  run:
+    - python
+    - django >=1.4
+    - south
+
+test:
+  # Python imports
+  imports:
+    - sneak_peek_tag
+    - sneak_peek_tag.migrations
+    - sneak_peek_tag.templatetags
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/teddywing/django-sneak-peek
+  license: MIT License
+  summary: 'Django template tag to hide pre-release features in a template'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

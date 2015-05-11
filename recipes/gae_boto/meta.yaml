@@ -1,0 +1,64 @@
+package:
+  name: gae_boto
+  version: "13.10.1"
+
+source:
+  fn: gae_boto-13.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gae_boto/gae_boto-13.10.1.tar.gz
+  md5: 8f18d3e0efb91f5a274fe1956f7968b3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gae_boto = gae_boto:main
+    #
+    # Would create an entry point called gae_boto that calls gae_boto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.0.0
+
+  run:
+    - python
+    - requests >=2.0.0
+
+test:
+  # Python imports
+  imports:
+    - gae_boto
+    - gae_boto.apis
+    - gae_boto.apis.templates
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pizzapanther/gae_boto
+  license: BSD
+  summary: 'A recreation of Amazon Boto library that is is compatible with Google App Engine and easier to use.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

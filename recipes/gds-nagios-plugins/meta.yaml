@@ -1,0 +1,71 @@
+package:
+  name: gds-nagios-plugins
+  version: "1.3.1"
+
+source:
+  fn: gds-nagios-plugins-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gds-nagios-plugins/gds-nagios-plugins-1.3.1.tar.gz
+  md5: 98a5a0789dbc897e44403ae5b36959c8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gds-nagios-plugins = gds-nagios-plugins:main
+    #
+    # Would create an entry point called gds-nagios-plugins that calls gds-nagios-plugins.main()
+
+    - check_apt_security_updates=plugins.command.check_apt_security_updates:main
+    - check_reboot_required=plugins.command.check_reboot_required:main
+    - check_puppetdb_ssh_host_keys=plugins.command.check_puppetdb_ssh_host_keys:main
+    - check_elasticsearch=plugins.command.check_elasticsearch:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nagioscheck ==0.1.6
+
+  run:
+    - python
+    - nagioscheck ==0.1.6
+
+test:
+  # Python imports
+  imports:
+    - plugins
+    - plugins.command
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - check_apt_security_updates --help
+    - check_reboot_required --help
+    - check_puppetdb_ssh_host_keys --help
+    - check_elasticsearch --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/alphagov/nagios-plugins
+  license: MIT
+  summary: 'nagios-plugins: a set of useful nagios plugins'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

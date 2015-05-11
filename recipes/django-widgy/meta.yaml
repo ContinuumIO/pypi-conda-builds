@@ -1,0 +1,110 @@
+package:
+  name: django-widgy
+  version: "0.6.1"
+
+source:
+  fn: django-widgy-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-widgy/django-widgy-0.6.1.tar.gz
+  md5: 78d8f6a4e082ddd065e915c44bf91ebe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-widgy = django-widgy:main
+    #
+    # Would create an entry point called django-widgy that calls django-widgy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-treebeard
+    - django-pyscss >=2.0.0
+    - six
+    - django-compressor >=1.3
+    - beautifulsoup4
+    - django-argonauts >=1.0.0
+    - django <1.8
+    - markdown
+
+  run:
+    - python
+    - django-treebeard
+    - django-pyscss >=2.0.0
+    - six
+    - django-compressor >=1.3
+    - beautifulsoup4
+    - django-argonauts >=1.0.0
+    - django <1.8
+    - markdown
+
+test:
+  # Python imports
+  imports:
+    - widgy
+    - widgy.contrib
+    - widgy.contrib.form_builder
+    - widgy.contrib.form_builder.migrations
+    - widgy.contrib.form_builder.south_migrations
+    - widgy.contrib.page_builder
+    - widgy.contrib.page_builder.db
+    - widgy.contrib.page_builder.forms
+    - widgy.contrib.page_builder.migrations
+    - widgy.contrib.page_builder.south_migrations
+    - widgy.contrib.review_queue
+    - widgy.contrib.review_queue.management
+    - widgy.contrib.review_queue.management.commands
+    - widgy.contrib.review_queue.migrations
+    - widgy.contrib.review_queue.south_migrations
+    - widgy.contrib.review_queue.templatetags
+    - widgy.contrib.urlconf_include
+    - widgy.contrib.urlconf_include.migrations
+    - widgy.contrib.urlconf_include.south_migrations
+    - widgy.contrib.widgy_i18n
+    - widgy.contrib.widgy_i18n.migrations
+    - widgy.contrib.widgy_i18n.south_migrations
+    - widgy.contrib.widgy_mezzanine
+    - widgy.contrib.widgy_mezzanine.migrations
+    - widgy.contrib.widgy_mezzanine.south_migrations
+    - widgy.db
+    - widgy.debugtoolbar
+    - widgy.generic
+    - widgy.management
+    - widgy.management.commands
+    - widgy.migrations
+    - widgy.models
+    - widgy.south_migrations
+    - widgy.templatetags
+    - widgy.views
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.wid.gy/
+  license: Apache Software License
+  summary: '\nA CMS framework for Django built on a heterogenous tree editor.\n'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

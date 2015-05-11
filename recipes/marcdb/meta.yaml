@@ -1,0 +1,68 @@
+package:
+  name: marcdb
+  version: "0.92"
+
+source:
+  fn: marcdb-0.92.tar.gz
+  url: https://pypi.python.org/packages/source/m/marcdb/marcdb-0.92.tar.gz
+  md5: d6fc69e34ff7362879c922931e7b1342
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marcdb = marcdb:main
+    #
+    # Would create an entry point called marcdb that calls marcdb.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - elixir >=0.5.1
+    - pymarc >=2.0
+    - elementtree
+    - web.py
+
+  run:
+    - python
+    - elixir >=0.5.1
+    - pymarc >=2.0
+    - elementtree
+    - web.py
+
+test:
+  # Python imports
+  imports:
+    - marcdb
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://inkdroid.org/bzr/marcdb
+  license: UNKNOWN
+  summary: 'parse MARC data and store into a rdbms'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

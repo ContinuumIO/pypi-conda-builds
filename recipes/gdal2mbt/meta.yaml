@@ -1,0 +1,66 @@
+package:
+  name: gdal2mbt
+  version: "0.4.1"
+
+source:
+  fn: gdal2mbt-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/gdal2mbt/gdal2mbt-0.4.1.tar.gz
+  md5: 8862f903cb1917c1a86ea4a6e789d368
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gdal2mbt = gdal2mbt:main
+    #
+    # Would create an entry point called gdal2mbt that calls gdal2mbt.main()
+
+    - gdal2mbt = gdal2mbt_cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow >=2.5
+    - gdal >=1.8
+
+  run:
+    - python
+    - pillow >=2.5
+    - gdal >=1.8
+
+test:
+  # Python imports
+  imports:
+    - gdal2mbt
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - gdal2mbt --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/icetan/gdal2mbt/
+  license: MIT License
+  summary: 'Create MBTiles from GDAL files.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

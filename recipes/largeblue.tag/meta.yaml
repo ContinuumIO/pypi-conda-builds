@@ -1,0 +1,111 @@
+package:
+  name: largeblue.tag
+  version: "0.1.1"
+
+source:
+  fn: largeblue.tag-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/largeblue.tag/largeblue.tag-0.1.1.tar.gz
+  md5: 3053bd9bbf6772aeef44f7c5cc6721f3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - largeblue.tag = largeblue.tag:main
+    #
+    # Would create an entry point called largeblue.tag that calls largeblue.tag.main()
+
+    - largeblue-debug=largeblue.startup:interactive_debug_prompt
+    - largeblue-ctl=largeblue.startup:zdaemon_controller
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.authentication
+    - zope.app.catalog
+    - zope.app.tree
+    - zope.app.intid
+    - zope.app.keyreference
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.copypastemove
+    - zope.formlib
+    - zope.i18n
+    - zope.publisher
+    - zope.security
+    - zope.testing
+    - zope.traversing
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - zconfig
+    - zdaemon
+    - zodb3
+    - zope.annotation
+    - zope.app.appsetup
+    - zope.app.authentication
+    - zope.app.catalog
+    - zope.app.tree
+    - zope.app.intid
+    - zope.app.keyreference
+    - zope.app.testing
+    - zope.app.wsgi >=3.4.0
+    - zope.app.zcmlfiles
+    - zope.app.securitypolicy
+    - zope.copypastemove
+    - zope.formlib
+    - zope.i18n
+    - zope.publisher
+    - zope.security
+    - zope.testing
+    - zope.traversing
+
+test:
+  # Python imports
+  imports:
+    - largeblue
+    - largeblue.tag
+    - largeblue.tag.browser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - largeblue-debug --help
+    - largeblue-ctl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pesto.largeblue.net/trac/browser/largeblue/devel/largeblue.tag
+  license: Public Domain
+  summary: 'Simple tagging adapter'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

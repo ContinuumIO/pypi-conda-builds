@@ -1,0 +1,69 @@
+package:
+  name: hedge
+  version: "0.91"
+
+source:
+  fn: hedge-0.91.tar.gz
+  url: https://pypi.python.org/packages/source/h/hedge/hedge-0.91.tar.gz
+  md5: f449aad68660908c303e56ae6d19ff69
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hedge = hedge:main
+    #
+    # Would create an entry point called hedge that calls hedge.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyublas >=0.92.2
+    - pytools >=3
+    - pymbolic >=0.90
+    - meshpy >=0.91
+
+  run:
+    - python
+    - pyublas >=0.92.2
+    - pytools >=3
+    - pymbolic >=0.90
+    - meshpy >=0.91
+
+test:
+  # Python imports
+  imports:
+    - hedge
+    - hedge.cuda
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mathema.tician.de/software/hedge
+  license: GNU General Public License (GPL)
+  summary: 'Hybrid Easy Discontinuous Galerkin Environment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

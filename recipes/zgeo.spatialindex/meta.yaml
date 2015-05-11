@@ -1,0 +1,73 @@
+package:
+  name: zgeo.spatialindex
+  version: "0.3"
+
+source:
+  fn: zgeo.spatialindex-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zgeo.spatialindex/zgeo.spatialindex-0.3.tar.gz
+  md5: 5d5a9ec1229e8d8881d56a5938ef680d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zgeo.spatialindex = zgeo.spatialindex:main
+    #
+    # Would create an entry point called zgeo.spatialindex that calls zgeo.spatialindex.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - rtree
+    - shapely
+    - zope.app.catalog
+    - zgeo.geographer >=0.3
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - rtree
+    - shapely
+    - zope.app.catalog
+    - zgeo.geographer >=0.3
+
+test:
+  # Python imports
+  imports:
+    - zgeo
+    - zgeo.spatialindex
+    - zgeo.spatialindex.browser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://trac.gispython.org/projects/PrimaGIS/wiki/zgeo.spatialindex
+  license: BSD License
+  summary: 'Spatial index for Zope'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

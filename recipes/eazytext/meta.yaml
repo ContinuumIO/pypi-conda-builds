@@ -1,0 +1,77 @@
+package:
+  name: eazytext
+  version: "0.94"
+
+source:
+  fn: eazytext-0.94.tar.gz
+  url: https://pypi.python.org/packages/source/e/eazytext/eazytext-0.94.tar.gz
+  md5: 52396ba4cb1946cc43c46dcb8ea326e4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - eazytext = eazytext:main
+    #
+    # Would create an entry point called eazytext that calls eazytext.main()
+
+    - eztext = eazytext.eztext:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ply
+    - pygments
+    - paste
+    - zope.interface
+    - zope.component
+
+  run:
+    - python
+    - setuptools
+    - ply
+    - pygments
+    - paste
+    - zope.interface
+    - zope.component
+
+test:
+  # Python imports
+  imports:
+    - docs
+    - eazytext
+    - eazytext.extension
+    - eazytext.macro
+    - eazytext.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - eztext --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://eazytext.pluggdapps.com
+  license: BSD License
+  summary: 'An extensible wiki processor, using parser grammer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

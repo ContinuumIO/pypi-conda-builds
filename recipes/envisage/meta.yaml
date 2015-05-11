@@ -1,0 +1,102 @@
+package:
+  name: envisage
+  version: "4.4.0"
+
+source:
+  fn: envisage-4.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/envisage/envisage-4.4.0.tar.gz
+  md5: 35547a7b5736de292a264cba4326bca4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - envisage = envisage:main
+    #
+    # Would create an entry point called envisage that calls envisage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - apptools
+    - traits
+
+  run:
+    - python
+    - setuptools
+    - apptools
+    - traits
+
+test:
+  # Python imports
+  imports:
+    - envisage
+    - envisage.developer
+    - envisage.developer.charm
+    - envisage.developer.code_browser
+    - envisage.developer.ui
+    - envisage.developer.ui.perspective
+    - envisage.developer.ui.view
+    - envisage.plugins
+    - envisage.plugins.debug
+    - envisage.plugins.event_manager
+    - envisage.plugins.ipython_shell
+    - envisage.plugins.ipython_shell.actions
+    - envisage.plugins.ipython_shell.view
+    - envisage.plugins.python_shell
+    - envisage.plugins.python_shell.view
+    - envisage.plugins.refresh_code
+    - envisage.plugins.remote_editor
+    - envisage.plugins.remote_editor.communication
+    - envisage.plugins.remote_editor.communication.tests
+    - envisage.plugins.remote_editor.editor_plugins
+    - envisage.plugins.remote_editor.editor_plugins.editra
+    - envisage.plugins.tasks
+    - envisage.plugins.text_editor
+    - envisage.plugins.text_editor.editor
+    - envisage.plugins.update_checker
+    - envisage.resource
+    - envisage.resource.tests
+    - envisage.tests
+    - envisage.ui
+    - envisage.ui.action
+    - envisage.ui.single_project
+    - envisage.ui.single_project.action
+    - envisage.ui.single_project.editor
+    - envisage.ui.single_project.view
+    - envisage.ui.tasks
+    - envisage.ui.tasks.action
+    - envisage.ui.workbench
+    - envisage.ui.workbench.action
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.enthought.com/projects/envisage/
+  license: BSD License
+  summary: 'extensible application framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

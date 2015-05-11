@@ -1,0 +1,74 @@
+package:
+  name: webshare-download-manager
+  version: "0.2.6"
+
+source:
+  fn: webshare-download-manager-0.2.6.zip
+  url: https://pypi.python.org/packages/source/w/webshare-download-manager/webshare-download-manager-0.2.6.zip
+  md5: 3083a463a5781436eee2d33d0501ab1d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - webshare-download-manager = webshare-download-manager:main
+    #
+    # Would create an entry point called webshare-download-manager that calls webshare-download-manager.main()
+
+    - config_server = appwebshare.scripts.configme:main
+    - run_server = appwebshare.scripts.run:production
+    - run_dev = appwebshare.scripts.run:dev
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.10.1
+    - jinja2 >=2.7.3
+    - requests >=2.5.1
+
+  run:
+    - python
+    - flask >=0.10.1
+    - jinja2 >=2.7.3
+    - requests >=2.5.1
+
+test:
+  # Python imports
+  imports:
+    - appwebshare
+    - appwebshare.scripts
+    - appwebshare.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - config_server --help
+    - run_server --help
+    - run_dev --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cvakiitho/Webshare-download-manager
+  license: LICENSE.txt
+  summary: 'Download manager for webshare.cz site. Flask + requests.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

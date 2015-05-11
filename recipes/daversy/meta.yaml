@@ -1,0 +1,74 @@
+package:
+  name: daversy
+  version: "0.1.0.dev-r330"
+
+source:
+  fn: daversy-0.1.0.dev-r330.tar.gz
+  url: https://pypi.python.org/packages/source/d/daversy/daversy-0.1.0.dev-r330.tar.gz
+  md5: 101169c185091f40e8070c8390c63372
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - daversy = daversy:main
+    #
+    # Would create an entry point called daversy that calls daversy.main()
+
+    - dvs = daversy.dvs:main
+    - dvstool_oracle = daversy.tools.dvstool_oracle:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cx_oracle >=4.2
+    - lxml >=1.0.3
+
+  run:
+    - python
+    - cx_oracle >=4.2
+    - lxml >=1.0.3
+
+test:
+  # Python imports
+  imports:
+    - daversy
+    - daversy.command
+    - daversy.providers
+    - daversy.providers.oracle
+    - daversy.providers.svn
+    - daversy.providers.vss
+    - daversy.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dvs --help
+    - dvstool_oracle --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.svn-hosting.com/trac/Daversy
+  license: GNU General Public License (GPL)
+  summary: 'Daversy is a source control tool for relational databases.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

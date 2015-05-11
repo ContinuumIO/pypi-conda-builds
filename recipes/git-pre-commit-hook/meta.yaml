@@ -1,0 +1,76 @@
+package:
+  name: git-pre-commit-hook
+  version: "0.0.11"
+
+source:
+  fn: git-pre-commit-hook-0.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/g/git-pre-commit-hook/git-pre-commit-hook-0.0.11.tar.gz
+  md5: 48b259f63b593f9da6f47bc90b5abd9f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git-pre-commit-hook = git-pre-commit-hook:main
+    #
+    # Would create an entry point called git-pre-commit-hook that calls git-pre-commit-hook.main()
+
+    - git-pre-commit-hook=git_pre_commit_hook:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - git-pre-commit-hook-utils >=0.0.5
+    - flake8
+    - frosted
+    - pep8-naming
+    - restructuredtext_lint
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - git-pre-commit-hook-utils >=0.0.5
+    - flake8
+    - frosted
+    - pep8-naming
+    - restructuredtext_lint
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - git_pre_commit_hook
+    - git_pre_commit_hook.builtin_plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git-pre-commit-hook --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/evvers/git-pre-commit-hook
+  license: MIT License
+  summary: 'pre-commit hook for Git'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

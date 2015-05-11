@@ -1,0 +1,81 @@
+package:
+  name: distarray
+  version: "0.5.0"
+
+source:
+  fn: distarray-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/distarray/distarray-0.5.0.tar.gz
+  md5: 52239547ae0ef52939826080d1dd978c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - distarray = distarray:main
+    #
+    # Would create an entry point called distarray that calls distarray.main()
+
+    - dacluster = distarray.apps.dacluster:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipython
+    - numpy
+    - mpi4py
+
+  run:
+    - python
+    - ipython
+    - numpy
+    - mpi4py
+
+test:
+  # Python imports
+  imports:
+    - distarray
+    - distarray.apps
+    - distarray.externals
+    - distarray.globalapi
+    - distarray.globalapi.tests
+    - distarray.localapi
+    - distarray.localapi.tests
+    - distarray.plotting
+    - distarray.tests
+    - examples
+    - examples.distarray_protocol
+    - examples.julia_set
+    - examples.pi_montecarlo
+    - examples.seismic_volume
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - dacluster --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/enthought/distarray
+  license: BSD License
+  summary: 'Distributed Memory Arrays for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

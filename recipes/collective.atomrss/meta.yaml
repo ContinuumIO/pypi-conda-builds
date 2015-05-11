@@ -1,0 +1,71 @@
+package:
+  name: collective.atomrss
+  version: "0.1.2"
+
+source:
+  fn: collective.atomrss-0.1.2.zip
+  url: https://pypi.python.org/packages/source/c/collective.atomrss/collective.atomrss-0.1.2.zip
+  md5: b1f5341fec19d7f9edfeda0d3b7ba708
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - collective.atomrss = collective.atomrss:main
+    #
+    # Would create an entry point called collective.atomrss that calls collective.atomrss.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plone
+    - setuptools
+    - plone.api
+
+  run:
+    - python
+    - setuptools
+    - plone
+    - setuptools
+    - plone.api
+
+test:
+  # Python imports
+  imports:
+    - collective
+    - collective.atomrss
+    - collective.atomrss.Extensions
+    - collective.atomrss.browser
+    - collective.atomrss.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/collective.atomrss
+  license: BSD
+  summary: 'Package extends Plone syndication for using Atom RSS by default. It also added some field as events date, contentlead image into rss feed.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

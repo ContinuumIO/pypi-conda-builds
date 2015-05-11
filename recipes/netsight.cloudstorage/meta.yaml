@@ -1,0 +1,78 @@
+package:
+  name: netsight.cloudstorage
+  version: "1.7.1"
+
+source:
+  fn: netsight.cloudstorage-1.7.1.zip
+  url: https://pypi.python.org/packages/source/n/netsight.cloudstorage/netsight.cloudstorage-1.7.1.zip
+  md5: 314f625c78acaa2943beed5914eb381c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - netsight.cloudstorage = netsight.cloudstorage:main
+    #
+    # Would create an entry point called netsight.cloudstorage that calls netsight.cloudstorage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - plone.api
+    - redis
+    - celery
+    - boto
+    - requests >=2.5.0
+    - collective.monkeypatcher
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - plone.api
+    - redis
+    - celery
+    - boto
+    - requests >=2.5.0
+    - collective.monkeypatcher
+
+test:
+  # Python imports
+  imports:
+    - netsight
+    - netsight.cloudstorage
+    - netsight.cloudstorage.browser
+    - netsight.cloudstorage.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/netsight/netsight.cloudstorage
+  license: gpl
+  summary: 'Allows you to store large files in the cloud'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

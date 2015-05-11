@@ -1,0 +1,74 @@
+package:
+  name: lisense
+  version: "1.1.0"
+
+source:
+  fn: lisense-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/lisense/lisense-1.1.0.tar.gz
+  md5: b82ade44c5b6cf953988f96f3215e704
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - lisense = lisense:main
+    #
+    # Would create an entry point called lisense that calls lisense.main()
+
+    - lisense = lisense.lisense:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt
+    - jinja2
+    - pyyaml
+    - xtermcolor
+
+  run:
+    - python
+    - docopt
+    - jinja2
+    - pyyaml
+    - xtermcolor
+
+test:
+  # Python imports
+  imports:
+    - lisense
+    - lisense.commands
+    - lisense.config
+    - lisense.data
+    - lisense.parser
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - lisense --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pravj/lisense
+  license: MIT License
+  summary: 'Sensible repository licensing for Humans'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

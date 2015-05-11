@@ -1,0 +1,77 @@
+package:
+  name: django-openstack
+  version: "0.4"
+
+source:
+  fn: django-openstack-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-openstack/django-openstack-0.4.tar.gz
+  md5: cccf1ed9fbea22ee66f1c3a3a24700ac
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-openstack = django-openstack:main
+    #
+    # Would create an entry point called django-openstack that calls django-openstack.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mox >=0.5.3
+    - django_nose
+
+  run:
+    - python
+    - setuptools
+    - mox >=0.5.3
+    - django_nose
+
+test:
+  # Python imports
+  imports:
+    - django_openstack
+    - django_openstack.auth
+    - django_openstack.dash
+    - django_openstack.dash.views
+    - django_openstack.middleware
+    - django_openstack.syspanel
+    - django_openstack.syspanel.views
+    - django_openstack.templatetags
+    - django_openstack.templatetags.templatetags
+    - django_openstack.tests
+    - django_openstack.tests.view_tests
+    - django_openstack.tests.view_tests.dash
+    - django_openstack.tests.view_tests.syspanel
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/django-openstack/
+  license: Apache Software License
+  summary: 'A Django interface for OpenStack.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

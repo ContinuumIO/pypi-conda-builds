@@ -1,0 +1,65 @@
+package:
+  name: andrimne
+  version: "0.0.1"
+
+source:
+  fn: andrimne-0.0.1.zip
+  url: https://pypi.python.org/packages/source/a/andrimne/andrimne-0.0.1.zip
+  md5: 191d05535df7d86bda02b849d223bb82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - andrimne = andrimne:main
+    #
+    # Would create an entry point called andrimne that calls andrimne.main()
+
+    - andrimne=andrimne.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - pyyaml >=3.10
+
+test:
+  # Python imports
+  imports:
+    - andrimne
+    - andrimne.steps
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - andrimne --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/lstor/andrimne
+  license: MIT License
+  summary: 'Customizable set of tools for automating code deployment.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

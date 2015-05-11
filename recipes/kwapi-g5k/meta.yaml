@@ -1,0 +1,106 @@
+package:
+  name: kwapi-g5k
+  version: "0.3-3"
+
+source:
+  fn: kwapi-g5k-0.3-3.tar.gz
+  url: https://pypi.python.org/packages/source/k/kwapi-g5k/kwapi-g5k-0.3-3.tar.gz
+  md5: 8c2e68062ffa55fbd4dba01f2f4887f7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kwapi-g5k = kwapi-g5k:main
+    #
+    # Would create an entry point called kwapi-g5k that calls kwapi-g5k.main()
+
+    - kwapi-api = kwapi.plugins.api.app:start
+    - kwapi-drivers = kwapi.drivers.driver_manager:start
+    - kwapi-forwarder = kwapi.forwarder:start
+    - kwapi-rrd = kwapi.plugins.rrd.app:start
+    - kwapi-hdf5 = kwapi.plugins.hdf5.app:start
+    - kwapi-live = kwapi.plugins.live.app:start
+    - kwapi-ganglia = kwapi.plugins.ganglia.app:start
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - pyserial
+    - pyzmq
+    - rrdtool
+    - execo
+    - numpy
+    - pandas
+    - tables
+    - numexpr
+    - httplib2
+    - pysnmp
+    - ganglia
+
+  run:
+    - python
+    - flask
+    - pyserial
+    - pyzmq
+    - rrdtool
+    - execo
+    - numpy
+    - pandas
+    - tables
+    - numexpr
+    - httplib2
+    - pysnmp
+    - ganglia
+
+test:
+  # Python imports
+  imports:
+    - kwapi
+    - kwapi.drivers
+    - kwapi.plugins
+    - kwapi.plugins.api
+    - kwapi.plugins.ganglia
+    - kwapi.plugins.hdf5
+    - kwapi.plugins.live
+    - kwapi.plugins.rrd
+    - kwapi.utils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kwapi-api --help
+    - kwapi-drivers --help
+    - kwapi-forwarder --help
+    - kwapi-rrd --help
+    - kwapi-hdf5 --help
+    - kwapi-live --help
+    - kwapi-ganglia --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kwapi-g5k.readthedocs.org/en/latest/
+  license: Apache Software License
+  summary: 'Grid5000 Monitoring Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

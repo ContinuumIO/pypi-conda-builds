@@ -1,0 +1,72 @@
+package:
+  name: flask-via
+  version: "2015.1.1"
+
+source:
+  fn: Flask-Via-2015.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Via/Flask-Via-2015.1.1.tar.gz
+  md5: e58890f2221a2c33b8a694f41e91042a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-via = flask-via:main
+    #
+    # Would create an entry point called flask-via that calls flask-via.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask ==0.10.1
+
+  run:
+    - python
+    - flask ==0.10.1
+
+test:
+  # Python imports
+  imports:
+    - flask_via
+    - flask_via.examples
+    - flask_via.examples.blueprints
+    - flask_via.examples.blueprints.baz
+    - flask_via.examples.blueprints.foo
+    - flask_via.examples.include
+    - flask_via.examples.include.bar
+    - flask_via.examples.include.foo
+    - flask_via.examples.small
+    - flask_via.examples.small.foo
+    - flask_via.routers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://flask-via.soon.build
+  license: MIT License
+  summary: 'Provides a clean, simple URL routing framework for growing Flask Applications.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

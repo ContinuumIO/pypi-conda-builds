@@ -1,0 +1,65 @@
+package:
+  name: jindo
+  version: "0.0.2"
+
+source:
+  fn: jindo-0.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/j/jindo/jindo-0.0.2.tar.gz
+  md5: 855fb4d7e1649236453ddd8f1ecbd169
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jindo = jindo:main
+    #
+    # Would create an entry point called jindo that calls jindo.main()
+
+    - jindo = jindo.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+
+  run:
+    - python
+    - setuptools
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - jindo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jindo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://localhost/jindo/
+  license: GNU General Public License (GPL)
+  summary: 'Command-line tool and library for (mt) API'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

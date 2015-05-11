@@ -1,0 +1,86 @@
+package:
+  name: hyperspy
+  version: "0.8"
+
+source:
+  fn: hyperspy-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/h/hyperspy/hyperspy-0.8.tar.gz
+  md5: 3d9dbe9df5a740d553e1ce5caad38a49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hyperspy = hyperspy:main
+    #
+    # Would create an entry point called hyperspy that calls hyperspy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - hyperspy
+    - hyperspy._components
+    - hyperspy._signals
+    - hyperspy.drawing
+    - hyperspy.drawing._markers
+    - hyperspy.gui
+    - hyperspy.io_plugins
+    - hyperspy.learn
+    - hyperspy.misc
+    - hyperspy.misc.borrowed
+    - hyperspy.misc.borrowed.astroML
+    - hyperspy.misc.eds
+    - hyperspy.misc.eels
+    - hyperspy.misc.io
+    - hyperspy.misc.machine_learning
+    - hyperspy.misc.mpfit
+    - hyperspy.misc.mpfit.tests
+    - hyperspy.models
+    - hyperspy.tests
+    - hyperspy.tests.axes
+    - hyperspy.tests.component
+    - hyperspy.tests.drawing
+    - hyperspy.tests.io
+    - hyperspy.tests.model
+    - hyperspy.tests.mva
+    - hyperspy.tests.signal
+    - hyperspy.tests.utils
+    - hyperspy.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://hyperspy.org
+  license: GNU General Public License v3 (GPLv3)
+  summary: 'Multidimensional data analysis toolbox'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
