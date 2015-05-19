@@ -12,7 +12,7 @@ package_names = [package.strip() for package in
                  open(args.package_list, 'r').readlines()]
 
 if args.n:
-    package_names = package_names[:n]
+    package_names = package_names[:args.n]
 
 log_dir = "./logs/"
 recipes_dir = "./recipes/"
