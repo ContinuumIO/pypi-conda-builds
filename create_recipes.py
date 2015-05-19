@@ -5,10 +5,14 @@ import subprocess
 parser = argparse.ArgumentParser()
 parser.add_argument("package_list", help="List of packages for which" +
                     " recipies will be created")
+parser.add_argumen("-n", help="Number of packages to build", type=int)
 args = parser.parse_args()
 
 package_names = [package.strip() for package in
                  open(args.package_list, 'r').readlines()]
+
+if args.n:
+    package_names = package_names[:n]
 
 log_dir = "./logs/"
 recipes_dir = "./recipes/"
