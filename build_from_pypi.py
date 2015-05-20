@@ -95,6 +95,18 @@ def build_recipe(package):
 
 
 def compile_report():
+    report_lines = ["|package|recipe|build|anaconda|",
+                    "|-------|:-----|:----|:-------|"]
+
+    for package in packages:
+        recipe_log = log_dir + "%s_recipe.log" % (package['name'])
+        build_log = log_dir + "%s_build.log" % (package['name'])
+        report = "|%s|[%s](%s)|[%s](%s)|%s" % (package['name'], package['recipe'],
+                                               recipe_log, package['build'],
+                                               build_log, package['anaconda'])
+
+        report_lines.append(report)
+
     # Add score
     recipe_score = sum([1 for package in packages if package['recipe'] is True])
     build_score = sum([1 for package in packages if package['build'] is True])
@@ -133,20 +145,11 @@ packages = yaml.load(file('packages.yaml', 'r'))
 log_dir = "./logs/"
 recipes_dir = "./recipes/"
 
-report_lines = ["|package|recipe|build|anaconda|",
-                "|-------|:-----|:----|:-------|"]
-
 for package in packages:
-    recipe_status, recipe_log = create_recipe(package)
-    build_status, build_log = build_recipe(package)
-
-    report = "|%s|[%s](%s)|[%s](%s)|%s" % (package['name'], str(recipe_status),
-                                           recipe_log, str(build_status),
-                                           build_log, package['anaconda'])
-
-    report_lines.append(report)
-
+    create_recipe(package)
+    build_recipe(package)
 open('packages.yaml', 'w').writelines(yaml.dump(packages))
+
 compile_report()
 
 if args.commit_and_push:
