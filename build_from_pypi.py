@@ -133,16 +133,16 @@ packages = yaml.load(file('packages.yaml', 'r'))
 log_dir = "./logs/"
 recipes_dir = "./recipes/"
 
-report_lines = ["|package|recipe|build|",
-                "|-------|:-----|:----|"]
+report_lines = ["|package|recipe|build|anaconda|",
+                "|-------|:-----|:----|:-------|"]
 
 for package in packages:
     recipe_status, recipe_log = create_recipe(package)
     build_status, build_log = build_recipe(package)
 
-    report = "|%s|[%s](%s)|[%s](%s)|" % (package['name'], str(recipe_status),
-                                         recipe_log, str(build_status),
-                                         build_log)
+    report = "|%s|[%s](%s)|[%s](%s)|%s" % (package['name'], str(recipe_status),
+                                           recipe_log, str(build_status),
+                                           build_log, package['anaconda'])
 
     report_lines.append(report)
 
