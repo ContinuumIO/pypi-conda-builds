@@ -30,7 +30,7 @@ def init_packages_yaml(n):
     anaconda = set([package.strip() for package in
                     open('anaconda', 'r').readlines()])
 
-    package_list = [dict([('name', name), ('recipe', None), ('build', None),
+    package_list = [dict([('name', name.lower()), ('recipe', None), ('build', None),
                     ('requirements', []), ('anaconda', name.lower() in anaconda)])
                     for name in package_list]
 
