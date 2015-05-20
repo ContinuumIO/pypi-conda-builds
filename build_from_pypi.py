@@ -24,8 +24,11 @@ def init_packages_yaml(n):
     sorted_file = open('sorted_packages', 'r')
     package_list = [package.strip() for package in sorted_file.readlines()][:n]
 
+    anaconda = set([package.strip() for package in
+                    open('anaconda', 'r').readlines()])
+
     package_list = [dict([('name', name), ('recipe', None), ('build', None),
-                    ('requirements', [])])
+                    ('requirements', []), ('anaconda', name.lower() in anaconda)])
                     for name in package_list]
 
     open('packages.yaml', 'w').writelines(yaml.dump(package_list))
@@ -39,7 +42,7 @@ def create_recipe(package):
     print(msg)
 
     err = 0
-    cond = package['recipe'] is None
+    cond = package['recipe'] is None and package['anaconda'] is False
     if cond:
         if not isdir(recipes_dir + package['name']):
             # XXX: the normalization of package names comes into way of
@@ -51,12 +54,12 @@ def create_recipe(package):
         else:
             err = 0
 
-        if err is 0:
-            msg = "Succesfully created conda recipe for %s\n" % (package['name'])
-            package['recipe'] = True
-        else:
-            msg = "Failed to create conda recipe for %s\n" % (package['name'])
-            package['recipe'] = False
+    if err is 0:
+        msg = "Succesfully created conda recipe for %s\n" % (package['name'])
+        package['recipe'] = True
+    else:
+        msg = "Failed to create conda recipe for %s\n" % (package['name'])
+        package['recipe'] = False
         print(msg)
     log_file.close()
 
@@ -71,17 +74,18 @@ def build_recipe(package):
     print(msg)
 
     err = 0
-    if package['build'] is None:
+    if package['build'] is None and package['anaconda'] is False:
         cmd = "conda build %s" % (recipes_dir + package['name'])
         err = subprocess.call(shlex.split(cmd), stdout=log_file,
                               stderr=subprocess.STDOUT)
-        if err is 0:
-            msg = "Succesfully build conda package for %s\n" % (package['name'])
-            package['build'] = True
-        else:
-            msg = "Failed to build conda package for %s\n" % (package['name'])
-            package['build'] = False
-        print(msg)
+
+    if err is 0:
+        msg = "Succesfully build conda package for %s\n" % (package['name'])
+        package['build'] = True
+    else:
+        msg = "Failed to build conda package for %s\n" % (package['name'])
+        package['build'] = False
+    print(msg)
     log_file.close()
 
     return package['build'], log_file_name
