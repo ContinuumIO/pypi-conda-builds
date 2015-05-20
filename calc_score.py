@@ -23,5 +23,6 @@ if args.list_failed_recipes:
     print(recipes)
 
 if args.list_failed_recipes:
-    recipes = [package['name'] for package in packages if package['build'] is not True]
+    recipes = [package['name'] for package in packages
+               if package['build'] is not True]
     print(recipes)
