@@ -70,7 +70,7 @@ def build_recipe(package):
     log_file_name = log_dir + "%s_build.log" % (package['name'])
     log_file = open(log_file_name, 'w')
 
-    msg = "Creating Conda recipe for %s\n" % (package['name'])
+    msg = "Building Conda recipe for %s\n" % (package['name'])
     print(msg)
 
     err = 0
@@ -98,8 +98,8 @@ def compile_report():
 
     n = len(packages)
 
-    report_lines.append("recipe score: %s/%s" % (recipe_score, n))
-    report_lines.append("build score: %s/%s" % (build_score, n))
+    report_lines.append("\nrecipe score: %s/%s\n" % (recipe_score, n))
+    report_lines.append("\nbuild score: %s/%s\n" % (build_score, n))
 
     # Write to file and convert to html
     open("report.md", "w").writelines("\n".join(report_lines))
