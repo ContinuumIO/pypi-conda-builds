@@ -17,6 +17,9 @@ parser.add_argument("-n",
                     type=int)
 parser.add_argument("--anaconda",
                     help="Build pacakges included in Anaconda")
+parser.add_argument("--commit-and-push",
+                    help="Commit the reports and logs and push to gh-pages",
+                    action="store_true")
 args = parser.parse_args()
 
 
@@ -107,6 +110,22 @@ def compile_report():
     subprocess.call(shlex.split(cmd))
 
 
+def commit_and_push():
+    cmd1 = "git checkout gh-pages"
+    cmd2 = "git add --all logs"
+    cmd3 = "git add report.md report.html"
+    cmd4 = "git commit -m \"Auto commit\""
+    cmd5 = "git push origin gh-pages -f"
+    cmd6 = "git checkout master"
+
+    subprocess.call(shlex.split(cmd1))
+    subprocess.call(shlex.split(cmd2))
+    subprocess.call(shlex.split(cmd3))
+    subprocess.call(shlex.split(cmd4))
+    subprocess.call(shlex.split(cmd5))
+    subprocess.call(shlex.split(cmd6))
+
+
 if args.init:
     init_packages_yaml(args.n)
 
@@ -129,3 +148,6 @@ for package in packages:
 
 open('packages.yaml', 'w').writelines(yaml.dump(packages))
 compile_report()
+
+if args.commit_and_push:
+    commit_and_push()
