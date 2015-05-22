@@ -38,18 +38,21 @@ def compile_report():
     report_lines.append("\nrecipe score: %s/%s\n" % (recipe_score, n))
     report_lines.append("\nbuild score: %s/%s\n" % (build_score, n))
 
+    report_lines.append("\n* * *\n")
+
     num_failed_builds = n - build_score
     for error in error_types:
         num_error = sum([1 for package in packages if
                          package['build_error_type'] == error])
         report_lines.append("\n%s: %s/%s\n" % (error, num_error, num_failed_builds))
 
+    report_lines.append("\n* * *\n")
+
     # Write to file and convert to html
     open("report.md", "w").writelines("\n".join(report_lines))
     cmd = "pandoc report.md -o report.html"
     subprocess.call(shlex.split(cmd))
 
-#package_dict = dict([(package['name'], i) for i, package in enumerate(packages)])
 
 if __name__ == "__main__":
     compile_report()
