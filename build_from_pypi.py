@@ -18,6 +18,9 @@ parser.add_argument("-n",
                     type=int)
 parser.add_argument("--anaconda",
                     help="Build pacakges included in Anaconda")
+parser.add_argument("--no-reinit",
+                    help="Do not reinitialize packages build in previous runs",
+                    action="store_true")
 parser.add_argument("--commit-and-push",
                     help="Commit the reports and logs and push to gh-pages",
                     action="store_true")
@@ -26,10 +29,19 @@ args = parser.parse_args()
 
 def init_packages_yaml(n):
     sorted_file = open('sorted_packages', 'r')
-    package_list = [package.strip() for package in sorted_file.readlines()][:n]
 
     anaconda = set([package.strip() for package in
                     open('anaconda', 'r').readlines()])
+
+    package_data = yaml.load(file('packages.yaml', 'r'))
+
+    if args.no_reinit:
+        package_list = [package.strip() for package
+                        in sorted_file.readlines()][len(package_data):n]
+    else:
+        package_list = [package.strip() for package
+                        in sorted_file.readlines()][:n]
+
 
     package_list = [dict([('name', name.lower()), ('recipe', None), ('build', None),
                     ('requirements', []), ('anaconda', name.lower() in anaconda)])
