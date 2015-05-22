@@ -1,0 +1,92 @@
+package:
+  name: python-social-auth
+  version: "0.2.9"
+
+source:
+  fn: python-social-auth-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-social-auth/python-social-auth-0.2.9.tar.gz
+  md5: a1eadd163b8f08cf2fb205ff896b1e36
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-social-auth = python-social-auth:main
+    #
+    # Would create an entry point called python-social-auth that calls python-social-auth.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-openid >=2.2
+    - requests >=1.1.0
+    - oauthlib >=0.3.8
+    - requests-oauthlib >=0.3.1
+    - six >=1.2.0
+    - pyjwt >=1.0.0
+
+  run:
+    - python
+    - python-openid >=2.2
+    - requests >=1.1.0
+    - oauthlib >=0.3.8
+    - requests-oauthlib >=0.3.1
+    - six >=1.2.0
+    - pyjwt >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - social
+    - social.apps
+    - social.apps.cherrypy_app
+    - social.apps.django_app
+    - social.apps.django_app.default
+    - social.apps.django_app.default.migrations
+    - social.apps.django_app.default.south_migrations
+    - social.apps.django_app.me
+    - social.apps.flask_app
+    - social.apps.flask_app.default
+    - social.apps.flask_app.me
+    - social.apps.pyramid_app
+    - social.apps.tornado_app
+    - social.apps.webpy_app
+    - social.backends
+    - social.pipeline
+    - social.storage
+    - social.strategies
+    - social.tests
+    - social.tests.actions
+    - social.tests.backends
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/omab/python-social-auth
+  license: BSD License
+  summary: 'Python social authentication made simple.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

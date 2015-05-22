@@ -1,0 +1,63 @@
+package:
+  name: pytest-django
+  version: "2.8.0"
+
+source:
+  fn: pytest-django-2.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-django/pytest-django-2.8.0.tar.gz
+  md5: ad08caca77086f4f2692d1284c07eff3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytest-django = pytest-django:main
+    #
+    # Would create an entry point called pytest-django that calls pytest-django.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=2.5
+
+  run:
+    - python
+    - setuptools
+    - pytest >=2.5
+
+test:
+  # Python imports
+  imports:
+    - pytest_django
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pytest-django.readthedocs.org/
+  license: BSD License
+  summary: 'A Django plugin for py.test.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

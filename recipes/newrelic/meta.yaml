@@ -1,0 +1,83 @@
+package:
+  name: newrelic
+  version: "2.50.0.39"
+
+source:
+  fn: newrelic-2.50.0.39.tar.gz
+  url: https://pypi.python.org/packages/source/n/newrelic/newrelic-2.50.0.39.tar.gz
+  md5: 6c5cf9add609519a1255303546527e32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - newrelic = newrelic:main
+    #
+    # Would create an entry point called newrelic that calls newrelic.main()
+
+    - newrelic-admin = newrelic.admin:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - newrelic
+    - newrelic.admin
+    - newrelic.api
+    - newrelic.bootstrap
+    - newrelic.common
+    - newrelic.core
+    - newrelic.extras
+    - newrelic.extras.framework_django
+    - newrelic.extras.framework_django.templatetags
+    - newrelic.hooks
+    - newrelic.hooks.framework_tornado
+    - newrelic.network
+    - newrelic.samplers
+    - newrelic/packages
+    - newrelic/packages/requests
+    - newrelic/packages/requests/packages
+    - newrelic/packages/requests/packages/chardet
+    - newrelic/packages/requests/packages/urllib3
+    - newrelic/packages/requests/packages/urllib3/packages
+    - newrelic/packages/requests/packages/urllib3/packages/ssl_match_hostname
+    - newrelic/packages/requests/packages/urllib3/util
+    - newrelic/packages/wrapt
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - newrelic-admin --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.newrelic.com
+  license: (C) Copyright 2010-2015 New Relic Inc. All rights reserved.
+  summary: 'Python agent for New Relic'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

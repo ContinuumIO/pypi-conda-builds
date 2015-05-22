@@ -1,0 +1,69 @@
+package:
+  name: mozlog
+  version: "2.11"
+
+source:
+  fn: mozlog-2.11.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozlog/mozlog-2.11.tar.gz
+  md5: 9c674be8cf05d3677ad36ad66177125c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozlog = mozlog:main
+    #
+    # Would create an entry point called mozlog that calls mozlog.main()
+
+    - structlog = mozlog.structured.scripts:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blessings >=1.3
+
+  run:
+    - python
+    - blessings >=1.3
+
+test:
+  # Python imports
+  imports:
+    - mozlog
+    - mozlog.structured
+    - mozlog.structured.formatters
+    - mozlog.structured.formatters.html
+    - mozlog.structured.handlers
+    - mozlog.structured.scripts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - structlog --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://wiki.mozilla.org/Auto-tools/Projects/Mozbase
+  license: Mozilla Public License 1.1 (MPL 1.1)
+  summary: 'Robust log handling specialized for logging in the Mozilla universe'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

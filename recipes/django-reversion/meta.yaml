@@ -1,0 +1,63 @@
+package:
+  name: django-reversion
+  version: "1.8.7"
+
+source:
+  fn: django-reversion-1.8.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-reversion/django-reversion-1.8.7.tar.gz
+  md5: 47c28eaf60181c617d4b0022f6a658fe
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-reversion = django-reversion:main
+    #
+    # Would create an entry point called django-reversion that calls django-reversion.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - reversion
+    - reversion.management
+    - reversion.management.commands
+    - reversion.migrations
+    - reversion.south_migrations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/etianen/django-reversion
+  license: BSD License
+  summary: 'An extension to the Django web framework that provides comprehensive version control facilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

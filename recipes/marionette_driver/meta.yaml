@@ -1,0 +1,64 @@
+package:
+  name: marionette_driver
+  version: "0.7"
+
+source:
+  fn: marionette_driver-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/m/marionette_driver/marionette_driver-0.7.tar.gz
+  md5: 7e1b1a73662d81b5d0b8d4fedab9e469
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - marionette_driver = marionette_driver:main
+    #
+    # Would create an entry point called marionette_driver that calls marionette_driver.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - marionette-transport ==0.4
+    - mozrunner >=6.2
+
+  run:
+    - python
+    - marionette-transport ==0.4
+    - mozrunner >=6.2
+
+test:
+  # Python imports
+  imports:
+    - marionette_driver
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://wiki.mozilla.org/Auto-tools/Projects/Marionette
+  license: MPL
+  summary: 'Marionette Driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

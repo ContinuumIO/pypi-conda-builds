@@ -1,0 +1,68 @@
+package:
+  name: coveralls
+  version: "1.0a2"
+
+source:
+  fn: coveralls-1.0a2.tar.gz
+  url: https://pypi.python.org/packages/source/c/coveralls/coveralls-1.0a2.tar.gz
+  md5: 678eb7fdd3d477a4d9d0cacbffe88ee2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coveralls = coveralls:main
+    #
+    # Would create an entry point called coveralls that calls coveralls.main()
+
+    - coveralls = coveralls.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docopt >=0.6.1
+    - coverage >=3.6
+    - requests >=1.0.0
+
+  run:
+    - python
+    - docopt >=0.6.1
+    - coverage >=3.6
+    - requests >=1.0.0
+
+test:
+  # Python imports
+  imports:
+    - coveralls
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - coveralls --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/coagulant/coveralls-python
+  license: MIT License
+  summary: 'Show coverage stats online via coveralls.io'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

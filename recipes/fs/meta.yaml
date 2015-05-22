@@ -1,0 +1,95 @@
+package:
+  name: fs
+  version: "0.5.2"
+
+source:
+  fn: fs-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/fs/fs-0.5.2.tar.gz
+  md5: 117e2ac8d5631cdb4a30bd8f0a88ebe0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fs = fs:main
+    #
+    # Would create an entry point called fs that calls fs.main()
+
+    - fscat = fs.commands.fscat:run
+    - fsinfo = fs.commands.fsinfo:run
+    - fsls = fs.commands.fsls:run
+    - fsmv = fs.commands.fsmv:run
+    - fscp = fs.commands.fscp:run
+    - fsrm = fs.commands.fsrm:run
+    - fsserve = fs.commands.fsserve:run
+    - fstree = fs.commands.fstree:run
+    - fsmkdir = fs.commands.fsmkdir:run
+    - fsmount = fs.commands.fsmount:run
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  # Python imports
+  imports:
+    - fs
+    - fs.commands
+    - fs.contrib
+    - fs.contrib.bigfs
+    - fs.contrib.davfs
+    - fs.contrib.tahoelafs
+    - fs.expose
+    - fs.expose.dokan
+    - fs.expose.fuse
+    - fs.expose.wsgi
+    - fs.osfs
+    - fs.tests
+    - fs.wrapfs
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - fscat --help
+    - fsinfo --help
+    - fsls --help
+    - fsmv --help
+    - fscp --help
+    - fsrm --help
+    - fsserve --help
+    - fstree --help
+    - fsmkdir --help
+    - fsmount --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/fs/
+  license: BSD License
+  summary: 'Filesystem abstraction layer'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

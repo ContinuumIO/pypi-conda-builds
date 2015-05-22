@@ -1,0 +1,61 @@
+package:
+  name: pycparser
+  version: "2.13"
+
+source:
+  fn: pycparser-2.13.tar.gz
+  url: https://pypi.python.org/packages/source/p/pycparser/pycparser-2.13.tar.gz
+  md5: e4fe1a2d341b22e25da0d22f034ef32f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pycparser = pycparser:main
+    #
+    # Would create an entry point called pycparser that calls pycparser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pycparser
+    - pycparser.ply
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/eliben/pycparser
+  license: BSD
+  summary: 'C parser in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

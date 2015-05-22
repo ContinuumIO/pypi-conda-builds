@@ -1,0 +1,80 @@
+package:
+  name: sqlalchemy
+  version: "1.0.4"
+
+source:
+  fn: SQLAlchemy-1.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-1.0.4.tar.gz
+  md5: ad1a8a2064dd9c8e76d5692a8eb4e864
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sqlalchemy = sqlalchemy:main
+    #
+    # Would create an entry point called sqlalchemy that calls sqlalchemy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sqlalchemy
+    - sqlalchemy.connectors
+    - sqlalchemy.databases
+    - sqlalchemy.dialects
+    - sqlalchemy.dialects.firebird
+    - sqlalchemy.dialects.mssql
+    - sqlalchemy.dialects.mysql
+    - sqlalchemy.dialects.oracle
+    - sqlalchemy.dialects.postgresql
+    - sqlalchemy.dialects.sqlite
+    - sqlalchemy.dialects.sybase
+    - sqlalchemy.engine
+    - sqlalchemy.event
+    - sqlalchemy.ext
+    - sqlalchemy.ext.declarative
+    - sqlalchemy.orm
+    - sqlalchemy.sql
+    - sqlalchemy.testing
+    - sqlalchemy.testing.plugin
+    - sqlalchemy.testing.suite
+    - sqlalchemy.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.sqlalchemy.org
+  license: MIT License
+  summary: 'Database Abstraction Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

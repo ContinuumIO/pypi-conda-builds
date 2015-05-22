@@ -1,0 +1,68 @@
+package:
+  name: service_identity
+  version: "14.0.0"
+
+source:
+  fn: service_identity-14.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/service_identity/service_identity-14.0.0.tar.gz
+  md5: cea0b0156d73b025ecef660fb51f0d9a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - service_identity = service_identity:main
+    #
+    # Would create an entry point called service_identity that calls service_identity.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - characteristic >=14.0.0
+    - pyasn1
+    - pyasn1-modules
+    - pyopenssl >=0.12
+
+  run:
+    - python
+    - characteristic >=14.0.0
+    - pyasn1
+    - pyasn1-modules
+    - pyopenssl >=0.12
+
+test:
+  # Python imports
+  imports:
+    - service_identity
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pyca/service_identity
+  license: MIT License
+  summary: 'Service identity verification for pyOpenSSL.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

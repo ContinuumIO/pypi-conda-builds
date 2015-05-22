@@ -1,0 +1,75 @@
+package:
+  name: reportlab
+  version: "3.1.44"
+
+source:
+  fn: reportlab-3.1.44.tar.gz
+  url: https://pypi.python.org/packages/source/r/reportlab/reportlab-3.1.44.tar.gz
+  md5: 34f13c50b416c6bea12e3d8cb23ec7d7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reportlab = reportlab:main
+    #
+    # Would create an entry point called reportlab that calls reportlab.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow >=2.4.0
+    - pip >=1.4.1
+    - setuptools >=2.2
+
+  run:
+    - python
+    - pillow >=2.4.0
+    - pip >=1.4.1
+    - setuptools >=2.2
+
+test:
+  # Python imports
+  imports:
+    - reportlab
+    - reportlab.graphics
+    - reportlab.graphics.barcode
+    - reportlab.graphics.charts
+    - reportlab.graphics.samples
+    - reportlab.graphics.widgets
+    - reportlab.lib
+    - reportlab.pdfbase
+    - reportlab.pdfgen
+    - reportlab.platypus
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.reportlab.com/
+  license: BSD license (see license.txt for details), Copyright (c) 2000-2012, ReportLab Inc.
+  summary: 'The Reportlab Toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

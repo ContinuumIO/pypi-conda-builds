@@ -1,0 +1,65 @@
+package:
+  name: mozinfo
+  version: "0.7"
+
+source:
+  fn: mozinfo-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozinfo/mozinfo-0.7.tar.gz
+  md5: b21be84d6ee98d5306f93635d6521884
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mozinfo = mozinfo:main
+    #
+    # Would create an entry point called mozinfo that calls mozinfo.main()
+
+    - mozinfo=mozinfo:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mozfile >=0.12
+
+  run:
+    - python
+    - setuptools
+    - mozfile >=0.12
+
+test:
+  # Python imports
+  imports:
+    - mozinfo
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mozinfo --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://wiki.mozilla.org/Auto-tools/Projects/Mozbase
+  license: MPL
+  summary: 'Library to get system information for use in Mozilla testing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

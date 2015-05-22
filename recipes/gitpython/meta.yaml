@@ -1,0 +1,71 @@
+package:
+  name: gitpython
+  version: "1.0.1"
+
+source:
+  fn: GitPython-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/G/GitPython/GitPython-1.0.1.tar.gz
+  md5: 4659644b42c41e5e5170c0cd83ed6422
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gitpython = gitpython:main
+    #
+    # Would create an entry point called gitpython that calls gitpython.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gitdb >=0.6.4
+
+  run:
+    - python
+    - gitdb >=0.6.4
+
+test:
+  # Python imports
+  imports:
+    - git
+    - git.index
+    - git.objects
+    - git.objects.submodule
+    - git.refs
+    - git.repo
+    - git.test
+    - git.test.lib
+    - git.test.performance
+    - gitpython
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gitpython-developers/GitPython
+  license: BSD License
+  summary: 'Python Git Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,72 @@
+package:
+  name: cssutils
+  version: "1.0"
+
+source:
+  fn: cssutils-1.0.zip
+  url: https://pypi.python.org/packages/source/c/cssutils/cssutils-1.0.zip
+  md5: 0c0b9df329ec1461c732d0f3cba05e93
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cssutils = cssutils:main
+    #
+    # Would create an entry point called cssutils that calls cssutils.main()
+
+    - csscapture = cssutils.scripts.csscapture:main
+    - csscombine = cssutils.scripts.csscombine:main
+    - cssparse = cssutils.scripts.cssparse:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cssutils
+    - cssutils.css
+    - cssutils.scripts
+    - cssutils.stylesheets
+    - cssutils.tests
+    - cssutils.tests.test_encutils
+    - encutils
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - csscapture --help
+    - csscombine --help
+    - cssparse --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cthedot.de/cssutils/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A CSS Cascading Style Sheets library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

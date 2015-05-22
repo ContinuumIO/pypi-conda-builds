@@ -1,0 +1,111 @@
+package:
+  name: scrapy
+  version: "0.24.6"
+
+source:
+  fn: Scrapy-0.24.6.tar.gz
+  url: https://pypi.python.org/packages/source/S/Scrapy/Scrapy-0.24.6.tar.gz
+  md5: 8d5421c0e42fa701eab23e121712f334
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - scrapy = scrapy:main
+    #
+    # Would create an entry point called scrapy that calls scrapy.main()
+
+    - scrapy = scrapy.cmdline:execute
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted >=10.0.0
+    - w3lib >=1.8.0
+    - queuelib
+    - lxml
+    - pyopenssl
+    - cssselect >=0.9
+    - six >=1.5.2
+
+  run:
+    - python
+    - twisted >=10.0.0
+    - w3lib >=1.8.0
+    - queuelib
+    - lxml
+    - pyopenssl
+    - cssselect >=0.9
+    - six >=1.5.2
+
+test:
+  # Python imports
+  imports:
+    - scrapy
+    - scrapy.commands
+    - scrapy.contracts
+    - scrapy.contrib
+    - scrapy.contrib.downloadermiddleware
+    - scrapy.contrib.exporter
+    - scrapy.contrib.linkextractors
+    - scrapy.contrib.loader
+    - scrapy.contrib.pipeline
+    - scrapy.contrib.spidermiddleware
+    - scrapy.contrib.spiders
+    - scrapy.contrib.webservice
+    - scrapy.contrib_exp
+    - scrapy.contrib_exp.downloadermiddleware
+    - scrapy.core
+    - scrapy.core.downloader
+    - scrapy.core.downloader.handlers
+    - scrapy.http
+    - scrapy.http.request
+    - scrapy.http.response
+    - scrapy.selector
+    - scrapy.settings
+    - scrapy.tests
+    - scrapy.tests.mocks
+    - scrapy.tests.test_cmdline
+    - scrapy.tests.test_djangoitem
+    - scrapy.tests.test_settings
+    - scrapy.tests.test_spidermanager
+    - scrapy.tests.test_spidermanager.test_spiders
+    - scrapy.tests.test_utils_misc
+    - scrapy.tests.test_utils_misc.test_walk_modules
+    - scrapy.tests.test_utils_misc.test_walk_modules.mod
+    - scrapy.utils
+    - scrapy.xlib
+    - scrapy.xlib.pydispatch
+    - scrapy.xlib.tx
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - scrapy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://scrapy.org
+  license: BSD License
+  summary: 'A high-level Python Screen Scraping framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

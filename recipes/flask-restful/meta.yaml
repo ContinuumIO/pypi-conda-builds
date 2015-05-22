@@ -1,0 +1,74 @@
+package:
+  name: flask-restful
+  version: "0.3.3"
+
+source:
+  fn: Flask-RESTful-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-RESTful/Flask-RESTful-0.3.3.tar.gz
+  md5: ad1c32551c23c7ed295c43fd4850b658
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-restful = flask-restful:main
+    #
+    # Would create an entry point called flask-restful that calls flask-restful.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - aniso8601 >=0.82
+    - flask >=0.8
+    - six >=1.3.0
+    - pytz
+    - sphinx
+    - pycrypto >=2.6
+
+  run:
+    - python
+    - aniso8601 >=0.82
+    - flask >=0.8
+    - six >=1.3.0
+    - pytz
+    - sphinx
+    - pycrypto >=2.6
+
+test:
+  # Python imports
+  imports:
+    - flask_restful
+    - flask_restful.representations
+    - flask_restful.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://www.github.com/flask-restful/flask-restful/
+  license: UNKNOWN
+  summary: 'Simple framework for creating REST APIs'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
