@@ -1,0 +1,72 @@
+package:
+  name: pytest
+  version: "2.7.1"
+
+source:
+  fn: pytest-2.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest/pytest-2.7.1.tar.gz
+  md5: e972d691ff6779ffb4b594449bac3e43
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytest = pytest:main
+    #
+    # Would create an entry point called pytest that calls pytest.main()
+
+    - py.test = pytest:main
+    - py.test-2.7 = pytest:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py >=1.4.25
+    - colorama
+    - argparse
+
+  run:
+    - python
+    - py >=1.4.25
+    - colorama
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - _pytest
+    - _pytest.assertion
+    - pytest
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - py.test --help
+    - py.test-2.7 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pytest.org
+  license: MIT License
+  summary: 'pytest: simple powerful testing with Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

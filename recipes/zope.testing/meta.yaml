@@ -1,0 +1,68 @@
+package:
+  name: zope.testing
+  version: "4.1.3"
+
+source:
+  fn: zope.testing-4.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.testing/zope.testing-4.1.3.tar.gz
+  md5: 6c73c5b668a67fdc116a25b884058ed9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - zope.testing = zope.testing:main
+    #
+    # Would create an entry point called zope.testing that calls zope.testing.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.exceptions
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - zope.exceptions
+    - zope.interface
+
+test:
+  # Python imports
+  imports:
+    - zope
+    - zope.testing
+    - zope.testing.doctest
+    - zope.testing.renormalizing
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/zope.testing
+  license: Zope Public License
+  summary: 'Zope testing helpers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
