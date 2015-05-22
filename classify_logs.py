@@ -2,7 +2,38 @@ import re
 import yaml
 
 error_types = ["no package found",
+               "test failure",
                "unclassified"]
+
+
+def has_missing_test_dependency(log):
+    """
+    Return: (Status, missing packages)
+    """
+    None
+
+
+def no_packages_found(log):
+    p = re.compile(r"Error: No packages found")
+    return any([re.match(p, line) for line in log])
+
+
+def split_build_and_test(log):
+    # XXX: This can be very memory inefficient
+    # Maybe don't even need to split the test and build parts
+
+    try:
+        p = re.compile("TEST START")
+        test_start = [re.match(p, line) for line in log]
+        start_index = test_start.find(True)
+        return log[:start_index], log[start_index:]
+    except ValueError:
+        return log, []
+
+
+def has_test_failure(test_log):
+    p = re.compile("TESTS FAILED")
+    return re.match(p, test_log[-1]) is not None
 
 
 def classify_build_log(log_file):
@@ -18,23 +49,13 @@ def classify_build_log(log_file):
     log = log_file.readlines()
     if no_packages_found(log):
         return "no package found"
-    if has_missing_test_dependency(log):
-        return "missing test dependency"
+
+    build, test = split_build_and_test(log)
+    if test:
+        if has_test_failure(test):
+            return "test failure"
 
     return "unclassified"
-    pass
-
-
-def has_missing_test_dependency(log):
-    """
-    Return: (Status, missing packages)
-    """
-    None
-
-
-def no_packages_found(log):
-    p = re.compile(r"Error: No packages found")
-    return any([re.match(p, line) for line in log])
 
 
 def classify_all_logs():
@@ -49,6 +70,7 @@ def classify_all_logs():
         else:
             error_type = None
         package['build_error_type'] = error_type
+
     open('packages.yaml', 'w').writelines(yaml.dump(packages))
 
 
