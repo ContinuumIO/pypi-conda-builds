@@ -116,6 +116,18 @@ def compile_report():
     report_lines.append("\nrecipe score: %s/%s\n" % (recipe_score, n))
     report_lines.append("\nbuild score: %s/%s\n" % (build_score, n))
 
+    report_lines.append("* * *")
+
+    # Calculate classes
+    from classify_logs import classify_all_logs, error_types
+    classify_all_logs()
+
+    num_failed_builds = n - build_score
+    for error in error_types:
+        num_error = sum([1 for package in packages if
+                         package['build_error_type'] is error])
+        report_lines.append("%s: %s/%s" % (error, num_error, num_failed_builds))
+
     # Write to file and convert to html
     open("report.md", "w").writelines("\n".join(report_lines))
     cmd = "pandoc report.md -o report.html"
