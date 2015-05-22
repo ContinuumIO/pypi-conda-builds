@@ -1,0 +1,88 @@
+<h1 id="type-of-build-error">Type of build error</h1>
+<h2 id="missing-build-dependency">1. <strong>missing build dependency</strong></h2>
+<p>This occurs when a build dependency has not been stated in <code>meta.yaml</code> in the recipes. Example log:</p>
+<pre><code>Removing old build directory
+Removing old work directory
+BUILD START: hacking-0.9.6-py27_0
+Fetching package metadata: ........
+Solving package specifications: .+ /home/hargup/anaconda/envs/_build/bin/python setup.py install
+Traceback (most recent call last):
+  File &quot;setup.py&quot;, line 30, in &lt;module&gt;
+.
+. &lt;lines removed for brevity&gt;
+.
+  File &quot;/home/hargup/anaconda/envs/_build/lib/python2.7/site-packages/setuptools-16.0-py2.7.egg/setuptools/package_index.py&quot;, line 283, in process_url
+RuntimeError: Setuptools downloading is disabled in conda build. Be sure to add all dependencies in the meta.yaml  url=https://pypi.python.org/simple/pbr/r
+
+The following NEW packages will be INSTALLED:
+
+    openssl:    1.0.1k-1    
+    pip:        6.1.1-py27_0
+.
+. &lt;lines removed for brevity&gt;
+.
+Package: hacking-0.9.6-py27_0
+source tree in: /home/hargup/anaconda/conda-bld/work/hacking-0.9.6
+Command failed: /bin/bash -x -e /home/hargup/210fs/pypi-conda-builds/recipes/hacking/build.sh</code></pre>
+<h2 id="test-failure-missing-dependency">2. <strong>test failure: missing dependency</strong></h2>
+<p>This occurs when a test dependency has not been stated in <code>meta.yaml</code> in the recipes. Example log:</p>
+<pre><code>Removing old build directory
+Removing old work directory
+BUILD START: django-appconf-1.0.1-py27_0
+.
+. &lt;lines removed for brevity&gt;
+.
+BUILD END: django-appconf-1.0.1-py27_0
+TEST START: django-appconf-1.0.1-py27_0
+Fetching package metadata: ........
+Solving package specifications: .===== testing package: django-appconf-1.0.1-py27_0 =====
+import: u&#39;appconf&#39;
+Traceback (most recent call last):
+  File &quot;/home/hargup/anaconda/conda-bld/test-tmp_dir/run_test.py&quot;, line 25, in &lt;module&gt;
+    import appconf
+  File &quot;build/bdist.linux-x86_64/egg/appconf/__init__.py&quot;, line 2, in &lt;module&gt;
+  File &quot;build/bdist.linux-x86_64/egg/appconf/base.py&quot;, line 5, in &lt;module&gt;
+ImportError: No module named django.core.exceptions
+.
+. &lt;lines removed for brevity&gt;
+.
+TESTS FAILED: django-appconf-1.0.1-py27_0</code></pre>
+<h2 id="no-packages-found-in-current-linux-64-channels">3. <strong>No packages found in current linux-64 channels</strong></h2>
+<p>Example logs:</p>
+<pre><code>Removing old build directory
+Removing old work directory
+BUILD START: paste-2.0.2-py27_0
+Fetching package metadata: ........
+Error: No packages found in current linux-64 channels matching: flup</code></pre>
+<pre><code>Removing old build directory
+Removing old work directory
+BUILD START: warlock-1.1.0-py27_0
+Fetching package metadata: ........
+Error: No packages found in current linux-64 channels matching: jsonpatch &gt;=0.10,&lt;2</code></pre>
+<p>It might mean that package or one of its dependency is platform dependent and is not available on <code>linux-64</code>. This can also occur when a error occurs in building one of more dependencies of a package.</p>
+<p><strong>NOTE:</strong> our initial aim is to build no-arch packages, so system dependent packages are out of scope</p>
+<h2 id="invalid-syntax">4. <strong>invalid syntax</strong></h2>
+<p>Example log:</p>
+<pre><code>Removing old build directory
+Removing old work directory
+BUILD START: astroid-1.3.6-py27_0
+.
+. &lt;lines removed for brevity&gt;
+.
+Compiling /home/hargup/anaconda/envs/_build/lib/python2.7/site-packages/astroid/tests/testdata/python3/data/module2.py ...
+  File &quot;/home/hargup/anaconda/envs/_build/lib/python2.7/site-packages/astroid/tests/testdata/python3/data/module2.py&quot;, line 100
+    print(&#39;bonjour&#39;, file=stream)
+                         ^
+SyntaxError: invalid syntax
+.
+. &lt;lines removed for brevity&gt;
+.
+Command failed: /home/hargup/anaconda/envs/_build/bin/python -Wi /home/hargup/anaconda/envs/_build/lib/python2.7/compileall.py -q -x port_v3 /home/hargup/anaconda/envs/_build/lib/python2.7/site-packages</code></pre>
+<p>A likely reason: trying to build python 3 package on python 2</p>
+<h2 id="unclassified">5. <strong>unclassified</strong></h2>
+<p>Either we don't what's wrong or the error is too rare to have a different category for itself.</p>
+<p>A few of the know reasons are:</p>
+<ul>
+<li>Missing non python dependency: swig, lapack etc.</li>
+<li>package trying to write in <code>/opt</code> or <code>/etc</code></li>
+</ul>
