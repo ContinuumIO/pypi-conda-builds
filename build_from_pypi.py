@@ -51,7 +51,8 @@ def create_recipe(package):
         if not isdir(recipes_dir + package['name']):
             # XXX: the normalization of package names comes into way of
             # directory detection
-            cmd = "conda skeleton pypi %s --output-dir %s --recursive"
+            cmd = "conda skeleton pypi %s --output-dir %s" \
+                    " --recursive --no-prompt --all-extras"
             cmd = cmd % (package['name'], recipes_dir)
             err = subprocess.call(shlex.split(cmd), stdout=log_file,
                                   stderr=subprocess.STDOUT)
