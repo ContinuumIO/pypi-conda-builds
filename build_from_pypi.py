@@ -7,6 +7,7 @@ import argparse
 import subprocess
 import yaml
 import shlex
+from compile_report import compile_report
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--init",
@@ -92,46 +93,6 @@ def build_recipe(package):
     log_file.close()
 
     return package['build'], log_file_name
-
-
-def compile_report():
-    report_lines = ["|package|recipe|build|anaconda|",
-                    "|-------|:-----|:----|:-------|"]
-
-    for package in packages:
-        recipe_log = log_dir + "%s_recipe.log" % (package['name'])
-        build_log = log_dir + "%s_build.log" % (package['name'])
-        report = "|%s|[%s](%s)|[%s](%s)|%s" % (package['name'], package['recipe'],
-                                               recipe_log, package['build'],
-                                               build_log, package['anaconda'])
-
-        report_lines.append(report)
-
-    # Add score
-    recipe_score = sum([1 for package in packages if package['recipe'] is True])
-    build_score = sum([1 for package in packages if package['build'] is True])
-
-    n = len(packages)
-
-    report_lines.append("\nrecipe score: %s/%s\n" % (recipe_score, n))
-    report_lines.append("\nbuild score: %s/%s\n" % (build_score, n))
-
-    report_lines.append("* * *")
-
-    # Calculate classes
-    from classify_logs import classify_all_logs, error_types
-    classify_all_logs()
-
-    num_failed_builds = n - build_score
-    for error in error_types:
-        num_error = sum([1 for package in packages if
-                         package['build_error_type'] is error])
-        report_lines.append("%s: %s/%s" % (error, num_error, num_failed_builds))
-
-    # Write to file and convert to html
-    open("report.md", "w").writelines("\n".join(report_lines))
-    cmd = "pandoc report.md -o report.html"
-    subprocess.call(shlex.split(cmd))
 
 
 def commit_and_push():
