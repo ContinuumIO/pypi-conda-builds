@@ -8,6 +8,7 @@ import subprocess
 import yaml
 import shlex
 from compile_report import compile_report
+from conda.install import rm_rf
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--init",
@@ -20,6 +21,9 @@ parser.add_argument("--anaconda",
                     help="Build pacakges included in Anaconda")
 parser.add_argument("--no-reinit",
                     help="Do not reinitialize packages build in previous runs",
+                    action="store_true")
+parser.add_argument("--rebuild-failed",
+                    help="Rebuild failed packages",
                     action="store_true")
 parser.add_argument("--commit-and-push",
                     help="Commit the reports and logs and push to gh-pages",
@@ -57,19 +61,15 @@ def create_recipe(package):
     msg = "Creating Conda recipe for %s\n" % (package['name'])
     print(msg)
 
-    err = 0
-    cond = package['recipe'] is None and package['anaconda'] is False
-    if cond:
-        if not isdir(recipes_dir + package['name']):
-            # XXX: the normalization of package names comes into way of
-            # directory detection
-            cmd = "conda skeleton pypi %s --output-dir %s" \
-                    " --recursive --no-prompt --all-extras"
-            cmd = cmd % (package['name'], recipes_dir)
-            err = subprocess.call(shlex.split(cmd), stdout=log_file,
-                                  stderr=subprocess.STDOUT)
-        else:
-            err = 0
+    # Remove the old recipe
+    if isdir(recipes_dir + package['name']):
+        rm_rf(recipes_dir + package['name'])
+
+    cmd = "conda skeleton pypi %s --output-dir %s" \
+        " --recursive --no-prompt --all-extras"
+    cmd = cmd % (package['name'], recipes_dir)
+    err = subprocess.call(shlex.split(cmd), stdout=log_file,
+                          stderr=subprocess.STDOUT)
 
     if err is 0:
         msg = "Succesfully created conda recipe for %s\n" % (package['name'])
@@ -90,11 +90,9 @@ def build_recipe(package):
     msg = "Building Conda recipe for %s\n" % (package['name'])
     print(msg)
 
-    err = 0
-    if package['build'] is None and package['anaconda'] is False:
-        cmd = "conda build %s" % (recipes_dir + package['name'])
-        err = subprocess.call(shlex.split(cmd), stdout=log_file,
-                              stderr=subprocess.STDOUT)
+    cmd = "conda build %s" % (recipes_dir + package['name'])
+    err = subprocess.call(shlex.split(cmd), stdout=log_file,
+                            stderr=subprocess.STDOUT)
 
     if err is 0:
         msg = "Succesfully build conda package for %s\n" % (package['name'])
@@ -132,8 +130,19 @@ log_dir = "./logs/"
 recipes_dir = "./recipes/"
 
 for package in packages:
-    create_recipe(package)
-    build_recipe(package)
+    # XXX: Dependent recipies won't be build again
+    cond = (package['recipe'] is None and package['anaconda'] is False) \
+        or (args.rebuild_failed and package['build'] is False)
+
+    if cond:
+        create_recipe(package)
+
+    cond = (package['build'] is None and package['anaconda'] is False) \
+        or (args.rebuild_failed and package['build'] is False)
+    if cond:
+        build_recipe(package)
+
+
 open('packages.yaml', 'w').writelines(yaml.dump(packages))
 
 compile_report()
