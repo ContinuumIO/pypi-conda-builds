@@ -8,6 +8,7 @@ import subprocess
 import yaml
 import shlex
 from compile_report import compile_report
+from conda.install import rm_rf
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--init",
@@ -60,15 +61,15 @@ def create_recipe(package):
     msg = "Creating Conda recipe for %s\n" % (package['name'])
     print(msg)
 
-    err = 0
-    if not isdir(recipes_dir + package['name']):
-        # XXX: the normalization of package names comes into way of
-        # directory detection
-        cmd = "conda skeleton pypi %s --output-dir %s" \
-                " --recursive --no-prompt --all-extras"
-        cmd = cmd % (package['name'], recipes_dir)
-        err = subprocess.call(shlex.split(cmd), stdout=log_file,
-                                stderr=subprocess.STDOUT)
+    # Remove the old recipe
+    if isdir(recipes_dir + package['name']):
+        rm_rf(recipes_dir + package['name'])
+
+    cmd = "conda skeleton pypi %s --output-dir %s" \
+        " --recursive --no-prompt --all-extras"
+    cmd = cmd % (package['name'], recipes_dir)
+    err = subprocess.call(shlex.split(cmd), stdout=log_file,
+                          stderr=subprocess.STDOUT)
 
     if err is 0:
         msg = "Succesfully created conda recipe for %s\n" % (package['name'])
@@ -89,7 +90,6 @@ def build_recipe(package):
     msg = "Building Conda recipe for %s\n" % (package['name'])
     print(msg)
 
-    err = 0
     cmd = "conda build %s" % (recipes_dir + package['name'])
     err = subprocess.call(shlex.split(cmd), stdout=log_file,
                             stderr=subprocess.STDOUT)
@@ -130,11 +130,15 @@ log_dir = "./logs/"
 recipes_dir = "./recipes/"
 
 for package in packages:
-    if package['recipe'] is None and package['anaconda'] is False:
+    # XXX: Dependent recipies won't be build again
+    cond = (package['recipe'] is None and package['anaconda'] is False) \
+        or (args.rebuild_failed and package['build'] is False)
+
+    if cond:
         create_recipe(package)
 
     cond = (package['build'] is None and package['anaconda'] is False) \
-        or args.rebuild_failed
+        or (args.rebuild_failed and package['build'] is False)
     if cond:
         build_recipe(package)
 
