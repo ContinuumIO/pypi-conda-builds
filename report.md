@@ -35,7 +35,7 @@
 |coverage|[True](./logs/coverage_recipe.log)|[True](./logs/coverage_build.log)|False|None|
 |wincertstore|[True](./logs/wincertstore_recipe.log)|[False](./logs/wincertstore_build.log)|False|test failure: missing dependency|
 |pep8|[True](./logs/pep8_recipe.log)|[True](./logs/pep8_build.log)|True|None|
-|django|[True](./logs/django_recipe.log)|[False](./logs/django_build.log)|False|test failure: other reasons|
+|django|[True](./logs/django_recipe.log)|[False](./logs/django_build.log)|False|No packages found in current linux-64 channels|
 |psutil|[True](./logs/psutil_recipe.log)|[True](./logs/psutil_build.log)|True|None|
 |httplib2|[True](./logs/httplib2_recipe.log)|[True](./logs/httplib2_build.log)|False|None|
 |mock|[True](./logs/mock_recipe.log)|[True](./logs/mock_build.log)|True|None|
@@ -56,7 +56,7 @@
 |futures|[True](./logs/futures_recipe.log)|[True](./logs/futures_build.log)|True|None|
 |pika|[False](./logs/pika_recipe.log)|[False](./logs/pika_build.log)|False|No recipe available|
 |anyjson|[True](./logs/anyjson_recipe.log)|[True](./logs/anyjson_build.log)|False|None|
-|stevedore|[True](./logs/stevedore_recipe.log)|[False](./logs/stevedore_build.log)|False|missing build dependency|
+|stevedore|[True](./logs/stevedore_recipe.log)|[True](./logs/stevedore_build.log)|False|None|
 |pyflakes|[True](./logs/pyflakes_recipe.log)|[True](./logs/pyflakes_build.log)|True|None|
 |kombu|[False](./logs/kombu_recipe.log)|[False](./logs/kombu_build.log)|False|No recipe available|
 |pillow|[True](./logs/pillow_recipe.log)|[True](./logs/pillow_build.log)|True|None|
@@ -71,28 +71,28 @@
 |greenlet|[True](./logs/greenlet_recipe.log)|[True](./logs/greenlet_build.log)|True|None|
 |mccabe|[True](./logs/mccabe_recipe.log)|[True](./logs/mccabe_build.log)|False|None|
 |unittest2|[False](./logs/unittest2_recipe.log)|[False](./logs/unittest2_build.log)|False|No recipe available|
-|traceback2|[True](./logs/traceback2_recipe.log)|[False](./logs/traceback2_build.log)|False|missing build dependency|
-|linecache2|[True](./logs/linecache2_recipe.log)|[False](./logs/linecache2_build.log)|False|missing build dependency|
+|traceback2|[True](./logs/traceback2_recipe.log)|[False](./logs/traceback2_build.log)|False|test failure: missing dependency|
+|linecache2|[True](./logs/linecache2_recipe.log)|[False](./logs/linecache2_build.log)|False|invalid syntax|
 |itsdangerous|[True](./logs/itsdangerous_recipe.log)|[True](./logs/itsdangerous_build.log)|True|None|
 |netaddr|[True](./logs/netaddr_recipe.log)|[True](./logs/netaddr_build.log)|False|None|
 |ordereddict|[True](./logs/ordereddict_recipe.log)|[True](./logs/ordereddict_build.log)|False|None|
 |py|[True](./logs/py_recipe.log)|[True](./logs/py_build.log)|True|None|
 |amqp|[True](./logs/amqp_recipe.log)|[True](./logs/amqp_build.log)|False|None|
 |beautifulsoup4|[True](./logs/beautifulsoup4_recipe.log)|[True](./logs/beautifulsoup4_build.log)|True|None|
-|oslo.config|[True](./logs/oslo.config_recipe.log)|[False](./logs/oslo.config_build.log)|False|missing build dependency|
+|oslo.config|[True](./logs/oslo.config_recipe.log)|[True](./logs/oslo.config_build.log)|False|None|
 |msgpack-python|[True](./logs/msgpack-python_recipe.log)|[True](./logs/msgpack-python_build.log)|False|None|
 |tornado|[True](./logs/tornado_recipe.log)|[True](./logs/tornado_build.log)|True|None|
 |meld3|[True](./logs/meld3_recipe.log)|[True](./logs/meld3_build.log)|False|None|
-|oslo.i18n|[True](./logs/oslo.i18n_recipe.log)|[False](./logs/oslo.i18n_build.log)|False|missing build dependency|
+|oslo.i18n|[True](./logs/oslo.i18n_recipe.log)|[True](./logs/oslo.i18n_build.log)|False|None|
 |supervisor|[False](./logs/supervisor_recipe.log)|[False](./logs/supervisor_build.log)|False|No recipe available|
-|oslo.utils|[True](./logs/oslo.utils_recipe.log)|[False](./logs/oslo.utils_build.log)|False|missing build dependency|
-|oslo.serialization|[True](./logs/oslo.serialization_recipe.log)|[False](./logs/oslo.serialization_build.log)|False|missing build dependency|
+|oslo.utils|[True](./logs/oslo.utils_recipe.log)|[True](./logs/oslo.utils_build.log)|False|None|
+|oslo.serialization|[True](./logs/oslo.serialization_recipe.log)|[True](./logs/oslo.serialization_build.log)|False|None|
 |graphite-web|[True](./logs/graphite-web_recipe.log)|[False](./logs/graphite-web_build.log)|False|unclassified|
 |decorator|[True](./logs/decorator_recipe.log)|[True](./logs/decorator_build.log)|True|None|
-|python-keystoneclient|[True](./logs/python-keystoneclient_recipe.log)|[False](./logs/python-keystoneclient_build.log)|False|missing build dependency|
+|python-keystoneclient|[True](./logs/python-keystoneclient_recipe.log)|[True](./logs/python-keystoneclient_build.log)|False|None|
 |pyparsing|[True](./logs/pyparsing_recipe.log)|[True](./logs/pyparsing_build.log)|True|None|
 |netifaces|[True](./logs/netifaces_recipe.log)|[True](./logs/netifaces_build.log)|False|None|
-|ucloudclient|[True](./logs/ucloudclient_recipe.log)|[False](./logs/ucloudclient_build.log)|False|No packages found in current linux-64 channels|
+|ucloudclient|[True](./logs/ucloudclient_recipe.log)|[True](./logs/ucloudclient_build.log)|False|None|
 |prettytable|[True](./logs/prettytable_recipe.log)|[True](./logs/prettytable_build.log)|False|None|
 |ujson|[True](./logs/ujson_recipe.log)|[True](./logs/ujson_build.log)|True|None|
 |googlefinance|[True](./logs/googlefinance_recipe.log)|[True](./logs/googlefinance_build.log)|False|None|
@@ -107,7 +107,7 @@
 |fabric|[True](./logs/fabric_recipe.log)|[False](./logs/fabric_build.log)|False|test failure: missing dependency|
 |astroid|[True](./logs/astroid_recipe.log)|[False](./logs/astroid_build.log)|False|invalid syntax|
 |pylint|[True](./logs/pylint_recipe.log)|[False](./logs/pylint_build.log)|False|No packages found in current linux-64 channels|
-|testtools|[True](./logs/testtools_recipe.log)|[False](./logs/testtools_build.log)|False|missing build dependency|
+|testtools|[True](./logs/testtools_recipe.log)|[True](./logs/testtools_build.log)|False|None|
 |logilab-common|[True](./logs/logilab-common_recipe.log)|[False](./logs/logilab-common_build.log)|False|test failure: missing dependency|
 |gunicorn|[True](./logs/gunicorn_recipe.log)|[False](./logs/gunicorn_build.log)|False|invalid syntax|
 |python-mimeparse|[True](./logs/python-mimeparse_recipe.log)|[True](./logs/python-mimeparse_build.log)|False|None|
@@ -117,7 +117,7 @@
 |sphinx_rtd_theme|[True](./logs/sphinx_rtd_theme_recipe.log)|[False](./logs/sphinx_rtd_theme_build.log)|False|unclassified|
 |extras|[True](./logs/extras_recipe.log)|[True](./logs/extras_build.log)|False|None|
 |tox|[True](./logs/tox_recipe.log)|[False](./logs/tox_build.log)|False|unclassified|
-|leaderboard|[True](./logs/leaderboard_recipe.log)|[False](./logs/leaderboard_build.log)|False|missing build dependency|
+|leaderboard|[True](./logs/leaderboard_recipe.log)|[True](./logs/leaderboard_build.log)|False|None|
 |elasticsearch|[True](./logs/elasticsearch_recipe.log)|[True](./logs/elasticsearch_build.log)|False|None|
 |oauthlib|[False](./logs/oauthlib_recipe.log)|[False](./logs/oauthlib_build.log)|False|No recipe available|
 |webob|[True](./logs/webob_recipe.log)|[True](./logs/webob_build.log)|False|None|
@@ -128,56 +128,56 @@
 |html5lib|[True](./logs/html5lib_recipe.log)|[True](./logs/html5lib_build.log)|False|None|
 |pyasn1-modules|[True](./logs/pyasn1-modules_recipe.log)|[True](./logs/pyasn1-modules_build.log)|False|None|
 |python-gflags|[True](./logs/python-gflags_recipe.log)|[True](./logs/python-gflags_build.log)|False|None|
-|pastedeploy|[True](./logs/pastedeploy_recipe.log)|[False](./logs/pastedeploy_build.log)|False|No packages found in current linux-64 channels|
+|pastedeploy|[True](./logs/pastedeploy_recipe.log)|[False](./logs/pastedeploy_build.log)|False|test failure: missing dependency|
 |zc.buildout|[True](./logs/zc.buildout_recipe.log)|[False](./logs/zc.buildout_build.log)|False|No packages found in current linux-64 channels|
 |mozrunner|[True](./logs/mozrunner_recipe.log)|[False](./logs/mozrunner_build.log)|False|No packages found in current linux-64 channels|
 |djangorestframework|[True](./logs/djangorestframework_recipe.log)|[False](./logs/djangorestframework_build.log)|False|test failure: other reasons|
 |pexpect|[True](./logs/pexpect_recipe.log)|[True](./logs/pexpect_build.log)|False|None|
-|mozprofile|[True](./logs/mozprofile_recipe.log)|[False](./logs/mozprofile_build.log)|False|No packages found in current linux-64 channels|
-|python-subunit|[True](./logs/python-subunit_recipe.log)|[False](./logs/python-subunit_build.log)|False|No packages found in current linux-64 channels|
+|mozprofile|[True](./logs/mozprofile_recipe.log)|[True](./logs/mozprofile_build.log)|False|None|
+|python-subunit|[True](./logs/python-subunit_recipe.log)|[False](./logs/python-subunit_build.log)|False|missing build dependency|
 |manifestparser|[True](./logs/manifestparser_recipe.log)|[True](./logs/manifestparser_build.log)|False|None|
-|mozdevice|[True](./logs/mozdevice_recipe.log)|[False](./logs/mozdevice_build.log)|False|No packages found in current linux-64 channels|
+|mozdevice|[True](./logs/mozdevice_recipe.log)|[False](./logs/mozdevice_build.log)|False|test failure: other reasons|
 |gevent|[True](./logs/gevent_recipe.log)|[True](./logs/gevent_build.log)|True|None|
-|fixtures|[True](./logs/fixtures_recipe.log)|[False](./logs/fixtures_build.log)|False|missing build dependency|
-|python-cinderclient|[True](./logs/python-cinderclient_recipe.log)|[False](./logs/python-cinderclient_build.log)|False|missing build dependency|
+|fixtures|[True](./logs/fixtures_recipe.log)|[False](./logs/fixtures_build.log)|False|test failure: missing dependency|
+|python-cinderclient|[True](./logs/python-cinderclient_recipe.log)|[True](./logs/python-cinderclient_build.log)|False|None|
 |mozlog|[True](./logs/mozlog_recipe.log)|[True](./logs/mozlog_build.log)|False|None|
-|mozprocess|[True](./logs/mozprocess_recipe.log)|[False](./logs/mozprocess_build.log)|False|No packages found in current linux-64 channels|
+|mozprocess|[True](./logs/mozprocess_recipe.log)|[True](./logs/mozprocess_build.log)|False|None|
 |mozfile|[True](./logs/mozfile_recipe.log)|[True](./logs/mozfile_build.log)|False|None|
 |oauth2client|[False](./logs/oauth2client_recipe.log)|[False](./logs/oauth2client_build.log)|False|No recipe available|
 |mozinfo|[True](./logs/mozinfo_recipe.log)|[True](./logs/mozinfo_build.log)|False|None|
 |mozcrash|[True](./logs/mozcrash_recipe.log)|[True](./logs/mozcrash_build.log)|False|None|
-|lockfile|[True](./logs/lockfile_recipe.log)|[False](./logs/lockfile_build.log)|False|missing build dependency|
+|lockfile|[True](./logs/lockfile_recipe.log)|[True](./logs/lockfile_build.log)|False|None|
 |moznetwork|[True](./logs/moznetwork_recipe.log)|[True](./logs/moznetwork_build.log)|False|None|
 |markdown|[True](./logs/markdown_recipe.log)|[True](./logs/markdown_build.log)|False|None|
-|oslo.context|[True](./logs/oslo.context_recipe.log)|[False](./logs/oslo.context_build.log)|False|missing build dependency|
+|oslo.context|[True](./logs/oslo.context_recipe.log)|[True](./logs/oslo.context_build.log)|False|None|
 |cython|[True](./logs/cython_recipe.log)|[True](./logs/cython_build.log)|True|None|
 |eventlet|[True](./logs/eventlet_recipe.log)|[False](./logs/eventlet_build.log)|False|test failure: missing dependency|
 |scikit-learn|[True](./logs/scikit-learn_recipe.log)|[True](./logs/scikit-learn_build.log)|True|None|
 |alabaster|[True](./logs/alabaster_recipe.log)|[True](./logs/alabaster_build.log)|False|None|
 |pytest-cov|[True](./logs/pytest-cov_recipe.log)|[True](./logs/pytest-cov_build.log)|False|None|
 |google-api-python-client|[False](./logs/google-api-python-client_recipe.log)|[False](./logs/google-api-python-client_build.log)|False|No recipe available|
-|python-novaclient|[True](./logs/python-novaclient_recipe.log)|[False](./logs/python-novaclient_build.log)|False|missing build dependency|
+|python-novaclient|[True](./logs/python-novaclient_recipe.log)|[True](./logs/python-novaclient_build.log)|False|None|
 |raven|[False](./logs/raven_recipe.log)|[False](./logs/raven_build.log)|False|No recipe available|
-|python-glanceclient|[True](./logs/python-glanceclient_recipe.log)|[False](./logs/python-glanceclient_build.log)|False|missing build dependency|
+|python-glanceclient|[True](./logs/python-glanceclient_recipe.log)|[True](./logs/python-glanceclient_build.log)|False|None|
 |snowballstemmer|[True](./logs/snowballstemmer_recipe.log)|[True](./logs/snowballstemmer_build.log)|False|None|
 |retrying|[True](./logs/retrying_recipe.log)|[True](./logs/retrying_build.log)|False|None|
 |websocket-client|[True](./logs/websocket-client_recipe.log)|[True](./logs/websocket-client_build.log)|False|None|
 |click|[True](./logs/click_recipe.log)|[True](./logs/click_build.log)|False|None|
 |google-apputils|[True](./logs/google-apputils_recipe.log)|[True](./logs/google-apputils_build.log)|False|None|
 |pandas|[True](./logs/pandas_recipe.log)|[True](./logs/pandas_build.log)|True|None|
-|testrepository|[True](./logs/testrepository_recipe.log)|[False](./logs/testrepository_build.log)|False|No packages found in current linux-64 channels|
+|testrepository|[True](./logs/testrepository_recipe.log)|[False](./logs/testrepository_build.log)|False|unclassified|
 |coveralls|[True](./logs/coveralls_recipe.log)|[True](./logs/coveralls_build.log)|False|None|
-|testscenarios|[True](./logs/testscenarios_recipe.log)|[False](./logs/testscenarios_build.log)|False|missing build dependency|
-|oslo.log|[True](./logs/oslo.log_recipe.log)|[False](./logs/oslo.log_build.log)|False|missing build dependency|
+|testscenarios|[True](./logs/testscenarios_recipe.log)|[False](./logs/testscenarios_build.log)|False|test failure: missing dependency|
+|oslo.log|[True](./logs/oslo.log_recipe.log)|[True](./logs/oslo.log_build.log)|False|None|
 |ansible|[True](./logs/ansible_recipe.log)|[True](./logs/ansible_build.log)|False|None|
 |hgtools|[True](./logs/hgtools_recipe.log)|[True](./logs/hgtools_build.log)|False|None|
-|oslo.concurrency|[True](./logs/oslo.concurrency_recipe.log)|[False](./logs/oslo.concurrency_build.log)|False|missing build dependency|
+|oslo.concurrency|[True](./logs/oslo.concurrency_recipe.log)|[True](./logs/oslo.concurrency_build.log)|False|None|
 |pyzmq|[True](./logs/pyzmq_recipe.log)|[True](./logs/pyzmq_build.log)|True|None|
-|python-swiftclient|[True](./logs/python-swiftclient_recipe.log)|[False](./logs/python-swiftclient_build.log)|False|missing build dependency|
+|python-swiftclient|[True](./logs/python-swiftclient_recipe.log)|[True](./logs/python-swiftclient_build.log)|False|None|
 |south|[True](./logs/south_recipe.log)|[False](./logs/south_build.log)|False|test failure: missing dependency|
-|cliff|[True](./logs/cliff_recipe.log)|[False](./logs/cliff_build.log)|False|missing build dependency|
+|cliff|[True](./logs/cliff_recipe.log)|[True](./logs/cliff_build.log)|False|None|
 |matplotlib|[True](./logs/matplotlib_recipe.log)|[True](./logs/matplotlib_build.log)|True|None|
-|warlock|[True](./logs/warlock_recipe.log)|[False](./logs/warlock_build.log)|False|No packages found in current linux-64 channels|
+|warlock|[True](./logs/warlock_recipe.log)|[True](./logs/warlock_build.log)|False|None|
 |scipy|[True](./logs/scipy_recipe.log)|[True](./logs/scipy_build.log)|True|None|
 |blinker|[True](./logs/blinker_recipe.log)|[True](./logs/blinker_build.log)|False|None|
 |uritemplate|[True](./logs/uritemplate_recipe.log)|[True](./logs/uritemplate_build.log)|False|None|
@@ -185,7 +185,7 @@
 |jsonpointer|[True](./logs/jsonpointer_recipe.log)|[True](./logs/jsonpointer_build.log)|False|None|
 |repoze.lru|[True](./logs/repoze.lru_recipe.log)|[True](./logs/repoze.lru_build.log)|False|None|
 |requests-oauthlib|[False](./logs/requests-oauthlib_recipe.log)|[False](./logs/requests-oauthlib_build.log)|False|No recipe available|
-|python-neutronclient|[True](./logs/python-neutronclient_recipe.log)|[False](./logs/python-neutronclient_build.log)|False|missing build dependency|
+|python-neutronclient|[True](./logs/python-neutronclient_recipe.log)|[True](./logs/python-neutronclient_build.log)|False|None|
 |protobuf|[True](./logs/protobuf_recipe.log)|[False](./logs/protobuf_build.log)|False|test failure: missing dependency|
 |jsonpatch|[True](./logs/jsonpatch_recipe.log)|[True](./logs/jsonpatch_build.log)|False|None|
 |configobj|[True](./logs/configobj_recipe.log)|[True](./logs/configobj_build.log)|True|None|
@@ -193,42 +193,42 @@
 |networkx|[True](./logs/networkx_recipe.log)|[True](./logs/networkx_build.log)|True|None|
 |docker-py|[True](./logs/docker-py_recipe.log)|[True](./logs/docker-py_build.log)|False|None|
 |django-appconf|[True](./logs/django-appconf_recipe.log)|[False](./logs/django-appconf_build.log)|False|test failure: missing dependency|
-|sqlalchemy-migrate|[True](./logs/sqlalchemy-migrate_recipe.log)|[False](./logs/sqlalchemy-migrate_build.log)|False|missing build dependency|
+|sqlalchemy-migrate|[True](./logs/sqlalchemy-migrate_recipe.log)|[True](./logs/sqlalchemy-migrate_build.log)|False|None|
 |oauth2|[True](./logs/oauth2_recipe.log)|[True](./logs/oauth2_build.log)|False|None|
 |posix_ipc|[True](./logs/posix_ipc_recipe.log)|[True](./logs/posix_ipc_build.log)|False|None|
 |cmd2|[True](./logs/cmd2_recipe.log)|[True](./logs/cmd2_build.log)|False|None|
-|hacking|[True](./logs/hacking_recipe.log)|[False](./logs/hacking_build.log)|False|missing build dependency|
+|hacking|[True](./logs/hacking_recipe.log)|[True](./logs/hacking_build.log)|False|None|
 |passlib|[True](./logs/passlib_recipe.log)|[True](./logs/passlib_build.log)|False|None|
-|python-heatclient|[True](./logs/python-heatclient_recipe.log)|[False](./logs/python-heatclient_build.log)|False|missing build dependency|
+|python-heatclient|[True](./logs/python-heatclient_recipe.log)|[True](./logs/python-heatclient_build.log)|False|None|
 
 recipe score: 188/200
 
 
-build score: 133/200
+build score: 158/200
 
 
 * * *
 
 
-No recipe available: 12/67
+No recipe available: 12/42
 
 
-No packages found in current linux-64 channels: 14/67
+No packages found in current linux-64 channels: 7/42
 
 
-missing build dependency: 25/67
+missing build dependency: 1/42
 
 
-test failure: missing dependency: 9/67
+test failure: missing dependency: 13/42
 
 
-test failure: other reasons: 2/67
+test failure: other reasons: 2/42
 
 
-invalid syntax: 2/67
+invalid syntax: 3/42
 
 
-unclassified: 3/67
+unclassified: 4/42
 
 
 * * *
