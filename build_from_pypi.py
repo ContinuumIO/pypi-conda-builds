@@ -142,8 +142,8 @@ for package in packages:
     if cond:
         build_recipe(package)
 
+    open('packages.yaml', 'w').writelines(yaml.dump(packages))
 
-open('packages.yaml', 'w').writelines(yaml.dump(packages))
 
 compile_report()
 
