@@ -1,24 +1,24 @@
 package:
-  name: pika
-  version: "0.9.14"
+  name: zope.event
+  version: "4.0.3"
 
 source:
-  fn: pika-0.9.14.tar.gz
-  url: https://pypi.python.org/packages/source/p/pika/pika-0.9.14.tar.gz
-  md5: b99aad4b88961d3c7e4876b8327fc97c
+  fn: zope.event-4.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.event/zope.event-4.0.3.tar.gz
+  md5: 9a3780916332b18b8b85f522bcc3e249
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # preserve_egg_dir: True
+build:
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pika = pika:main
+    # - zope.event = zope.event:main
     #
-    # Would create an entry point called pika that calls pika.main()
+    # Would create an entry point called zope.event that calls zope.event.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -29,15 +29,22 @@ requirements:
   build:
     - python
     - setuptools
+    - sphinx
+    - nose
+    - coverage
 
   run:
     - python
+    - setuptools
+    - sphinx
+    - nose
+    - coverage
 
 test:
   # Python imports
   imports:
-    - pika
-    - pika.adapters
+    - zope
+    - zope.event
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -47,14 +54,14 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+# requires:
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: https://pika.readthedocs.org 
-  license: GNU General Public License (GPL) or Mozilla Public License 1.1 (MPL 1.1)
-  summary: 'Pika Python AMQP Client Library'
+  home: http://pypi.python.org/pypi/zope.event
+  license: Zope Public License
+  summary: 'Very basic event publishing system'
 
 # See
 # http://docs.continuum.io/conda/build.html for

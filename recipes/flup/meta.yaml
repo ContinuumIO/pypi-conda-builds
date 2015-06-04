@@ -1,0 +1,63 @@
+package:
+  name: flup
+  version: "1.0.3.dev-20110405"
+
+source:
+  fn: flup-1.0.3.dev-20110405.tar.gz
+  url: https://pypi.python.org/packages/source/f/flup/flup-1.0.3.dev-20110405.tar.gz
+  md5: a005b072d144fc0e44b0fa4c5a9ba029
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flup = flup:main
+    #
+    # Would create an entry point called flup that calls flup.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - flup
+    - flup.client
+    - flup.server
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+# requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.saddi.com/software/flup/
+  license: BSD License
+  summary: 'Random assortment of WSGI servers'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

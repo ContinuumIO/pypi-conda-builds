@@ -1,0 +1,81 @@
+package:
+  name: mkdocs
+  version: "0.13.3"
+
+source:
+  fn: mkdocs-0.13.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mkdocs/mkdocs-0.13.3.tar.gz
+  md5: bcd077f60d5cb618848ff3536102629e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mkdocs = mkdocs:main
+    #
+    # Would create an entry point called mkdocs that calls mkdocs.main()
+
+    - mkdocs = mkdocs.cli:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=4.0
+    - ghp-import >=0.4.1
+    - jinja2 >=2.7.1
+    - livereload >=2.3.2
+    - markdown >=2.3.1
+    - pyyaml >=3.10
+    - six >=1.9.0
+    - tornado >=4.1
+
+  run:
+    - python
+    - click >=4.0
+    - ghp-import >=0.4.1
+    - jinja2 >=2.7.1
+    - livereload >=2.3.2
+    - markdown >=2.3.1
+    - pyyaml >=3.10
+    - six >=1.9.0
+    - tornado >=4.1
+
+test:
+  # Python imports
+  imports:
+    - mkdocs
+    - mkdocs/config
+    - mkdocs/tests
+    - mkdocs/tests/config
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mkdocs --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+# requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.mkdocs.org
+  license: BSD License
+  summary: 'Project documentation with Markdown.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

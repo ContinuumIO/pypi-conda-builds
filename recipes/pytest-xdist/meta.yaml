@@ -1,24 +1,24 @@
 package:
-  name: oauthlib
-  version: "0.7.2"
+  name: pytest-xdist
+  version: "1.12"
 
 source:
-  fn: oauthlib-0.7.2.tar.gz
-  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.7.2.tar.gz
-  md5: eb60abdb002b9c08d248707b79a1cc92
+  fn: pytest-xdist-1.12.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-xdist/pytest-xdist-1.12.tar.gz
+  md5: c0d4db15c0587af6071065a585014ef7
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # preserve_egg_dir: True
+build:
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - oauthlib = oauthlib:main
+    # - pytest-xdist = pytest-xdist:main
     #
-    # Would create an entry point called oauthlib that calls oauthlib.main()
+    # Would create an entry point called pytest-xdist that calls pytest-xdist.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -29,22 +29,21 @@ requirements:
   build:
     - python
     - setuptools
+    - execnet >=1.1
+    - pytest >=2.4.2
+    - py >=1.4.22
 
   run:
     - python
+    - setuptools
+    - execnet >=1.1
+    - pytest >=2.4.2
+    - py >=1.4.22
 
 test:
   # Python imports
   imports:
-    - oauthlib
-    - oauthlib.oauth1
-    - oauthlib.oauth1.rfc5849
-    - oauthlib.oauth1.rfc5849.endpoints
-    - oauthlib.oauth2
-    - oauthlib.oauth2.rfc6749
-    - oauthlib.oauth2.rfc6749.clients
-    - oauthlib.oauth2.rfc6749.endpoints
-    - oauthlib.oauth2.rfc6749.grant_types
+    - xdist
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -54,14 +53,14 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+# requires:
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: https://github.com/idan/oauthlib
-  license: BSD License
-  summary: 'A generic, spec-compliant, thorough implementation of the OAuth request-signing logic'
+  home: http://bitbucket.org/hpk42/pytest-xdist
+  license: MIT License
+  summary: 'py.test xdist plugin for distributed testing and loop-on-failing modes'
 
 # See
 # http://docs.continuum.io/conda/build.html for
