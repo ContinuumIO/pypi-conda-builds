@@ -1,25 +1,26 @@
 package:
-  name: mysql-python
-  version: "1.2.5"
+  name: mozversion
+  version: "1.2"
 
 source:
-  fn: MySQL-python-1.2.5.zip
-  url: https://pypi.python.org/packages/source/M/MySQL-python/MySQL-python-1.2.5.zip
-  md5: 654f75b302db6ed8dc5a898c625e030c
+  fn: mozversion-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mozversion/mozversion-1.2.tar.gz
+  md5: 37ff3bb0c8c0e51e716848e88b8fb77f
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # preserve_egg_dir: True
-  # entry_points:
+build:
+  preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - mysql-python = mysql-python:main
+    # - mozversion = mozversion:main
     #
-    # Would create an entry point called mysql-python that calls mysql-python.main()
+    # Would create an entry point called mozversion that calls mozversion.main()
 
+    - mozversion=mozversion:cli
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,18 +30,27 @@ requirements:
   build:
     - python
     - setuptools
+    - mozdevice >=0.44
+    - mozfile >=1.0
+    - mozlog >=2.0
 
   run:
     - python
+    - setuptools
+    - mozdevice >=0.44
+    - mozfile >=1.0
+    - mozlog >=2.0
 
-# test:
+test:
   # Python imports
-  # imports:
+  imports:
+    - mozversion
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - mozversion --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -50,9 +60,9 @@ requirements:
     # - nose
 
 about:
-  home: https://github.com/farcepest/MySQLdb1
-  license: GNU General Public License (GPL)
-  summary: 'Python interface to MySQL'
+  home: https://wiki.mozilla.org/Auto-tools/Projects/Mozbase
+  license: MPL
+  summary: 'Library to get version information for applications'
 
 # See
 # http://docs.continuum.io/conda/build.html for

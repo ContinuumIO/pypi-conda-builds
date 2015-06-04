@@ -1,0 +1,64 @@
+package:
+  name: helper
+  version: "2.4.1"
+
+source:
+  fn: helper-2.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/h/helper/helper-2.4.1.tar.gz
+  md5: e7146c95bbd96a12df8d737a16dca3a7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - helper = helper:main
+    #
+    # Would create an entry point called helper that calls helper.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+
+  run:
+    - python
+    - setuptools
+    - pyyaml
+
+test:
+  # Python imports
+  imports:
+    - helper
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - mock
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://helper.readthedocs.org
+  license: BSD License
+  summary: 'Development library for quickly writing configurable applications and daemons'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

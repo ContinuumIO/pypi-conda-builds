@@ -1,0 +1,73 @@
+package:
+  name: newrelic_plugin_agent
+  version: "1.3.0"
+
+source:
+  fn: newrelic_plugin_agent-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/newrelic_plugin_agent/newrelic_plugin_agent-1.3.0.tar.gz
+  md5: 8855e9802cd0476d862ebb12ed22bd32
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - newrelic_plugin_agent = newrelic_plugin_agent:main
+    #
+    # Would create an entry point called newrelic_plugin_agent that calls newrelic_plugin_agent.main()
+
+    - newrelic-plugin-agent=newrelic_plugin_agent.agent:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - helper >=2.2.2
+    - requests >=2.0.0
+    - pymongo
+    - psycopg2
+    - psycopg2
+
+  run:
+    - python
+    - helper >=2.2.2
+    - requests >=2.0.0
+    - pymongo
+    - psycopg2
+    - psycopg2
+
+test:
+  # Python imports
+  imports:
+    - newrelic_plugin_agent
+    - newrelic_plugin_agent.plugins
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - newrelic-plugin-agent --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/gmr/newrelic-plugin-agent
+  license: BSD License
+  summary: 'Python based agent for collecting metrics for NewRelic'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
