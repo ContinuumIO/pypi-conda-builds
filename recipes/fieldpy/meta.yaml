@@ -1,26 +1,25 @@
 package:
-  name: fabric
-  version: "1.10.1"
+  name: fieldpy
+  version: "0.1.7"
 
 source:
-  fn: Fabric-1.10.1.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.10.1.tar.gz
-  md5: 596ad28296a264cedef021494bd40cd5
+  fn: FieldPy-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/F/FieldPy/FieldPy-0.1.7.tar.gz
+  md5: 1d80404e51029aa1925d707e275b68e6
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # preserve_egg_dir: True
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - fieldpy = fieldpy:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called fieldpy that calls fieldpy.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,40 +28,45 @@ build:
 requirements:
   build:
     - python
-    - setuptools
-    - paramiko >=1.10
+    - numpy >=1.8.0
+    - pandas >=0.14.0
+    - scipy >=0.14.0
+    - h5py >=2.2.1
+    - nose >=1.3.3
 
   run:
     - python
-    - paramiko >=1.10
+    - numpy >=1.8.0
+    - pandas >=0.14.0
+    - scipy >=0.14.0
+    - h5py >=2.2.1
+    - nose >=1.3.3
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - fieldpy
+    - fieldpy.analysis
+    - fieldpy.interpolation
+    - fieldpy.primitives
+    - fieldpy.test
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
-    - fudge<1.0
-    - jinja2
-    - nose
+  # requires:
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
-  summary: 'Fabric is a simple, Pythonic tool for remote execution and deployment.'
+  home: http://pypi.python.org/pypi/FieldPy/
+  license: LICENSE.txt
+  summary: 'A collection of primitives and tools relating to the analysis and manipulation of 2D and 3D fields'
 
 # See
 # http://docs.continuum.io/conda/build.html for
