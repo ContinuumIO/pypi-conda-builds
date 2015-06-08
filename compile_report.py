@@ -6,7 +6,7 @@ import subprocess
 log_dir = "./logs/"
 emoji = {True: ":+1:",
          False: ":x:",
-         None: ":!!:"}
+         None: ":bangbang:"}
 
 
 def compile_main_report():
