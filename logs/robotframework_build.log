@@ -1,6 +1,6 @@
 Removing old build directory
 Removing old work directory
-BUILD START: robotframework-2.9a1-py27_0
+BUILD START: robotframework-2.9a2-py27_0
 Fetching package metadata: ......
 Solving package specifications: .+ /home/ubuntu/miniconda/envs/_build/bin/python setup.py install
 running install
@@ -87,6 +87,7 @@ copying src/robot/model/testcase.py -> build/lib/robot/model
 copying src/robot/model/namepatterns.py -> build/lib/robot/model
 copying src/robot/model/keyword.py -> build/lib/robot/model
 copying src/robot/model/metadata.py -> build/lib/robot/model
+copying src/robot/model/modifier.py -> build/lib/robot/model
 copying src/robot/model/testsuite.py -> build/lib/robot/model
 creating build/lib/robot/output
 copying src/robot/output/loggerhelper.py -> build/lib/robot/output
@@ -146,7 +147,6 @@ copying src/robot/result/keyword.py -> build/lib/robot/result
 copying src/robot/result/testsuite.py -> build/lib/robot/result
 creating build/lib/robot/running
 copying src/robot/running/testlibraries.py -> build/lib/robot/running
-copying src/robot/running/keywords.py -> build/lib/robot/running
 copying src/robot/running/model.py -> build/lib/robot/running
 copying src/robot/running/handlerstore.py -> build/lib/robot/running
 copying src/robot/running/status.py -> build/lib/robot/running
@@ -163,6 +163,7 @@ copying src/robot/running/context.py -> build/lib/robot/running
 copying src/robot/running/__init__.py -> build/lib/robot/running
 copying src/robot/running/runner.py -> build/lib/robot/running
 copying src/robot/running/usererrorhandler.py -> build/lib/robot/running
+copying src/robot/running/keywordrunner.py -> build/lib/robot/running
 copying src/robot/running/randomizer.py -> build/lib/robot/running
 copying src/robot/running/handlers.py -> build/lib/robot/running
 creating build/lib/robot/running/arguments
@@ -319,6 +320,7 @@ copying build/lib/robot/model/testcase.py -> /home/ubuntu/miniconda/envs/_build/
 copying build/lib/robot/model/namepatterns.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model
 copying build/lib/robot/model/keyword.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model
 copying build/lib/robot/model/metadata.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model
+copying build/lib/robot/model/modifier.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model
 copying build/lib/robot/model/testsuite.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model
 creating /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/writer
 copying build/lib/robot/writer/htmltemplate.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/writer
@@ -395,7 +397,6 @@ copying build/lib/robot/running/timeouts/__init__.py -> /home/ubuntu/miniconda/e
 copying build/lib/robot/running/timeouts/ironpython.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/timeouts
 copying build/lib/robot/running/timeouts/posix.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/timeouts
 copying build/lib/robot/running/timeouts/windows.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/timeouts
-copying build/lib/robot/running/keywords.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/model.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/handlerstore.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/status.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
@@ -412,6 +413,7 @@ copying build/lib/robot/running/context.py -> /home/ubuntu/miniconda/envs/_build
 copying build/lib/robot/running/__init__.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/runner.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/usererrorhandler.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
+copying build/lib/robot/running/keywordrunner.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/randomizer.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 copying build/lib/robot/running/handlers.py -> /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running
 creating /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/variables
@@ -574,6 +576,7 @@ byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/ro
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model/namepatterns.py to namepatterns.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model/keyword.py to keyword.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model/metadata.py to metadata.pyc
+byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model/modifier.py to modifier.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/model/testsuite.py to testsuite.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/writer/htmltemplate.py to htmltemplate.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/writer/rowsplitter.py to rowsplitter.pyc
@@ -644,7 +647,6 @@ byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/ro
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/timeouts/ironpython.py to ironpython.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/timeouts/posix.py to posix.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/timeouts/windows.py to windows.pyc
-byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/keywords.py to keywords.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/model.py to model.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/handlerstore.py to handlerstore.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/status.py to status.pyc
@@ -661,6 +663,7 @@ byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/ro
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/__init__.py to __init__.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/runner.py to runner.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/usererrorhandler.py to usererrorhandler.pyc
+byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/keywordrunner.py to keywordrunner.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/randomizer.py to randomizer.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/running/handlers.py to handlers.pyc
 byte-compiling /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robot/variables/filesetter.py to filesetter.pyc
@@ -748,12 +751,12 @@ copying build/scripts-2.7/rebot -> /home/ubuntu/miniconda/envs/_build/bin
 changing mode of /home/ubuntu/miniconda/envs/_build/bin/pybot to 775
 changing mode of /home/ubuntu/miniconda/envs/_build/bin/rebot to 775
 running install_egg_info
-Writing /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robotframework-2.9a1-py2.7.egg-info
+Writing /home/ubuntu/miniconda/envs/_build/lib/python2.7/site-packages/robotframework-2.9a2-py2.7.egg-info
 
 The following NEW packages will be INSTALLED:
 
     openssl:    1.0.1k-1    
-    pip:        7.0.1-py27_0
+    pip:        7.0.3-py27_0
     python:     2.7.10-0    
     readline:   6.2-2       
     setuptools: 17.0-py27_0 
@@ -766,32 +769,32 @@ Linking packages ...
 [                    ]|                                                  |   0%[openssl             ]|                                                  |   0%[readline            ]|#####                                             |  11%[sqlite              ]|###########                                       |  22%[system              ]|################                                  |  33%[tk                  ]|######################                            |  44%[zlib                ]|###########################                       |  55%[python              ]|#################################                 |  66%[setuptools          ]|######################################            |  77%[pip                 ]|############################################      |  88%[      COMPLETE      ]|##################################################| 100%
 Removing old work directory
 Source cache directory is: /home/ubuntu/miniconda/conda-bld/src_cache
-Found source in cache: robotframework-2.9a1.tar.gz
+Found source in cache: robotframework-2.9a2.tar.gz
 Extracting download
-Package: robotframework-2.9a1-py27_0
-source tree in: /home/ubuntu/miniconda/conda-bld/work/robotframework-2.9a1
-number of files: 450
+Package: robotframework-2.9a2-py27_0
+source tree in: /home/ubuntu/miniconda/conda-bld/work/robotframework-2.9a2
+number of files: 452
 Fixing permissions
 Detected hard-coded path in text file bin/pybot
 Detected hard-coded path in text file bin/rebot
 Fixing permissions
-BUILD END: robotframework-2.9a1-py27_0
-TEST START: robotframework-2.9a1-py27_0
+BUILD END: robotframework-2.9a2-py27_0
+TEST START: robotframework-2.9a2-py27_0
 Fetching package metadata: ......
 Solving package specifications: .
 The following packages will be downloaded:
 
     package                    |            build
     ---------------------------|-----------------
-    robotframework-2.9a1       |           py27_0         556 KB
+    robotframework-2.9a2       |           py27_0         562 KB
 
 The following NEW packages will be INSTALLED:
 
     openssl:        1.0.1k-1    
-    pip:            7.0.1-py27_0
+    pip:            7.0.3-py27_0
     python:         2.7.10-0    
     readline:       6.2-2       
-    robotframework: 2.9a1-py27_0
+    robotframework: 2.9a2-py27_0
     setuptools:     17.0-py27_0 
     sqlite:         3.8.4.1-1   
     system:         5.8-2       
@@ -799,11 +802,11 @@ The following NEW packages will be INSTALLED:
     zlib:           1.2.8-0     
 
 Fetching packages ...
-robotframework   0% |                              | ETA:  --:--:--   0.00  B/srobotframework   2% |                               | ETA:  0:00:00   1.93 MB/srobotframework   5% |#                              | ETA:  0:00:00   3.76 MB/srobotframework   8% |##                             | ETA:  0:00:00   5.52 MB/srobotframework  11% |###                            | ETA:  0:00:00   7.21 MB/srobotframework  14% |####                           | ETA:  0:00:00   8.83 MB/srobotframework  17% |#####                          | ETA:  0:00:00  10.40 MB/srobotframework  20% |######                         | ETA:  0:00:00  11.90 MB/srobotframework  23% |#######                        | ETA:  0:00:00  13.34 MB/srobotframework  25% |########                       | ETA:  0:00:00  14.74 MB/srobotframework  28% |########                       | ETA:  0:00:00  16.09 MB/srobotframework  31% |#########                      | ETA:  0:00:00  17.39 MB/srobotframework  34% |##########                     | ETA:  0:00:00  18.64 MB/srobotframework  37% |###########                    | ETA:  0:00:00  19.85 MB/srobotframework  40% |############                   | ETA:  0:00:00  21.03 MB/srobotframework  43% |#############                  | ETA:  0:00:00  22.16 MB/srobotframework  46% |##############                 | ETA:  0:00:00  23.26 MB/srobotframework  48% |###############                | ETA:  0:00:00  24.33 MB/srobotframework  51% |################               | ETA:  0:00:00  25.36 MB/srobotframework  54% |################               | ETA:  0:00:00  26.37 MB/srobotframework  57% |#################              | ETA:  0:00:00  27.34 MB/srobotframework  60% |##################             | ETA:  0:00:00  28.28 MB/srobotframework  63% |###################            | ETA:  0:00:00  29.14 MB/srobotframework  66% |####################           | ETA:  0:00:00  30.00 MB/srobotframework  69% |#####################          | ETA:  0:00:00  30.87 MB/srobotframework  71% |######################         | ETA:  0:00:00  31.71 MB/srobotframework  74% |#######################        | ETA:  0:00:00  32.53 MB/srobotframework  77% |########################       | ETA:  0:00:00  33.32 MB/srobotframework  80% |########################       | ETA:  0:00:00  34.09 MB/srobotframework  83% |#########################      | ETA:  0:00:00  34.84 MB/srobotframework  86% |##########################     | ETA:  0:00:00  35.57 MB/srobotframework  89% |###########################    | ETA:  0:00:00  36.28 MB/srobotframework  92% |############################   | ETA:  0:00:00  36.98 MB/srobotframework  95% |#############################  | ETA:  0:00:00  37.65 MB/srobotframework  97% |############################## | ETA:  0:00:00  38.32 MB/srobotframework 100% |###############################| ETA:  0:00:00  38.70 MB/srobotframework 100% |###############################| Time: 0:00:00  38.09 MB/s
+robotframework   0% |                              | ETA:  --:--:--   0.00  B/srobotframework   2% |                               | ETA:  0:00:00  46.68 MB/srobotframework   5% |#                              | ETA:  0:00:00  58.41 MB/srobotframework   8% |##                             | ETA:  0:00:00  65.36 MB/srobotframework  11% |###                            | ETA:  0:00:00  69.43 MB/srobotframework  14% |####                           | ETA:  0:00:00  72.44 MB/srobotframework  17% |#####                          | ETA:  0:00:00  74.71 MB/srobotframework  19% |######                         | ETA:  0:00:00  76.05 MB/srobotframework  22% |#######                        | ETA:  0:00:00  77.65 MB/srobotframework  25% |#######                        | ETA:  0:00:00  78.94 MB/srobotframework  28% |########                       | ETA:  0:00:00  80.05 MB/srobotframework  31% |#########                      | ETA:  0:00:00  80.97 MB/srobotframework  34% |##########                     | ETA:  0:00:00  81.72 MB/srobotframework  36% |###########                    | ETA:  0:00:00  82.43 MB/srobotframework  39% |############                   | ETA:  0:00:00  82.87 MB/srobotframework  42% |#############                  | ETA:  0:00:00  82.95 MB/srobotframework  45% |##############                 | ETA:  0:00:00  83.30 MB/srobotframework  48% |##############                 | ETA:  0:00:00  83.72 MB/srobotframework  51% |###############                | ETA:  0:00:00  84.12 MB/srobotframework  54% |################               | ETA:  0:00:00  84.48 MB/srobotframework  56% |#################              | ETA:  0:00:00  84.85 MB/srobotframework  59% |##################             | ETA:  0:00:00  85.16 MB/srobotframework  62% |###################            | ETA:  0:00:00  85.31 MB/srobotframework  65% |####################           | ETA:  0:00:00  85.55 MB/srobotframework  68% |#####################          | ETA:  0:00:00  85.82 MB/srobotframework  71% |######################         | ETA:  0:00:00  86.07 MB/srobotframework  73% |######################         | ETA:  0:00:00  86.29 MB/srobotframework  76% |#######################        | ETA:  0:00:00  86.37 MB/srobotframework  79% |########################       | ETA:  0:00:00  86.56 MB/srobotframework  82% |#########################      | ETA:  0:00:00  86.69 MB/srobotframework  85% |##########################     | ETA:  0:00:00  86.77 MB/srobotframework  88% |###########################    | ETA:  0:00:00  86.93 MB/srobotframework  91% |############################   | ETA:  0:00:00  87.09 MB/srobotframework  93% |#############################  | ETA:  0:00:00  87.23 MB/srobotframework  96% |#############################  | ETA:  0:00:00  87.32 MB/srobotframework  99% |############################## | ETA:  0:00:00  87.45 MB/srobotframework 100% |###############################| Time: 0:00:00  84.25 MB/s
 Extracting packages ...
 [      COMPLETE      ]|                                                  |   0%[robotframework      ]|                                                  |   0%[robotframework      ]|                                                  |   0%[      COMPLETE      ]|##################################################| 100%
 Linking packages ...
-[      COMPLETE      ]|                                                  |   0%[openssl             ]|                                                  |   0===== testing package: robotframework-2.9a1-py27_0 =====
+[      COMPLETE      ]|                                                  |   0%[openssl             ]|                                                  |   0===== testing package: robotframework-2.9a2-py27_0 =====
 import: u'robot'
 import: u'robot.api'
 import: u'robot.conf'
@@ -821,12 +824,12 @@ import: u'robot.running.timeouts'
 import: u'robot.utils'
 import: u'robot.variables'
 import: u'robot.writer'
-===== robotframework-2.9a1-py27_0 OK =====
+===== robotframework-2.9a2-py27_0 OK =====
 %[openssl             ]|                                                  |   0%[readline            ]|#####                                             |  10%[sqlite              ]|##########                                        |  20%[system              ]|###############                                   |  30%[tk                  ]|####################                              |  40%[zlib                ]|#########################                         |  50%[python              ]|##############################                    |  60%[robotframework      ]|###################################               |  70%[setuptools          ]|########################################          |  80%[pip                 ]|#############################################     |  90%[      COMPLETE      ]|##################################################| 100%
-TEST END: robotframework-2.9a1-py27_0
+TEST END: robotframework-2.9a2-py27_0
 # If you want to upload this package to binstar.org later, type:
 #
-# $ binstar upload /home/ubuntu/miniconda/conda-bld/linux-64/robotframework-2.9a1-py27_0.tar.bz2
+# $ binstar upload /home/ubuntu/miniconda/conda-bld/linux-64/robotframework-2.9a2-py27_0.tar.bz2
 #
 # To have conda build upload to binstar automatically, use
 # $ conda config --set binstar_upload yes

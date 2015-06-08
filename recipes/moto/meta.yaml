@@ -1,0 +1,101 @@
+package:
+  name: moto
+  version: "0.4.2"
+
+source:
+  fn: moto-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/moto/moto-0.4.2.tar.gz
+  md5: f0bec69834eeaa6097c9c113f2d90cda
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moto = moto:main
+    #
+    # Would create an entry point called moto that calls moto.main()
+
+    - moto_server = moto.server:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - boto >=2.20.0
+    - flask
+    - httpretty >=0.6.1
+    - requests
+    - xmltodict
+    - six
+    - werkzeug
+
+  run:
+    - python
+    - jinja2
+    - boto >=2.20.0
+    - flask
+    - httpretty >=0.6.1
+    - requests
+    - xmltodict
+    - six
+    - werkzeug
+
+test:
+  # Python imports
+  imports:
+    - moto
+    - moto.autoscaling
+    - moto.cloudformation
+    - moto.cloudwatch
+    - moto.core
+    - moto.dynamodb
+    - moto.dynamodb2
+    - moto.ec2
+    - moto.ec2.responses
+    - moto.elb
+    - moto.emr
+    - moto.iam
+    - moto.kinesis
+    - moto.rds
+    - moto.rds2
+    - moto.redshift
+    - moto.route53
+    - moto.s3
+    - moto.s3bucket_path
+    - moto.ses
+    - moto.sns
+    - moto.sqs
+    - moto.sts
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - moto_server --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/spulec/moto
+  license: Apache Software License
+  summary: u'A library that allows your python tests to easily mock out the boto library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
