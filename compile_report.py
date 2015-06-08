@@ -4,6 +4,9 @@ import subprocess
 
 
 log_dir = "./logs/"
+emoji = {True: ":+1:",
+         False: ":x:",
+         None: ":!!:"}
 
 
 def compile_main_report():
@@ -15,7 +18,7 @@ def compile_main_report():
     for package in packages:
         # We should probably seperate Not tried and tried and failed cases
         report = "|%s|%s|%s|" % (package,
-                                 packages[package]['package_available'],
+                                 emoji[packages[package]['package_available']],
                                  packages[package]['availability_type'])
 
         report_lines.append(report)
@@ -53,9 +56,9 @@ def compile_recipe_report():
         # We should probably seperate Not tried and tried and failed cases
         log_file = log_dir + "%s_recipe.log" % package
         report = "|%s|%s|[%s](%s)|" % (package,
-                                 recipes[package]['recipe_available'],
-                                 recipes[package]['error_type'],
-                                 log_file)
+                                       emoji[recipes[package]['recipe_available']],
+                                       recipes[package]['error_type'],
+                                       log_file)
 
         report_lines.append(report)
 
@@ -80,9 +83,9 @@ def compile_build_report():
         # We should probably seperate Not tried and tried and failed cases
         log_file = log_dir + "%s_build.log" % package
         report = "|%s|%s|[%s](%s)|" % (package,
-                                 build[package]['build_successful'],
-                                 build[package]['error_type'],
-                                 log_file)
+                                       emoji[build[package]['build_successful']],
+                                       build[package]['error_type'],
+                                       log_file)
 
         report_lines.append(report)
 
