@@ -69,7 +69,7 @@ def create_recipe(package):
         rm_rf(recipes_dir + package['name'])
 
     cmd = "conda skeleton pypi %s --output-dir %s" \
-        " --recursive --no-prompt --all-extras"
+        " --recursive --no-prompt --all-extras --noarch-python"
     cmd = cmd % (package['name'], recipes_dir)
     err = subprocess.call(shlex.split(cmd), stdout=log_file,
                           stderr=subprocess.STDOUT)
