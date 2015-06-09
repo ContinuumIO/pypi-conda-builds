@@ -180,6 +180,8 @@ def main(args):
     # TODO: complete the part where list of packages is passed through
     # commandline
     for pkg in candidate_packages:
+        if packages_data.has_key(pkg):
+            packages_data[pkg] = dict()
         packages_data[pkg]['package_available'] = False
         packages_data[pkg]['availability_type'] = None
 
