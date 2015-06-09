@@ -10,7 +10,7 @@ emoji = {True: ":+1:",
 
 
 def compile_main_report():
-    packages = yaml.load(open('packages.yaml', 'r'))
+    packages = yaml.load(open('packages_data.yaml', 'r'))
 
     report_lines = ["|package|package availalbe|availability type|",
                     "|-------|:----------------|:-----------------|"]
@@ -30,7 +30,7 @@ def compile_main_report():
     report_lines.append("\nPackages Available: %s/%s" % (num_available_packages, N))
 
     anaconda = sum([1 for package in packages if
-                    packages[package]['availability_type'] == 'anaconda'])
+                    packages[package]['availability_type'] == 'Anaconda'])
     report_lines.append("\nAnaconda: %s/%s" % (anaconda, N))
 
     conda_build = sum([1 for package in packages if
@@ -47,7 +47,7 @@ def compile_main_report():
 
 
 def compile_recipe_report():
-    recipes = yaml.load(open('recipes.yaml', 'r'))
+    recipes = yaml.load(open('recipes_data.yaml', 'r'))
 
     report_lines = ["|package|recipe available|error type|",
                     "|-------|:---------------|:---------|"]
@@ -57,7 +57,7 @@ def compile_recipe_report():
         log_file = log_dir + "%s_recipe.log" % package
         report = "|%s|%s|[%s](%s)|" % (package,
                                        emoji[recipes[package]['recipe_available']],
-                                       recipes[package]['error_type'],
+                                       recipes[package].setdefault('error_type', None),
                                        log_file)
 
         report_lines.append(report)
@@ -66,7 +66,11 @@ def compile_recipe_report():
     N = len(recipes)
     num_available_recipes = sum([1 for package in recipes
                                  if recipes[package]['recipe_available']])
-    report_lines.append("\n: %s/%s" % (num_available_recipes, N))
+    report_lines.append("\nSuccessful recipes: %s/%s" % (num_available_recipes, N))
+
+    num_failed_recipes = sum([1 for package in recipes
+                             if recipes[package]['recipe_available'] is False])
+    report_lines.append("\nFailed Recipes:%s/%s" % (num_failed_recipes, N))
 
     open("recipe_report.md", "w").writelines("\n".join(report_lines))
     cmd = "pandoc recipe_report.md -o recipe_report.html"
@@ -74,7 +78,7 @@ def compile_recipe_report():
 
 
 def compile_build_report():
-    build = yaml.load(open('build.yaml', 'r'))
+    build = yaml.load(open('build_data.yaml', 'r'))
 
     report_lines = ["|package|build successful|error type|",
                     "|-------|:---------------|:---------|"]
@@ -84,7 +88,7 @@ def compile_build_report():
         log_file = log_dir + "%s_build.log" % package
         report = "|%s|%s|[%s](%s)|" % (package,
                                        emoji[build[package]['build_successful']],
-                                       build[package]['error_type'],
+                                       build[package].setdefault('error_type', None),
                                        log_file)
 
         report_lines.append(report)
@@ -93,7 +97,11 @@ def compile_build_report():
     N = len(build)
     num_available_build = sum([1 for package in build
                                if build[package]['build_successful']])
-    report_lines.append("\n: %s/%s" % (num_available_build, N))
+    report_lines.append("\nSuccesful builds : %s/%s" % (num_available_build, N))
+
+    num_failed_build = sum([1 for package in build
+                            if build[package]['build_successful'] is False])
+    report_lines.append("\nFailed Builds: %s/%s" % (num_failed_build, N))
 
     open("build_report.md", "w").writelines("\n".join(report_lines))
     cmd = "pandoc build_report.md -o build_report.html"
