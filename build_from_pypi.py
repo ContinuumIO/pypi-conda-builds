@@ -84,7 +84,7 @@ def build_recipe(package, build_data, packages_data):
     msg = "Building Conda recipe for %s\n" % (package)
     print(msg)
 
-    cmd = "conda build_data %s" % (recipes_dir + package)
+    cmd = "conda build %s" % (recipes_dir + package)
     err = subprocess.call(shlex.split(cmd), stdout=log_file,
                           stderr=subprocess.STDOUT)
 
@@ -110,7 +110,7 @@ def pipbuild(package, pipbuild_data, packages_data):
     msg = "Creating Conda recipe for %s using pipbuild_data\n" % (package)
     print(msg)
 
-    cmd = "conda pipbuild_data %s" % (package)
+    cmd = "conda pipbuild %s" % (package)
     err = subprocess.call(shlex.split(cmd), stdout=log_file,
                           stderr=subprocess.STDOUT)
 
