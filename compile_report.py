@@ -42,7 +42,7 @@ def compile_main_report():
     report_lines.append("\npipbuild: %s/%s" % (pipbuild, N))
 
     open("main_report.md", "w").writelines("\n".join(report_lines))
-    cmd = "pandoc main_report.md -o main_report.html"
+    cmd = "grip main_report.md --export"
     subprocess.call(shlex.split(cmd))
 
 
@@ -73,7 +73,7 @@ def compile_recipe_report():
     report_lines.append("\nFailed Recipes:%s/%s" % (num_failed_recipes, N))
 
     open("recipe_report.md", "w").writelines("\n".join(report_lines))
-    cmd = "pandoc recipe_report.md -o recipe_report.html"
+    cmd = "grip recipe_report.md --export"
     subprocess.call(shlex.split(cmd))
 
 
@@ -104,7 +104,7 @@ def compile_build_report():
     report_lines.append("\nFailed Builds: %s/%s" % (num_failed_build, N))
 
     open("build_report.md", "w").writelines("\n".join(report_lines))
-    cmd = "pandoc build_report.md -o build_report.html"
+    cmd = "grip build_report.md --export"
     subprocess.call(shlex.split(cmd))
 
 
