@@ -109,7 +109,34 @@ def compile_build_report():
 
 
 def compile_pipbuild_report():
-    pass
+    pipbuild = yaml.load(open('pipbuild_data.yaml', 'r'))
+
+    report_lines = ["|package|pipbuild successful|error type|",
+                    "|-------|:------------------|:---------|"]
+
+    for package in pipbuild:
+        # We should probably seperate Not tried and tried and failed cases
+        log_file = log_dir + "%s_pipbuild.log" % package
+        report = "|%s|%s|[%s](%s)|" % (package,
+                                       emoji[pipbuild[package]['pipbuild_successful']],
+                                       pipbuild[package].setdefault('error_type', None),
+                                       log_file)
+
+        report_lines.append(report)
+
+    # Score
+    N = len(pipbuild)
+    num_available_pipbuild = sum([1 for package in pipbuild
+                                  if pipbuild[package]['pipbuild_successful']])
+    report_lines.append("\nSuccesful pipbuilds : %s/%s" % (num_available_pipbuild, N))
+
+    num_failed_pipbuild = sum([1 for package in pipbuild
+                               if pipbuild[package]['pipbuild_successful'] is False])
+    report_lines.append("\nFailed Builds: %s/%s" % (num_failed_pipbuild, N))
+
+    open("pipbuild_report.md", "w").writelines("\n".join(report_lines))
+    cmd = "grip pipbuild_report.md --export"
+    subprocess.call(shlex.split(cmd))
 
 
 def main():
