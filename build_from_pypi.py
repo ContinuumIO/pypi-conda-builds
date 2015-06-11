@@ -101,7 +101,7 @@ def build_recipe(package, build_data, packages_data):
 
 
 def pipbuild(package, pipbuild_data, packages_data):
-    log_file_name = log_dir + "%s_pipbuild_data.log" % (package)
+    log_file_name = log_dir + "%s_pipbuild.log" % (package)
     log_file = open(log_file_name, 'w')
 
     if package not in pipbuild_data.keys():
