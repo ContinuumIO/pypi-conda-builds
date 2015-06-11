@@ -143,6 +143,7 @@ def main():
     compile_main_report()
     compile_recipe_report()
     compile_build_report()
+    compile_pipbuild_report()
 
 
 if __name__ == "__main__":
