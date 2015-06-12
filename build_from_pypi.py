@@ -110,7 +110,7 @@ def pipbuild(package, pipbuild_data, packages_data):
     msg = "Creating Conda recipe for %s using pipbuild_data\n" % (package)
     print(msg)
 
-    cmd = "conda pipbuild %s" % (package)
+    cmd = "conda pipbuild %s --noarch-python" % (package)
     err = subprocess.call(shlex.split(cmd), stdout=log_file,
                           stderr=subprocess.STDOUT)
 
