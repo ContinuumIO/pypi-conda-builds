@@ -1,0 +1,69 @@
+package:
+  name: shove
+  version: "0.5.6"
+
+source:
+  fn: shove-0.5.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/shove/shove-0.5.6.tar.gz
+  md5: 0d4bb6b22f072d45499c3924983b1ad2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - shove = shove:main
+    #
+    # Would create an entry point called shove that calls shove.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - futures
+    - stuf ==0.9.4
+
+  run:
+    - python
+    - setuptools
+    - futures
+    - stuf ==0.9.4
+
+test:
+  # Python imports
+  imports:
+    - shove
+    - shove.caches
+    - shove.stores
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/lcrees/shove/
+  license: BSD License
+  summary: 'Common object storage frontend.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: django-treebeard
+  version: "3.0"
+
+source:
+  fn: django-treebeard-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-treebeard/django-treebeard-3.0.tar.gz
+  md5: 3fcc74669c1735c6ab1081c3416e419c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-treebeard = django-treebeard:main
+    #
+    # Would create an entry point called django-treebeard that calls django-treebeard.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.6
+
+  run:
+    - python
+    - django >=1.6
+
+test:
+  # Python imports
+  imports:
+    - treebeard
+    - treebeard.templatetags
+    - treebeard.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - pytest
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://tabo.pe/projects/django-treebeard/
+  license: Apache Software License
+  summary: 'Efficient tree implementations for Django 1.6+'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

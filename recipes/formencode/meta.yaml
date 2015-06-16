@@ -1,0 +1,71 @@
+package:
+  name: formencode
+  version: "1.3.0"
+
+source:
+  fn: FormEncode-1.3.0.zip
+  url: https://pypi.python.org/packages/source/F/FormEncode/FormEncode-1.3.0.zip
+  md5: 6df12d60bf3179402f2c2efd1129eb74
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - formencode = formencode:main
+    #
+    # Would create an entry point called formencode that calls formencode.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+    - pycountry
+    - dnspython
+
+  run:
+    - python
+    - nose
+    - pycountry
+    - dnspython
+
+test:
+  # Python imports
+  imports:
+    - formencode
+    - formencode.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - dnspython
+    - nose
+    - pycountry
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://formencode.org
+  license: Python Software Foundation License
+  summary: 'HTML form validation, generation, and conversion package'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

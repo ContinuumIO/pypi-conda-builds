@@ -1,0 +1,63 @@
+package:
+  name: cql
+  version: "1.4.0"
+
+source:
+  fn: cql-1.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cql/cql-1.4.0.tar.gz
+  md5: ee3f4c5178335cb65bbbd55bb808e1ae
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cql = cql:main
+    #
+    # Would create an entry point called cql that calls cql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - thrift
+
+  run:
+    - python
+    - thrift
+
+test:
+  # Python imports
+  imports:
+    - cql
+    - cql.cassandra
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/a/apache-extras.org/p/cassandra-dbapi2
+  license: Apache Software License
+  summary: 'Cassandra Query Language driver'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

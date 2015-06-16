@@ -1,0 +1,68 @@
+package:
+  name: drf-extensions
+  version: "0.2.7"
+
+source:
+  fn: drf-extensions-0.2.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/drf-extensions/drf-extensions-0.2.7.tar.gz
+  md5: adccbc5f04bbb073e832a4e173279e7b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - drf-extensions = drf-extensions:main
+    #
+    # Would create an entry point called drf-extensions that calls drf-extensions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - djangorestframework >=2.3.5
+
+  run:
+    - python
+    - djangorestframework >=2.3.5
+
+test:
+  # Python imports
+  imports:
+    - rest_framework_extensions
+    - rest_framework_extensions/bulk_operations
+    - rest_framework_extensions/cache
+    - rest_framework_extensions/etag
+    - rest_framework_extensions/key_constructor
+    - rest_framework_extensions/permissions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/chibisov/drf-extensions
+  license: MIT License
+  summary: 'Extensions for Django REST Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

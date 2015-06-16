@@ -1,0 +1,78 @@
+package:
+  name: rq
+  version: "0.5.3"
+
+source:
+  fn: rq-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/rq/rq-0.5.3.tar.gz
+  md5: 2be195ced9aca28c07db513a4d7741cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rq = rq:main
+    #
+    # Would create an entry point called rq that calls rq.main()
+
+    - rq = rq.cli:main
+    - rqinfo = rq.cli:info
+    - rqworker = rq.cli:worker
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=2.7.0
+    - click >=3.0
+    - argparse
+    - importlib
+
+  run:
+    - python
+    - redis >=2.7.0
+    - click >=3.0
+    - argparse
+    - importlib
+
+test:
+  # Python imports
+  imports:
+    - rq
+    - rq.cli
+    - rq.compat
+    - rq.contrib
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rq --help
+    - rqinfo --help
+    - rqworker --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nvie/rq/
+  license: BSD License
+  summary: 'RQ is a simple, lightweight, library for creating background jobs, and processing them.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

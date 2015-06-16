@@ -1,0 +1,63 @@
+package:
+  name: django-redis-sessions
+  version: "0.4.0"
+
+source:
+  fn: django-redis-sessions-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-redis-sessions/django-redis-sessions-0.4.0.tar.gz
+  md5: bb29821ef30ca1278a818c23e91e0fe5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-redis-sessions = django-redis-sessions:main
+    #
+    # Would create an entry point called django-redis-sessions that calls django-redis-sessions.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - redis >=2.4.10
+
+  run:
+    - python
+    - redis >=2.4.10
+
+test:
+  # Python imports
+  imports:
+    - redis_sessions
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/martinrusev/django-redis-sessions
+  license: BSD
+  summary: 'Redis Session Backend For Django'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

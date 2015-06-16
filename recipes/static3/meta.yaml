@@ -1,0 +1,67 @@
+package:
+  name: static3
+  version: "0.6.1"
+
+source:
+  fn: static3-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/static3/static3-0.6.1.tar.gz
+  md5: b6a6c1c8af01c5682a8acae1a28334da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - static3 = static3:main
+    #
+    # Would create an entry point called static3 that calls static3.main()
+
+    - static=static:command
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - genshi
+    - kid
+
+  run:
+    - python
+    - setuptools
+    - genshi
+    - kid
+
+test:
+  # Python imports
+  # imports:
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - static --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rmohr/static3
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A really simple WSGI way to serve static (or mixed) content.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

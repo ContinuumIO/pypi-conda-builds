@@ -1,0 +1,68 @@
+package:
+  name: snakebite
+  version: "2.5.4"
+
+source:
+  fn: snakebite-2.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/s/snakebite/snakebite-2.5.4.tar.gz
+  md5: 6ee92be030f5bea0042754b9f1c91bb4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - snakebite = snakebite:main
+    #
+    # Would create an entry point called snakebite that calls snakebite.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - protobuf >2.4.1
+    - argparse
+
+  run:
+    - python
+    - protobuf >2.4.1
+    - argparse
+
+test:
+  # Python imports
+  imports:
+    - snakebite
+    - snakebite.protobuf
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - tox
+    - virtualenv >=1.11.2
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/spotify/snakebite
+  license: Apache License 2.0
+  summary: 'Pure Python HDFS client'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

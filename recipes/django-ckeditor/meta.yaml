@@ -1,0 +1,66 @@
+package:
+  name: django-ckeditor
+  version: "4.4.8"
+
+source:
+  fn: django-ckeditor-4.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-ckeditor/django-ckeditor-4.4.8.tar.gz
+  md5: 262dd2dc6da413f2b29028aac1e00eff
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-ckeditor = django-ckeditor:main
+    #
+    # Would create an entry point called django-ckeditor that calls django-ckeditor.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  # Python imports
+  imports:
+    - ckeditor
+    - ckeditor.image
+    - ckeditor.management
+    - ckeditor.management.commands
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/shaunsephton/django-ckeditor
+  license: BSD License
+  summary: 'Django admin CKEditor integration.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

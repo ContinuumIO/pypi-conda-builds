@@ -1,0 +1,72 @@
+package:
+  name: robotframework-selenium2library
+  version: "1.7.0"
+
+source:
+  fn: robotframework-selenium2library-1.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/robotframework-selenium2library/robotframework-selenium2library-1.7.0.tar.gz
+  md5: 72a2834c3ab598dfc2c73f3602179683
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - robotframework-selenium2library = robotframework-selenium2library:main
+    #
+    # Would create an entry point called robotframework-selenium2library that calls robotframework-selenium2library.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator >=3.3.2
+    - selenium >=2.32.0
+    - robotframework >=2.6.0
+    - docutils >=0.8.1
+
+  run:
+    - python
+    - decorator >=3.3.2
+    - selenium >=2.32.0
+    - robotframework >=2.6.0
+    - docutils >=0.8.1
+
+test:
+  # Python imports
+  imports:
+    - Selenium2Library
+    - Selenium2Library.keywords
+    - Selenium2Library.locators
+    - Selenium2Library.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rtomac/robotframework-selenium2library
+  license: Apache Software License
+  summary: 'Web testing library for Robot Framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,64 @@
+package:
+  name: mesos.interface
+  version: "0.22.1.2"
+
+source:
+  fn: mesos.interface-0.22.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/mesos.interface/mesos.interface-0.22.1.2.tar.gz
+  md5: ee226879bd914d7693a8e372a3a27a50
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mesos.interface = mesos.interface:main
+    #
+    # Would create an entry point called mesos.interface that calls mesos.interface.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - protobuf >=2.5.0,<3
+
+  run:
+    - python
+    - protobuf >=2.5.0,<3
+
+test:
+  # Python imports
+  imports:
+    - mesos
+    - mesos.interface
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/mesos.interface
+  license: Apache 2.0
+  summary: 'Mesos interfaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

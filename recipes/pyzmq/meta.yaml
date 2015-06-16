@@ -1,0 +1,75 @@
+package:
+  name: pyzmq
+  version: "14.6.0"
+
+source:
+  fn: pyzmq-14.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyzmq/pyzmq-14.6.0.tar.gz
+  md5: 395b5de95a931afa5b14c9349a5b8024
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyzmq = pyzmq:main
+    #
+    # Would create an entry point called pyzmq that calls pyzmq.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - zmq
+    - zmq.auth
+    - zmq.backend
+    - zmq.backend.cffi
+    - zmq.backend.cython
+    - zmq.devices
+    - zmq.eventloop
+    - zmq.eventloop.minitornado
+    - zmq.eventloop.minitornado.platform
+    - zmq.green
+    - zmq.green.eventloop
+    - zmq.log
+    - zmq.ssh
+    - zmq.sugar
+    - zmq.tests
+    - zmq.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/zeromq/pyzmq
+  license: GNU Library or Lesser General Public License (LGPL) or BSD License
+  summary: 'Python bindings for 0MQ'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

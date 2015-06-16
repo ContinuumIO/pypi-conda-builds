@@ -1,0 +1,68 @@
+package:
+  name: curtsies
+  version: "0.2.3"
+
+source:
+  fn: curtsies-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/curtsies/curtsies-0.2.3.tar.gz
+  md5: 60d2da7850f9a3fdc14ceb18a050559b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - curtsies = curtsies:main
+    #
+    # Would create an entry point called curtsies that calls curtsies.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - blessings >=1.5
+    - wcwidth >=0.1.4
+
+  run:
+    - python
+    - blessings >=1.5
+    - wcwidth >=0.1.4
+
+test:
+  # Python imports
+  imports:
+    - curtsies
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - mock
+    - nose
+    - pyte
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thomasballinger/curtsies
+  license: MIT License
+  summary: 'Curses-like terminal wrapper, with colored strings!'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

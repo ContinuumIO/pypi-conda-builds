@@ -1,0 +1,68 @@
+package:
+  name: validators
+  version: "0.7"
+
+source:
+  fn: validators-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/v/validators/validators-0.7.tar.gz
+  md5: 9f8d78726c626deec817218d0a07275b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - validators = validators:main
+    #
+    # Would create an entry point called validators that calls validators.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.4.0
+    - decorator >=3.4.0
+    - pytest >=2.2.3
+
+  run:
+    - python
+    - six >=1.4.0
+    - decorator >=3.4.0
+    - pytest >=2.2.3
+
+test:
+  # Python imports
+  imports:
+    - validators
+    - validators.i18n
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kvesteri/validators
+  license: BSD License
+  summary: 'Python Data Validation for Humans\xe2\x84\xa2.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

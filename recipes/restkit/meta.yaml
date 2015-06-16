@@ -1,0 +1,67 @@
+package:
+  name: restkit
+  version: "4.2.2"
+
+source:
+  fn: restkit-4.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/restkit/restkit-4.2.2.tar.gz
+  md5: 99fb4e1af6e1b25c488dace620b4676f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - restkit = restkit:main
+    #
+    # Would create an entry point called restkit that calls restkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - http-parser >=0.8.3
+    - socketpool >=0.5.3
+
+  run:
+    - python
+    - setuptools
+    - http-parser >=0.8.3
+    - socketpool >=0.5.3
+
+test:
+  # Python imports
+  imports:
+    - restkit
+    - restkit.contrib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://benoitc.github.com/restkit
+  license: MIT License
+  summary: 'Python REST kit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

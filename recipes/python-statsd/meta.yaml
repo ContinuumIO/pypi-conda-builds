@@ -1,0 +1,64 @@
+package:
+  name: python-statsd
+  version: "1.7.2"
+
+source:
+  fn: python-statsd-1.7.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-statsd/python-statsd-1.7.2.tar.gz
+  md5: f37645fbea077f6ef9f787183db4b65b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-statsd = python-statsd:main
+    #
+    # Would create an entry point called python-statsd that calls python-statsd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - statsd
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - coverage
+    - mock
+    - nose
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/WoLpH/python-statsd
+  license: BSD License
+  summary: "statsd is a client for Etsy's node-js statsd server. A proxy for the Graphite stats collection and graphing server."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,66 @@
+package:
+  name: kid
+  version: "0.9.6"
+
+source:
+  fn: kid-0.9.6.tar.gz
+  url: https://pypi.python.org/packages/source/k/kid/kid-0.9.6.tar.gz
+  md5: 4233e592eee906039ad3dcbedbf6e972
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kid = kid:main
+    #
+    # Would create an entry point called kid that calls kid.main()
+
+    - kid = kid.run:main
+    - kidc = kid.compile:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - kid
+    - kid.test
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - kid --help
+    - kidc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.kid-templating.org
+  license: MIT License
+  summary: 'A simple and pythonic XML template language'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

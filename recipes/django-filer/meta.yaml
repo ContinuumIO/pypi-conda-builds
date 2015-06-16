@@ -1,0 +1,94 @@
+package:
+  name: django-filer
+  version: "0.9.11"
+
+source:
+  fn: django-filer-0.9.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-filer/django-filer-0.9.11.tar.gz
+  md5: 07754c53228e456c21cc0907b44d3ef1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-filer = django-filer:main
+    #
+    # Would create an entry point called django-filer that calls django-filer.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django >=1.4
+    - easy-thumbnails >=1.0
+    - django-mptt >=0.6
+    - django_polymorphic >=0.7
+    - unidecode >=0.04
+
+  run:
+    - python
+    - django >=1.4
+    - easy-thumbnails >=1.0
+    - django-mptt >=0.6
+    - django_polymorphic >=0.7
+    - unidecode >=0.04
+
+test:
+  # Python imports
+  imports:
+    - filer
+    - filer.admin
+    - filer.admin.patched
+    - filer.fields
+    - filer.management
+    - filer.management.commands
+    - filer.migrations
+    - filer.models
+    - filer.server
+    - filer.server.backends
+    - filer.south_migrations
+    - filer.templatetags
+    - filer.test_utils
+    - filer.test_utils.custom_image
+    - filer.test_utils.custom_image.migrations
+    - filer.test_utils.custom_image.south_migrations
+    - filer.test_utils.test_app
+    - filer.test_utils.test_app.migrations
+    - filer.test_utils.test_app.south_migrations
+    - filer.tests
+    - filer.tests.utils
+    - filer.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - argparse
+    - south
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/stefanfoulis/django-filer
+  license: BSD License
+  summary: 'A file management application for django that makes handling of files and images a breeze.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

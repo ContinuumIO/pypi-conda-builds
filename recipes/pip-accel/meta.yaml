@@ -1,0 +1,76 @@
+package:
+  name: pip-accel
+  version: "0.31"
+
+source:
+  fn: pip-accel-0.31.tar.gz
+  url: https://pypi.python.org/packages/source/p/pip-accel/pip-accel-0.31.tar.gz
+  md5: cea905379cb2e0c5e24c483eed13ff58
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pip-accel = pip-accel:main
+    #
+    # Would create an entry point called pip-accel that calls pip-accel.main()
+
+    - pip-accel = pip_accel.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cached-property >=0.1.5
+    - coloredlogs >=0.8
+    - humanfriendly >=1.14
+    - pip >=6.0.8,<6.2
+    - boto >=2.32
+
+  run:
+    - python
+    - setuptools
+    - cached-property >=0.1.5
+    - coloredlogs >=0.8
+    - humanfriendly >=1.14
+    - pip >=6.0.8,<6.2
+    - boto >=2.32
+
+test:
+  # Python imports
+  imports:
+    - pip_accel
+    - pip_accel.caches
+    - pip_accel.deps
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pip-accel --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/paylogic/pip-accel
+  license: UNKNOWN
+  summary: 'Accelerator for pip, the Python package manager'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

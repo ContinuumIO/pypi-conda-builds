@@ -1,0 +1,105 @@
+package:
+  name: flask-admin
+  version: "1.1.0"
+
+source:
+  fn: Flask-Admin-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Admin/Flask-Admin-1.1.0.tar.gz
+  md5: 162fffcc3628a2c008a92390d1b06612
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask-admin = flask-admin:main
+    #
+    # Would create an entry point called flask-admin that calls flask-admin.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask >=0.7
+    - wtforms
+
+  run:
+    - python
+    - flask >=0.7
+    - wtforms
+
+test:
+  # Python imports
+  imports:
+    - examples
+    - examples.auth
+    - examples.forms
+    - examples.layout
+    - examples.layout-bootstrap3
+    - examples.quickstart
+    - examples.simple
+    - examples.sqla
+    - examples.sqla-custom-filter
+    - flask_admin
+    - flask_admin.contrib
+    - flask_admin.contrib.appengine
+    - flask_admin.contrib.geoa
+    - flask_admin.contrib.mongoengine
+    - flask_admin.contrib.peewee
+    - flask_admin.contrib.peeweemodel
+    - flask_admin.contrib.pymongo
+    - flask_admin.contrib.sqla
+    - flask_admin.contrib.sqlamodel
+    - flask_admin.form
+    - flask_admin.model
+    - flask_admin.tests
+    - flask_admin.tests.fileadmin
+    - flask_admin.tests.geoa
+    - flask_admin.tests.mongoengine
+    - flask_admin.tests.peeweemodel
+    - flask_admin.tests.pymongo
+    - flask_admin.tests.sqla
+    - flask_admin.translations
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - flask-babelex
+    - flask-mongoengine
+    - flask-sqlalchemy
+    - geoalchemy2
+    - mongoengine
+    - nose >=1.0
+    - pillow
+    - psycopg2
+    - pymongo
+    - shapely
+    - sqlalchemy
+    - wtf-peewee
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mrjoes/flask-admin/
+  license: BSD License
+  summary: 'Simple and extensible admin interface framework for Flask'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

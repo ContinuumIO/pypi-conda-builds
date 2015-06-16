@@ -1,0 +1,120 @@
+package:
+  name: mesos.cli
+  version: "0.1.3"
+
+source:
+  fn: mesos.cli-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mesos.cli/mesos.cli-0.1.3.tar.gz
+  md5: 9c51dd68c671808a8bdb7c230a232a1b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mesos.cli = mesos.cli:main
+    #
+    # Would create an entry point called mesos.cli that calls mesos.cli.main()
+
+    - mesos = mesos.cli.main:main
+    - mesos-completion = mesos.cli.cmds.completion:main
+    - mesos-config = mesos.cli.cmds.config:main
+    - mesos-events = mesos.cli.cmds.events:main
+    - mesos-resolve = mesos.cli.cmds.resolve:main
+    - mesos-state = mesos.cli.cmds.state:main
+    - mesos-cat = mesos.cli.cmds.cat:main
+    - mesos-find = mesos.cli.cmds.find:main
+    - mesos-head = mesos.cli.cmds.head:main
+    - mesos-help = mesos.cli.cmds.help:main
+    - mesos-ls = mesos.cli.cmds.ls:main
+    - mesos-ps = mesos.cli.cmds.ps:main
+    - mesos-scp = mesos.cli.cmds.scp:main
+    - mesos-ssh = mesos.cli.cmds.ssh:main
+    - mesos-tail = mesos.cli.cmds.tail:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argcomplete >=0.8.0
+    - blessings >=1.5.1
+    - futures >=2.1.6
+    - importlib >=1.0.3
+    - kazoo >=2.0
+    - mesos.interface >=0.20.0
+    - ordereddict >=1.1
+    - prettytable >=0.7.2
+    - protobuf >=2.5.0,<3
+    - requests >=2.3.0
+
+  run:
+    - python
+    - argcomplete >=0.8.0
+    - blessings >=1.5.1
+    - futures >=2.1.6
+    - importlib >=1.0.3
+    - kazoo >=2.0
+    - mesos.interface >=0.20.0
+    - ordereddict >=1.1
+    - prettytable >=0.7.2
+    - protobuf >=2.5.0,<3
+    - requests >=2.3.0
+
+test:
+  # Python imports
+  imports:
+    - mesos
+    - mesos.cli
+    - mesos.cli.cmds
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mesos --help
+    - mesos-completion --help
+    - mesos-config --help
+    - mesos-events --help
+    - mesos-resolve --help
+    - mesos-state --help
+    - mesos-cat --help
+    - mesos-find --help
+    - mesos-head --help
+    - mesos-help --help
+    - mesos-ls --help
+    - mesos-ps --help
+    - mesos-scp --help
+    - mesos-ssh --help
+    - mesos-tail --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - coverage >=3.7.1
+    - flake8 >=2.2.2
+    - isort >=3.9.0
+    - mock >=1.0.1
+    - pep8-naming >=0.2.2
+    - testtools >=0.9.35
+    - zake ==0.0.20
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/mesos.cli
+  license: Apache 2.0
+  summary: 'Mesos CLI Tools'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

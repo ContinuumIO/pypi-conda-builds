@@ -1,0 +1,78 @@
+package:
+  name: sphinxcontrib-napoleon
+  version: "0.3.10"
+
+source:
+  fn: sphinxcontrib-napoleon-0.3.10.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinxcontrib-napoleon/sphinxcontrib-napoleon-0.3.10.tar.gz
+  md5: e32af3371b0739d27a12f90b7b9c7045
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sphinxcontrib-napoleon = sphinxcontrib-napoleon:main
+    #
+    # Would create an entry point called sphinxcontrib-napoleon that calls sphinxcontrib-napoleon.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx >=0.6,<1.3a
+    - six >=1.7
+    - pockets >=0.2.1
+
+  run:
+    - python
+    - sphinx >=0.6,<1.3a
+    - six >=1.7
+    - pockets >=0.2.1
+
+test:
+  # Python imports
+  imports:
+    - sphinxcontrib
+    - sphinxcontrib.napoleon
+    - tests
+    - tests.napoleon
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - coverage >=3.6
+    - docutils >=0.10
+    - flake8 >=2.0
+    - mock >=1.0.1
+    - nose >=1.3.0
+    - pockets >=0.2.1
+    - six >=1.7
+    - sphinx >=1.2b1
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sphinxcontrib-napoleon.readthedocs.org
+  license: BSD License
+  summary: 'Sphinx "napoleon" extension.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

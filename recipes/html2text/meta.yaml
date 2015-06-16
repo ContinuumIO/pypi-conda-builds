@@ -1,0 +1,64 @@
+package:
+  name: html2text
+  version: "2015.6.12"
+
+source:
+  fn: html2text-2015.6.12.tar.gz
+  url: https://pypi.python.org/packages/source/h/html2text/html2text-2015.6.12.tar.gz
+  md5: b54ef1d8e73abf327cd62da0de60ed7a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - html2text = html2text:main
+    #
+    # Would create an entry point called html2text that calls html2text.main()
+
+    - html2text=html2text.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - html2text
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - html2text --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Alir3z4/html2text/
+  license: GNU General Public License (GPL)
+  summary: 'Turn HTML into equivalent Markdown-structured text.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

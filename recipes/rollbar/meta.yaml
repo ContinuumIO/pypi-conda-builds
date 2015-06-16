@@ -1,0 +1,79 @@
+package:
+  name: rollbar
+  version: "0.9.11"
+
+source:
+  fn: rollbar-0.9.11.tar.gz
+  url: https://pypi.python.org/packages/source/r/rollbar/rollbar-0.9.11.tar.gz
+  md5: cdea1cdb7e0543b5ffafaf36199c26a3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rollbar = rollbar:main
+    #
+    # Would create an entry point called rollbar that calls rollbar.main()
+
+    - rollbar=rollbar.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - setuptools
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - rollbar
+    - rollbar.contrib
+    - rollbar.contrib.bottle
+    - rollbar.contrib.django
+    - rollbar.contrib.flask
+    - rollbar.contrib.pyramid
+    - rollbar.contrib.rq
+    - rollbar.test
+    - rollbar.test.contrib
+    - rollbar.test.contrib.flask
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - rollbar --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - blinker
+    - flask
+    - mock
+    - webob
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/rollbar/pyrollbar
+  license: MIT License
+  summary: 'Logs exceptions and other data to Rollbar. Provides a generic interface, as well as a Django middleware and a Pyramid tween.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

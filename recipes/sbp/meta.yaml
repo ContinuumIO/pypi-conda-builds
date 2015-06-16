@@ -1,0 +1,96 @@
+package:
+  name: sbp
+  version: "0.45"
+
+source:
+  fn: sbp-0.45.tar.gz
+  url: https://pypi.python.org/packages/source/s/sbp/sbp-0.45.tar.gz
+  md5: 1ae39ce4b42faf38b687e9a7e2919a3f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sbp = sbp:main
+    #
+    # Would create an entry point called sbp that calls sbp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - boto ==2.38.0
+    - construct ==2.5.2
+    - cov-core ==1.15.0
+    - coverage ==3.7.1
+    - flake8 ==2.3.0
+    - futures ==2.2.0
+    - pep8 ==1.5.7
+    - pyftdi ==0.6.3
+    - pylibftdi ==0.14.2
+    - pyserial ==2.7
+    - pytest ==2.6.4
+    - pytest-cov ==1.8.1
+    - pyyaml ==3.11
+    - tox ==1.8.1
+    - virtualenv ==1.11.6
+
+  run:
+    - python
+    - six
+    - boto ==2.38.0
+    - construct ==2.5.2
+    - cov-core ==1.15.0
+    - coverage ==3.7.1
+    - flake8 ==2.3.0
+    - futures ==2.2.0
+    - pep8 ==1.5.7
+    - pyftdi ==0.6.3
+    - pylibftdi ==0.14.2
+    - pyserial ==2.7
+    - pytest ==2.6.4
+    - pytest-cov ==1.8.1
+    - pyyaml ==3.11
+    - tox ==1.8.1
+    - virtualenv ==1.11.6
+
+test:
+  # Python imports
+  imports:
+    - sbp
+    - sbp.client
+    - sbp.client.drivers
+    - sbp.client.loggers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/swift-nav/libsbp
+  license: UNKNOWN
+  summary: 'Python bindings for Swift Binary Protocol'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

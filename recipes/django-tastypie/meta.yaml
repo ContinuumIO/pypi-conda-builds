@@ -1,0 +1,77 @@
+package:
+  name: django-tastypie
+  version: "0.12.1"
+
+source:
+  fn: django-tastypie-0.12.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tastypie/django-tastypie-0.12.1.tar.gz
+  md5: fbe635644c3551fbe66dd50e7e115537
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - django-tastypie = django-tastypie:main
+    #
+    # Would create an entry point called django-tastypie that calls django-tastypie.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-mimeparse >=0.1.4
+    - python-dateutil >=1.5,!=2.0
+
+  run:
+    - python
+    - python-mimeparse >=0.1.4
+    - python-dateutil >=1.5,!=2.0
+
+test:
+  # Python imports
+  imports:
+    - tastypie
+    - tastypie.contrib
+    - tastypie.contrib.contenttypes
+    - tastypie.contrib.gis
+    - tastypie.management
+    - tastypie.management.commands
+    - tastypie.migrations
+    - tastypie.south_migrations
+    - tastypie.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - defusedxml
+    - lxml
+    - mock
+    - pyyaml
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/toastdriven/django-tastypie/
+  license: BSD License
+  summary: 'A flexible & capable API layer for Django.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
