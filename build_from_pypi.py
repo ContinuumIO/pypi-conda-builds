@@ -37,17 +37,6 @@ parser.add_argument("--all",
                     action="store_true")
 args = parser.parse_args()
 
-log_dir = "./logs/"
-recipes_dir = "./recipes/"
-
-all_packages = yaml.load(open('sorted_packages.yaml', 'r'))
-anaconda_packages = set(yaml.load(open('anaconda.yaml', 'r')))
-greylist_packages = set(yaml.load(open('greylist.yaml', 'r')))
-packages_data = yaml.load(open('packages_data.yaml', 'r'))
-recipes_data = yaml.load(open('recipes_data.yaml', 'r'))
-build_data = yaml.load(open('build_data.yaml', 'r'))
-pipbuild_data = yaml.load(open('pipbuild_data.yaml', 'r'))
-
 
 def create_recipe(package, recipes_data):
     log_file_name = log_dir + "%s_recipe.log" % (package)
@@ -178,6 +167,25 @@ def reorganise_old_format(packages_old, packages, recipes, build):
 pypi_url = 'http://pypi.python.org/pypi'
 client = ServerProxy(pypi_url)
 
+log_dir = "./logs/"
+recipes_dir = "./recipes/"
+
+all_packages = yaml.load(open('sorted_packages.yaml', 'r'))
+anaconda_packages = set(yaml.load(open('anaconda.yaml', 'r')))
+greylist_packages = set(yaml.load(open('greylist.yaml', 'r')))
+packages_data = yaml.load(open('packages_data.yaml', 'r'))
+recipes_data = yaml.load(open('recipes_data.yaml', 'r'))
+build_data = yaml.load(open('build_data.yaml', 'r'))
+pipbuild_data = yaml.load(open('pipbuild_data.yaml', 'r'))
+
+
+def get_packages_list(n):
+    """
+    Gives the list of top n packages sorted by download count
+    """
+    return [pkg for (pkg, downloads) in client.top_packages(n)]
+
+
 def get_previous_build_timestamp():
     """
     Return the time of previous build in second since Epoch[1]. Returns 0 if
@@ -209,9 +217,9 @@ def main(args):
     save_timestamp()
 
     if args.n:
-        new_packages = set(all_packages[:args.n])
+        top_n_packages = set(get_packages_list(args.n))
     else:
-        new_packages = set()
+        top_n_packages = set()
 
     if args.all:
         old_pkgs = packages_data.keys()
@@ -222,8 +230,10 @@ def main(args):
                        packages_data[pkg]['package_available'] is not True or
                        pkg in changed_pkgs)
 
-    candidate_packages = new_packages.union(old_pkgs) \
+    candidate_packages = top_n_packages.union(old_pkgs) \
         - (anaconda_packages.union(greylist_packages))
+
+
 
     # TODO: complete the part where list of packages is passed through
     # commandline
