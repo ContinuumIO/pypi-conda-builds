@@ -4,7 +4,6 @@ import argparse
 import subprocess
 import yaml
 import shlex
-from conda.install import rm_rf
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-n",
@@ -55,14 +54,15 @@ def create_recipe(package, recipes_data):
     print(msg)
 
     # Remove the old recipe
-    if isdir(recipes_dir + package):
-        rm_rf(recipes_dir + package)
-
-    cmd = "conda skeleton pypi %s --output-dir %s" \
-        " --recursive --no-prompt --all-extras --noarch-python"
-    cmd = cmd % (package, recipes_dir)
-    err = subprocess.call(shlex.split(cmd), stdout=log_file,
-                          stderr=subprocess.STDOUT)
+    if not isdir(recipes_dir + package):
+        cmd = "conda skeleton pypi %s --output-dir %s" \
+            " --recursive --no-prompt --all-extras --noarch-python"
+        cmd = cmd % (package, recipes_dir)
+        err = subprocess.call(shlex.split(cmd), stdout=log_file,
+                              stderr=subprocess.STDOUT)
+    else:
+        err = 0
+        print("Recipe already available")
 
     if err is 0:
         msg = "Succesfully created conda recipe for %s\n" % (package)
