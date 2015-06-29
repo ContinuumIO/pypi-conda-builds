@@ -21,10 +21,6 @@ parser.add_argument("--build",
 parser.add_argument("--pipbuild",
                     help="pipuild packages",
                     action="store_true")
-# parser.add_argument("--all",
-#                     help="Apply process at all the packages including the ones"
-#                          " those passed",
-#                     action="store_true")
 parser.add_argument("--packages",
                     help="List of names of packags to create",
                     nargs="+",
