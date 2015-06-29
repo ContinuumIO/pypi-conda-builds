@@ -168,10 +168,13 @@ def reorganise_old_format(packages_old, packages, recipes, build):
 def main(args):
     if args.n:
         new_packages = set(all_packages[:args.n])
-        old_failed = set(pkg for pkg in packages_data if
-                         packages_data[pkg]['package_available'] is not True)
-        candidate_packages = new_packages.union(old_failed) \
-            - (anaconda_packages.union(greylist_packages))
+    else:
+        new_packages = set()
+
+    old_failed = set(pkg for pkg in packages_data if
+                     packages_data[pkg]['package_available'] is not True)
+    candidate_packages = new_packages.union(old_failed) \
+        - (anaconda_packages.union(greylist_packages))
 
     # TODO: complete the part where list of packages is passed through
     # commandline
