@@ -25,6 +25,10 @@ parser.add_argument("--packages",
                     help="List of names of packags to create",
                     nargs="+",
                     action="store")
+parser.add_argument("--all",
+                    help="Apply process at all the packages including the ones"
+                         " those passed in earlier builds",
+                    action="store_true")
 args = parser.parse_args()
 
 log_dir = "./logs/"
@@ -171,9 +175,13 @@ def main(args):
     else:
         new_packages = set()
 
-    old_failed = set(pkg for pkg in packages_data if
-                     packages_data[pkg]['package_available'] is not True)
-    candidate_packages = new_packages.union(old_failed) \
+    if args.all:
+        old_pkgs = packages_data.keys()
+    else:
+        old_pkgs = set(pkg for pkg in packages_data if
+                       packages_data[pkg]['package_available'] is not True)
+
+    candidate_packages = new_packages.union(old_pkgs) \
         - (anaconda_packages.union(greylist_packages))
 
     # TODO: complete the part where list of packages is passed through
