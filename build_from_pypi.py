@@ -75,7 +75,7 @@ def create_recipe(package, recipes_data):
 
 
 def build_recipe(package, build_data, packages_data):
-    log_file_name = log_dir + "%s_build_data.log" % (package)
+    log_file_name = log_dir + "%s_build.log" % (package)
     log_file = open(log_file_name, 'w')
 
     if package not in build_data.keys():
@@ -89,10 +89,10 @@ def build_recipe(package, build_data, packages_data):
                           stderr=subprocess.STDOUT)
 
     if err is 0:
-        msg = "Succesfully build_data conda package for %s\n" % (package)
+        msg = "Succesfully build conda package for %s\n" % (package)
         build_data[package]['build_successful'] = True
     else:
-        msg = "Failed to build_data conda package for %s\n" % (package)
+        msg = "Failed to build conda package for %s\n" % (package)
         build_data[package]['build_successful'] = False
         packages_data[package]['package_available'] = True
         packages_data[package]['availability_type'] = 'conda-build'
@@ -107,7 +107,7 @@ def pipbuild(package, pipbuild_data, packages_data):
     if package not in pipbuild_data.keys():
         pipbuild_data[package] = dict()
 
-    msg = "Creating Conda recipe for %s using pipbuild_data\n" % (package)
+    msg = "Creating Conda recipe for %s using pipbuild\n" % (package)
     print(msg)
 
     cmd = "conda pipbuild %s --noarch-python" % (package)
