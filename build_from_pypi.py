@@ -257,4 +257,5 @@ def main(args):
 
     save_data()
 
-main(args)
+if __name__ == "__main__":
+    main(args)
