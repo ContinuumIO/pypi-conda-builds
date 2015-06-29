@@ -4,6 +4,12 @@ import argparse
 import subprocess
 import yaml
 import shlex
+import sys
+if sys.version_info < (3,):
+    from xmlrpclib import ServerProxy, Transport, ProtocolError
+else:
+    from xmlrpc.client import ServerProxy
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-n",
@@ -169,7 +175,39 @@ def reorganise_old_format(packages_old, packages, recipes, build):
         build[package['name']] = {'build_successful': package['build']}
 
 
+pypi_url = 'http://pypi.python.org/pypi'
+client = ServerProxy(pypi_url)
+
+def get_previous_build_timestamp():
+    """
+    Return the time of previous build in second since Epoch[1]. Returns 0 if
+    timestamp file is not available
+
+    [1]: https://en.wikipedia.org/wiki/Unix_time
+
+    """
+    file_name = 'timestamp'
+    try:
+        timestamp = int(open(file_name, 'r').readline().strip())
+    except FileNotFoundError:
+        timestamp = 0
+
+    return timestamp
+
+
+def save_timestamp():
+    """
+    Save the current timestamp to file 'timestamp'
+    """
+    import time
+    file_name = 'timestamp'
+    with open(file_name, 'w') as timestamp_file:
+        timestamp_file.write(int(time.time))
+
+
 def main(args):
+    save_timestamp()
+
     if args.n:
         new_packages = set(all_packages[:args.n])
     else:
@@ -178,8 +216,11 @@ def main(args):
     if args.all:
         old_pkgs = packages_data.keys()
     else:
+        changed_pkgs = set(client.changed_package(get_previous_build_timestamp()))
+        # Include old failed or changed packages
         old_pkgs = set(pkg for pkg in packages_data if
-                       packages_data[pkg]['package_available'] is not True)
+                       packages_data[pkg]['package_available'] is not True or
+                       pkg in changed_pkgs)
 
     candidate_packages = new_packages.union(old_pkgs) \
         - (anaconda_packages.union(greylist_packages))
